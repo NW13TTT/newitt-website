@@ -1,2071 +1,1268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Newitt Media | Skyline & Paranormal Adventures</title>
-
-<meta name="description" content="Newitt Media brings together aerial photography, drone cinematography, paranormal investigations and cinematic storytelling.">
-<meta name="theme-color" content="#05070b">
-
-<style>
-
-/* =========================================================
-   NEWITT MEDIA
-   PROFESSIONAL CINEMATIC WEBSITE
-   ========================================================= */
-
-:root {
-    --black: #030508;
-    --black-soft: #070b12;
-    --panel: rgba(8, 14, 23, 0.78);
-    --panel-light: rgba(15, 25, 38, 0.72);
-
-    --white: #f5f7fa;
-    --silver: #b8c1cc;
-    --muted: #8995a5;
-
-    --blue: #66aaff;
-    --blue-bright: #8ec7ff;
-    --cyan: #48e4e7;
-
-    --border: rgba(130, 180, 240, 0.22);
-    --border-strong: rgba(100, 180, 255, 0.45);
-
-    --shadow:
-        0 25px 80px rgba(0, 0, 0, 0.55);
-
-    --glow:
-        0 0 45px rgba(75, 160, 255, 0.12);
-
-    --max-width: 1280px;
-}
-
-
-/* =========================================================
-   RESET
-   ========================================================= */
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background:
-        radial-gradient(
-            circle at 20% 10%,
-            rgba(35, 100, 170, 0.12),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 80% 30%,
-            rgba(20, 170, 190, 0.08),
-            transparent 35%
-        ),
-        #030508;
-
-    color: var(--white);
-
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
-    line-height: 1.7;
-    overflow-x: hidden;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-img {
-    max-width: 100%;
-    display: block;
-}
-
-button,
-a {
-    -webkit-tap-highlight-color: transparent;
-}
-
-
-/* =========================================================
-   BACKGROUND ATMOSPHERE
-   ========================================================= */
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-
-    background:
-        linear-gradient(
-            rgba(3, 5, 8, 0.82),
-            rgba(3, 5, 8, 0.92)
-        ),
-        radial-gradient(
-            circle at 50% 20%,
-            rgba(60, 130, 210, 0.08),
-            transparent 45%
-        );
-
-    pointer-events: none;
-    z-index: -3;
-}
-
-body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-
-    background-image:
-        radial-gradient(
-            rgba(255,255,255,0.08) 1px,
-            transparent 1px
-        );
-
-    background-size: 80px 80px;
-    opacity: 0.06;
-
-    pointer-events: none;
-    z-index: -2;
-}
-
-
-/* =========================================================
-   UTILITY
-   ========================================================= */
-
-.container {
-    width: min(
-        calc(100% - 40px),
-        var(--max-width)
-    );
-
-    margin: auto;
-}
-
-.section {
-    padding: 110px 0;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.section-title .eyebrow {
-    color: var(--blue-bright);
-
-    font-size: 0.72rem;
-    letter-spacing: 0.42em;
-    text-transform: uppercase;
-
-    margin-bottom: 18px;
-}
-
-.section-title h2 {
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: clamp(
-        2.2rem,
-        5vw,
-        4.2rem
-    );
-
-    font-weight: 400;
-    letter-spacing: 0.08em;
-
-    text-transform: uppercase;
-}
-
-.section-title p {
-    max-width: 700px;
-    margin: 20px auto 0;
-
-    color: var(--muted);
-
-    font-size: 1rem;
-}
-
-
-/* =========================================================
-   HEADER
-   ========================================================= */
-
-header {
-    position: fixed;
-
-    top: 0;
-    left: 0;
-    right: 0;
-
-    height: 84px;
-
-    display: flex;
-    align-items: center;
-
-    z-index: 1000;
-
-    background:
-        linear-gradient(
-            rgba(3,5,8,0.94),
-            rgba(3,5,8,0.68)
-        );
-
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-
-    border-bottom:
-        1px solid rgba(255,255,255,0.06);
-}
-
-.nav {
-    width: min(
-        calc(100% - 40px),
-        1380px
-    );
-
-    margin: auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.brand {
-    display: flex;
-    flex-direction: column;
-
-    line-height: 1;
-}
-
-.brand-main {
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 1.55rem;
-    letter-spacing: 0.30em;
-
-    color: #fff;
-}
-
-.brand-sub {
-    color: var(--blue-bright);
-
-    font-size: 0.55rem;
-    letter-spacing: 0.55em;
-
-    margin-top: 8px;
-    margin-left: 3px;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 34px;
-}
-
-.nav-links a {
-    position: relative;
-
-    color: #d6dce4;
-
-    font-size: 0.72rem;
-    letter-spacing: 0.22em;
-
-    text-transform: uppercase;
-
-    transition: 0.3s ease;
-}
-
-.nav-links a::after {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    bottom: -9px;
-
-    width: 0;
-    height: 1px;
-
-    background: var(--blue);
-
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: white;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-
-/* =========================================================
-   HERO
-   ========================================================= */
-
-.hero {
-    min-height: 100vh;
-
-    display: flex;
-    align-items: center;
-
-    position: relative;
-
-    overflow: hidden;
-
-    padding-top: 84px;
-}
-
-.hero-bg {
-    position: absolute;
-    inset: 0;
-
-    background:
-        radial-gradient(
-            ellipse at 15% 50%,
-            rgba(30, 100, 170, 0.32),
-            transparent 38%
-        ),
-        radial-gradient(
-            ellipse at 85% 45%,
-            rgba(20, 150, 170, 0.18),
-            transparent 40%
-        ),
-        linear-gradient(
-            135deg,
-            #020408 0%,
-            #071321 48%,
-            #030507 100%
-        );
-
-    z-index: -1;
-}
-
-.hero-bg::before {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(3,5,8,0.95) 0%,
-            rgba(3,5,8,0.55) 42%,
-            rgba(3,5,8,0.85) 100%
-        );
-}
-
-.hero-grid {
-    position: absolute;
-    inset: 0;
-
-    background-image:
-        linear-gradient(
-            rgba(100,160,220,0.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(100,160,220,0.035) 1px,
-            transparent 1px
-        );
-
-    background-size: 90px 90px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent 85%
-        );
-}
-
-.hero-content {
-    position: relative;
-
-    width: min(
-        calc(100% - 40px),
-        1000px
-    );
-
-    margin: auto;
-
-    text-align: center;
-
-    padding: 100px 0;
-}
-
-.hero-mark {
-    width: 78px;
-    height: 78px;
-
-    border: 1px solid var(--border-strong);
-    border-radius: 50%;
-
-    display: grid;
-    place-items: center;
-
-    margin: 0 auto 38px;
-
-    color: white;
-
-    font-family: Georgia, serif;
-    font-size: 2.4rem;
-
-    box-shadow:
-        0 0 35px rgba(80,160,255,0.18);
-
-    position: relative;
-}
-
-.hero-mark::before {
-    content: "";
-
-    position: absolute;
-
-    inset: 7px;
-
-    border:
-        1px solid rgba(255,255,255,0.13);
-
-    border-radius: 50%;
-}
-
-.hero-eyebrow {
-    color: var(--blue-bright);
-
-    font-size: 0.75rem;
-    letter-spacing: 0.48em;
-
-    text-transform: uppercase;
-
-    margin-bottom: 28px;
-}
-
-.hero h1 {
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: clamp(
-        3rem,
-        8vw,
-        7.5rem
-    );
-
-    line-height: 0.98;
-
-    font-weight: 400;
-
-    letter-spacing: 0.08em;
-
-    text-transform: uppercase;
-}
-
-.hero h1 span {
-    display: block;
-
-    color: var(--blue-bright);
-
-    margin-top: 12px;
-}
-
-.hero-divider {
-    width: 170px;
-    height: 1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--blue),
-            transparent
-        );
-
-    margin: 38px auto;
-}
-
-.hero-copy {
-    max-width: 700px;
-
-    margin: auto;
-
-    color: #aab4c1;
-
-    font-size: 1rem;
-    letter-spacing: 0.08em;
-}
-
-.hero-actions {
-    margin-top: 45px;
-
-    display: flex;
-    justify-content: center;
-
-    gap: 16px;
-    flex-wrap: wrap;
-}
-
-.btn {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    min-width: 190px;
-
-    padding: 15px 25px;
-
-    border:
-        1px solid var(--border-strong);
-
-    background:
-        rgba(5,12,20,0.7);
-
-    color: white;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.18em;
-
-    font-size: 0.7rem;
-
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease,
-        border 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.btn:hover {
-    transform: translateY(-3px);
-
-    background:
-        rgba(60,130,210,0.18);
-
-    border-color:
-        rgba(120,190,255,0.75);
-
-    box-shadow:
-        0 12px 35px rgba(40,120,210,0.16);
-}
-
-.btn-primary {
-    background:
-        linear-gradient(
-            135deg,
-            #183f68,
-            #10263e
-        );
-}
-
-
-/* =========================================================
-   CHANNELS
-   ========================================================= */
-
-.channels {
-    position: relative;
-}
-
-.channel-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, minmax(0,1fr));
-
-    gap: 24px;
-}
-
-.channel-card {
-    position: relative;
-
-    padding: 34px;
-
-    min-height: 600px;
-
-    overflow: hidden;
-
-    border:
-        1px solid var(--border);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(12,23,37,0.9),
-            rgba(4,8,13,0.94)
-        );
-
-    box-shadow: var(--shadow);
-
-    transition:
-        transform 0.4s ease,
-        border-color 0.4s ease;
-}
-
-.channel-card:hover {
-    transform: translateY(-8px);
-
-    border-color:
-        var(--border-strong);
-}
-
-.channel-card.paranormal {
-    background:
-        linear-gradient(
-            145deg,
-            rgba(8,20,28,0.95),
-            rgba(4,7,11,0.97)
-        );
-}
-
-.channel-card::before {
-    content: "";
-
-    position: absolute;
-
-    width: 300px;
-    height: 300px;
-
-    top: -130px;
-    right: -100px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(70,150,255,0.18),
-            transparent 70%
-        );
-
-    pointer-events: none;
-}
-
-.paranormal::before {
-    background:
-        radial-gradient(
-            circle,
-            rgba(40,220,220,0.12),
-            transparent 70%
-        );
-}
-
-.logo-frame {
-    min-height: 330px;
-
-    display: grid;
-    place-items: center;
-
-    margin-bottom: 30px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(50,130,220,0.12),
-            transparent 70%
-        );
-}
-
-.logo-frame img {
-    width: min(72%, 330px);
-
-    max-height: 310px;
-
-    object-fit: contain;
-
-    filter:
-        drop-shadow(
-            0 15px 35px rgba(0,0,0,0.55)
-        );
-
-    transition:
-        transform 0.5s ease;
-}
-
-.channel-card:hover .logo-frame img {
-    transform: scale(1.035);
-}
-
-.channel-label {
-    color: var(--blue-bright);
-
-    font-size: 0.7rem;
-    letter-spacing: 0.35em;
-
-    text-transform: uppercase;
-
-    margin-bottom: 12px;
-}
-
-.channel-card h3 {
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: clamp(
-        2rem,
-        4vw,
-        3.5rem
-    );
-
-    line-height: 1.05;
-
-    font-weight: 400;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.05em;
-}
-
-.channel-card p {
-    color: var(--muted);
-
-    margin-top: 20px;
-
-    max-width: 560px;
-}
-
-.channel-links {
-    display: flex;
-
-    gap: 12px;
-
-    margin-top: 28px;
-
-    flex-wrap: wrap;
-}
-
-.small-btn {
-    padding: 12px 18px;
-
-    border:
-        1px solid rgba(130,180,240,0.32);
-
-    color: #e8edf4;
-
-    font-size: 0.65rem;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.16em;
-
-    transition: 0.3s ease;
-}
-
-.small-btn:hover {
-    background:
-        rgba(80,160,240,0.12);
-
-    border-color:
-        var(--blue);
-}
-
-
-/* =========================================================
-   CAPABILITIES
-   ========================================================= */
-
-.capabilities {
-    margin-top: 25px;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, minmax(0,1fr));
-
-    border:
-        1px solid var(--border);
-
-    background:
-        rgba(5,10,16,0.7);
-}
-
-.capability {
-    padding: 45px 30px;
-
-    text-align: center;
-
-    border-right:
-        1px solid rgba(130,180,240,0.14);
-}
-
-.capability:last-child {
-    border-right: none;
-}
-
-.capability-icon {
-    width: 55px;
-    height: 55px;
-
-    margin: 0 auto 22px;
-
-    border:
-        1px solid rgba(100,180,255,0.45);
-
-    border-radius: 50%;
-
-    display: grid;
-    place-items: center;
-
-    color: var(--blue-bright);
-
-    font-family: Georgia, serif;
-
-    font-size: 1.35rem;
-}
-
-.capability h4 {
-    font-family: Georgia, serif;
-
-    font-weight: 400;
-
-    letter-spacing: 0.12em;
-
-    text-transform: uppercase;
-
-    margin-bottom: 12px;
-}
-
-.capability p {
-    color: var(--muted);
-
-    font-size: 0.85rem;
-}
-
-
-/* =========================================================
-   ABOUT
-   ========================================================= */
-
-.about-box {
-    display: grid;
-
-    grid-template-columns:
-        0.9fr 1.1fr;
-
-    border:
-        1px solid var(--border);
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(10,20,32,0.85),
-            rgba(4,7,11,0.9)
-        );
-
-    box-shadow: var(--shadow);
-}
-
-.about-visual {
-    min-height: 430px;
-
-    position: relative;
-
-    overflow: hidden;
-
-    background:
-        radial-gradient(
-            circle at 40% 40%,
-            rgba(50,140,220,0.22),
-            transparent 45%
-        ),
-        linear-gradient(
-            135deg,
-            #0a1725,
-            #020408
-        );
-}
-
-.about-visual::before,
-.about-visual::after {
-    content: "";
-
-    position: absolute;
-
-    border: 1px solid rgba(100,180,255,0.14);
-
-    border-radius: 50%;
-}
-
-.about-visual::before {
-    width: 350px;
-    height: 350px;
-
-    left: 50%;
-    top: 50%;
-
-    transform:
-        translate(-50%, -50%);
-}
-
-.about-visual::after {
-    width: 230px;
-    height: 230px;
-
-    left: 50%;
-    top: 50%;
-
-    transform:
-        translate(-50%, -50%);
-}
-
-.visual-letter {
-    position: absolute;
-
-    inset: 0;
-
-    display: grid;
-    place-items: center;
-
-    font-family: Georgia, serif;
-
-    font-size: 9rem;
-
-    color: rgba(255,255,255,0.9);
-
-    text-shadow:
-        0 0 40px rgba(80,170,255,0.3);
-}
-
-.about-content {
-    padding: 65px;
-}
-
-.about-content .eyebrow {
-    color: var(--blue-bright);
-
-    font-size: 0.7rem;
-
-    letter-spacing: 0.38em;
-
-    text-transform: uppercase;
-}
-
-.about-content h2 {
-    margin-top: 18px;
-
-    font-family: Georgia, serif;
-
-    font-weight: 400;
-
-    font-size: clamp(
-        2.2rem,
-        5vw,
-        4rem
-    );
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.07em;
-}
-
-.about-content h2 span {
-    color: var(--blue-bright);
-}
-
-.about-content p {
-    color: var(--muted);
-
-    margin-top: 25px;
-
-    max-width: 680px;
-}
-
-.signature {
-    margin-top: 35px;
-
-    font-family: "Brush Script MT", cursive;
-
-    font-size: 2.3rem;
-
-    color: white;
-}
-
-.role {
-    color: #7f8b9a;
-
-    font-size: 0.65rem;
-
-    letter-spacing: 0.3em;
-
-    text-transform: uppercase;
-}
-
-
-/* =========================================================
-   GALLERY
-   ========================================================= */
-
-.gallery-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, minmax(0,1fr));
-
-    gap: 18px;
-}
-
-.gallery-item {
-    min-height: 260px;
-
-    border:
-        1px solid var(--border);
-
-    background:
-        linear-gradient(
-            135deg,
-            #0a1624,
-            #030507
-        );
-
-    position: relative;
-
-    overflow: hidden;
-
-    display: flex;
-    align-items: flex-end;
-
-    padding: 28px;
-
-    transition:
-        transform 0.35s ease,
-        border-color 0.35s ease;
-}
-
-.gallery-item:hover {
-    transform: translateY(-5px);
-
-    border-color:
-        var(--border-strong);
-}
-
-.gallery-item::before {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        radial-gradient(
-            circle at 70% 30%,
-            rgba(80,170,255,0.22),
-            transparent 35%
-        );
-}
-
-.gallery-item:nth-child(2)::before {
-    background:
-        radial-gradient(
-            circle at 40% 40%,
-            rgba(40,220,220,0.16),
-            transparent 40%
-        );
-}
-
-.gallery-item:nth-child(3)::before {
-    background:
-        radial-gradient(
-            circle at 60% 30%,
-            rgba(100,100,255,0.14),
-            transparent 40%
-        );
-}
-
-.gallery-title {
-    position: relative;
-
-    z-index: 1;
-}
-
-.gallery-title strong {
-    display: block;
-
-    font-family: Georgia, serif;
-
-    font-size: 1.35rem;
-
-    font-weight: 400;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.12em;
-}
-
-.gallery-title span {
-    color: var(--muted);
-
-    font-size: 0.75rem;
-}
-
-
-/* =========================================================
-   CONTACT
-   ========================================================= */
-
-.contact {
-    text-align: center;
-
-    padding-bottom: 130px;
-}
-
-.contact-box {
-    max-width: 900px;
-
-    margin: auto;
-
-    padding: 70px 30px;
-
-    border:
-        1px solid var(--border);
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(45,110,180,0.12),
-            transparent 65%
-        );
-}
-
-.contact-box h2 {
-    font-family: Georgia, serif;
-
-    font-size: clamp(
-        2.2rem,
-        5vw,
-        4.5rem
-    );
-
-    font-weight: 400;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.08em;
-}
-
-.contact-box p {
-    max-width: 650px;
-
-    margin: 20px auto 35px;
-
-    color: var(--muted);
-}
-
-.contact-links {
-    display: flex;
-
-    justify-content: center;
-
-    gap: 12px;
-
-    flex-wrap: wrap;
-}
-
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-footer {
-    border-top:
-        1px solid rgba(255,255,255,0.07);
-
-    padding: 45px 0;
-
-    background: #020305;
-}
-
-.footer-inner {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 30px;
-}
-
-.footer-brand {
-    font-family: Georgia, serif;
-
-    letter-spacing: 0.3em;
-
-    font-size: 1rem;
-}
-
-.footer-copy {
-    color: #677282;
-
-    font-size: 0.65rem;
-
-    letter-spacing: 0.16em;
-
-    text-transform: uppercase;
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 900px) {
-
-    .nav-links {
-        display: none;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Newitt Media | Skyline & Paranormal Adventures</title>
+
+  <meta
+    name="description"
+    content="Newitt Media brings together aerial photography, drone videography and paranormal investigation."
+  >
+
+  <meta name="theme-color" content="#05080d">
+
+  <style>
+    :root {
+      --black: #030507;
+      --deep: #06101b;
+      --panel: rgba(8, 16, 27, 0.78);
+      --panel-strong: rgba(7, 13, 22, 0.94);
+      --blue: #76b8ff;
+      --blue-soft: #4f91d8;
+      --cyan: #52d6dc;
+      --white: #f4f6fa;
+      --muted: #aeb7c3;
+      --line: rgba(118, 184, 255, 0.25);
+      --line-soft: rgba(255,255,255,0.10);
+      --shadow: 0 30px 80px rgba(0,0,0,0.55);
     }
 
-    .channel-grid,
-    .about-box {
-        grid-template-columns: 1fr;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    .capabilities {
-        grid-template-columns:
-            repeat(2, 1fr);
+    html {
+      scroll-behavior: smooth;
     }
 
-    .capability:nth-child(2) {
-        border-right: none;
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(39, 94, 153, 0.18), transparent 35%),
+        radial-gradient(circle at 10% 35%, rgba(30, 91, 145, 0.10), transparent 30%),
+        var(--black);
+      color: var(--white);
+      line-height: 1.7;
+      overflow-x: hidden;
     }
 
-    .capability:nth-child(-n+2) {
-        border-bottom:
-            1px solid rgba(130,180,240,0.14);
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(118,184,255,0.08) 1px, transparent 2px),
+        radial-gradient(circle at 70% 40%, rgba(118,184,255,0.07) 1px, transparent 2px),
+        radial-gradient(circle at 45% 80%, rgba(82,214,220,0.05) 1px, transparent 2px);
+      background-size: 180px 180px, 240px 240px, 210px 210px;
+      opacity: .65;
+      z-index: -1;
     }
 
-    .about-visual {
-        min-height: 330px;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .gallery-grid {
-        grid-template-columns: 1fr;
+    img {
+      max-width: 100%;
+      display: block;
     }
-
-    .footer-inner {
-        flex-direction: column;
-
-        text-align: center;
-    }
-}
-
-
-@media (max-width: 600px) {
 
     .container {
-        width:
-            calc(100% - 28px);
+      width: min(1180px, calc(100% - 40px));
+      margin: auto;
     }
 
-    .section {
-        padding: 80px 0;
-    }
+    /* =========================
+       NAVIGATION
+    ========================= */
 
     header {
-        height: 72px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(2, 5, 9, 0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(118,184,255,0.12);
     }
 
-    .brand-main {
-        font-size: 1.25rem;
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
     }
+
+    .brand {
+      letter-spacing: 8px;
+      font-size: 23px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      display: block;
+      color: var(--blue);
+      letter-spacing: 6px;
+      font-size: 10px;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    nav a {
+      position: relative;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #d9e0e8;
+      transition: color .3s ease;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 0;
+      height: 1px;
+      background: var(--blue);
+      transition: width .3s ease;
+    }
+
+    nav a:hover {
+      color: var(--blue);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
 
     .hero {
-        min-height: 92vh;
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 130px 20px 80px;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 50% 45%, rgba(31, 91, 145, 0.28), transparent 45%),
+        linear-gradient(180deg, #03070c 0%, #06121f 52%, #020407 100%);
+    }
 
-        padding-top: 72px;
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.72), transparent 35%, transparent 65%, rgba(0,0,0,.72)),
+        linear-gradient(180deg, rgba(0,0,0,.15), transparent 40%, rgba(0,0,0,.8));
     }
 
     .hero-content {
-        padding:
-            70px 0 80px;
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
     }
 
     .hero-mark {
-        width: 66px;
-        height: 66px;
-
-        font-size: 2rem;
+      width: 92px;
+      height: 92px;
+      margin: 0 auto 28px;
+      border: 1px solid var(--blue);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      box-shadow:
+        0 0 30px rgba(118,184,255,.14),
+        inset 0 0 25px rgba(118,184,255,.08);
     }
 
-    .hero-eyebrow {
-        font-size: 0.58rem;
-
-        letter-spacing:
-            0.3em;
+    .hero-mark span {
+      font-size: 48px;
+      font-weight: normal;
     }
 
-    .hero h1 {
-        font-size:
-            clamp(2.4rem, 13vw, 4.5rem);
-
-        letter-spacing:
-            0.055em;
+    .eyebrow {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      letter-spacing: 5px;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 22px;
     }
 
-    .hero-copy {
-        font-size: 0.9rem;
+    h1 {
+      font-size: clamp(42px, 7vw, 86px);
+      line-height: .98;
+      font-weight: 400;
+      letter-spacing: 7px;
+      text-transform: uppercase;
+      text-shadow: 0 8px 40px rgba(0,0,0,.75);
+    }
 
-        letter-spacing:
-            0.035em;
+    h1 span {
+      display: block;
+      color: var(--blue);
+      margin-top: 14px;
+    }
+
+    .hero-rule {
+      width: 110px;
+      height: 1px;
+      margin: 34px auto 26px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--blue),
+        transparent
+      );
+    }
+
+    .hero-subtitle {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #d5dce5;
+    }
+
+    .scroll {
+      display: inline-block;
+      margin-top: 60px;
+      color: var(--blue);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 28px;
+      animation: float 2.5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    /* =========================
+       SECTION
+    ========================= */
+
+    section {
+      padding: 110px 0;
+      position: relative;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 55px;
+    }
+
+    .section-heading .small {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(34px, 5vw, 58px);
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .section-heading p {
+      max-width: 680px;
+      margin: 20px auto 0;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+    }
+
+    /* =========================
+       TWO WORLDS
+    ========================= */
+
+    .worlds {
+      background:
+        radial-gradient(circle at 20% 50%, rgba(40, 111, 180, .13), transparent 35%),
+        radial-gradient(circle at 80% 50%, rgba(41, 175, 184, .10), transparent 35%);
+    }
+
+    .world-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .world-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      min-height: 640px;
+      padding: 42px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .world-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 15%, rgba(118,184,255,.12), transparent 35%);
+      pointer-events: none;
+    }
+
+    .world-card.paranormal::before {
+      background:
+        radial-gradient(circle at 50% 15%, rgba(82,214,220,.14), transparent 38%);
+    }
+
+    .logo-wrap {
+      position: relative;
+      z-index: 2;
+      width: min(310px, 85%);
+      aspect-ratio: 1;
+      margin: 0 auto 30px;
+      display: grid;
+      place-items: center;
+    }
+
+    .logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+      filter: drop-shadow(0 20px 35px rgba(0,0,0,.55));
+    }
+
+    .logo-fallback {
+      display: none;
+      width: 100%;
+      height: 100%;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: radial-gradient(circle, #102943, #05080d 70%);
+    }
+
+    .logo-fallback strong {
+      font-size: 42px;
+      letter-spacing: 8px;
+    }
+
+    .logo-fallback span {
+      color: var(--blue);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      letter-spacing: 4px;
+      margin-top: 8px;
+    }
+
+    .world-card h3 {
+      position: relative;
+      z-index: 2;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .world-card h3 span {
+      display: block;
+      color: var(--blue);
+      font-size: .72em;
+      margin-top: 8px;
+      letter-spacing: 5px;
+    }
+
+    .paranormal h3 span {
+      color: var(--cyan);
+    }
+
+    .world-card p {
+      position: relative;
+      z-index: 2;
+      max-width: 500px;
+      margin: 22px auto 32px;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+    }
+
+    .buttons {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .btn {
-        width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 190px;
+      padding: 15px 24px;
+      border: 1px solid var(--line);
+      background: rgba(5, 12, 20, .7);
+      color: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all .3s ease;
     }
 
-    .channel-card {
-        padding: 22px;
-
-        min-height: auto;
+    .btn:hover {
+      background: var(--blue);
+      color: #020509;
+      border-color: var(--blue);
+      transform: translateY(-2px);
     }
 
-    .logo-frame {
-        min-height: 270px;
+    .paranormal .btn:hover {
+      background: var(--cyan);
+      border-color: var(--cyan);
     }
 
-    .logo-frame img {
-        width: 82%;
+    /* =========================
+       EXPERTISE
+    ========================= */
+
+    .expertise {
+      padding-top: 40px;
     }
 
-    .channel-card h3 {
-        font-size: 2rem;
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      overflow: hidden;
+      background: rgba(5,10,16,.65);
     }
 
-    .capabilities {
+    .expertise-item {
+      padding: 42px 25px;
+      text-align: center;
+      border-right: 1px solid var(--line-soft);
+    }
+
+    .expertise-item:last-child {
+      border-right: 0;
+    }
+
+    .icon {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 35px;
+      color: var(--blue);
+      margin-bottom: 20px;
+    }
+
+    .expertise-item:nth-child(3) .icon {
+      color: var(--cyan);
+    }
+
+    .expertise-item h3 {
+      font-size: 17px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 13px;
+    }
+
+    .expertise-item p {
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about {
+      background:
+        linear-gradient(180deg, transparent, rgba(10,26,43,.45), transparent);
+    }
+
+    .about-box {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 60px;
+      align-items: center;
+      padding: 50px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background:
+        linear-gradient(135deg, rgba(12,25,40,.88), rgba(3,7,12,.92));
+      box-shadow: var(--shadow);
+    }
+
+    .equipment {
+      min-height: 380px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 50% 50%, rgba(60,120,170,.18), transparent 55%),
+        linear-gradient(145deg, #101d2a, #030507);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .equipment::after {
+      content: "DRONE • CAMERA • INVESTIGATION";
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,.55);
+    }
+
+    .equipment-symbol {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 100px;
+      color: var(--blue);
+      opacity: .75;
+      text-shadow: 0 0 50px rgba(118,184,255,.25);
+    }
+
+    .about-copy .small {
+      color: var(--blue);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .about-copy h2 {
+      font-size: clamp(35px, 5vw, 55px);
+      font-weight: 400;
+      letter-spacing: 4px;
+      margin-bottom: 25px;
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .signature {
+      margin-top: 30px;
+      font-size: 28px;
+      font-style: italic;
+      color: var(--white);
+    }
+
+    .role {
+      display: block;
+      margin-top: 4px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--blue);
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       CONNECT
+    ========================= */
+
+    .connect {
+      text-align: center;
+      padding-bottom: 80px;
+    }
+
+    .social-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 40px;
+    }
+
+    .social {
+      min-width: 175px;
+      padding: 15px 22px;
+      border: 1px solid var(--line);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all .3s ease;
+    }
+
+    .social:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      background: rgba(118,184,255,.06);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      border-top: 1px solid rgba(118,184,255,.14);
+      padding: 30px 0;
+      text-align: center;
+      background: #020305;
+    }
+
+    footer p {
+      color: #727b86;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 850px) {
+
+      .nav {
+        min-height: 70px;
+      }
+
+      .brand {
+        font-size: 18px;
+        letter-spacing: 6px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        min-height: 88vh;
+        padding-top: 110px;
+      }
+
+      h1 {
+        font-size: clamp(38px, 11vw, 64px);
+        letter-spacing: 4px;
+      }
+
+      .hero-subtitle {
+        font-size: 9px;
+        letter-spacing: 3px;
+      }
+
+      section {
+        padding: 75px 0;
+      }
+
+      .world-grid {
         grid-template-columns: 1fr;
+      }
+
+      .world-card {
+        min-height: auto;
+        padding: 32px 20px 40px;
+      }
+
+      .logo-wrap {
+        width: min(280px, 80%);
+      }
+
+      .expertise-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .expertise-item:nth-child(2) {
+        border-right: 0;
+      }
+
+      .expertise-item:nth-child(-n+2) {
+        border-bottom: 1px solid var(--line-soft);
+      }
+
+      .about-box {
+        grid-template-columns: 1fr;
+        padding: 25px;
+        gap: 35px;
+      }
+
+      .equipment {
+        min-height: 280px;
+      }
     }
 
-    .capability {
-        border-right: none;
+    @media (max-width: 500px) {
 
-        border-bottom:
-            1px solid rgba(130,180,240,0.14);
+      .container {
+        width: min(100% - 26px, 1180px);
+      }
+
+      .hero-mark {
+        width: 75px;
+        height: 75px;
+      }
+
+      .hero-mark span {
+        font-size: 38px;
+      }
+
+      .eyebrow {
+        font-size: 8px;
+        letter-spacing: 3px;
+      }
+
+      .hero-subtitle {
+        line-height: 1.8;
+      }
+
+      .world-card h3 {
+        font-size: 27px;
+      }
+
+      .buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .expertise-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .expertise-item,
+      .expertise-item:nth-child(2) {
+        border-right: 0;
+        border-bottom: 1px solid var(--line-soft);
+      }
+
+      .expertise-item:last-child {
+        border-bottom: 0;
+      }
+
+      .about-copy h2 {
+        font-size: 36px;
+      }
+
+      .social {
+        width: 100%;
+      }
     }
-
-    .capability:last-child {
-        border-bottom: none;
-    }
-
-    .about-content {
-        padding: 40px 25px;
-    }
-
-    .about-visual {
-        min-height: 270px;
-    }
-
-    .visual-letter {
-        font-size: 7rem;
-    }
-
-    .contact-box {
-        padding:
-            55px 22px;
-    }
-}
-
-
-/* =========================================================
-   ACCESSIBILITY
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        transition: none !important;
-        animation: none !important;
-    }
-}
-
-</style>
+  </style>
 </head>
-
 
 <body>
 
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
 
-<!-- =======================================================
-     HEADER
-     ======================================================= -->
+  <header>
+    <div class="container nav">
 
-<header>
+      <a href="#home" class="brand">
+        NEWITT
+        <span>MEDIA</span>
+      </a>
 
-    <nav class="nav">
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#worlds">About</a>
+        <a href="#skyline">Skyline Media</a>
+        <a href="#paranormal">Paranormal Adventures</a>
+        <a href="#about">About Newitt</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-        <a href="#home" class="brand">
-
-            <span class="brand-main">
-                NEWITT
-            </span>
-
-            <span class="brand-sub">
-                MEDIA
-            </span>
-
-        </a>
-
-
-        <div class="nav-links">
-
-            <a href="#home">
-                Home
-            </a>
-
-            <a href="#channels">
-                Channels
-            </a>
-
-            <a href="#about">
-                About
-            </a>
-
-            <a href="#gallery">
-                Gallery
-            </a>
-
-            <a href="#contact">
-                Contact
-            </a>
-
-        </div>
-
-    </nav>
-
-</header>
+    </div>
+  </header>
 
 
+  <!-- =========================
+       HERO
+  ========================== -->
 
-<!-- =======================================================
-     HERO
-     ======================================================= -->
+  <main>
 
-<main>
+    <section class="hero" id="home">
 
-<section
-    class="hero"
-    id="home"
->
-
-    <div class="hero-bg"></div>
-
-    <div class="hero-grid"></div>
-
-
-    <div class="hero-content">
+      <div class="hero-content">
 
         <div class="hero-mark">
-            N
+          <span>N</span>
         </div>
 
-
-        <div class="hero-eyebrow">
-            Newitt Media
+        <div class="eyebrow">
+          Newitt Media
         </div>
-
 
         <h1>
-
-            See The World
-            <span>
-                From Above
-            </span>
-
+          See The World
+          <span>From Above.</span>
         </h1>
 
+        <div class="hero-rule"></div>
 
-        <div class="hero-divider"></div>
-
-
-        <p class="hero-copy">
-
-            Aerial cinematography, photography,
-            paranormal investigation and
-            cinematic storytelling.
-
-            Two disciplines.
-            One media brand.
-
+        <p class="hero-subtitle">
+          Explore The Unexplained Below
         </p>
 
+        <div class="hero-rule"></div>
 
-        <div class="hero-actions">
-
-            <a
-                href="#channels"
-                class="btn btn-primary"
-            >
-                Explore The Channels
-            </a>
-
-            <a
-                href="#about"
-                class="btn"
-            >
-                Discover Newitt Media
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =======================================================
-     CHANNELS
-     ======================================================= -->
-
-<section
-    class="section channels"
-    id="channels"
->
-
-<div class="container">
-
-
-    <div class="section-title">
-
-        <div class="eyebrow">
-            Two Worlds
-        </div>
-
-        <h2>
-            Choose Your Adventure
-        </h2>
-
-        <p>
-            From the skies above to locations
-            where the unexplained begins.
+        <p class="hero-subtitle">
+          Two Disciplines. One Media Brand.
         </p>
 
-    </div>
+        <a href="#worlds" class="scroll" aria-label="Explore">
+          ↓
+        </a>
+
+      </div>
+
+    </section>
 
 
+    <!-- =========================
+         TWO WORLDS
+    ========================== -->
 
-    <div class="channel-grid">
+    <section class="worlds" id="worlds">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="small">Two disciplines</div>
+
+          <h2>Choose Your Adventure</h2>
+
+          <p>
+            From the skies above to locations where the unexplained
+            begins, Newitt Media brings both worlds together.
+          </p>
+        </div>
 
 
-        <!-- SKYLINE -->
+        <div class="world-grid">
 
-        <article class="channel-card">
 
-            <div class="logo-frame">
+          <!-- SKYLINE -->
+
+          <article class="world-card" id="skyline">
+
+            <div>
+
+              <div class="logo-wrap">
 
                 <img
-                    src="/IMG_1112.png"
-                    alt="Newitt Skyline Media logo"
-                    loading="eager"
+                  src="/IMG_1112.png"
+                  alt="Newitt Skyline Media logo"
+                  onerror="this.onerror=function(){this.src='/public/IMG_1112.png';};this.src='/public/IMG_1112.png';"
                 >
 
-            </div>
+                <div class="logo-fallback">
+                  <strong>N</strong>
+                  <span>SKYLINE MEDIA</span>
+                </div>
 
+              </div>
 
-            <div class="channel-label">
-                Aerial Media
-            </div>
-
-
-            <h3>
+              <h3>
                 Newitt Skyline
-                Media
-            </h3>
+                <span>Media</span>
+              </h3>
 
-
-            <p>
-                Professional drone flying,
-                aerial photography,
-                cinematic videography and
-                unique perspectives from above.
-            </p>
-
-
-            <div class="channel-links">
-
-                <a
-                    class="small-btn"
-                    href="#"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    YouTube
-                </a>
-
-                <a
-                    class="small-btn"
-                    href="#"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    TikTok
-                </a>
+              <p>
+                Aerial media, drone photography, cinematic
+                videography and unique perspectives from the sky.
+              </p>
 
             </div>
 
-        </article>
+            <div class="buttons">
+
+              <a
+                class="btn"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Watch on YouTube
+              </a>
+
+              <a
+                class="btn"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Follow on TikTok
+              </a>
+
+            </div>
+
+          </article>
 
 
+          <!-- PARANORMAL -->
 
-        <!-- PARANORMAL -->
+          <article class="world-card paranormal" id="paranormal">
 
-        <article
-            class="channel-card paranormal"
-        >
+            <div>
 
-            <div class="logo-frame">
+              <div class="logo-wrap">
 
                 <img
-                    src="/268B787E-5AB4-45BD-BF00-C72CE11B7DFD.png"
-                    alt="Newitt's Paranormal Adventures logo"
-                    loading="eager"
+                  src="/268B787E-5AB4-45BD-BF00-C72CE11B7DFD.png"
+                  alt="Newitt's Paranormal Adventures logo"
+                  onerror="this.onerror=function(){this.src='/public/268B787E-5AB4-45BD-BF00-C72CE11B7DFD.png';};this.src='/public/268B787E-5AB4-45BD-BF00-C72CE11B7DFD.png';"
                 >
 
-            </div>
+                <div class="logo-fallback">
+                  <strong>N</strong>
+                  <span>PARANORMAL ADVENTURES</span>
+                </div>
 
+              </div>
 
-            <div class="channel-label">
-                Paranormal Investigation
-            </div>
+              <h3>
+                Newitt's Paranormal
+                <span>Adventures</span>
+              </h3>
 
-
-            <h3>
-                Newitt's
-                Paranormal
-                Adventures
-            </h3>
-
-
-            <p>
-                Paranormal investigations,
-                haunted locations, research,
-                evidence and documentary-style
-                exploration of the unexplained.
-            </p>
-
-
-            <div class="channel-links">
-
-                <a
-                    class="small-btn"
-                    href="#"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    YouTube
-                </a>
-
-                <a
-                    class="small-btn"
-                    href="#"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    TikTok
-                </a>
+              <p>
+                Paranormal investigations, haunted locations,
+                documented evidence and the search for answers.
+              </p>
 
             </div>
 
-        </article>
+            <div class="buttons">
 
-    </div>
+              <a
+                class="btn"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Watch on YouTube
+              </a>
 
+              <a
+                class="btn"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Follow on TikTok
+              </a>
 
-
-    <!-- ===================================================
-         CAPABILITIES
-         =================================================== -->
-
-    <div class="capabilities">
-
-
-        <div class="capability">
-
-            <div class="capability-icon">
-                D
             </div>
 
-            <h4>
-                Aerial
-                Excellence
-            </h4>
-
-            <p>
-                Professional drone
-                photography and
-                cinematic aerial work.
-            </p>
+          </article>
 
         </div>
 
+      </div>
 
-        <div class="capability">
-
-            <div class="capability-icon">
-                C
-            </div>
-
-            <h4>
-                Cinematic
-                Quality
-            </h4>
-
-            <p>
-                Photography and video
-                created with attention
-                to detail.
-            </p>
-
-        </div>
+    </section>
 
 
-        <div class="capability">
+    <!-- =========================
+         EXPERTISE
+    ========================== -->
 
-            <div class="capability-icon">
-                I
-            </div>
+    <section class="expertise">
 
-            <h4>
-                Investigation
-            </h4>
+      <div class="container">
+
+        <div class="expertise-grid">
+
+          <div class="expertise-item">
+
+            <div class="icon">◇</div>
+
+            <h3>Aerial Excellence</h3>
 
             <p>
-                Research-driven
-                paranormal exploration
-                and evidence gathering.
+              Professional drone flying capturing the world
+              with precision and creativity.
             </p>
 
-        </div>
+          </div>
 
 
-        <div class="capability">
+          <div class="expertise-item">
 
-            <div class="capability-icon">
-                S
-            </div>
+            <div class="icon">◉</div>
 
-            <h4>
-                Storytelling
-            </h4>
+            <h3>Cinematic Quality</h3>
 
             <p>
-                Turning places,
-                people and experiences
-                into compelling stories.
+              High-quality equipment and cinematic techniques
+              designed to deliver outstanding results.
             </p>
 
-        </div>
+          </div>
 
 
-    </div>
+          <div class="expertise-item">
 
-</div>
+            <div class="icon">◌</div>
 
-</section>
+            <h3>Investigative Approach</h3>
 
+            <p>
+              Research, respect and a professional approach
+              at the heart of every investigation.
+            </p>
 
-
-<!-- =======================================================
-     ABOUT
-     ======================================================= -->
-
-<section
-    class="section"
-    id="about"
->
-
-<div class="container">
+          </div>
 
 
-    <div class="about-box">
+          <div class="expertise-item">
 
+            <div class="icon">▣</div>
 
-        <div class="about-visual">
+            <h3>Storytelling</h3>
 
-            <div class="visual-letter">
-                N
-            </div>
+            <p>
+              Telling stories through visuals that inform,
+              inspire and engage.
+            </p>
+
+          </div>
 
         </div>
 
+      </div>
 
-        <div class="about-content">
+    </section>
 
-            <div class="eyebrow">
-                About Newitt Media
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
+    <section class="about" id="about">
+
+      <div class="container">
+
+        <div class="about-box">
+
+          <div class="equipment">
+            <div class="equipment-symbol">◈</div>
+          </div>
+
+
+          <div class="about-copy">
+
+            <div class="small">
+              About Newitt Media
             </div>
-
 
             <h2>
-
-                One Brand.
-                <span>
-                    Two Disciplines.
-                </span>
-
+              One Brand.<br>
+              Two Worlds.
             </h2>
 
-
             <p>
-                Newitt Media brings together
-                two passions: capturing the
-                world from the sky and
-                exploring the places and
-                stories that remain unexplained.
+              Newitt Media was built around a passion for
+              exploration, creativity and the unknown.
             </p>
 
-
             <p>
-                From aerial landscapes and
-                cinematic drone footage to
-                haunted locations and
-                paranormal investigations,
-                this website is the central
-                home for every adventure.
+              From aerial landscapes and cinematic drone work
+              to haunted locations and paranormal investigations,
+              the aim is simple: capture, explore and share
+              experiences that others might never see.
             </p>
 
-
             <p>
-                The aim is simple:
-                create professional visual
-                media, explore interesting
-                locations and tell the story
-                behind every experience.
+              Two disciplines. One dedication to quality,
+              authenticity and adventure.
             </p>
-
 
             <div class="signature">
-                Ian Newitt
+              Ian Newitt
+              <span class="role">
+                Founder | Pilot | Investigator
+              </span>
             </div>
 
-
-            <div class="role">
-                Founder • Pilot • Investigator
-            </div>
+          </div>
 
         </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONNECT
+    ========================== -->
+
+    <section class="connect" id="contact">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div class="small">
+            Stay Connected
+          </div>
+
+          <h2>
+            Follow The Adventures
+          </h2>
+
+          <p>
+            Keep up with new aerial projects, videos,
+            investigations and future adventures.
+          </p>
+
+        </div>
+
+
+        <div class="social-grid">
+
+          <a
+            class="social"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            YouTube
+          </a>
+
+          <a
+            class="social"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            TikTok
+          </a>
+
+          <a
+            class="social"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </a>
+
+          <a
+            class="social"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Facebook
+          </a>
+
+          <a
+            class="social"
+            href="mailto:ian.newitt@gmail.com"
+          >
+            Email
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <p>
+        © 2026 Newitt Media. All Rights Reserved.
+      </p>
 
     </div>
 
-</div>
+  </footer>
 
-</section>
 
+  <!-- =========================
+       IMAGE SAFETY SCRIPT
+  ========================== -->
 
+  <script>
 
-<!-- =======================================================
-     GALLERY
-     ======================================================= -->
+    document.querySelectorAll(".logo-wrap img").forEach(function(img) {
 
-<section
-    class="section"
-    id="gallery"
->
+      img.addEventListener("error", function() {
 
-<div class="container">
+        const fallback = this.parentElement.querySelector(".logo-fallback");
 
+        if (fallback) {
+          this.style.display = "none";
+          fallback.style.display = "flex";
+        }
 
-    <div class="section-title">
+      });
 
-        <div class="eyebrow">
-            Visual Stories
-        </div>
+    });
 
-        <h2>
-            The Gallery
-        </h2>
-
-        <p>
-            A growing collection of aerial
-            photography, cinematic projects
-            and paranormal adventures.
-        </p>
-
-    </div>
-
-
-    <div class="gallery-grid">
-
-
-        <div class="gallery-item">
-
-            <div class="gallery-title">
-
-                <strong>
-                    From Above
-                </strong>
-
-                <span>
-                    Drone Photography
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="gallery-item">
-
-            <div class="gallery-title">
-
-                <strong>
-                    The Unexplained
-                </strong>
-
-                <span>
-                    Paranormal Investigation
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="gallery-item">
-
-            <div class="gallery-title">
-
-                <strong>
-                    Behind The Lens
-                </strong>
-
-                <span>
-                    Cinematic Storytelling
-                </span>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</div>
-
-</section>
-
-
-
-<!-- =======================================================
-     CONTACT
-     ======================================================= -->
-
-<section
-    class="section contact"
-    id="contact"
->
-
-<div class="container">
-
-
-    <div class="contact-box">
-
-        <div class="section-title">
-
-            <div class="eyebrow">
-                Stay Connected
-            </div>
-
-            <h2>
-                Follow The
-                Adventures
-            </h2>
-
-            <p>
-                Follow Newitt Media across
-                the channels and keep up with
-                new aerial projects,
-                investigations and adventures.
-            </p>
-
-        </div>
-
-
-        <div class="contact-links">
-
-            <a
-                class="btn btn-primary"
-                href="#"
-                target="_blank"
-                rel="noopener"
-            >
-                YouTube
-            </a>
-
-
-            <a
-                class="btn"
-                href="#"
-                target="_blank"
-                rel="noopener"
-            >
-                TikTok
-            </a>
-
-
-            <a
-                class="btn"
-                href="mailto:"
-            >
-                Email Newitt Media
-            </a>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-</main>
-
-
-
-<!-- =======================================================
-     FOOTER
-     ======================================================= -->
-
-<footer>
-
-<div class="container">
-
-    <div class="footer-inner">
-
-        <div class="footer-brand">
-            NEWITT MEDIA
-        </div>
-
-
-        <div class="footer-copy">
-            © 2026 Newitt Media.
-            All Rights Reserved.
-        </div>
-
-    </div>
-
-</div>
-
-</footer>
-
-
+  </script>
 
 </body>
 </html>
