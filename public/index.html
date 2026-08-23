@@ -1,26 +1,35 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Newitt | Skyline Media & Paranormal Adventures</title>
+
 <meta name="description" content="The official home of Newitt Skyline Media and Newitt's Paranormal Adventures.">
+
 <style>
+
 * {
     box-sizing: border-box;
 }
+
 html {
     scroll-behavior: smooth;
 }
+
 body {
     margin: 0;
     background: #050505;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 a {
     text-decoration: none;
 }
+
 .hero {
     min-height: 100vh;
     display: flex;
@@ -29,26 +38,31 @@ a {
     align-items: center;
     text-align: center;
     padding: 40px 20px;
+
     background:
         radial-gradient(circle at 50% 20%, #202020 0%, #090909 55%, #000000 100%);
 }
+
 .hero-logo {
     width: min(85%, 520px);
     max-height: 240px;
     object-fit: contain;
 }
+
 .hero-line {
     width: 90px;
     height: 3px;
     background: #d4af37;
     margin: 25px 0;
 }
+
 .hero h1 {
     font-size: clamp(28px, 7vw, 48px);
     max-width: 800px;
     line-height: 1.15;
     margin: 0;
 }
+
 .hero p {
     max-width: 650px;
     color: #aaa;
@@ -56,30 +70,36 @@ a {
     line-height: 1.7;
     margin-top: 20px;
 }
+
 .scroll {
     margin-top: 40px;
     color: #d4af37;
     font-size: 13px;
     letter-spacing: 3px;
 }
+
 section {
     padding: 80px 20px;
 }
+
 .section-title {
     text-align: center;
     margin-bottom: 45px;
 }
+
 .section-title h2 {
     font-size: clamp(28px, 6vw, 42px);
     color: #d4af37;
     margin-bottom: 12px;
 }
+
 .section-title p {
     max-width: 650px;
     margin: auto;
     color: #999;
     line-height: 1.7;
 }
+
 .adventure-grid {
     max-width: 1100px;
     margin: auto;
@@ -87,6 +107,7 @@ section {
     grid-template-columns: 1fr 1fr;
     gap: 30px;
 }
+
 .adventure {
     padding: 40px 25px;
     border-radius: 24px;
@@ -95,14 +116,17 @@ section {
     border: 1px solid #292929;
     box-shadow: 0 15px 45px rgba(0,0,0,.4);
 }
+
 .skyline {
     border-top: 4px solid #d4af37;
 }
+
 .paranormal {
     border-top: 4px solid #365d9b;
     background:
         radial-gradient(circle at 50% 0%, #16223a 0%, #0b0d12 55%, #050505 100%);
 }
+
 .logo-box {
     height: 190px;
     display: flex;
@@ -110,28 +134,35 @@ section {
     justify-content: center;
     margin-bottom: 20px;
 }
+
 .logo-box img {
     max-width: 90%;
     max-height: 180px;
     object-fit: contain;
 }
+
 .adventure h3 {
     font-size: 24px;
     margin: 15px 0;
 }
+
 .skyline h3 {
     color: #d4af37;
 }
+
 .paranormal h3 {
     color: #79a7e8;
 }
+
 .adventure p {
     color: #aaa;
     line-height: 1.7;
 }
+
 .buttons {
     margin-top: 25px;
 }
+
 .button {
     display: inline-block;
     padding: 13px 22px;
@@ -142,12 +173,15 @@ section {
     color: #050505;
     transition: .2s;
 }
+
 .button:hover {
     transform: translateY(-3px);
 }
+
 .paranormal .button {
     background: #e7edf7;
 }
+
 .feature {
     max-width: 1000px;
     margin: auto;
@@ -157,13 +191,16 @@ section {
     background: linear-gradient(145deg, #131313, #070707);
     border: 1px solid #292929;
 }
+
 .feature h2 {
     color: #d4af37;
 }
+
 .feature p {
     color: #aaa;
     line-height: 1.8;
 }
+
 .social {
     max-width: 900px;
     margin: auto;
@@ -171,6 +208,7 @@ section {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
+
 .social-card {
     background: #111;
     border: 1px solid #292929;
@@ -178,28 +216,35 @@ section {
     padding: 25px;
     text-align: center;
 }
+
 .social-card h3 {
     margin-top: 0;
 }
+
 .social-card p {
     color: #888;
 }
+
 .about {
     max-width: 800px;
     margin: auto;
     text-align: center;
 }
+
 .about p {
     color: #aaa;
     line-height: 1.8;
 }
+
 .contact {
     text-align: center;
     background: #0c0c0c;
 }
+
 .contact h2 {
     color: #d4af37;
 }
+
 footer {
     padding: 30px 20px;
     text-align: center;
@@ -207,206 +252,322 @@ footer {
     font-size: 13px;
     line-height: 1.8;
 }
+
 @media (max-width: 720px) {
+
     .adventure-grid,
     .social {
         grid-template-columns: 1fr;
     }
+
     section {
         padding: 65px 18px;
     }
+
     .adventure {
         padding: 35px 20px;
     }
+
     .logo-box {
         height: 170px;
     }
+
     .logo-box img {
         max-height: 160px;
     }
+
 }
+
 </style>
 </head>
+
 <body>
+
+
 <header class="hero">
+
     <img
         src="IMG_1112.png"
         class="hero-logo"
         alt="Newitt Skyline Media">
+
     <div class="hero-line"></div>
+
     <h1>
         See the world from above.<br>
         Explore the unexplained below.
     </h1>
+
     <p>
         Welcome to the official home of Newitt Skyline Media
         and Newitt's Paranormal Adventures.
     </p>
+
     <div class="scroll">
         EXPLORE THE ADVENTURES ↓
     </div>
+
 </header>
+
+
 <section>
+
     <div class="section-title">
+
         <h2>Choose Your Adventure</h2>
+
         <p>
             Two worlds. One home.
             Follow the aerial adventures or join the search
             for the unexplained.
         </p>
+
     </div>
+
+
     <div class="adventure-grid">
+
+
         <div class="adventure skyline">
+
             <div class="logo-box">
+
                 <img
                     src="IMG_1112.png"
                     alt="Newitt Skyline Media logo">
+
             </div>
+
             <h3>NEWITT SKYLINE MEDIA</h3>
+
             <p>
                 Drone flying, aerial photography,
                 videography and adventures from the sky.
             </p>
+
             <div class="buttons">
+
                 <a
                     class="button"
                     href="https://www.youtube.com/@Newitt-skyline-media"
                     target="_blank">
                     ▶ YouTube
                 </a>
+
                 <a
                     class="button"
                     href="https://www.tiktok.com/@newittskylinemedia"
                     target="_blank">
                     ♪ TikTok
                 </a>
+
             </div>
+
         </div>
+
+
         <div class="adventure paranormal">
+
             <div class="logo-box">
+
                 <img
                     src="268B787E-5AB4-45BD-BF00-C72CE11B7DFD.png"
                     alt="Newitt's Paranormal Adventures logo">
+
             </div>
+
             <h3>NEWITT'S PARANORMAL ADVENTURES</h3>
+
             <p>
                 Ghost hunting, paranormal investigations,
                 haunted locations and the search for evidence.
             </p>
+
             <div class="buttons">
+
                 <a
                     class="button"
                     href="https://www.youtube.com/@NewittsParanormalAdventures"
                     target="_blank">
                     ▶ YouTube
                 </a>
+
                 <a
                     class="button"
                     href="https://www.tiktok.com/@nw13ttt"
                     target="_blank">
                     ♪ TikTok
                 </a>
+
             </div>
+
         </div>
+
     </div>
+
 </section>
+
+
 <section>
+
     <div class="feature">
+
         <h2>Latest Adventures</h2>
+
         <p>
             New drone projects, aerial footage, paranormal
             investigations and behind-the-scenes adventures
             will appear here.
         </p>
+
         <a
             class="button"
             href="#social">
             FOLLOW THE CHANNELS
         </a>
+
     </div>
+
 </section>
+
+
 <section id="social">
+
     <div class="section-title">
+
         <h2>Follow the Adventures</h2>
+
         <p>
             Stay up to date with new videos,
             investigations and aerial projects.
         </p>
+
     </div>
+
+
     <div class="social">
+
+
         <div class="social-card">
+
             <h3>🚁 Skyline Media</h3>
+
             <p>Drone YouTube</p>
+
             <a
                 class="button"
                 href="https://www.youtube.com/@Newitt-skyline-media"
                 target="_blank">
                 Visit YouTube
             </a>
+
         </div>
+
+
         <div class="social-card">
+
             <h3>🚁 Skyline Media</h3>
+
             <p>Drone TikTok</p>
+
             <a
                 class="button"
                 href="https://www.tiktok.com/@newittskylinemedia"
                 target="_blank">
                 Visit TikTok
             </a>
+
         </div>
+
+
         <div class="social-card">
+
             <h3>👻 Paranormal Adventures</h3>
+
             <p>Paranormal YouTube</p>
+
             <a
                 class="button"
                 href="https://www.youtube.com/@NewittsParanormalAdventures"
                 target="_blank">
                 Visit YouTube
             </a>
+
         </div>
+
+
         <div class="social-card">
+
             <h3>👻 Paranormal Adventures</h3>
+
             <p>Paranormal TikTok</p>
+
             <a
                 class="button"
                 href="https://www.tiktok.com/@nw13ttt"
                 target="_blank">
                 Visit TikTok
             </a>
+
         </div>
+
     </div>
+
 </section>
+
+
 <section>
+
     <div class="about">
+
         <div class="section-title">
+
             <h2>About Newitt</h2>
+
         </div>
+
         <p>
             Newitt brings together two passions:
             capturing the world from the sky and exploring
             the places and stories that remain unexplained.
         </p>
+
         <p>
             From drone flying and aerial media to ghost hunting
             and paranormal investigations, this website is the
             central hub for the adventures.
         </p>
+
     </div>
+
 </section>
+
+
 <section class="contact">
+
     <h2>Stay Connected</h2>
+
     <p>
         Follow the channels and come along for the next adventure.
     </p>
+
     <a
         class="button"
         href="#social">
         FIND ME ONLINE
     </a>
+
 </section>
+
+
 <footer>
+
     © 2026 Newitt Skyline Media<br>
     Newitt's Paranormal Adventures
+
 </footer>
+
+
 </body>
 </html>
+```
