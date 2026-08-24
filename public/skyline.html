@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NEWITT Skyline Media | Drone Photography</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<meta name="description"
-content="NEWITT Skyline Media - aerial drone photography, aerial footage and unique views from above.">
+<title>NEWITT Skyline Media | Drone Photography & Aerial Footage</title>
+
+<meta
+name="description"
+content="NEWITT Skyline Media brings aerial photography, drone footage and unique views from above."
+>
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
     box-sizing: border-box;
@@ -28,35 +37,65 @@ body {
     overflow-x: hidden;
 }
 
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
 body::before {
+
     content: "";
+
     position: fixed;
+
     inset: 0;
+
     z-index: -3;
 
     background:
+
         linear-gradient(
-            rgba(2,7,15,0.55),
-            rgba(2,7,15,0.86)
+            rgba(2,7,14,0.48),
+            rgba(2,7,14,0.82)
         ),
-        url("background.png.PNG") center / cover no-repeat;
+
+        url("background.png.PNG")
+        center center /
+        cover
+        no-repeat;
+
+    transform: scale(1.02);
 }
 
 body::after {
+
     content: "";
+
     position: fixed;
+
     inset: 0;
+
     z-index: -2;
 
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(25,145,255,0.28),
-            transparent 40%
-        );
-
     pointer-events: none;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 5%,
+            rgba(30,150,255,0.24),
+            transparent 38%
+        ),
+
+        linear-gradient(
+            180deg,
+            rgba(0,30,70,0.08),
+            rgba(0,0,0,0.45)
+        );
 }
+
+/* =========================================================
+   GENERAL
+========================================================= */
 
 a {
     color: inherit;
@@ -64,230 +103,362 @@ a {
 }
 
 .container {
+
     width: min(1150px, 92%);
+
     margin: auto;
 }
 
-
-/* =========================
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
 header {
+
     position: sticky;
+
     top: 0;
+
     z-index: 1000;
 
-    background: rgba(2,6,13,0.94);
-    backdrop-filter: blur(18px);
+    background:
+        rgba(2,6,13,0.90);
 
-    border-bottom: 1px solid rgba(45,160,255,0.25);
+    backdrop-filter:
+        blur(18px);
+
+    border-bottom:
+        1px solid
+        rgba(55,165,255,0.18);
+
+    box-shadow:
+        0 8px 30px
+        rgba(0,0,0,0.25);
 }
 
 .nav {
-    min-height: 72px;
+
+    min-height: 78px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     gap: 20px;
 }
 
+/* =========================================================
+   BRAND
+========================================================= */
+
 .brand {
+
     font-size: 21px;
-    font-weight: 900;
-    letter-spacing: 1px;
+
+    font-weight: 950;
+
+    letter-spacing: 1.5px;
+
     white-space: nowrap;
 }
 
 .brand span {
-    color: #39a8ff;
+
+    color: #3ca8ff;
+
+    text-shadow:
+        0 0 15px
+        rgba(60,168,255,0.35);
 }
 
-
-/* DESKTOP NAV */
+/* =========================================================
+   DESKTOP NAV
+========================================================= */
 
 .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 22px;
 
-    font-size: 14px;
-    font-weight: 800;
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
 }
 
 .nav-links a {
-    padding: 10px 4px;
 
-    color: #ffffff;
-    opacity: 0.88;
+    padding:
+        11px
+        13px;
 
-    transition: 0.25s ease;
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    color: #e8edf5;
+
+    transition:
+        0.25s ease;
 }
 
 .nav-links a:hover {
-    color: #3daaff;
-    opacity: 1;
-}
-
-
-/* MOBILE MENU BUTTON */
-
-.menu-button {
-    display: none;
-
-    padding: 11px 18px;
-
-    border: 1px solid rgba(50,165,255,0.55);
-    border-radius: 14px;
 
     background:
-        linear-gradient(
-            135deg,
-            rgba(25,135,255,0.22),
-            rgba(5,15,30,0.85)
-        );
+        rgba(45,160,255,0.14);
+
+    color: #4db0ff;
+}
+
+/* =========================================================
+   MOBILE MENU BUTTON
+========================================================= */
+
+.menu-button {
+
+    display: none;
+
+    border:
+        1px solid
+        rgba(55,168,255,0.55);
+
+    background:
+        rgba(15,35,58,0.75);
 
     color: white;
 
+    padding:
+        12px
+        18px;
+
+    border-radius: 14px;
+
     font-size: 16px;
+
     font-weight: 900;
 
     cursor: pointer;
+
+    box-shadow:
+        0 0 18px
+        rgba(30,140,255,0.12);
 }
 
+/* =========================================================
+   MOBILE NAV
+========================================================= */
 
-/* =========================
+.mobile-menu {
+
+    display: none;
+
+    padding:
+        10px 0 18px;
+}
+
+.mobile-menu a {
+
+    display: block;
+
+    padding:
+        15px 18px;
+
+    margin-top: 7px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(15,30,48,0.80);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.07);
+
+    font-size: 16px;
+
+    font-weight: 800;
+}
+
+.mobile-menu a:hover {
+
+    background:
+        rgba(35,145,255,0.18);
+
+    color: #49aaff;
+}
+
+.mobile-menu.active {
+
+    display: block;
+}
+
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero {
+
     text-align: center;
-    padding: 75px 0 45px;
+
+    padding:
+        75px 0 55px;
 }
 
 .logo {
-    width: 220px;
-    height: 220px;
+
+    width: 230px;
+
+    height: 230px;
 
     object-fit: contain;
 
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 
     filter:
         drop-shadow(
-            0 0 18px rgba(35,155,255,0.35)
+            0 15px 35px
+            rgba(0,0,0,0.55)
         );
 }
 
 .hero h1 {
+
     margin: 0;
 
-    font-size: clamp(40px, 8vw, 76px);
+    font-size:
+        clamp(
+            38px,
+            7vw,
+            72px
+        );
+
     line-height: 1;
 
     font-weight: 950;
-    letter-spacing: -2px;
+
+    letter-spacing:
+        -2px;
 }
 
 .hero h1 span {
-    color: #39a8ff;
+
+    color: #3daaff;
+
+    text-shadow:
+        0 0 25px
+        rgba(45,155,255,0.20);
 }
 
 .intro {
+
     max-width: 760px;
 
-    margin: 25px auto 0;
+    margin:
+        24px auto 0;
 
-    color: #d4dbe5;
+    color: #d0d7e1;
 
     font-size: 18px;
+
     line-height: 1.8;
 }
 
-
-/* =========================
+/* =========================================================
    PANELS
-========================= */
+========================================================= */
 
 .panel {
-    margin: 35px 0 65px;
 
-    padding: 35px;
+    margin:
+        25px 0 65px;
+
+    padding:
+        38px;
 
     background:
-        linear-gradient(
-            145deg,
-            rgba(4,12,23,0.90),
-            rgba(2,7,14,0.78)
-        );
+        rgba(3,8,17,0.80);
 
-    border: 1px solid rgba(55,165,255,0.20);
+    border:
+        1px solid
+        rgba(255,255,255,0.10);
 
     border-radius: 28px;
 
-    box-shadow:
-        0 25px 70px rgba(0,0,0,0.30);
+    backdrop-filter:
+        blur(16px);
 
-    backdrop-filter: blur(16px);
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,0.28);
 }
 
 .panel h2 {
-    margin-top: 0;
 
-    font-size: clamp(30px, 5vw, 46px);
+    margin:
+        0 0 16px;
 
-    color: #ffffff;
+    font-size:
+        clamp(
+            30px,
+            5vw,
+            46px
+        );
+
+    line-height: 1.1;
 }
 
 .panel h2 span {
-    color: #39a8ff;
+
+    color: #3daaff;
 }
 
 .panel p {
-    color: #cbd3de;
+
+    color: #cbd3df;
+
+    line-height: 1.8;
 
     font-size: 17px;
-    line-height: 1.8;
 }
 
+/* =========================================================
+   FEATURED IMAGE
+========================================================= */
 
-/* =========================
-   MAIN FEATURE IMAGE
-========================= */
+.featured-image {
 
-.feature-image {
-    width: 100%;
+    margin-top: 30px;
+}
+
+.featured-image img {
 
     display: block;
 
-    margin: 30px auto 10px;
+    width: 100%;
+
+    max-width: 100%;
+
+    height: auto;
 
     border-radius: 22px;
 
-    border: 1px solid rgba(50,165,255,0.28);
+    border:
+        1px solid
+        rgba(55,168,255,0.28);
 
     box-shadow:
-        0 20px 60px rgba(0,0,0,0.45);
+        0 20px 60px
+        rgba(0,0,0,0.42);
 }
 
-.caption {
-    text-align: center;
-
-    margin-top: 12px !important;
-
-    color: #8fcfff !important;
-
-    font-size: 14px !important;
-}
-
-
-/* =========================
+/* =========================================================
    GALLERY
-========================= */
+========================================================= */
 
 .gallery {
+
     display: grid;
 
     grid-template-columns:
@@ -298,303 +469,342 @@ header {
     margin-top: 30px;
 }
 
-.gallery-item {
-    padding: 12px;
-
-    background: rgba(255,255,255,0.035);
-
-    border: 1px solid rgba(255,255,255,0.10);
-
-    border-radius: 20px;
-
-    transition: 0.3s ease;
-}
-
-.gallery-item:hover {
-    transform: translateY(-5px);
-
-    border-color:
-        rgba(55,165,255,0.45);
-}
-
-.gallery-item img {
-    width: 100%;
-
-    display: block;
-
-    border-radius: 14px;
-}
-
-.gallery-item p {
-    margin: 12px 5px 3px;
-
-    color: #bcdcff;
-
-    font-size: 14px;
-}
-
-
-/* =========================
-   BUTTONS
-========================= */
-
-.buttons {
-    display: flex;
-
-    justify-content: center;
-
-    flex-wrap: wrap;
-
-    gap: 14px;
-
-    margin-top: 30px;
-}
-
-.button {
-    display: inline-block;
-
-    padding: 14px 22px;
-
-    border-radius: 13px;
-
-    background: #168cff;
-
-    border: 1px solid #168cff;
-
-    color: white;
-
-    font-weight: 900;
-
-    box-shadow:
-        0 8px 25px rgba(20,135,255,0.22);
-
-    transition: 0.25s ease;
-}
-
-.button:hover {
-    transform: translateY(-3px);
-
-    background: #36a7ff;
-}
-
-.button.secondary {
-    background: rgba(255,255,255,0.06);
-
-    border-color:
-        rgba(255,255,255,0.16);
-}
-
-
-/* =========================
-   TIKTOK
-========================= */
-
-.tiktok-box {
-    width: 100%;
-
-    max-width: 780px;
-
-    min-height: 500px;
-
-    margin: 30px auto 0;
+.gallery-card {
 
     overflow: hidden;
 
     border-radius: 20px;
 
-    background: #ffffff;
+    background:
+        rgba(0,0,0,0.35);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.10);
+
+    transition:
+        0.3s ease;
 }
 
-.tiktok-embed {
-    margin: 0 auto !important;
+.gallery-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(50,165,255,0.45);
 }
 
+.gallery-card img {
 
-/* =========================
-   CONTACT CTA
-========================= */
+    display: block;
 
-.cta {
+    width: 100%;
+
+    height: auto;
+
+    aspect-ratio:
+        16 / 10;
+
+    object-fit: cover;
+}
+
+.gallery-caption {
+
+    padding:
+        15px 17px;
+
+    font-weight: 800;
+
+    color: #eef3f9;
+}
+
+.gallery-caption span {
+
+    color: #3daaff;
+}
+
+/* =========================================================
+   TIKTOK LIVE
+========================================================= */
+
+.live-panel {
+
     text-align: center;
+}
 
-    padding: 45px 25px;
+.live-title {
 
-    border-radius: 24px;
+    margin-bottom: 10px;
+}
+
+.live-title span {
+
+    color: #3daaff;
+}
+
+.live-description {
+
+    max-width: 700px;
+
+    margin:
+        0 auto 28px;
+}
+
+/* The player stays black instead of becoming a giant white box */
+
+.live-player {
+
+    width: 100%;
+
+    max-width: 900px;
+
+    margin:
+        30px auto;
+
+    overflow: hidden;
+
+    border-radius: 22px;
 
     background:
-        radial-gradient(
-            circle at center,
-            rgba(25,145,255,0.18),
-            rgba(3,8,16,0.78)
+        #000;
+
+    border:
+        1px solid
+        rgba(55,168,255,0.35);
+
+    box-shadow:
+        0 0 40px
+        rgba(30,140,255,0.12),
+
+        0 25px 70px
+        rgba(0,0,0,0.45);
+}
+
+.live-player iframe {
+
+    display: block;
+
+    width: 100%;
+
+    height: 600px;
+
+    border: 0;
+
+    background: #000;
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.button {
+
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding:
+        14px 23px;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #168cff,
+            #35a8ff
         );
 
-    border: 1px solid rgba(55,165,255,0.22);
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 900;
+
+    box-shadow:
+        0 10px 30px
+        rgba(20,130,255,0.20);
+
+    transition:
+        0.25s ease;
 }
 
-.cta h2 {
-    margin-top: 0;
+.button:hover {
 
-    font-size: 34px;
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 15px 35px
+        rgba(20,130,255,0.35);
 }
 
-.cta p {
-    max-width: 650px;
+/* =========================================================
+   TIKTOK NOTE
+========================================================= */
 
-    margin: 15px auto;
+.live-note {
 
-    color: #cbd4df;
+    margin-top: 18px;
 
-    line-height: 1.7;
+    font-size: 14px;
+
+    color: #8e99a8;
 }
 
-
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer {
-    margin-top: 40px;
 
-    padding: 45px 0;
+    padding:
+        50px 0;
 
     text-align: center;
 
-    color: #9ca8b7;
+    color: #9ba5b4;
 
     border-top:
-        1px solid rgba(255,255,255,0.08);
+        1px solid
+        rgba(255,255,255,0.08);
+
+    background:
+        rgba(0,0,0,0.22);
 }
 
-.footer-blue {
-    color: #39a8ff;
+footer strong {
+
+    color: #3daaff;
 }
 
-
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
 
     .nav {
-        min-height: 68px;
+
+        min-height: 70px;
     }
 
     .brand {
+
         font-size: 19px;
     }
 
+    .nav-links {
+
+        display: none;
+    }
+
     .menu-button {
+
         display: block;
     }
 
-    .nav-links {
-        display: none;
-
-        position: absolute;
-
-        top: 68px;
-        left: 0;
-        right: 0;
-
-        padding: 18px;
-
-        flex-direction: column;
-
-        gap: 8px;
-
-        background:
-            rgba(2,6,13,0.98);
-
-        border-bottom:
-            1px solid rgba(55,165,255,0.25);
-    }
-
-    .nav-links.open {
-        display: flex;
-    }
-
-    .nav-links a {
-        width: 100%;
-
-        padding: 15px 18px;
-
-        border-radius: 12px;
-
-        background:
-            rgba(255,255,255,0.04);
-
-        border:
-            1px solid rgba(255,255,255,0.06);
-
-        font-size: 16px;
-    }
-
     .hero {
-        padding: 55px 0 35px;
+
+        padding:
+            55px 0 40px;
     }
 
     .logo {
-        width: 175px;
-        height: 175px;
+
+        width: 190px;
+
+        height: 190px;
     }
 
     .hero h1 {
-        font-size: 43px;
+
+        font-size:
+            clamp(
+                36px,
+                10vw,
+                55px
+            );
     }
 
     .intro {
+
         font-size: 16px;
+
+        line-height: 1.7;
     }
 
     .panel {
-        padding: 22px;
 
-        margin-bottom: 45px;
-    }
+        padding:
+            25px 20px;
 
-    .panel h2 {
-        font-size: 31px;
+        border-radius: 22px;
     }
 
     .panel p {
+
         font-size: 16px;
     }
 
     .gallery {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
 
         gap: 18px;
     }
 
-    .feature-image {
-        border-radius: 17px;
-    }
+    .live-player iframe {
 
-    .tiktok-box {
-        min-height: 430px;
+        height: 520px;
     }
 
 }
 
-
-/* =========================
+/* =========================================================
    SMALL PHONES
-========================= */
+========================================================= */
 
-@media (max-width: 390px) {
+@media (max-width: 430px) {
+
+    .container {
+
+        width: 90%;
+    }
 
     .brand {
+
         font-size: 17px;
+
+        letter-spacing: 1px;
     }
 
     .menu-button {
-        padding: 10px 14px;
+
+        padding:
+            11px 15px;
+
         font-size: 15px;
     }
 
-    .hero h1 {
-        font-size: 38px;
+    .logo {
+
+        width: 165px;
+
+        height: 165px;
+    }
+
+    .panel {
+
+        padding:
+            22px 17px;
+    }
+
+    .live-player iframe {
+
+        height: 480px;
     }
 
 }
@@ -603,314 +813,343 @@ footer {
 
 </head>
 
-
 <body>
 
-
-<!-- =========================
+<!-- =====================================================
      HEADER
-========================= -->
+===================================================== -->
 
 <header>
 
-<div class="container nav">
+    <div class="container nav">
 
-<a href="index.html" class="brand">
-NEWITT <span>MEDIA</span>
-</a>
+        <a
+            href="index.html"
+            class="brand"
+        >
+            NEWITT <span>MEDIA</span>
+        </a>
 
-<button
-class="menu-button"
-onclick="toggleMenu()"
-aria-label="Open navigation menu"
->
-MENU
-</button>
+        <!-- Desktop navigation -->
 
-<nav class="nav-links" id="navLinks">
+        <nav class="nav-links">
 
-<a href="index.html">
-Home
-</a>
+            <a href="index.html">
+                Home
+            </a>
 
-<a href="skyline.html">
-Skyline
-</a>
+            <a href="skyline.html">
+                Skyline
+            </a>
 
-<a href="paranormal.html">
-Paranormal
-</a>
+            <a href="paranormal.html">
+                Paranormal
+            </a>
 
-<a href="photography.html">
-Photography
-</a>
+            <a href="photography.html">
+                Photography
+            </a>
 
-</nav>
+        </nav>
 
-</div>
+        <!-- Mobile navigation button -->
+
+        <button
+            class="menu-button"
+            onclick="toggleMenu()"
+            aria-label="Open navigation menu"
+        >
+            MENU
+        </button>
+
+    </div>
+
+    <!-- Mobile navigation -->
+
+    <div
+        id="mobileMenu"
+        class="mobile-menu"
+    >
+
+        <div class="container">
+
+            <a href="index.html">
+                🏠 Home
+            </a>
+
+            <a href="skyline.html">
+                🚁 Skyline
+            </a>
+
+            <a href="paranormal.html">
+                👻 Paranormal
+            </a>
+
+            <a href="photography.html">
+                📷 Photography
+            </a>
+
+        </div>
+
+    </div>
 
 </header>
 
 
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
 <main>
 
 
-<!-- =========================
+<!-- =====================================================
      HERO
-========================= -->
+===================================================== -->
 
 <section class="hero">
 
-<div class="container">
+    <div class="container">
 
-<img
-src="sky-logo.png.PNG"
-alt="NEWITT Skyline Media logo"
-class="logo"
->
+        <img
+            src="sky-logo.png.PNG"
+            alt="NEWITT Skyline Media logo"
+            class="logo"
+        >
 
-<h1>
-NEWITT <span>Skyline Media</span>
-</h1>
+        <h1>
+            NEWITT
+            <span>Skyline Media</span>
+        </h1>
 
-<p class="intro">
-A fresh view from above.
+        <p class="intro">
 
-Drone photography, aerial footage and unique
-perspectives captured from the sky.
-</p>
+            Welcome to the view from above.
 
-</div>
+            Drone footage, aerial photography and places
+            that look completely different once you stop
+            looking at them from ground level.
+
+        </p>
+
+    </div>
 
 </section>
 
 
-<!-- =========================
-     MAIN FEATURE
-     AERIAL 01 ONLY
-========================= -->
+<!-- =====================================================
+     FEATURED SKYLINE WORK
+===================================================== -->
 
 <section>
 
-<div class="container">
+    <div class="container">
 
-<div class="panel">
+        <div class="panel">
 
-<h2>
-Gloucester Prison <span>From Above</span>
-</h2>
+            <h2>
+                Gloucester Prison
+                <span>from above</span>
+            </h2>
 
-<p>
-Aerial photography captured over Gloucester Prison,
-showing the historic buildings, surrounding area and
-layout from above.
-</p>
+            <p>
 
-<img
-src="media/skyline/Gloucester-prison-aerial-01.JPG"
-alt="Aerial view of Gloucester Prison"
-class="feature-image"
->
+                Aerial photography captured over Gloucester
+                Prison, showing the historic buildings,
+                surrounding area and layout from above.
 
-<p class="caption">
-Gloucester Prison aerial view • NEWITT Skyline Media
-</p>
+            </p>
 
-</div>
+            <p>
 
-</div>
+                This is just one example of the aerial work
+                produced by NEWITT Skyline Media.
+
+            </p>
+
+
+            <!-- AERIAL 01
+                 FEATURED ONCE ONLY -->
+
+            <div class="featured-image">
+
+                <img
+                    src="media/skyline/Gloucester-prison-aerial-01.JPG"
+                    alt="Aerial view of Gloucester Prison"
+                    loading="lazy"
+                >
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      SKYLINE GALLERY
-     AERIAL 02, 03 AND 04
-========================= -->
+===================================================== -->
 
 <section>
 
-<div class="container">
+    <div class="container">
 
-<div class="panel">
+        <div class="panel">
 
-<h2>
-Skyline <span>Gallery</span>
-</h2>
+            <h2>
+                Skyline
+                <span>Gallery</span>
+            </h2>
 
-<p>
-A selection of aerial views captured by
-NEWITT Skyline Media. More locations and projects
-will be added as the collection grows.
-</p>
+            <p>
 
+                A selection of aerial views captured by
+                NEWITT Skyline Media.
 
-<div class="gallery">
+                More locations and projects will be added
+                as the collection grows.
 
-
-<!-- AERIAL 02 -->
-
-<div class="gallery-item">
-
-<img
-src="media/skyline/Gloucester-prison-aerial-02.JPG"
-alt="Gloucester Prison aerial photograph 2"
->
-
-<p>
-Gloucester Prison • Aerial View 02
-</p>
-
-</div>
+            </p>
 
 
-<!-- AERIAL 03 -->
-
-<div class="gallery-item">
-
-<img
-src="media/skyline/Gloucester-prison-aerial-03.JPG"
-alt="Gloucester Prison aerial photograph 3"
->
-
-<p>
-Gloucester Prison • Aerial View 03
-</p>
-
-</div>
+            <div class="gallery">
 
 
-<!-- AERIAL 04 -->
+                <!-- AERIAL 02 -->
 
-<div class="gallery-item">
+                <div class="gallery-card">
 
-<img
-src="media/skyline/Gloucester-prison-aerial-04.JPG"
-alt="Gloucester Prison aerial photograph 4"
->
+                    <img
+                        src="media/skyline/Gloucester-prison-aerial-02.JPG"
+                        alt="Gloucester Prison aerial photograph 2"
+                        loading="lazy"
+                    >
 
-<p>
-Gloucester Prison • Aerial View 04
-</p>
+                    <div class="gallery-caption">
 
-</div>
+                        Gloucester Prison
+                        <span>• Aerial 02</span>
+
+                    </div>
+
+                </div>
 
 
-</div>
+                <!-- AERIAL 03 -->
 
-</div>
+                <div class="gallery-card">
 
-</div>
+                    <img
+                        src="media/skyline/Gloucester-prison-aerial-03.JPG"
+                        alt="Gloucester Prison aerial photograph 3"
+                        loading="lazy"
+                    >
+
+                    <div class="gallery-caption">
+
+                        Gloucester Prison
+                        <span>• Aerial 03</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AERIAL 04 -->
+
+                <div class="gallery-card">
+
+                    <img
+                        src="media/skyline/Gloucester-prison-aerial-04.JPG"
+                        alt="Gloucester Prison aerial photograph 4"
+                        loading="lazy"
+                    >
+
+                    <div class="gallery-caption">
+
+                        Gloucester Prison
+                        <span>• Aerial 04</span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- =========================
-     TIKTOK
-========================= -->
+<!-- =====================================================
+     TIKTOK LIVE
+===================================================== -->
 
 <section>
 
-<div class="container">
+    <div class="container">
 
-<div class="panel">
+        <div class="panel live-panel">
 
-<h2>
-Latest from <span>Skyline</span>
-</h2>
+            <h2 class="live-title">
 
-<p>
-Follow NEWITT Skyline Media on TikTok for new
-drone footage, aerial views and upcoming projects.
-</p>
+                LIVE from
+                <span>Skyline</span>
 
+            </h2>
 
-<div class="tiktok-box">
+            <p class="live-description">
 
-<blockquote
-class="tiktok-embed"
-cite="https://www.tiktok.com/@newittskylinemedia"
-data-unique-id="newittskylinemedia"
-data-embed-type="creator"
-style="max-width:780px; min-width:288px;"
->
+                Follow NEWITT Skyline Media on TikTok
+                for new drone footage, aerial views
+                and upcoming projects.
 
-<section>
+                When the account is LIVE, the stream
+                can appear here.
 
-<a
-target="_blank"
-href="https://www.tiktok.com/@newittskylinemedia"
->
-@newittskylinemedia
-</a>
-
-</section>
-
-</blockquote>
-
-</div>
+            </p>
 
 
-<div class="buttons">
+            <!-- OFFICIAL TIKTOK LIVE EMBED -->
 
-<a
-href="https://www.tiktok.com/@newittskylinemedia"
-target="_blank"
-class="button"
->
-Visit Skyline TikTok
-</a>
+            <div class="live-player">
 
-</div>
+                <iframe
+                    src="https://www.tiktok.com/embed/live/@newittskylinemedia"
+                    title="NEWITT Skyline Media TikTok LIVE"
+                    allow="autoplay; fullscreen"
+                    allowfullscreen
+                >
+                </iframe>
 
-</div>
-
-</div>
-
-</section>
+            </div>
 
 
-<!-- =========================
-     CONTACT
-========================= -->
+            <p class="live-note">
 
-<section>
+                The player will only show a live broadcast
+                when NEWITT Skyline Media is actually LIVE.
 
-<div class="container">
-
-<div class="cta">
-
-<h2>
-Want something captured from above?
-</h2>
-
-<p>
-If you have a project, location or idea you'd like
-to discuss, get in touch with NEWITT Media.
-</p>
+            </p>
 
 
-<div class="buttons">
+            <a
+                href="https://www.tiktok.com/@newittskylinemedia"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button"
+            >
+                Visit Skyline TikTok
+            </a>
 
-<a
-href="mailto:newittmedia@gmail.com"
-class="button"
->
-Get in Touch
-</a>
+        </div>
 
-<a
-href="index.html"
-class="button secondary"
->
-Back to NEWITT Media
-</a>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
@@ -918,62 +1157,67 @@ Back to NEWITT Media
 </main>
 
 
-<!-- =========================
+<!-- =====================================================
      FOOTER
-========================= -->
+===================================================== -->
 
 <footer>
 
-<div class="container">
+    <div class="container">
 
-NEWITT
-<span class="footer-blue">
-Skyline Media
-</span>
+        <strong>NEWITT Skyline Media</strong>
 
-<br>
+        <br>
 
-A fresh view from above.
+        A fresh view from above.
 
-</div>
+        <br><br>
+
+        Drone work • Aerial photography • Video
+
+    </div>
 
 </footer>
 
 
-<!-- =========================
+<!-- =====================================================
      MOBILE MENU SCRIPT
-========================= -->
+===================================================== -->
 
 <script>
 
 function toggleMenu() {
 
     const menu =
-        document.getElementById("navLinks");
+        document.getElementById("mobileMenu");
 
-    menu.classList.toggle("open");
+    menu.classList.toggle("active");
 
 }
 
 
-/* Close menu when a page is selected */
+/* Close mobile menu after selecting a page */
 
 document
-.querySelectorAll(".nav-links a")
-.forEach(function(link) {
+    .querySelectorAll(".mobile-menu a")
+    .forEach(function(link) {
 
-    link.addEventListener("click", function() {
+        link.addEventListener(
+            "click",
+            function() {
 
-        document
-        .getElementById("navLinks")
-        .classList.remove("open");
+                document
+                    .getElementById("mobileMenu")
+                    .classList.remove("active");
+
+            }
+        );
 
     });
-
-});
 
 </script>
 
 
 </body>
+
 </html>
