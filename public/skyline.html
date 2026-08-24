@@ -5,9 +5,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NEWITT Skyline Media | Drone Photography & Aerial Video</title>
+<title>NEWITT Skyline Media | Drone Photography</title>
 
-<meta name="description" content="NEWITT Skyline Media aerial drone photography, video and views from above.">
+<meta name="description"
+content="NEWITT Skyline Media - aerial drone photography, landscapes and aerial views from above.">
 
 <style>
 
@@ -23,19 +24,22 @@ body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     color: #f5f7fb;
-    background: #05070b;
+    background: #03070d;
     overflow-x: hidden;
 }
+
+/* BACKGROUND */
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     z-index: -3;
+
     background:
         linear-gradient(
-            rgba(2,7,14,0.48),
-            rgba(2,7,14,0.78)
+            rgba(2,7,15,0.55),
+            rgba(2,7,15,0.86)
         ),
         url("background.png.PNG") center / cover no-repeat;
 }
@@ -45,17 +49,14 @@ body::after {
     position: fixed;
     inset: 0;
     z-index: -2;
+
     background:
         radial-gradient(
-            circle at 50% 5%,
-            rgba(35,160,255,0.25),
-            transparent 42%
-        ),
-        linear-gradient(
-            180deg,
-            rgba(0,0,0,0.05),
-            rgba(0,0,0,0.45)
+            circle at 50% 0%,
+            rgba(25,145,255,0.28),
+            transparent 40%
         );
+
     pointer-events: none;
 }
 
@@ -74,19 +75,22 @@ a {
 header {
     position: sticky;
     top: 0;
-    z-index: 100;
-    background: rgba(3,6,12,0.90);
+    z-index: 1000;
+
+    background: rgba(2,6,13,0.92);
     backdrop-filter: blur(18px);
-    border-bottom: 1px solid rgba(55,165,255,0.18);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+
+    border-bottom: 1px solid rgba(45,160,255,0.25);
 }
 
 .nav {
-    min-height: 76px;
+    min-height: 72px;
+
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 25px;
+    justify-content: space-between;
+
+    gap: 20px;
 }
 
 .brand {
@@ -97,239 +101,286 @@ header {
 }
 
 .brand span {
-    color: #3daaff;
+    color: #39a8ff;
 }
+
+/* DESKTOP NAV */
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 26px;
-    font-size: 15px;
+    gap: 22px;
+
+    font-size: 14px;
     font-weight: 800;
 }
 
 .nav-links a {
-    padding: 12px 4px;
+    padding: 10px 4px;
+
+    color: #ffffff;
     opacity: 0.85;
+
     transition: 0.25s ease;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
+.nav-links a:hover {
     color: #3daaff;
     opacity: 1;
 }
 
-/* MOBILE MENU */
+/* MOBILE MENU BUTTON */
 
-.mobile-menu {
+.menu-button {
     display: none;
-    position: relative;
-}
 
-.mobile-menu summary {
-    list-style: none;
-    cursor: pointer;
-    padding: 12px 18px;
-    border-radius: 13px;
-    border: 1px solid rgba(61,170,255,0.40);
-    background: rgba(61,170,255,0.11);
-    color: #ffffff;
+    padding: 11px 18px;
+
+    border: 1px solid rgba(50,165,255,0.55);
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(25,135,255,0.22),
+            rgba(5,15,30,0.85)
+        );
+
+    color: white;
+
     font-size: 16px;
     font-weight: 900;
-}
 
-.mobile-menu summary::-webkit-details-marker {
-    display: none;
-}
-
-.mobile-links {
-    position: absolute;
-    right: 0;
-    top: 58px;
-    width: 230px;
-    padding: 12px;
-    border-radius: 18px;
-    background: rgba(3,7,14,0.98);
-    border: 1px solid rgba(61,170,255,0.28);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.60);
-}
-
-.mobile-links a {
-    display: block;
-    padding: 16px;
-    border-radius: 11px;
-    font-weight: 800;
-}
-
-.mobile-links a:hover {
-    background: rgba(61,170,255,0.14);
-    color: #3daaff;
+    cursor: pointer;
 }
 
 /* HERO */
 
 .hero {
-    padding: 75px 0 50px;
     text-align: center;
+    padding: 75px 0 45px;
 }
 
 .logo {
     width: 220px;
     height: 220px;
+
     object-fit: contain;
-    margin-bottom: 25px;
-    filter: drop-shadow(0 15px 35px rgba(0,0,0,0.55));
+
+    margin-bottom: 20px;
+
+    filter:
+        drop-shadow(0 0 18px rgba(35,155,255,0.35));
 }
 
-h1 {
+.hero h1 {
     margin: 0;
-    font-size: clamp(38px, 7vw, 72px);
+
+    font-size: clamp(40px, 8vw, 76px);
     line-height: 1;
+
     font-weight: 950;
     letter-spacing: -2px;
 }
 
-h1 span {
-    color: #3daaff;
+.hero h1 span {
+    color: #39a8ff;
 }
 
 .intro {
     max-width: 760px;
+
     margin: 25px auto 0;
+
+    color: #d4dbe5;
+
+    font-size: 18px;
     line-height: 1.8;
-    color: #d0d7e1;
-    font-size: 17px;
-}
-
-/* BUTTONS */
-
-.buttons {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 28px;
-}
-
-.button {
-    display: inline-block;
-    padding: 14px 21px;
-    border-radius: 12px;
-    border: 1px solid rgba(61,170,255,0.35);
-    background: rgba(255,255,255,0.06);
-    font-weight: 900;
-    transition: 0.25s ease;
-}
-
-.button:hover {
-    transform: translateY(-3px);
-    border-color: #3daaff;
-}
-
-.button.primary {
-    background: #168cff;
-    border-color: #168cff;
-    color: #ffffff;
 }
 
 /* PANELS */
 
 .panel {
-    margin: 30px 0 70px;
+    margin: 35px 0 65px;
+
     padding: 35px;
-    background: rgba(3,7,14,0.80);
-    border: 1px solid rgba(61,170,255,0.17);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(4,12,23,0.88),
+            rgba(2,7,14,0.76)
+        );
+
+    border: 1px solid rgba(55,165,255,0.20);
+
     border-radius: 28px;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 25px 70px rgba(0,0,0,0.35);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.30);
+
+    backdrop-filter: blur(16px);
 }
 
 .panel h2 {
     margin-top: 0;
-    font-size: clamp(30px, 5vw, 42px);
+
+    font-size: clamp(30px, 5vw, 46px);
+
+    color: #ffffff;
+}
+
+.panel h2 span {
+    color: #39a8ff;
 }
 
 .panel p {
-    color: #cbd2dc;
-    line-height: 1.75;
+    color: #cbd3de;
+
+    font-size: 17px;
+    line-height: 1.8;
 }
 
 /* FEATURE IMAGE */
 
 .feature-image {
     width: 100%;
-    margin-top: 28px;
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid rgba(61,170,255,0.22);
-    box-shadow: 0 20px 55px rgba(0,0,0,0.45);
-}
 
-.feature-image img {
     display: block;
-    width: 100%;
-    height: auto;
+
+    margin: 30px auto 10px;
+
+    border-radius: 22px;
+
+    border: 1px solid rgba(50,165,255,0.28);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.45);
 }
 
 /* IMAGE CAPTION */
 
-.image-caption {
-    padding: 15px 18px;
-    background: rgba(0,0,0,0.35);
-    border-top: 1px solid rgba(61,170,255,0.15);
-}
+.caption {
+    text-align: center;
 
-.image-caption strong {
-    display: block;
-    color: #ffffff;
-    font-size: 17px;
-    margin-bottom: 5px;
-}
+    margin-top: 12px !important;
 
-.image-caption span {
-    color: #aeb8c6;
-    font-size: 14px;
+    color: #8fcfff !important;
+
+    font-size: 14px !important;
 }
 
 /* GALLERY */
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin-top: 28px;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 22px;
+
+    margin-top: 30px;
 }
 
 .gallery-item {
-    overflow: hidden;
+    padding: 12px;
+
+    background: rgba(255,255,255,0.035);
+
+    border: 1px solid rgba(255,255,255,0.10);
+
     border-radius: 20px;
-    border: 1px solid rgba(61,170,255,0.18);
-    background: #02050a;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+
+    transition: 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+
+    border-color:
+        rgba(55,165,255,0.45);
 }
 
 .gallery-item img {
-    display: block;
     width: 100%;
-    height: 330px;
-    object-fit: cover;
-    transition: transform 0.45s ease;
+
+    display: block;
+
+    border-radius: 14px;
 }
 
-.gallery-item:hover img {
-    transform: scale(1.04);
+.gallery-item p {
+    margin: 12px 5px 3px;
+
+    color: #bcdcff;
+
+    font-size: 14px;
+}
+
+/* BUTTONS */
+
+.buttons {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    margin-top: 30px;
+}
+
+.button {
+    display: inline-block;
+
+    padding: 14px 22px;
+
+    border-radius: 13px;
+
+    background: #168cff;
+
+    border: 1px solid #168cff;
+
+    color: white;
+
+    font-weight: 900;
+
+    box-shadow:
+        0 8px 25px rgba(20,135,255,0.22);
+
+    transition: 0.25s ease;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+
+    background: #36a7ff;
+}
+
+.button.secondary {
+    background: rgba(255,255,255,0.06);
+
+    border-color:
+        rgba(255,255,255,0.16);
 }
 
 /* TIKTOK */
 
 .tiktok-box {
     width: 100%;
+
     max-width: 780px;
-    margin: 30px auto 0;
+
     min-height: 500px;
+
+    margin: 30px auto 0;
+
     overflow: hidden;
-    border-radius: 18px;
+
+    border-radius: 20px;
+
     background: #ffffff;
 }
 
@@ -341,56 +392,116 @@ h1 span {
 
 .cta {
     text-align: center;
-    padding: 38px 25px;
-    border-radius: 22px;
+
+    padding: 45px 25px;
+
+    border-radius: 24px;
+
     background:
-        linear-gradient(
-            135deg,
-            rgba(22,140,255,0.18),
-            rgba(255,255,255,0.03)
+        radial-gradient(
+            circle at center,
+            rgba(25,145,255,0.18),
+            rgba(3,8,16,0.78)
         );
-    border: 1px solid rgba(61,170,255,0.25);
+
+    border: 1px solid rgba(55,165,255,0.22);
 }
 
 .cta h2 {
     margin-top: 0;
+
+    font-size: 34px;
+}
+
+.cta p {
+    max-width: 650px;
+
+    margin: 15px auto;
+
+    color: #cbd4df;
+
+    line-height: 1.7;
 }
 
 /* FOOTER */
 
 footer {
-    padding: 50px 0;
+    margin-top: 40px;
+
+    padding: 45px 0;
+
     text-align: center;
-    color: #9ba4b1;
-    border-top: 1px solid rgba(61,170,255,0.12);
+
+    color: #9ca8b7;
+
+    border-top:
+        1px solid rgba(255,255,255,0.08);
 }
 
-footer strong {
-    color: #3daaff;
+.footer-blue {
+    color: #39a8ff;
 }
 
 /* MOBILE */
 
-@media (max-width: 750px) {
+@media (max-width: 700px) {
 
     .nav {
-        min-height: 70px;
+        min-height: 68px;
     }
 
     .brand {
-        font-size: 18px;
+        font-size: 19px;
+    }
+
+    .menu-button {
+        display: block;
     }
 
     .nav-links {
         display: none;
+
+        position: absolute;
+
+        top: 68px;
+        left: 0;
+        right: 0;
+
+        padding: 18px;
+
+        flex-direction: column;
+
+        gap: 8px;
+
+        background:
+            rgba(2,6,13,0.98);
+
+        border-bottom:
+            1px solid rgba(55,165,255,0.25);
     }
 
-    .mobile-menu {
-        display: block;
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links a {
+        width: 100%;
+
+        padding: 15px 18px;
+
+        border-radius: 12px;
+
+        background:
+            rgba(255,255,255,0.04);
+
+        border:
+            1px solid rgba(255,255,255,0.06);
+
+        font-size: 16px;
     }
 
     .hero {
-        padding: 55px 0 40px;
+        padding: 55px 0 35px;
     }
 
     .logo {
@@ -398,40 +509,61 @@ footer strong {
         height: 175px;
     }
 
-    h1 {
-        font-size: clamp(34px, 10vw, 52px);
+    .hero h1 {
+        font-size: 43px;
     }
 
     .intro {
-        font-size: 15px;
+        font-size: 16px;
     }
 
     .panel {
         padding: 22px;
+
         margin-bottom: 45px;
+    }
+
+    .panel h2 {
+        font-size: 31px;
+    }
+
+    .panel p {
+        font-size: 16px;
     }
 
     .gallery {
         grid-template-columns: 1fr;
+
+        gap: 18px;
     }
 
-    .gallery-item img {
-        height: auto;
-        aspect-ratio: 16 / 10;
+    .feature-image {
+        border-radius: 17px;
     }
 
     .tiktok-box {
         min-height: 430px;
     }
 
-    .buttons {
-        flex-direction: column;
+}
+
+/* SMALL PHONES */
+
+@media (max-width: 390px) {
+
+    .brand {
+        font-size: 17px;
     }
 
-    .button {
-        width: 100%;
-        text-align: center;
+    .menu-button {
+        padding: 10px 14px;
+        font-size: 15px;
     }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
 }
 
 </style>
@@ -448,55 +580,34 @@ footer strong {
 NEWITT <span>MEDIA</span>
 </a>
 
-<nav class="nav-links">
+<button
+class="menu-button"
+onclick="toggleMenu()"
+aria-label="Open navigation menu"
+>
+MENU
+</button>
+
+<nav class="nav-links" id="navLinks">
 
 <a href="index.html">Home</a>
 
-<a href="skyline.html" class="active">
-Skyline
-</a>
+<a href="skyline.html">Skyline</a>
 
-<a href="paranormal.html">
-Paranormal
-</a>
+<a href="paranormal.html">Paranormal</a>
 
-<a href="photography.html">
-Photography
-</a>
+<a href="photography.html">Photography</a>
 
 </nav>
-
-<details class="mobile-menu">
-
-<summary>MENU</summary>
-
-<div class="mobile-links">
-
-<a href="index.html">
-Home
-</a>
-
-<a href="skyline.html">
-Skyline
-</a>
-
-<a href="paranormal.html">
-Paranormal
-</a>
-
-<a href="photography.html">
-Photography
-</a>
-
-</div>
-
-</details>
 
 </div>
 
 </header>
 
+
 <main>
+
+<!-- HERO -->
 
 <section class="hero">
 
@@ -513,29 +624,18 @@ NEWITT <span>Skyline Media</span>
 </h1>
 
 <p class="intro">
-Welcome to the view from above.
+A fresh view from above.
 
-Drone photography, aerial video and places that look
-completely different once you stop looking at them from
-ground level.
+Drone photography, aerial footage and unique
+perspectives captured from the sky.
 </p>
-
-<div class="buttons">
-
-<a href="#gallery" class="button primary">
-View Aerial Work
-</a>
-
-<a href="#tiktok" class="button">
-Latest TikTok
-</a>
-
-</div>
 
 </div>
 
 </section>
 
+
+<!-- FEATURE -->
 
 <section>
 
@@ -543,33 +643,25 @@ Latest TikTok
 
 <div class="panel">
 
-<h2>Gloucester Prison from above</h2>
+<h2>
+Gloucester Prison <span>From Above</span>
+</h2>
 
 <p>
-Aerial photography gives you a completely different perspective.
-These images were captured over Gloucester Prison, showing the
-buildings, surrounding area and layout from above.
+Aerial photography captured over Gloucester Prison,
+showing the historic buildings, surrounding area and
+layout from above.
 </p>
-
-<div class="feature-image">
 
 <img
 src="media/skyline/Gloucester-prison-aerial-01.JPG"
-alt="Aerial view of Gloucester Prison showing the prison buildings and surrounding area"
+alt="Aerial view of Gloucester Prison"
+class="feature-image"
 >
 
-<div class="image-caption">
-
-<strong>Gloucester Prison from above</strong>
-
-<span>
-Aerial view showing the prison complex, surrounding buildings
-and River Severn.
-</span>
-
-</div>
-
-</div>
+<p class="caption">
+Gloucester Prison aerial view • NEWITT Skyline Media
+</p>
 
 </div>
 
@@ -578,40 +670,37 @@ and River Severn.
 </section>
 
 
-<section id="gallery">
+<!-- GALLERY -->
+
+<section>
 
 <div class="container">
 
 <div class="panel">
 
-<h2>Skyline Gallery</h2>
+<h2>
+Skyline <span>Gallery</span>
+</h2>
 
 <p>
-A selection of aerial views captured by NEWITT Skyline Media.
-These photographs show different perspectives of Gloucester
-Prison and the surrounding area.
+A selection of aerial views captured by
+NEWITT Skyline Media. More locations and projects
+will be added as the collection grows.
 </p>
 
-<div class="gallery">
 
+<div class="gallery">
 
 <div class="gallery-item">
 
 <img
 src="media/skyline/Gloucester-prison-aerial-02.JPG"
-alt="Gloucester Prison aerial photograph showing the prison buildings and surrounding streets"
+alt="Gloucester Prison aerial photograph 2"
 >
 
-<div class="image-caption">
-
-<strong>Gloucester Prison complex</strong>
-
-<span>
-A wider aerial view showing the historic prison buildings
-and surrounding streets.
-</span>
-
-</div>
+<p>
+Gloucester Prison • Aerial View 02
+</p>
 
 </div>
 
@@ -620,19 +709,12 @@ and surrounding streets.
 
 <img
 src="media/skyline/Gloucester-prison-aerial-03.JPG"
-alt="Aerial photograph of Gloucester Prison buildings and rooftops"
+alt="Gloucester Prison aerial photograph 3"
 >
 
-<div class="image-caption">
-
-<strong>Inside the prison complex</strong>
-
-<span>
-Aerial perspective showing the different buildings,
-rooftops and enclosed areas.
-</span>
-
-</div>
+<p>
+Gloucester Prison • Aerial View 03
+</p>
 
 </div>
 
@@ -641,22 +723,14 @@ rooftops and enclosed areas.
 
 <img
 src="media/skyline/Gloucester-prison-aerial-04.JPG"
-alt="Aerial photograph showing Gloucester Prison and surrounding buildings"
+alt="Gloucester Prison aerial photograph 4"
 >
 
-<div class="image-caption">
-
-<strong>Another view from above</strong>
-
-<span>
-A different angle showing the scale and layout of the
-Gloucester Prison site.
-</span>
+<p>
+Gloucester Prison • Aerial View 04
+</p>
 
 </div>
-
-</div>
-
 
 </div>
 
@@ -667,17 +741,21 @@ Gloucester Prison site.
 </section>
 
 
-<section id="tiktok">
+<!-- TIKTOK -->
+
+<section>
 
 <div class="container">
 
 <div class="panel">
 
-<h2>Latest from Skyline</h2>
+<h2>
+Latest from <span>Skyline</span>
+</h2>
 
 <p>
-Follow NEWITT Skyline Media on TikTok for aerial footage,
-new locations and future projects.
+Follow NEWITT Skyline Media on TikTok for new
+drone footage, aerial views and upcoming projects.
 </p>
 
 <div class="tiktok-box">
@@ -694,7 +772,7 @@ style="max-width:780px; min-width:288px;"
 
 <a
 target="_blank"
-href="https://www.tiktok.com/@newittskylinemedia?refer=creator_embed"
+href="https://www.tiktok.com/@newittskylinemedia"
 >
 @newittskylinemedia
 </a>
@@ -703,14 +781,14 @@ href="https://www.tiktok.com/@newittskylinemedia?refer=creator_embed"
 
 </blockquote>
 
-<script async src="https://www.tiktok.com/embed.js"></script>
-
 </div>
+
+<div class="buttons">
 
 <a
 href="https://www.tiktok.com/@newittskylinemedia"
 target="_blank"
-class="button primary"
+class="button"
 >
 Visit Skyline TikTok
 </a>
@@ -719,29 +797,42 @@ Visit Skyline TikTok
 
 </div>
 
+</div>
+
 </section>
 
+
+<!-- CONTACT -->
 
 <section>
 
 <div class="container">
 
-<div class="panel">
-
 <div class="cta">
 
-<h2>Want an aerial view?</h2>
+<h2>
+Want something captured from above?
+</h2>
 
 <p>
-NEWITT Skyline Media is available for aerial photography,
-drone footage and creative projects.
+If you have a project, location or idea you'd like
+to discuss, get in touch with NEWITT Media.
 </p>
 
+<div class="buttons">
+
 <a
-href="index.html#contact"
-class="button primary"
+href="mailto:newittmedia@gmail.com"
+class="button"
 >
-Get in touch
+Get in Touch
+</a>
+
+<a
+href="index.html"
+class="button secondary"
+>
+Back to NEWITT Media
 </a>
 
 </div>
@@ -759,12 +850,42 @@ Get in touch
 
 <div class="container">
 
-<strong>NEWITT Skyline Media</strong><br>
+NEWITT <span class="footer-blue">Skyline Media</span><br>
+
 A fresh view from above.
 
 </div>
 
 </footer>
+
+
+<script>
+
+function toggleMenu() {
+
+    const menu = document.getElementById("navLinks");
+
+    menu.classList.toggle("open");
+
+}
+
+
+/* Close menu after selecting a page */
+
+document.querySelectorAll(".nav-links a").forEach(function(link) {
+
+    link.addEventListener("click", function() {
+
+        document
+        .getElementById("navLinks")
+        .classList.remove("open");
+
+    });
+
+});
+
+</script>
+
 
 </body>
 </html>
