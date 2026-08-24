@@ -1,99 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
->
-
-<meta
-    name="description"
-    content="NEWITT Media. Drone photography, photography and paranormal adventures."
->
-
-<meta
-    name="theme-color"
-    content="#05070b"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>NEWITT Media | Drone, Photography & Paranormal Adventures</title>
 
+<meta name="description" content="NEWITT Media brings together aerial drone work, photography and paranormal adventures under one independent media brand.">
 
 <style>
-
-/* =========================================================
-   NEWITT MEDIA
-   ========================================================= */
-
-:root {
-    --black: #05070b;
-    --panel: rgba(7, 11, 17, 0.92);
-    --panel-light: rgba(10, 15, 23, 0.88);
-
-    --white: #ffffff;
-    --silver: #d2dae3;
-    --grey: #919ca8;
-
-    --blue: #1677ff;
-    --blue-light: #55adff;
-
-    --youtube: #78161c;
-    --youtube-hover: #9e2027;
-
-    --tiktok: #17191e;
-    --tiktok-border: rgba(255,255,255,0.15);
-
-    --border: rgba(255,255,255,0.10);
-
-    --max-width: 1200px;
-}
-
-
-/* =========================================================
-   RESET
-   ========================================================= */
-
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 html {
     scroll-behavior: smooth;
-    background: #05070b;
 }
 
 body {
     margin: 0;
-
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Helvetica,
-        Arial,
-        sans-serif;
-
-    color: var(--white);
-
-    line-height: 1.6;
-
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f5f7fb;
+    background: #05070b;
     overflow-x: hidden;
-
-    background:
-        #05070b;
-
-    min-height: 100vh;
 }
 
-img {
-    max-width: 100%;
-    display: block;
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    background:
+        linear-gradient(
+            rgba(3, 7, 14, 0.52),
+            rgba(3, 7, 14, 0.72)
+        ),
+        url("background.png.PNG") center center / cover no-repeat;
+    transform: scale(1.02);
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(35, 145, 255, 0.20),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0.05),
+            rgba(0,0,0,0.58)
+        );
+    pointer-events: none;
 }
 
 a {
@@ -101,1201 +63,264 @@ a {
     text-decoration: none;
 }
 
-
-/* =========================================================
-   CINEMATIC BACKGROUND
-   =========================================================
-
-   The actual NEWITT wallpaper is 1536 x 1024.
-
-   We keep the original proportions.
-
-   The image is allowed to scroll naturally with
-   the webpage rather than using background-attachment: fixed.
-
-   A second dark layer gives the page a clean cinematic
-   transition once the main artwork has finished.
-   ========================================================= */
-
-.page-background {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-
-    /*
-       Large enough to cover the main website content
-       while preserving the original image proportions.
-    */
-
-    min-height: 100%;
-
-    z-index: -10;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(5,7,11,0.05) 0%,
-            rgba(5,7,11,0.12) 42%,
-            rgba(5,7,11,0.72) 82%,
-            #05070b 100%
-        ),
-        url("background.png.PNG");
-
-    background-repeat:
-        no-repeat;
-
-    background-position:
-        center top;
-
-    background-size:
-        100% auto;
-}
-
-
-/*
-   Additional cinematic atmosphere.
-
-   This does NOT replace the artwork.
-   It simply keeps the middle of the page darker
-   so text and cards remain readable.
-*/
-
-.page-background::after {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        radial-gradient(
-            ellipse at center,
-            rgba(5,7,11,0.02) 0%,
-            rgba(5,7,11,0.18) 55%,
-            rgba(5,7,11,0.55) 100%
-        );
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   NAVIGATION
-   ========================================================= */
-
-.navbar {
-    position: sticky;
-
-    top: 0;
-
-    z-index: 1000;
-
-    background:
-        rgba(5,7,11,0.94);
-
-    border-bottom:
-        1px solid var(--border);
-
-    backdrop-filter:
-        blur(14px);
-
-    -webkit-backdrop-filter:
-        blur(14px);
-}
-
-.nav-inner {
-    width:
-        min(
-            var(--max-width),
-            calc(100% - 32px)
-        );
-
-    min-height: 74px;
-
+.container {
+    width: min(1180px, 92%);
     margin: auto;
+}
 
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(18px);
+    background: rgba(3, 6, 12, 0.78);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.nav {
+    min-height: 70px;
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
-    gap: 20px;
+    gap: 25px;
 }
 
 .nav-brand {
-    font-size: 1.15rem;
-
-    font-weight: 800;
-
-    letter-spacing: 2px;
-
-    white-space: nowrap;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 1px;
 }
 
 .nav-brand span {
-    color: var(--blue-light);
+    color: #38a8ff;
 }
 
 .nav-links {
     display: flex;
-
-    align-items: center;
-
     gap: 24px;
+    font-size: 14px;
+    font-weight: 700;
 }
 
 .nav-links a {
-    color: var(--silver);
-
-    font-size: .9rem;
-
-    font-weight: 600;
-
-    transition:
-        color .2s ease,
-        transform .2s ease;
+    opacity: 0.8;
+    transition: 0.25s ease;
 }
 
 .nav-links a:hover {
-    color: var(--white);
-
-    transform:
-        translateY(-1px);
+    opacity: 1;
+    color: #42aaff;
 }
-
-
-/* =========================================================
-   HERO
-   ========================================================= */
 
 .hero {
-    min-height:
-        calc(100vh - 74px);
-
+    min-height: 88vh;
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
-    padding:
-        70px 20px 85px;
-
     text-align: center;
+    padding: 90px 0;
 }
 
-.hero-content {
-    width: 100%;
-
-    max-width: 900px;
-
-    padding:
-        50px 35px;
-
-    background:
-        rgba(5,7,11,0.72);
-
-    border:
-        1px solid
-        rgba(255,255,255,0.09);
-
-    border-radius: 28px;
-
-    box-shadow:
-        0 30px 90px
-        rgba(0,0,0,0.58);
-
-    backdrop-filter:
-        blur(3px);
-
-    -webkit-backdrop-filter:
-        blur(3px);
+.hero-card {
+    width: min(800px, 100%);
+    padding: 50px 35px;
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 30px;
+    background: rgba(3, 7, 14, 0.54);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 25px 80px rgba(0,0,0,0.45);
 }
 
 .hero-logo {
-    width:
-        min(280px,70vw);
-
-    margin:
-        0 auto 28px;
+    width: 180px;
+    max-width: 55%;
+    margin-bottom: 25px;
 }
 
 .hero h1 {
-    font-size:
-        clamp(2.4rem,7vw,5.5rem);
-
-    line-height: 1;
-
-    letter-spacing: 4px;
-
-    margin-bottom: 20px;
+    margin: 0;
+    font-size: clamp(42px, 8vw, 82px);
+    line-height: 0.95;
+    font-weight: 950;
+    letter-spacing: -3px;
 }
 
 .hero h1 span {
-    color: var(--blue-light);
+    color: #36a7ff;
 }
 
 .hero p {
-    max-width: 720px;
-
-    margin:
-        0 auto 30px;
-
-    color: var(--silver);
-
-    font-size:
-        clamp(1rem,2vw,1.2rem);
+    max-width: 680px;
+    margin: 25px auto;
+    line-height: 1.7;
+    color: #d4d9e2;
 }
 
-.hero-buttons {
+.buttons {
     display: flex;
-
-    flex-wrap: wrap;
-
     justify-content: center;
-
+    flex-wrap: wrap;
     gap: 12px;
+    margin-top: 28px;
 }
-
-
-/* =========================================================
-   BUTTONS
-   ========================================================= */
 
 .button {
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    min-height: 48px;
-
-    padding:
-        11px 21px;
-
+    padding: 13px 20px;
     border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.07);
+    font-weight: 800;
+    transition: 0.25s ease;
+}
 
-    font-weight: 700;
-
-    font-size: .92rem;
-
-    transition:
-        transform .2s ease,
-        background .2s ease,
-        box-shadow .2s ease;
+.button.primary {
+    background: #168cff;
+    border-color: #168cff;
 }
 
 .button:hover {
-    transform:
-        translateY(-2px);
+    transform: translateY(-3px);
 }
 
-
-/* BLUE */
-
-.button-primary {
-    background:
-        linear-gradient(
-            135deg,
-            var(--blue),
-            var(--blue-light)
-        );
-
-    color: var(--white);
-
-    box-shadow:
-        0 10px 30px
-        rgba(22,119,255,0.25);
-}
-
-
-/* NORMAL SECONDARY */
-
-.button-secondary {
-    background:
-        rgba(255,255,255,0.055);
-
-    border:
-        1px solid
-        rgba(255,255,255,0.13);
-
-    color: var(--white);
-}
-
-.button-secondary:hover {
-    background:
-        rgba(255,255,255,0.10);
-}
-
-
-/* =========================================================
-   YOUTUBE
-   ========================================================= */
-
-.button-youtube {
-    background:
-        linear-gradient(
-            135deg,
-            #591014,
-            var(--youtube)
-        );
-
-    border:
-        1px solid
-        rgba(180,45,52,0.42);
-
-    color: #ffffff;
-
-    box-shadow:
-        0 8px 25px
-        rgba(90,10,15,0.25);
-}
-
-.button-youtube:hover {
-    background:
-        linear-gradient(
-            135deg,
-            var(--youtube),
-            var(--youtube-hover)
-        );
-
-    box-shadow:
-        0 10px 30px
-        rgba(120,15,20,0.32);
-}
-
-
-/* =========================================================
-   TIKTOK
-   ========================================================= */
-
-.button-tiktok {
-    background:
-        linear-gradient(
-            135deg,
-            #111318,
-            #252831
-        );
-
-    border:
-        1px solid
-        var(--tiktok-border);
-
-    color:
-        #ffffff;
-
-    box-shadow:
-        0 8px 24px
-        rgba(0,0,0,0.22);
-}
-
-.button-tiktok:hover {
-    background:
-        linear-gradient(
-            135deg,
-            #1c2028,
-            #30343e
-        );
-
-    border-color:
-        rgba(255,255,255,0.28);
-}
-
-
-/* =========================================================
-   GENERAL SECTIONS
-   ========================================================= */
-
-.section {
-    width:
-        min(
-            var(--max-width),
-            calc(100% - 32px)
-        );
-
-    margin:
-        0 auto;
-
-    padding:
-        85px 0;
+section {
+    padding: 90px 0;
 }
 
 .section-heading {
     text-align: center;
-
-    max-width: 780px;
-
-    margin:
-        0 auto 42px;
+    max-width: 720px;
+    margin: 0 auto 45px;
 }
 
 .section-heading h2 {
-    font-size:
-        clamp(2rem,5vw,3.6rem);
-
-    line-height: 1.05;
-
-    margin-bottom: 14px;
+    font-size: clamp(32px, 5vw, 52px);
+    margin: 0 0 15px;
 }
 
 .section-heading p {
-    color: var(--grey);
-
-    font-size:
-        1rem;
+    color: #cbd1dc;
+    line-height: 1.7;
 }
-
-
-/* =========================================================
-   TIKTOK SECTION
-   ========================================================= */
-
-.tiktok-section {
-    padding-top: 65px;
-    padding-bottom: 75px;
-}
-
-.tiktok-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            2,
-            minmax(0,1fr)
-        );
-
-    gap: 20px;
-}
-
-
-/* Each TikTok panel */
-
-.tiktok-card {
-    background:
-        rgba(5,7,11,0.82);
-
-    border:
-        1px solid
-        rgba(255,255,255,0.08);
-
-    border-radius: 24px;
-
-    padding:
-        25px 18px 22px;
-
-    box-shadow:
-        0 25px 70px
-        rgba(0,0,0,0.58);
-
-    overflow: hidden;
-
-    min-width: 0;
-}
-
-.tiktok-card-header {
-    text-align: center;
-
-    margin-bottom: 20px;
-}
-
-.tiktok-card-header h3 {
-    font-size:
-        1.45rem;
-
-    margin-bottom: 5px;
-}
-
-.tiktok-card-header p {
-    color:
-        var(--grey);
-
-    font-size:
-        .9rem;
-}
-
-
-/*
-   TikTok's creator embed has its own width rules.
-
-   This container keeps it centred and prevents
-   horizontal overflow.
-*/
-
-.tiktok-embed-wrap {
-    width: 100%;
-
-    display: flex;
-
-    justify-content: center;
-
-    overflow: hidden;
-}
-
-.tiktok-embed-wrap blockquote {
-    margin: 0 auto !important;
-
-    width: 100%;
-
-    max-width: 780px;
-}
-
-
-/* =========================================================
-   BRAND CARDS
-   ========================================================= */
 
 .brand-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(
-            3,
-            minmax(0,1fr)
-        );
-
-    gap: 14px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
 }
 
 .brand-card {
-    background:
-        rgba(9,13,19,0.94);
-
-    border:
-        1px solid
-        rgba(255,255,255,0.07);
-
-    border-radius: 22px;
-
-    padding:
-        26px 20px;
-
-    text-align: center;
-
-    box-shadow:
-        0 22px 55px
-        rgba(0,0,0,0.50);
-
-    transition:
-        transform .25s ease,
-        border-color .25s ease;
+    padding: 30px;
+    border-radius: 24px;
+    background: rgba(5,9,16,0.74);
+    border: 1px solid rgba(255,255,255,0.10);
+    backdrop-filter: blur(14px);
+    transition: 0.3s ease;
 }
 
 .brand-card:hover {
-    transform:
-        translateY(-5px);
-
-    border-color:
-        rgba(85,173,255,0.28);
+    transform: translateY(-8px);
+    border-color: rgba(50,165,255,0.45);
 }
 
 .brand-logo {
-    width: 175px;
-
-    height: 175px;
-
+    width: 105px;
+    height: 105px;
     object-fit: contain;
-
-    margin:
-        0 auto 20px;
-}
-
-.brand-card h3 {
-    font-size:
-        1.35rem;
-
-    line-height: 1.2;
-
-    margin-bottom: 12px;
-}
-
-.brand-card p {
-    color:
-        var(--silver);
-
-    font-size:
-        .93rem;
-
+    display: block;
     margin-bottom: 22px;
 }
 
-.card-buttons {
-    display: flex;
-
-    flex-wrap: wrap;
-
-    justify-content: center;
-
-    gap: 8px;
+.brand-card h3 {
+    margin: 0 0 12px;
+    font-size: 25px;
 }
 
-
-/* =========================================================
-   ABOUT
-   ========================================================= */
-
-.about-box {
-    background:
-        rgba(9,13,19,0.94);
-
-    border:
-        1px solid
-        rgba(255,255,255,0.07);
-
-    border-radius: 24px;
-
-    padding:
-        40px;
-
-    box-shadow:
-        0 25px 65px
-        rgba(0,0,0,0.50);
+.brand-card p {
+    color: #c8ced8;
+    line-height: 1.65;
 }
 
-.about-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            2,
-            minmax(0,1fr)
-        );
-
-    gap: 38px;
+.brand-card .button {
+    display: inline-block;
+    margin-top: 12px;
 }
 
-.about-block h3 {
-    font-size:
-        1.4rem;
-
-    margin-bottom: 13px;
-}
-
-.about-block p {
-    color:
-        var(--silver);
-
-    margin-bottom: 15px;
-}
-
-
-/* =========================================================
-   CONTACT
-   ========================================================= */
-
-.contact-section {
-    text-align: center;
-}
-
-.contact-box {
-    max-width: 850px;
-
+.about {
+    max-width: 900px;
     margin: auto;
-
-    padding:
-        45px 30px;
-
-    background:
-        rgba(9,13,19,0.95);
-
-    border:
-        1px solid
-        rgba(255,255,255,0.07);
-
+    padding: 40px;
     border-radius: 26px;
-
-    box-shadow:
-        0 25px 70px
-        rgba(0,0,0,0.55);
+    background: rgba(4,8,14,0.72);
+    border: 1px solid rgba(255,255,255,0.09);
 }
 
-.contact-box h2 {
-    font-size:
-        clamp(2rem,5vw,3rem);
-
-    margin-bottom: 15px;
+.about p {
+    color: #d0d5de;
+    line-height: 1.8;
 }
-
-.contact-box p {
-    color:
-        var(--silver);
-
-    margin-bottom: 28px;
-}
-
-.contact-buttons {
-    display: flex;
-
-    flex-wrap: wrap;
-
-    justify-content: center;
-
-    gap: 12px;
-}
-
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
 
 footer {
-    background:
-        rgba(5,7,11,0.97);
-
-    border-top:
-        1px solid var(--border);
-
-    padding:
-        38px 20px;
-
+    padding: 45px 0;
     text-align: center;
+    color: #9da5b2;
+    border-top: 1px solid rgba(255,255,255,0.08);
 }
 
-.footer-brand {
-    font-weight: 800;
+@media (max-width: 800px) {
 
-    letter-spacing: 2px;
+    .nav {
+        min-height: 62px;
+    }
 
-    margin-bottom: 14px;
-}
+    .nav-links {
+        gap: 12px;
+        font-size: 12px;
+    }
 
-.footer-brand span {
-    color:
-        var(--blue-light);
-}
+    .hero {
+        min-height: 82vh;
+        padding: 55px 0;
+    }
 
-.footer-links {
-    display: flex;
-
-    justify-content: center;
-
-    flex-wrap: wrap;
-
-    gap: 16px;
-
-    margin: 18px 0;
-}
-
-.footer-links a {
-    color:
-        var(--grey);
-
-    font-size:
-        .84rem;
-}
-
-.footer-links a:hover {
-    color:
-        var(--white);
-}
-
-.copyright {
-    color:
-        #68717d;
-
-    font-size:
-        .78rem;
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 950px) {
-
-    .tiktok-grid {
-        grid-template-columns:
-            1fr;
-
-        max-width:
-            780px;
-
-        margin:
-            0 auto;
+    .hero-card {
+        padding: 35px 22px;
     }
 
     .brand-grid {
-        grid-template-columns:
-            1fr;
-
-        max-width:
-            580px;
-
-        margin:
-            auto;
+        grid-template-columns: 1fr;
     }
 
-    .about-grid {
-        grid-template-columns:
-            1fr;
-
-        gap:
-            28px;
+    section {
+        padding: 65px 0;
     }
 }
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-    /*
-       Mobile uses the same original artwork,
-       but scales it so it remains sharp.
-
-       The central dark portion remains useful
-       behind the content.
-    */
-
-    .page-background {
-        background-size:
-            auto 100vh;
-
-        background-position:
-            center top;
-    }
-
-
-    .navbar {
-        backdrop-filter:
-            blur(12px);
-
-        -webkit-backdrop-filter:
-            blur(12px);
-    }
-
-
-    .nav-inner {
-        min-height:
-            auto;
-
-        width:
-            calc(100% - 22px);
-
-        padding:
-            15px 0;
-
-        flex-direction:
-            column;
-
-        gap:
-            12px;
-    }
-
-
-    .nav-brand {
-        font-size:
-            1rem;
-    }
-
-
-    .nav-links {
-        width:
-            100%;
-
-        justify-content:
-            center;
-
-        flex-wrap:
-            wrap;
-
-        gap:
-            8px 16px;
-    }
-
-
-    .nav-links a {
-        font-size:
-            .78rem;
-    }
-
-
-    .hero {
-        min-height:
-            auto;
-
-        padding:
-            55px 0 65px;
-    }
-
-
-    .hero-content {
-        padding:
-            38px 18px;
-
-        border-radius:
-            20px;
-    }
-
-
-    .hero-logo {
-        width:
-            min(
-                230px,
-                65vw
-            );
-    }
-
-
-    .hero h1 {
-        font-size:
-            2.25rem;
-
-        letter-spacing:
-            2px;
-    }
-
-
-    .hero p {
-        font-size:
-            .95rem;
-    }
-
-
-    .hero-buttons {
-        flex-direction:
-            column;
-
-        width:
-            100%;
-    }
-
-
-    .hero-buttons .button {
-        width:
-            100%;
-    }
-
-
-    .section {
-        width:
-            calc(100% - 22px);
-
-        padding:
-            65px 0;
-    }
-
-
-    .section-heading {
-        margin-bottom:
-            30px;
-    }
-
-
-    .tiktok-section {
-        padding-top:
-            45px;
-    }
-
-
-    .tiktok-card {
-        padding:
-            22px 10px 20px;
-
-        border-radius:
-            20px;
-    }
-
-
-    .tiktok-card-header {
-        padding:
-            0 8px;
-    }
-
-
-    .tiktok-card-header h3 {
-        font-size:
-            1.25rem;
-    }
-
-
-    .brand-card {
-        padding:
-            26px 18px;
-
-        border-radius:
-            20px;
-    }
-
-
-    .brand-logo {
-        width:
-            160px;
-
-        height:
-            160px;
-    }
-
-
-    .card-buttons {
-        flex-direction:
-            column;
-    }
-
-
-    .card-buttons .button {
-        width:
-            100%;
-    }
-
-
-    .about-box {
-        padding:
-            28px 20px;
-
-        border-radius:
-            20px;
-    }
-
-
-    .contact-box {
-        padding:
-            35px 20px;
-
-        border-radius:
-            20px;
-    }
-
-
-    .contact-buttons {
-        flex-direction:
-            column;
-    }
-
-
-    .contact-buttons .button {
-        width:
-            100%;
-    }
-
-
-    footer {
-        padding:
-            35px 15px;
-    }
-}
-
-
-/* =========================================================
-   VERY SMALL PHONES
-   ========================================================= */
-
-@media (max-width: 390px) {
-
-    .nav-links {
-        gap:
-            7px 12px;
-    }
-
-    .nav-links a {
-        font-size:
-            .71rem;
-    }
-
-    .hero h1 {
-        font-size:
-            2rem;
-    }
-
-    .brand-logo {
-        width:
-            145px;
-
-        height:
-            145px;
-    }
-}
-
 </style>
-
 </head>
-
 
 <body>
 
+<header>
+    <div class="container nav">
 
-<!-- =======================================================
-     BACKGROUND
-     ======================================================= -->
-
-<div
-    class="page-background"
-    aria-hidden="true"
-></div>
-
-
-<!-- =======================================================
-     NAVIGATION
-     ======================================================= -->
-
-<nav class="navbar">
-
-    <div class="nav-inner">
-
-        <a
-            href="#home"
-            class="nav-brand"
-        >
+        <a href="index.html" class="nav-brand">
             NEWITT <span>MEDIA</span>
         </a>
 
-
-        <div class="nav-links">
-
-            <a href="#home">
-                Home
-            </a>
-
-            <a href="#tiktok">
-                TikTok
-            </a>
-
-            <a href="#brands">
-                Brands
-            </a>
-
-            <a href="#about">
-                About
-            </a>
-
-            <a href="#contact">
-                Contact
-            </a>
-
-        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="skyline.html">Skyline</a>
+            <a href="paranormal.html">Paranormal</a>
+            <a href="photography.html">Photography</a>
+        </nav>
 
     </div>
-
-</nav>
-
-
-<!-- =======================================================
-     MAIN
-     ======================================================= -->
+</header>
 
 <main>
 
+<section class="hero">
 
-<!-- =======================================================
-     HERO
-     ======================================================= -->
-
-<section
-    class="hero"
-    id="home"
->
-
-    <div class="hero-content">
-
+    <div class="hero-card">
 
         <img
             src="newitt-media-logo.png.PNG"
@@ -1303,44 +328,115 @@ footer {
             class="hero-logo"
         >
 
-
         <h1>
-            NEWITT
-            <span>MEDIA</span>
+            NEWITT <span>MEDIA</span>
         </h1>
 
-
         <p>
-            A creative media brand bringing together
-            aerial drone work, photography and
-            paranormal investigations under one name.
+            One name. Three different worlds.
+            Aerial views from above, photography from wherever the camera happens to be,
+            and paranormal investigations when sensible people have already gone home.
         </p>
 
-
-        <div class="hero-buttons">
-
-            <a
-                href="#tiktok"
-                class="button button-primary"
-            >
-                Watch Our TikToks
+        <div class="buttons">
+            <a href="skyline.html" class="button primary">
+                Explore Skyline Media
             </a>
 
-
-            <a
-                href="#brands"
-                class="button button-secondary"
-            >
-                Explore NEWITT Media
+            <a href="paranormal.html" class="button">
+                Enter the Paranormal
             </a>
 
-
-            <a
-                href="#contact"
-                class="button button-secondary"
-            >
-                Get in Touch
+            <a href="photography.html" class="button">
+                View Photography
             </a>
+        </div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>Three sides of NEWITT Media</h2>
+
+            <p>
+                Different cameras. Different adventures. Same person probably
+                wondering why he bought another piece of equipment.
+            </p>
+
+        </div>
+
+        <div class="brand-grid">
+
+            <article class="brand-card">
+
+                <img
+                    src="sky-logo.png.PNG"
+                    alt="NEWITT Skyline Media logo"
+                    class="brand-logo"
+                >
+
+                <h3>NEWITT Skyline Media</h3>
+
+                <p>
+                    Drone footage, aerial photography and views from above.
+                    Basically, finding the angles you cannot get while standing
+                    on the ground looking up.
+                </p>
+
+                <a href="skyline.html" class="button">
+                    Visit Skyline
+                </a>
+
+            </article>
+
+            <article class="brand-card">
+
+                <img
+                    src="paranormal-logo.png.PNG"
+                    alt="NEWITT's Paranormal Adventures logo"
+                    class="brand-logo"
+                >
+
+                <h3>NEWITT's Paranormal Adventures</h3>
+
+                <p>
+                    Haunted locations, strange stories and investigations after
+                    dark. We go looking for answers, preferably without finding
+                    anything that follows us home.
+                </p>
+
+                <a href="paranormal.html" class="button">
+                    Enter the Paranormal
+                </a>
+
+            </article>
+
+            <article class="brand-card">
+
+                <img
+                    src="newitt-media-logo.png.PNG"
+                    alt="NEWITT Media Photography logo"
+                    class="brand-logo"
+                >
+
+                <h3>NEWITT Media Photography</h3>
+
+                <p>
+                    Photography from places, people, adventures and everything
+                    else that looks interesting enough to point a camera at.
+                </p>
+
+                <a href="photography.html" class="button">
+                    View Photography
+                </a>
+
+            </article>
 
         </div>
 
@@ -1348,664 +444,46 @@ footer {
 
 </section>
 
+<section>
 
-<!-- =======================================================
-     TIKTOK
-     ======================================================= -->
+    <div class="container">
 
-<section
-    class="section tiktok-section"
-    id="tiktok"
->
+        <div class="section-heading">
+            <h2>Why NEWITT Media?</h2>
+        </div>
 
-
-    <div class="section-heading">
-
-        <h2>
-            Latest From TikTok
-        </h2>
-
-        <p>
-            Follow the latest drone footage,
-            paranormal investigations and adventures
-            from NEWITT Media.
-        </p>
-
-    </div>
-
-
-    <div class="tiktok-grid">
-
-
-        <!-- =================================================
-             SKYLINE TIKTOK
-             ================================================= -->
-
-        <article class="tiktok-card">
-
-            <div class="tiktok-card-header">
-
-                <h3>
-                    🚁 NEWITT Skyline Media
-                </h3>
-
-                <p>
-                    Aerial photography, drone footage
-                    and views from above.
-                </p>
-
-            </div>
-
-
-            <div class="tiktok-embed-wrap">
-
-                <blockquote
-                    class="tiktok-embed"
-                    cite="https://www.tiktok.com/@newittskylinemedia"
-                    data-unique-id="newittskylinemedia"
-                    data-embed-type="creator"
-                    style="
-                        max-width:780px;
-                        min-width:288px;
-                    "
-                >
-
-                    <section>
-
-                        <a
-                            target="_blank"
-                            href="https://www.tiktok.com/@newittskylinemedia?refer=creator_embed"
-                        >
-                            @newittskylinemedia
-                        </a>
-
-                    </section>
-
-                </blockquote>
-
-            </div>
-
-
-            <div
-                class="card-buttons"
-                style="margin-top:18px;"
-            >
-
-                <a
-                    href="https://www.tiktok.com/@newittskylinemedia"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="button button-tiktok"
-                >
-                    Visit Skyline TikTok
-                </a>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- =================================================
-             PARANORMAL TIKTOK
-             ================================================= -->
-
-        <article class="tiktok-card">
-
-            <div class="tiktok-card-header">
-
-                <h3>
-                    👻 NEWITT's Paranormal Adventures
-                </h3>
-
-                <p>
-                    Paranormal investigations, haunted
-                    locations and adventures after dark.
-                </p>
-
-            </div>
-
-
-            <div class="tiktok-embed-wrap">
-
-                <blockquote
-                    class="tiktok-embed"
-                    cite="https://www.tiktok.com/@nw13ttt"
-                    data-unique-id="nw13ttt"
-                    data-embed-type="creator"
-                    style="
-                        max-width:780px;
-                        min-width:288px;
-                    "
-                >
-
-                    <section>
-
-                        <a
-                            target="_blank"
-                            href="https://www.tiktok.com/@nw13ttt?refer=creator_embed"
-                        >
-                            @nw13ttt
-                        </a>
-
-                    </section>
-
-                </blockquote>
-
-            </div>
-
-
-            <div
-                class="card-buttons"
-                style="margin-top:18px;"
-            >
-
-                <a
-                    href="https://www.tiktok.com/@nw13ttt"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="button button-tiktok"
-                >
-                    Visit Paranormal TikTok
-                </a>
-
-            </div>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     BRANDS
-     ======================================================= -->
-
-<section
-    class="section"
-    id="brands"
->
-
-
-    <div class="section-heading">
-
-        <h2>
-            Our Brands
-        </h2>
-
-        <p>
-            Different sides of NEWITT Media,
-            each with its own identity and purpose.
-        </p>
-
-    </div>
-
-
-    <div class="brand-grid">
-
-
-        <!-- =================================================
-             SKYLINE
-             ================================================= -->
-
-        <article class="brand-card">
-
-
-            <img
-                src="sky-logo.png.PNG"
-                alt="NEWITT Skyline Media logo"
-                class="brand-logo"
-            >
-
-
-            <h3>
-                NEWITT Skyline Media
-            </h3>
-
+        <div class="about">
 
             <p>
-                Professional aerial drone photography
-                and video capturing places, landscapes,
-                properties and events from a completely
-                different perspective.
+                NEWITT Media is an independent creative project bringing
+                together aerial drone work, photography and paranormal
+                adventures under one roof.
             </p>
-
-
-            <div class="card-buttons">
-
-
-                <a
-                    href="https://www.tiktok.com/@newittskylinemedia"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="button button-tiktok"
-                >
-                    TikTok
-                </a>
-
-
-                <a
-                    href="https://www.youtube.com/@Newitt-skyline-media"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="button button-youtube"
-                >
-                    YouTube
-                </a>
-
-
-                <a
-                    href="mailto:n.skyline.media@gmail.com"
-                    class="button button-secondary"
-                >
-                    Email Skyline Media
-                </a>
-
-
-            </div>
-
-        </article>
-
-
-
-        <!-- =================================================
-             PARANORMAL
-             ================================================= -->
-
-        <article class="brand-card">
-
-
-            <img
-                src="paranormal-logo.png.PNG"
-                alt="NEWITT's Paranormal Adventures logo"
-                class="brand-logo"
-            >
-
-
-            <h3>
-                NEWITT's Paranormal Adventures
-            </h3>
-
 
             <p>
-                Paranormal investigations exploring
-                historic, abandoned and reportedly
-                haunted locations, documenting the
-                experience through video, photography
-                and investigation.
+                There is no giant production company hiding behind the curtain.
+                Just cameras, drones, ideas, questionable amounts of equipment
+                and a determination to make something worth watching.
             </p>
-
-
-            <div class="card-buttons">
-
-
-                <a
-                    href="https://www.tiktok.com/@nw13ttt"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="button button-tiktok"
-                >
-                    TikTok
-                </a>
-
-
-                <a
-                    href="https://www.youtube.com/@NewittsParanormalAdventures"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="button button-youtube"
-                >
-                    YouTube
-                </a>
-
-
-                <a
-                    href="mailto:nw13ttt@gmail.com"
-                    class="button button-secondary"
-                >
-                    Email Paranormal Adventures
-                </a>
-
-
-            </div>
-
-        </article>
-
-
-
-        <!-- =================================================
-             PHOTOGRAPHY
-             ================================================= -->
-
-        <article class="brand-card">
-
-
-            <img
-                src="newitt-media-logo.png.PNG"
-                alt="NEWITT Media Photography logo"
-                class="brand-logo"
-            >
-
-
-            <h3>
-                NEWITT Media Photography
-            </h3>
-
 
             <p>
-                Photography focused on capturing
-                memorable places, moments and subjects
-                with a creative eye and a distinctive
-                NEWITT Media style.
+                Have a look around. There is plenty more coming.
             </p>
-
-
-            <div class="card-buttons">
-
-
-                <a
-                    href="#contact"
-                    class="button button-primary"
-                >
-                    Photography Enquiries
-                </a>
-
-
-            </div>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     ABOUT
-     ======================================================= -->
-
-<section
-    class="section"
-    id="about"
->
-
-
-    <div class="section-heading">
-
-        <h2>
-            About NEWITT Media
-        </h2>
-
-        <p>
-            One brand. Multiple perspectives.
-        </p>
-
-    </div>
-
-
-    <div class="about-box">
-
-
-        <div class="about-grid">
-
-
-            <div class="about-block">
-
-                <h3>
-                    Drone Photography
-                </h3>
-
-                <p>
-                    NEWITT Skyline Media uses aerial
-                    photography and video to capture
-                    locations from a perspective that
-                    traditional photography cannot provide.
-                </p>
-
-                <p>
-                    From landscapes and buildings to
-                    events and places of interest, the
-                    aim is to create professional-looking
-                    footage that gives viewers a completely
-                    different view.
-                </p>
-
-            </div>
-
-
-
-            <div class="about-block">
-
-                <h3>
-                    Paranormal Adventures
-                </h3>
-
-                <p>
-                    NEWITT's Paranormal Adventures
-                    documents investigations at locations
-                    with reported paranormal activity
-                    and fascinating histories.
-                </p>
-
-                <p>
-                    Investigations are documented through
-                    video, photography and live content,
-                    allowing viewers to experience the
-                    locations alongside the team.
-                </p>
-
-            </div>
-
-
-
-            <div class="about-block">
-
-                <h3>
-                    Photography
-                </h3>
-
-                <p>
-                    Photography sits at the heart of
-                    NEWITT Media, connecting the aerial,
-                    creative and paranormal sides of
-                    the business.
-                </p>
-
-                <p>
-                    Every image is about finding an
-                    interesting perspective and creating
-                    something worth remembering.
-                </p>
-
-            </div>
-
-
-
-            <div class="about-block">
-
-                <h3>
-                    What NEWITT Media Stands For
-                </h3>
-
-                <p>
-                    NEWITT Media brings together creativity,
-                    technology, exploration and storytelling.
-                </p>
-
-                <p>
-                    Whether it is an aerial view from above,
-                    an investigation after dark or a
-                    photograph captured at exactly the
-                    right moment, the goal is simple:
-                    create content people want to watch,
-                    share and remember.
-                </p>
-
-            </div>
-
 
         </div>
 
     </div>
 
 </section>
-
-
-<!-- =======================================================
-     CONTACT
-     ======================================================= -->
-
-<section
-    class="section contact-section"
-    id="contact"
->
-
-
-    <div class="contact-box">
-
-
-        <h2>
-            Work With NEWITT Media
-        </h2>
-
-
-        <p>
-            For drone work, photography or paranormal
-            enquiries, choose the relevant contact
-            option below.
-        </p>
-
-
-        <div class="contact-buttons">
-
-
-            <a
-                href="mailto:n.skyline.media@gmail.com"
-                class="button button-primary"
-            >
-                Email Skyline Media
-            </a>
-
-
-            <a
-                href="mailto:nw13ttt@gmail.com"
-                class="button button-secondary"
-            >
-                Email Paranormal Adventures
-            </a>
-
-
-        </div>
-
-    </div>
-
-</section>
-
 
 </main>
 
-
-<!-- =======================================================
-     FOOTER
-     ======================================================= -->
-
 <footer>
-
-
-    <div class="footer-brand">
-        NEWITT <span>MEDIA</span>
+    <div class="container">
+        NEWITT Media<br>
+        Drone work. Photography. Paranormal adventures.
     </div>
-
-
-    <div class="footer-links">
-
-
-        <a href="#home">
-            Home
-        </a>
-
-
-        <a href="#tiktok">
-            TikTok
-        </a>
-
-
-        <a href="#brands">
-            Brands
-        </a>
-
-
-        <a href="#about">
-            About
-        </a>
-
-
-        <a href="#contact">
-            Contact
-        </a>
-
-
-        <a
-            href="https://www.tiktok.com/@newittskylinemedia"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Skyline TikTok
-        </a>
-
-
-        <a
-            href="https://www.youtube.com/@Newitt-skyline-media"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Skyline YouTube
-        </a>
-
-
-        <a
-            href="https://www.tiktok.com/@nw13ttt"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Paranormal TikTok
-        </a>
-
-
-        <a
-            href="https://www.youtube.com/@NewittsParanormalAdventures"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Paranormal YouTube
-        </a>
-
-
-    </div>
-
-
-    <div class="copyright">
-        © 2026 NEWITT Media. All rights reserved.
-    </div>
-
-
 </footer>
-
-
-<!-- =======================================================
-     TIKTOK EMBED SCRIPT
-     
-     Loaded ONCE for both creator feeds.
-     ======================================================= -->
-
-<script
-    async
-    src="https://www.tiktok.com/embed.js"
-></script>
-
 
 </body>
 </html>
