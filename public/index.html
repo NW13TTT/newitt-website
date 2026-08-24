@@ -5,14 +5,16 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-<title>NEWITT Media | Drone, Photography & Paranormal</title>
+<title>NEWITT Media | Skyline, Paranormal & Photography</title>
 
 <meta
-name="description"
-content="NEWITT Media brings together drone aerial media, photography and paranormal adventures."
+    name="description"
+    content="NEWITT Media brings together Skyline drone media, paranormal adventures and photography."
 >
 
 <style>
@@ -40,7 +42,7 @@ body {
 
     color: #ffffff;
 
-    background: #02060d;
+    background: #03030a;
 
     overflow-x: hidden;
 }
@@ -52,6 +54,26 @@ a {
 
 img {
     max-width: 100%;
+}
+
+
+/* =====================================================
+   NEWITT MEDIA COLOUR
+===================================================== */
+
+:root {
+
+    --newitt:
+        #9b5cff;
+
+    --newitt-bright:
+        #b47cff;
+
+    --newitt-glow:
+        rgba(155,92,255,0.28);
+
+    --panel:
+        rgba(6,5,15,0.82);
 }
 
 
@@ -72,8 +94,8 @@ body::before {
     background:
 
         linear-gradient(
-            rgba(2, 6, 13, 0.35),
-            rgba(2, 6, 13, 0.82)
+            rgba(3,3,10,0.38),
+            rgba(3,3,10,0.86)
         ),
 
         url("background.png.PNG")
@@ -96,9 +118,9 @@ body::after {
     background:
 
         radial-gradient(
-            circle at 50% 10%,
-            rgba(42, 151, 255, 0.16),
-            transparent 42%
+            circle at 50% 8%,
+            rgba(155,92,255,0.20),
+            transparent 45%
         );
 
     pointer-events: none;
@@ -106,7 +128,7 @@ body::after {
 
 
 /* =====================================================
-   MAIN CONTAINER
+   CONTAINER
 ===================================================== */
 
 .container {
@@ -132,18 +154,18 @@ header {
     z-index: 1000;
 
     background:
-        rgba(2, 6, 13, 0.94);
+        rgba(3,3,10,0.96);
 
     backdrop-filter:
         blur(18px);
 
     border-bottom:
         1px solid
-        rgba(60, 168, 255, 0.20);
+        rgba(155,92,255,0.28);
 
     box-shadow:
         0 8px 35px
-        rgba(0,0,0,0.30);
+        rgba(0,0,0,0.40);
 }
 
 
@@ -167,7 +189,7 @@ header {
 
 
 /* =====================================================
-   HEADER BRAND
+   BRAND
 ===================================================== */
 
 .nav-brand {
@@ -189,12 +211,12 @@ header {
 .nav-brand span {
 
     color:
-        #3ca8ff;
+        var(--newitt);
 }
 
 
 /* =====================================================
-   DESKTOP NAV
+   NAVIGATION
 ===================================================== */
 
 .nav-links {
@@ -233,7 +255,7 @@ header {
 .nav-links a:hover {
 
     color:
-        #3ca8ff;
+        var(--newitt-bright);
 
     opacity:
         1;
@@ -241,7 +263,7 @@ header {
 
 
 /* =====================================================
-   MOBILE MENU BUTTON
+   MOBILE MENU
 ===================================================== */
 
 .menu-button {
@@ -254,13 +276,13 @@ header {
 
     border:
         1px solid
-        rgba(60,168,255,0.55);
+        rgba(155,92,255,0.60);
 
     border-radius:
         14px;
 
     background:
-        rgba(20,60,100,0.32);
+        rgba(155,92,255,0.10);
 
     color:
         #ffffff;
@@ -297,10 +319,10 @@ main {
         min(860px, 100%);
 
     margin:
-        0 auto 75px;
+        0 auto 70px;
 
     padding:
-        48px 35px 45px;
+        50px 35px;
 
     text-align:
         center;
@@ -314,18 +336,15 @@ main {
     align-items:
         center;
 
-    justify-content:
-        center;
-
     border:
         1px solid
-        rgba(60,168,255,0.24);
+        rgba(155,92,255,0.30);
 
     border-radius:
         30px;
 
     background:
-        rgba(3, 9, 18, 0.74);
+        var(--panel);
 
     backdrop-filter:
         blur(15px);
@@ -342,52 +361,31 @@ main {
 
 .hero-logo {
 
-    display:
-        block;
-
     width:
         150px;
 
     height:
         150px;
 
-    max-width:
-        150px;
-
-    max-height:
-        150px;
-
     object-fit:
         contain;
+
+    display:
+        block;
 
     margin:
         0 auto 28px;
 
-    position:
-        relative;
-
-    left:
-        auto;
-
-    right:
-        auto;
-
-    align-self:
-        center;
-
-    flex:
-        0 0 auto;
-
     filter:
         drop-shadow(
-            0 16px 30px
-            rgba(0,0,0,0.55)
+            0 16px 35px
+            rgba(155,92,255,0.25)
         );
 }
 
 
 /* =====================================================
-   MAIN TITLE
+   HERO TITLE
 ===================================================== */
 
 .hero h1 {
@@ -396,10 +394,7 @@ main {
         100%;
 
     margin:
-        0 0 20px;
-
-    padding:
-        0;
+        0 0 18px;
 
     text-align:
         center;
@@ -421,33 +416,23 @@ main {
 .hero h1 span {
 
     color:
-        #3ca8ff;
+        var(--newitt-bright);
 }
 
 
-/* =====================================================
-   HERO DESCRIPTION
-===================================================== */
-
 .hero p {
 
-    width:
-        100%;
-
     max-width:
-        680px;
+        700px;
 
     margin:
         0 auto;
 
-    text-align:
-        center;
-
     color:
-        #cbd3de;
+        #d0cbd8;
 
     font-size:
-        16px;
+        17px;
 
     line-height:
         1.8;
@@ -459,9 +444,6 @@ main {
 ===================================================== */
 
 .hero-buttons {
-
-    width:
-        100%;
 
     display:
         flex;
@@ -498,17 +480,17 @@ main {
         48px;
 
     padding:
-        13px 21px;
+        13px 22px;
 
     border:
         1px solid
-        rgba(255,255,255,0.15);
+        rgba(255,255,255,0.14);
 
     border-radius:
         13px;
 
     background:
-        rgba(255,255,255,0.07);
+        rgba(255,255,255,0.06);
 
     color:
         #ffffff;
@@ -518,8 +500,8 @@ main {
 
     transition:
         transform 0.25s ease,
-        background 0.25s ease,
-        border-color 0.25s ease;
+        border-color 0.25s ease,
+        background 0.25s ease;
 }
 
 
@@ -529,36 +511,29 @@ main {
         translateY(-3px);
 
     border-color:
-        rgba(60,168,255,0.50);
+        rgba(155,92,255,0.60);
 }
 
 
-.button.primary {
+.button.newitt {
 
     background:
-        #168cff;
+        var(--newitt);
 
     border-color:
-        #168cff;
+        var(--newitt);
 
     box-shadow:
         0 12px 35px
-        rgba(22,140,255,0.22);
-}
-
-
-.button.primary:hover {
-
-    background:
-        #2998ff;
+        var(--newitt-glow);
 }
 
 
 /* =====================================================
-   THREE AREAS
+   INTRO
 ===================================================== */
 
-.areas {
+.intro {
 
     text-align:
         center;
@@ -568,10 +543,10 @@ main {
 }
 
 
-.areas h2 {
+.intro h2 {
 
     margin:
-        0 0 12px;
+        0 0 15px;
 
     font-size:
         clamp(32px, 5vw, 48px);
@@ -584,26 +559,26 @@ main {
 }
 
 
-.areas h2 span {
+.intro h2 span {
 
     color:
-        #3ca8ff;
+        var(--newitt-bright);
 }
 
 
-.areas > p {
+.intro p {
 
     max-width:
-        700px;
+        720px;
 
     margin:
-        0 auto 35px;
+        0 auto;
 
     color:
-        #cbd3de;
+        #d0cbd8;
 
     line-height:
-        1.7;
+        1.75;
 }
 
 
@@ -630,7 +605,7 @@ main {
 .card {
 
     min-height:
-        370px;
+        390px;
 
     padding:
         30px 24px;
@@ -644,28 +619,25 @@ main {
     align-items:
         center;
 
-    justify-content:
-        space-between;
-
     text-align:
         center;
 
     border:
         1px solid
-        rgba(60,168,255,0.20);
+        rgba(155,92,255,0.18);
 
     border-radius:
         25px;
 
     background:
-        rgba(3,9,17,0.78);
+        rgba(5,5,14,0.82);
 
     backdrop-filter:
         blur(12px);
 
     box-shadow:
         0 20px 55px
-        rgba(0,0,0,0.35);
+        rgba(0,0,0,0.38);
 
     transition:
         transform 0.25s ease,
@@ -679,13 +651,9 @@ main {
         translateY(-5px);
 
     border-color:
-        rgba(60,168,255,0.45);
+        rgba(155,92,255,0.45);
 }
 
-
-/* =====================================================
-   CARD LOGOS
-===================================================== */
 
 .card-logo {
 
@@ -707,7 +675,7 @@ main {
     filter:
         drop-shadow(
             0 12px 25px
-            rgba(0,0,0,0.50)
+            rgba(0,0,0,0.55)
         );
 }
 
@@ -718,48 +686,116 @@ main {
         0 0 12px;
 
     font-size:
-        24px;
+        23px;
 
     line-height:
-        1.15;
+        1.2;
 }
 
 
 .card p {
 
-    margin:
-        0 auto 22px;
-
     max-width:
         290px;
 
-    color:
-        #c3ccd7;
+    margin:
+        0 auto 25px;
 
-    line-height:
-        1.65;
+    color:
+        #c8c1d0;
 
     font-size:
         15px;
+
+    line-height:
+        1.65;
 }
 
-
-/* =====================================================
-   CARD BUTTON
-===================================================== */
 
 .card .button {
 
-    margin-top:
-        auto;
-
     width:
         100%;
+
+    margin-top:
+        auto;
 }
 
 
 /* =====================================================
-   CONNECTION SECTION
+   INDIVIDUAL CARD COLOURS
+===================================================== */
+
+/* SKYLINE */
+
+.card-skyline {
+
+    border-color:
+        rgba(22,140,255,0.25);
+}
+
+
+.card-skyline:hover {
+
+    border-color:
+        rgba(22,140,255,0.55);
+}
+
+
+.button-skyline {
+
+    background:
+        #168cff;
+
+    border-color:
+        #168cff;
+}
+
+
+/* PARANORMAL */
+
+.card-paranormal {
+
+    border-color:
+        rgba(198,40,40,0.28);
+}
+
+
+.card-paranormal:hover {
+
+    border-color:
+        rgba(239,51,51,0.60);
+}
+
+
+.button-paranormal {
+
+    background:
+        #c62828;
+
+    border-color:
+        #c62828;
+}
+
+
+/* PHOTOGRAPHY */
+
+.card-photography {
+
+    border-color:
+        rgba(155,92,255,0.28);
+}
+
+
+.card-photography:hover {
+
+    border-color:
+        rgba(180,124,255,0.60);
+}
+
+
+/* =====================================================
+   CONNECTION
 ===================================================== */
 
 .connection {
@@ -775,16 +811,20 @@ main {
 
     border:
         1px solid
-        rgba(60,168,255,0.20);
+        rgba(155,92,255,0.25);
 
     border-radius:
         28px;
 
     background:
-        rgba(3,8,16,0.78);
+        rgba(7,5,17,0.82);
 
     backdrop-filter:
         blur(14px);
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,0.40);
 }
 
 
@@ -801,7 +841,7 @@ main {
 .connection h2 span {
 
     color:
-        #3ca8ff;
+        var(--newitt-bright);
 }
 
 
@@ -814,7 +854,7 @@ main {
         0 auto 25px;
 
     color:
-        #cbd3de;
+        #d0cbd8;
 
     line-height:
         1.75;
@@ -850,7 +890,7 @@ footer {
         center;
 
     color:
-        #9da5b2;
+        #9d98a7;
 
     border-top:
         1px solid
@@ -915,11 +955,11 @@ footer {
             6px;
 
         background:
-            rgba(3,6,12,0.98);
+            rgba(3,3,10,0.98);
 
         border-bottom:
             1px solid
-            rgba(60,168,255,0.18);
+            rgba(155,92,255,0.25);
 
         backdrop-filter:
             blur(18px);
@@ -958,13 +998,6 @@ footer {
             1fr;
     }
 
-
-    .card {
-
-        min-height:
-            340px;
-    }
-
 }
 
 
@@ -990,14 +1023,8 @@ footer {
 
     .hero {
 
-        width:
-            100%;
-
         padding:
-            38px 18px 35px;
-
-        margin-bottom:
-            55px;
+            38px 18px;
 
         border-radius:
             25px;
@@ -1012,21 +1039,15 @@ footer {
         height:
             125px;
 
-        max-width:
-            125px;
-
-        max-height:
-            125px;
-
         margin-bottom:
-            24px;
+            23px;
     }
 
 
     .hero h1 {
 
         font-size:
-            42px;
+            41px;
 
         letter-spacing:
             -1.5px;
@@ -1054,24 +1075,10 @@ footer {
     }
 
 
-    .areas h2 {
-
-        font-size:
-            36px;
-    }
-
-
-    .areas > p {
-
-        font-size:
-            15px;
-    }
-
-
     .card {
 
         min-height:
-            330px;
+            350px;
 
         padding:
             28px 20px;
@@ -1091,7 +1098,7 @@ footer {
     .connection {
 
         padding:
-            32px 20px;
+            32px 18px;
     }
 
 
@@ -1106,45 +1113,6 @@ footer {
 
         width:
             100%;
-    }
-
-}
-
-
-/* =====================================================
-   VERY SMALL PHONES
-===================================================== */
-
-@media (max-width: 380px) {
-
-    .nav-brand {
-
-        font-size:
-            16px;
-    }
-
-
-    .menu-button {
-
-        padding:
-            10px 14px;
-    }
-
-
-    .hero-logo {
-
-        width:
-            115px;
-
-        height:
-            115px;
-    }
-
-
-    .hero h1 {
-
-        font-size:
-            38px;
     }
 
 }
@@ -1186,45 +1154,45 @@ footer {
 
 
 <a
-href="index.html"
-class="nav-brand"
+    href="index.html"
+    class="nav-brand"
 >
-NEWITT <span>MEDIA</span>
+    NEWITT <span>MEDIA</span>
 </a>
 
 
 <button
-class="menu-button"
-onclick="toggleMenu()"
-aria-label="Open navigation menu"
+    class="menu-button"
+    onclick="toggleMenu()"
+    aria-label="Open navigation menu"
 >
-MENU
+    MENU
 </button>
 
 
 <nav
-class="nav-links"
-id="mobileMenu"
+    class="nav-links"
+    id="mobileMenu"
 >
 
 <a href="index.html">
-Home
+    Home
 </a>
 
 <a href="skyline.html">
-Skyline
+    Skyline
 </a>
 
 <a href="paranormal.html">
-Paranormal
+    Paranormal
 </a>
 
 <a href="photography.html">
-Photography
+    Photography
 </a>
 
 <a href="contact.html">
-Get in Touch
+    Get in Touch
 </a>
 
 </nav>
@@ -1253,24 +1221,24 @@ Get in Touch
 
 
 <img
-src="newitt-media-logo.png.PNG"
-alt="NEWITT Media logo"
-class="hero-logo"
+    src="newitt-media-logo.png.PNG"
+    alt="NEWITT Media"
+    class="hero-logo"
 >
 
 
 <h1>
-NEWITT <span>MEDIA</span>
+    NEWITT <span>MEDIA</span>
 </h1>
 
 
 <p>
 
-One name bringing together drone aerial media,
-photography and paranormal adventures.
+One media brand bringing together
+drone aerial work, paranormal adventures
+and photography.
 
-Explore the projects, images and adventures
-that make up NEWITT Media.
+Explore each side of NEWITT Media below.
 
 </p>
 
@@ -1279,26 +1247,18 @@ that make up NEWITT Media.
 
 
 <a
-href="skyline.html"
-class="button primary"
+    href="skyline.html"
+    class="button newitt"
 >
-Explore Skyline Media
+    Explore Skyline
 </a>
 
 
 <a
-href="paranormal.html"
-class="button"
+    href="paranormal.html"
+    class="button"
 >
-Explore Paranormal
-</a>
-
-
-<a
-href="photography.html"
-class="button"
->
-View Photography
+    Explore Paranormal
 </a>
 
 
@@ -1310,54 +1270,61 @@ View Photography
 
 
 <!-- =====================================================
-     THREE SIDES
+     INTRO
 ===================================================== -->
 
-<section class="areas">
+<section class="intro">
 
 
 <h2>
-Three sides of <span>NEWITT Media</span>
+    Explore <span>NEWITT Media</span>
 </h2>
 
 
 <p>
 
-Explore the three areas of NEWITT Media
-and follow the projects, images and adventures
-as they grow.
+Three different directions.
+One NEWITT Media identity.
+
+Choose where you want to go.
 
 </p>
 
 
-<div class="cards">
+</section>
 
 
-<!-- =================================================
-     SKYLINE CARD
-================================================= -->
 
-<article class="card">
+<!-- =====================================================
+     BRAND CARDS
+===================================================== -->
+
+<section class="cards">
+
+
+<!-- SKYLINE -->
+
+<article class="card card-skyline">
 
 
 <div>
 
 <img
-src="sky-logo.png.PNG"
-alt="NEWITT Skyline Media"
-class="card-logo"
+    src="sky-logo.png.PNG"
+    alt="NEWITT Skyline Media"
+    class="card-logo"
 >
 
 
 <h3>
-NEWITT Skyline Media
+    NEWITT Skyline Media
 </h3>
 
 
 <p>
 
-Drone footage, aerial photography and
-views from above.
+Drone aerial photography,
+aerial video and views from above.
 
 </p>
 
@@ -1365,10 +1332,10 @@ views from above.
 
 
 <a
-href="skyline.html"
-class="button primary"
+    href="skyline.html"
+    class="button button-skyline"
 >
-Explore Skyline
+    Explore Skyline
 </a>
 
 
@@ -1376,31 +1343,29 @@ Explore Skyline
 
 
 
-<!-- =================================================
-     PARANORMAL CARD
-================================================= -->
+<!-- PARANORMAL -->
 
-<article class="card">
+<article class="card card-paranormal">
 
 
 <div>
 
 <img
-src="paranormal-logo.png.PNG"
-alt="NEWITT's Paranormal Adventures"
-class="card-logo"
+    src="paranormal-logo.png.PNG"
+    alt="NEWITT's Paranormal Adventures"
+    class="card-logo"
 >
 
 
 <h3>
-NEWITT's Paranormal Adventures
+    NEWITT's Paranormal Adventures
 </h3>
 
 
 <p>
 
 Haunted locations, investigations,
-strange stories and unexplained experiences.
+strange experiences and unexplained events.
 
 </p>
 
@@ -1408,10 +1373,10 @@ strange stories and unexplained experiences.
 
 
 <a
-href="paranormal.html"
-class="button"
+    href="paranormal.html"
+    class="button button-paranormal"
 >
-Explore Paranormal
+    Explore Paranormal
 </a>
 
 
@@ -1419,32 +1384,29 @@ Explore Paranormal
 
 
 
-<!-- =================================================
-     PHOTOGRAPHY CARD
-================================================= -->
+<!-- PHOTOGRAPHY -->
 
-<article class="card">
+<article class="card card-photography">
 
 
 <div>
 
 <img
-src="newitt-media-logo.png.PNG"
-alt="NEWITT Media Photography"
-class="card-logo"
+    src="newitt-media-logo.png.PNG"
+    alt="NEWITT Media Photography"
+    class="card-logo"
 >
 
 
 <h3>
-NEWITT Media Photography
+    NEWITT Media Photography
 </h3>
 
 
 <p>
 
-A growing collection of landscapes,
-locations and moments captured through
-the lens.
+Landscapes, locations and moments
+captured through the lens.
 
 </p>
 
@@ -1452,17 +1414,14 @@ the lens.
 
 
 <a
-href="photography.html"
-class="button"
+    href="photography.html"
+    class="button newitt"
 >
-View Photography
+    View Photography
 </a>
 
 
 </article>
-
-
-</div>
 
 
 </section>
@@ -1477,16 +1436,17 @@ View Photography
 
 
 <h2>
-One <span>Media</span>. Three Directions.
+    One <span>NEWITT Media</span>
 </h2>
 
 
 <p>
 
-Explore the drone work, paranormal adventures
-and photography that make up NEWITT Media.
+From the sky, into the unknown and
+through the lens.
 
-For enquiries, use the Get in Touch page.
+Explore all three sides of NEWITT Media
+or get in touch.
 
 </p>
 
@@ -1495,34 +1455,34 @@ For enquiries, use the Get in Touch page.
 
 
 <a
-href="skyline.html"
-class="button"
+    href="skyline.html"
+    class="button button-skyline"
 >
-Skyline
+    Skyline
 </a>
 
 
 <a
-href="paranormal.html"
-class="button"
+    href="paranormal.html"
+    class="button button-paranormal"
 >
-Paranormal
+    Paranormal
 </a>
 
 
 <a
-href="photography.html"
-class="button"
+    href="photography.html"
+    class="button newitt"
 >
-Photography
+    Photography
 </a>
 
 
 <a
-href="contact.html"
-class="button primary"
+    href="contact.html"
+    class="button newitt"
 >
-Get in Touch
+    Get in Touch
 </a>
 
 
@@ -1550,7 +1510,7 @@ NEWITT MEDIA
 
 <br>
 
-Drone Media. Photography. Paranormal Adventures.
+Skyline Media. Paranormal Adventures. Photography.
 
 </div>
 
@@ -1559,7 +1519,7 @@ Drone Media. Photography. Paranormal Adventures.
 
 
 <!-- =====================================================
-     JAVASCRIPT
+     MOBILE MENU
 ===================================================== -->
 
 <script>
@@ -1575,22 +1535,22 @@ function toggleMenu() {
 
 
 document
-.querySelectorAll("#mobileMenu a")
-.forEach(function(link) {
+    .querySelectorAll("#mobileMenu a")
+    .forEach(function(link) {
 
-    link.addEventListener(
-        "click",
-        function() {
+        link.addEventListener(
+            "click",
+            function() {
 
-            document
-                .getElementById("mobileMenu")
-                .classList
-                .remove("show");
+                document
+                    .getElementById("mobileMenu")
+                    .classList
+                    .remove("show");
 
-        }
-    );
+            }
+        );
 
-});
+    });
 
 </script>
 
