@@ -6,903 +6,1655 @@
 <meta charset="UTF-8">
 
 <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+  name="theme-color"
+  content="#050608"
+>
+
+<meta
+  name="description"
+  content="NEWITT Media Photography. Landscapes, locations, people, adventures and moments captured through photography."
 >
 
 <title>NEWITT Media Photography</title>
 
-<meta
-    name="description"
-    content="NEWITT Media Photography. Landscapes, locations and moments captured through the lens."
->
 
 <style>
 
-/* =====================================================
-   RESET
-===================================================== */
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    min-height: 100vh;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    color: #ffffff;
-
-    background: #03030a;
-
-    overflow-x: hidden;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-img {
-    max-width: 100%;
-}
-
-
-/* =====================================================
-   NEWITT MEDIA COLOURS
-===================================================== */
+/* =========================================================
+   NEWITT MEDIA PHOTOGRAPHY
+   MASTER PAGE
+   ========================================================= */
 
 :root {
 
-    --newitt: #9b5cff;
+  --black: #030405;
 
-    --newitt-bright: #b47cff;
+  --black-soft: #080a0d;
 
-    --newitt-glow:
-        rgba(155,92,255,0.28);
+  --silver: #d8dde2;
 
-    --panel:
-        rgba(6,5,15,0.84);
+  --silver-light: #f5f7f9;
+
+  --silver-dark: #9da6ae;
+
+  --white: #ffffff;
+
+  --muted: #b1bac2;
+
+  --dim: #78828b;
+
+  --line: rgba(220,225,230,0.16);
+
+  --line-soft: rgba(220,225,230,0.08);
+
+  --panel: rgba(4,6,8,0.64);
+
+  --shadow:
+    0 25px 75px rgba(0,0,0,0.58);
 }
 
 
-/* =====================================================
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+
+  margin: 0;
+
+  color: var(--white);
+
+  background: var(--black);
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  overflow-x: hidden;
+}
+
+a {
+
+  color: inherit;
+
+  text-decoration: none;
+}
+
+img {
+
+  max-width: 100%;
+
+  display: block;
+}
+
+
+/* =========================================================
    BACKGROUND
-===================================================== */
+   ========================================================= */
 
 body::before {
 
-    content: "";
+  content: "";
 
-    position: fixed;
+  position: fixed;
 
-    inset: 0;
+  inset: 0;
 
-    z-index: -3;
+  z-index: -5;
 
-    background:
+  background:
 
-        linear-gradient(
-            rgba(3,3,10,0.40),
-            rgba(3,3,10,0.88)
-        ),
+    linear-gradient(
+      rgba(2,3,5,0.50),
+      rgba(2,3,5,0.84)
+    ),
 
-        url("background.png.PNG")
-        center center / cover no-repeat;
+    url("background.png.PNG")
+    center / cover
+    no-repeat;
 
-    transform: scale(1.02);
+  transform: scale(1.02);
 }
 
 
 body::after {
 
-    content: "";
+  content: "";
 
-    position: fixed;
+  position: fixed;
 
-    inset: 0;
+  inset: 0;
 
-    z-index: -2;
+  z-index: -4;
 
-    background:
+  pointer-events: none;
 
-        radial-gradient(
-            circle at 50% 8%,
-            rgba(155,92,255,0.20),
-            transparent 45%
-        );
+  background:
 
-    pointer-events: none;
+    radial-gradient(
+      circle at 50% 10%,
+      rgba(220,225,230,0.08),
+      transparent 38%
+    ),
+
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,0.02),
+      rgba(0,0,0,0.56)
+    );
 }
 
 
-/* =====================================================
-   CONTAINER
-===================================================== */
+/* =========================================================
+   GENERAL
+   ========================================================= */
 
 .container {
 
-    width:
-        min(1100px, 92%);
+  width:
+    min(1180px,92%);
 
-    margin:
-        0 auto;
+  margin:
+    0 auto;
+}
+
+section {
+
+  padding:
+    90px 0;
 }
 
 
-/* =====================================================
+/* =========================================================
    HEADER
-===================================================== */
+   ========================================================= */
 
-header {
+.site-header {
 
-    position: sticky;
+  position:
+    sticky;
 
-    top: 0;
+  top:
+    0;
 
-    z-index: 1000;
+  z-index:
+    1000;
 
-    background:
-        rgba(3,3,10,0.96);
+  background:
+    rgba(3,4,6,0.90);
 
-    backdrop-filter:
-        blur(18px);
+  backdrop-filter:
+    blur(18px);
 
-    border-bottom:
-        1px solid
-        rgba(155,92,255,0.28);
+  -webkit-backdrop-filter:
+    blur(18px);
 
-    box-shadow:
-        0 8px 35px
-        rgba(0,0,0,0.40);
+  border-bottom:
+    1px solid
+    rgba(220,225,230,0.10);
 }
 
 
 .nav {
 
-    min-height:
-        78px;
+  min-height:
+    74px;
 
-    display:
-        flex;
+  display:
+    flex;
 
-    align-items:
-        center;
+  align-items:
+    center;
 
-    justify-content:
-        space-between;
+  justify-content:
+    space-between;
 
-    gap:
-        20px;
+  gap:
+    20px;
 }
 
 
-/* =====================================================
+/* =========================================================
    BRAND
-===================================================== */
+   ========================================================= */
 
 .nav-brand {
 
-    font-size:
-        21px;
+  display:
+    flex;
 
-    font-weight:
-        950;
+  align-items:
+    center;
 
-    letter-spacing:
-        1px;
+  gap:
+    10px;
 
-    white-space:
-        nowrap;
+  color:
+    var(--white);
+
+  font-size:
+    17px;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    1px;
+
+  white-space:
+    nowrap;
+}
+
+
+.nav-brand img {
+
+  width:
+    42px;
+
+  height:
+    42px;
+
+  object-fit:
+    contain;
+
+  filter:
+    drop-shadow(
+      0 0 13px
+      rgba(220,225,230,0.15)
+    );
 }
 
 
 .nav-brand span {
 
-    color:
-        var(--newitt);
+  color:
+    var(--silver);
 }
 
 
-/* =====================================================
+/* =========================================================
    NAVIGATION
-===================================================== */
+   ========================================================= */
 
 .nav-links {
 
-    display:
-        flex;
+  display:
+    flex;
 
-    align-items:
-        center;
+  align-items:
+    center;
 
-    gap:
-        25px;
-
-    font-size:
-        14px;
-
-    font-weight:
-        800;
+  gap:
+    5px;
 }
 
 
 .nav-links a {
 
-    padding:
-        12px 3px;
+  position:
+    relative;
 
-    opacity:
-        0.88;
+  padding:
+    11px 15px;
 
-    transition:
-        color 0.25s ease,
-        opacity 0.25s ease;
+  border-radius:
+    9px;
+
+  color:
+    #d9dee3;
+
+  font-size:
+    12px;
+
+  font-weight:
+    800;
+
+  transition:
+    0.25s ease;
 }
 
 
 .nav-links a:hover {
 
-    color:
-        var(--newitt-bright);
+  color:
+    #ffffff;
 
-    opacity:
-        1;
+  background:
+    rgba(255,255,255,0.055);
 }
 
 
-/* =====================================================
+.nav-links a.active {
+
+  color:
+    #ffffff;
+
+  background:
+    rgba(255,255,255,0.055);
+}
+
+
+.nav-links a.active::after {
+
+  content:
+    "";
+
+  position:
+    absolute;
+
+  left:
+    17px;
+
+  right:
+    17px;
+
+  bottom:
+    4px;
+
+  height:
+    1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--silver),
+      transparent
+    );
+}
+
+
+/* =========================================================
    MOBILE MENU
-===================================================== */
+   ========================================================= */
 
-.menu-button {
+.menu-toggle {
 
-    display:
-        none;
+  display:
+    none;
 
-    padding:
-        12px 18px;
+  padding:
+    10px 14px;
 
-    border:
-        1px solid
-        rgba(155,92,255,0.60);
+  border:
+    1px solid
+    rgba(220,225,230,0.25);
 
-    border-radius:
-        14px;
+  border-radius:
+    10px;
 
-    background:
-        rgba(155,92,255,0.10);
+  background:
+    rgba(255,255,255,0.045);
 
-    color:
-        #ffffff;
+  color:
+    #ffffff;
 
-    font-size:
-        15px;
+  font-size:
+    12px;
 
-    font-weight:
-        900;
+  font-weight:
+    900;
 
-    cursor:
-        pointer;
+  letter-spacing:
+    0.08em;
+
+  cursor:
+    pointer;
 }
 
 
-/* =====================================================
-   MAIN
-===================================================== */
-
-main {
-
-    padding:
-        60px 0 100px;
-}
-
-
-/* =====================================================
+/* =========================================================
    HERO
-===================================================== */
+   ========================================================= */
 
-.hero {
+.photo-hero {
 
-    width:
-        min(860px, 100%);
+  position:
+    relative;
 
-    margin:
-        0 auto 60px;
+  min-height:
+    650px;
 
-    padding:
-        50px 35px;
+  display:
+    flex;
 
-    text-align:
-        center;
+  align-items:
+    center;
 
-    display:
-        flex;
+  justify-content:
+    center;
 
-    flex-direction:
-        column;
+  text-align:
+    center;
 
-    align-items:
-        center;
-
-    border:
-        1px solid
-        rgba(155,92,255,0.30);
-
-    border-radius:
-        30px;
-
-    background:
-        var(--panel);
-
-    backdrop-filter:
-        blur(15px);
-
-    box-shadow:
-        0 25px 75px
-        rgba(0,0,0,0.45);
+  overflow:
+    hidden;
 }
 
 
-/* =====================================================
-   LOGO
-===================================================== */
+.photo-hero::before {
+
+  content:
+    "";
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  z-index:
+    -1;
+
+  background:
+
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(220,225,230,0.10),
+      transparent 40%
+    );
+}
+
+
+.hero-content {
+
+  width:
+    min(900px,92%);
+
+  margin:
+    0 auto;
+}
+
 
 .hero-logo {
 
-    width:
-        150px;
+  width:
+    270px;
 
-    height:
-        150px;
+  height:
+    270px;
 
-    object-fit:
-        contain;
+  max-width:
+    72vw;
 
-    display:
-        block;
+  object-fit:
+    contain;
 
-    margin:
-        0 auto 28px;
+  margin:
+    0 auto 28px;
 
-    filter:
-        drop-shadow(
-            0 16px 35px
-            rgba(155,92,255,0.25)
-        );
+  filter:
+    drop-shadow(
+      0 17px 38px
+      rgba(0,0,0,0.68)
+    );
 }
 
 
-/* =====================================================
-   TITLE
-===================================================== */
+.eyebrow {
 
-.hero h1 {
+  margin-bottom:
+    12px;
 
-    width:
-        100%;
+  color:
+    var(--silver);
 
-    margin:
-        0 0 18px;
+  font-size:
+    10px;
 
-    text-align:
-        center;
+  font-weight:
+    900;
 
-    font-size:
-        clamp(40px, 6vw, 68px);
+  letter-spacing:
+    0.25em;
 
-    line-height:
-        1;
-
-    font-weight:
-        950;
-
-    letter-spacing:
-        -2px;
+  text-transform:
+    uppercase;
 }
 
 
-.hero h1 span {
+.photo-hero h1 {
 
-    color:
-        var(--newitt-bright);
+  margin:
+    0;
+
+  font-size:
+    clamp(42px,7vw,76px);
+
+  font-weight:
+    950;
+
+  line-height:
+    0.96;
+
+  letter-spacing:
+    -3px;
 }
 
 
-.hero p {
+.photo-hero h1 span {
 
-    max-width:
-        720px;
-
-    margin:
-        0 auto;
-
-    color:
-        #d0cbd8;
-
-    font-size:
-        17px;
-
-    line-height:
-        1.8;
+  color:
+    var(--silver);
 }
 
 
-/* =====================================================
-   BUTTON
-===================================================== */
+.hero-copy {
+
+  max-width:
+    740px;
+
+  margin:
+    25px auto 0;
+
+  color:
+    #c9ced3;
+
+  font-size:
+    15px;
+
+  line-height:
+    1.85;
+}
+
+
+.hero-buttons {
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    12px;
+
+  margin-top:
+    30px;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
 
 .button {
 
-    display:
-        inline-flex;
+  min-height:
+    47px;
 
-    align-items:
-        center;
+  display:
+    inline-flex;
 
-    justify-content:
-        center;
+  align-items:
+    center;
 
-    min-height:
-        48px;
+  justify-content:
+    center;
 
-    padding:
-        13px 22px;
+  padding:
+    0 21px;
 
-    border:
-        1px solid
-        rgba(255,255,255,0.14);
+  border:
+    1px solid
+    rgba(220,225,230,0.28);
 
-    border-radius:
-        13px;
+  border-radius:
+    10px;
 
-    background:
-        rgba(255,255,255,0.06);
+  background:
+    rgba(255,255,255,0.045);
 
-    color:
-        #ffffff;
+  color:
+    #e9edf0;
 
-    font-weight:
-        900;
+  font-size:
+    11px;
 
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        background 0.25s ease;
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.07em;
+
+  text-transform:
+    uppercase;
+
+  transition:
+    0.25s ease;
 }
 
 
 .button:hover {
 
-    transform:
-        translateY(-3px);
+  transform:
+    translateY(-3px);
 
-    border-color:
-        rgba(155,92,255,0.60);
+  border-color:
+    rgba(220,225,230,0.55);
+
+  background:
+    rgba(255,255,255,0.09);
 }
 
 
-.button.newitt {
+.button.primary {
 
-    background:
-        var(--newitt);
+  background:
+    linear-gradient(
+      135deg,
+      #edf0f2,
+      #9fa8af
+    );
 
-    border-color:
-        var(--newitt);
+  color:
+    #080a0c;
 
-    box-shadow:
-        0 12px 35px
-        var(--newitt-glow);
+  border-color:
+    rgba(245,247,249,0.50);
+
+  box-shadow:
+    0 12px 35px
+    rgba(0,0,0,0.38);
 }
 
 
-/* =====================================================
-   SECTION
-===================================================== */
+/* =========================================================
+   SECTION HEADING
+   ========================================================= */
 
-.section {
+.section-heading {
 
-    margin-bottom:
-        45px;
+  max-width:
+    780px;
 
-    padding:
-        38px;
+  margin:
+    0 auto 42px;
 
-    border:
-        1px solid
-        rgba(155,92,255,0.22);
-
-    border-radius:
-        28px;
-
-    background:
-        var(--panel);
-
-    backdrop-filter:
-        blur(14px);
-
-    box-shadow:
-        0 20px 60px
-        rgba(0,0,0,0.38);
+  text-align:
+    center;
 }
 
 
-.section h2 {
+.section-heading h2 {
 
-    margin:
-        0 0 18px;
+  margin:
+    0 0 14px;
 
-    font-size:
-        clamp(32px, 5vw, 50px);
+  font-size:
+    clamp(32px,5vw,52px);
 
-    line-height:
-        1.05;
+  line-height:
+    1;
 
-    font-weight:
-        950;
+  letter-spacing:
+    -2px;
 }
 
 
-.section h2 span {
+.section-heading h2 span {
 
-    color:
-        var(--newitt-bright);
+  color:
+    var(--silver);
 }
 
 
-.section p {
+.section-heading p {
 
-    margin:
-        0;
+  margin:
+    0;
 
-    color:
-        #d0cbd8;
+  color:
+    var(--muted);
 
-    font-size:
-        16px;
+  font-size:
+    14px;
 
-    line-height:
-        1.8;
+  line-height:
+    1.8;
 }
 
 
-/* =====================================================
-   PHOTO GALLERY
-===================================================== */
+/* =========================================================
+   INTRODUCTION
+   ========================================================= */
 
-.photo-gallery {
+.intro-panel {
 
-    display:
-        grid;
+  max-width:
+    950px;
 
-    grid-template-columns:
-        repeat(2, 1fr);
+  margin:
+    0 auto;
 
-    gap:
-        20px;
+  padding:
+    45px;
 
-    margin-top:
-        30px;
+  border:
+    1px solid
+    var(--line);
+
+  border-radius:
+    24px;
+
+  background:
+    var(--panel);
+
+  box-shadow:
+    var(--shadow);
 }
 
 
-.photo-card {
+.intro-panel h2 {
 
-    overflow:
-        hidden;
+  margin:
+    0 0 16px;
 
-    border:
-        1px solid
-        rgba(155,92,255,0.22);
+  font-size:
+    clamp(30px,5vw,45px);
 
-    border-radius:
-        22px;
+  line-height:
+    1;
 
-    background:
-        #05050d;
-
-    box-shadow:
-        0 18px 45px
-        rgba(0,0,0,0.38);
+  letter-spacing:
+    -1px;
 }
 
 
-.photo-card img {
+.intro-panel h2 span {
 
-    width:
-        100%;
-
-    height:
-        auto;
-
-    display:
-        block;
-
-    transition:
-        transform 0.4s ease;
+  color:
+    var(--silver);
 }
 
 
-.photo-card:hover img {
+.intro-panel p {
 
-    transform:
-        scale(1.025);
+  max-width:
+    850px;
+
+  margin:
+    0 0 15px;
+
+  color:
+    #b9c1c8;
+
+  font-size:
+    14px;
+
+  line-height:
+    1.85;
 }
 
 
-/* =====================================================
-   PHOTO PLACEHOLDER
-===================================================== */
+.silver-line {
+
+  width:
+    70px;
+
+  height:
+    1px;
+
+  margin:
+    20px 0 22px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--silver),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   FEATURED PHOTOGRAPHY
+   ========================================================= */
+
+.feature-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1.35fr 0.65fr;
+
+  gap:
+    18px;
+
+  max-width:
+    1050px;
+
+  margin:
+    0 auto;
+}
+
+
+.feature-card {
+
+  position:
+    relative;
+
+  min-height:
+    430px;
+
+  overflow:
+    hidden;
+
+  border:
+    1px solid
+    var(--line-soft);
+
+  border-radius:
+    20px;
+
+  background:
+    #080a0d;
+
+  box-shadow:
+    var(--shadow);
+}
+
+
+.feature-card.small {
+
+  min-height:
+    430px;
+}
+
+
+.feature-image {
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  min-height:
+    430px;
+
+  object-fit:
+    cover;
+}
+
 
 .photo-placeholder {
 
-    min-height:
-        260px;
+  width:
+    100%;
 
-    display:
-        flex;
+  height:
+    100%;
 
-    align-items:
-        center;
+  min-height:
+    430px;
 
-    justify-content:
-        center;
+  display:
+    flex;
 
-    padding:
-        30px;
+  align-items:
+    center;
 
-    text-align:
-        center;
+  justify-content:
+    center;
 
-    color:
-        #a9a2b1;
+  padding:
+    30px;
 
-    background:
-        rgba(255,255,255,0.025);
+  text-align:
+    center;
 
-    border:
-        1px dashed
-        rgba(155,92,255,0.25);
+  color:
+    var(--dim);
 
-    line-height:
-        1.6;
+  background:
+
+    radial-gradient(
+      circle at center,
+      rgba(220,225,230,0.08),
+      transparent 42%
+    ),
+
+    linear-gradient(
+      145deg,
+      #0b0d10,
+      #030405
+    );
 }
 
 
-/* =====================================================
+.photo-placeholder strong {
+
+  display:
+    block;
+
+  margin-bottom:
+    8px;
+
+  color:
+    #c8ced3;
+
+  font-size:
+    15px;
+}
+
+
+.feature-overlay {
+
+  position:
+    absolute;
+
+  left:
+    0;
+
+  right:
+    0;
+
+  bottom:
+    0;
+
+  padding:
+    55px 25px 22px;
+
+  background:
+    linear-gradient(
+      transparent,
+      rgba(0,0,0,0.85)
+    );
+}
+
+
+.feature-overlay h3 {
+
+  margin:
+    0 0 5px;
+
+  font-size:
+    21px;
+}
+
+
+.feature-overlay p {
+
+  margin:
+    0;
+
+  color:
+    #b5bdc4;
+
+  font-size:
+    12px;
+}
+
+
+/* =========================================================
+   PHOTO CATEGORIES
+   ========================================================= */
+
+.category-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:
+    18px;
+
+  max-width:
+    1050px;
+
+  margin:
+    0 auto;
+}
+
+
+.category {
+
+  padding:
+    30px 25px;
+
+  text-align:
+    center;
+
+  border:
+    1px solid
+    var(--line-soft);
+
+  border-radius:
+    18px;
+
+  background:
+    rgba(4,6,8,0.52);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+.category:hover {
+
+  transform:
+    translateY(-5px);
+
+  border-color:
+    rgba(220,225,230,0.22);
+}
+
+
+.category-symbol {
+
+  width:
+    46px;
+
+  height:
+    46px;
+
+  margin:
+    0 auto 17px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border:
+    1px solid
+    rgba(220,225,230,0.23);
+
+  border-radius:
+    50%;
+
+  color:
+    var(--silver);
+
+  font-size:
+    17px;
+}
+
+
+.category h3 {
+
+  margin:
+    0 0 9px;
+
+  font-size:
+    18px;
+}
+
+
+.category p {
+
+  margin:
+    0;
+
+  color:
+    #969fa7;
+
+  font-size:
+    12px;
+
+  line-height:
+    1.75;
+}
+
+
+/* =========================================================
+   GALLERY
+   ========================================================= */
+
+.gallery-panel {
+
+  max-width:
+    1100px;
+
+  margin:
+    0 auto;
+
+  padding:
+    38px;
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius:
+    24px;
+
+  background:
+    rgba(3,5,7,0.60);
+
+  box-shadow:
+    var(--shadow);
+}
+
+
+.gallery-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:
+    16px;
+}
+
+
+.gallery-item {
+
+  overflow:
+    hidden;
+
+  border:
+    1px solid
+    var(--line-soft);
+
+  border-radius:
+    15px;
+
+  background:
+    #07090b;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+.gallery-item:hover {
+
+  transform:
+    translateY(-4px);
+
+  border-color:
+    rgba(220,225,230,0.22);
+}
+
+
+.gallery-image {
+
+  aspect-ratio:
+    4 / 3;
+
+  overflow:
+    hidden;
+
+  background:
+    #080a0d;
+}
+
+
+.gallery-image img {
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  object-fit:
+    cover;
+}
+
+
+.gallery-placeholder {
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  min-height:
+    200px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  padding:
+    20px;
+
+  text-align:
+    center;
+
+  color:
+    #68727a;
+
+  font-size:
+    11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(220,225,230,0.045),
+      rgba(0,0,0,0.18)
+    );
+}
+
+
+.gallery-info {
+
+  padding:
+    16px;
+}
+
+
+.gallery-info h3 {
+
+  margin:
+    0 0 6px;
+
+  font-size:
+    14px;
+}
+
+
+.gallery-info p {
+
+  margin:
+    0;
+
+  color:
+    #818b93;
+
+  font-size:
+    11px;
+
+  line-height:
+    1.6;
+}
+
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact-panel {
+
+  max-width:
+    1000px;
+
+  margin:
+    0 auto;
+
+  padding:
+    32px 35px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    30px;
+
+  border:
+    1px solid
+    rgba(220,225,230,0.18);
+
+  border-radius:
+    20px;
+
+  background:
+    linear-gradient(
+      100deg,
+      rgba(25,29,33,0.72),
+      rgba(3,5,7,0.70)
+    );
+}
+
+
+.contact-panel h2 {
+
+  margin:
+    0 0 8px;
+
+  font-size:
+    25px;
+}
+
+
+.contact-panel p {
+
+  margin:
+    0;
+
+  color:
+    #9ca5ad;
+
+  font-size:
+    13px;
+}
+
+
+.contact-actions {
+
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    10px;
+}
+
+
+/* =========================================================
    FOOTER
-===================================================== */
+   ========================================================= */
 
 footer {
 
-    padding:
-        45px 0;
+  padding:
+    45px 20px
+    55px;
 
-    text-align:
-        center;
+  text-align:
+    center;
 
-    color:
-        #9d98a7;
+  border-top:
+    1px solid
+    rgba(220,225,230,0.08);
 
-    border-top:
-        1px solid
-        rgba(255,255,255,0.08);
+  color:
+    #69737b;
 
-    line-height:
-        1.7;
+  font-size:
+    10px;
+
+  letter-spacing:
+    0.14em;
+
+  text-transform:
+    uppercase;
 }
 
 
-/* =====================================================
+footer strong {
+
+  color:
+    var(--silver);
+}
+
+
+/* =========================================================
    MOBILE
-===================================================== */
+   ========================================================= */
 
-@media (max-width: 850px) {
+@media(max-width:800px) {
 
-    .nav {
-
-        min-height:
-            70px;
-    }
+  .menu-toggle {
+    display: block;
+  }
 
 
-    .nav-brand {
+  .nav-links {
 
-        font-size:
-            18px;
-    }
+    display: none;
 
+    position: absolute;
 
-    .menu-button {
+    top: 68px;
 
-        display:
-            block;
-    }
+    left: 4%;
 
+    right: 4%;
 
-    .nav-links {
+    padding: 10px;
 
-        display:
-            none;
+    flex-direction: column;
 
-        position:
-            absolute;
+    gap: 5px;
 
-        top:
-            70px;
+    background:
+      rgba(3,4,6,0.98);
 
-        left:
-            0;
+    border:
+      1px solid
+      rgba(220,225,230,0.13);
 
-        right:
-            0;
+    border-radius:
+      15px;
 
-        padding:
-            18px 20px 22px;
-
-        flex-direction:
-            column;
-
-        gap:
-            6px;
-
-        background:
-            rgba(3,3,10,0.98);
-
-        border-bottom:
-            1px solid
-            rgba(155,92,255,0.25);
-
-        backdrop-filter:
-            blur(18px);
-    }
+    box-shadow:
+      0 25px 60px
+      rgba(0,0,0,0.70);
+  }
 
 
-    .nav-links.show {
-
-        display:
-            flex;
-    }
+  .nav-links.open {
+    display: flex;
+  }
 
 
-    .nav-links a {
+  .nav-links a {
 
-        width:
-            100%;
+    width:
+      100%;
 
-        padding:
-            15px 12px;
+    min-height:
+      50px;
 
-        border-radius:
-            11px;
+    display:
+      flex;
 
-        text-align:
-            center;
+    align-items:
+      center;
 
-        background:
-            rgba(255,255,255,0.045);
-    }
+    justify-content:
+      center;
+
+    font-size:
+      15px;
+  }
 
 
-    .photo-gallery {
+  .photo-hero {
 
-        grid-template-columns:
-            1fr;
-    }
+    min-height:
+      620px;
+  }
+
+
+  .hero-logo {
+
+    width:
+      220px;
+
+    height:
+      220px;
+  }
+
+
+  .photo-hero h1 {
+
+    font-size:
+      45px;
+
+    letter-spacing:
+      -2px;
+  }
+
+
+  .hero-copy {
+
+    font-size:
+      14px;
+  }
+
+
+  .hero-buttons {
+
+    flex-direction:
+      column;
+  }
+
+
+  .hero-buttons .button {
+
+    width:
+      100%;
+  }
+
+
+  .intro-panel {
+
+    padding:
+      32px 25px;
+  }
+
+
+  .feature-grid {
+
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .feature-card,
+  .feature-card.small,
+  .feature-image,
+  .photo-placeholder {
+
+    min-height:
+      340px;
+  }
+
+
+  .category-grid {
+
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .gallery-panel {
+
+    padding:
+      28px 18px;
+  }
+
+
+  .gallery-grid {
+
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .contact-panel {
+
+    flex-direction:
+      column;
+
+    align-items:
+      flex-start;
+  }
+
+
+  .contact-actions {
+
+    width:
+      100%;
+  }
+
+
+  .contact-actions .button {
+
+    width:
+      100%;
+  }
 
 }
 
 
-/* =====================================================
-   PHONE
-===================================================== */
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
 
-@media (max-width: 520px) {
+@media(max-width:480px) {
 
-    .container {
-
-        width:
-            90%;
-    }
-
-
-    main {
-
-        padding:
-            40px 0 70px;
-    }
+  section {
+    padding:
+      65px 0;
+  }
 
 
-    .hero {
-
-        padding:
-            38px 18px;
-
-        border-radius:
-            25px;
-    }
+  .container {
+    width:
+      90%;
+  }
 
 
-    .hero-logo {
+  .hero-logo {
 
-        width:
-            125px;
+    width:
+      190px;
 
-        height:
-            125px;
-
-        margin-bottom:
-            23px;
-    }
+    height:
+      190px;
+  }
 
 
-    .hero h1 {
+  .photo-hero h1 {
 
-        font-size:
-            40px;
-
-        letter-spacing:
-            -1.5px;
-    }
+    font-size:
+      37px;
+  }
 
 
-    .hero p {
+  .intro-panel {
 
-        font-size:
-            15px;
-    }
-
-
-    .hero .button {
-
-        width:
-            100%;
-    }
+    padding:
+      28px 21px;
+  }
 
 
-    .section {
+  .feature-card,
+  .feature-card.small,
+  .feature-image,
+  .photo-placeholder {
 
-        padding:
-            25px 18px;
-
-        border-radius:
-            23px;
-    }
-
-
-    .photo-gallery {
-
-        gap:
-            16px;
-    }
-
-}
-
-
-/* =====================================================
-   REDUCED MOTION
-===================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior:
-            auto;
-    }
-
-    * {
-        transition:
-            none !important;
-    }
+    min-height:
+      290px;
+  }
 
 }
 
@@ -914,335 +1666,860 @@ footer {
 <body>
 
 
-<!-- =====================================================
+<!-- =======================================================
      HEADER
-===================================================== -->
+     ======================================================= -->
 
-<header>
+<header class="site-header">
 
-<div class="container nav">
-
-
-<a
-    href="index.html"
-    class="nav-brand"
->
-    NEWITT <span>MEDIA</span>
-</a>
+  <div class="container nav">
 
 
-<button
-    class="menu-button"
-    onclick="toggleMenu()"
-    aria-label="Open navigation menu"
->
-    MENU
-</button>
+    <a
+      href="index.html"
+      class="nav-brand"
+    >
+
+      <img
+        src="newitt-media-logo.png.PNG"
+        alt="NEWITT Media logo"
+      >
+
+      NEWITT <span>MEDIA</span>
+
+    </a>
 
 
-<nav
-    class="nav-links"
-    id="mobileMenu"
->
-
-<a href="index.html">
-    Home
-</a>
-
-<a href="skyline.html">
-    Skyline
-</a>
-
-<a href="paranormal.html">
-    Paranormal
-</a>
-
-<a href="photography.html">
-    Photography
-</a>
-
-<a href="contact.html">
-    Get in Touch
-</a>
-
-</nav>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="main-menu"
+    >
+      MENU
+    </button>
 
 
-</div>
+    <nav
+      class="nav-links"
+      id="main-menu"
+      aria-label="Main navigation"
+    >
+
+      <a href="index.html">
+        Home
+      </a>
+
+
+      <a href="skyline.html">
+        Skyline
+      </a>
+
+
+      <a href="paranormal.html">
+        Paranormal
+      </a>
+
+
+      <a
+        href="photography.html"
+        class="active"
+      >
+        Photography
+      </a>
+
+
+      <a href="contact.html">
+        Contact
+      </a>
+
+    </nav>
+
+  </div>
 
 </header>
 
 
 
-<!-- =====================================================
-     MAIN
-===================================================== -->
-
 <main>
 
-<div class="container">
 
-
-<!-- =====================================================
+<!-- =======================================================
      HERO
-===================================================== -->
+     ======================================================= -->
 
-<section class="hero">
+<section class="photo-hero">
 
-
-<img
-    src="newitt-media-logo.png.PNG"
-    alt="NEWITT Media Photography"
-    class="hero-logo"
->
+  <div class="hero-content">
 
 
-<h1>
-    NEWITT Media <span>Photography</span>
-</h1>
+    <img
+      src="newitt-media-logo.png.PNG"
+      alt="NEWITT Media Photography"
+      class="hero-logo"
+    >
 
 
-<p>
-
-A growing collection of landscapes,
-locations, adventures and moments
-captured through the lens.
-
-Photography is another part of the
-NEWITT Media journey.
-
-</p>
+    <div class="eyebrow">
+      NEWITT Media Photography
+    </div>
 
 
-<div style="margin-top: 30px;">
-
-<a
-    href="index.html"
-    class="button newitt"
->
-    Back to NEWITT Media
-</a>
-
-</div>
+    <h1>
+      See the moment.
+      <span>Capture the moment.</span>
+    </h1>
 
 
-</section>
+    <p class="hero-copy">
+
+      Sometimes you do not need a drone, a haunted
+      building or a complicated plan.
+
+      Sometimes you just need the camera in the
+      right place at the right time.
+
+    </p>
 
 
-
-<!-- =====================================================
-     THROUGH THE LENS
-===================================================== -->
-
-<section class="section">
+    <div class="hero-buttons">
 
 
-<h2>
-    Through the <span>Lens</span>
-</h2>
+      <a
+        href="#gallery"
+        class="button primary"
+      >
+        View Photography
+      </a>
 
 
-<p>
+      <a
+        href="contact.html"
+        class="button"
+      >
+        Get in Touch
+      </a>
 
-Photography gives NEWITT Media another way
-to capture the places, people, landscapes
-and moments encountered along the way.
 
-This collection will grow as new photographs
-are taken during drone projects, paranormal
-adventures, travel and everyday exploration.
+    </div>
 
-</p>
 
+  </div>
 
 </section>
 
 
 
-<!-- =====================================================
-     PHOTO COLLECTION
-===================================================== -->
+<!-- =======================================================
+     INTRODUCTION
+     ======================================================= -->
 
-<section class="section">
+<section>
 
-
-<h2>
-    Photo <span>Collection</span>
-</h2>
+  <div class="container">
 
 
-<p>
-
-A growing collection of photographs from
-NEWITT Media.
-
-New photographs can be added to this
-section whenever you are ready.
-
-</p>
+    <div class="intro-panel">
 
 
-<div class="photo-gallery">
+      <div class="eyebrow">
+        Through the lens
+      </div>
 
 
-<!-- =================================================
-     PHOTO 01
-===================================================== -->
-
-<div class="photo-card">
-
-<div class="photo-placeholder">
-
-Your first photography image
-can be added here.
-
-</div>
-
-</div>
+      <h2>
+        Moments worth
+        <span>remembering.</span>
+      </h2>
 
 
-<!-- =================================================
-     PHOTO 02
-===================================================== -->
-
-<div class="photo-card">
-
-<div class="photo-placeholder">
-
-Your second photography image
-can be added here.
-
-</div>
-
-</div>
+      <div class="silver-line"></div>
 
 
-</div>
+      <p>
 
+        NEWITT Media Photography is about capturing
+        places, people, landscapes and experiences
+        as they actually feel.
+
+      </p>
+
+
+      <p>
+
+        From an interesting location to a moment
+        that happens unexpectedly, photography gives
+        us a way to stop time for a second and keep
+        something worth remembering.
+
+      </p>
+
+
+    </div>
+
+  </div>
 
 </section>
 
 
 
-<!-- =====================================================
-     RETURN
-===================================================== -->
+<!-- =======================================================
+     FEATURED PHOTOGRAPHY
+     ======================================================= -->
 
-<section class="section"
-         style="text-align:center;">
+<section>
 
-
-<h2>
-    Explore <span>NEWITT Media</span>
-</h2>
+  <div class="container">
 
 
-<p style="margin-bottom:25px;">
-
-Explore the other sides of NEWITT Media.
-
-</p>
+    <div class="section-heading">
 
 
-<div
-    style="
-        display:flex;
-        justify-content:center;
-        flex-wrap:wrap;
-        gap:12px;
-    "
->
+      <div class="eyebrow">
+        Featured work
+      </div>
 
 
-<a
-    href="skyline.html"
-    class="button"
->
-    Skyline
-</a>
+      <h2>
+        Through the
+        <span>lens.</span>
+      </h2>
 
 
-<a
-    href="paranormal.html"
-    class="button"
->
-    Paranormal
-</a>
+      <p>
+
+        A growing collection of photographs from
+        locations, adventures and everyday moments.
+
+      </p>
 
 
-<a
-    href="contact.html"
-    class="button newitt"
->
-    Get in Touch
-</a>
+    </div>
 
 
-</div>
 
+    <div class="feature-grid">
+
+
+      <article class="feature-card">
+
+        <div class="photo-placeholder">
+
+          <div>
+
+            <strong>
+              Featured Photograph
+            </strong>
+
+            Your main photography image
+            will appear here.
+
+          </div>
+
+        </div>
+
+
+        <div class="feature-overlay">
+
+          <h3>
+            Featured Image
+          </h3>
+
+
+          <p>
+            NEWITT Media Photography
+          </p>
+
+        </div>
+
+      </article>
+
+
+
+      <article class="feature-card small">
+
+        <div class="photo-placeholder">
+
+          <div>
+
+            <strong>
+              Featured Location
+            </strong>
+
+            A second photograph
+            will appear here.
+
+          </div>
+
+        </div>
+
+
+        <div class="feature-overlay">
+
+          <h3>
+            Location & Landscape
+          </h3>
+
+
+          <p>
+            Captured through the lens.
+          </p>
+
+        </div>
+
+      </article>
+
+
+    </div>
+
+  </div>
 
 </section>
 
 
-</div>
+
+<!-- =======================================================
+     CATEGORIES
+     ======================================================= -->
+
+<section>
+
+  <div class="container">
+
+
+    <div class="section-heading">
+
+
+      <div class="eyebrow">
+        Photography
+      </div>
+
+
+      <h2>
+        Different views.
+        <span>One camera.</span>
+      </h2>
+
+
+      <p>
+
+        The photography side of NEWITT Media
+        can grow with every new location and
+        every new adventure.
+
+      </p>
+
+
+    </div>
+
+
+
+    <div class="category-grid">
+
+
+      <article class="category">
+
+
+        <div class="category-symbol">
+          L
+        </div>
+
+
+        <h3>
+          Landscapes
+        </h3>
+
+
+        <p>
+
+          Landscapes, views and locations
+          captured from the ground.
+
+        </p>
+
+
+      </article>
+
+
+
+      <article class="category">
+
+
+        <div class="category-symbol">
+          P
+        </div>
+
+
+        <h3>
+          People & Moments
+        </h3>
+
+
+        <p>
+
+          Natural moments, adventures and
+          memories worth keeping.
+
+        </p>
+
+
+      </article>
+
+
+
+      <article class="category">
+
+
+        <div class="category-symbol">
+          L
+        </div>
+
+
+        <h3>
+          Locations
+        </h3>
+
+
+        <p>
+
+          Interesting places, buildings and
+          locations photographed properly.
+
+        </p>
+
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     GALLERY
+     ======================================================= -->
+
+<section id="gallery">
+
+  <div class="container">
+
+
+    <div class="gallery-panel">
+
+
+      <div class="section-heading">
+
+        <div class="eyebrow">
+          Photography Gallery
+        </div>
+
+
+        <h2>
+          The
+          <span>Gallery.</span>
+        </h2>
+
+
+        <p>
+
+          This is where the NEWITT Media Photography
+          collection will live as new photographs
+          are added.
+
+        </p>
+
+      </div>
+
+
+
+      <div class="gallery-grid">
+
+
+        <article class="gallery-item">
+
+          <div class="gallery-image">
+
+            <div class="gallery-placeholder">
+
+              <div>
+
+                <strong>
+                  Photograph 01
+                </strong>
+
+                Add your first
+                photography image here.
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="gallery-info">
+
+            <h3>
+              Featured Photograph
+            </h3>
+
+
+            <p>
+              NEWITT Media Photography
+            </p>
+
+          </div>
+
+        </article>
+
+
+
+        <article class="gallery-item">
+
+          <div class="gallery-image">
+
+            <div class="gallery-placeholder">
+
+              <div>
+
+                <strong>
+                  Photograph 02
+                </strong>
+
+                Add your second
+                photography image here.
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="gallery-info">
+
+            <h3>
+              Location
+            </h3>
+
+
+            <p>
+              NEWITT Media Photography
+            </p>
+
+          </div>
+
+        </article>
+
+
+
+        <article class="gallery-item">
+
+          <div class="gallery-image">
+
+            <div class="gallery-placeholder">
+
+              <div>
+
+                <strong>
+                  Photograph 03
+                </strong>
+
+                Add your third
+                photography image here.
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="gallery-info">
+
+            <h3>
+              Landscape
+            </h3>
+
+
+            <p>
+              NEWITT Media Photography
+            </p>
+
+          </div>
+
+        </article>
+
+
+
+        <article class="gallery-item">
+
+          <div class="gallery-image">
+
+            <div class="gallery-placeholder">
+
+              <div>
+
+                <strong>
+                  Photograph 04
+                </strong>
+
+                Add another photograph here.
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="gallery-info">
+
+            <h3>
+              Adventure
+            </h3>
+
+
+            <p>
+              NEWITT Media Photography
+            </p>
+
+          </div>
+
+        </article>
+
+
+
+        <article class="gallery-item">
+
+          <div class="gallery-image">
+
+            <div class="gallery-placeholder">
+
+              <div>
+
+                <strong>
+                  Photograph 05
+                </strong>
+
+                Add another photograph here.
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="gallery-info">
+
+            <h3>
+              Location
+            </h3>
+
+
+            <p>
+              NEWITT Media Photography
+            </p>
+
+          </div>
+
+        </article>
+
+
+
+        <article class="gallery-item">
+
+          <div class="gallery-image">
+
+            <div class="gallery-placeholder">
+
+              <div>
+
+                <strong>
+                  Photograph 06
+                </strong>
+
+                Add another photograph here.
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="gallery-info">
+
+            <h3>
+              Featured Work
+            </h3>
+
+
+            <p>
+              NEWITT Media Photography
+            </p>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     CONTACT
+     ======================================================= -->
+
+<section>
+
+  <div class="container">
+
+
+    <div class="contact-panel">
+
+
+      <div>
+
+        <div class="eyebrow">
+          NEWITT Media Photography
+        </div>
+
+
+        <h2>
+          Got a moment worth capturing?
+        </h2>
+
+
+        <p>
+
+          Get in touch with NEWITT Media
+          about photography projects and ideas.
+
+        </p>
+
+      </div>
+
+
+      <div class="contact-actions">
+
+
+        <a
+          href="contact.html"
+          class="button primary"
+        >
+          Get in Touch
+        </a>
+
+
+        <a
+          href="index.html"
+          class="button"
+        >
+          Back to Home
+        </a>
+
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
 
 </main>
 
 
 
-<!-- =====================================================
+<!-- =======================================================
      FOOTER
-===================================================== -->
+     ======================================================= -->
 
 <footer>
 
-<div class="container">
+  <strong>
+    NEWITT MEDIA PHOTOGRAPHY
+  </strong>
 
-NEWITT Media Photography
+  <br>
+  <br>
 
-<br>
+  See the moment.
+  Capture the moment.
 
-Landscapes. Locations. Moments.
+  <br>
+  <br>
 
-</div>
+  © 2026 NEWITT Media.
+  All rights reserved.
 
 </footer>
 
 
 
-<!-- =====================================================
+<!-- =======================================================
      MOBILE MENU
-===================================================== -->
+     ======================================================= -->
 
 <script>
 
-function toggleMenu() {
+const menuButton =
+  document.querySelector(".menu-toggle");
 
-    const menu =
-        document.getElementById("mobileMenu");
+const menu =
+  document.querySelector("#main-menu");
 
-    menu.classList.toggle("show");
 
-}
+menuButton.addEventListener(
+  "click",
+  function () {
+
+    const open =
+      menu.classList.toggle("open");
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      open
+    );
+
+  }
+);
 
 
 document
-    .querySelectorAll("#mobileMenu a")
-    .forEach(function(link) {
+  .querySelectorAll("#main-menu a")
+  .forEach(function (link) {
 
-        link.addEventListener(
-            "click",
-            function() {
+    link.addEventListener(
+      "click",
+      function () {
 
-                document
-                    .getElementById("mobileMenu")
-                    .classList
-                    .remove("show");
+        menu.classList.remove("open");
 
-            }
+        menuButton.setAttribute(
+          "aria-expanded",
+          "false"
         );
 
-    });
+      }
+    );
+
+  });
 
 </script>
 
