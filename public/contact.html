@@ -6,22 +6,22 @@
 <meta charset="UTF-8">
 
 <meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
 >
 
-<title>Contact | NEWITT Media</title>
+<title>Get in Touch | NEWITT Media</title>
 
 <meta
-name="description"
-content="Contact NEWITT Media for Skyline drone enquiries and Paranormal Adventures enquiries."
+    name="description"
+    content="Contact NEWITT Skyline Media and NEWITT's Paranormal Adventures."
 >
 
 <style>
 
-/* ========================================
+/* =========================================
    RESET
-======================================== */
+========================================= */
 
 * {
     box-sizing: border-box;
@@ -33,7 +33,12 @@ html {
 
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
     color: #f5f7fb;
 
@@ -42,12 +47,18 @@ body {
     overflow-x: hidden;
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
-/* ========================================
+
+/* =========================================
    BACKGROUND
-======================================== */
+========================================= */
 
 body::before {
+
     content: "";
 
     position: fixed;
@@ -58,14 +69,17 @@ body::before {
 
     background:
         linear-gradient(
-            rgba(3,7,14,0.55),
-            rgba(3,7,14,0.84)
+            rgba(3,7,14,0.52),
+            rgba(3,7,14,0.82)
         ),
         url("background.png.PNG")
         center center / cover no-repeat;
+
+    transform: scale(1.02);
 }
 
 body::after {
+
     content: "";
 
     position: fixed;
@@ -76,37 +90,33 @@ body::after {
 
     background:
         radial-gradient(
-            circle at 50% 5%,
-            rgba(35,160,255,0.20),
-            transparent 42%
+            circle at 50% 0%,
+            rgba(40,160,255,0.22),
+            transparent 40%
         );
 
     pointer-events: none;
 }
 
 
-/* ========================================
-   GENERAL
-======================================== */
-
-a {
-    color: inherit;
-
-    text-decoration: none;
-}
+/* =========================================
+   CONTAINER
+========================================= */
 
 .container {
-    width: min(1150px, 92%);
 
-    margin: auto;
+    width: min(1100px, 92%);
+
+    margin: 0 auto;
 }
 
 
-/* ========================================
+/* =========================================
    HEADER
-======================================== */
+========================================= */
 
 header {
+
     position: sticky;
 
     top: 0;
@@ -120,11 +130,17 @@ header {
         blur(18px);
 
     border-bottom:
-        1px solid rgba(60,168,255,0.18);
+        1px solid
+        rgba(60,168,255,0.20);
+
+    box-shadow:
+        0 8px 35px
+        rgba(0,0,0,0.25);
 }
 
 .nav {
-    min-height: 72px;
+
+    min-height: 78px;
 
     display: flex;
 
@@ -136,35 +152,38 @@ header {
 }
 
 
-/* ========================================
+/* =========================================
    BRAND
-======================================== */
+========================================= */
 
-.brand {
-    font-size: 20px;
+.nav-brand {
 
-    font-weight: 900;
+    font-size: 21px;
+
+    font-weight: 950;
 
     letter-spacing: 1px;
 
     white-space: nowrap;
 }
 
-.brand span {
+.nav-brand span {
+
     color: #3ca8ff;
 }
 
 
-/* ========================================
+/* =========================================
    NAVIGATION
-======================================== */
+========================================= */
 
 .nav-links {
+
     display: flex;
 
     align-items: center;
 
-    gap: 22px;
+    gap: 25px;
 
     font-size: 14px;
 
@@ -172,9 +191,12 @@ header {
 }
 
 .nav-links a {
-    opacity: 0.82;
 
-    padding: 10px 4px;
+    position: relative;
+
+    padding: 12px 3px;
+
+    opacity: 0.85;
 
     transition:
         opacity 0.25s ease,
@@ -182,28 +204,31 @@ header {
 }
 
 .nav-links a:hover {
+
     opacity: 1;
 
-    color: #3ca8ff;
+    color: #42aaff;
 }
 
 
-/* ========================================
-   MOBILE MENU
-======================================== */
+/* =========================================
+   MOBILE MENU BUTTON
+========================================= */
 
 .menu-button {
+
     display: none;
 
     padding: 12px 18px;
 
     border:
-        1px solid rgba(60,168,255,0.55);
+        1px solid
+        rgba(60,168,255,0.55);
 
     border-radius: 14px;
 
     background:
-        rgba(20,60,100,0.30);
+        rgba(20,60,100,0.32);
 
     color: #ffffff;
 
@@ -215,93 +240,129 @@ header {
 }
 
 
-/* ========================================
-   HERO
-======================================== */
+/* =========================================
+   MAIN
+========================================= */
 
-.hero {
-    text-align: center;
+main {
 
     padding:
-        75px 0 45px;
+        75px 0 100px;
 }
 
-.logo {
-    width: 190px;
 
-    height: 190px;
+/* =========================================
+   PAGE HEADER
+========================================= */
 
-    object-fit: contain;
+.page-header {
 
-    margin-bottom: 22px;
+    text-align: center;
 
-    filter:
-        drop-shadow(
-            0 15px 35px rgba(0,0,0,0.45)
-        );
-}
-
-h1 {
-    margin: 0;
-
-    font-size:
-        clamp(40px, 7vw, 70px);
-
-    line-height: 1.05;
-}
-
-h1 span {
-    color: #3ba8ff;
-}
-
-.intro {
     max-width: 760px;
 
     margin:
-        22px auto 0;
+        0 auto 50px;
+}
 
-    color: #ccd3dd;
+.page-header h1 {
 
-    line-height: 1.8;
+    margin: 0 0 18px;
+
+    font-size:
+        clamp(
+            42px,
+            7vw,
+            70px
+        );
+
+    line-height: 1;
+
+    font-weight: 950;
+
+    letter-spacing: -2px;
+}
+
+.page-header h1 span {
+
+    color: #38a8ff;
+}
+
+.page-header p {
+
+    margin: 0;
+
+    color: #cbd3de;
 
     font-size: 17px;
+
+    line-height: 1.8;
 }
 
 
-/* ========================================
-   CONTACT CARDS
-======================================== */
+/* =========================================
+   CONTACT BOX
+========================================= */
 
-.contact-grid {
-    display: grid;
+.contact-box {
 
-    grid-template-columns:
-        repeat(2, 1fr);
+    max-width: 950px;
 
-    gap: 24px;
+    margin: 0 auto;
 
-    margin:
-        20px 0 80px;
-}
-
-.contact-card {
-    padding: 35px;
-
-    background:
-        rgba(3,7,14,0.78);
+    padding: 45px;
 
     border:
-        1px solid rgba(60,168,255,0.18);
+        1px solid
+        rgba(60,168,255,0.22);
 
-    border-radius: 28px;
+    border-radius: 30px;
+
+    background:
+        rgba(4,9,17,0.82);
 
     backdrop-filter:
         blur(16px);
 
     box-shadow:
-        0 25px 70px rgba(0,0,0,0.30);
+        0 25px 75px
+        rgba(0,0,0,0.42);
+}
+
+
+/* =========================================
+   CONTACT GRID
+========================================= */
+
+.contact-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 22px;
+}
+
+
+/* =========================================
+   CONTACT CARDS
+========================================= */
+
+.contact-card {
+
+    padding: 32px;
 
     text-align: center;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,255,255,0.035);
+
+    border:
+        1px solid
+        rgba(60,168,255,0.16);
 
     transition:
         transform 0.25s ease,
@@ -309,145 +370,177 @@ h1 span {
 }
 
 .contact-card:hover {
+
     transform:
-        translateY(-6px);
+        translateY(-5px);
 
     border-color:
-        rgba(60,168,255,0.45);
+        rgba(60,168,255,0.42);
 }
 
 .contact-card h2 {
-    margin-top: 0;
 
-    font-size: 30px;
-}
+    margin:
+        0 0 15px;
 
-.contact-card h2 span {
-    color: #3ba8ff;
+    font-size: 27px;
 }
 
 .contact-card p {
-    color: #c9d0da;
 
-    line-height: 1.8;
+    margin:
+        0 auto 25px;
 
-    min-height: 85px;
+    max-width: 390px;
+
+    color: #cbd2dc;
+
+    line-height: 1.75;
+
+    font-size: 15px;
 }
 
 
-/* ========================================
-   BUTTONS
-======================================== */
+/* =========================================
+   BUTTON
+========================================= */
 
-.button {
+.contact-button {
+
     display: inline-block;
-
-    margin-top: 18px;
 
     padding:
         14px 24px;
 
-    border-radius: 13px;
+    border:
+        1px solid
+        #168cff;
+
+    border-radius:
+        13px;
 
     background:
         #168cff;
 
-    color: #ffffff;
+    color:
+        #ffffff;
 
-    font-weight: 900;
+    font-weight:
+        900;
 
     transition:
-        transform 0.25s ease,
-        background 0.25s ease;
+        0.25s ease;
+
+    box-shadow:
+        0 12px 30px
+        rgba(22,140,255,0.20);
 }
 
-.button:hover {
-    transform:
-        translateY(-3px);
+.contact-button:hover {
 
     background:
         #2998ff;
+
+    transform:
+        translateY(-2px);
 }
 
 
-/* ========================================
-   GENERAL CONTACT INFORMATION
-======================================== */
+/* =========================================
+   BACK HOME
+========================================= */
 
-.contact-info {
-    max-width: 850px;
-
-    margin:
-        0 auto 70px;
-
-    padding:
-        35px;
+.back-home {
 
     text-align: center;
 
-    background:
-        rgba(3,7,14,0.72);
+    margin-top: 35px;
+}
+
+.back-home a {
+
+    display: inline-block;
+
+    padding:
+        12px 20px;
+
+    border-radius:
+        12px;
 
     border:
-        1px solid rgba(255,255,255,0.09);
+        1px solid
+        rgba(255,255,255,0.12);
 
-    border-radius: 26px;
+    background:
+        rgba(255,255,255,0.05);
 
-    backdrop-filter:
-        blur(15px);
+    color:
+        #dce2eb;
+
+    font-weight:
+        800;
+
+    transition:
+        0.25s ease;
 }
 
-.contact-info h2 {
-    margin-top: 0;
+.back-home a:hover {
 
-    font-size: 32px;
-}
+    border-color:
+        rgba(60,168,255,0.4);
 
-.contact-info p {
-    color: #cbd2dc;
-
-    line-height: 1.8;
+    color:
+        #55b1ff;
 }
 
 
-/* ========================================
+/* =========================================
    FOOTER
-======================================== */
+========================================= */
 
 footer {
+
     padding:
-        50px 0;
+        45px 0;
 
-    text-align: center;
+    text-align:
+        center;
 
-    color: #9ba4b1;
+    color:
+        #9da5b2;
 
     border-top:
-        1px solid rgba(255,255,255,0.08);
+        1px solid
+        rgba(255,255,255,0.08);
 
-    line-height: 1.7;
+    line-height:
+        1.7;
 }
 
 
-/* ========================================
+/* =========================================
    MOBILE
-======================================== */
+========================================= */
 
-@media (max-width: 750px) {
+@media (max-width: 800px) {
 
     .nav {
+
         min-height: 70px;
     }
 
-    .brand {
+    .nav-brand {
+
         font-size: 18px;
     }
 
     .menu-button {
+
         display: block;
     }
 
     .nav-links {
+
         display: none;
 
         position: absolute;
@@ -469,89 +562,113 @@ footer {
             rgba(3,6,12,0.98);
 
         border-bottom:
-            1px solid rgba(60,168,255,0.18);
+            1px solid
+            rgba(60,168,255,0.18);
 
         backdrop-filter:
             blur(18px);
     }
 
     .nav-links.show {
+
         display: flex;
     }
 
     .nav-links a {
+
         width: 100%;
 
-        padding:
-            14px 12px;
+        padding: 15px 12px;
 
-        border-radius: 10px;
+        border-radius: 11px;
 
         text-align: center;
 
         background:
-            rgba(255,255,255,0.035);
+            rgba(255,255,255,0.045);
     }
 
-    .hero {
+    main {
+
         padding:
-            55px 0 35px;
+            55px 0 70px;
     }
 
-    .logo {
-        width: 150px;
+    .contact-box {
 
-        height: 150px;
-    }
+        padding:
+            25px 18px;
 
-    .intro {
-        font-size: 16px;
+        border-radius:
+            24px;
     }
 
     .contact-grid {
+
         grid-template-columns: 1fr;
-
-        gap: 18px;
-
-        margin-bottom: 50px;
     }
 
     .contact-card {
-        padding:
-            28px 20px;
+
+        padding: 28px 20px;
+    }
+}
+
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width: 420px) {
+
+    .container {
+
+        width: 90%;
     }
 
-    .contact-card p {
-        min-height: auto;
+    .nav-brand {
+
+        font-size: 17px;
     }
 
-    .contact-info {
+    .menu-button {
+
         padding:
-            28px 20px;
+            11px 15px;
+
+        font-size: 14px;
+    }
+
+    .page-header h1 {
+
+        font-size: 43px;
+    }
+
+    .page-header p {
+
+        font-size: 15px;
+    }
+
+    .contact-card h2 {
+
+        font-size: 24px;
     }
 
 }
 
 
-/* ========================================
-   SMALL PHONES
-======================================== */
+/* =========================================
+   REDUCED MOTION
+========================================= */
 
-@media (max-width: 420px) {
+@media (prefers-reduced-motion: reduce) {
 
-    .container {
-        width: 90%;
+    html {
+        scroll-behavior: auto;
     }
 
-    .brand {
-        font-size: 17px;
-    }
-
-    .menu-button {
-        padding:
-            11px 15px;
-
-        font-size: 14px;
+    * {
+        transition: none !important;
     }
 
 }
@@ -564,9 +681,9 @@ footer {
 <body>
 
 
-<!-- =====================================
+<!-- =========================================
      HEADER
-===================================== -->
+========================================= -->
 
 <header>
 
@@ -574,41 +691,41 @@ footer {
 
 
 <a
-href="index.html"
-class="brand"
+    href="index.html"
+    class="nav-brand"
 >
-NEWITT <span>MEDIA</span>
+    NEWITT <span>MEDIA</span>
 </a>
 
 
 <button
-class="menu-button"
-onclick="toggleMenu()"
-aria-label="Open navigation menu"
+    class="menu-button"
+    onclick="toggleMenu()"
+    aria-label="Open navigation menu"
 >
-MENU
+    MENU
 </button>
 
 
 <nav
-class="nav-links"
-id="mobileMenu"
+    class="nav-links"
+    id="mobileMenu"
 >
 
 <a href="index.html">
-Home
+    Home
 </a>
 
 <a href="skyline.html">
-Skyline
+    Skyline
 </a>
 
 <a href="paranormal.html">
-Paranormal
+    Paranormal
 </a>
 
 <a href="photography.html">
-Photography
+    Photography
 </a>
 
 </nav>
@@ -620,187 +737,114 @@ Photography
 
 
 
-<!-- =====================================
-     MAIN
-===================================== -->
+<!-- =========================================
+     MAIN CONTENT
+========================================= -->
 
 <main>
-
-
-<!-- =====================================
-     HERO
-===================================== -->
-
-<section class="hero">
 
 <div class="container">
 
 
-<img
-src="newitt-media-logo.png.PNG"
-alt="NEWITT Media logo"
-class="logo"
->
-
+<div class="page-header">
 
 <h1>
 Get in <span>Touch</span>
 </h1>
 
-
-<p class="intro">
-
-Whether you're looking for aerial drone work
-or want to discuss a paranormal investigation,
-choose the NEWITT Media section that best
-matches your enquiry.
-
+<p>
+Choose the NEWITT Media section you would
+like to contact. Your email app will open
+with the correct address already selected.
 </p>
-
 
 </div>
 
-</section>
 
 
+<div class="contact-box">
 
-<!-- =====================================
-     CONTACT OPTIONS
-===================================== -->
-
-<section>
-
-<div class="container">
 
 <div class="contact-grid">
 
 
-<!-- SKYLINE -->
+<!-- =====================================
+     SKYLINE
+===================================== -->
 
 <div class="contact-card">
 
-
 <h2>
-NEWITT <span>Skyline Media</span>
+NEWITT Skyline Media
 </h2>
 
-
 <p>
-
-Drone footage, aerial photography,
-location filming and other Skyline
-Media enquiries.
-
+For drone work, aerial photography,
+aerial filming, location projects and
+Skyline Media enquiries.
 </p>
 
-
 <a
-href="skyline.html#contact"
-class="button"
+    href="mailto:n.skyline.media@gmail.com"
+    class="contact-button"
 >
-Skyline Enquiries
+    Skyline Enquiries
 </a>
 
-
 </div>
-
-
-
-<!-- PARANORMAL -->
-
-<div class="contact-card">
-
-
-<h2>
-NEWITT's <span>Paranormal Adventures</span>
-</h2>
-
-
-<p>
-
-Paranormal investigations, location
-suggestions, collaborations and
-investigation enquiries.
-
-</p>
-
-
-<a
-href="paranormal.html#contact"
-class="button"
->
-Paranormal Enquiries
-</a>
-
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
 
 
 
 <!-- =====================================
-     GENERAL INFORMATION
+     PARANORMAL
 ===================================== -->
 
-<section>
-
-<div class="container">
-
-<div class="contact-info">
-
+<div class="contact-card">
 
 <h2>
-Choose the right NEWITT Media section
+NEWITT's Paranormal Adventures
 </h2>
 
-
 <p>
-
-For drone and aerial work, use
-NEWITT Skyline Media.
-
+For paranormal investigations, location
+suggestions, stories, collaborations and
+Paranormal Adventures enquiries.
 </p>
 
+<a
+    href="mailto:nw13ttt@gmail.com"
+    class="contact-button"
+>
+    Paranormal Enquiries
+</a>
 
-<p>
-
-For paranormal investigations,
-locations, stories and collaborations,
-use NEWITT's Paranormal Adventures.
-
-</p>
+</div>
 
 
-<p>
+</div>
 
-The contact options on those pages
-will take you to the appropriate
-enquiry route.
 
-</p>
+
+<div class="back-home">
+
+<a href="index.html">
+    Back to NEWITT Media
+</a>
+
+</div>
 
 
 </div>
 
 </div>
-
-</section>
-
-
 
 </main>
 
 
 
-<!-- =====================================
+<!-- =========================================
      FOOTER
-===================================== -->
+========================================= -->
 
 <footer>
 
@@ -818,9 +862,9 @@ Drone work. Photography. Paranormal adventures.
 
 
 
-<!-- =====================================
-     MOBILE MENU
-===================================== -->
+<!-- =========================================
+     MOBILE MENU JAVASCRIPT
+========================================= -->
 
 <script>
 
@@ -843,9 +887,9 @@ document
         function() {
 
             document
-            .getElementById("mobileMenu")
-            .classList
-            .remove("show");
+                .getElementById("mobileMenu")
+                .classList
+                .remove("show");
 
         }
     );
