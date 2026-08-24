@@ -5,16 +5,14 @@
 
 <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>NEWITT's Paranormal Adventures</title>
 
 <meta
     name="description"
-    content="NEWITT's Paranormal Adventures. Haunted locations, investigations, paranormal experiences and unexplained events."
+    content="NEWITT's Paranormal Adventures. Haunted locations, paranormal investigations, strange stories and unexplained events."
 >
 
 <style>
@@ -42,7 +40,7 @@ body {
 
     color: #ffffff;
 
-    background: #050202;
+    background: #050506;
 
     overflow-x: hidden;
 }
@@ -54,6 +52,7 @@ a {
 
 img {
     max-width: 100%;
+    display: block;
 }
 
 
@@ -63,17 +62,44 @@ img {
 
 :root {
 
-    --paranormal-red: #c62828;
+    --black:
+        #050506;
 
-    --paranormal-bright: #ef3333;
-
-    --paranormal-dark: #090202;
-
-    --paranormal-glow:
-        rgba(198,40,40,0.28);
+    --black-deep:
+        #020203;
 
     --panel:
-        rgba(12,5,7,0.84);
+        rgba(10,8,9,0.88);
+
+    --panel-dark:
+        rgba(5,4,5,0.94);
+
+    --white:
+        #ffffff;
+
+    --silver:
+        #d9dde2;
+
+    --muted:
+        #b9bec6;
+
+    --red:
+        #b3122f;
+
+    --red-bright:
+        #ff304f;
+
+    --red-dark:
+        #68091c;
+
+    --red-glow:
+        rgba(255,48,79,0.30);
+
+    --line:
+        rgba(255,48,79,0.27);
+
+    --shadow:
+        0 25px 70px rgba(0,0,0,0.58);
 }
 
 
@@ -94,14 +120,15 @@ body::before {
     background:
 
         linear-gradient(
-            rgba(5,1,3,0.38),
-            rgba(5,1,3,0.88)
+            rgba(2,2,4,0.72),
+            rgba(2,2,4,0.90)
         ),
 
         url("background.png.PNG")
-        center center / cover no-repeat;
+        center / cover no-repeat;
 
-    transform: scale(1.02);
+    transform:
+        scale(1.02);
 }
 
 
@@ -119,11 +146,18 @@ body::after {
 
         radial-gradient(
             circle at 50% 10%,
-            rgba(198,40,40,0.20),
-            transparent 44%
+            rgba(179,18,47,0.17),
+            transparent 38%
+        ),
+
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0.08),
+            rgba(0,0,0,0.58)
         );
 
-    pointer-events: none;
+    pointer-events:
+        none;
 }
 
 
@@ -134,7 +168,7 @@ body::after {
 .container {
 
     width:
-        min(1100px, 92%);
+        min(1180px,92%);
 
     margin:
         0 auto;
@@ -145,34 +179,37 @@ body::after {
    HEADER
 ===================================================== */
 
-header {
+.site-header {
 
-    position: sticky;
+    position:
+        sticky;
 
-    top: 0;
+    top:
+        0;
 
-    z-index: 1000;
+    z-index:
+        1000;
 
     background:
-        rgba(5,2,3,0.96);
+        rgba(3,3,5,0.97);
 
     backdrop-filter:
         blur(18px);
 
     border-bottom:
         1px solid
-        rgba(198,40,40,0.35);
+        rgba(255,48,79,0.20);
 
     box-shadow:
         0 8px 35px
-        rgba(0,0,0,0.45);
+        rgba(0,0,0,0.55);
 }
 
 
 .nav {
 
     min-height:
-        78px;
+        76px;
 
     display:
         flex;
@@ -184,18 +221,27 @@ header {
         space-between;
 
     gap:
-        20px;
+        22px;
 }
 
 
 /* =====================================================
-   HEADER BRAND
+   NAV BRAND
 ===================================================== */
 
 .nav-brand {
 
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
     font-size:
-        21px;
+        18px;
 
     font-weight:
         950;
@@ -208,10 +254,68 @@ header {
 }
 
 
+.nav-brand img {
+
+    width:
+        42px;
+
+    height:
+        42px;
+
+    object-fit:
+        contain;
+
+    filter:
+        drop-shadow(
+            0 0 14px
+            rgba(255,48,79,0.20)
+        );
+}
+
+
 .nav-brand span {
 
     color:
-        var(--paranormal-bright);
+        var(--red-bright);
+}
+
+
+/* =====================================================
+   MENU BUTTON
+===================================================== */
+
+.menu-toggle {
+
+    display:
+        none;
+
+    min-height:
+        46px;
+
+    padding:
+        10px 16px;
+
+    border:
+        1px solid
+        rgba(255,48,79,0.35);
+
+    border-radius:
+        12px;
+
+    background:
+        rgba(179,18,47,0.10);
+
+    color:
+        #ffffff;
+
+    font-size:
+        13px;
+
+    font-weight:
+        900;
+
+    cursor:
+        pointer;
 }
 
 
@@ -228,84 +332,79 @@ header {
         center;
 
     gap:
-        25px;
+        6px;
+}
+
+
+.nav-links a {
+
+    position:
+        relative;
+
+    padding:
+        12px 15px;
+
+    border-radius:
+        11px;
+
+    color:
+        #dedfe3;
 
     font-size:
         14px;
 
     font-weight:
         800;
-}
-
-
-.nav-links a {
-
-    padding:
-        12px 3px;
-
-    opacity:
-        0.88;
 
     transition:
-        color 0.25s ease,
-        opacity 0.25s ease;
+        0.2s ease;
 }
 
 
-.nav-links a:hover {
-
-    color:
-        var(--paranormal-bright);
-
-    opacity:
-        1;
-}
-
-
-/* =====================================================
-   MOBILE MENU
-===================================================== */
-
-.menu-button {
-
-    display:
-        none;
-
-    padding:
-        12px 18px;
-
-    border:
-        1px solid
-        rgba(198,40,40,0.65);
-
-    border-radius:
-        14px;
-
-    background:
-        rgba(198,40,40,0.12);
+.nav-links a:hover,
+.nav-links a.active {
 
     color:
         #ffffff;
 
-    font-size:
-        15px;
-
-    font-weight:
-        900;
-
-    cursor:
-        pointer;
+    background:
+        rgba(179,18,47,0.13);
 }
 
 
-/* =====================================================
-   MAIN
-===================================================== */
+.nav-links a.active::after {
 
-main {
+    content:
+        "";
 
-    padding:
-        60px 0 100px;
+    position:
+        absolute;
+
+    left:
+        15px;
+
+    right:
+        15px;
+
+    bottom:
+        5px;
+
+    height:
+        2px;
+
+    border-radius:
+        2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--red-dark),
+            var(--red-bright)
+        );
+
+    box-shadow:
+        0 0 13px
+        rgba(255,48,79,0.70);
 }
 
 
@@ -313,123 +412,110 @@ main {
    HERO
 ===================================================== */
 
-.hero {
-
-    width:
-        min(860px, 100%);
-
-    margin:
-        0 auto 60px;
+.page-hero {
 
     padding:
-        48px 35px;
+        90px 0 60px;
 
     text-align:
         center;
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    align-items:
-        center;
-
-    border:
-        1px solid
-        rgba(198,40,40,0.40);
-
-    border-radius:
-        30px;
-
-    background:
-        var(--panel);
-
-    backdrop-filter:
-        blur(15px);
-
-    box-shadow:
-        0 25px 75px
-        rgba(0,0,0,0.55);
 }
 
 
-/* =====================================================
-   PARANORMAL LOGO
-===================================================== */
-
-.hero-logo {
+.page-logo {
 
     width:
-        165px;
+        240px;
 
     height:
-        165px;
+        240px;
 
     object-fit:
         contain;
-
-    display:
-        block;
 
     margin:
         0 auto 25px;
 
     filter:
         drop-shadow(
-            0 15px 35px
-            rgba(198,40,40,0.35)
+            0 0 30px
+            rgba(255,48,79,0.34)
         );
 }
 
 
-/* =====================================================
-   HERO TITLE
-===================================================== */
+.page-hero .eyebrow {
 
-.hero h1 {
+    color:
+        var(--red-bright);
+}
 
-    width:
-        100%;
 
-    margin:
-        0 0 18px;
+.eyebrow {
 
-    text-align:
-        center;
+    margin-bottom:
+        12px;
+
+    color:
+        var(--red-bright);
 
     font-size:
-        clamp(38px, 6vw, 66px);
+        12px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        2px;
+
+    text-transform:
+        uppercase;
+}
+
+
+.page-hero h1 {
+
+    max-width:
+        1000px;
+
+    margin:
+        0 auto;
+
+    font-size:
+        clamp(40px,7vw,74px);
 
     line-height:
-        1;
+        0.98;
 
     font-weight:
         950;
 
     letter-spacing:
-        -2px;
+        -2.5px;
 }
 
 
-.hero h1 span {
+.page-hero h1 span {
 
     color:
-        var(--paranormal-bright);
+        var(--red-bright);
+
+    text-shadow:
+        0 0 28px
+        rgba(255,48,79,0.22);
 }
 
 
-.hero p {
+.page-hero p {
 
     max-width:
-        720px;
+        780px;
 
     margin:
-        0 auto;
+        24px auto 0;
 
     color:
-        #d4c9ca;
+        #c7c9ce;
 
     font-size:
         17px;
@@ -440,110 +526,28 @@ main {
 
 
 /* =====================================================
-   BUTTONS
+   SECTIONS
 ===================================================== */
 
-.buttons {
-
-    display:
-        flex;
-
-    justify-content:
-        center;
-
-    align-items:
-        center;
-
-    flex-wrap:
-        wrap;
-
-    gap:
-        12px;
-
-    margin-top:
-        30px;
-}
-
-
-.button {
-
-    display:
-        inline-flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    min-height:
-        48px;
+section {
 
     padding:
-        13px 22px;
-
-    border:
-        1px solid
-        rgba(255,255,255,0.14);
-
-    border-radius:
-        13px;
-
-    background:
-        rgba(255,255,255,0.06);
-
-    color:
-        #ffffff;
-
-    font-weight:
-        900;
-
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        background 0.25s ease;
-}
-
-
-.button:hover {
-
-    transform:
-        translateY(-3px);
-
-    border-color:
-        rgba(239,51,51,0.65);
-}
-
-
-.button.paranormal {
-
-    background:
-        var(--paranormal-red);
-
-    border-color:
-        var(--paranormal-red);
-
-    box-shadow:
-        0 12px 35px
-        var(--paranormal-glow);
+        80px 0;
 }
 
 
 /* =====================================================
-   CONTENT SECTION
+   PANELS
 ===================================================== */
 
-.section {
-
-    margin-bottom:
-        45px;
+.panel {
 
     padding:
-        38px;
+        40px;
 
     border:
         1px solid
-        rgba(198,40,40,0.28);
+        var(--line);
 
     border-radius:
         28px;
@@ -552,21 +556,23 @@ main {
         var(--panel);
 
     backdrop-filter:
-        blur(14px);
+        blur(16px);
 
     box-shadow:
-        0 20px 60px
-        rgba(0,0,0,0.40);
+        var(--shadow);
+
+    text-align:
+        center;
 }
 
 
-.section h2 {
+.panel h2 {
 
     margin:
-        0 0 18px;
+        0 0 15px;
 
     font-size:
-        clamp(32px, 5vw, 50px);
+        clamp(30px,5vw,44px);
 
     line-height:
         1.05;
@@ -576,23 +582,27 @@ main {
 }
 
 
-.section h2 span {
+.panel h2 span {
 
     color:
-        var(--paranormal-bright);
+        var(--red-bright);
+
+    text-shadow:
+        0 0 20px
+        rgba(255,48,79,0.18);
 }
 
 
-.section p {
+.panel > p {
+
+    max-width:
+        780px;
 
     margin:
-        0;
+        0 auto;
 
     color:
-        #d4c9ca;
-
-    font-size:
-        16px;
+        #c4c7cd;
 
     line-height:
         1.8;
@@ -600,152 +610,39 @@ main {
 
 
 /* =====================================================
-   WHAT WE DO
+   TIKTOK
 ===================================================== */
 
-.feature-grid {
+.tiktok-box {
 
-    display:
-        grid;
+    width:
+        100%;
 
-    grid-template-columns:
-        repeat(3, 1fr);
+    max-width:
+        780px;
 
-    gap:
-        18px;
+    min-height:
+        520px;
 
-    margin-top:
-        28px;
-}
+    margin:
+        32px auto 25px;
 
-
-.feature {
-
-    padding:
-        25px 20px;
+    overflow:
+        hidden;
 
     border:
         1px solid
-        rgba(198,40,40,0.25);
+        rgba(255,48,79,0.20);
 
     border-radius:
         20px;
 
     background:
-        rgba(255,255,255,0.035);
-}
-
-
-.feature h3 {
-
-    margin:
-        0 0 10px;
-
-    font-size:
-        21px;
-}
-
-
-.feature p {
-
-    font-size:
-        14px;
-
-    line-height:
-        1.65;
-}
-
-
-/* =====================================================
-   TIKTOK
-===================================================== */
-
-.tiktok-section {
-
-    margin-bottom:
-        45px;
-
-    padding:
-        40px 25px;
-
-    text-align:
-        center;
-
-    border:
-        1px solid
-        rgba(198,40,40,0.30);
-
-    border-radius:
-        28px;
-
-    background:
-        rgba(10,3,5,0.88);
-
-    backdrop-filter:
-        blur(14px);
+        #ffffff;
 
     box-shadow:
-        0 20px 65px
-        rgba(0,0,0,0.50);
-}
-
-
-.tiktok-section h2 {
-
-    margin:
-        0 0 15px;
-
-    font-size:
-        clamp(30px, 5vw, 46px);
-}
-
-
-.tiktok-section h2 span {
-
-    color:
-        var(--paranormal-bright);
-}
-
-
-.tiktok-section p {
-
-    max-width:
-        700px;
-
-    margin:
-        0 auto 28px;
-
-    color:
-        #d4c9ca;
-
-    line-height:
-        1.7;
-}
-
-
-/* =====================================================
-   TIKTOK EMBED
-===================================================== */
-
-.tiktok-wrapper {
-
-    width:
-        min(100%, 650px);
-
-    margin:
-        0 auto;
-
-    overflow:
-        hidden;
-
-    border-radius:
-        22px;
-
-    display:
-        flex;
-
-    justify-content:
-        center;
+        0 20px 60px
+        rgba(0,0,0,0.52);
 }
 
 
@@ -753,20 +650,17 @@ main {
 
     margin:
         0 auto !important;
-
-    max-width:
-        605px !important;
-
-    min-width:
-        325px !important;
 }
 
 
 /* =====================================================
-   TIKTOK BUTTON
+   BUTTONS
 ===================================================== */
 
-.tiktok-button {
+.button {
+
+    min-height:
+        49px;
 
     display:
         inline-flex;
@@ -777,111 +671,114 @@ main {
     justify-content:
         center;
 
-    min-height:
-        50px;
-
-    margin-top:
-        25px;
-
     padding:
-        14px 26px;
+        0 22px;
 
     border:
         1px solid
-        rgba(255,255,255,0.20);
+        rgba(255,48,79,0.30);
 
     border-radius:
-        14px;
+        12px;
 
     background:
-        #111111;
+        rgba(255,255,255,0.055);
 
     color:
         #ffffff;
 
+    font-size:
+        14px;
+
     font-weight:
         900;
 
-    box-shadow:
-        0 12px 30px
-        rgba(0,0,0,0.40);
-
     transition:
-        transform 0.25s ease,
-        border-color 0.25s ease;
+        0.25s ease;
 }
 
 
-.tiktok-button:hover {
+.button:hover {
 
     transform:
         translateY(-3px);
 
     border-color:
-        var(--paranormal-bright);
+        rgba(255,48,79,0.75);
+
+    box-shadow:
+        0 14px 38px
+        rgba(255,48,79,0.18);
+}
+
+
+.button.primary {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--red),
+            var(--red-dark)
+        );
+
+    border-color:
+        var(--red);
+
+    box-shadow:
+        0 12px 32px
+        rgba(179,18,47,0.28);
+}
+
+
+.paranormal-button {
+
+    background:
+        linear-gradient(
+            135deg,
+            #c41637,
+            #65091b
+        );
+
+    border-color:
+        #ff304f;
+
+    box-shadow:
+        0 12px 32px
+        rgba(255,48,79,0.22);
 }
 
 
 /* =====================================================
-   SOCIAL MEDIA
+   SOCIAL AREA
 ===================================================== */
 
 .social-section {
 
-    margin-bottom:
-        45px;
+    margin-top:
+        30px;
 
     padding:
-        38px 25px;
-
-    text-align:
-        center;
+        28px;
 
     border:
         1px solid
-        rgba(198,40,40,0.25);
+        rgba(255,48,79,0.16);
 
     border-radius:
-        28px;
+        20px;
 
     background:
-        var(--panel);
-
-    backdrop-filter:
-        blur(14px);
+        rgba(0,0,0,0.25);
 }
 
 
-.social-section h2 {
+.social-section h3 {
 
     margin:
-        0 0 15px;
+        0 0 18px;
 
     font-size:
-        clamp(30px, 5vw, 45px);
-}
-
-
-.social-section h2 span {
-
-    color:
-        var(--paranormal-bright);
-}
-
-
-.social-section p {
-
-    max-width:
-        700px;
-
-    margin:
-        0 auto 25px;
-
-    color:
-        #d4c9ca;
-
-    line-height:
-        1.7;
+        22px;
 }
 
 
@@ -901,145 +798,104 @@ main {
 }
 
 
-/* =====================================================
-   SOCIAL BUTTONS
-===================================================== */
+/* Instagram */
 
-.social-button {
+.instagram-button {
 
-    display:
-        inline-flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    min-width:
-        160px;
-
-    min-height:
-        48px;
-
-    padding:
-        13px 20px;
-
-    border-radius:
-        13px;
-
-    font-weight:
-        900;
-
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease;
-}
-
-
-.social-button:hover {
-
-    transform:
-        translateY(-3px);
-}
-
-
-.instagram {
+    border-color:
+        rgba(255,255,255,0.28);
 
     background:
         linear-gradient(
             135deg,
-            #833ab4,
-            #fd1d1d,
-            #fcb045
+            #7b1fa2,
+            #c2185b
         );
-
-    border:
-        1px solid
-        rgba(255,255,255,0.25);
 }
 
 
-.facebook {
+/* Facebook */
+
+.facebook-button {
+
+    border-color:
+        rgba(255,255,255,0.28);
 
     background:
         #1877f2;
-
-    border:
-        1px solid
-        #1877f2;
-}
-
-
-.social-tiktok {
-
-    background:
-        #111111;
-
-    border:
-        1px solid
-        rgba(255,255,255,0.20);
 }
 
 
 /* =====================================================
-   FOLLOW ADVENTURE
+   ABOUT
 ===================================================== */
 
-.follow-section {
+.about {
 
-    text-align:
-        center;
+    max-width:
+        900px;
+
+    margin:
+        auto;
 
     padding:
-        40px 25px;
+        42px;
 
     border:
         1px solid
-        rgba(198,40,40,0.30);
+        var(--line);
 
     border-radius:
         28px;
 
     background:
-        rgba(198,40,40,0.09);
+        rgba(8,6,8,0.84);
+
+    backdrop-filter:
+        blur(15px);
 
     box-shadow:
-        0 20px 55px
-        rgba(0,0,0,0.40);
+        var(--shadow);
 }
 
 
-.follow-section h2 {
+.about h2 {
 
     margin:
-        0 0 15px;
+        0 0 18px;
 
     font-size:
-        clamp(30px, 5vw, 45px);
+        clamp(30px,5vw,45px);
+
+    font-weight:
+        950;
 }
 
 
-.follow-section h2 span {
+.about h2 span {
 
     color:
-        var(--paranormal-bright);
+        var(--red-bright);
 }
 
 
-.follow-section p {
-
-    max-width:
-        700px;
+.about p {
 
     margin:
-        0 auto 25px;
+        0 0 16px;
 
     color:
-        #d4c9ca;
+        #c4c7cd;
 
     line-height:
-        1.7;
+        1.8;
+}
+
+
+.about p:last-child {
+
+    margin-bottom:
+        0;
 }
 
 
@@ -1056,11 +912,11 @@ footer {
         center;
 
     color:
-        #a99c9e;
+        #888b91;
 
     border-top:
         1px solid
-        rgba(255,255,255,0.08);
+        rgba(255,48,79,0.14);
 
     line-height:
         1.7;
@@ -1071,23 +927,19 @@ footer {
    MOBILE
 ===================================================== */
 
-@media (max-width: 850px) {
+@media (max-width:800px) {
 
     .nav {
 
         min-height:
-            70px;
+            68px;
+
+        padding:
+            10px 0;
     }
 
 
-    .nav-brand {
-
-        font-size:
-            18px;
-    }
-
-
-    .menu-button {
+    .menu-toggle {
 
         display:
             block;
@@ -1103,16 +955,16 @@ footer {
             absolute;
 
         top:
-            70px;
+            68px;
 
         left:
-            0;
+            4%;
 
         right:
-            0;
+            4%;
 
         padding:
-            18px 20px 22px;
+            10px;
 
         flex-direction:
             column;
@@ -1121,18 +973,22 @@ footer {
             6px;
 
         background:
-            rgba(5,2,3,0.98);
+            rgba(5,4,5,0.98);
 
-        border-bottom:
+        border:
             1px solid
-            rgba(198,40,40,0.30);
+            rgba(255,48,79,0.24);
 
-        backdrop-filter:
-            blur(18px);
+        border-radius:
+            16px;
+
+        box-shadow:
+            0 22px 55px
+            rgba(0,0,0,0.60);
     }
 
 
-    .nav-links.show {
+    .nav-links.open {
 
         display:
             flex;
@@ -1144,134 +1000,96 @@ footer {
         width:
             100%;
 
-        padding:
-            15px 12px;
+        min-height:
+            52px;
 
-        border-radius:
-            11px;
+        display:
+            flex;
 
-        text-align:
+        align-items:
             center;
 
-        background:
-            rgba(255,255,255,0.045);
-    }
-
-
-    .feature-grid {
-
-        grid-template-columns:
-            1fr;
-    }
-
-}
-
-
-/* =====================================================
-   PHONE
-===================================================== */
-
-@media (max-width: 520px) {
-
-    .container {
-
-        width:
-            90%;
-    }
-
-
-    main {
-
-        padding:
-            40px 0 70px;
-    }
-
-
-    .hero {
-
-        padding:
-            38px 18px;
-
-        border-radius:
-            25px;
-    }
-
-
-    .hero-logo {
-
-        width:
-            130px;
-
-        height:
-            130px;
-
-        margin-bottom:
-            22px;
-    }
-
-
-    .hero h1 {
+        justify-content:
+            center;
 
         font-size:
-            38px;
+            16px;
+
+        border:
+            1px solid
+            rgba(255,255,255,0.05);
+    }
+
+
+    .nav-links a.active::after {
+
+        left:
+            25%;
+
+        right:
+            25%;
+    }
+
+
+    .page-hero {
+
+        padding:
+            65px 0 45px;
+    }
+
+
+    .page-logo {
+
+        width:
+            190px;
+
+        height:
+            190px;
+    }
+
+
+    .page-hero h1 {
+
+        font-size:
+            43px;
 
         letter-spacing:
             -1.5px;
     }
 
 
-    .hero p {
+    .page-hero p {
 
         font-size:
             15px;
     }
 
 
-    .buttons {
-
-        flex-direction:
-            column;
-    }
-
-
-    .buttons .button {
-
-        width:
-            100%;
-    }
-
-
-    .section {
+    section {
 
         padding:
-            25px 18px;
-
-        border-radius:
-            23px;
+            60px 0;
     }
 
 
-    .tiktok-section {
+    .panel {
 
         padding:
-            32px 15px;
+            26px 18px;
     }
 
 
-    .tiktok-embed {
+    .tiktok-box {
 
-        min-width:
-            0 !important;
-
-        width:
-            100% !important;
+        min-height:
+            450px;
     }
 
 
-    .tiktok-button {
+    .about {
 
-        width:
-            100%;
+        padding:
+            29px 22px;
     }
 
 
@@ -1282,17 +1100,66 @@ footer {
     }
 
 
-    .social-button {
+    .social-buttons .button {
 
         width:
             100%;
     }
 
+}
 
-    .follow-section {
 
-        padding:
-            32px 18px;
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media (max-width:520px) {
+
+    .container {
+
+        width:
+            90%;
+    }
+
+
+    .nav-brand {
+
+        font-size:
+            16px;
+    }
+
+
+    .nav-brand img {
+
+        width:
+            35px;
+
+        height:
+            35px;
+    }
+
+
+    .page-logo {
+
+        width:
+            165px;
+
+        height:
+            165px;
+    }
+
+
+    .page-hero h1 {
+
+        font-size:
+            39px;
+    }
+
+
+    .tiktok-box {
+
+        min-height:
+            430px;
     }
 
 }
@@ -1302,15 +1169,21 @@ footer {
    REDUCED MOTION
 ===================================================== */
 
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion:reduce) {
 
     html {
         scroll-behavior:
             auto;
     }
 
-    * {
+    *,
+    *::before,
+    *::after {
+
         transition:
+            none !important;
+
+        animation:
             none !important;
     }
 
@@ -1328,7 +1201,7 @@ footer {
      HEADER
 ===================================================== -->
 
-<header>
+<header class="site-header">
 
 <div class="container nav">
 
@@ -1337,14 +1210,23 @@ footer {
     href="index.html"
     class="nav-brand"
 >
-    NEWITT <span>MEDIA</span>
+
+<img
+    src="newitt-media-logo.png.PNG"
+    alt="NEWITT Media logo"
+>
+
+NEWITT <span>MEDIA</span>
+
 </a>
 
 
 <button
-    class="menu-button"
+    class="menu-toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls="main-menu"
     onclick="toggleMenu()"
-    aria-label="Open navigation menu"
 >
     MENU
 </button>
@@ -1352,7 +1234,8 @@ footer {
 
 <nav
     class="nav-links"
-    id="mobileMenu"
+    id="main-menu"
+    aria-label="Main navigation"
 >
 
 <a href="index.html">
@@ -1363,7 +1246,10 @@ footer {
     Skyline
 </a>
 
-<a href="paranormal.html">
+<a
+    class="active"
+    href="paranormal.html"
+>
     Paranormal
 </a>
 
@@ -1390,183 +1276,93 @@ footer {
 
 <main>
 
-<div class="container">
-
 
 <!-- =====================================================
-     HERO
+     PARANORMAL HERO
 ===================================================== -->
 
-<section class="hero">
+<section class="page-hero">
+
+<div class="container">
 
 
 <img
     src="paranormal-logo.png.PNG"
-    alt="NEWITT's Paranormal Adventures"
-    class="hero-logo"
+    alt="NEWITT's Paranormal Adventures logo"
+    class="page-logo"
 >
 
 
+<div class="eyebrow">
+    NEWITT Media after dark
+</div>
+
+
 <h1>
-    NEWITT's <span>Paranormal Adventures</span>
+
+NEWITT's
+<span>Paranormal Adventures</span>
+
 </h1>
 
 
 <p>
 
-Haunted locations, paranormal investigations,
-strange experiences and unexplained events.
-
-Follow the journey as we explore some of
-the UK's most interesting locations.
+Exploring haunted locations, strange stories,
+unexplained events and things that go bump
+in the night.
 
 </p>
-
-
-<div class="buttons">
-
-
-<a
-    href="index.html"
-    class="button"
->
-    Back to NEWITT Media
-</a>
 
 
 </div>
 
-
 </section>
 
 
 
 <!-- =====================================================
-     WELCOME
+     TIKTOK SECTION
 ===================================================== -->
 
-<section class="section">
+<section id="tiktok">
+
+<div class="container">
 
 
-<h2>
-    Welcome to the <span>Paranormal</span>
-</h2>
+<div class="panel">
 
 
-<p>
-
-NEWITT's Paranormal Adventures follows
-real investigations, haunted locations,
-strange experiences and unexplained events.
-
-From historic buildings and former prisons
-to locations with long-standing paranormal
-stories, the aim is to explore, document
-and share what happens.
-
-</p>
-
-
-</section>
-
-
-
-<!-- =====================================================
-     WHAT WE DO
-===================================================== -->
-
-<section class="section">
-
-
-<h2>
-    What We <span>Do</span>
-</h2>
-
-
-<div class="feature-grid">
-
-
-<article class="feature">
-
-<h3>
-    Investigations
-</h3>
-
-<p>
-
-Exploring locations with reported
-paranormal activity and documenting
-what happens.
-
-</p>
-
-</article>
-
-
-<article class="feature">
-
-<h3>
-    Video &amp; Content
-</h3>
-
-<p>
-
-Recording footage, clips and
-stories from paranormal investigations
-and adventures.
-
-</p>
-
-</article>
-
-
-<article class="feature">
-
-<h3>
-    Locations
-</h3>
-
-<p>
-
-Historic buildings, haunted locations
-and places with unusual stories.
-
-</p>
-
-</article>
-
-
+<div class="eyebrow">
+    Latest investigations
 </div>
 
 
-</section>
-
-
-
-<!-- =====================================================
-     TIKTOK
-===================================================== -->
-
-<section class="tiktok-section">
-
-
 <h2>
-    Follow the <span>Adventure</span>
+
+What is happening in the
+<span>dark?</span>
+
 </h2>
 
 
 <p>
 
-Follow NEWITT's Paranormal Adventures
-on TikTok for investigations, clips,
-updates and behind-the-scenes content.
+This is where the latest NEWITT's Paranormal
+Adventures TikTok content appears.
 
-The TikTok account is shown below.
+If something strange happens, this is
+probably where you will see it first.
 
 </p>
 
 
-<div class="tiktok-wrapper">
+
+<!-- =================================================
+     TIKTOK EMBED
+================================================= -->
+
+<div class="tiktok-box">
 
 
 <blockquote
@@ -1574,9 +1370,15 @@ The TikTok account is shown below.
     cite="https://www.tiktok.com/@nw13ttt"
     data-unique-id="nw13ttt"
     data-embed-type="creator"
+    style="
+        max-width:780px;
+        min-width:288px;
+    "
 >
 
+
 <section>
+
 
 <a
     target="_blank"
@@ -1585,7 +1387,9 @@ The TikTok account is shown below.
     @nw13ttt
 </a>
 
+
 </section>
+
 
 </blockquote>
 
@@ -1593,59 +1397,40 @@ The TikTok account is shown below.
 </div>
 
 
+
 <a
     href="https://www.tiktok.com/@nw13ttt"
     target="_blank"
-    rel="noopener noreferrer"
-    class="tiktok-button"
+    rel="noopener"
+    class="button paranormal-button"
 >
-    Open Paranormal TikTok
+
+Visit Paranormal TikTok
+
 </a>
 
 
-</section>
+
+<!-- =================================================
+     SOCIAL CONNECTIONS
+================================================= -->
+
+<div class="social-section">
 
 
-
-<!-- =====================================================
-     SOCIAL MEDIA
-===================================================== -->
-
-<section class="social-section">
-
-
-<h2>
-    Follow NEWITT's <span>Paranormal Adventures</span>
-</h2>
-
-
-<p>
-
-Follow the paranormal journey across
-social media for new investigations,
-photographs, videos and updates.
-
-</p>
+<h3>
+    Follow the Paranormal Adventures
+</h3>
 
 
 <div class="social-buttons">
 
 
 <a
-    href="https://www.tiktok.com/@nw13ttt"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="social-button social-tiktok"
->
-    TikTok
-</a>
-
-
-<a
     href="https://www.instagram.com/nw13ttt/"
     target="_blank"
-    rel="noopener noreferrer"
-    class="social-button instagram"
+    rel="noopener"
+    class="button instagram-button"
 >
     Instagram
 </a>
@@ -1654,8 +1439,8 @@ photographs, videos and updates.
 <a
     href="https://www.facebook.com/share/1AiSkdbyM4/?mibextid=wwXIfr"
     target="_blank"
-    rel="noopener noreferrer"
-    class="social-button facebook"
+    rel="noopener"
+    class="button facebook-button"
 >
     Facebook
 </a>
@@ -1664,32 +1449,131 @@ photographs, videos and updates.
 </div>
 
 
+</div>
+
+
+</div>
+
+
+</div>
+
 </section>
 
 
 
 <!-- =====================================================
-     FINAL SECTION
+     ABOUT
 ===================================================== -->
 
-<section class="follow-section">
+<section>
+
+<div class="container">
+
+
+<div class="about">
+
+
+<div class="eyebrow">
+    The idea
+</div>
 
 
 <h2>
-    Keep Following the <span>Adventure</span>
+
+Find the story.
+Test the
+<span>evidence.</span>
+
 </h2>
 
 
 <p>
 
-New locations, investigations, footage
-and stories will be added as the journey
-continues.
+Haunted locations are full of stories.
+Our job is to explore them, document what
+happens and let you make up your own mind.
 
 </p>
 
 
-<div class="buttons">
+<p>
+
+We investigate historic locations,
+haunted buildings and places surrounded
+by unusual stories.
+
+</p>
+
+
+<p>
+
+Sometimes the building creaks.
+
+Sometimes something genuinely odd happens.
+
+Either way, someone has to go upstairs first.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FINAL CONNECTION
+===================================================== -->
+
+<section>
+
+<div class="container">
+
+
+<div class="panel">
+
+
+<div class="eyebrow">
+    Part of NEWITT Media
+</div>
+
+
+<h2>
+
+From the sky to the
+<span>unknown.</span>
+
+</h2>
+
+
+<p>
+
+NEWITT's Paranormal Adventures is one side
+of NEWITT Media.
+
+Explore the aerial work, paranormal
+investigations and photography all from
+one place.
+
+</p>
+
+
+<div
+    class="social-buttons"
+    style="margin-top:25px;"
+>
+
+
+<a
+    href="index.html"
+    class="button paranormal-button"
+>
+    Back to NEWITT Media
+</a>
 
 
 <a
@@ -1700,21 +1584,16 @@ continues.
 </a>
 
 
-<a
-    href="contact.html"
-    class="button paranormal"
->
-    Paranormal Enquiries
-</a>
+</div>
 
 
 </div>
 
+
+</div>
 
 </section>
 
-
-</div>
 
 </main>
 
@@ -1732,7 +1611,8 @@ NEWITT's Paranormal Adventures
 
 <br>
 
-Haunted Locations. Investigations. Unexplained Experiences.
+Investigating the unexplained,
+one location at a time.
 
 </div>
 
@@ -1741,18 +1621,18 @@ Haunted Locations. Investigations. Unexplained Experiences.
 
 
 <!-- =====================================================
-     TIKTOK OFFICIAL EMBED
+     TIKTOK SCRIPT
 ===================================================== -->
 
 <script
     async
-    src="https://www.tiktok.com/embed.js"
-></script>
+    src="https://www.tiktok.com/embed.js">
+</script>
 
 
 
 <!-- =====================================================
-     MOBILE MENU
+     MOBILE MENU SCRIPT
 ===================================================== -->
 
 <script>
@@ -1760,15 +1640,24 @@ Haunted Locations. Investigations. Unexplained Experiences.
 function toggleMenu() {
 
     const menu =
-        document.getElementById("mobileMenu");
+        document.getElementById("main-menu");
 
-    menu.classList.toggle("show");
+    const button =
+        document.querySelector(".menu-toggle");
+
+    const open =
+        menu.classList.toggle("open");
+
+    button.setAttribute(
+        "aria-expanded",
+        open
+    );
 
 }
 
 
 document
-    .querySelectorAll("#mobileMenu a")
+    .querySelectorAll(".nav-links a")
     .forEach(function(link) {
 
         link.addEventListener(
@@ -1776,9 +1665,16 @@ document
             function() {
 
                 document
-                    .getElementById("mobileMenu")
+                    .getElementById("main-menu")
                     .classList
-                    .remove("show");
+                    .remove("open");
+
+                document
+                    .querySelector(".menu-toggle")
+                    .setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
 
             }
         );
