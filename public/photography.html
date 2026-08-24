@@ -6,22 +6,22 @@
 <meta charset="UTF-8">
 
 <meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
 >
 
 <title>NEWITT Media Photography</title>
 
 <meta
-name="description"
-content="NEWITT Media Photography. A collection of landscapes, locations, adventures and photography from the NEWITT Media journey."
+    name="description"
+    content="NEWITT Media Photography. Landscapes, locations and moments captured through the lens."
 >
 
 <style>
 
-/* ========================================
+/* =====================================================
    RESET
-======================================== */
+===================================================== */
 
 * {
     box-sizing: border-box;
@@ -33,29 +33,51 @@ html {
 
 body {
     margin: 0;
+    min-height: 100vh;
 
     font-family:
         Arial,
         Helvetica,
         sans-serif;
 
-    color: #f5f7fb;
+    color: #ffffff;
 
-    background: #03060b;
+    background: #03030a;
 
     overflow-x: hidden;
 }
 
 a {
     color: inherit;
-
     text-decoration: none;
 }
 
+img {
+    max-width: 100%;
+}
 
-/* ========================================
+
+/* =====================================================
+   NEWITT MEDIA COLOURS
+===================================================== */
+
+:root {
+
+    --newitt: #9b5cff;
+
+    --newitt-bright: #b47cff;
+
+    --newitt-glow:
+        rgba(155,92,255,0.28);
+
+    --panel:
+        rgba(6,5,15,0.84);
+}
+
+
+/* =====================================================
    BACKGROUND
-======================================== */
+===================================================== */
 
 body::before {
 
@@ -70,8 +92,8 @@ body::before {
     background:
 
         linear-gradient(
-            rgba(3,7,14,0.50),
-            rgba(3,7,14,0.84)
+            rgba(3,3,10,0.40),
+            rgba(3,3,10,0.88)
         ),
 
         url("background.png.PNG")
@@ -94,18 +116,18 @@ body::after {
     background:
 
         radial-gradient(
-            circle at 50% 5%,
-            rgba(35,160,255,0.20),
-            transparent 42%
+            circle at 50% 8%,
+            rgba(155,92,255,0.20),
+            transparent 45%
         );
 
     pointer-events: none;
 }
 
 
-/* ========================================
+/* =====================================================
    CONTAINER
-======================================== */
+===================================================== */
 
 .container {
 
@@ -113,13 +135,13 @@ body::after {
         min(1100px, 92%);
 
     margin:
-        auto;
+        0 auto;
 }
 
 
-/* ========================================
+/* =====================================================
    HEADER
-======================================== */
+===================================================== */
 
 header {
 
@@ -130,18 +152,18 @@ header {
     z-index: 1000;
 
     background:
-        rgba(3,6,12,0.95);
+        rgba(3,3,10,0.96);
 
     backdrop-filter:
         blur(18px);
 
     border-bottom:
         1px solid
-        rgba(60,168,255,0.20);
+        rgba(155,92,255,0.28);
 
     box-shadow:
         0 8px 35px
-        rgba(0,0,0,0.25);
+        rgba(0,0,0,0.40);
 }
 
 
@@ -164,9 +186,9 @@ header {
 }
 
 
-/* ========================================
+/* =====================================================
    BRAND
-======================================== */
+===================================================== */
 
 .nav-brand {
 
@@ -187,13 +209,13 @@ header {
 .nav-brand span {
 
     color:
-        #3ca8ff;
+        var(--newitt);
 }
 
 
-/* ========================================
+/* =====================================================
    NAVIGATION
-======================================== */
+===================================================== */
 
 .nav-links {
 
@@ -220,7 +242,7 @@ header {
         12px 3px;
 
     opacity:
-        0.85;
+        0.88;
 
     transition:
         color 0.25s ease,
@@ -231,16 +253,16 @@ header {
 .nav-links a:hover {
 
     color:
-        #42aaff;
+        var(--newitt-bright);
 
     opacity:
         1;
 }
 
 
-/* ========================================
+/* =====================================================
    MOBILE MENU
-======================================== */
+===================================================== */
 
 .menu-button {
 
@@ -252,13 +274,13 @@ header {
 
     border:
         1px solid
-        rgba(60,168,255,0.55);
+        rgba(155,92,255,0.60);
 
     border-radius:
         14px;
 
     background:
-        rgba(20,60,100,0.32);
+        rgba(155,92,255,0.10);
 
     color:
         #ffffff;
@@ -274,68 +296,77 @@ header {
 }
 
 
-/* ========================================
+/* =====================================================
    MAIN
-======================================== */
+===================================================== */
 
 main {
 
     padding:
-        70px 0 100px;
+        60px 0 100px;
 }
 
 
-/* ========================================
+/* =====================================================
    HERO
-======================================== */
+===================================================== */
 
 .hero {
+
+    width:
+        min(860px, 100%);
+
+    margin:
+        0 auto 60px;
+
+    padding:
+        50px 35px;
 
     text-align:
         center;
 
-    max-width:
-        900px;
+    display:
+        flex;
 
-    margin:
-        0 auto 65px;
+    flex-direction:
+        column;
 
-    padding:
-        50px 30px;
+    align-items:
+        center;
 
     border:
         1px solid
-        rgba(60,168,255,0.18);
+        rgba(155,92,255,0.30);
 
     border-radius:
         30px;
 
     background:
-        rgba(3,7,14,0.72);
+        var(--panel);
 
     backdrop-filter:
         blur(15px);
 
     box-shadow:
         0 25px 75px
-        rgba(0,0,0,0.40);
+        rgba(0,0,0,0.45);
 }
 
 
-/* ========================================
+/* =====================================================
    LOGO
-======================================== */
+===================================================== */
 
-.photo-logo {
+.hero-logo {
 
     width:
-        210px;
-
-    max-width:
-        72%;
+        150px;
 
     height:
-        auto;
+        150px;
+
+    object-fit:
+        contain;
 
     display:
         block;
@@ -345,27 +376,29 @@ main {
 
     filter:
         drop-shadow(
-            0 15px 35px
-            rgba(0,0,0,0.55)
+            0 16px 35px
+            rgba(155,92,255,0.25)
         );
 }
 
 
-/* ========================================
-   HERO TITLE
-======================================== */
+/* =====================================================
+   TITLE
+===================================================== */
 
 .hero h1 {
 
+    width:
+        100%;
+
     margin:
-        0 0 20px;
+        0 0 18px;
+
+    text-align:
+        center;
 
     font-size:
-        clamp(
-            40px,
-            6vw,
-            68px
-        );
+        clamp(40px, 6vw, 68px);
 
     line-height:
         1;
@@ -381,20 +414,20 @@ main {
 .hero h1 span {
 
     color:
-        #3ca8ff;
+        var(--newitt-bright);
 }
 
 
 .hero p {
 
     max-width:
-        740px;
+        720px;
 
     margin:
         0 auto;
 
     color:
-        #cbd3de;
+        #d0cbd8;
 
     font-size:
         17px;
@@ -404,54 +437,47 @@ main {
 }
 
 
-/* ========================================
-   BUTTONS
-======================================== */
-
-.buttons {
-
-    display:
-        flex;
-
-    justify-content:
-        center;
-
-    flex-wrap:
-        wrap;
-
-    gap:
-        12px;
-
-    margin-top:
-        30px;
-}
-
+/* =====================================================
+   BUTTON
+===================================================== */
 
 .button {
 
     display:
-        inline-block;
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    min-height:
+        48px;
 
     padding:
-        14px 22px;
+        13px 22px;
 
     border:
         1px solid
-        rgba(255,255,255,0.13);
+        rgba(255,255,255,0.14);
 
     border-radius:
         13px;
 
     background:
-        rgba(255,255,255,0.07);
+        rgba(255,255,255,0.06);
+
+    color:
+        #ffffff;
 
     font-weight:
         900;
 
     transition:
         transform 0.25s ease,
-        background 0.25s ease,
-        border-color 0.25s ease;
+        border-color 0.25s ease,
+        background 0.25s ease;
 }
 
 
@@ -461,38 +487,52 @@ main {
         translateY(-3px);
 
     border-color:
-        rgba(60,168,255,0.45);
+        rgba(155,92,255,0.60);
 }
 
 
-/* ========================================
-   SECTIONS
-======================================== */
+.button.newitt {
+
+    background:
+        var(--newitt);
+
+    border-color:
+        var(--newitt);
+
+    box-shadow:
+        0 12px 35px
+        var(--newitt-glow);
+}
+
+
+/* =====================================================
+   SECTION
+===================================================== */
 
 .section {
 
     margin-bottom:
-        60px;
+        45px;
 
     padding:
         38px;
 
     border:
         1px solid
-        rgba(60,168,255,0.15);
+        rgba(155,92,255,0.22);
 
     border-radius:
         28px;
 
     background:
-        rgba(3,8,15,0.76);
+        var(--panel);
 
     backdrop-filter:
         blur(14px);
 
     box-shadow:
         0 20px 60px
-        rgba(0,0,0,0.28);
+        rgba(0,0,0,0.38);
 }
 
 
@@ -502,40 +542,42 @@ main {
         0 0 18px;
 
     font-size:
-        clamp(
-            32px,
-            5vw,
-            50px
-        );
+        clamp(32px, 5vw, 50px);
 
     line-height:
         1.05;
+
+    font-weight:
+        950;
 }
 
 
 .section h2 span {
 
     color:
-        #3ca8ff;
+        var(--newitt-bright);
 }
 
 
 .section p {
 
-    color:
-        #cbd3de;
+    margin:
+        0;
 
-    line-height:
-        1.8;
+    color:
+        #d0cbd8;
 
     font-size:
         16px;
+
+    line-height:
+        1.8;
 }
 
 
-/* ========================================
+/* =====================================================
    PHOTO GALLERY
-======================================== */
+===================================================== */
 
 .photo-gallery {
 
@@ -558,19 +600,19 @@ main {
     overflow:
         hidden;
 
+    border:
+        1px solid
+        rgba(155,92,255,0.22);
+
     border-radius:
         22px;
 
-    border:
-        1px solid
-        rgba(60,168,255,0.18);
-
     background:
-        #050a11;
+        #05050d;
 
     box-shadow:
         0 18px 45px
-        rgba(0,0,0,0.35);
+        rgba(0,0,0,0.38);
 }
 
 
@@ -597,9 +639,9 @@ main {
 }
 
 
-/* ========================================
+/* =====================================================
    PHOTO PLACEHOLDER
-======================================== */
+===================================================== */
 
 .photo-placeholder {
 
@@ -615,27 +657,30 @@ main {
     justify-content:
         center;
 
-    text-align:
-        center;
-
     padding:
         30px;
 
+    text-align:
+        center;
+
     color:
-        #9fa8b4;
+        #a9a2b1;
 
     background:
         rgba(255,255,255,0.025);
 
     border:
         1px dashed
-        rgba(60,168,255,0.20);
+        rgba(155,92,255,0.25);
+
+    line-height:
+        1.6;
 }
 
 
-/* ========================================
+/* =====================================================
    FOOTER
-======================================== */
+===================================================== */
 
 footer {
 
@@ -646,7 +691,7 @@ footer {
         center;
 
     color:
-        #9da5b2;
+        #9d98a7;
 
     border-top:
         1px solid
@@ -657,11 +702,11 @@ footer {
 }
 
 
-/* ========================================
+/* =====================================================
    MOBILE
-======================================== */
+===================================================== */
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
 
     .nav {
 
@@ -711,11 +756,11 @@ footer {
             6px;
 
         background:
-            rgba(3,6,12,0.98);
+            rgba(3,3,10,0.98);
 
         border-bottom:
             1px solid
-            rgba(60,168,255,0.18);
+            rgba(155,92,255,0.25);
 
         backdrop-filter:
             blur(18px);
@@ -748,34 +793,65 @@ footer {
     }
 
 
+    .photo-gallery {
+
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+/* =====================================================
+   PHONE
+===================================================== */
+
+@media (max-width: 520px) {
+
+    .container {
+
+        width:
+            90%;
+    }
+
+
     main {
 
         padding:
-            50px 0 70px;
+            40px 0 70px;
     }
 
 
     .hero {
 
         padding:
-            40px 20px;
+            38px 18px;
 
-        margin-bottom:
-            45px;
+        border-radius:
+            25px;
     }
 
 
-    .photo-logo {
+    .hero-logo {
 
         width:
-            180px;
+            125px;
+
+        height:
+            125px;
+
+        margin-bottom:
+            23px;
     }
 
 
     .hero h1 {
 
         font-size:
-            43px;
+            40px;
+
+        letter-spacing:
+            -1.5px;
     }
 
 
@@ -786,20 +862,10 @@ footer {
     }
 
 
-    .buttons {
-
-        flex-direction:
-            column;
-    }
-
-
-    .buttons .button {
+    .hero .button {
 
         width:
             100%;
-
-        text-align:
-            center;
     }
 
 
@@ -807,49 +873,35 @@ footer {
 
         padding:
             25px 18px;
+
+        border-radius:
+            23px;
     }
 
 
     .photo-gallery {
 
-        grid-template-columns:
-            1fr;
+        gap:
+            16px;
     }
 
 }
 
 
-/* ========================================
-   SMALL PHONES
-======================================== */
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
 
-@media (max-width: 420px) {
+@media (prefers-reduced-motion: reduce) {
 
-    .container {
-
-        width:
-            90%;
+    html {
+        scroll-behavior:
+            auto;
     }
 
-
-    .nav-brand {
-
-        font-size:
-            17px;
-    }
-
-
-    .menu-button {
-
-        padding:
-            11px 15px;
-    }
-
-
-    .hero h1 {
-
-        font-size:
-            39px;
+    * {
+        transition:
+            none !important;
     }
 
 }
@@ -862,9 +914,9 @@ footer {
 <body>
 
 
-<!-- ========================================
+<!-- =====================================================
      HEADER
-======================================== -->
+===================================================== -->
 
 <header>
 
@@ -872,45 +924,45 @@ footer {
 
 
 <a
-href="index.html"
-class="nav-brand"
+    href="index.html"
+    class="nav-brand"
 >
-NEWITT <span>MEDIA</span>
+    NEWITT <span>MEDIA</span>
 </a>
 
 
 <button
-class="menu-button"
-onclick="toggleMenu()"
-aria-label="Open navigation menu"
+    class="menu-button"
+    onclick="toggleMenu()"
+    aria-label="Open navigation menu"
 >
-MENU
+    MENU
 </button>
 
 
 <nav
-class="nav-links"
-id="mobileMenu"
+    class="nav-links"
+    id="mobileMenu"
 >
 
 <a href="index.html">
-Home
+    Home
 </a>
 
 <a href="skyline.html">
-Skyline
+    Skyline
 </a>
 
 <a href="paranormal.html">
-Paranormal
+    Paranormal
 </a>
 
 <a href="photography.html">
-Photography
+    Photography
 </a>
 
 <a href="contact.html">
-Get in Touch
+    Get in Touch
 </a>
 
 </nav>
@@ -922,51 +974,207 @@ Get in Touch
 
 
 
-<!-- ========================================
+<!-- =====================================================
      MAIN
-======================================== -->
+===================================================== -->
 
 <main>
 
 <div class="container">
 
 
-<!-- ========================================
+<!-- =====================================================
      HERO
-======================================== -->
+===================================================== -->
 
 <section class="hero">
 
 
 <img
-src="newitt-media-logo.png.PNG"
-alt="NEWITT Media Photography"
-class="photo-logo"
+    src="newitt-media-logo.png.PNG"
+    alt="NEWITT Media Photography"
+    class="hero-logo"
 >
 
 
 <h1>
-NEWITT Media <span>Photography</span>
+    NEWITT Media <span>Photography</span>
 </h1>
 
 
 <p>
 
-A collection of landscapes, locations,
-adventures and moments captured along
-the NEWITT Media journey.
+A growing collection of landscapes,
+locations, adventures and moments
+captured through the lens.
+
+Photography is another part of the
+NEWITT Media journey.
 
 </p>
 
 
-<div class="buttons">
+<div style="margin-top: 30px;">
+
+<a
+    href="index.html"
+    class="button newitt"
+>
+    Back to NEWITT Media
+</a>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     THROUGH THE LENS
+===================================================== -->
+
+<section class="section">
+
+
+<h2>
+    Through the <span>Lens</span>
+</h2>
+
+
+<p>
+
+Photography gives NEWITT Media another way
+to capture the places, people, landscapes
+and moments encountered along the way.
+
+This collection will grow as new photographs
+are taken during drone projects, paranormal
+adventures, travel and everyday exploration.
+
+</p>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     PHOTO COLLECTION
+===================================================== -->
+
+<section class="section">
+
+
+<h2>
+    Photo <span>Collection</span>
+</h2>
+
+
+<p>
+
+A growing collection of photographs from
+NEWITT Media.
+
+New photographs can be added to this
+section whenever you are ready.
+
+</p>
+
+
+<div class="photo-gallery">
+
+
+<!-- =================================================
+     PHOTO 01
+===================================================== -->
+
+<div class="photo-card">
+
+<div class="photo-placeholder">
+
+Your first photography image
+can be added here.
+
+</div>
+
+</div>
+
+
+<!-- =================================================
+     PHOTO 02
+===================================================== -->
+
+<div class="photo-card">
+
+<div class="photo-placeholder">
+
+Your second photography image
+can be added here.
+
+</div>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     RETURN
+===================================================== -->
+
+<section class="section"
+         style="text-align:center;">
+
+
+<h2>
+    Explore <span>NEWITT Media</span>
+</h2>
+
+
+<p style="margin-bottom:25px;">
+
+Explore the other sides of NEWITT Media.
+
+</p>
+
+
+<div
+    style="
+        display:flex;
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:12px;
+    "
+>
 
 
 <a
-href="index.html"
-class="button"
+    href="skyline.html"
+    class="button"
 >
-Back to NEWITT Media
+    Skyline
+</a>
+
+
+<a
+    href="paranormal.html"
+    class="button"
+>
+    Paranormal
+</a>
+
+
+<a
+    href="contact.html"
+    class="button newitt"
+>
+    Get in Touch
 </a>
 
 
@@ -976,120 +1184,15 @@ Back to NEWITT Media
 </section>
 
 
-
-<!-- ========================================
-     ABOUT PHOTOGRAPHY
-======================================== -->
-
-<section class="section">
-
-
-<h2>
-Through the <span>Lens</span>
-</h2>
-
-
-<p>
-
-Photography is another part of the NEWITT
-Media journey.
-
-From locations and landscapes to moments
-captured while travelling, exploring and
-working on other NEWITT Media projects,
-this page will grow as the collection grows.
-
-</p>
-
-
-</section>
-
-
-
-<!-- ========================================
-     PHOTO COLLECTION
-======================================== -->
-
-<section class="section">
-
-
-<h2>
-Photo <span>Collection</span>
-</h2>
-
-
-<p>
-
-A growing collection of photographs from
-NEWITT Media.
-
-New images can be added here as they are
-captured.
-
-</p>
-
-
-<div class="photo-gallery">
-
-
-<!--
-================================================
-ADD YOUR PHOTOGRAPHS HERE
-
-Example:
-
-<div class="photo-card">
-
-<img
-src="media/photography/photo-01.jpg"
-alt="Description of photograph"
-loading="lazy"
->
-
-</div>
-
-================================================
--->
-
-
-<div class="photo-card">
-
-<div class="photo-placeholder">
-
-Photography collection coming soon.
-
-</div>
-
-</div>
-
-
-<div class="photo-card">
-
-<div class="photo-placeholder">
-
-New photographs will be added here.
-
-</div>
-
-</div>
-
-
-</div>
-
-
-</section>
-
-
-
 </div>
 
 </main>
 
 
 
-<!-- ========================================
+<!-- =====================================================
      FOOTER
-======================================== -->
+===================================================== -->
 
 <footer>
 
@@ -1107,9 +1210,9 @@ Landscapes. Locations. Moments.
 
 
 
-<!-- ========================================
-     MOBILE MENU JAVASCRIPT
-======================================== -->
+<!-- =====================================================
+     MOBILE MENU
+===================================================== -->
 
 <script>
 
@@ -1124,22 +1227,22 @@ function toggleMenu() {
 
 
 document
-.querySelectorAll("#mobileMenu a")
-.forEach(function(link) {
+    .querySelectorAll("#mobileMenu a")
+    .forEach(function(link) {
 
-    link.addEventListener(
-        "click",
-        function() {
+        link.addEventListener(
+            "click",
+            function() {
 
-            document
-                .getElementById("mobileMenu")
-                .classList
-                .remove("show");
+                document
+                    .getElementById("mobileMenu")
+                    .classList
+                    .remove("show");
 
-        }
-    );
+            }
+        );
 
-});
+    });
 
 </script>
 
