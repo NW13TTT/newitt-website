@@ -8,16 +8,18 @@
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
 
-<title>NEWITT Media | Drone, Photography & Paranormal Adventures</title>
+<title>NEWITT Media | Drone, Photography & Paranormal</title>
 
-<meta name="description"
-      content="NEWITT Media brings together drone work, aerial photography, photography and paranormal adventures under one independent media brand.">
+<meta
+name="description"
+content="NEWITT Media brings together drone aerial media, photography and paranormal adventures."
+>
 
 <style>
 
-/* ========================================
+/* =====================================================
    RESET
-======================================== */
+===================================================== */
 
 * {
     box-sizing: border-box;
@@ -29,9 +31,17 @@ html {
 
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #f5f7fb;
-    background: #03060b;
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: #ffffff;
+
+    background: #02060d;
+
     overflow-x: hidden;
 }
 
@@ -40,10 +50,14 @@ a {
     text-decoration: none;
 }
 
+img {
+    max-width: 100%;
+}
 
-/* ========================================
+
+/* =====================================================
    BACKGROUND
-======================================== */
+===================================================== */
 
 body::before {
 
@@ -56,15 +70,18 @@ body::before {
     z-index: -3;
 
     background:
+
         linear-gradient(
-            rgba(3,7,14,0.48),
-            rgba(3,7,14,0.80)
+            rgba(2, 6, 13, 0.35),
+            rgba(2, 6, 13, 0.82)
         ),
+
         url("background.png.PNG")
         center center / cover no-repeat;
 
     transform: scale(1.02);
 }
+
 
 body::after {
 
@@ -77,29 +94,34 @@ body::after {
     z-index: -2;
 
     background:
+
         radial-gradient(
-            circle at 50% 5%,
-            rgba(35,160,255,0.22),
-            transparent 40%
+            circle at 50% 10%,
+            rgba(42, 151, 255, 0.16),
+            transparent 42%
         );
 
     pointer-events: none;
 }
 
 
-/* ========================================
-   CONTAINER
-======================================== */
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
 
 .container {
-    width: min(1180px, 92%);
-    margin: auto;
+
+    width:
+        min(1120px, 92%);
+
+    margin:
+        0 auto;
 }
 
 
-/* ========================================
+/* =====================================================
    HEADER
-======================================== */
+===================================================== */
 
 header {
 
@@ -110,128 +132,25 @@ header {
     z-index: 1000;
 
     background:
-        rgba(3,6,12,0.94);
+        rgba(2, 6, 13, 0.94);
 
     backdrop-filter:
         blur(18px);
 
     border-bottom:
         1px solid
-        rgba(60,168,255,0.20);
+        rgba(60, 168, 255, 0.20);
 
     box-shadow:
         0 8px 35px
-        rgba(0,0,0,0.20);
+        rgba(0,0,0,0.30);
 }
 
 
 .nav {
 
-    min-height: 78px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 20px;
-}
-
-
-/* ========================================
-   BRAND
-======================================== */
-
-.nav-brand {
-
-    font-size: 21px;
-
-    font-weight: 950;
-
-    letter-spacing: 1px;
-
-    white-space: nowrap;
-}
-
-.nav-brand span {
-    color: #3ca8ff;
-}
-
-
-/* ========================================
-   NAVIGATION
-======================================== */
-
-.nav-links {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 25px;
-
-    font-size: 14px;
-
-    font-weight: 800;
-}
-
-.nav-links a {
-
-    padding: 12px 3px;
-
-    opacity: 0.85;
-
-    transition:
-        color 0.25s ease,
-        opacity 0.25s ease;
-}
-
-.nav-links a:hover {
-
-    color: #42aaff;
-
-    opacity: 1;
-}
-
-
-/* ========================================
-   MOBILE MENU
-======================================== */
-
-.menu-button {
-
-    display: none;
-
-    padding: 12px 18px;
-
-    border:
-        1px solid
-        rgba(60,168,255,0.55);
-
-    border-radius: 14px;
-
-    background:
-        rgba(20,60,100,0.32);
-
-    color: #ffffff;
-
-    font-size: 15px;
-
-    font-weight: 900;
-
-    cursor: pointer;
-}
-
-
-/* ========================================
-   HERO
-======================================== */
-
-.hero {
-
     min-height:
-        calc(100vh - 78px);
+        78px;
 
     display:
         flex;
@@ -240,124 +159,317 @@ header {
         center;
 
     justify-content:
+        space-between;
+
+    gap:
+        20px;
+}
+
+
+/* =====================================================
+   HEADER BRAND
+===================================================== */
+
+.nav-brand {
+
+    font-size:
+        21px;
+
+    font-weight:
+        950;
+
+    letter-spacing:
+        1px;
+
+    white-space:
+        nowrap;
+}
+
+
+.nav-brand span {
+
+    color:
+        #3ca8ff;
+}
+
+
+/* =====================================================
+   DESKTOP NAV
+===================================================== */
+
+.nav-links {
+
+    display:
+        flex;
+
+    align-items:
         center;
+
+    gap:
+        25px;
+
+    font-size:
+        14px;
+
+    font-weight:
+        800;
+}
+
+
+.nav-links a {
+
+    padding:
+        12px 3px;
+
+    opacity:
+        0.88;
+
+    transition:
+        color 0.25s ease,
+        opacity 0.25s ease;
+}
+
+
+.nav-links a:hover {
+
+    color:
+        #3ca8ff;
+
+    opacity:
+        1;
+}
+
+
+/* =====================================================
+   MOBILE MENU BUTTON
+===================================================== */
+
+.menu-button {
+
+    display:
+        none;
+
+    padding:
+        12px 18px;
+
+    border:
+        1px solid
+        rgba(60,168,255,0.55);
+
+    border-radius:
+        14px;
+
+    background:
+        rgba(20,60,100,0.32);
+
+    color:
+        #ffffff;
+
+    font-size:
+        15px;
+
+    font-weight:
+        900;
+
+    cursor:
+        pointer;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+main {
+
+    padding:
+        60px 0 100px;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+
+    width:
+        min(860px, 100%);
+
+    margin:
+        0 auto 75px;
+
+    padding:
+        48px 35px 45px;
 
     text-align:
         center;
 
-    padding:
-        70px 0;
-}
+    display:
+        flex;
 
+    flex-direction:
+        column;
 
-.hero-card {
+    align-items:
+        center;
 
-    width:
-        min(900px, 100%);
-
-    padding:
-        55px 40px;
+    justify-content:
+        center;
 
     border:
         1px solid
-        rgba(60,168,255,0.18);
+        rgba(60,168,255,0.24);
 
     border-radius:
-        32px;
+        30px;
 
     background:
-        rgba(3,7,14,0.64);
+        rgba(3, 9, 18, 0.74);
 
     backdrop-filter:
-        blur(16px);
+        blur(15px);
 
     box-shadow:
-        0 30px 90px
-        rgba(0,0,0,0.48);
+        0 25px 75px
+        rgba(0,0,0,0.45);
 }
 
 
-/* ========================================
+/* =====================================================
    MAIN LOGO
-======================================== */
+===================================================== */
 
 .hero-logo {
-
-    width:
-        300px;
-
-    max-width:
-        78%;
-
-    height:
-        auto;
 
     display:
         block;
 
+    width:
+        150px;
+
+    height:
+        150px;
+
+    max-width:
+        150px;
+
+    max-height:
+        150px;
+
+    object-fit:
+        contain;
+
     margin:
         0 auto 28px;
 
+    position:
+        relative;
+
+    left:
+        auto;
+
+    right:
+        auto;
+
+    align-self:
+        center;
+
+    flex:
+        0 0 auto;
+
     filter:
         drop-shadow(
-            0 20px 45px
+            0 16px 30px
             rgba(0,0,0,0.55)
         );
 }
 
 
-/* ========================================
-   HERO TITLE
-======================================== */
+/* =====================================================
+   MAIN TITLE
+===================================================== */
 
 .hero h1 {
 
-    margin: 0;
+    width:
+        100%;
+
+    margin:
+        0 0 20px;
+
+    padding:
+        0;
+
+    text-align:
+        center;
 
     font-size:
-        clamp(44px, 8vw, 88px);
+        clamp(42px, 6vw, 72px);
 
-    line-height: 0.95;
+    line-height:
+        1;
 
-    font-weight: 950;
+    font-weight:
+        950;
 
-    letter-spacing: -4px;
+    letter-spacing:
+        -2px;
 }
+
 
 .hero h1 span {
-    color: #36a7ff;
+
+    color:
+        #3ca8ff;
 }
 
+
+/* =====================================================
+   HERO DESCRIPTION
+===================================================== */
 
 .hero p {
 
+    width:
+        100%;
+
     max-width:
-        720px;
+        680px;
 
     margin:
-        28px auto;
+        0 auto;
+
+    text-align:
+        center;
 
     color:
-        #d4d9e2;
-
-    line-height:
-        1.75;
+        #cbd3de;
 
     font-size:
-        17px;
+        16px;
+
+    line-height:
+        1.8;
 }
 
 
-/* ========================================
-   BUTTONS
-======================================== */
+/* =====================================================
+   HERO BUTTONS
+===================================================== */
 
-.buttons {
+.hero-buttons {
+
+    width:
+        100%;
 
     display:
         flex;
 
     justify-content:
+        center;
+
+    align-items:
         center;
 
     flex-wrap:
@@ -374,20 +486,32 @@ header {
 .button {
 
     display:
-        inline-block;
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    min-height:
+        48px;
 
     padding:
-        14px 22px;
+        13px 21px;
 
     border:
         1px solid
-        rgba(255,255,255,0.13);
+        rgba(255,255,255,0.15);
 
     border-radius:
         13px;
 
     background:
         rgba(255,255,255,0.07);
+
+    color:
+        #ffffff;
 
     font-weight:
         900;
@@ -405,7 +529,7 @@ header {
         translateY(-3px);
 
     border-color:
-        rgba(60,168,255,0.45);
+        rgba(60,168,255,0.50);
 }
 
 
@@ -424,64 +548,70 @@ header {
 
 
 .button.primary:hover {
-    background: #2998ff;
+
+    background:
+        #2998ff;
 }
 
 
-/* ========================================
-   SECTIONS
-======================================== */
+/* =====================================================
+   THREE AREAS
+===================================================== */
 
-section {
-    padding: 90px 0;
-}
-
-
-.section-heading {
+.areas {
 
     text-align:
         center;
 
-    max-width:
-        760px;
-
-    margin:
-        0 auto 48px;
+    margin-bottom:
+        35px;
 }
 
 
-.section-heading h2 {
+.areas h2 {
 
     margin:
-        0 0 15px;
+        0 0 12px;
 
     font-size:
-        clamp(34px, 5vw, 54px);
+        clamp(32px, 5vw, 48px);
+
+    line-height:
+        1.05;
+
+    font-weight:
+        950;
 }
 
 
-.section-heading h2 span {
-    color: #38a8ff;
+.areas h2 span {
+
+    color:
+        #3ca8ff;
 }
 
 
-.section-heading p {
+.areas > p {
 
-    margin: 0;
+    max-width:
+        700px;
 
-    color: #cbd1dc;
+    margin:
+        0 auto 35px;
 
-    line-height: 1.8;
+    color:
+        #cbd3de;
 
-    font-size: 16px;
+    line-height:
+        1.7;
 }
 
 
-/* ========================================
-   BRAND GRID
-======================================== */
+/* =====================================================
+   BRAND CARDS
+===================================================== */
 
-.brand-grid {
+.cards {
 
     display:
         grid;
@@ -490,79 +620,74 @@ section {
         repeat(3, 1fr);
 
     gap:
-        22px;
+        20px;
+
+    align-items:
+        stretch;
 }
 
 
-.brand-card {
+.card {
 
-    position:
-        relative;
+    min-height:
+        370px;
 
     padding:
-        32px;
+        30px 24px;
 
-    border-radius:
-        26px;
+    display:
+        flex;
 
-    background:
-        rgba(5,9,16,0.78);
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    text-align:
+        center;
 
     border:
         1px solid
-        rgba(255,255,255,0.10);
+        rgba(60,168,255,0.20);
+
+    border-radius:
+        25px;
+
+    background:
+        rgba(3,9,17,0.78);
 
     backdrop-filter:
-        blur(15px);
+        blur(12px);
 
     box-shadow:
         0 20px 55px
-        rgba(0,0,0,0.28);
+        rgba(0,0,0,0.35);
 
     transition:
-        transform 0.3s ease,
-        border-color 0.3s ease;
+        transform 0.25s ease,
+        border-color 0.25s ease;
 }
 
 
-.brand-card:hover {
+.card:hover {
 
     transform:
-        translateY(-8px);
+        translateY(-5px);
 
     border-color:
-        rgba(50,165,255,0.42);
+        rgba(60,168,255,0.45);
 }
 
 
-.brand-card::before {
+/* =====================================================
+   CARD LOGOS
+===================================================== */
 
-    content: "";
-
-    position:
-        absolute;
-
-    top: 0;
-
-    left: 12%;
-
-    right: 12%;
-
-    height: 2px;
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #38a8ff,
-            transparent
-        );
-}
-
-
-.brand-logo {
+.card-logo {
 
     width:
         125px;
@@ -577,288 +702,149 @@ section {
         block;
 
     margin:
-        0 auto 25px;
+        5px auto 22px;
 
     filter:
         drop-shadow(
             0 12px 25px
-            rgba(0,0,0,0.40)
+            rgba(0,0,0,0.50)
         );
 }
 
 
-.brand-card h3 {
+.card h3 {
 
     margin:
-        0 0 14px;
+        0 0 12px;
 
     font-size:
-        25px;
+        24px;
 
     line-height:
-        1.2;
-
-    text-align:
-        center;
+        1.15;
 }
 
 
-.brand-card p {
-
-    color:
-        #c8ced8;
-
-    line-height:
-        1.7;
-
-    text-align:
-        center;
-
-    min-height:
-        115px;
-}
-
-
-.card-button {
-
-    display:
-        block;
-
-    width:
-        fit-content;
+.card p {
 
     margin:
-        20px auto 0;
+        0 auto 22px;
+
+    max-width:
+        290px;
+
+    color:
+        #c3ccd7;
+
+    line-height:
+        1.65;
+
+    font-size:
+        15px;
+}
+
+
+/* =====================================================
+   CARD BUTTON
+===================================================== */
+
+.card .button {
+
+    margin-top:
+        auto;
+
+    width:
+        100%;
+}
+
+
+/* =====================================================
+   CONNECTION SECTION
+===================================================== */
+
+.connection {
+
+    margin-top:
+        70px;
 
     padding:
-        12px 19px;
+        42px 30px;
 
-    border-radius:
-        12px;
-
-    background:
-        rgba(22,140,255,0.12);
+    text-align:
+        center;
 
     border:
         1px solid
-        rgba(60,168,255,0.35);
-
-    color:
-        #69baff;
-
-    font-weight:
-        900;
-
-    transition:
-        0.25s ease;
-}
-
-
-.card-button:hover {
-
-    background:
-        #168cff;
-
-    color:
-        #ffffff;
-}
-
-
-/* ========================================
-   ABOUT
-======================================== */
-
-.about {
-
-    max-width:
-        950px;
-
-    margin:
-        auto;
-
-    padding:
-        45px;
+        rgba(60,168,255,0.20);
 
     border-radius:
         28px;
 
     background:
-        rgba(4,8,14,0.76);
-
-    border:
-        1px solid
-        rgba(60,168,255,0.14);
+        rgba(3,8,16,0.78);
 
     backdrop-filter:
-        blur(15px);
-
-    box-shadow:
-        0 25px 70px
-        rgba(0,0,0,0.30);
+        blur(14px);
 }
 
 
-.about p {
+.connection h2 {
 
     margin:
-        0 0 20px;
+        0 0 15px;
+
+    font-size:
+        clamp(30px, 5vw, 45px);
+}
+
+
+.connection h2 span {
 
     color:
-        #d0d5de;
-
-    line-height:
-        1.85;
-
-    font-size:
-        16px;
+        #3ca8ff;
 }
 
 
-.about p:last-child {
-    margin-bottom: 0;
-}
-
-
-/* ========================================
-   GET IN TOUCH
-======================================== */
-
-.contact-box {
-
-    max-width:
-        1050px;
-
-    margin:
-        auto;
-
-    padding:
-        45px;
-
-    border-radius:
-        30px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(7,25,45,0.88),
-            rgba(3,7,14,0.82)
-        );
-
-    border:
-        1px solid
-        rgba(60,168,255,0.25);
-
-    box-shadow:
-        0 25px 75px
-        rgba(0,0,0,0.38);
-}
-
-
-.contact-heading {
-
-    text-align:
-        center;
-
-    margin-bottom:
-        35px;
-}
-
-
-.contact-heading h2 {
-
-    margin:
-        0 0 14px;
-
-    font-size:
-        clamp(34px, 5vw, 52px);
-}
-
-
-.contact-heading h2 span {
-    color: #38a8ff;
-}
-
-
-.contact-heading p {
+.connection p {
 
     max-width:
         700px;
 
     margin:
-        auto;
+        0 auto 25px;
 
     color:
         #cbd3de;
 
     line-height:
-        1.7;
+        1.75;
 }
 
 
-.contact-grid {
+.connection-buttons {
 
     display:
-        grid;
+        flex;
 
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap:
-        20px;
-}
-
-
-.contact-card {
-
-    padding:
-        28px;
-
-    text-align:
+    justify-content:
         center;
 
-    border-radius:
-        22px;
+    flex-wrap:
+        wrap;
 
-    background:
-        rgba(255,255,255,0.035);
-
-    border:
-        1px solid
-        rgba(60,168,255,0.16);
+    gap:
+        12px;
 }
 
 
-.contact-card h3 {
-
-    margin:
-        0 0 10px;
-
-    font-size:
-        24px;
-}
-
-
-.contact-card p {
-
-    margin:
-        0 0 20px;
-
-    color:
-        #cbd2dc;
-
-    line-height:
-        1.7;
-}
-
-
-/* ========================================
+/* =====================================================
    FOOTER
-======================================== */
+===================================================== */
 
 footer {
 
     padding:
-        50px 0;
+        45px 0;
 
     text-align:
         center;
@@ -875,35 +861,49 @@ footer {
 }
 
 
-/* ========================================
+/* =====================================================
    MOBILE
-======================================== */
+===================================================== */
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
 
     .nav {
-        min-height: 70px;
+
+        min-height:
+            70px;
     }
+
 
     .nav-brand {
-        font-size: 18px;
+
+        font-size:
+            18px;
     }
 
+
     .menu-button {
-        display: block;
+
+        display:
+            block;
     }
+
 
     .nav-links {
 
-        display: none;
+        display:
+            none;
 
-        position: absolute;
+        position:
+            absolute;
 
-        top: 70px;
+        top:
+            70px;
 
-        left: 0;
+        left:
+            0;
 
-        right: 0;
+        right:
+            0;
 
         padding:
             18px 20px 22px;
@@ -920,15 +920,23 @@ footer {
         border-bottom:
             1px solid
             rgba(60,168,255,0.18);
+
+        backdrop-filter:
+            blur(18px);
     }
 
+
     .nav-links.show {
-        display: flex;
+
+        display:
+            flex;
     }
+
 
     .nav-links a {
 
-        width: 100%;
+        width:
+            100%;
 
         padding:
             15px 12px;
@@ -943,113 +951,221 @@ footer {
             rgba(255,255,255,0.045);
     }
 
-    .hero {
 
-        min-height: auto;
+    .cards {
 
-        padding:
-            55px 0 60px;
+        grid-template-columns:
+            1fr;
     }
 
-    .hero-card {
+
+    .card {
+
+        min-height:
+            340px;
+    }
+
+}
+
+
+/* =====================================================
+   PHONE
+===================================================== */
+
+@media (max-width: 520px) {
+
+    .container {
+
+        width:
+            90%;
+    }
+
+
+    main {
 
         padding:
-            40px 20px;
+            40px 0 70px;
+    }
+
+
+    .hero {
+
+        width:
+            100%;
+
+        padding:
+            38px 18px 35px;
+
+        margin-bottom:
+            55px;
 
         border-radius:
             25px;
     }
 
+
     .hero-logo {
 
         width:
-            245px;
+            125px;
+
+        height:
+            125px;
+
+        max-width:
+            125px;
+
+        max-height:
+            125px;
+
+        margin-bottom:
+            24px;
     }
+
 
     .hero h1 {
 
         font-size:
-            clamp(42px, 12vw, 65px);
+            42px;
 
         letter-spacing:
-            -2px;
+            -1.5px;
     }
+
 
     .hero p {
-        font-size: 16px;
+
+        font-size:
+            15px;
     }
 
-    .brand-grid {
-        grid-template-columns: 1fr;
+
+    .hero-buttons {
+
+        flex-direction:
+            column;
     }
 
-    .brand-card {
-        padding: 28px 22px;
+
+    .hero-buttons .button {
+
+        width:
+            100%;
     }
 
-    .brand-card p {
-        min-height: auto;
+
+    .areas h2 {
+
+        font-size:
+            36px;
     }
 
-    section {
-        padding: 65px 0;
+
+    .areas > p {
+
+        font-size:
+            15px;
     }
 
-    .about {
-        padding: 30px 22px;
+
+    .card {
+
+        min-height:
+            330px;
+
+        padding:
+            28px 20px;
     }
 
-    .contact-box {
-        padding: 30px 20px;
+
+    .card-logo {
+
+        width:
+            115px;
+
+        height:
+            115px;
     }
 
-    .contact-grid {
-        grid-template-columns: 1fr;
+
+    .connection {
+
+        padding:
+            32px 20px;
     }
+
+
+    .connection-buttons {
+
+        flex-direction:
+            column;
+    }
+
+
+    .connection-buttons .button {
+
+        width:
+            100%;
+    }
+
 }
 
 
-/* ========================================
-   SMALL PHONES
-======================================== */
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
 
-@media (max-width: 420px) {
-
-    .container {
-        width: 90%;
-    }
+@media (max-width: 380px) {
 
     .nav-brand {
-        font-size: 17px;
+
+        font-size:
+            16px;
     }
+
 
     .menu-button {
+
         padding:
-            11px 15px;
+            10px 14px;
     }
+
 
     .hero-logo {
-        width: 215px;
+
+        width:
+            115px;
+
+        height:
+            115px;
     }
 
-    .hero-card {
-        padding:
-            32px 17px;
+
+    .hero h1 {
+
+        font-size:
+            38px;
     }
 
-    .buttons {
-        flex-direction: column;
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior:
+            auto;
     }
 
-    .buttons .button {
-        width: 100%;
-        text-align: center;
+    * {
+        transition:
+            none !important;
     }
 
-    .contact-box {
-        padding:
-            25px 16px;
-    }
 }
 
 </style>
@@ -1060,56 +1176,56 @@ footer {
 <body>
 
 
-<!-- ========================================
+<!-- =====================================================
      HEADER
-======================================== -->
+===================================================== -->
 
 <header>
 
 <div class="container nav">
 
 
-<a href="index.html"
-   class="nav-brand">
-
-    NEWITT <span>MEDIA</span>
-
+<a
+href="index.html"
+class="nav-brand"
+>
+NEWITT <span>MEDIA</span>
 </a>
 
 
 <button
-    class="menu-button"
-    onclick="toggleMenu()"
-    aria-label="Open navigation menu"
+class="menu-button"
+onclick="toggleMenu()"
+aria-label="Open navigation menu"
 >
-    MENU
+MENU
 </button>
 
 
 <nav
-    class="nav-links"
-    id="mobileMenu"
+class="nav-links"
+id="mobileMenu"
 >
 
-    <a href="index.html">
-        Home
-    </a>
+<a href="index.html">
+Home
+</a>
 
-    <a href="skyline.html">
-        Skyline
-    </a>
+<a href="skyline.html">
+Skyline
+</a>
 
-    <a href="paranormal.html">
-        Paranormal
-    </a>
+<a href="paranormal.html">
+Paranormal
+</a>
 
-    <a href="photography.html">
-        Photography
-    </a>
+<a href="photography.html">
+Photography
+</a>
 
-    <a href="contact.html">
-        Get in Touch
-    </a>
+<a href="contact.html">
+Get in Touch
+</a>
 
 </nav>
 
@@ -1120,144 +1236,139 @@ footer {
 
 
 
-<!-- ========================================
-     HERO
-======================================== -->
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <main>
-
-
-<section class="hero">
 
 <div class="container">
 
 
-<div class="hero-card">
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
 
 
 <img
-    src="newitt-media-logo.png.PNG"
-    alt="NEWITT Media logo"
-    class="hero-logo"
+src="newitt-media-logo.png.PNG"
+alt="NEWITT Media logo"
+class="hero-logo"
 >
 
 
 <h1>
-    NEWITT <span>MEDIA</span>
+NEWITT <span>MEDIA</span>
 </h1>
 
 
 <p>
 
-    One name bringing together aerial
-    drone work, photography and
-    paranormal adventures.
+One name bringing together drone aerial media,
+photography and paranormal adventures.
+
+Explore the projects, images and adventures
+that make up NEWITT Media.
 
 </p>
 
 
-<div class="buttons">
+<div class="hero-buttons">
 
 
 <a
-    href="skyline.html"
-    class="button primary"
+href="skyline.html"
+class="button primary"
 >
-    Explore Skyline Media
+Explore Skyline Media
 </a>
 
 
 <a
-    href="paranormal.html"
-    class="button"
+href="paranormal.html"
+class="button"
 >
-    Enter the Paranormal
+Explore Paranormal
 </a>
 
 
 <a
-    href="photography.html"
-    class="button"
+href="photography.html"
+class="button"
 >
-    View Photography
+View Photography
 </a>
 
 
 </div>
 
-
-</div>
-
-</div>
 
 </section>
 
 
 
-<!-- ========================================
-     THREE BRANDS
-======================================== -->
+<!-- =====================================================
+     THREE SIDES
+===================================================== -->
 
-<section>
+<section class="areas">
 
-<div class="container">
-
-
-<div class="section-heading">
 
 <h2>
-    Three sides of
-    <span>NEWITT Media</span>
+Three sides of <span>NEWITT Media</span>
 </h2>
+
 
 <p>
 
-    Explore the three areas of NEWITT Media
-    and follow the projects, images and
-    adventures as they grow.
+Explore the three areas of NEWITT Media
+and follow the projects, images and adventures
+as they grow.
+
+</p>
+
+
+<div class="cards">
+
+
+<!-- =================================================
+     SKYLINE CARD
+================================================= -->
+
+<article class="card">
+
+
+<div>
+
+<img
+src="sky-logo.png.PNG"
+alt="NEWITT Skyline Media"
+class="card-logo"
+>
+
+
+<h3>
+NEWITT Skyline Media
+</h3>
+
+
+<p>
+
+Drone footage, aerial photography and
+views from above.
 
 </p>
 
 </div>
 
 
-
-<div class="brand-grid">
-
-
-<!-- SKYLINE -->
-
-<article class="brand-card">
-
-
-<img
-    src="sky-logo.png.PNG"
-    alt="NEWITT Skyline Media logo"
-    class="brand-logo"
->
-
-
-<h3>
-    NEWITT Skyline Media
-</h3>
-
-
-<p>
-
-    Drone footage, aerial photography
-    and unique views from above.
-
-    From locations and landscapes to
-    aerial projects across the UK.
-
-</p>
-
-
 <a
-    href="skyline.html"
-    class="card-button"
+href="skyline.html"
+class="button primary"
 >
-    Visit Skyline
+Explore Skyline
 </a>
 
 
@@ -1265,37 +1376,42 @@ footer {
 
 
 
-<!-- PARANORMAL -->
+<!-- =================================================
+     PARANORMAL CARD
+================================================= -->
 
-<article class="brand-card">
+<article class="card">
 
+
+<div>
 
 <img
-    src="paranormal-logo.png.PNG"
-    alt="NEWITT's Paranormal Adventures logo"
-    class="brand-logo"
+src="paranormal-logo.png.PNG"
+alt="NEWITT's Paranormal Adventures"
+class="card-logo"
 >
 
 
 <h3>
-    NEWITT's Paranormal Adventures
+NEWITT's Paranormal Adventures
 </h3>
 
 
 <p>
 
-    Haunted locations, investigations,
-    strange stories and unexplained
-    experiences.
+Haunted locations, investigations,
+strange stories and unexplained experiences.
 
 </p>
 
+</div>
+
 
 <a
-    href="paranormal.html"
-    class="card-button"
+href="paranormal.html"
+class="button"
 >
-    Enter the Paranormal
+Explore Paranormal
 </a>
 
 
@@ -1303,39 +1419,43 @@ footer {
 
 
 
-<!-- PHOTOGRAPHY -->
+<!-- =================================================
+     PHOTOGRAPHY CARD
+================================================= -->
 
-<article class="brand-card">
+<article class="card">
 
+
+<div>
 
 <img
-    src="newitt-media-logo.png.PNG"
-    alt="NEWITT Media Photography logo"
-    class="brand-logo"
+src="newitt-media-logo.png.PNG"
+alt="NEWITT Media Photography"
+class="card-logo"
 >
 
 
 <h3>
-    NEWITT Media Photography
+NEWITT Media Photography
 </h3>
 
 
 <p>
 
-    Landscapes, places, adventures and
-    moments worth capturing.
-
-    A growing collection of photography
-    from the NEWITT Media journey.
+A growing collection of landscapes,
+locations and moments captured through
+the lens.
 
 </p>
 
+</div>
+
 
 <a
-    href="photography.html"
-    class="card-button"
+href="photography.html"
+class="button"
 >
-    View Photography
+View Photography
 </a>
 
 
@@ -1344,194 +1464,93 @@ footer {
 
 </div>
 
-</div>
 
 </section>
 
 
 
-<!-- ========================================
-     ABOUT
-======================================== -->
+<!-- =====================================================
+     CONNECTION
+===================================================== -->
 
-<section>
-
-<div class="container">
-
-
-<div class="section-heading">
-
-<h2>
-    About <span>NEWITT Media</span>
-</h2>
-
-</div>
-
-
-<div class="about">
-
-
-<p>
-
-    NEWITT Media is an independent creative
-    project bringing together aerial drone
-    work, photography and paranormal
-    adventures under one brand.
-
-</p>
-
-
-<p>
-
-    From capturing locations from above to
-    exploring places with a darker history,
-    the aim is simple: create interesting
-    content and share the experience.
-
-</p>
-
-
-<p>
-
-    The website will continue to grow as new
-    locations, projects, photographs and
-    adventures are added.
-
-</p>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- ========================================
-     GET IN TOUCH
-======================================== -->
-
-<section id="contact">
-
-<div class="container">
-
-
-<div class="contact-box">
-
-
-<div class="contact-heading">
+<section class="connection">
 
 
 <h2>
-    Get in <span>Touch</span>
+One <span>Media</span>. Three Directions.
 </h2>
 
 
 <p>
 
-    Have a drone project, aerial enquiry or
-    paranormal investigation idea?
+Explore the drone work, paranormal adventures
+and photography that make up NEWITT Media.
 
-    Choose the section you would like to
-    contact.
-
-</p>
-
-
-</div>
-
-
-
-<div class="contact-grid">
-
-
-<!-- SKYLINE CONTACT -->
-
-<div class="contact-card">
-
-
-<h3>
-    NEWITT Skyline Media
-</h3>
-
-
-<p>
-
-    Drone work, aerial photography,
-    filming and Skyline Media enquiries.
+For enquiries, use the Get in Touch page.
 
 </p>
+
+
+<div class="connection-buttons">
 
 
 <a
-    href="contact.html"
-    class="button primary"
+href="skyline.html"
+class="button"
 >
-    Skyline Enquiries
+Skyline
+</a>
+
+
+<a
+href="paranormal.html"
+class="button"
+>
+Paranormal
+</a>
+
+
+<a
+href="photography.html"
+class="button"
+>
+Photography
+</a>
+
+
+<a
+href="contact.html"
+class="button primary"
+>
+Get in Touch
 </a>
 
 
 </div>
 
 
-
-<!-- PARANORMAL CONTACT -->
-
-<div class="contact-card">
-
-
-<h3>
-    NEWITT's Paranormal Adventures
-</h3>
-
-
-<p>
-
-    Paranormal investigations, locations,
-    stories and collaboration enquiries.
-
-</p>
-
-
-<a
-    href="contact.html"
-    class="button primary"
->
-    Paranormal Enquiries
-</a>
-
-
-</div>
-
-
-</div>
-
-</div>
-
-</div>
-
 </section>
 
 
+</div>
 
 </main>
 
 
 
-<!-- ========================================
+<!-- =====================================================
      FOOTER
-======================================== -->
+===================================================== -->
 
 <footer>
 
 <div class="container">
 
-    NEWITT Media
+NEWITT MEDIA
 
-    <br>
+<br>
 
-    Drone work. Photography. Paranormal adventures.
+Drone Media. Photography. Paranormal Adventures.
 
 </div>
 
@@ -1539,9 +1558,9 @@ footer {
 
 
 
-<!-- ========================================
-     MOBILE MENU JAVASCRIPT
-======================================== -->
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script>
 
@@ -1556,22 +1575,22 @@ function toggleMenu() {
 
 
 document
-    .querySelectorAll("#mobileMenu a")
-    .forEach(function(link) {
+.querySelectorAll("#mobileMenu a")
+.forEach(function(link) {
 
-        link.addEventListener(
-            "click",
-            function() {
+    link.addEventListener(
+        "click",
+        function() {
 
-                document
-                    .getElementById("mobileMenu")
-                    .classList
-                    .remove("show");
+            document
+                .getElementById("mobileMenu")
+                .classList
+                .remove("show");
 
-            }
-        );
+        }
+    );
 
-    });
+});
 
 </script>
 
