@@ -5,21 +5,23 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>NEWITT's Paranormal Adventures</title>
 
 <meta
-name="description"
-content="NEWITT's Paranormal Adventures. Haunted locations, paranormal investigations, strange stories and unexplained encounters."
+    name="description"
+    content="NEWITT's Paranormal Adventures. Haunted locations, investigations, paranormal experiences and unexplained events."
 >
 
 <style>
 
-/* =========================================
+/* =====================================================
    RESET
-========================================= */
+===================================================== */
 
 * {
     box-sizing: border-box;
@@ -31,9 +33,17 @@ html {
 
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #f5f7fb;
-    background: #030506;
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: #ffffff;
+
+    background: #050202;
+
     overflow-x: hidden;
 }
 
@@ -42,10 +52,34 @@ a {
     text-decoration: none;
 }
 
+img {
+    max-width: 100%;
+}
 
-/* =========================================
+
+/* =====================================================
+   PARANORMAL COLOUR SYSTEM
+===================================================== */
+
+:root {
+
+    --paranormal-red: #c62828;
+
+    --paranormal-bright: #ef3333;
+
+    --paranormal-dark: #090202;
+
+    --paranormal-glow:
+        rgba(198,40,40,0.28);
+
+    --panel:
+        rgba(12,5,7,0.84);
+}
+
+
+/* =====================================================
    BACKGROUND
-========================================= */
+===================================================== */
 
 body::before {
 
@@ -58,15 +92,18 @@ body::before {
     z-index: -3;
 
     background:
+
         linear-gradient(
-            rgba(0,3,7,0.55),
-            rgba(0,2,5,0.84)
+            rgba(5,1,3,0.38),
+            rgba(5,1,3,0.88)
         ),
+
         url("background.png.PNG")
         center center / cover no-repeat;
 
     transform: scale(1.02);
 }
+
 
 body::after {
 
@@ -79,29 +116,34 @@ body::after {
     z-index: -2;
 
     background:
+
         radial-gradient(
-            circle at 50% 5%,
-            rgba(0,210,210,0.18),
-            transparent 42%
+            circle at 50% 10%,
+            rgba(198,40,40,0.20),
+            transparent 44%
         );
 
     pointer-events: none;
 }
 
 
-/* =========================================
+/* =====================================================
    CONTAINER
-========================================= */
+===================================================== */
 
 .container {
-    width: min(1100px, 92%);
-    margin: 0 auto;
+
+    width:
+        min(1100px, 92%);
+
+    margin:
+        0 auto;
 }
 
 
-/* =========================================
+/* =====================================================
    HEADER
-========================================= */
+===================================================== */
 
 header {
 
@@ -112,197 +154,253 @@ header {
     z-index: 1000;
 
     background:
-        rgba(2,5,8,0.95);
+        rgba(5,2,3,0.96);
 
     backdrop-filter:
         blur(18px);
 
     border-bottom:
         1px solid
-        rgba(80,220,220,0.18);
+        rgba(198,40,40,0.35);
 
     box-shadow:
         0 8px 35px
-        rgba(0,0,0,0.25);
+        rgba(0,0,0,0.45);
 }
 
 
 .nav {
 
-    min-height: 78px;
+    min-height:
+        78px;
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
 
-    gap: 20px;
+    gap:
+        20px;
 }
 
 
-/* =========================================
-   BRAND
-========================================= */
+/* =====================================================
+   HEADER BRAND
+===================================================== */
 
 .nav-brand {
 
-    font-size: 21px;
+    font-size:
+        21px;
 
-    font-weight: 950;
+    font-weight:
+        950;
 
-    letter-spacing: 1px;
+    letter-spacing:
+        1px;
 
-    white-space: nowrap;
+    white-space:
+        nowrap;
 }
+
 
 .nav-brand span {
-    color: #54d7d8;
+
+    color:
+        var(--paranormal-bright);
 }
 
 
-/* =========================================
+/* =====================================================
    NAVIGATION
-========================================= */
+===================================================== */
 
 .nav-links {
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 25px;
+    gap:
+        25px;
 
-    font-size: 14px;
+    font-size:
+        14px;
 
-    font-weight: 800;
+    font-weight:
+        800;
 }
+
 
 .nav-links a {
 
-    padding: 12px 3px;
+    padding:
+        12px 3px;
 
-    opacity: 0.85;
+    opacity:
+        0.88;
 
     transition:
         color 0.25s ease,
         opacity 0.25s ease;
 }
 
+
 .nav-links a:hover {
 
-    color: #65dddd;
+    color:
+        var(--paranormal-bright);
 
-    opacity: 1;
+    opacity:
+        1;
 }
 
 
-/* =========================================
+/* =====================================================
    MOBILE MENU
-========================================= */
+===================================================== */
 
 .menu-button {
 
-    display: none;
+    display:
+        none;
 
-    padding: 12px 18px;
+    padding:
+        12px 18px;
 
     border:
         1px solid
-        rgba(80,220,220,0.55);
+        rgba(198,40,40,0.65);
 
-    border-radius: 14px;
+    border-radius:
+        14px;
 
     background:
-        rgba(15,55,60,0.32);
+        rgba(198,40,40,0.12);
 
-    color: #ffffff;
+    color:
+        #ffffff;
 
-    font-size: 15px;
+    font-size:
+        15px;
 
-    font-weight: 900;
+    font-weight:
+        900;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 }
 
 
-/* =========================================
+/* =====================================================
    MAIN
-========================================= */
+===================================================== */
 
 main {
-    padding: 70px 0 100px;
+
+    padding:
+        60px 0 100px;
 }
 
 
-/* =========================================
+/* =====================================================
    HERO
-========================================= */
+===================================================== */
 
 .hero {
 
-    text-align: center;
+    width:
+        min(860px, 100%);
 
-    max-width: 900px;
+    margin:
+        0 auto 60px;
 
-    margin: 0 auto 65px;
+    padding:
+        48px 35px;
 
-    padding: 50px 30px;
+    text-align:
+        center;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
 
     border:
         1px solid
-        rgba(80,220,220,0.18);
+        rgba(198,40,40,0.40);
 
-    border-radius: 30px;
+    border-radius:
+        30px;
 
     background:
-        rgba(2,5,8,0.72);
+        var(--panel);
 
     backdrop-filter:
         blur(15px);
 
     box-shadow:
         0 25px 75px
-        rgba(0,0,0,0.45);
+        rgba(0,0,0,0.55);
 }
 
 
-/* =========================================
-   LOGO
-========================================= */
+/* =====================================================
+   PARANORMAL LOGO
+===================================================== */
 
-.paranormal-logo {
+.hero-logo {
 
-    width: 220px;
+    width:
+        165px;
 
-    max-width: 72%;
+    height:
+        165px;
 
-    height: auto;
+    object-fit:
+        contain;
 
-    display: block;
+    display:
+        block;
 
     margin:
-        0 auto 28px;
+        0 auto 25px;
 
     filter:
         drop-shadow(
             0 15px 35px
-            rgba(0,0,0,0.60)
+            rgba(198,40,40,0.35)
         );
 }
 
 
-/* =========================================
+/* =====================================================
    HERO TITLE
-========================================= */
+===================================================== */
 
 .hero h1 {
 
+    width:
+        100%;
+
     margin:
-        0 0 20px;
+        0 0 18px;
+
+    text-align:
+        center;
 
     font-size:
-        clamp(38px, 6vw, 68px);
+        clamp(38px, 6vw, 66px);
 
     line-height:
         1;
@@ -316,20 +414,22 @@ main {
 
 
 .hero h1 span {
-    color: #5bd9da;
+
+    color:
+        var(--paranormal-bright);
 }
 
 
 .hero p {
 
     max-width:
-        740px;
+        720px;
 
     margin:
         0 auto;
 
     color:
-        #cbd2d9;
+        #d4c9ca;
 
     font-size:
         17px;
@@ -339,9 +439,9 @@ main {
 }
 
 
-/* =========================================
+/* =====================================================
    BUTTONS
-========================================= */
+===================================================== */
 
 .buttons {
 
@@ -349,6 +449,9 @@ main {
         flex;
 
     justify-content:
+        center;
+
+    align-items:
         center;
 
     flex-wrap:
@@ -365,28 +468,40 @@ main {
 .button {
 
     display:
-        inline-block;
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    min-height:
+        48px;
 
     padding:
-        14px 22px;
+        13px 22px;
 
     border:
         1px solid
-        rgba(255,255,255,0.13);
+        rgba(255,255,255,0.14);
 
     border-radius:
         13px;
 
     background:
-        rgba(255,255,255,0.07);
+        rgba(255,255,255,0.06);
+
+    color:
+        #ffffff;
 
     font-weight:
         900;
 
     transition:
         transform 0.25s ease,
-        background 0.25s ease,
-        border-color 0.25s ease;
+        border-color 0.25s ease,
+        background 0.25s ease;
 }
 
 
@@ -396,60 +511,52 @@ main {
         translateY(-3px);
 
     border-color:
-        rgba(80,220,220,0.45);
+        rgba(239,51,51,0.65);
 }
 
 
-.button.primary {
+.button.paranormal {
 
     background:
-        #18bfc3;
+        var(--paranormal-red);
 
     border-color:
-        #18bfc3;
-
-    color:
-        #001012;
+        var(--paranormal-red);
 
     box-shadow:
         0 12px 35px
-        rgba(24,191,195,0.20);
+        var(--paranormal-glow);
 }
 
 
-.button.primary:hover {
-    background: #35d4d7;
-}
-
-
-/* =========================================
-   CONTENT SECTIONS
-========================================= */
+/* =====================================================
+   CONTENT SECTION
+===================================================== */
 
 .section {
 
     margin-bottom:
-        60px;
+        45px;
 
     padding:
         38px;
 
     border:
         1px solid
-        rgba(80,220,220,0.15);
+        rgba(198,40,40,0.28);
 
     border-radius:
         28px;
 
     background:
-        rgba(2,5,8,0.78);
+        var(--panel);
 
     backdrop-filter:
         blur(14px);
 
     box-shadow:
         0 20px 60px
-        rgba(0,0,0,0.30);
+        rgba(0,0,0,0.40);
 }
 
 
@@ -463,21 +570,26 @@ main {
 
     line-height:
         1.05;
+
+    font-weight:
+        950;
 }
 
 
 .section h2 span {
-    color: #5bd9da;
+
+    color:
+        var(--paranormal-bright);
 }
 
 
-.section-intro {
+.section p {
 
     margin:
         0;
 
     color:
-        #cbd2d9;
+        #d4c9ca;
 
     font-size:
         16px;
@@ -487,11 +599,11 @@ main {
 }
 
 
-/* =========================================
+/* =====================================================
    WHAT WE DO
-========================================= */
+===================================================== */
 
-.what-grid {
+.feature-grid {
 
     display:
         grid;
@@ -503,86 +615,261 @@ main {
         18px;
 
     margin-top:
-        30px;
+        28px;
 }
 
 
-.what-card {
+.feature {
 
     padding:
-        25px;
+        25px 20px;
+
+    border:
+        1px solid
+        rgba(198,40,40,0.25);
 
     border-radius:
         20px;
 
     background:
         rgba(255,255,255,0.035);
-
-    border:
-        1px solid
-        rgba(80,220,220,0.12);
 }
 
 
-.what-card h3 {
+.feature h3 {
 
     margin:
-        0 0 12px;
-
-    color:
-        #5bd9da;
+        0 0 10px;
 
     font-size:
         21px;
 }
 
 
-.what-card p {
-
-    margin:
-        0;
-
-    color:
-        #cbd2d9;
-
-    line-height:
-        1.7;
+.feature p {
 
     font-size:
-        15px;
+        14px;
+
+    line-height:
+        1.65;
 }
 
 
-/* =========================================
-   SOCIAL MEDIA
-========================================= */
+/* =====================================================
+   TIKTOK
+===================================================== */
 
-.social-box {
+.tiktok-section {
+
+    margin-bottom:
+        45px;
+
+    padding:
+        40px 25px;
 
     text-align:
         center;
 
-    padding:
-        38px 25px;
+    border:
+        1px solid
+        rgba(198,40,40,0.30);
 
     border-radius:
-        25px;
+        28px;
 
     background:
-        rgba(255,255,255,0.035);
+        rgba(10,3,5,0.88);
+
+    backdrop-filter:
+        blur(14px);
+
+    box-shadow:
+        0 20px 65px
+        rgba(0,0,0,0.50);
+}
+
+
+.tiktok-section h2 {
+
+    margin:
+        0 0 15px;
+
+    font-size:
+        clamp(30px, 5vw, 46px);
+}
+
+
+.tiktok-section h2 span {
+
+    color:
+        var(--paranormal-bright);
+}
+
+
+.tiktok-section p {
+
+    max-width:
+        700px;
+
+    margin:
+        0 auto 28px;
+
+    color:
+        #d4c9ca;
+
+    line-height:
+        1.7;
+}
+
+
+/* =====================================================
+   TIKTOK EMBED
+===================================================== */
+
+.tiktok-wrapper {
+
+    width:
+        min(100%, 650px);
+
+    margin:
+        0 auto;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        22px;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+}
+
+
+.tiktok-embed {
+
+    margin:
+        0 auto !important;
+
+    max-width:
+        605px !important;
+
+    min-width:
+        325px !important;
+}
+
+
+/* =====================================================
+   TIKTOK BUTTON
+===================================================== */
+
+.tiktok-button {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    min-height:
+        50px;
+
+    margin-top:
+        25px;
+
+    padding:
+        14px 26px;
 
     border:
         1px solid
-        rgba(80,220,220,0.15);
+        rgba(255,255,255,0.20);
+
+    border-radius:
+        14px;
+
+    background:
+        #111111;
+
+    color:
+        #ffffff;
+
+    font-weight:
+        900;
+
+    box-shadow:
+        0 12px 30px
+        rgba(0,0,0,0.40);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
 }
 
 
-.social-box h2 {
-    margin-top: 0;
+.tiktok-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        var(--paranormal-bright);
 }
 
 
-.social-box p {
+/* =====================================================
+   SOCIAL MEDIA
+===================================================== */
+
+.social-section {
+
+    margin-bottom:
+        45px;
+
+    padding:
+        38px 25px;
+
+    text-align:
+        center;
+
+    border:
+        1px solid
+        rgba(198,40,40,0.25);
+
+    border-radius:
+        28px;
+
+    background:
+        var(--panel);
+
+    backdrop-filter:
+        blur(14px);
+}
+
+
+.social-section h2 {
+
+    margin:
+        0 0 15px;
+
+    font-size:
+        clamp(30px, 5vw, 45px);
+}
+
+
+.social-section h2 span {
+
+    color:
+        var(--paranormal-bright);
+}
+
+
+.social-section p {
 
     max-width:
         700px;
@@ -591,10 +878,10 @@ main {
         0 auto 25px;
 
     color:
-        #cbd2d9;
+        #d4c9ca;
 
     line-height:
-        1.75;
+        1.7;
 }
 
 
@@ -614,24 +901,50 @@ main {
 }
 
 
-/* =========================================
+/* =====================================================
    SOCIAL BUTTONS
-========================================= */
+===================================================== */
 
-.tiktok-button {
+.social-button {
 
-    background:
-        #18bfc3;
+    display:
+        inline-flex;
 
-    border-color:
-        #18bfc3;
+    align-items:
+        center;
 
-    color:
-        #001012;
+    justify-content:
+        center;
+
+    min-width:
+        160px;
+
+    min-height:
+        48px;
+
+    padding:
+        13px 20px;
+
+    border-radius:
+        13px;
+
+    font-weight:
+        900;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
 }
 
 
-.instagram-button {
+.social-button:hover {
+
+    transform:
+        translateY(-3px);
+}
+
+
+.instagram {
 
     background:
         linear-gradient(
@@ -642,92 +955,97 @@ main {
         );
 
     border:
-        none;
-
-    color:
-        #ffffff;
+        1px solid
+        rgba(255,255,255,0.25);
 }
 
 
-.facebook-button {
+.facebook {
 
     background:
         #1877f2;
 
-    border-color:
+    border:
+        1px solid
         #1877f2;
-
-    color:
-        #ffffff;
 }
 
 
-/* =========================================
-   CONTACT
-========================================= */
+.social-tiktok {
 
-.contact-box {
+    background:
+        #111111;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.20);
+}
+
+
+/* =====================================================
+   FOLLOW ADVENTURE
+===================================================== */
+
+.follow-section {
 
     text-align:
         center;
 
     padding:
-        45px 30px;
+        40px 25px;
+
+    border:
+        1px solid
+        rgba(198,40,40,0.30);
 
     border-radius:
         28px;
 
     background:
-        linear-gradient(
-            145deg,
-            rgba(5,30,32,0.88),
-            rgba(2,5,8,0.84)
-        );
-
-    border:
-        1px solid
-        rgba(80,220,220,0.25);
+        rgba(198,40,40,0.09);
 
     box-shadow:
-        0 25px 75px
+        0 20px 55px
         rgba(0,0,0,0.40);
 }
 
 
-.contact-box h2 {
+.follow-section h2 {
 
     margin:
         0 0 15px;
 
     font-size:
-        clamp(32px, 5vw, 50px);
+        clamp(30px, 5vw, 45px);
 }
 
 
-.contact-box h2 span {
-    color: #5bd9da;
+.follow-section h2 span {
+
+    color:
+        var(--paranormal-bright);
 }
 
 
-.contact-box p {
+.follow-section p {
 
     max-width:
         700px;
 
     margin:
-        0 auto 28px;
+        0 auto 25px;
 
     color:
-        #cbd2d9;
+        #d4c9ca;
 
     line-height:
-        1.75;
+        1.7;
 }
 
 
-/* =========================================
+/* =====================================================
    FOOTER
-========================================= */
+===================================================== */
 
 footer {
 
@@ -738,7 +1056,7 @@ footer {
         center;
 
     color:
-        #9aa3ac;
+        #a99c9e;
 
     border-top:
         1px solid
@@ -749,35 +1067,49 @@ footer {
 }
 
 
-/* =========================================
+/* =====================================================
    MOBILE
-========================================= */
+===================================================== */
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
 
     .nav {
-        min-height: 70px;
+
+        min-height:
+            70px;
     }
+
 
     .nav-brand {
-        font-size: 18px;
+
+        font-size:
+            18px;
     }
 
+
     .menu-button {
-        display: block;
+
+        display:
+            block;
     }
+
 
     .nav-links {
 
-        display: none;
+        display:
+            none;
 
-        position: absolute;
+        position:
+            absolute;
 
-        top: 70px;
+        top:
+            70px;
 
-        left: 0;
+        left:
+            0;
 
-        right: 0;
+        right:
+            0;
 
         padding:
             18px 20px 22px;
@@ -789,23 +1121,28 @@ footer {
             6px;
 
         background:
-            rgba(2,5,8,0.98);
+            rgba(5,2,3,0.98);
 
         border-bottom:
             1px solid
-            rgba(80,220,220,0.18);
+            rgba(198,40,40,0.30);
 
         backdrop-filter:
             blur(18px);
     }
 
+
     .nav-links.show {
-        display: flex;
+
+        display:
+            flex;
     }
+
 
     .nav-links a {
 
-        width: 100%;
+        width:
+            100%;
 
         padding:
             15px 12px;
@@ -820,106 +1157,161 @@ footer {
             rgba(255,255,255,0.045);
     }
 
-    main {
-        padding:
-            50px 0 70px;
-    }
 
-    .hero {
+    .feature-grid {
 
-        padding:
-            40px 20px;
-
-        margin-bottom:
-            45px;
-    }
-
-    .paranormal-logo {
-        width: 185px;
-    }
-
-    .hero h1 {
-        font-size: 43px;
-    }
-
-    .hero p {
-        font-size: 15px;
-    }
-
-    .buttons {
-        flex-direction:
-            column;
-    }
-
-    .buttons .button {
-        width: 100%;
-        text-align: center;
-    }
-
-    .section {
-        padding:
-            25px 18px;
-    }
-
-    .what-grid {
         grid-template-columns:
             1fr;
     }
 
-    .social-buttons {
+}
+
+
+/* =====================================================
+   PHONE
+===================================================== */
+
+@media (max-width: 520px) {
+
+    .container {
+
+        width:
+            90%;
+    }
+
+
+    main {
+
+        padding:
+            40px 0 70px;
+    }
+
+
+    .hero {
+
+        padding:
+            38px 18px;
+
+        border-radius:
+            25px;
+    }
+
+
+    .hero-logo {
+
+        width:
+            130px;
+
+        height:
+            130px;
+
+        margin-bottom:
+            22px;
+    }
+
+
+    .hero h1 {
+
+        font-size:
+            38px;
+
+        letter-spacing:
+            -1.5px;
+    }
+
+
+    .hero p {
+
+        font-size:
+            15px;
+    }
+
+
+    .buttons {
+
         flex-direction:
             column;
     }
 
-    .social-buttons .button {
-        width: 100%;
-        text-align: center;
+
+    .buttons .button {
+
+        width:
+            100%;
     }
 
-    .contact-box {
+
+    .section {
+
         padding:
-            32px 20px;
+            25px 18px;
+
+        border-radius:
+            23px;
     }
+
+
+    .tiktok-section {
+
+        padding:
+            32px 15px;
+    }
+
+
+    .tiktok-embed {
+
+        min-width:
+            0 !important;
+
+        width:
+            100% !important;
+    }
+
+
+    .tiktok-button {
+
+        width:
+            100%;
+    }
+
+
+    .social-buttons {
+
+        flex-direction:
+            column;
+    }
+
+
+    .social-button {
+
+        width:
+            100%;
+    }
+
+
+    .follow-section {
+
+        padding:
+            32px 18px;
+    }
+
 }
 
 
-/* =========================================
-   SMALL PHONES
-========================================= */
-
-@media (max-width: 420px) {
-
-    .container {
-        width: 90%;
-    }
-
-    .nav-brand {
-        font-size: 17px;
-    }
-
-    .menu-button {
-        padding:
-            11px 15px;
-    }
-
-    .hero h1 {
-        font-size: 39px;
-    }
-}
-
-
-/* =========================================
+/* =====================================================
    REDUCED MOTION
-========================================= */
+===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
     html {
-        scroll-behavior: auto;
+        scroll-behavior:
+            auto;
     }
 
     * {
-        transition: none !important;
+        transition:
+            none !important;
     }
 
 }
@@ -932,9 +1324,9 @@ footer {
 <body>
 
 
-<!-- =========================================
+<!-- =====================================================
      HEADER
-========================================= -->
+===================================================== -->
 
 <header>
 
@@ -942,45 +1334,45 @@ footer {
 
 
 <a
-href="index.html"
-class="nav-brand"
+    href="index.html"
+    class="nav-brand"
 >
-NEWITT <span>MEDIA</span>
+    NEWITT <span>MEDIA</span>
 </a>
 
 
 <button
-class="menu-button"
-onclick="toggleMenu()"
-aria-label="Open navigation menu"
+    class="menu-button"
+    onclick="toggleMenu()"
+    aria-label="Open navigation menu"
 >
-MENU
+    MENU
 </button>
 
 
 <nav
-class="nav-links"
-id="mobileMenu"
+    class="nav-links"
+    id="mobileMenu"
 >
 
 <a href="index.html">
-Home
+    Home
 </a>
 
 <a href="skyline.html">
-Skyline
+    Skyline
 </a>
 
 <a href="paranormal.html">
-Paranormal
+    Paranormal
 </a>
 
 <a href="photography.html">
-Photography
+    Photography
 </a>
 
 <a href="contact.html">
-Get in Touch
+    Get in Touch
 </a>
 
 </nav>
@@ -992,42 +1384,41 @@ Get in Touch
 
 
 
-<!-- =========================================
+<!-- =====================================================
      MAIN
-========================================= -->
+===================================================== -->
 
 <main>
 
 <div class="container">
 
 
-<!-- =========================================
+<!-- =====================================================
      HERO
-========================================= -->
+===================================================== -->
 
 <section class="hero">
 
 
 <img
-src="paranormal-logo.png.PNG"
-alt="NEWITT's Paranormal Adventures logo"
-class="paranormal-logo"
+    src="paranormal-logo.png.PNG"
+    alt="NEWITT's Paranormal Adventures"
+    class="hero-logo"
 >
 
 
 <h1>
-NEWITT's
-<span>Paranormal Adventures</span>
+    NEWITT's <span>Paranormal Adventures</span>
 </h1>
 
 
 <p>
 
 Haunted locations, paranormal investigations,
-strange stories and unexplained experiences.
+strange experiences and unexplained events.
 
-Follow the investigations and discover what
-happens when we step inside.
+Follow the journey as we explore some of
+the UK's most interesting locations.
 
 </p>
 
@@ -1036,18 +1427,10 @@ happens when we step inside.
 
 
 <a
-href="contact.html"
-class="button primary"
+    href="index.html"
+    class="button"
 >
-Paranormal Enquiries
-</a>
-
-
-<a
-href="index.html"
-class="button"
->
-Back to NEWITT Media
+    Back to NEWITT Media
 </a>
 
 
@@ -1058,28 +1441,28 @@ Back to NEWITT Media
 
 
 
-<!-- =========================================
-     ABOUT
-========================================= -->
+<!-- =====================================================
+     WELCOME
+===================================================== -->
 
 <section class="section">
 
 
 <h2>
-Welcome to the <span>Paranormal</span>
+    Welcome to the <span>Paranormal</span>
 </h2>
 
 
-<p class="section-intro">
+<p>
 
-NEWITT's Paranormal Adventures explores
-haunted locations, unusual stories and
-unexplained experiences.
+NEWITT's Paranormal Adventures follows
+real investigations, haunted locations,
+strange experiences and unexplained events.
 
 From historic buildings and former prisons
-to locations with long-running paranormal
-legends, we investigate, document and share
-what happens.
+to locations with long-standing paranormal
+stories, the aim is to explore, document
+and share what happens.
 
 </p>
 
@@ -1088,25 +1471,25 @@ what happens.
 
 
 
-<!-- =========================================
+<!-- =====================================================
      WHAT WE DO
-========================================= -->
+===================================================== -->
 
 <section class="section">
 
 
 <h2>
-What <span>We Do</span>
+    What We <span>Do</span>
 </h2>
 
 
-<div class="what-grid">
+<div class="feature-grid">
 
 
-<div class="what-card">
+<article class="feature">
 
 <h3>
-Investigations
+    Investigations
 </h3>
 
 <p>
@@ -1117,31 +1500,30 @@ what happens.
 
 </p>
 
-</div>
+</article>
 
 
-
-<div class="what-card">
+<article class="feature">
 
 <h3>
-Video & Content
+    Video &amp; Content
 </h3>
 
 <p>
 
-Investigations, clips and behind-the-scenes
-content from our paranormal adventures.
+Recording footage, clips and
+stories from paranormal investigations
+and adventures.
 
 </p>
 
-</div>
+</article>
 
 
-
-<div class="what-card">
+<article class="feature">
 
 <h3>
-Locations
+    Locations
 </h3>
 
 <p>
@@ -1151,7 +1533,7 @@ and places with unusual stories.
 
 </p>
 
-</div>
+</article>
 
 
 </div>
@@ -1161,27 +1543,87 @@ and places with unusual stories.
 
 
 
-<!-- =========================================
-     SOCIAL MEDIA
-========================================= -->
+<!-- =====================================================
+     TIKTOK
+===================================================== -->
 
-<section class="section">
-
-
-<div class="social-box">
+<section class="tiktok-section">
 
 
 <h2>
-Follow the <span>Adventures</span>
+    Follow the <span>Adventure</span>
 </h2>
 
 
 <p>
 
 Follow NEWITT's Paranormal Adventures
-across social media for investigations,
-clips, updates and behind-the-scenes
-content.
+on TikTok for investigations, clips,
+updates and behind-the-scenes content.
+
+The TikTok account is shown below.
+
+</p>
+
+
+<div class="tiktok-wrapper">
+
+
+<blockquote
+    class="tiktok-embed"
+    cite="https://www.tiktok.com/@nw13ttt"
+    data-unique-id="nw13ttt"
+    data-embed-type="creator"
+>
+
+<section>
+
+<a
+    target="_blank"
+    href="https://www.tiktok.com/@nw13ttt?refer=creator_embed"
+>
+    @nw13ttt
+</a>
+
+</section>
+
+</blockquote>
+
+
+</div>
+
+
+<a
+    href="https://www.tiktok.com/@nw13ttt"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="tiktok-button"
+>
+    Open Paranormal TikTok
+</a>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     SOCIAL MEDIA
+===================================================== -->
+
+<section class="social-section">
+
+
+<h2>
+    Follow NEWITT's <span>Paranormal Adventures</span>
+</h2>
+
+
+<p>
+
+Follow the paranormal journey across
+social media for new investigations,
+photographs, videos and updates.
 
 </p>
 
@@ -1190,36 +1632,33 @@ content.
 
 
 <a
-href="https://www.tiktok.com/@nw13ttt"
-target="_blank"
-rel="noopener noreferrer"
-class="button tiktok-button"
+    href="https://www.tiktok.com/@nw13ttt"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="social-button social-tiktok"
 >
-Paranormal TikTok
+    TikTok
 </a>
 
 
 <a
-href="https://www.instagram.com/nw13ttt/"
-target="_blank"
-rel="noopener noreferrer"
-class="button instagram-button"
+    href="https://www.instagram.com/nw13ttt/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="social-button instagram"
 >
-Paranormal Instagram
+    Instagram
 </a>
 
 
 <a
-href="https://www.facebook.com/share/1AiSkdbyM4/"
-target="_blank"
-rel="noopener noreferrer"
-class="button facebook-button"
+    href="https://www.facebook.com/share/1AiSkdbyM4/?mibextid=wwXIfr"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="social-button facebook"
 >
-Paranormal Facebook
+    Facebook
 </a>
-
-
-</div>
 
 
 </div>
@@ -1229,38 +1668,43 @@ Paranormal Facebook
 
 
 
-<!-- =========================================
-     CONTACT
-========================================= -->
+<!-- =====================================================
+     FINAL SECTION
+===================================================== -->
 
-<section>
-
-
-<div class="contact-box">
+<section class="follow-section">
 
 
 <h2>
-Have a <span>Story?</span>
+    Keep Following the <span>Adventure</span>
 </h2>
 
 
 <p>
 
-Have a location, paranormal experience,
-investigation idea or collaboration you'd
-like to discuss?
-
-Get in touch with NEWITT's Paranormal
-Adventures.
+New locations, investigations, footage
+and stories will be added as the journey
+continues.
 
 </p>
 
 
+<div class="buttons">
+
+
 <a
-href="contact.html"
-class="button primary"
+    href="skyline.html"
+    class="button"
 >
-Paranormal Enquiries
+    Visit Skyline
+</a>
+
+
+<a
+    href="contact.html"
+    class="button paranormal"
+>
+    Paranormal Enquiries
 </a>
 
 
@@ -1276,9 +1720,9 @@ Paranormal Enquiries
 
 
 
-<!-- =========================================
+<!-- =====================================================
      FOOTER
-========================================= -->
+===================================================== -->
 
 <footer>
 
@@ -1288,7 +1732,7 @@ NEWITT's Paranormal Adventures
 
 <br>
 
-Investigating the unexplained, one location at a time.
+Haunted Locations. Investigations. Unexplained Experiences.
 
 </div>
 
@@ -1296,9 +1740,20 @@ Investigating the unexplained, one location at a time.
 
 
 
-<!-- =========================================
-     MOBILE MENU JAVASCRIPT
-========================================= -->
+<!-- =====================================================
+     TIKTOK OFFICIAL EMBED
+===================================================== -->
+
+<script
+    async
+    src="https://www.tiktok.com/embed.js"
+></script>
+
+
+
+<!-- =====================================================
+     MOBILE MENU
+===================================================== -->
 
 <script>
 
@@ -1313,22 +1768,22 @@ function toggleMenu() {
 
 
 document
-.querySelectorAll("#mobileMenu a")
-.forEach(function(link) {
+    .querySelectorAll("#mobileMenu a")
+    .forEach(function(link) {
 
-    link.addEventListener(
-        "click",
-        function() {
+        link.addEventListener(
+            "click",
+            function() {
 
-            document
-                .getElementById("mobileMenu")
-                .classList
-                .remove("show");
+                document
+                    .getElementById("mobileMenu")
+                    .classList
+                    .remove("show");
 
-        }
-    );
+            }
+        );
 
-});
+    });
 
 </script>
 
