@@ -1,1 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>Contact | NEWITT Media</title>
+
+<meta
+name="description"
+content="Contact NEWITT Media for Skyline drone enquiries and Paranormal Adventures enquiries."
+>
+
+<style>
+
+/* ========================================
+   RESET
+======================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: #f5f7fb;
+
+    background: #03060b;
+
+    overflow-x: hidden;
+}
+
+
+/* ========================================
+   BACKGROUND
+======================================== */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -3;
+
+    background:
+        linear-gradient(
+            rgba(3,7,14,0.55),
+            rgba(3,7,14,0.84)
+        ),
+        url("background.png.PNG")
+        center center / cover no-repeat;
+}
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -2;
+
+    background:
+        radial-gradient(
+            circle at 50% 5%,
+            rgba(35,160,255,0.20),
+            transparent 42%
+        );
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   GENERAL
+======================================== */
+
+a {
+    color: inherit;
+
+    text-decoration: none;
+}
+
+.container {
+    width: min(1150px, 92%);
+
+    margin: auto;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+header {
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    background:
+        rgba(3,6,12,0.94);
+
+    backdrop-filter:
+        blur(18px);
+
+    border-bottom:
+        1px solid rgba(60,168,255,0.18);
+}
+
+.nav {
+    min-height: 72px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+/* ========================================
+   BRAND
+======================================== */
+
+.brand {
+    font-size: 20px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+}
+
+.brand span {
+    color: #3ca8ff;
+}
+
+
+/* ========================================
+   NAVIGATION
+======================================== */
+
+.nav-links {
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+
+    font-size: 14px;
+
+    font-weight: 800;
+}
+
+.nav-links a {
+    opacity: 0.82;
+
+    padding: 10px 4px;
+
+    transition:
+        opacity 0.25s ease,
+        color 0.25s ease;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+
+    color: #3ca8ff;
+}
+
+
+/* ========================================
+   MOBILE MENU
+======================================== */
+
+.menu-button {
+    display: none;
+
+    padding: 12px 18px;
+
+    border:
+        1px solid rgba(60,168,255,0.55);
+
+    border-radius: 14px;
+
+    background:
+        rgba(20,60,100,0.30);
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.hero {
+    text-align: center;
+
+    padding:
+        75px 0 45px;
+}
+
+.logo {
+    width: 190px;
+
+    height: 190px;
+
+    object-fit: contain;
+
+    margin-bottom: 22px;
+
+    filter:
+        drop-shadow(
+            0 15px 35px rgba(0,0,0,0.45)
+        );
+}
+
+h1 {
+    margin: 0;
+
+    font-size:
+        clamp(40px, 7vw, 70px);
+
+    line-height: 1.05;
+}
+
+h1 span {
+    color: #3ba8ff;
+}
+
+.intro {
+    max-width: 760px;
+
+    margin:
+        22px auto 0;
+
+    color: #ccd3dd;
+
+    line-height: 1.8;
+
+    font-size: 17px;
+}
+
+
+/* ========================================
+   CONTACT CARDS
+======================================== */
+
+.contact-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 24px;
+
+    margin:
+        20px 0 80px;
+}
+
+.contact-card {
+    padding: 35px;
+
+    background:
+        rgba(3,7,14,0.78);
+
+    border:
+        1px solid rgba(60,168,255,0.18);
+
+    border-radius: 28px;
+
+    backdrop-filter:
+        blur(16px);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.30);
+
+    text-align: center;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.contact-card:hover {
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(60,168,255,0.45);
+}
+
+.contact-card h2 {
+    margin-top: 0;
+
+    font-size: 30px;
+}
+
+.contact-card h2 span {
+    color: #3ba8ff;
+}
+
+.contact-card p {
+    color: #c9d0da;
+
+    line-height: 1.8;
+
+    min-height: 85px;
+}
+
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+.button {
+    display: inline-block;
+
+    margin-top: 18px;
+
+    padding:
+        14px 24px;
+
+    border-radius: 13px;
+
+    background:
+        #168cff;
+
+    color: #ffffff;
+
+    font-weight: 900;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+.button:hover {
+    transform:
+        translateY(-3px);
+
+    background:
+        #2998ff;
+}
+
+
+/* ========================================
+   GENERAL CONTACT INFORMATION
+======================================== */
+
+.contact-info {
+    max-width: 850px;
+
+    margin:
+        0 auto 70px;
+
+    padding:
+        35px;
+
+    text-align: center;
+
+    background:
+        rgba(3,7,14,0.72);
+
+    border:
+        1px solid rgba(255,255,255,0.09);
+
+    border-radius: 26px;
+
+    backdrop-filter:
+        blur(15px);
+}
+
+.contact-info h2 {
+    margin-top: 0;
+
+    font-size: 32px;
+}
+
+.contact-info p {
+    color: #cbd2dc;
+
+    line-height: 1.8;
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+footer {
+    padding:
+        50px 0;
+
+    text-align: center;
+
+    color: #9ba4b1;
+
+    border-top:
+        1px solid rgba(255,255,255,0.08);
+
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 750px) {
+
+    .nav {
+        min-height: 70px;
+    }
+
+    .brand {
+        font-size: 18px;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+
+        position: absolute;
+
+        top: 70px;
+
+        left: 0;
+
+        right: 0;
+
+        padding:
+            18px 20px 22px;
+
+        flex-direction: column;
+
+        gap: 6px;
+
+        background:
+            rgba(3,6,12,0.98);
+
+        border-bottom:
+            1px solid rgba(60,168,255,0.18);
+
+        backdrop-filter:
+            blur(18px);
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links a {
+        width: 100%;
+
+        padding:
+            14px 12px;
+
+        border-radius: 10px;
+
+        text-align: center;
+
+        background:
+            rgba(255,255,255,0.035);
+    }
+
+    .hero {
+        padding:
+            55px 0 35px;
+    }
+
+    .logo {
+        width: 150px;
+
+        height: 150px;
+    }
+
+    .intro {
+        font-size: 16px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+
+        margin-bottom: 50px;
+    }
+
+    .contact-card {
+        padding:
+            28px 20px;
+    }
+
+    .contact-card p {
+        min-height: auto;
+    }
+
+    .contact-info {
+        padding:
+            28px 20px;
+    }
+
+}
+
+
+/* ========================================
+   SMALL PHONES
+======================================== */
+
+@media (max-width: 420px) {
+
+    .container {
+        width: 90%;
+    }
+
+    .brand {
+        font-size: 17px;
+    }
+
+    .menu-button {
+        padding:
+            11px 15px;
+
+        font-size: 14px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header>
+
+<div class="container nav">
+
+
+<a
+href="index.html"
+class="brand"
+>
+NEWITT <span>MEDIA</span>
+</a>
+
+
+<button
+class="menu-button"
+onclick="toggleMenu()"
+aria-label="Open navigation menu"
+>
+MENU
+</button>
+
+
+<nav
+class="nav-links"
+id="mobileMenu"
+>
+
+<a href="index.html">
+Home
+</a>
+
+<a href="skyline.html">
+Skyline
+</a>
+
+<a href="paranormal.html">
+Paranormal
+</a>
+
+<a href="photography.html">
+Photography
+</a>
+
+</nav>
+
+
+</div>
+
+</header>
+
+
+
+<!-- =====================================
+     MAIN
+===================================== -->
+
+<main>
+
+
+<!-- =====================================
+     HERO
+===================================== -->
+
+<section class="hero">
+
+<div class="container">
+
+
+<img
+src="newitt-media-logo.png.PNG"
+alt="NEWITT Media logo"
+class="logo"
+>
+
+
+<h1>
+Get in <span>Touch</span>
+</h1>
+
+
+<p class="intro">
+
+Whether you're looking for aerial drone work
+or want to discuss a paranormal investigation,
+choose the NEWITT Media section that best
+matches your enquiry.
+
+</p>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     CONTACT OPTIONS
+===================================== -->
+
+<section>
+
+<div class="container">
+
+<div class="contact-grid">
+
+
+<!-- SKYLINE -->
+
+<div class="contact-card">
+
+
+<h2>
+NEWITT <span>Skyline Media</span>
+</h2>
+
+
+<p>
+
+Drone footage, aerial photography,
+location filming and other Skyline
+Media enquiries.
+
+</p>
+
+
+<a
+href="skyline.html#contact"
+class="button"
+>
+Skyline Enquiries
+</a>
+
+
+</div>
+
+
+
+<!-- PARANORMAL -->
+
+<div class="contact-card">
+
+
+<h2>
+NEWITT's <span>Paranormal Adventures</span>
+</h2>
+
+
+<p>
+
+Paranormal investigations, location
+suggestions, collaborations and
+investigation enquiries.
+
+</p>
+
+
+<a
+href="paranormal.html#contact"
+class="button"
+>
+Paranormal Enquiries
+</a>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     GENERAL INFORMATION
+===================================== -->
+
+<section>
+
+<div class="container">
+
+<div class="contact-info">
+
+
+<h2>
+Choose the right NEWITT Media section
+</h2>
+
+
+<p>
+
+For drone and aerial work, use
+NEWITT Skyline Media.
+
+</p>
+
+
+<p>
+
+For paranormal investigations,
+locations, stories and collaborations,
+use NEWITT's Paranormal Adventures.
+
+</p>
+
+
+<p>
+
+The contact options on those pages
+will take you to the appropriate
+enquiry route.
+
+</p>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+</main>
+
+
+
+<!-- =====================================
+     FOOTER
+===================================== -->
+
+<footer>
+
+<div class="container">
+
+NEWITT Media
+
+<br>
+
+Drone work. Photography. Paranormal adventures.
+
+</div>
+
+</footer>
+
+
+
+<!-- =====================================
+     MOBILE MENU
+===================================== -->
+
+<script>
+
+function toggleMenu() {
+
+    const menu =
+        document.getElementById("mobileMenu");
+
+    menu.classList.toggle("show");
+
+}
+
+
+document
+.querySelectorAll("#mobileMenu a")
+.forEach(function(link) {
+
+    link.addEventListener(
+        "click",
+        function() {
+
+            document
+            .getElementById("mobileMenu")
+            .classList
+            .remove("show");
+
+        }
+    );
+
+});
+
+</script>
+
+
+</body>
+
+</html>
