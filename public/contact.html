@@ -5,23 +5,21 @@
 
 <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>Get in Touch | NEWITT Media</title>
 
 <meta
-    name="description"
-    content="Contact NEWITT Skyline Media and NEWITT's Paranormal Adventures."
+name="description"
+content="Contact NEWITT Media for Skyline drone work and paranormal enquiries."
 >
 
 <style>
 
-/* =========================================
+/* =====================================================
    RESET
-========================================= */
+===================================================== */
 
 * {
     box-sizing: border-box;
@@ -40,9 +38,9 @@ body {
         Helvetica,
         sans-serif;
 
-    color: #f5f7fb;
+    color: #ffffff;
 
-    background: #03060b;
+    background: #03030a;
 
     overflow-x: hidden;
 }
@@ -53,9 +51,27 @@ a {
 }
 
 
-/* =========================================
+/* =====================================================
+   NEWITT MEDIA COLOUR
+===================================================== */
+
+:root {
+
+    --newitt: #9b5cff;
+
+    --newitt-bright: #b47cff;
+
+    --newitt-glow:
+        rgba(155,92,255,0.28);
+
+    --panel:
+        rgba(6,5,15,0.84);
+}
+
+
+/* =====================================================
    BACKGROUND
-========================================= */
+===================================================== */
 
 body::before {
 
@@ -68,15 +84,18 @@ body::before {
     z-index: -3;
 
     background:
+
         linear-gradient(
-            rgba(3,7,14,0.52),
-            rgba(3,7,14,0.82)
+            rgba(3,3,10,0.40),
+            rgba(3,3,10,0.88)
         ),
+
         url("background.png.PNG")
         center center / cover no-repeat;
 
     transform: scale(1.02);
 }
+
 
 body::after {
 
@@ -89,31 +108,30 @@ body::after {
     z-index: -2;
 
     background:
+
         radial-gradient(
-            circle at 50% 0%,
-            rgba(40,160,255,0.22),
-            transparent 40%
+            circle at 50% 8%,
+            rgba(155,92,255,0.20),
+            transparent 45%
         );
 
     pointer-events: none;
 }
 
 
-/* =========================================
+/* =====================================================
    CONTAINER
-========================================= */
+===================================================== */
 
 .container {
-
     width: min(1100px, 92%);
-
     margin: 0 auto;
 }
 
 
-/* =========================================
+/* =====================================================
    HEADER
-========================================= */
+===================================================== */
 
 header {
 
@@ -124,19 +142,20 @@ header {
     z-index: 1000;
 
     background:
-        rgba(3,6,12,0.94);
+        rgba(3,3,10,0.96);
 
     backdrop-filter:
         blur(18px);
 
     border-bottom:
         1px solid
-        rgba(60,168,255,0.20);
+        rgba(155,92,255,0.28);
 
     box-shadow:
         0 8px 35px
-        rgba(0,0,0,0.25);
+        rgba(0,0,0,0.40);
 }
+
 
 .nav {
 
@@ -152,9 +171,9 @@ header {
 }
 
 
-/* =========================================
+/* =====================================================
    BRAND
-========================================= */
+===================================================== */
 
 .nav-brand {
 
@@ -167,15 +186,15 @@ header {
     white-space: nowrap;
 }
 
-.nav-brand span {
 
-    color: #3ca8ff;
+.nav-brand span {
+    color: var(--newitt);
 }
 
 
-/* =========================================
+/* =====================================================
    NAVIGATION
-========================================= */
+===================================================== */
 
 .nav-links {
 
@@ -190,30 +209,30 @@ header {
     font-weight: 800;
 }
 
-.nav-links a {
 
-    position: relative;
+.nav-links a {
 
     padding: 12px 3px;
 
-    opacity: 0.85;
+    opacity: 0.88;
 
     transition:
-        opacity 0.25s ease,
-        color 0.25s ease;
+        color 0.25s ease,
+        opacity 0.25s ease;
 }
+
 
 .nav-links a:hover {
 
-    opacity: 1;
+    color: var(--newitt-bright);
 
-    color: #42aaff;
+    opacity: 1;
 }
 
 
-/* =========================================
-   MOBILE MENU BUTTON
-========================================= */
+/* =====================================================
+   MOBILE MENU
+===================================================== */
 
 .menu-button {
 
@@ -223,12 +242,12 @@ header {
 
     border:
         1px solid
-        rgba(60,168,255,0.55);
+        rgba(155,92,255,0.60);
 
     border-radius: 14px;
 
     background:
-        rgba(20,60,100,0.32);
+        rgba(155,92,255,0.10);
 
     color: #ffffff;
 
@@ -240,41 +259,80 @@ header {
 }
 
 
-/* =========================================
+/* =====================================================
    MAIN
-========================================= */
+===================================================== */
 
 main {
-
-    padding:
-        75px 0 100px;
+    padding: 65px 0 100px;
 }
 
 
-/* =========================================
-   PAGE HEADER
-========================================= */
+/* =====================================================
+   HERO
+===================================================== */
 
-.page-header {
+.hero {
+
+    width: min(850px, 100%);
+
+    margin: 0 auto 45px;
+
+    padding: 50px 30px;
 
     text-align: center;
 
-    max-width: 760px;
+    border:
+        1px solid
+        rgba(155,92,255,0.30);
 
-    margin:
-        0 auto 50px;
+    border-radius: 30px;
+
+    background: var(--panel);
+
+    backdrop-filter:
+        blur(15px);
+
+    box-shadow:
+        0 25px 75px
+        rgba(0,0,0,0.45);
 }
 
-.page-header h1 {
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.hero-logo {
+
+    width: 135px;
+
+    height: 135px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin: 0 auto 25px;
+
+    filter:
+        drop-shadow(
+            0 16px 35px
+            rgba(155,92,255,0.25)
+        );
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.hero h1 {
 
     margin: 0 0 18px;
 
     font-size:
-        clamp(
-            42px,
-            7vw,
-            70px
-        );
+        clamp(40px, 6vw, 65px);
 
     line-height: 1;
 
@@ -283,56 +341,29 @@ main {
     letter-spacing: -2px;
 }
 
-.page-header h1 span {
 
-    color: #38a8ff;
-}
-
-.page-header p {
-
-    margin: 0;
-
-    color: #cbd3de;
-
-    font-size: 17px;
-
-    line-height: 1.8;
+.hero h1 span {
+    color: var(--newitt-bright);
 }
 
 
-/* =========================================
-   CONTACT BOX
-========================================= */
+.hero p {
 
-.contact-box {
-
-    max-width: 950px;
+    max-width: 700px;
 
     margin: 0 auto;
 
-    padding: 45px;
+    color: #d0cbd8;
 
-    border:
-        1px solid
-        rgba(60,168,255,0.22);
+    line-height: 1.8;
 
-    border-radius: 30px;
-
-    background:
-        rgba(4,9,17,0.82);
-
-    backdrop-filter:
-        blur(16px);
-
-    box-shadow:
-        0 25px 75px
-        rgba(0,0,0,0.42);
+    font-size: 17px;
 }
 
 
-/* =========================================
-   CONTACT GRID
-========================================= */
+/* =====================================================
+   CONTACT OPTIONS
+===================================================== */
 
 .contact-grid {
 
@@ -345,110 +376,139 @@ main {
 }
 
 
-/* =========================================
-   CONTACT CARDS
-========================================= */
+/* =====================================================
+   CONTACT CARD
+===================================================== */
 
 .contact-card {
 
-    padding: 32px;
+    padding: 35px 28px;
 
     text-align: center;
 
-    border-radius: 24px;
-
-    background:
-        rgba(255,255,255,0.035);
-
     border:
         1px solid
-        rgba(60,168,255,0.16);
+        rgba(155,92,255,0.22);
 
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease;
+    border-radius: 25px;
+
+    background:
+        rgba(5,5,14,0.84);
+
+    backdrop-filter:
+        blur(14px);
+
+    box-shadow:
+        0 20px 55px
+        rgba(0,0,0,0.38);
 }
 
-.contact-card:hover {
-
-    transform:
-        translateY(-5px);
-
-    border-color:
-        rgba(60,168,255,0.42);
-}
 
 .contact-card h2 {
 
-    margin:
-        0 0 15px;
+    margin: 0 0 14px;
 
-    font-size: 27px;
+    font-size: 28px;
 }
+
 
 .contact-card p {
 
-    margin:
-        0 auto 25px;
+    margin: 0 auto 25px;
 
-    max-width: 390px;
+    max-width: 430px;
 
-    color: #cbd2dc;
+    color: #c8c1d0;
 
-    line-height: 1.75;
-
-    font-size: 15px;
+    line-height: 1.7;
 }
 
 
-/* =========================================
-   BUTTON
-========================================= */
+/* =====================================================
+   CONTACT BUTTON
+===================================================== */
 
 .contact-button {
 
-    display: inline-block;
+    display: inline-flex;
 
-    padding:
-        14px 24px;
+    align-items: center;
 
-    border:
-        1px solid
-        #168cff;
+    justify-content: center;
 
-    border-radius:
-        13px;
+    width: 100%;
 
-    background:
-        #168cff;
+    min-height: 52px;
 
-    color:
-        #ffffff;
+    padding: 14px 20px;
 
-    font-weight:
-        900;
+    border-radius: 14px;
+
+    color: #ffffff;
+
+    font-weight: 900;
 
     transition:
-        0.25s ease;
-
-    box-shadow:
-        0 12px 30px
-        rgba(22,140,255,0.20);
+        transform 0.25s ease,
+        filter 0.25s ease;
 }
+
 
 .contact-button:hover {
 
-    background:
-        #2998ff;
-
     transform:
-        translateY(-2px);
+        translateY(-3px);
+
+    filter:
+        brightness(1.12);
 }
 
 
-/* =========================================
+/* =====================================================
+   SKYLINE
+===================================================== */
+
+.skyline-contact {
+
+    background: #168cff;
+
+    box-shadow:
+        0 12px 35px
+        rgba(22,140,255,0.22);
+}
+
+
+/* =====================================================
+   PARANORMAL
+===================================================== */
+
+.paranormal-contact {
+
+    background: #c62828;
+
+    box-shadow:
+        0 12px 35px
+        rgba(198,40,40,0.25);
+}
+
+
+/* =====================================================
+   HIDDEN EMAIL NOTE
+===================================================== */
+
+.hidden-note {
+
+    margin-top: 12px;
+
+    font-size: 12px;
+
+    color: #77717d;
+}
+
+
+/* =====================================================
    BACK HOME
-========================================= */
+===================================================== */
 
 .back-home {
 
@@ -457,85 +517,83 @@ main {
     margin-top: 35px;
 }
 
-.back-home a {
 
-    display: inline-block;
+.back-button {
 
-    padding:
-        12px 20px;
+    display: inline-flex;
 
-    border-radius:
-        12px;
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding: 13px 24px;
 
     border:
         1px solid
-        rgba(255,255,255,0.12);
+        rgba(155,92,255,0.35);
+
+    border-radius: 13px;
 
     background:
-        rgba(255,255,255,0.05);
+        rgba(155,92,255,0.10);
 
-    color:
-        #dce2eb;
+    color: #ffffff;
 
-    font-weight:
-        800;
+    font-weight: 900;
 
     transition:
-        0.25s ease;
-}
-
-.back-home a:hover {
-
-    border-color:
-        rgba(60,168,255,0.4);
-
-    color:
-        #55b1ff;
+        transform 0.25s ease,
+        background 0.25s ease;
 }
 
 
-/* =========================================
+.back-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(155,92,255,0.18);
+}
+
+
+/* =====================================================
    FOOTER
-========================================= */
+===================================================== */
 
 footer {
 
-    padding:
-        45px 0;
+    padding: 45px 0;
 
-    text-align:
-        center;
+    text-align: center;
 
-    color:
-        #9da5b2;
+    color: #9d98a7;
 
     border-top:
         1px solid
         rgba(255,255,255,0.08);
 
-    line-height:
-        1.7;
+    line-height: 1.7;
 }
 
 
-/* =========================================
+/* =====================================================
    MOBILE
-========================================= */
+===================================================== */
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
 
     .nav {
-
         min-height: 70px;
     }
 
     .nav-brand {
-
         font-size: 18px;
     }
 
     .menu-button {
-
         display: block;
     }
 
@@ -551,26 +609,24 @@ footer {
 
         right: 0;
 
-        padding:
-            18px 20px 22px;
+        padding: 18px 20px 22px;
 
         flex-direction: column;
 
         gap: 6px;
 
         background:
-            rgba(3,6,12,0.98);
+            rgba(3,3,10,0.98);
 
         border-bottom:
             1px solid
-            rgba(60,168,255,0.18);
+            rgba(155,92,255,0.25);
 
         backdrop-filter:
             blur(18px);
     }
 
     .nav-links.show {
-
         display: flex;
     }
 
@@ -588,78 +644,67 @@ footer {
             rgba(255,255,255,0.045);
     }
 
-    main {
-
-        padding:
-            55px 0 70px;
+    .contact-grid {
+        grid-template-columns: 1fr;
     }
 
-    .contact-box {
+}
+
+
+/* =====================================================
+   PHONE
+===================================================== */
+
+@media (max-width: 520px) {
+
+    .container {
+        width: 90%;
+    }
+
+    main {
+        padding: 40px 0 70px;
+    }
+
+    .hero {
 
         padding:
-            25px 18px;
+            38px 18px;
 
         border-radius:
-            24px;
+            25px;
     }
 
-    .contact-grid {
+    .hero-logo {
 
-        grid-template-columns: 1fr;
+        width: 120px;
+
+        height: 120px;
+    }
+
+    .hero h1 {
+
+        font-size: 40px;
+
+        letter-spacing:
+            -1.5px;
+    }
+
+    .hero p {
+        font-size: 15px;
     }
 
     .contact-card {
 
-        padding: 28px 20px;
-    }
-}
-
-
-/* =========================================
-   SMALL PHONES
-========================================= */
-
-@media (max-width: 420px) {
-
-    .container {
-
-        width: 90%;
-    }
-
-    .nav-brand {
-
-        font-size: 17px;
-    }
-
-    .menu-button {
-
         padding:
-            11px 15px;
-
-        font-size: 14px;
-    }
-
-    .page-header h1 {
-
-        font-size: 43px;
-    }
-
-    .page-header p {
-
-        font-size: 15px;
-    }
-
-    .contact-card h2 {
-
-        font-size: 24px;
+            30px 20px;
     }
 
 }
 
 
-/* =========================================
+/* =====================================================
    REDUCED MOTION
-========================================= */
+===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -681,9 +726,9 @@ footer {
 <body>
 
 
-<!-- =========================================
+<!-- =====================================================
      HEADER
-========================================= -->
+===================================================== -->
 
 <header>
 
@@ -728,6 +773,10 @@ footer {
     Photography
 </a>
 
+<a href="contact.html">
+    Get in Touch
+</a>
+
 </nav>
 
 
@@ -737,104 +786,150 @@ footer {
 
 
 
-<!-- =========================================
-     MAIN CONTENT
-========================================= -->
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <main>
 
 <div class="container">
 
 
-<div class="page-header">
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+
+<img
+    src="newitt-media-logo.png.PNG"
+    alt="NEWITT Media"
+    class="hero-logo"
+>
+
 
 <h1>
-Get in <span>Touch</span>
+    Get in <span>Touch</span>
 </h1>
 
+
 <p>
-Choose the NEWITT Media section you would
-like to contact. Your email app will open
-with the correct address already selected.
+
+Have a project, enquiry, collaboration idea
+or something you'd like to discuss?
+
+Choose the area of NEWITT Media you'd like
+to contact below.
+
 </p>
 
-</div>
+
+</section>
 
 
 
-<div class="contact-box">
+<!-- =====================================================
+     CONTACT OPTIONS
+===================================================== -->
+
+<section class="contact-grid">
 
 
-<div class="contact-grid">
+<!-- =================================================
+     SKYLINE CONTACT
+================================================= -->
 
+<article class="contact-card">
 
-<!-- =====================================
-     SKYLINE
-===================================== -->
-
-<div class="contact-card">
 
 <h2>
-NEWITT Skyline Media
+    NEWITT Skyline Media
 </h2>
 
+
 <p>
+
 For drone work, aerial photography,
-aerial filming, location projects and
-Skyline Media enquiries.
+aerial video and Skyline Media enquiries.
+
 </p>
 
+
 <a
-    href="mailto:n.skyline.media@gmail.com"
-    class="contact-button"
+    href="mailto:n.skyline.media@gmail.com?subject=NEWITT%20Skyline%20Media%20Enquiry"
+    class="contact-button skyline-contact"
 >
-    Skyline Enquiries
+    Contact Skyline Media
 </a>
 
+
+<div class="hidden-note">
+    Opens your email app
 </div>
 
 
+</article>
 
-<!-- =====================================
-     PARANORMAL
-===================================== -->
 
-<div class="contact-card">
+
+<!-- =================================================
+     PARANORMAL CONTACT
+================================================= -->
+
+<article class="contact-card">
+
 
 <h2>
-NEWITT's Paranormal Adventures
+    NEWITT's Paranormal Adventures
 </h2>
 
+
 <p>
-For paranormal investigations, location
-suggestions, stories, collaborations and
-Paranormal Adventures enquiries.
+
+For paranormal enquiries, investigation
+ideas, locations, collaborations and stories.
+
 </p>
 
+
 <a
-    href="mailto:nw13ttt@gmail.com"
-    class="contact-button"
+    href="mailto:nw13ttt@gmail.com?subject=NEWITT%20Paranormal%20Enquiry"
+    class="contact-button paranormal-contact"
 >
-    Paranormal Enquiries
+    Contact Paranormal
 </a>
 
+
+<div class="hidden-note">
+    Opens your email app
 </div>
 
 
-</div>
+</article>
 
 
+</section>
+
+
+
+<!-- =====================================================
+     BACK HOME
+===================================================== -->
 
 <div class="back-home">
 
-<a href="index.html">
+
+<a
+    href="index.html"
+    class="back-button"
+>
     Back to NEWITT Media
 </a>
 
-</div>
-
 
 </div>
+
 
 </div>
 
@@ -842,19 +937,19 @@ Paranormal Adventures enquiries.
 
 
 
-<!-- =========================================
+<!-- =====================================================
      FOOTER
-========================================= -->
+===================================================== -->
 
 <footer>
 
 <div class="container">
 
-NEWITT Media
+NEWITT MEDIA
 
 <br>
 
-Drone work. Photography. Paranormal adventures.
+Skyline Media. Paranormal Adventures. Photography.
 
 </div>
 
@@ -862,9 +957,9 @@ Drone work. Photography. Paranormal adventures.
 
 
 
-<!-- =========================================
-     MOBILE MENU JAVASCRIPT
-========================================= -->
+<!-- =====================================================
+     MOBILE MENU
+===================================================== -->
 
 <script>
 
@@ -879,22 +974,22 @@ function toggleMenu() {
 
 
 document
-.querySelectorAll("#mobileMenu a")
-.forEach(function(link) {
+    .querySelectorAll("#mobileMenu a")
+    .forEach(function(link) {
 
-    link.addEventListener(
-        "click",
-        function() {
+        link.addEventListener(
+            "click",
+            function() {
 
-            document
-                .getElementById("mobileMenu")
-                .classList
-                .remove("show");
+                document
+                    .getElementById("mobileMenu")
+                    .classList
+                    .remove("show");
 
-        }
-    );
+            }
+        );
 
-});
+    });
 
 </script>
 
