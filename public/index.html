@@ -5,147 +5,228 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-<title>NEWITT Media</title>
+<title>NEWITT Media | Skyline, Paranormal & Photography</title>
 
 <meta
     name="description"
-    content="NEWITT Media brings together Skyline drone media, paranormal adventures and photography."
+    content="NEWITT Media brings together aerial drone work, photography and paranormal adventures under one independent media brand."
 >
 
+
 <style>
+
+/* =====================================================
+   NEWITT MEDIA
+   MAIN WEBSITE
+   ===================================================== */
+
+
+/* =====================================================
+   COLOUR SYSTEM
+===================================================== */
+
+:root {
+
+    --black:
+        #030405;
+
+    --black-soft:
+        #08090b;
+
+    --panel:
+        rgba(10,11,14,0.84);
+
+    --panel-dark:
+        rgba(5,6,8,0.94);
+
+    --white:
+        #ffffff;
+
+    --silver:
+        #d9dde2;
+
+    --silver-bright:
+        #f5f7f9;
+
+    --silver-dark:
+        #858b93;
+
+    --muted:
+        #b7bdc6;
+
+
+    /* Skyline */
+
+    --sky-blue:
+        #168cff;
+
+    --sky-bright:
+        #62c1ff;
+
+    --sky-dark:
+        #0759ad;
+
+
+    /* Paranormal */
+
+    --para-red:
+        #b3122f;
+
+    --para-red-bright:
+        #ff304f;
+
+    --para-red-dark:
+        #68091c;
+
+
+    /* Contact */
+
+    --contact-gold:
+        #d6b56d;
+
+    --contact-gold-bright:
+        #f3d58e;
+
+    --contact-gold-dark:
+        #80632b;
+
+
+    --line:
+        rgba(255,255,255,0.13);
+
+    --shadow:
+        0 25px 75px rgba(0,0,0,0.62);
+}
+
 
 /* =====================================================
    RESET
 ===================================================== */
 
 * {
-    box-sizing: border-box;
+    box-sizing:
+        border-box;
 }
+
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior:
+        smooth;
 }
 
+
 body {
-    margin: 0;
-    min-height: 100vh;
+
+    margin:
+        0;
+
+    min-height:
+        100vh;
 
     font-family:
         Arial,
         Helvetica,
         sans-serif;
 
-    color: #ffffff;
+    color:
+        var(--white);
 
-    background: #02050a;
+    background:
+        var(--black);
 
-    overflow-x: hidden;
+    overflow-x:
+        hidden;
 }
+
 
 a {
-    color: inherit;
-    text-decoration: none;
+
+    color:
+        inherit;
+
+    text-decoration:
+        none;
 }
+
 
 img {
-    max-width: 100%;
-    display: block;
+
+    max-width:
+        100%;
+
+    display:
+        block;
 }
 
 
 /* =====================================================
-   NEWITT MEDIA COLOUR SYSTEM
-===================================================== */
-
-:root {
-
-    /* Main NEWITT Media */
-    --silver-light: #ffffff;
-    --silver: #d9dde3;
-    --silver-mid: #aeb5bf;
-    --silver-dark: #737b86;
-
-    --silver-glow:
-        rgba(210,216,224,0.24);
-
-
-    /* Skyline */
-    --skyline-blue: #168cff;
-    --skyline-light: #59b9ff;
-    --skyline-glow:
-        rgba(22,140,255,0.25);
-
-
-    /* Paranormal */
-    --paranormal-red: #c62828;
-    --paranormal-light: #ef4444;
-    --paranormal-glow:
-        rgba(198,40,40,0.27);
-
-
-    /* Get in Touch */
-    --contact-teal: #00a6a6;
-    --contact-light: #28d7d7;
-    --contact-glow:
-        rgba(0,166,166,0.25);
-
-
-    /* Panels */
-    --panel:
-        rgba(4,8,14,0.82);
-}
-
-
-/* =====================================================
-   CINEMATIC BACKGROUND
+   BACKGROUND
 ===================================================== */
 
 body::before {
 
-    content: "";
+    content:
+        "";
 
-    position: fixed;
+    position:
+        fixed;
 
-    inset: 0;
+    inset:
+        0;
 
-    z-index: -3;
+    z-index:
+        -3;
 
     background:
 
         linear-gradient(
-            rgba(2,5,10,0.40),
-            rgba(2,5,10,0.88)
+            rgba(2,3,5,0.63),
+            rgba(2,3,5,0.88)
         ),
 
         url("background.png.PNG")
-        center center / cover no-repeat;
+        center / cover no-repeat;
 
-    transform: scale(1.02);
+    transform:
+        scale(1.02);
 }
 
 
 body::after {
 
-    content: "";
+    content:
+        "";
 
-    position: fixed;
+    position:
+        fixed;
 
-    inset: 0;
+    inset:
+        0;
 
-    z-index: -2;
+    z-index:
+        -2;
 
     background:
 
         radial-gradient(
             circle at 50% 8%,
-            rgba(220,225,232,0.12),
-            transparent 42%
+            rgba(255,255,255,0.09),
+            transparent 36%
+        ),
+
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0.02),
+            rgba(0,0,0,0.60)
         );
 
-    pointer-events: none;
+    pointer-events:
+        none;
 }
 
 
@@ -156,7 +237,7 @@ body::after {
 .container {
 
     width:
-        min(1120px, 92%);
+        min(1180px,92%);
 
     margin:
         0 auto;
@@ -169,39 +250,47 @@ body::after {
 
 .site-header {
 
-    position: sticky;
+    position:
+        sticky;
 
-    top: 0;
+    top:
+        0;
 
-    z-index: 1000;
+    z-index:
+        1000;
 
     background:
-        rgba(2,5,10,0.96);
+        rgba(3,4,6,0.96);
 
     backdrop-filter:
         blur(18px);
 
     border-bottom:
         1px solid
-        rgba(220,225,232,0.16);
+        rgba(255,255,255,0.12);
 
     box-shadow:
         0 8px 35px
-        rgba(0,0,0,0.45);
+        rgba(0,0,0,0.58);
 }
 
 
 .nav {
 
-    min-height: 76px;
+    min-height:
+        76px;
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
 
-    gap: 20px;
+    gap:
+        22px;
 }
 
 
@@ -211,140 +300,52 @@ body::after {
 
 .nav-brand {
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 10px;
+    gap:
+        10px;
 
-    font-size: 21px;
+    font-size:
+        18px;
 
-    font-weight: 950;
+    font-weight:
+        950;
 
-    letter-spacing: 1px;
+    letter-spacing:
+        1px;
 
-    white-space: nowrap;
+    white-space:
+        nowrap;
 }
 
 
 .nav-brand img {
 
-    width: 38px;
+    width:
+        42px;
 
-    height: 38px;
+    height:
+        42px;
 
-    object-fit: contain;
+    object-fit:
+        contain;
+
+    filter:
+        drop-shadow(
+            0 0 16px
+            rgba(255,255,255,0.16)
+        );
 }
 
 
 .nav-brand span {
 
-    background:
-
-        linear-gradient(
-            120deg,
-            #ffffff,
-            #aeb5bf,
-            #ffffff,
-            #737b86,
-            #ffffff
-        );
-
-    background-size: 220% auto;
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    -webkit-text-fill-color: transparent;
-
-    animation:
-        silverShine 7s linear infinite;
-}
-
-
-@keyframes silverShine {
-
-    0% {
-        background-position: 200% center;
-    }
-
-    100% {
-        background-position: -200% center;
-    }
-}
-
-
-/* =====================================================
-   DESKTOP NAVIGATION
-===================================================== */
-
-.nav-links {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 24px;
-
-    font-size: 14px;
-
-    font-weight: 800;
-}
-
-
-.nav-links a {
-
-    position: relative;
-
-    padding: 12px 3px;
-
-    color: #e6e9ed;
-
-    opacity: 0.88;
-
-    transition:
-        color 0.25s ease,
-        opacity 0.25s ease;
-}
-
-
-.nav-links a:hover {
-
-    color: #ffffff;
-
-    opacity: 1;
-}
-
-
-.nav-links a.active {
-
-    color: #ffffff;
-}
-
-
-.nav-links a.active::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: 15%;
-
-    right: 15%;
-
-    bottom: 4px;
-
-    height: 2px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #ffffff,
-            transparent
-        );
-
-    border-radius: 10px;
+    color:
+        var(--silver-bright);
 }
 
 
@@ -354,38 +355,134 @@ body::after {
 
 .menu-toggle {
 
-    display: none;
+    display:
+        none;
 
-    min-height: 46px;
+    min-height:
+        46px;
 
-    padding: 11px 18px;
+    padding:
+        10px 16px;
 
     border:
         1px solid
-        rgba(220,225,232,0.38);
+        rgba(255,255,255,0.20);
 
-    border-radius: 14px;
+    border-radius:
+        12px;
 
     background:
         rgba(255,255,255,0.06);
 
-    color: #ffffff;
+    color:
+        #ffffff;
 
-    font-size: 14px;
+    font-size:
+        13px;
 
-    font-weight: 900;
+    font-weight:
+        900;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 }
 
 
 /* =====================================================
-   MAIN
+   NAVIGATION
 ===================================================== */
 
-main {
+.nav-links {
 
-    padding-bottom: 90px;
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        6px;
+}
+
+
+.nav-links a {
+
+    position:
+        relative;
+
+    padding:
+        12px 15px;
+
+    border-radius:
+        11px;
+
+    color:
+        #d8dce1;
+
+    font-size:
+        14px;
+
+    font-weight:
+        800;
+
+    transition:
+        0.2s ease;
+}
+
+
+.nav-links a:hover {
+
+    color:
+        #ffffff;
+
+    background:
+        rgba(255,255,255,0.07);
+}
+
+
+.nav-links a.active {
+
+    color:
+        #ffffff;
+
+    background:
+        rgba(255,255,255,0.08);
+}
+
+
+.nav-links a.active::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        15px;
+
+    right:
+        15px;
+
+    bottom:
+        5px;
+
+    height:
+        2px;
+
+    border-radius:
+        2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #8d939a,
+            #ffffff
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(255,255,255,0.55);
 }
 
 
@@ -396,70 +493,52 @@ main {
 .hero {
 
     padding:
-        70px 0 75px;
+        95px 0 80px;
+
+    text-align:
+        center;
 }
 
 
 .hero-card {
 
     width:
-        min(860px, 100%);
+        min(940px,100%);
 
     margin:
-        0 auto;
+        auto;
 
     padding:
-        50px 35px;
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    align-items:
-        center;
-
-    text-align:
-        center;
+        58px 38px;
 
     border:
         1px solid
-        rgba(220,225,232,0.24);
+        rgba(255,255,255,0.16);
 
     border-radius:
-        30px;
+        32px;
 
     background:
-        linear-gradient(
-            145deg,
-            rgba(12,17,24,0.88),
-            rgba(3,7,12,0.78)
-        );
+        rgba(4,5,7,0.70);
 
     backdrop-filter:
-        blur(16px);
+        blur(17px);
 
     box-shadow:
-        0 30px 80px
-        rgba(0,0,0,0.52);
+        var(--shadow);
 }
 
-
-/* =====================================================
-   MAIN LOGO
-===================================================== */
 
 .hero-logo {
 
     width:
-        190px;
+        300px;
 
     height:
-        190px;
+        300px;
 
     max-width:
-        65vw;
+        72%;
 
     object-fit:
         contain;
@@ -469,15 +548,11 @@ main {
 
     filter:
         drop-shadow(
-            0 16px 35px
-            rgba(210,216,224,0.20)
+            0 0 30px
+            rgba(255,255,255,0.18)
         );
 }
 
-
-/* =====================================================
-   EYEBROW
-===================================================== */
 
 .eyebrow {
 
@@ -501,23 +576,16 @@ main {
 }
 
 
-/* =====================================================
-   HERO TITLE
-===================================================== */
-
 .hero h1 {
 
-    width:
-        100%;
-
     margin:
-        0 0 18px;
+        0;
 
     font-size:
-        clamp(44px, 7vw, 78px);
+        clamp(42px,8vw,84px);
 
     line-height:
-        0.98;
+        0.95;
 
     font-weight:
         950;
@@ -529,48 +597,25 @@ main {
 
 .hero h1 span {
 
-    background:
+    color:
+        var(--silver-bright);
 
-        linear-gradient(
-            110deg,
-            #ffffff 0%,
-            #c8cdd4 30%,
-            #ffffff 50%,
-            #8b939e 72%,
-            #ffffff 100%
-        );
-
-    background-size:
-        240% auto;
-
-    -webkit-background-clip:
-        text;
-
-    background-clip:
-        text;
-
-    -webkit-text-fill-color:
-        transparent;
-
-    animation:
-        silverShine 8s linear infinite;
+    text-shadow:
+        0 0 25px
+        rgba(255,255,255,0.20);
 }
 
-
-/* =====================================================
-   HERO TEXT
-===================================================== */
 
 .hero p {
 
     max-width:
-        720px;
+        760px;
 
     margin:
-        0 auto;
+        26px auto;
 
     color:
-        #cbd2da;
+        #d0d4d9;
 
     font-size:
         17px;
@@ -581,21 +626,15 @@ main {
 
 
 /* =====================================================
-   HERO BUTTONS
+   BUTTONS
 ===================================================== */
 
 .buttons {
-
-    width:
-        100%;
 
     display:
         flex;
 
     justify-content:
-        center;
-
-    align-items:
         center;
 
     flex-wrap:
@@ -612,7 +651,7 @@ main {
 .button {
 
     min-height:
-        48px;
+        49px;
 
     display:
         inline-flex;
@@ -624,14 +663,14 @@ main {
         center;
 
     padding:
-        13px 22px;
+        0 22px;
 
     border:
         1px solid
-        rgba(255,255,255,0.18);
+        rgba(255,255,255,0.20);
 
     border-radius:
-        13px;
+        12px;
 
     background:
         rgba(255,255,255,0.055);
@@ -646,10 +685,7 @@ main {
         900;
 
     transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        background 0.25s ease,
-        box-shadow 0.25s ease;
+        0.25s ease;
 }
 
 
@@ -659,50 +695,47 @@ main {
         translateY(-3px);
 
     border-color:
-        rgba(255,255,255,0.55);
+        rgba(255,255,255,0.58);
+
+    box-shadow:
+        0 14px 38px
+        rgba(0,0,0,0.35);
 }
 
 
-/* =====================================================
-   SILVER MAIN BUTTON
-===================================================== */
+/* MAIN SILVER BUTTON */
 
-.button-silver {
-
-    color:
-        #080b0f;
+.button.primary {
 
     background:
         linear-gradient(
             135deg,
-            #ffffff,
-            #c8cdd4,
-            #ffffff
+            #f1f3f5,
+            #8d939a
         );
 
+    color:
+        #08090a;
+
     border-color:
-        #ffffff;
+        #f1f3f5;
 
     box-shadow:
         0 12px 32px
-        var(--silver-glow);
+        rgba(255,255,255,0.16);
 }
 
 
 /* =====================================================
-   SECTION
+   GENERAL SECTIONS
 ===================================================== */
 
 section {
 
     padding:
-        65px 0;
+        88px 0;
 }
 
-
-/* =====================================================
-   SECTION HEADING
-===================================================== */
 
 .section-heading {
 
@@ -710,7 +743,7 @@ section {
         780px;
 
     margin:
-        0 auto 35px;
+        0 auto 42px;
 
     text-align:
         center;
@@ -723,30 +756,30 @@ section {
         0 0 15px;
 
     font-size:
-        clamp(34px, 5vw, 52px);
+        clamp(32px,5vw,54px);
 
     line-height:
         1;
 
     font-weight:
         950;
+
+    letter-spacing:
+        -2px;
 }
 
 
 .section-heading h2 span {
 
     color:
-        var(--silver);
+        var(--silver-bright);
 }
 
 
 .section-heading p {
 
-    margin:
-        0 auto;
-
     color:
-        #c4cbd3;
+        var(--muted);
 
     line-height:
         1.75;
@@ -763,70 +796,84 @@ section {
         grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3,1fr);
 
     gap:
-        20px;
+        22px;
 }
 
 
-/* =====================================================
-   BRAND CARD
-===================================================== */
-
 .brand-card {
 
-    min-height:
-        405px;
+    position:
+        relative;
 
     padding:
-        30px 24px;
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    align-items:
-        center;
-
-    text-align:
-        center;
+        32px;
 
     border:
         1px solid
-        rgba(255,255,255,0.14);
+        var(--line);
 
     border-radius:
-        25px;
+        26px;
 
     background:
-        rgba(5,9,15,0.84);
+        var(--panel);
 
     backdrop-filter:
-        blur(13px);
+        blur(15px);
 
     box-shadow:
-        0 20px 55px
-        rgba(0,0,0,0.38);
+        var(--shadow);
+
+    overflow:
+        hidden;
 
     transition:
-        transform 0.25s ease,
-        border-color 0.25s ease;
+        0.25s ease;
 }
 
 
 .brand-card:hover {
 
     transform:
-        translateY(-5px);
+        translateY(-8px);
 }
 
 
-/* =====================================================
-   BRAND LOGO
-===================================================== */
+.brand-card::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        0;
+
+    right:
+        0;
+
+    height:
+        3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.65),
+            transparent
+        );
+
+    opacity:
+        0.65;
+}
+
 
 .brand-logo {
 
@@ -840,12 +887,12 @@ section {
         contain;
 
     margin:
-        3px auto 20px;
+        0 auto 24px;
 
     filter:
         drop-shadow(
-            0 12px 25px
-            rgba(0,0,0,0.50)
+            0 0 18px
+            rgba(255,255,255,0.14)
         );
 }
 
@@ -853,32 +900,32 @@ section {
 .brand-card h3 {
 
     margin:
-        0 0 12px;
+        0 0 13px;
 
     font-size:
-        22px;
+        24px;
 
-    line-height:
-        1.2;
+    text-align:
+        center;
 }
 
 
 .brand-card p {
 
-    max-width:
-        290px;
+    min-height:
+        105px;
 
     margin:
-        0 auto 25px;
+        0;
 
     color:
-        #c5ccd4;
-
-    font-size:
-        14px;
+        #c6cbd1;
 
     line-height:
-        1.7;
+        1.75;
+
+    text-align:
+        center;
 }
 
 
@@ -888,202 +935,129 @@ section {
         100%;
 
     margin-top:
-        auto;
+        20px;
 }
 
 
 /* =====================================================
-   SKYLINE CARD
+   SKYLINE BRAND
 ===================================================== */
 
-.brand-card.skyline {
+.skyline-card {
 
     border-color:
-        rgba(22,140,255,0.30);
+        rgba(22,140,255,0.32);
 }
 
 
-.brand-card.skyline:hover {
-
-    border-color:
-        rgba(89,185,255,0.68);
-}
-
-
-.button-skyline {
+.skyline-card::before {
 
     background:
-        var(--skyline-blue);
-
-    border-color:
-        var(--skyline-blue);
-
-    box-shadow:
-        0 12px 32px
-        var(--skyline-glow);
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--sky-bright),
+            transparent
+        );
 }
 
 
-/* =====================================================
-   PARANORMAL CARD
-===================================================== */
-
-.brand-card.paranormal {
-
-    border-color:
-        rgba(198,40,40,0.32);
-}
-
-
-.brand-card.paranormal:hover {
-
-    border-color:
-        rgba(239,68,68,0.70);
-}
-
-
-.button-paranormal {
+.skyline-card .brand-button {
 
     background:
-        var(--paranormal-red);
-
-    border-color:
-        var(--paranormal-red);
-
-    box-shadow:
-        0 12px 32px
-        var(--paranormal-glow);
-}
-
-
-/* =====================================================
-   PHOTOGRAPHY CARD
-===================================================== */
-
-.brand-card.photography {
-
-    border-color:
-        rgba(210,216,224,0.24);
-}
-
-
-.brand-card.photography:hover {
-
-    border-color:
-        rgba(255,255,255,0.62);
-}
-
-
-/* =====================================================
-   GET IN TOUCH
-===================================================== */
-
-.contact-section {
-
-    padding:
-        60px 0 30px;
-}
-
-
-.contact-panel {
-
-    padding:
-        45px 35px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        space-between;
-
-    gap:
-        35px;
-
-    border:
-        1px solid
-        rgba(0,166,166,0.40);
-
-    border-radius:
-        28px;
-
-    background:
-
         linear-gradient(
             135deg,
-            rgba(0,166,166,0.13),
-            rgba(4,12,16,0.88)
+            var(--sky-blue),
+            var(--sky-dark)
         );
 
+    border-color:
+        var(--sky-blue);
+
     box-shadow:
-        0 25px 65px
-        rgba(0,0,0,0.42);
+        0 10px 28px
+        rgba(22,140,255,0.22);
 }
 
 
-.contact-copy {
+/* =====================================================
+   PARANORMAL BRAND
+===================================================== */
 
-    max-width:
-        680px;
-}
-
-
-.contact-copy .eyebrow {
-
-    color:
-        var(--contact-light);
-}
-
-
-.contact-copy h2 {
-
-    margin:
-        0 0 14px;
-
-    font-size:
-        clamp(32px, 5vw, 48px);
-
-    line-height:
-        1;
-}
-
-
-.contact-copy h2 span {
-
-    color:
-        var(--contact-light);
-}
-
-
-.contact-copy p {
-
-    margin:
-        0;
-
-    color:
-        #c7d2d5;
-
-    line-height:
-        1.75;
-}
-
-
-.button-contact {
-
-    flex-shrink:
-        0;
-
-    background:
-        var(--contact-teal);
+.paranormal-card {
 
     border-color:
-        var(--contact-teal);
+        rgba(255,48,79,0.30);
+}
+
+
+.paranormal-card::before {
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--para-red-bright),
+            transparent
+        );
+}
+
+
+.paranormal-card .brand-button {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--para-red),
+            var(--para-red-dark)
+        );
+
+    border-color:
+        var(--para-red-bright);
 
     box-shadow:
-        0 12px 32px
-        var(--contact-glow);
+        0 10px 28px
+        rgba(255,48,79,0.20);
+}
+
+
+/* =====================================================
+   PHOTOGRAPHY BRAND
+===================================================== */
+
+.photography-card {
+
+    border-color:
+        rgba(255,255,255,0.20);
+}
+
+
+.photography-card::before {
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ffffff,
+            transparent
+        );
+}
+
+
+.photography-card .brand-button {
+
+    background:
+        linear-gradient(
+            135deg,
+            #f1f3f5,
+            #858b93
+        );
+
+    color:
+        #08090a;
+
+    border-color:
+        #ffffff;
 }
 
 
@@ -1093,45 +1067,60 @@ section {
 
 .about {
 
+    max-width:
+        900px;
+
+    margin:
+        auto;
+
     padding:
-        35px;
+        42px;
 
     border:
         1px solid
-        rgba(255,255,255,0.12);
+        rgba(255,255,255,0.14);
 
     border-radius:
-        25px;
+        28px;
 
     background:
-        rgba(4,8,14,0.74);
+        rgba(7,8,10,0.84);
+
+    backdrop-filter:
+        blur(15px);
+
+    box-shadow:
+        var(--shadow);
 }
 
 
 .about h2 {
 
     margin:
-        0 0 18px;
+        0 0 20px;
 
     font-size:
-        clamp(30px, 5vw, 45px);
+        clamp(30px,5vw,46px);
+
+    font-weight:
+        950;
 }
 
 
 .about h2 span {
 
     color:
-        var(--silver);
+        var(--silver-bright);
 }
 
 
 .about p {
 
     margin:
-        0 0 14px;
+        0 0 17px;
 
     color:
-        #c4cbd3;
+        #c4c8ce;
 
     line-height:
         1.8;
@@ -1146,26 +1135,169 @@ section {
 
 
 /* =====================================================
+   GET IN TOUCH
+===================================================== */
+
+.contact-section {
+
+    padding-bottom:
+        100px;
+}
+
+
+.contact-panel {
+
+    max-width:
+        980px;
+
+    margin:
+        auto;
+
+    padding:
+        50px 40px;
+
+    border:
+        1px solid
+        rgba(214,181,109,0.38);
+
+    border-radius:
+        30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(30,25,17,0.90),
+            rgba(7,7,8,0.90)
+        );
+
+    backdrop-filter:
+        blur(16px);
+
+    box-shadow:
+        0 25px 75px
+        rgba(0,0,0,0.65);
+
+    text-align:
+        center;
+}
+
+
+.contact-panel .eyebrow {
+
+    color:
+        var(--contact-gold-bright);
+}
+
+
+.contact-panel h2 {
+
+    margin:
+        0 0 17px;
+
+    font-size:
+        clamp(34px,6vw,58px);
+
+    line-height:
+        1;
+
+    font-weight:
+        950;
+}
+
+
+.contact-panel h2 span {
+
+    color:
+        var(--contact-gold-bright);
+
+    text-shadow:
+        0 0 25px
+        rgba(243,213,142,0.18);
+}
+
+
+.contact-panel p {
+
+    max-width:
+        700px;
+
+    margin:
+        0 auto 28px;
+
+    color:
+        #d0d0cc;
+
+    line-height:
+        1.8;
+}
+
+
+.contact-button {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--contact-gold-bright),
+            var(--contact-gold-dark)
+        );
+
+    color:
+        #090806;
+
+    border-color:
+        var(--contact-gold-bright);
+
+    box-shadow:
+        0 12px 34px
+        rgba(214,181,109,0.22);
+}
+
+
+.contact-button:hover {
+
+    border-color:
+        #fff1c6;
+
+    box-shadow:
+        0 15px 40px
+        rgba(214,181,109,0.30);
+}
+
+
+/* =====================================================
    FOOTER
 ===================================================== */
 
 footer {
 
     padding:
-        45px 0;
+        48px 0;
 
     text-align:
         center;
 
     color:
-        #8e969f;
+        #858a91;
 
     border-top:
         1px solid
-        rgba(255,255,255,0.09);
+        rgba(255,255,255,0.11);
 
     line-height:
-        1.7;
+        1.8;
+}
+
+
+.footer-title {
+
+    color:
+        #ffffff;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        1px;
 }
 
 
@@ -1173,29 +1305,16 @@ footer {
    MOBILE
 ===================================================== */
 
-@media (max-width: 850px) {
+@media (max-width:800px) {
+
 
     .nav {
 
         min-height:
             68px;
-    }
 
-
-    .nav-brand {
-
-        font-size:
-            18px;
-    }
-
-
-    .nav-brand img {
-
-        width:
-            34px;
-
-        height:
-            34px;
+        padding:
+            10px 0;
     }
 
 
@@ -1233,18 +1352,18 @@ footer {
             6px;
 
         background:
-            rgba(3,7,12,0.98);
+            rgba(5,6,8,0.98);
 
         border:
             1px solid
-            rgba(220,225,232,0.20);
+            rgba(255,255,255,0.16);
 
         border-radius:
             16px;
 
         box-shadow:
             0 22px 55px
-            rgba(0,0,0,0.55);
+            rgba(0,0,0,0.65);
     }
 
 
@@ -1288,16 +1407,13 @@ footer {
 
         right:
             25%;
-
-        bottom:
-            5px;
     }
 
 
     .hero {
 
         padding:
-            55px 0 45px;
+            65px 0 55px;
     }
 
 
@@ -1311,13 +1427,34 @@ footer {
     .hero-logo {
 
         width:
-            210px;
+            240px;
 
         height:
-            210px;
+            240px;
 
         max-width:
-            72%;
+            78%;
+    }
+
+
+    .hero h1 {
+
+        font-size:
+            48px;
+    }
+
+
+    .hero p {
+
+        font-size:
+            15px;
+    }
+
+
+    section {
+
+        padding:
+            65px 0;
     }
 
 
@@ -1328,40 +1465,35 @@ footer {
     }
 
 
-    section {
+    .brand-card p {
+
+        min-height:
+            auto;
+    }
+
+
+    .about {
 
         padding:
-            55px 0;
+            30px 22px;
     }
 
 
     .contact-panel {
 
-        flex-direction:
-            column;
-
-        text-align:
-            center;
-
         padding:
-            35px 22px;
-    }
-
-
-    .button-contact {
-
-        width:
-            100%;
+            38px 22px;
     }
 
 }
 
 
 /* =====================================================
-   PHONE
+   SMALL PHONES
 ===================================================== */
 
-@media (max-width: 520px) {
+@media (max-width:520px) {
+
 
     .container {
 
@@ -1370,47 +1502,40 @@ footer {
     }
 
 
-    .hero {
+    .nav-brand {
 
-        padding:
-            40px 0;
+        font-size:
+            16px;
     }
 
 
-    .hero-card {
+    .nav-brand img {
 
-        padding:
-            35px 18px;
+        width:
+            35px;
+
+        height:
+            35px;
     }
 
 
     .hero-logo {
 
         width:
-            175px;
+            190px;
 
         height:
-            175px;
-
-        margin-bottom:
-            23px;
+            190px;
     }
 
 
     .hero h1 {
 
         font-size:
-            43px;
+            42px;
 
         letter-spacing:
             -1.5px;
-    }
-
-
-    .hero p {
-
-        font-size:
-            15px;
     }
 
 
@@ -1428,37 +1553,10 @@ footer {
     }
 
 
-    .brand-card {
+    .contact-panel h2 {
 
-        min-height:
-            365px;
-
-        padding:
-            28px 20px;
-    }
-
-
-    .brand-logo {
-
-        width:
-            115px;
-
-        height:
-            115px;
-    }
-
-
-    .about {
-
-        padding:
-            27px 20px;
-    }
-
-
-    .contact-panel {
-
-        border-radius:
-            23px;
+        font-size:
+            40px;
     }
 
 }
@@ -1468,21 +1566,21 @@ footer {
    REDUCED MOTION
 ===================================================== */
 
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion:reduce) {
 
     html {
+
         scroll-behavior:
             auto;
     }
 
-    *,
-    *::before,
-    *::after {
 
-        animation:
-            none !important;
+    * {
 
         transition:
+            none !important;
+
+        animation:
             none !important;
     }
 
@@ -1544,29 +1642,26 @@ NEWITT <span>MEDIA</span>
     Home
 </a>
 
-<a
-    href="skyline.html"
->
+
+<a href="skyline.html">
     Skyline
 </a>
 
-<a
-    href="paranormal.html"
->
+
+<a href="paranormal.html">
     Paranormal
 </a>
 
-<a
-    href="photography.html"
->
+
+<a href="photography.html">
     Photography
 </a>
 
-<a
-    href="contact.html"
->
+
+<a href="#contact">
     Get in Touch
 </a>
+
 
 </nav>
 
@@ -1585,13 +1680,10 @@ NEWITT <span>MEDIA</span>
 
 
 <!-- =====================================================
-     HERO
+     MAIN HERO
 ===================================================== -->
 
 <section class="hero">
-
-<div class="container">
-
 
 <div class="hero-card">
 
@@ -1609,17 +1701,20 @@ NEWITT <span>MEDIA</span>
 
 
 <h1>
-    NEWITT <span>MEDIA</span>
+
+NEWITT
+<span>MEDIA</span>
+
 </h1>
 
 
 <p>
 
-One name bringing together aerial drone media,
-photography and paranormal adventures.
+One name. Three different worlds.
 
-Explore the projects, images and adventures
-that make up NEWITT Media.
+Aerial views from above, photography through
+the lens and paranormal investigations after
+dark.
 
 </p>
 
@@ -1629,7 +1724,7 @@ that make up NEWITT Media.
 
 <a
     href="skyline.html"
-    class="button button-skyline"
+    class="button primary"
 >
     Explore Skyline Media
 </a>
@@ -1637,7 +1732,7 @@ that make up NEWITT Media.
 
 <a
     href="paranormal.html"
-    class="button button-paranormal"
+    class="button"
 >
     Enter the Paranormal
 </a>
@@ -1645,7 +1740,7 @@ that make up NEWITT Media.
 
 <a
     href="photography.html"
-    class="button button-silver"
+    class="button"
 >
     View Photography
 </a>
@@ -1656,14 +1751,12 @@ that make up NEWITT Media.
 
 </div>
 
-</div>
-
 </section>
 
 
 
 <!-- =====================================================
-     THREE SIDES
+     THREE BRANDS
 ===================================================== -->
 
 <section>
@@ -1675,20 +1768,23 @@ that make up NEWITT Media.
 
 
 <div class="eyebrow">
-    Three sides of NEWITT Media
+    Three sides of the same brand
 </div>
 
 
 <h2>
-    Explore the <span>adventures.</span>
+
+Pick your
+<span>adventure.</span>
+
 </h2>
 
 
 <p>
 
-Explore the three areas of NEWITT Media
-and follow the projects, images and adventures
-as they grow.
+Different cameras.
+Different adventures.
+Same NEWITT Media.
 
 </p>
 
@@ -1704,7 +1800,7 @@ as they grow.
      SKYLINE
 ================================================= -->
 
-<article class="brand-card skyline">
+<article class="brand-card skyline-card">
 
 
 <img
@@ -1721,17 +1817,23 @@ as they grow.
 
 <p>
 
-Drone footage, aerial photography and
-views from above.
+Drone footage, aerial photography
+and views from above.
+
+Professional aerial content,
+landscapes and places seen from
+a completely different perspective.
 
 </p>
 
 
 <a
     href="skyline.html"
-    class="button button-skyline"
+    class="button brand-button"
 >
-    Explore Skyline
+
+Visit Skyline
+
 </a>
 
 
@@ -1743,7 +1845,7 @@ views from above.
      PARANORMAL
 ================================================= -->
 
-<article class="brand-card paranormal">
+<article class="brand-card paranormal-card">
 
 
 <img
@@ -1760,17 +1862,22 @@ views from above.
 
 <p>
 
-Haunted locations, investigations, strange
-experiences and unexplained events.
+Haunted locations, investigations,
+strange stories and unexplained events.
+
+Follow the investigations and see
+what happens when the lights go out.
 
 </p>
 
 
 <a
     href="paranormal.html"
-    class="button button-paranormal"
+    class="button brand-button"
 >
-    Explore Paranormal
+
+Enter the Paranormal
+
 </a>
 
 
@@ -1782,7 +1889,7 @@ experiences and unexplained events.
      PHOTOGRAPHY
 ================================================= -->
 
-<article class="brand-card photography">
+<article class="brand-card photography-card">
 
 
 <img
@@ -1799,17 +1906,23 @@ experiences and unexplained events.
 
 <p>
 
-Landscapes, locations and moments
-captured through the lens.
+Landscapes, locations, people,
+adventures and moments captured
+through the lens.
+
+Sometimes the simplest photograph
+is the one worth keeping.
 
 </p>
 
 
 <a
     href="photography.html"
-    class="button button-silver"
+    class="button brand-button"
 >
-    View Photography
+
+View Photography
+
 </a>
 
 
@@ -1834,7 +1947,7 @@ captured through the lens.
 <div class="container">
 
 
-<div class="about">
+<div class="section-heading">
 
 
 <div class="eyebrow">
@@ -1843,31 +1956,48 @@ captured through the lens.
 
 
 <h2>
-    Why NEWITT <span>Media?</span>
+
+Why NEWITT
+<span>Media?</span>
+
 </h2>
 
 
+</div>
+
+
+
+<div class="about">
+
+
 <p>
 
-NEWITT Media is an independent creative project
-bringing together aerial drone work, photography
-and paranormal adventures under one roof.
+NEWITT Media is an independent creative
+project bringing together aerial drone work,
+photography and paranormal adventures
+under one roof.
 
 </p>
 
 
 <p>
 
-From the view above to locations after dark,
-the aim is simple: capture, explore and share
-experiences from a different perspective.
+From the sky, through the lens and into
+the unknown, each part of NEWITT Media
+has its own identity while remaining part
+of the same brand.
 
 </p>
 
 
 <p>
 
-Have a look around. There is plenty more coming.
+There is no giant production company hiding
+behind the curtain.
+
+Just cameras, drones, ideas, adventures
+and a determination to create something
+worth watching.
 
 </p>
 
@@ -1885,7 +2015,11 @@ Have a look around. There is plenty more coming.
      GET IN TOUCH
 ===================================================== -->
 
-<section class="contact-section">
+<section
+    class="contact-section"
+    id="contact"
+>
+
 
 <div class="container">
 
@@ -1893,36 +2027,36 @@ Have a look around. There is plenty more coming.
 <div class="contact-panel">
 
 
-<div class="contact-copy">
-
-
 <div class="eyebrow">
-    Contact NEWITT Media
+    NEWITT Media
 </div>
 
 
 <h2>
-    Get in <span>Touch</span>
+
+Let's create
+<span>something.</span>
+
 </h2>
 
 
 <p>
 
-For drone, photography or paranormal enquiries,
-choose the appropriate contact and we'll take it
-from there.
+Whether you are interested in aerial drone
+work, photography, paranormal investigations
+or simply want to get in touch with NEWITT
+Media, drop us a message.
 
 </p>
 
 
-</div>
-
-
 <a
-    href="contact.html"
-    class="button button-contact"
+    href="mailto:newittmedia@gmail.com"
+    class="button contact-button"
 >
-    Get in Touch
+
+Get in Touch
+
 </a>
 
 
@@ -1946,11 +2080,23 @@ from there.
 
 <div class="container">
 
-NEWITT MEDIA
 
-<br>
+<div class="footer-title">
+    NEWITT MEDIA
+</div>
 
-Skyline Media. Paranormal Adventures. Photography.
+
+Skyline Media.
+Paranormal Adventures.
+Photography.
+
+
+<br><br>
+
+
+© 2026 NEWITT Media.
+All rights reserved.
+
 
 </div>
 
