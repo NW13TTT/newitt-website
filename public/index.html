@@ -138,7 +138,8 @@ a {
 }
 .nav-links a:hover {
     color: var(--white);
-    transform: translateY(-1px);
+    transform:
+        translateY(-1px);
 }
 /* =========================================================
    HERO
@@ -217,7 +218,8 @@ a {
         box-shadow .2s ease;
 }
 .button:hover {
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 }
 .button-primary {
     background:
@@ -302,49 +304,6 @@ a {
     color: var(--grey);
 }
 /* =========================================================
-   LATEST CLIPS
-   ========================================================= */
-.video-section {
-    padding-top: 55px;
-}
-.video-box {
-    width: 100%;
-    padding: 22px;
-    background:
-        rgba(5,7,11,0.82);
-    border:
-        1px solid
-        rgba(255,255,255,0.08);
-    border-radius: 24px;
-    box-shadow:
-        0 25px 70px
-        rgba(0,0,0,0.55);
-}
-.video-frame {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    border-radius: 16px;
-    background: #000;
-}
-.video-frame iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-.video-note {
-    text-align: center;
-    color: var(--grey);
-    font-size: .86rem;
-    margin-top: 16px;
-}
-.video-note strong {
-    color: var(--silver);
-}
-/* =========================================================
    BRAND CARDS
    ========================================================= */
 .brand-grid {
@@ -375,7 +334,8 @@ a {
         border-color .25s ease;
 }
 .brand-card:hover {
-    transform: translateY(-5px);
+    transform:
+        translateY(-5px);
     border-color:
         rgba(85,173,255,0.28);
 }
@@ -523,6 +483,11 @@ footer {
    MOBILE
    ========================================================= */
 @media (max-width: 600px) {
+    /*
+       Mobile keeps its own background sizing
+       because phones have a much narrower
+       screen ratio.
+    */
     body {
         background-image:
             linear-gradient(
@@ -597,16 +562,6 @@ footer {
     .section-heading {
         margin-bottom: 30px;
     }
-    .video-section {
-        padding-top: 35px;
-    }
-    .video-box {
-        padding: 12px;
-        border-radius: 18px;
-    }
-    .video-frame {
-        border-radius: 12px;
-    }
     .brand-card {
         padding:
             26px 18px;
@@ -680,9 +635,6 @@ footer {
             <a href="#home">
                 Home
             </a>
-            <a href="#videos">
-                Latest Clips
-            </a>
             <a href="#brands">
                 Brands
             </a>
@@ -720,14 +672,8 @@ footer {
         </p>
         <div class="hero-buttons">
             <a
-                href="#videos"
-                class="button button-primary"
-            >
-                Watch Latest Clips
-            </a>
-            <a
                 href="#brands"
-                class="button button-secondary"
+                class="button button-primary"
             >
                 Explore NEWITT Media
             </a>
@@ -738,48 +684,6 @@ footer {
                 Get in Touch
             </a>
         </div>
-    </div>
-</section>
-<!-- =======================================================
-     LATEST CLIPS
-     ======================================================= -->
-<section
-    class="section video-section"
-    id="videos"
->
-    <div class="section-heading">
-        <h2>
-            Latest Clips
-        </h2>
-        <p>
-            Catch the latest footage from NEWITT Media,
-            from aerial adventures to investigations
-            after dark.
-        </p>
-    </div>
-    <div class="video-box">
-        <div class="video-frame">
-            <!--
-                NEWITT MEDIA YOUTUBE PLAYLIST
-                Playlist ID:
-                PLSdbo4LYjJLw
-                Add new videos to the playlist on
-                YouTube and the website will use
-                the updated playlist automatically.
-            -->
-            <iframe
-                src="https://www.youtube.com/embed/videoseries?list=PLSdbo4LYjJLw"
-                title="NEWITT Media Latest Clips"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-            ></iframe>
-        </div>
-        <p class="video-note">
-            <strong>NEWITT Media Latest Clips</strong>
-            • New videos are added through the
-            YouTube playlist.
-        </p>
     </div>
 </section>
 <!-- =======================================================
@@ -1040,9 +944,6 @@ footer {
     <div class="footer-links">
         <a href="#home">
             Home
-        </a>
-        <a href="#videos">
-            Latest Clips
         </a>
         <a href="#brands">
             Brands
