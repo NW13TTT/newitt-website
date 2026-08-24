@@ -5,7 +5,10 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
 
 <title>NEWITT Skyline Media | Drone Photography & Aerial Footage</title>
 
@@ -159,18 +162,19 @@ header {
 
     padding: 10px 4px;
 
-    transition: 0.25s ease;
+    transition:
+        opacity 0.25s ease,
+        color 0.25s ease;
 }
 
 .nav-links a:hover {
     opacity: 1;
-
     color: #3ca8ff;
 }
 
 
 /* ========================================
-   MOBILE MENU BUTTON
+   MOBILE MENU
 ======================================== */
 
 .menu-button {
@@ -203,7 +207,8 @@ header {
 .hero {
     text-align: center;
 
-    padding: 70px 0 45px;
+    padding:
+        70px 0 45px;
 }
 
 .logo {
@@ -236,7 +241,8 @@ h1 span {
 .intro {
     max-width: 760px;
 
-    margin: 22px auto 0;
+    margin:
+        22px auto 0;
 
     color: #ccd3dd;
 
@@ -251,7 +257,8 @@ h1 span {
 ======================================== */
 
 .panel {
-    margin: 30px 0 70px;
+    margin:
+        30px 0 70px;
 
     padding: 35px;
 
@@ -263,7 +270,8 @@ h1 span {
 
     border-radius: 28px;
 
-    backdrop-filter: blur(16px);
+    backdrop-filter:
+        blur(16px);
 
     box-shadow:
         0 25px 70px rgba(0,0,0,0.28);
@@ -276,6 +284,10 @@ h1 span {
         clamp(30px, 5vw, 44px);
 }
 
+.panel h2 span {
+    color: #3ba8ff;
+}
+
 .panel p {
     color: #c9d0da;
 
@@ -286,30 +298,7 @@ h1 span {
 
 
 /* ========================================
-   FEATURE IMAGE
-======================================== */
-
-.feature-image {
-    margin-top: 30px;
-}
-
-.feature-image img {
-    width: 100%;
-
-    display: block;
-
-    border-radius: 22px;
-
-    border:
-        1px solid rgba(60,168,255,0.22);
-
-    box-shadow:
-        0 20px 55px rgba(0,0,0,0.35);
-}
-
-
-/* ========================================
-   GLOUCESTER PRISON GALLERY
+   GALLERY
 ======================================== */
 
 .gallery {
@@ -361,10 +350,6 @@ h1 span {
     text-align: center;
 }
 
-.tiktok-panel h2 {
-    margin-bottom: 15px;
-}
-
 .tiktok-panel > p {
     max-width: 760px;
 
@@ -377,7 +362,8 @@ h1 span {
 
     max-width: 780px;
 
-    margin: 35px auto 0;
+    margin:
+        35px auto 0;
 
     overflow: hidden;
 
@@ -389,37 +375,13 @@ h1 span {
 }
 
 .tiktok-embed {
-    margin: 0 auto !important;
+    margin:
+        0 auto !important;
 }
 
 
 /* ========================================
-   TIKTOK DIRECT LINK
-======================================== */
-
-.tiktok-link-box {
-    margin-top: 25px;
-
-    padding: 22px;
-
-    border-radius: 18px;
-
-    background:
-        rgba(255,255,255,0.04);
-
-    border:
-        1px solid rgba(60,168,255,0.15);
-}
-
-.tiktok-link-box p {
-    margin: 0 0 5px;
-
-    color: #d4dbe5;
-}
-
-
-/* ========================================
-   BUTTON
+   BUTTONS
 ======================================== */
 
 .button {
@@ -427,11 +389,13 @@ h1 span {
 
     margin-top: 20px;
 
-    padding: 14px 22px;
+    padding:
+        14px 22px;
 
     border-radius: 13px;
 
-    background: #168cff;
+    background:
+        #168cff;
 
     color: #ffffff;
 
@@ -440,13 +404,82 @@ h1 span {
     box-shadow:
         0 10px 30px rgba(22,140,255,0.20);
 
-    transition: 0.25s ease;
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
 }
 
 .button:hover {
-    transform: translateY(-3px);
+    transform:
+        translateY(-3px);
 
-    background: #2998ff;
+    background:
+        #2998ff;
+}
+
+
+/* ========================================
+   CONTACT SECTION
+======================================== */
+
+.contact-panel {
+    text-align: center;
+
+    border:
+        1px solid rgba(60,168,255,0.25);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8,25,45,0.86),
+            rgba(3,7,14,0.82)
+        );
+}
+
+.contact-panel h2 {
+    margin-bottom: 15px;
+}
+
+.contact-panel p {
+    max-width: 720px;
+
+    margin:
+        0 auto 10px;
+}
+
+.contact-button {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding:
+        15px 26px;
+
+    border-radius: 14px;
+
+    background:
+        #168cff;
+
+    color:
+        #ffffff;
+
+    font-weight:
+        900;
+
+    box-shadow:
+        0 12px 35px rgba(22,140,255,0.22);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+.contact-button:hover {
+    transform:
+        translateY(-3px);
+
+    background:
+        #2998ff;
 }
 
 
@@ -457,7 +490,8 @@ h1 span {
 footer {
     margin-top: 20px;
 
-    padding: 50px 0;
+    padding:
+        50px 0;
 
     text-align: center;
 
@@ -465,6 +499,8 @@ footer {
 
     border-top:
         1px solid rgba(255,255,255,0.08);
+
+    line-height: 1.7;
 }
 
 
@@ -496,7 +532,8 @@ footer {
         left: 0;
         right: 0;
 
-        padding: 18px 20px 22px;
+        padding:
+            18px 20px 22px;
 
         flex-direction: column;
 
@@ -508,7 +545,8 @@ footer {
         border-bottom:
             1px solid rgba(60,168,255,0.18);
 
-        backdrop-filter: blur(18px);
+        backdrop-filter:
+            blur(18px);
     }
 
     .nav-links.show {
@@ -518,7 +556,8 @@ footer {
     .nav-links a {
         width: 100%;
 
-        padding: 14px 12px;
+        padding:
+            14px 12px;
 
         border-radius: 10px;
 
@@ -529,7 +568,8 @@ footer {
     }
 
     .hero {
-        padding: 50px 0 35px;
+        padding:
+            50px 0 35px;
     }
 
     .logo {
@@ -542,7 +582,8 @@ footer {
     }
 
     .panel {
-        padding: 24px 18px;
+        padding:
+            24px 18px;
 
         border-radius: 22px;
     }
@@ -555,6 +596,12 @@ footer {
 
     .tiktok-box {
         min-height: 430px;
+    }
+
+    .contact-button {
+        width: 100%;
+
+        max-width: 320px;
     }
 
 }
@@ -575,12 +622,15 @@ footer {
     }
 
     .menu-button {
-        padding: 11px 15px;
+        padding:
+            11px 15px;
+
         font-size: 14px;
     }
 
     .panel {
-        padding: 20px 15px;
+        padding:
+            20px 15px;
     }
 
 }
@@ -600,6 +650,7 @@ footer {
 <header>
 
 <div class="container nav">
+
 
 <a
 href="index.html"
@@ -640,6 +691,7 @@ Photography
 </a>
 
 </nav>
+
 
 </div>
 
@@ -839,7 +891,7 @@ loading="lazy"
 <h2>
 
 Latest from
-<span style="color:#3ba8ff;">
+<span>
 Skyline
 </span>
 
@@ -854,8 +906,6 @@ projects.
 
 </p>
 
-
-<!-- TIKTOK CREATOR EMBED -->
 
 <div class="tiktok-box">
 
@@ -890,24 +940,64 @@ href="https://www.tiktok.com/@newittskylinemedia?refer=creator_embed"
 </div>
 
 
-<!-- DIRECT TIKTOK LINK -->
-
-<div class="tiktok-link-box">
-
-<p>
-Can't see the TikTok preview?
-</p>
-
 <a
 href="https://www.tiktok.com/@newittskylinemedia"
 target="_blank"
 rel="noopener noreferrer"
 class="button"
 >
-Open Skyline TikTok
+Visit Skyline TikTok
 </a>
 
+
 </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     CONTACT
+===================================== -->
+
+<section
+id="contact"
+>
+
+<div class="container">
+
+<div class="panel contact-panel">
+
+
+<h2>
+Drone Enquiries
+</h2>
+
+
+<p>
+
+Interested in aerial photography, drone footage,
+location filming or another Skyline Media project?
+
+</p>
+
+
+<p>
+
+Use the NEWITT Media contact page to continue
+with your enquiry.
+
+</p>
+
+
+<a
+href="contact.html"
+class="contact-button"
+>
+Get in Touch
+</a>
 
 
 </div>
