@@ -1,1 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NEWITT Media Photography</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f5f7fb;
+    background: #05070b;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        linear-gradient(
+            rgba(3,7,14,0.50),
+            rgba(3,7,14,0.78)
+        ),
+        url("background.png.PNG") center / cover no-repeat;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(
+            circle at 50% 5%,
+            rgba(80,160,255,0.18),
+            transparent 42%
+        );
+    pointer-events: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: min(1150px, 92%);
+    margin: auto;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(3,6,12,0.84);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.nav {
+    min-height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.brand span {
+    color: #3ca8ff;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.nav-links a {
+    opacity: 0.8;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+    color: #3ca8ff;
+}
+
+.hero {
+    text-align: center;
+    padding: 80px 0 50px;
+}
+
+.logo {
+    width: 190px;
+    height: 190px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: clamp(38px, 7vw, 68px);
+    margin: 0;
+}
+
+h1 span {
+    color: #3daaff;
+}
+
+.intro {
+    max-width: 720px;
+    margin: 20px auto;
+    line-height: 1.7;
+    color: #ccd3dd;
+}
+
+.panel {
+    margin: 30px 0 80px;
+    padding: 40px;
+    text-align: center;
+    background: rgba(3,7,14,0.76);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 26px;
+    backdrop-filter: blur(15px);
+}
+
+.panel h2 {
+    font-size: 32px;
+    margin-top: 0;
+}
+
+.panel p {
+    max-width: 720px;
+    margin: 15px auto;
+    color: #c9d0da;
+    line-height: 1.8;
+}
+
+.coming-soon {
+    margin-top: 35px;
+    padding: 35px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.04);
+    border: 1px dashed rgba(255,255,255,0.18);
+}
+
+.coming-soon h3 {
+    margin-top: 0;
+    font-size: 25px;
+}
+
+footer {
+    padding: 45px 0;
+    text-align: center;
+    color: #9ba4b1;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+@media (max-width: 700px) {
+
+    .nav-links {
+        gap: 10px;
+        font-size: 11px;
+    }
+
+    .logo {
+        width: 145px;
+        height: 145px;
+    }
+
+    .panel {
+        padding: 25px 20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="container nav">
+
+<a href="index.html" class="brand">
+NEWITT <span>MEDIA</span>
+</a>
+
+<nav class="nav-links">
+<a href="index.html">Home</a>
+<a href="skyline.html">Skyline</a>
+<a href="paranormal.html">Paranormal</a>
+<a href="photography.html">Photography</a>
+</nav>
+
+</div>
+
+</header>
+
+<main>
+
+<section class="hero">
+
+<div class="container">
+
+<img
+src="newitt-media-logo.png.PNG"
+alt="NEWITT Media logo"
+class="logo"
+>
+
+<h1>
+NEWITT <span>Photography</span>
+</h1>
+
+<p class="intro">
+Sometimes you don't need a drone, a haunted building or
+a complicated plan.
+
+Sometimes you just need the camera in the right place
+at the right time.
+</p>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<div class="panel">
+
+<h2>The photography collection</h2>
+
+<p>
+This section is being built for the photographs that deserve
+their own little corner of the internet.
+</p>
+
+<p>
+Landscapes, places, adventures, unusual moments and whatever
+else catches the eye before the camera gets put away.
+</p>
+
+<div class="coming-soon">
+
+<h3>The gallery is coming together</h3>
+
+<p>
+New photographs will be added here as the collection grows.
+There is no rush. Good photographs tend to be worth waiting for.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+
+<div class="container">
+
+NEWITT Media Photography<br>
+See the moment. Capture the moment.
+
+</div>
+
+</footer>
+
+</body>
+</html>
