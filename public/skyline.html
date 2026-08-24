@@ -1,1 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NEWITT Skyline Media</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f5f7fb;
+    background: #05070b;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        linear-gradient(
+            rgba(2,7,14,0.48),
+            rgba(2,7,14,0.76)
+        ),
+        url("background.png.PNG") center / cover no-repeat;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(
+        circle at 50% 5%,
+        rgba(35,160,255,0.22),
+        transparent 42%
+    );
+    pointer-events: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: min(1150px, 92%);
+    margin: auto;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(3,6,12,0.82);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.nav {
+    min-height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.brand span {
+    color: #39a8ff;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.nav-links a {
+    opacity: 0.8;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+    color: #3daaff;
+}
+
+.hero {
+    padding: 80px 0 50px;
+    text-align: center;
+}
+
+.logo {
+    width: 190px;
+    height: 190px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: clamp(38px, 7vw, 70px);
+    margin: 0;
+}
+
+h1 span {
+    color: #3ba8ff;
+}
+
+.intro {
+    max-width: 720px;
+    margin: 20px auto;
+    line-height: 1.7;
+    color: #ccd3dd;
+}
+
+.panel {
+    margin: 30px 0 80px;
+    padding: 30px;
+    background: rgba(3,7,14,0.76);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 26px;
+    backdrop-filter: blur(15px);
+}
+
+.panel h2 {
+    margin-top: 0;
+    font-size: 30px;
+}
+
+.panel p {
+    color: #c9d0da;
+    line-height: 1.7;
+}
+
+.tiktok-box {
+    width: 100%;
+    max-width: 780px;
+    margin: 30px auto 0;
+    min-height: 500px;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #ffffff;
+}
+
+.tiktok-embed {
+    margin: 0 auto !important;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 13px 20px;
+    border-radius: 12px;
+    background: #168cff;
+    font-weight: 800;
+}
+
+footer {
+    padding: 45px 0;
+    text-align: center;
+    color: #9ba4b1;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+@media (max-width: 700px) {
+
+    .nav-links {
+        gap: 10px;
+        font-size: 11px;
+    }
+
+    .logo {
+        width: 145px;
+        height: 145px;
+    }
+
+    .panel {
+        padding: 20px;
+    }
+
+    .tiktok-box {
+        min-height: 430px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="container nav">
+
+<a href="index.html" class="brand">
+NEWITT <span>MEDIA</span>
+</a>
+
+<nav class="nav-links">
+<a href="index.html">Home</a>
+<a href="skyline.html">Skyline</a>
+<a href="paranormal.html">Paranormal</a>
+<a href="photography.html">Photography</a>
+</nav>
+
+</div>
+
+</header>
+
+<main>
+
+<section class="hero">
+
+<div class="container">
+
+<img
+src="sky-logo.png.PNG"
+alt="NEWITT Skyline Media logo"
+class="logo"
+>
+
+<h1>
+NEWITT <span>Skyline Media</span>
+</h1>
+
+<p class="intro">
+Welcome to the view from above.
+
+Drone footage, aerial photography and places that look
+completely different once you stop looking at them from
+ground level.
+</p>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<div class="panel">
+
+<h2>Latest from Skyline</h2>
+
+<p>
+This is where the latest NEWITT Skyline Media TikTok content
+lives. New footage appears here as the TikTok account grows,
+so this page can keep evolving without rebuilding the entire
+website every time a new clip is posted.
+</p>
+
+<div class="tiktok-box">
+
+<blockquote
+class="tiktok-embed"
+cite="https://www.tiktok.com/@newittskylinemedia"
+data-unique-id="newittskylinemedia"
+data-embed-type="creator"
+style="max-width:780px; min-width:288px;"
+>
+
+<section>
+
+<a
+target="_blank"
+href="https://www.tiktok.com/@newittskylinemedia?refer=creator_embed"
+>
+@newittskylinemedia
+</a>
+
+</section>
+
+</blockquote>
+
+<script async src="https://www.tiktok.com/embed.js"></script>
+
+</div>
+
+<a
+href="https://www.tiktok.com/@newittskylinemedia"
+target="_blank"
+class="button"
+>
+Visit Skyline TikTok
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+
+<div class="container">
+
+NEWITT Skyline Media<br>
+A fresh view from above.
+
+</div>
+
+</footer>
+
+</body>
+</html>
