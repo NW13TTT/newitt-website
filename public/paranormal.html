@@ -1,1 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NEWITT's Paranormal Adventures</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f4f6f8;
+    background: #030506;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        linear-gradient(
+            rgba(0,3,7,0.55),
+            rgba(0,2,5,0.82)
+        ),
+        url("background.png.PNG") center / cover no-repeat;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(
+            circle at 50% 5%,
+            rgba(0,210,210,0.16),
+            transparent 42%
+        );
+    pointer-events: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: min(1150px, 92%);
+    margin: auto;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(2,5,8,0.84);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.nav {
+    min-height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.brand span {
+    color: #54d7d8;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.nav-links a {
+    opacity: 0.8;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+    color: #65dddd;
+}
+
+.hero {
+    text-align: center;
+    padding: 80px 0 50px;
+}
+
+.logo {
+    width: 190px;
+    height: 190px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: clamp(35px, 6vw, 65px);
+    margin: 0;
+}
+
+h1 span {
+    color: #5bd9da;
+}
+
+.intro {
+    max-width: 730px;
+    margin: 20px auto;
+    line-height: 1.7;
+    color: #cdd2d8;
+}
+
+.panel {
+    margin: 30px 0 80px;
+    padding: 30px;
+    background: rgba(2,5,8,0.79);
+    border: 1px solid rgba(80,220,220,0.16);
+    border-radius: 26px;
+    backdrop-filter: blur(15px);
+}
+
+.panel h2 {
+    margin-top: 0;
+    font-size: 30px;
+}
+
+.panel p {
+    color: #c7cdd4;
+    line-height: 1.7;
+}
+
+.tiktok-box {
+    width: 100%;
+    max-width: 780px;
+    margin: 30px auto 0;
+    min-height: 500px;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #ffffff;
+}
+
+.tiktok-embed {
+    margin: 0 auto !important;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 13px 20px;
+    border-radius: 12px;
+    background: #18bfc3;
+    color: #001012;
+    font-weight: 900;
+}
+
+footer {
+    padding: 45px 0;
+    text-align: center;
+    color: #969fa8;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+@media (max-width: 700px) {
+
+    .nav-links {
+        gap: 10px;
+        font-size: 11px;
+    }
+
+    .logo {
+        width: 145px;
+        height: 145px;
+    }
+
+    .panel {
+        padding: 20px;
+    }
+
+    .tiktok-box {
+        min-height: 430px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="container nav">
+
+<a href="index.html" class="brand">
+NEWITT <span>MEDIA</span>
+</a>
+
+<nav class="nav-links">
+<a href="index.html">Home</a>
+<a href="skyline.html">Skyline</a>
+<a href="paranormal.html">Paranormal</a>
+<a href="photography.html">Photography</a>
+</nav>
+
+</div>
+
+</header>
+
+<main>
+
+<section class="hero">
+
+<div class="container">
+
+<img
+src="paranormal-logo.png.PNG"
+alt="NEWITT's Paranormal Adventures logo"
+class="logo"
+>
+
+<h1>
+NEWITT's <span>Paranormal Adventures</span>
+</h1>
+
+<p class="intro">
+Exploring haunted locations, strange stories and things that
+go bump in the night.
+
+We investigate the locations so you don't have to.
+Mostly because somebody has to remember where the car is parked.
+</p>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<div class="panel">
+
+<h2>Latest paranormal adventures</h2>
+
+<p>
+This is where the latest paranormal TikTok content appears.
+If something strange happens, this is probably where you'll
+see it first.
+</p>
+
+<div class="tiktok-box">
+
+<blockquote
+class="tiktok-embed"
+cite="https://www.tiktok.com/@nw13ttt"
+data-unique-id="nw13ttt"
+data-embed-type="creator"
+style="max-width:780px; min-width:288px;"
+>
+
+<section>
+
+<a
+target="_blank"
+href="https://www.tiktok.com/@nw13ttt?refer=creator_embed"
+>
+@nw13ttt
+</a>
+
+</section>
+
+</blockquote>
+
+<script async src="https://www.tiktok.com/embed.js"></script>
+
+</div>
+
+<a
+href="https://www.tiktok.com/@nw13ttt"
+target="_blank"
+class="button"
+>
+Visit Paranormal TikTok
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+
+<div class="container">
+
+NEWITT's Paranormal Adventures<br>
+Investigating the unexplained, one location at a time.
+
+</div>
+
+</footer>
+
+</body>
+</html>
