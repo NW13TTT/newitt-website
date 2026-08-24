@@ -5,21 +5,23 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-<title>NEWITT Skyline Media | Drone & Aerial Photography</title>
+<title>NEWITT Skyline Media | Drone Aerial Media</title>
 
 <meta
-name="description"
-content="NEWITT Skyline Media drone photography, aerial filming and aerial views across the UK."
+    name="description"
+    content="NEWITT Skyline Media. Drone aerial photography, aerial video and views from above."
 >
 
 <style>
 
-/* =========================================
+/* =====================================================
    RESET
-========================================= */
+===================================================== */
 
 * {
     box-sizing: border-box;
@@ -31,9 +33,17 @@ html {
 
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #f5f7fb;
-    background: #03060b;
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: #ffffff;
+
+    background: #02060d;
+
     overflow-x: hidden;
 }
 
@@ -42,10 +52,14 @@ a {
     text-decoration: none;
 }
 
+img {
+    max-width: 100%;
+}
 
-/* =========================================
+
+/* =====================================================
    BACKGROUND
-========================================= */
+===================================================== */
 
 body::before {
 
@@ -58,15 +72,18 @@ body::before {
     z-index: -3;
 
     background:
+
         linear-gradient(
-            rgba(3,7,14,0.50),
-            rgba(3,7,14,0.84)
+            rgba(2, 6, 13, 0.38),
+            rgba(2, 6, 13, 0.86)
         ),
+
         url("background.png.PNG")
         center center / cover no-repeat;
 
     transform: scale(1.02);
 }
+
 
 body::after {
 
@@ -79,29 +96,32 @@ body::after {
     z-index: -2;
 
     background:
+
         radial-gradient(
-            circle at 50% 5%,
-            rgba(35,160,255,0.20),
-            transparent 42%
+            circle at 50% 10%,
+            rgba(22, 140, 255, 0.18),
+            transparent 45%
         );
 
     pointer-events: none;
 }
 
 
-/* =========================================
+/* =====================================================
    CONTAINER
-========================================= */
+===================================================== */
 
 .container {
+
     width: min(1100px, 92%);
+
     margin: 0 auto;
 }
 
 
-/* =========================================
+/* =====================================================
    HEADER
-========================================= */
+===================================================== */
 
 header {
 
@@ -112,18 +132,18 @@ header {
     z-index: 1000;
 
     background:
-        rgba(3,6,12,0.95);
+        rgba(2, 6, 13, 0.95);
 
     backdrop-filter:
         blur(18px);
 
     border-bottom:
         1px solid
-        rgba(60,168,255,0.20);
+        rgba(22, 140, 255, 0.25);
 
     box-shadow:
         0 8px 35px
-        rgba(0,0,0,0.25);
+        rgba(0,0,0,0.30);
 }
 
 
@@ -141,9 +161,9 @@ header {
 }
 
 
-/* =========================================
-   BRAND
-========================================= */
+/* =====================================================
+   HEADER LOGO
+===================================================== */
 
 .nav-brand {
 
@@ -156,14 +176,16 @@ header {
     white-space: nowrap;
 }
 
+
 .nav-brand span {
-    color: #3ca8ff;
+
+    color: #168cff;
 }
 
 
-/* =========================================
-   DESKTOP NAV
-========================================= */
+/* =====================================================
+   DESKTOP NAVIGATION
+===================================================== */
 
 .nav-links {
 
@@ -178,28 +200,30 @@ header {
     font-weight: 800;
 }
 
+
 .nav-links a {
 
     padding: 12px 3px;
 
-    opacity: 0.85;
+    opacity: 0.88;
 
     transition:
         color 0.25s ease,
         opacity 0.25s ease;
 }
 
+
 .nav-links a:hover {
 
-    color: #42aaff;
+    color: #168cff;
 
     opacity: 1;
 }
 
 
-/* =========================================
-   MOBILE MENU
-========================================= */
+/* =====================================================
+   MOBILE MENU BUTTON
+===================================================== */
 
 .menu-button {
 
@@ -209,12 +233,12 @@ header {
 
     border:
         1px solid
-        rgba(60,168,255,0.55);
+        rgba(22,140,255,0.60);
 
     border-radius: 14px;
 
     background:
-        rgba(20,60,100,0.32);
+        rgba(22,140,255,0.10);
 
     color: #ffffff;
 
@@ -226,97 +250,110 @@ header {
 }
 
 
-/* =========================================
+/* =====================================================
    MAIN
-========================================= */
+===================================================== */
 
 main {
-    padding: 70px 0 100px;
+
+    padding: 60px 0 100px;
 }
 
 
-/* =========================================
+/* =====================================================
    HERO
-========================================= */
+===================================================== */
 
 .hero {
 
+    width: min(860px, 100%);
+
+    margin: 0 auto 65px;
+
+    padding: 48px 35px;
+
     text-align: center;
 
-    max-width: 900px;
+    display: flex;
 
-    margin: 0 auto 70px;
+    flex-direction: column;
 
-    padding: 50px 30px;
+    align-items: center;
 
     border:
         1px solid
-        rgba(60,168,255,0.18);
+        rgba(22,140,255,0.30);
 
     border-radius: 30px;
 
     background:
-        rgba(3,7,14,0.70);
+        rgba(3,9,18,0.76);
 
     backdrop-filter:
         blur(15px);
 
     box-shadow:
         0 25px 75px
-        rgba(0,0,0,0.40);
+        rgba(0,0,0,0.45);
 }
 
 
-/* =========================================
+/* =====================================================
    SKYLINE LOGO
-========================================= */
+===================================================== */
 
-.skyline-logo {
+.hero-logo {
 
-    width: 210px;
+    width: 155px;
 
-    max-width: 70%;
+    height: 155px;
 
-    height: auto;
+    object-fit: contain;
 
     display: block;
 
-    margin: 0 auto 28px;
+    margin: 0 auto 25px;
 
     filter:
         drop-shadow(
-            0 15px 35px
+            0 15px 30px
             rgba(0,0,0,0.55)
         );
 }
 
 
-/* =========================================
-   TITLES
-========================================= */
+/* =====================================================
+   HERO TITLE
+===================================================== */
 
 .hero h1 {
 
-    margin: 0 0 20px;
+    width: 100%;
+
+    margin: 0 0 18px;
 
     font-size:
-        clamp(42px, 7vw, 72px);
+        clamp(40px, 6vw, 68px);
 
     line-height: 1;
 
     font-weight: 950;
 
     letter-spacing: -2px;
+
+    text-align: center;
 }
 
+
 .hero h1 span {
-    color: #3ca8ff;
+
+    color: #168cff;
 }
 
 
 .hero p {
 
-    max-width: 730px;
+    max-width: 700px;
 
     margin: 0 auto;
 
@@ -325,18 +362,22 @@ main {
     font-size: 17px;
 
     line-height: 1.8;
+
+    text-align: center;
 }
 
 
-/* =========================================
+/* =====================================================
    BUTTONS
-========================================= */
+===================================================== */
 
 .buttons {
 
     display: flex;
 
     justify-content: center;
+
+    align-items: center;
 
     flex-wrap: wrap;
 
@@ -348,39 +389,46 @@ main {
 
 .button {
 
-    display: inline-block;
+    display: inline-flex;
 
-    padding: 14px 22px;
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding: 13px 22px;
 
     border:
         1px solid
-        rgba(255,255,255,0.13);
+        rgba(255,255,255,0.14);
 
     border-radius: 13px;
 
     background:
         rgba(255,255,255,0.07);
 
+    color: #ffffff;
+
     font-weight: 900;
 
     transition:
         transform 0.25s ease,
-        background 0.25s ease,
-        border-color 0.25s ease;
+        border-color 0.25s ease,
+        background 0.25s ease;
 }
 
 
 .button:hover {
 
-    transform:
-        translateY(-3px);
+    transform: translateY(-3px);
 
     border-color:
-        rgba(60,168,255,0.45);
+        rgba(22,140,255,0.55);
 }
 
 
-.button.primary {
+.button.skyline {
 
     background: #168cff;
 
@@ -388,127 +436,97 @@ main {
 
     box-shadow:
         0 12px 35px
-        rgba(22,140,255,0.22);
+        rgba(22,140,255,0.25);
 }
 
 
-.button.primary:hover {
-    background: #2998ff;
-}
-
-
-/* =========================================
-   CONTENT SECTION
-========================================= */
+/* =====================================================
+   CONTENT SECTIONS
+===================================================== */
 
 .section {
 
-    margin-bottom: 65px;
+    margin-bottom: 45px;
 
     padding: 38px;
 
     border:
         1px solid
-        rgba(60,168,255,0.16);
+        rgba(22,140,255,0.22);
 
     border-radius: 28px;
 
     background:
-        rgba(3,8,15,0.76);
+        rgba(3,9,17,0.78);
 
     backdrop-filter:
         blur(14px);
 
     box-shadow:
         0 20px 60px
-        rgba(0,0,0,0.28);
+        rgba(0,0,0,0.30);
 }
 
 
 .section h2 {
 
-    margin:
-        0 0 18px;
+    margin: 0 0 18px;
 
     font-size:
-        clamp(32px, 5vw, 52px);
+        clamp(32px, 5vw, 50px);
 
-    line-height:
-        1.05;
+    line-height: 1.05;
+
+    font-weight: 950;
 }
 
 
 .section h2 span {
-    color: #3ca8ff;
+
+    color: #168cff;
 }
 
 
-.section-intro {
+.section p {
 
-    margin:
-        0 0 35px;
+    margin: 0;
 
-    color:
-        #cbd3de;
+    color: #cbd3de;
 
-    font-size:
-        17px;
+    font-size: 16px;
 
-    line-height:
-        1.8;
+    line-height: 1.8;
 }
 
 
-/* =========================================
-   FEATURE IMAGE
-========================================= */
+/* =====================================================
+   GLOUCESTER PRISON PHOTO GRID
+===================================================== */
 
-.feature-image {
+.photo-grid {
 
-    width: 100%;
-
-    display: block;
-
-    border-radius: 22px;
-
-    border:
-        1px solid
-        rgba(60,168,255,0.20);
-
-    box-shadow:
-        0 20px 55px
-        rgba(0,0,0,0.42);
-}
-
-
-/* =========================================
-   GALLERY
-========================================= */
-
-.gallery {
-
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
         repeat(2, 1fr);
 
     gap: 20px;
+
+    margin-top: 30px;
 }
 
 
-.gallery-item {
+.photo-card {
 
     overflow: hidden;
 
-    border-radius: 22px;
-
     border:
         1px solid
-        rgba(60,168,255,0.18);
+        rgba(22,140,255,0.22);
 
-    background:
-        #050a11;
+    border-radius: 22px;
+
+    background: #050a11;
 
     box-shadow:
         0 18px 45px
@@ -516,175 +534,255 @@ main {
 }
 
 
-.gallery-item img {
-
-    display: block;
+.photo-card img {
 
     width: 100%;
 
-    height: 320px;
+    height: auto;
 
-    object-fit: cover;
+    display: block;
 
     transition:
         transform 0.4s ease;
 }
 
 
-.gallery-item:hover img {
+.photo-card:hover img {
+
     transform: scale(1.025);
 }
 
 
-/* =========================================
-   TIKTOK
-========================================= */
+/* =====================================================
+   TIKTOK SECTION
+===================================================== */
 
-.tiktok-box {
-
-    text-align: center;
-
-    padding:
-        38px 25px;
-
-    border-radius:
-        25px;
-
-    background:
-        rgba(255,255,255,0.035);
-
-    border:
-        1px solid
-        rgba(60,168,255,0.16);
-}
-
-
-.tiktok-box h2 {
-
-    margin:
-        0 0 15px;
-}
-
-
-.tiktok-box p {
-
-    max-width:
-        700px;
-
-    margin:
-        0 auto 25px;
-
-    color:
-        #cbd3de;
-
-    line-height:
-        1.75;
-}
-
-
-/* =========================================
-   GET IN TOUCH
-========================================= */
-
-.contact-box {
+.tiktok-section {
 
     text-align: center;
 
-    padding:
-        45px 30px;
-
-    border-radius:
-        28px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(7,25,45,0.88),
-            rgba(3,7,14,0.84)
-        );
+    padding: 40px 25px;
 
     border:
         1px solid
-        rgba(60,168,255,0.25);
+        rgba(22,140,255,0.25);
+
+    border-radius: 28px;
+
+    background:
+        rgba(3,9,17,0.80);
+
+    backdrop-filter:
+        blur(14px);
 
     box-shadow:
-        0 25px 75px
-        rgba(0,0,0,0.38);
+        0 20px 60px
+        rgba(0,0,0,0.35);
 }
 
 
-.contact-box h2 {
+.tiktok-section h2 {
 
-    margin:
-        0 0 15px;
+    margin: 0 0 15px;
 
     font-size:
-        clamp(32px, 5vw, 50px);
+        clamp(30px, 5vw, 46px);
 }
 
 
-.contact-box h2 span {
-    color: #3ca8ff;
+.tiktok-section h2 span {
+
+    color: #168cff;
 }
 
 
-.contact-box p {
+.tiktok-section p {
 
-    max-width:
-        680px;
+    max-width: 700px;
 
-    margin:
-        0 auto 28px;
+    margin: 0 auto 28px;
 
-    color:
-        #cbd3de;
+    color: #cbd3de;
 
-    line-height:
-        1.75;
+    line-height: 1.7;
 }
 
 
-/* =========================================
+/* =====================================================
+   TIKTOK EMBED
+===================================================== */
+
+.tiktok-wrapper {
+
+    width: min(100%, 650px);
+
+    margin: 0 auto;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+
+/*
+   TikTok's official creator/profile embed.
+   This displays the account rather than pretending
+   to be a LIVE broadcast.
+*/
+
+.tiktok-embed {
+
+    margin: 0 auto !important;
+
+    max-width: 605px !important;
+
+    min-width: 325px !important;
+}
+
+
+/* =====================================================
+   TIKTOK BUTTON
+===================================================== */
+
+.tiktok-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 50px;
+
+    margin-top: 25px;
+
+    padding: 14px 26px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.20);
+
+    border-radius: 14px;
+
+    background: #111111;
+
+    color: #ffffff;
+
+    font-weight: 900;
+
+    box-shadow:
+        0 12px 30px
+        rgba(0,0,0,0.35);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+.tiktok-button:hover {
+
+    transform: translateY(-3px);
+
+    border-color: #168cff;
+}
+
+
+/* =====================================================
+   WORK WITH SKYLINE
+===================================================== */
+
+.work-section {
+
+    text-align: center;
+
+    padding: 40px 25px;
+
+    border:
+        1px solid
+        rgba(22,140,255,0.25);
+
+    border-radius: 28px;
+
+    background:
+        rgba(22,140,255,0.10);
+
+    box-shadow:
+        0 20px 55px
+        rgba(0,0,0,0.30);
+}
+
+
+.work-section h2 {
+
+    margin: 0 0 15px;
+
+    font-size:
+        clamp(30px, 5vw, 45px);
+}
+
+
+.work-section p {
+
+    max-width: 700px;
+
+    margin: 0 auto 25px;
+
+    color: #cbd3de;
+
+    line-height: 1.7;
+}
+
+
+/* =====================================================
    FOOTER
-========================================= */
+===================================================== */
 
 footer {
 
-    padding:
-        45px 0;
+    padding: 45px 0;
 
-    text-align:
-        center;
+    text-align: center;
 
-    color:
-        #9da5b2;
+    color: #9da5b2;
 
     border-top:
         1px solid
         rgba(255,255,255,0.08);
 
-    line-height:
-        1.7;
+    line-height: 1.7;
 }
 
 
-/* =========================================
+/* =====================================================
    MOBILE
-========================================= */
+===================================================== */
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
 
     .nav {
+
         min-height: 70px;
     }
 
+
     .nav-brand {
+
         font-size: 18px;
     }
 
+
     .menu-button {
+
         display: block;
     }
+
 
     .nav-links {
 
@@ -698,11 +796,9 @@ footer {
 
         right: 0;
 
-        padding:
-            18px 20px 22px;
+        padding: 18px 20px 22px;
 
-        flex-direction:
-            column;
+        flex-direction: column;
 
         gap: 6px;
 
@@ -711,119 +807,151 @@ footer {
 
         border-bottom:
             1px solid
-            rgba(60,168,255,0.18);
+            rgba(22,140,255,0.20);
 
         backdrop-filter:
             blur(18px);
     }
 
+
     .nav-links.show {
+
         display: flex;
     }
+
 
     .nav-links a {
 
         width: 100%;
 
-        padding:
-            15px 12px;
+        padding: 15px 12px;
 
-        border-radius:
-            11px;
+        border-radius: 11px;
 
-        text-align:
-            center;
+        text-align: center;
 
         background:
             rgba(255,255,255,0.045);
     }
 
-    main {
-        padding:
-            50px 0 70px;
+
+    .photo-grid {
+
+        grid-template-columns: 1fr;
     }
 
-    .hero {
-
-        padding:
-            40px 20px;
-
-        margin-bottom:
-            45px;
-    }
-
-    .skyline-logo {
-        width: 180px;
-    }
-
-    .buttons {
-        flex-direction:
-            column;
-    }
-
-    .buttons .button {
-        width: 100%;
-        text-align: center;
-    }
-
-    .section {
-        padding:
-            25px 18px;
-    }
-
-    .gallery {
-        grid-template-columns:
-            1fr;
-    }
-
-    .gallery-item img {
-        height: auto;
-        aspect-ratio: 16 / 10;
-    }
-
-    .contact-box {
-        padding:
-            32px 20px;
-    }
 }
 
 
-/* =========================================
-   SMALL PHONES
-========================================= */
+/* =====================================================
+   PHONE
+===================================================== */
 
-@media (max-width: 420px) {
+@media (max-width: 520px) {
 
     .container {
+
         width: 90%;
     }
 
-    .nav-brand {
-        font-size: 17px;
+
+    main {
+
+        padding: 40px 0 70px;
     }
 
-    .menu-button {
-        padding:
-            11px 15px;
+
+    .hero {
+
+        padding: 38px 18px;
+
+        margin-bottom: 45px;
+
+        border-radius: 25px;
     }
+
+
+    .hero-logo {
+
+        width: 125px;
+
+        height: 125px;
+
+        margin-bottom: 22px;
+    }
+
 
     .hero h1 {
-        font-size: 42px;
+
+        font-size: 40px;
+
+        letter-spacing: -1.5px;
     }
+
 
     .hero p {
+
         font-size: 15px;
     }
 
-    .section-intro {
-        font-size: 15px;
+
+    .buttons {
+
+        flex-direction: column;
     }
+
+
+    .buttons .button {
+
+        width: 100%;
+    }
+
+
+    .section {
+
+        padding: 25px 18px;
+
+        border-radius: 23px;
+    }
+
+
+    .photo-grid {
+
+        gap: 16px;
+    }
+
+
+    .tiktok-section {
+
+        padding: 32px 15px;
+    }
+
+
+    .tiktok-embed {
+
+        min-width: 0 !important;
+
+        width: 100% !important;
+    }
+
+
+    .tiktok-button {
+
+        width: 100%;
+    }
+
+
+    .work-section {
+
+        padding: 32px 18px;
+    }
+
 }
 
 
-/* =========================================
+/* =====================================================
    REDUCED MOTION
-========================================= */
+===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -845,9 +973,9 @@ footer {
 <body>
 
 
-<!-- =========================================
+<!-- =====================================================
      HEADER
-========================================= -->
+===================================================== -->
 
 <header>
 
@@ -855,45 +983,45 @@ footer {
 
 
 <a
-href="index.html"
-class="nav-brand"
+    href="index.html"
+    class="nav-brand"
 >
-NEWITT <span>MEDIA</span>
+    NEWITT <span>MEDIA</span>
 </a>
 
 
 <button
-class="menu-button"
-onclick="toggleMenu()"
-aria-label="Open navigation menu"
+    class="menu-button"
+    onclick="toggleMenu()"
+    aria-label="Open navigation menu"
 >
-MENU
+    MENU
 </button>
 
 
 <nav
-class="nav-links"
-id="mobileMenu"
+    class="nav-links"
+    id="mobileMenu"
 >
 
 <a href="index.html">
-Home
+    Home
 </a>
 
 <a href="skyline.html">
-Skyline
+    Skyline
 </a>
 
 <a href="paranormal.html">
-Paranormal
+    Paranormal
 </a>
 
 <a href="photography.html">
-Photography
+    Photography
 </a>
 
 <a href="contact.html">
-Get in Touch
+    Get in Touch
 </a>
 
 </nav>
@@ -905,41 +1033,42 @@ Get in Touch
 
 
 
-<!-- =========================================
+<!-- =====================================================
      MAIN
-========================================= -->
+===================================================== -->
 
 <main>
 
 <div class="container">
 
 
-<!-- =========================================
+<!-- =====================================================
      HERO
-========================================= -->
+===================================================== -->
 
 <section class="hero">
 
 
 <img
-src="sky-logo.png.PNG"
-alt="NEWITT Skyline Media"
-class="skyline-logo"
+    src="sky-logo.png.PNG"
+    alt="NEWITT Skyline Media"
+    class="hero-logo"
 >
 
 
 <h1>
-NEWITT <span>Skyline Media</span>
+    NEWITT <span>Skyline Media</span>
 </h1>
 
 
 <p>
 
-Drone footage, aerial photography and
-unique views from above.
+Drone aerial photography, aerial video
+and views from above.
 
-Explore locations, buildings and landscapes
-captured from the air by NEWITT Skyline Media.
+NEWITT Skyline Media captures locations,
+landscapes and projects from a different
+perspective.
 
 </p>
 
@@ -948,18 +1077,10 @@ captured from the air by NEWITT Skyline Media.
 
 
 <a
-href="contact.html"
-class="button primary"
+    href="index.html"
+    class="button"
 >
-Get in Touch
-</a>
-
-
-<a
-href="index.html"
-class="button"
->
-Back to NEWITT Media
+    Back to NEWITT Media
 </a>
 
 
@@ -970,19 +1091,19 @@ Back to NEWITT Media
 
 
 
-<!-- =========================================
+<!-- =====================================================
      GLOUCESTER PRISON
-========================================= -->
+===================================================== -->
 
 <section class="section">
 
 
 <h2>
-Gloucester <span>Prison</span>
+    <span>Gloucester</span> Prison
 </h2>
 
 
-<p class="section-intro">
+<p>
 
 A selection of aerial views captured over
 Gloucester Prison, showing the buildings,
@@ -991,79 +1112,56 @@ surrounding area and layout from above.
 </p>
 
 
-<img
-src="media/skyline/Gloucester-prison-aerial-01.JPG"
-alt="Aerial view of Gloucester Prison"
-class="feature-image"
->
+<div class="photo-grid">
 
 
-</section>
+<!-- AERIAL 01 -->
 
-
-
-<!-- =========================================
-     AERIAL COLLECTION
-========================================= -->
-
-<section class="section">
-
-
-<h2>
-Aerial <span>Collection</span>
-</h2>
-
-
-<p class="section-intro">
-
-A selection of aerial views captured by
-NEWITT Skyline Media.
-
-</p>
-
-
-<div class="gallery">
-
-
-<div class="gallery-item">
+<div class="photo-card">
 
 <img
-src="media/skyline/Gloucester-prison-aerial-01.JPG"
-alt="Aerial view of Gloucester Prison showing the surrounding buildings"
-loading="lazy"
+    src="media/skyline/Gloucester-prison-aerial-01.JPG"
+    alt="Aerial view of Gloucester Prison"
+    loading="lazy"
 >
 
 </div>
 
 
-<div class="gallery-item">
+<!-- AERIAL 02 -->
+
+<div class="photo-card">
 
 <img
-src="media/skyline/Gloucester-prison-aerial-02.JPG"
-alt="Second aerial view of Gloucester Prison"
-loading="lazy"
+    src="media/skyline/Gloucester-prison-aerial-02.JPG"
+    alt="Aerial view of Gloucester Prison"
+    loading="lazy"
 >
 
 </div>
 
 
-<div class="gallery-item">
+<!-- AERIAL 03 -->
+
+<div class="photo-card">
 
 <img
-src="media/skyline/Gloucester-prison-aerial-03.JPG"
-alt="Third aerial view of Gloucester Prison"
-loading="lazy"
+    src="media/skyline/Gloucester-prison-aerial-03.JPG"
+    alt="Aerial view of Gloucester Prison"
+    loading="lazy"
 >
 
 </div>
 
 
-<div class="gallery-item">
+<!-- AERIAL 04 -->
+
+<div class="photo-card">
 
 <img
-src="media/skyline/Gloucester-prison-aerial-04.JPG"
-alt="Fourth aerial view of Gloucester Prison"
-loading="lazy"
+    src="media/skyline/Gloucester-prison-aerial-04.JPG"
+    alt="Aerial view of Gloucester Prison"
+    loading="lazy"
 >
 
 </div>
@@ -1076,18 +1174,15 @@ loading="lazy"
 
 
 
-<!-- =========================================
+<!-- =====================================================
      TIKTOK
-========================================= -->
+===================================================== -->
 
-<section class="section">
-
-
-<div class="tiktok-box">
+<section class="tiktok-section">
 
 
 <h2>
-Follow NEWITT Skyline Media
+    Latest from <span>Skyline</span>
 </h2>
 
 
@@ -1097,38 +1192,62 @@ Follow NEWITT Skyline Media on TikTok
 for new drone footage, aerial views and
 upcoming projects.
 
+The TikTok account is shown below so
+visitors can see the latest content.
+
 </p>
 
 
-<a
-href="https://www.tiktok.com/@newittskylinemedia"
-target="_blank"
-rel="noopener noreferrer"
-class="button primary"
+<div class="tiktok-wrapper">
+
+
+<blockquote
+    class="tiktok-embed"
+    cite="https://www.tiktok.com/@newittskylinemedia"
+    data-unique-id="newittskylinemedia"
+    data-embed-type="creator"
 >
-Visit Skyline TikTok
+
+<section>
+
+<a
+    target="_blank"
+    href="https://www.tiktok.com/@newittskylinemedia?refer=creator_embed"
+>
+    @newittskylinemedia
 </a>
+
+</section>
+
+</blockquote>
 
 
 </div>
+
+
+<a
+    href="https://www.tiktok.com/@newittskylinemedia"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="tiktok-button"
+>
+    Open Skyline TikTok
+</a>
 
 
 </section>
 
 
 
-<!-- =========================================
-     GET IN TOUCH
-========================================= -->
+<!-- =====================================================
+     WORK WITH SKYLINE
+===================================================== -->
 
-<section>
-
-
-<div class="contact-box">
+<section class="work-section">
 
 
 <h2>
-Work with <span>Skyline</span>
+    Work with Skyline
 </h2>
 
 
@@ -1136,18 +1255,19 @@ Work with <span>Skyline</span>
 
 Have a drone project, aerial photography
 requirement or another idea you'd like
-to discuss?
-
-Get in touch with NEWITT Skyline Media.
+to discuss with NEWITT Skyline Media?
 
 </p>
 
 
+<div class="buttons">
+
+
 <a
-href="contact.html"
-class="button primary"
+    href="contact.html"
+    class="button skyline"
 >
-Skyline Enquiries
+    Skyline Enquiries
 </a>
 
 
@@ -1163,9 +1283,9 @@ Skyline Enquiries
 
 
 
-<!-- =========================================
+<!-- =====================================================
      FOOTER
-========================================= -->
+===================================================== -->
 
 <footer>
 
@@ -1175,7 +1295,7 @@ NEWITT Skyline Media
 
 <br>
 
-Drone footage. Aerial photography. Views from above.
+Drone Aerial Media
 
 </div>
 
@@ -1183,9 +1303,20 @@ Drone footage. Aerial photography. Views from above.
 
 
 
-<!-- =========================================
-     JAVASCRIPT
-========================================= -->
+<!-- =====================================================
+     TIKTOK OFFICIAL EMBED SCRIPT
+===================================================== -->
+
+<script
+    async
+    src="https://www.tiktok.com/embed.js"
+></script>
+
+
+
+<!-- =====================================================
+     MOBILE MENU
+===================================================== -->
 
 <script>
 
@@ -1200,22 +1331,22 @@ function toggleMenu() {
 
 
 document
-.querySelectorAll("#mobileMenu a")
-.forEach(function(link) {
+    .querySelectorAll("#mobileMenu a")
+    .forEach(function(link) {
 
-    link.addEventListener(
-        "click",
-        function() {
+        link.addEventListener(
+            "click",
+            function() {
 
-            document
-                .getElementById("mobileMenu")
-                .classList
-                .remove("show");
+                document
+                    .getElementById("mobileMenu")
+                    .classList
+                    .remove("show");
 
-        }
-    );
+            }
+        );
 
-});
+    });
 
 </script>
 
