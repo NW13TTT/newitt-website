@@ -5,12 +5,10 @@
 
 <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-<title>NEWITT Media | Skyline, Paranormal & Photography</title>
+<title>NEWITT Media</title>
 
 <meta
     name="description"
@@ -42,7 +40,7 @@ body {
 
     color: #ffffff;
 
-    background: #03030a;
+    background: #02050a;
 
     overflow-x: hidden;
 }
@@ -54,31 +52,55 @@ a {
 
 img {
     max-width: 100%;
+    display: block;
 }
 
 
 /* =====================================================
-   NEWITT MEDIA COLOUR
+   NEWITT MEDIA COLOUR SYSTEM
 ===================================================== */
 
 :root {
 
-    --newitt:
-        #9b5cff;
+    /* Main NEWITT Media */
+    --silver-light: #ffffff;
+    --silver: #d9dde3;
+    --silver-mid: #aeb5bf;
+    --silver-dark: #737b86;
 
-    --newitt-bright:
-        #b47cff;
+    --silver-glow:
+        rgba(210,216,224,0.24);
 
-    --newitt-glow:
-        rgba(155,92,255,0.28);
 
+    /* Skyline */
+    --skyline-blue: #168cff;
+    --skyline-light: #59b9ff;
+    --skyline-glow:
+        rgba(22,140,255,0.25);
+
+
+    /* Paranormal */
+    --paranormal-red: #c62828;
+    --paranormal-light: #ef4444;
+    --paranormal-glow:
+        rgba(198,40,40,0.27);
+
+
+    /* Get in Touch */
+    --contact-teal: #00a6a6;
+    --contact-light: #28d7d7;
+    --contact-glow:
+        rgba(0,166,166,0.25);
+
+
+    /* Panels */
     --panel:
-        rgba(6,5,15,0.82);
+        rgba(4,8,14,0.82);
 }
 
 
 /* =====================================================
-   BACKGROUND
+   CINEMATIC BACKGROUND
 ===================================================== */
 
 body::before {
@@ -94,8 +116,8 @@ body::before {
     background:
 
         linear-gradient(
-            rgba(3,3,10,0.38),
-            rgba(3,3,10,0.86)
+            rgba(2,5,10,0.40),
+            rgba(2,5,10,0.88)
         ),
 
         url("background.png.PNG")
@@ -119,8 +141,8 @@ body::after {
 
         radial-gradient(
             circle at 50% 8%,
-            rgba(155,92,255,0.20),
-            transparent 45%
+            rgba(220,225,232,0.12),
+            transparent 42%
         );
 
     pointer-events: none;
@@ -145,7 +167,7 @@ body::after {
    HEADER
 ===================================================== */
 
-header {
+.site-header {
 
     position: sticky;
 
@@ -154,97 +176,131 @@ header {
     z-index: 1000;
 
     background:
-        rgba(3,3,10,0.96);
+        rgba(2,5,10,0.96);
 
     backdrop-filter:
         blur(18px);
 
     border-bottom:
         1px solid
-        rgba(155,92,255,0.28);
+        rgba(220,225,232,0.16);
 
     box-shadow:
         0 8px 35px
-        rgba(0,0,0,0.40);
+        rgba(0,0,0,0.45);
 }
 
 
 .nav {
 
-    min-height:
-        78px;
+    min-height: 76px;
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
 
-    justify-content:
-        space-between;
+    justify-content: space-between;
 
-    gap:
-        20px;
+    gap: 20px;
 }
 
 
 /* =====================================================
-   BRAND
+   NAV BRAND
 ===================================================== */
 
 .nav-brand {
 
-    font-size:
-        21px;
+    display: flex;
 
-    font-weight:
-        950;
+    align-items: center;
 
-    letter-spacing:
-        1px;
+    gap: 10px;
 
-    white-space:
-        nowrap;
+    font-size: 21px;
+
+    font-weight: 950;
+
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+}
+
+
+.nav-brand img {
+
+    width: 38px;
+
+    height: 38px;
+
+    object-fit: contain;
 }
 
 
 .nav-brand span {
 
-    color:
-        var(--newitt);
+    background:
+
+        linear-gradient(
+            120deg,
+            #ffffff,
+            #aeb5bf,
+            #ffffff,
+            #737b86,
+            #ffffff
+        );
+
+    background-size: 220% auto;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    animation:
+        silverShine 7s linear infinite;
+}
+
+
+@keyframes silverShine {
+
+    0% {
+        background-position: 200% center;
+    }
+
+    100% {
+        background-position: -200% center;
+    }
 }
 
 
 /* =====================================================
-   NAVIGATION
+   DESKTOP NAVIGATION
 ===================================================== */
 
 .nav-links {
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
 
-    gap:
-        25px;
+    gap: 24px;
 
-    font-size:
-        14px;
+    font-size: 14px;
 
-    font-weight:
-        800;
+    font-weight: 800;
 }
 
 
 .nav-links a {
 
-    padding:
-        12px 3px;
+    position: relative;
 
-    opacity:
-        0.88;
+    padding: 12px 3px;
+
+    color: #e6e9ed;
+
+    opacity: 0.88;
 
     transition:
         color 0.25s ease,
@@ -254,11 +310,41 @@ header {
 
 .nav-links a:hover {
 
-    color:
-        var(--newitt-bright);
+    color: #ffffff;
 
-    opacity:
-        1;
+    opacity: 1;
+}
+
+
+.nav-links a.active {
+
+    color: #ffffff;
+}
+
+
+.nav-links a.active::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 15%;
+
+    right: 15%;
+
+    bottom: 4px;
+
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ffffff,
+            transparent
+        );
+
+    border-radius: 10px;
 }
 
 
@@ -266,35 +352,30 @@ header {
    MOBILE MENU
 ===================================================== */
 
-.menu-button {
+.menu-toggle {
 
-    display:
-        none;
+    display: none;
 
-    padding:
-        12px 18px;
+    min-height: 46px;
+
+    padding: 11px 18px;
 
     border:
         1px solid
-        rgba(155,92,255,0.60);
+        rgba(220,225,232,0.38);
 
-    border-radius:
-        14px;
+    border-radius: 14px;
 
     background:
-        rgba(155,92,255,0.10);
+        rgba(255,255,255,0.06);
 
-    color:
-        #ffffff;
+    color: #ffffff;
 
-    font-size:
-        15px;
+    font-size: 14px;
 
-    font-weight:
-        900;
+    font-weight: 900;
 
-    cursor:
-        pointer;
+    cursor: pointer;
 }
 
 
@@ -304,8 +385,7 @@ header {
 
 main {
 
-    padding:
-        60px 0 100px;
+    padding-bottom: 90px;
 }
 
 
@@ -315,17 +395,21 @@ main {
 
 .hero {
 
+    padding:
+        70px 0 75px;
+}
+
+
+.hero-card {
+
     width:
         min(860px, 100%);
 
     margin:
-        0 auto 70px;
+        0 auto;
 
     padding:
         50px 35px;
-
-    text-align:
-        center;
 
     display:
         flex;
@@ -336,22 +420,29 @@ main {
     align-items:
         center;
 
+    text-align:
+        center;
+
     border:
         1px solid
-        rgba(155,92,255,0.30);
+        rgba(220,225,232,0.24);
 
     border-radius:
         30px;
 
     background:
-        var(--panel);
+        linear-gradient(
+            145deg,
+            rgba(12,17,24,0.88),
+            rgba(3,7,12,0.78)
+        );
 
     backdrop-filter:
-        blur(15px);
+        blur(16px);
 
     box-shadow:
-        0 25px 75px
-        rgba(0,0,0,0.45);
+        0 30px 80px
+        rgba(0,0,0,0.52);
 }
 
 
@@ -362,16 +453,16 @@ main {
 .hero-logo {
 
     width:
-        150px;
+        190px;
 
     height:
-        150px;
+        190px;
+
+    max-width:
+        65vw;
 
     object-fit:
         contain;
-
-    display:
-        block;
 
     margin:
         0 auto 28px;
@@ -379,8 +470,34 @@ main {
     filter:
         drop-shadow(
             0 16px 35px
-            rgba(155,92,255,0.25)
+            rgba(210,216,224,0.20)
         );
+}
+
+
+/* =====================================================
+   EYEBROW
+===================================================== */
+
+.eyebrow {
+
+    margin-bottom:
+        12px;
+
+    color:
+        var(--silver);
+
+    font-size:
+        12px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        2px;
+
+    text-transform:
+        uppercase;
 }
 
 
@@ -396,40 +513,64 @@ main {
     margin:
         0 0 18px;
 
-    text-align:
-        center;
-
     font-size:
-        clamp(42px, 6vw, 72px);
+        clamp(44px, 7vw, 78px);
 
     line-height:
-        1;
+        0.98;
 
     font-weight:
         950;
 
     letter-spacing:
-        -2px;
+        -3px;
 }
 
 
 .hero h1 span {
 
-    color:
-        var(--newitt-bright);
+    background:
+
+        linear-gradient(
+            110deg,
+            #ffffff 0%,
+            #c8cdd4 30%,
+            #ffffff 50%,
+            #8b939e 72%,
+            #ffffff 100%
+        );
+
+    background-size:
+        240% auto;
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    -webkit-text-fill-color:
+        transparent;
+
+    animation:
+        silverShine 8s linear infinite;
 }
 
+
+/* =====================================================
+   HERO TEXT
+===================================================== */
 
 .hero p {
 
     max-width:
-        700px;
+        720px;
 
     margin:
         0 auto;
 
     color:
-        #d0cbd8;
+        #cbd2da;
 
     font-size:
         17px;
@@ -443,7 +584,10 @@ main {
    HERO BUTTONS
 ===================================================== */
 
-.hero-buttons {
+.buttons {
+
+    width:
+        100%;
 
     display:
         flex;
@@ -467,6 +611,9 @@ main {
 
 .button {
 
+    min-height:
+        48px;
+
     display:
         inline-flex;
 
@@ -476,24 +623,24 @@ main {
     justify-content:
         center;
 
-    min-height:
-        48px;
-
     padding:
         13px 22px;
 
     border:
         1px solid
-        rgba(255,255,255,0.14);
+        rgba(255,255,255,0.18);
 
     border-radius:
         13px;
 
     background:
-        rgba(255,255,255,0.06);
+        rgba(255,255,255,0.055);
 
     color:
         #ffffff;
+
+    font-size:
+        14px;
 
     font-weight:
         900;
@@ -501,7 +648,8 @@ main {
     transition:
         transform 0.25s ease,
         border-color 0.25s ease,
-        background 0.25s ease;
+        background 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 
@@ -511,71 +659,94 @@ main {
         translateY(-3px);
 
     border-color:
-        rgba(155,92,255,0.60);
-}
-
-
-.button.newitt {
-
-    background:
-        var(--newitt);
-
-    border-color:
-        var(--newitt);
-
-    box-shadow:
-        0 12px 35px
-        var(--newitt-glow);
+        rgba(255,255,255,0.55);
 }
 
 
 /* =====================================================
-   INTRO
+   SILVER MAIN BUTTON
 ===================================================== */
 
-.intro {
+.button-silver {
 
-    text-align:
-        center;
+    color:
+        #080b0f;
 
-    margin-bottom:
-        35px;
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #c8cdd4,
+            #ffffff
+        );
+
+    border-color:
+        #ffffff;
+
+    box-shadow:
+        0 12px 32px
+        var(--silver-glow);
 }
 
 
-.intro h2 {
+/* =====================================================
+   SECTION
+===================================================== */
+
+section {
+
+    padding:
+        65px 0;
+}
+
+
+/* =====================================================
+   SECTION HEADING
+===================================================== */
+
+.section-heading {
+
+    max-width:
+        780px;
+
+    margin:
+        0 auto 35px;
+
+    text-align:
+        center;
+}
+
+
+.section-heading h2 {
 
     margin:
         0 0 15px;
 
     font-size:
-        clamp(32px, 5vw, 48px);
+        clamp(34px, 5vw, 52px);
 
     line-height:
-        1.05;
+        1;
 
     font-weight:
         950;
 }
 
 
-.intro h2 span {
+.section-heading h2 span {
 
     color:
-        var(--newitt-bright);
+        var(--silver);
 }
 
 
-.intro p {
-
-    max-width:
-        720px;
+.section-heading p {
 
     margin:
         0 auto;
 
     color:
-        #d0cbd8;
+        #c4cbd3;
 
     line-height:
         1.75;
@@ -583,10 +754,10 @@ main {
 
 
 /* =====================================================
-   BRAND CARDS
+   BRAND GRID
 ===================================================== */
 
-.cards {
+.brand-grid {
 
     display:
         grid;
@@ -596,16 +767,17 @@ main {
 
     gap:
         20px;
-
-    align-items:
-        stretch;
 }
 
 
-.card {
+/* =====================================================
+   BRAND CARD
+===================================================== */
+
+.brand-card {
 
     min-height:
-        390px;
+        405px;
 
     padding:
         30px 24px;
@@ -624,16 +796,16 @@ main {
 
     border:
         1px solid
-        rgba(155,92,255,0.18);
+        rgba(255,255,255,0.14);
 
     border-radius:
         25px;
 
     background:
-        rgba(5,5,14,0.82);
+        rgba(5,9,15,0.84);
 
     backdrop-filter:
-        blur(12px);
+        blur(13px);
 
     box-shadow:
         0 20px 55px
@@ -645,17 +817,18 @@ main {
 }
 
 
-.card:hover {
+.brand-card:hover {
 
     transform:
         translateY(-5px);
-
-    border-color:
-        rgba(155,92,255,0.45);
 }
 
 
-.card-logo {
+/* =====================================================
+   BRAND LOGO
+===================================================== */
+
+.brand-logo {
 
     width:
         125px;
@@ -666,34 +839,31 @@ main {
     object-fit:
         contain;
 
-    display:
-        block;
-
     margin:
-        5px auto 22px;
+        3px auto 20px;
 
     filter:
         drop-shadow(
             0 12px 25px
-            rgba(0,0,0,0.55)
+            rgba(0,0,0,0.50)
         );
 }
 
 
-.card h3 {
+.brand-card h3 {
 
     margin:
         0 0 12px;
 
     font-size:
-        23px;
+        22px;
 
     line-height:
         1.2;
 }
 
 
-.card p {
+.brand-card p {
 
     max-width:
         290px;
@@ -702,17 +872,17 @@ main {
         0 auto 25px;
 
     color:
-        #c8c1d0;
+        #c5ccd4;
 
     font-size:
-        15px;
+        14px;
 
     line-height:
-        1.65;
+        1.7;
 }
 
 
-.card .button {
+.brand-card .button {
 
     width:
         100%;
@@ -723,157 +893,255 @@ main {
 
 
 /* =====================================================
-   INDIVIDUAL CARD COLOURS
+   SKYLINE CARD
 ===================================================== */
 
-/* SKYLINE */
-
-.card-skyline {
+.brand-card.skyline {
 
     border-color:
-        rgba(22,140,255,0.25);
+        rgba(22,140,255,0.30);
 }
 
 
-.card-skyline:hover {
+.brand-card.skyline:hover {
 
     border-color:
-        rgba(22,140,255,0.55);
+        rgba(89,185,255,0.68);
 }
 
 
 .button-skyline {
 
     background:
-        #168cff;
+        var(--skyline-blue);
 
     border-color:
-        #168cff;
+        var(--skyline-blue);
+
+    box-shadow:
+        0 12px 32px
+        var(--skyline-glow);
 }
 
 
-/* PARANORMAL */
+/* =====================================================
+   PARANORMAL CARD
+===================================================== */
 
-.card-paranormal {
+.brand-card.paranormal {
 
     border-color:
-        rgba(198,40,40,0.28);
+        rgba(198,40,40,0.32);
 }
 
 
-.card-paranormal:hover {
+.brand-card.paranormal:hover {
 
     border-color:
-        rgba(239,51,51,0.60);
+        rgba(239,68,68,0.70);
 }
 
 
 .button-paranormal {
 
     background:
-        #c62828;
+        var(--paranormal-red);
 
     border-color:
-        #c62828;
-}
+        var(--paranormal-red);
 
-
-/* PHOTOGRAPHY */
-
-.card-photography {
-
-    border-color:
-        rgba(155,92,255,0.28);
-}
-
-
-.card-photography:hover {
-
-    border-color:
-        rgba(180,124,255,0.60);
+    box-shadow:
+        0 12px 32px
+        var(--paranormal-glow);
 }
 
 
 /* =====================================================
-   CONNECTION
+   PHOTOGRAPHY CARD
 ===================================================== */
 
-.connection {
+.brand-card.photography {
 
-    margin-top:
-        70px;
+    border-color:
+        rgba(210,216,224,0.24);
+}
+
+
+.brand-card.photography:hover {
+
+    border-color:
+        rgba(255,255,255,0.62);
+}
+
+
+/* =====================================================
+   GET IN TOUCH
+===================================================== */
+
+.contact-section {
 
     padding:
-        42px 30px;
+        60px 0 30px;
+}
 
-    text-align:
+
+.contact-panel {
+
+    padding:
+        45px 35px;
+
+    display:
+        flex;
+
+    align-items:
         center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        35px;
 
     border:
         1px solid
-        rgba(155,92,255,0.25);
+        rgba(0,166,166,0.40);
 
     border-radius:
         28px;
 
     background:
-        rgba(7,5,17,0.82);
 
-    backdrop-filter:
-        blur(14px);
+        linear-gradient(
+            135deg,
+            rgba(0,166,166,0.13),
+            rgba(4,12,16,0.88)
+        );
 
     box-shadow:
-        0 20px 60px
-        rgba(0,0,0,0.40);
+        0 25px 65px
+        rgba(0,0,0,0.42);
 }
 
 
-.connection h2 {
-
-    margin:
-        0 0 15px;
-
-    font-size:
-        clamp(30px, 5vw, 45px);
-}
-
-
-.connection h2 span {
-
-    color:
-        var(--newitt-bright);
-}
-
-
-.connection p {
+.contact-copy {
 
     max-width:
-        700px;
+        680px;
+}
 
-    margin:
-        0 auto 25px;
+
+.contact-copy .eyebrow {
 
     color:
-        #d0cbd8;
+        var(--contact-light);
+}
+
+
+.contact-copy h2 {
+
+    margin:
+        0 0 14px;
+
+    font-size:
+        clamp(32px, 5vw, 48px);
+
+    line-height:
+        1;
+}
+
+
+.contact-copy h2 span {
+
+    color:
+        var(--contact-light);
+}
+
+
+.contact-copy p {
+
+    margin:
+        0;
+
+    color:
+        #c7d2d5;
 
     line-height:
         1.75;
 }
 
 
-.connection-buttons {
+.button-contact {
 
-    display:
-        flex;
+    flex-shrink:
+        0;
 
-    justify-content:
-        center;
+    background:
+        var(--contact-teal);
 
-    flex-wrap:
-        wrap;
+    border-color:
+        var(--contact-teal);
 
-    gap:
-        12px;
+    box-shadow:
+        0 12px 32px
+        var(--contact-glow);
+}
+
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+.about {
+
+    padding:
+        35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.12);
+
+    border-radius:
+        25px;
+
+    background:
+        rgba(4,8,14,0.74);
+}
+
+
+.about h2 {
+
+    margin:
+        0 0 18px;
+
+    font-size:
+        clamp(30px, 5vw, 45px);
+}
+
+
+.about h2 span {
+
+    color:
+        var(--silver);
+}
+
+
+.about p {
+
+    margin:
+        0 0 14px;
+
+    color:
+        #c4cbd3;
+
+    line-height:
+        1.8;
+}
+
+
+.about p:last-child {
+
+    margin-bottom:
+        0;
 }
 
 
@@ -890,11 +1158,11 @@ footer {
         center;
 
     color:
-        #9d98a7;
+        #8e969f;
 
     border-top:
         1px solid
-        rgba(255,255,255,0.08);
+        rgba(255,255,255,0.09);
 
     line-height:
         1.7;
@@ -910,7 +1178,7 @@ footer {
     .nav {
 
         min-height:
-            70px;
+            68px;
     }
 
 
@@ -921,7 +1189,17 @@ footer {
     }
 
 
-    .menu-button {
+    .nav-brand img {
+
+        width:
+            34px;
+
+        height:
+            34px;
+    }
+
+
+    .menu-toggle {
 
         display:
             block;
@@ -937,16 +1215,16 @@ footer {
             absolute;
 
         top:
-            70px;
+            68px;
 
         left:
-            0;
+            4%;
 
         right:
-            0;
+            4%;
 
         padding:
-            18px 20px 22px;
+            10px;
 
         flex-direction:
             column;
@@ -955,18 +1233,22 @@ footer {
             6px;
 
         background:
-            rgba(3,3,10,0.98);
+            rgba(3,7,12,0.98);
 
-        border-bottom:
+        border:
             1px solid
-            rgba(155,92,255,0.25);
+            rgba(220,225,232,0.20);
 
-        backdrop-filter:
-            blur(18px);
+        border-radius:
+            16px;
+
+        box-shadow:
+            0 22px 55px
+            rgba(0,0,0,0.55);
     }
 
 
-    .nav-links.show {
+    .nav-links.open {
 
         display:
             flex;
@@ -978,24 +1260,98 @@ footer {
         width:
             100%;
 
-        padding:
-            15px 12px;
+        min-height:
+            52px;
 
-        border-radius:
-            11px;
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        font-size:
+            16px;
+
+        border:
+            1px solid
+            rgba(255,255,255,0.05);
+    }
+
+
+    .nav-links a.active::after {
+
+        left:
+            25%;
+
+        right:
+            25%;
+
+        bottom:
+            5px;
+    }
+
+
+    .hero {
+
+        padding:
+            55px 0 45px;
+    }
+
+
+    .hero-card {
+
+        padding:
+            40px 20px;
+    }
+
+
+    .hero-logo {
+
+        width:
+            210px;
+
+        height:
+            210px;
+
+        max-width:
+            72%;
+    }
+
+
+    .brand-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    section {
+
+        padding:
+            55px 0;
+    }
+
+
+    .contact-panel {
+
+        flex-direction:
+            column;
 
         text-align:
             center;
 
-        background:
-            rgba(255,255,255,0.045);
+        padding:
+            35px 22px;
     }
 
 
-    .cards {
+    .button-contact {
 
-        grid-template-columns:
-            1fr;
+        width:
+            100%;
     }
 
 }
@@ -1014,30 +1370,27 @@ footer {
     }
 
 
-    main {
-
-        padding:
-            40px 0 70px;
-    }
-
-
     .hero {
 
         padding:
-            38px 18px;
+            40px 0;
+    }
 
-        border-radius:
-            25px;
+
+    .hero-card {
+
+        padding:
+            35px 18px;
     }
 
 
     .hero-logo {
 
         width:
-            125px;
+            175px;
 
         height:
-            125px;
+            175px;
 
         margin-bottom:
             23px;
@@ -1047,7 +1400,7 @@ footer {
     .hero h1 {
 
         font-size:
-            41px;
+            43px;
 
         letter-spacing:
             -1.5px;
@@ -1061,31 +1414,31 @@ footer {
     }
 
 
-    .hero-buttons {
+    .buttons {
 
         flex-direction:
             column;
     }
 
 
-    .hero-buttons .button {
+    .buttons .button {
 
         width:
             100%;
     }
 
 
-    .card {
+    .brand-card {
 
         min-height:
-            350px;
+            365px;
 
         padding:
             28px 20px;
     }
 
 
-    .card-logo {
+    .brand-logo {
 
         width:
             115px;
@@ -1095,24 +1448,17 @@ footer {
     }
 
 
-    .connection {
+    .about {
 
         padding:
-            32px 18px;
+            27px 20px;
     }
 
 
-    .connection-buttons {
+    .contact-panel {
 
-        flex-direction:
-            column;
-    }
-
-
-    .connection-buttons .button {
-
-        width:
-            100%;
+        border-radius:
+            23px;
     }
 
 }
@@ -1129,7 +1475,13 @@ footer {
             auto;
     }
 
-    * {
+    *,
+    *::before,
+    *::after {
+
+        animation:
+            none !important;
+
         transition:
             none !important;
     }
@@ -1148,7 +1500,7 @@ footer {
      HEADER
 ===================================================== -->
 
-<header>
+<header class="site-header">
 
 <div class="container nav">
 
@@ -1157,14 +1509,23 @@ footer {
     href="index.html"
     class="nav-brand"
 >
-    NEWITT <span>MEDIA</span>
+
+<img
+    src="newitt-media-logo.png.PNG"
+    alt="NEWITT Media logo"
+>
+
+NEWITT <span>MEDIA</span>
+
 </a>
 
 
 <button
-    class="menu-button"
+    class="menu-toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls="main-menu"
     onclick="toggleMenu()"
-    aria-label="Open navigation menu"
 >
     MENU
 </button>
@@ -1172,26 +1533,38 @@ footer {
 
 <nav
     class="nav-links"
-    id="mobileMenu"
+    id="main-menu"
+    aria-label="Main navigation"
 >
 
-<a href="index.html">
+<a
+    class="active"
+    href="index.html"
+>
     Home
 </a>
 
-<a href="skyline.html">
+<a
+    href="skyline.html"
+>
     Skyline
 </a>
 
-<a href="paranormal.html">
+<a
+    href="paranormal.html"
+>
     Paranormal
 </a>
 
-<a href="photography.html">
+<a
+    href="photography.html"
+>
     Photography
 </a>
 
-<a href="contact.html">
+<a
+    href="contact.html"
+>
     Get in Touch
 </a>
 
@@ -1210,8 +1583,6 @@ footer {
 
 <main>
 
-<div class="container">
-
 
 <!-- =====================================================
      HERO
@@ -1219,12 +1590,22 @@ footer {
 
 <section class="hero">
 
+<div class="container">
+
+
+<div class="hero-card">
+
 
 <img
     src="newitt-media-logo.png.PNG"
-    alt="NEWITT Media"
+    alt="NEWITT Media logo"
     class="hero-logo"
 >
+
+
+<div class="eyebrow">
+    Welcome to NEWITT Media
+</div>
 
 
 <h1>
@@ -1234,85 +1615,102 @@ footer {
 
 <p>
 
-One media brand bringing together
-drone aerial work, paranormal adventures
-and photography.
+One name bringing together aerial drone media,
+photography and paranormal adventures.
 
-Explore each side of NEWITT Media below.
+Explore the projects, images and adventures
+that make up NEWITT Media.
 
 </p>
 
 
-<div class="hero-buttons">
+<div class="buttons">
 
 
 <a
     href="skyline.html"
-    class="button newitt"
+    class="button button-skyline"
 >
-    Explore Skyline
+    Explore Skyline Media
 </a>
 
 
 <a
     href="paranormal.html"
-    class="button"
+    class="button button-paranormal"
 >
-    Explore Paranormal
+    Enter the Paranormal
+</a>
+
+
+<a
+    href="photography.html"
+    class="button button-silver"
+>
+    View Photography
 </a>
 
 
 </div>
 
 
+</div>
+
+</div>
+
 </section>
 
 
 
 <!-- =====================================================
-     INTRO
+     THREE SIDES
 ===================================================== -->
 
-<section class="intro">
+<section>
+
+<div class="container">
+
+
+<div class="section-heading">
+
+
+<div class="eyebrow">
+    Three sides of NEWITT Media
+</div>
 
 
 <h2>
-    Explore <span>NEWITT Media</span>
+    Explore the <span>adventures.</span>
 </h2>
 
 
 <p>
 
-Three different directions.
-One NEWITT Media identity.
-
-Choose where you want to go.
+Explore the three areas of NEWITT Media
+and follow the projects, images and adventures
+as they grow.
 
 </p>
 
 
-</section>
+</div>
 
 
 
-<!-- =====================================================
-     BRAND CARDS
-===================================================== -->
-
-<section class="cards">
+<div class="brand-grid">
 
 
-<!-- SKYLINE -->
+<!-- =================================================
+     SKYLINE
+================================================= -->
 
-<article class="card card-skyline">
+<article class="brand-card skyline">
 
-
-<div>
 
 <img
     src="sky-logo.png.PNG"
-    alt="NEWITT Skyline Media"
-    class="card-logo"
+    alt="NEWITT Skyline Media logo"
+    class="brand-logo"
 >
 
 
@@ -1323,12 +1721,10 @@ Choose where you want to go.
 
 <p>
 
-Drone aerial photography,
-aerial video and views from above.
+Drone footage, aerial photography and
+views from above.
 
 </p>
-
-</div>
 
 
 <a
@@ -1343,17 +1739,17 @@ aerial video and views from above.
 
 
 
-<!-- PARANORMAL -->
+<!-- =================================================
+     PARANORMAL
+================================================= -->
 
-<article class="card card-paranormal">
+<article class="brand-card paranormal">
 
-
-<div>
 
 <img
     src="paranormal-logo.png.PNG"
-    alt="NEWITT's Paranormal Adventures"
-    class="card-logo"
+    alt="NEWITT's Paranormal Adventures logo"
+    class="brand-logo"
 >
 
 
@@ -1364,12 +1760,10 @@ aerial video and views from above.
 
 <p>
 
-Haunted locations, investigations,
-strange experiences and unexplained events.
+Haunted locations, investigations, strange
+experiences and unexplained events.
 
 </p>
-
-</div>
 
 
 <a
@@ -1384,17 +1778,17 @@ strange experiences and unexplained events.
 
 
 
-<!-- PHOTOGRAPHY -->
+<!-- =================================================
+     PHOTOGRAPHY
+================================================= -->
 
-<article class="card card-photography">
+<article class="brand-card photography">
 
-
-<div>
 
 <img
     src="newitt-media-logo.png.PNG"
-    alt="NEWITT Media Photography"
-    class="card-logo"
+    alt="NEWITT Media Photography logo"
+    class="brand-logo"
 >
 
 
@@ -1410,12 +1804,10 @@ captured through the lens.
 
 </p>
 
-</div>
-
 
 <a
     href="photography.html"
-    class="button newitt"
+    class="button button-silver"
 >
     View Photography
 </a>
@@ -1424,63 +1816,111 @@ captured through the lens.
 </article>
 
 
+</div>
+
+
+</div>
+
 </section>
 
 
 
 <!-- =====================================================
-     CONNECTION
+     ABOUT
 ===================================================== -->
 
-<section class="connection">
+<section>
+
+<div class="container">
+
+
+<div class="about">
+
+
+<div class="eyebrow">
+    Behind the name
+</div>
 
 
 <h2>
-    One <span>NEWITT Media</span>
+    Why NEWITT <span>Media?</span>
 </h2>
 
 
 <p>
 
-From the sky, into the unknown and
-through the lens.
-
-Explore all three sides of NEWITT Media
-or get in touch.
+NEWITT Media is an independent creative project
+bringing together aerial drone work, photography
+and paranormal adventures under one roof.
 
 </p>
 
 
-<div class="connection-buttons">
+<p>
+
+From the view above to locations after dark,
+the aim is simple: capture, explore and share
+experiences from a different perspective.
+
+</p>
 
 
-<a
-    href="skyline.html"
-    class="button button-skyline"
->
-    Skyline
-</a>
+<p>
+
+Have a look around. There is plenty more coming.
+
+</p>
 
 
-<a
-    href="paranormal.html"
-    class="button button-paranormal"
->
-    Paranormal
-</a>
+</div>
 
 
-<a
-    href="photography.html"
-    class="button newitt"
->
-    Photography
-</a>
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     GET IN TOUCH
+===================================================== -->
+
+<section class="contact-section">
+
+<div class="container">
+
+
+<div class="contact-panel">
+
+
+<div class="contact-copy">
+
+
+<div class="eyebrow">
+    Contact NEWITT Media
+</div>
+
+
+<h2>
+    Get in <span>Touch</span>
+</h2>
+
+
+<p>
+
+For drone, photography or paranormal enquiries,
+choose the appropriate contact and we'll take it
+from there.
+
+</p>
+
+
+</div>
 
 
 <a
     href="contact.html"
-    class="button newitt"
+    class="button button-contact"
 >
     Get in Touch
 </a>
@@ -1489,10 +1929,10 @@ or get in touch.
 </div>
 
 
+</div>
+
 </section>
 
-
-</div>
 
 </main>
 
@@ -1527,15 +1967,24 @@ Skyline Media. Paranormal Adventures. Photography.
 function toggleMenu() {
 
     const menu =
-        document.getElementById("mobileMenu");
+        document.getElementById("main-menu");
 
-    menu.classList.toggle("show");
+    const button =
+        document.querySelector(".menu-toggle");
+
+    const open =
+        menu.classList.toggle("open");
+
+    button.setAttribute(
+        "aria-expanded",
+        open
+    );
 
 }
 
 
 document
-    .querySelectorAll("#mobileMenu a")
+    .querySelectorAll(".nav-links a")
     .forEach(function(link) {
 
         link.addEventListener(
@@ -1543,9 +1992,16 @@ document
             function() {
 
                 document
-                    .getElementById("mobileMenu")
+                    .getElementById("main-menu")
                     .classList
-                    .remove("show");
+                    .remove("open");
+
+                document
+                    .querySelector(".menu-toggle")
+                    .setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
 
             }
         );
