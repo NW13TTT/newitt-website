@@ -5,7 +5,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NEWITT Media Photography</title>
+<title>NEWITT Media Photography | NEWITT Media</title>
+
+<meta
+    name="description"
+    content="NEWITT Media Photography. Landscapes, places, adventures, unusual moments and photography worth stopping for."
+>
 
 <style>
 
@@ -13,39 +18,64 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    color: #f5f7fb;
+    color: #f7f9fc;
     background: #05070b;
+    overflow-x: hidden;
 }
+
+
+/* =========================
+   BACKGROUND
+========================= */
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    z-index: -2;
+    z-index: -3;
+
     background:
         linear-gradient(
-            rgba(3,7,14,0.50),
-            rgba(3,7,14,0.78)
+            rgba(3, 7, 14, 0.50),
+            rgba(3, 7, 14, 0.78)
         ),
-        url("background.png.PNG") center / cover no-repeat;
+        url("background.png.PNG") center center / cover no-repeat;
+
+    transform: scale(1.02);
 }
 
 body::after {
     content: "";
     position: fixed;
     inset: 0;
-    z-index: -1;
+    z-index: -2;
+
     background:
         radial-gradient(
-            circle at 50% 5%,
-            rgba(80,160,255,0.18),
-            transparent 42%
+            circle at 50% 8%,
+            rgba(22, 140, 255, 0.22),
+            transparent 38%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0.03),
+            rgba(0,0,0,0.50)
         );
+
     pointer-events: none;
 }
+
+
+/* =========================
+   GENERAL
+========================= */
 
 a {
     color: inherit;
@@ -53,135 +83,568 @@ a {
 }
 
 .container {
-    width: min(1150px, 92%);
+    width: min(1180px, 92%);
     margin: auto;
 }
 
-header {
+
+/* =========================
+   HEADER
+========================= */
+
+.site-header {
     position: sticky;
     top: 0;
-    z-index: 10;
-    background: rgba(3,6,12,0.84);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    z-index: 1000;
+
+    background: rgba(3, 6, 12, 0.89);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-bottom:
+        1px solid
+        rgba(89, 185, 255, 0.20);
 }
 
 .nav {
-    min-height: 70px;
+    min-height: 78px;
+
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
 }
 
-.brand {
+.nav-brand {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 19px;
     font-weight: 900;
+
     letter-spacing: 1px;
+
+    white-space: nowrap;
 }
 
-.brand span {
-    color: #3ca8ff;
+.nav-brand img {
+    width: 44px;
+    height: 44px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 0 14px
+            rgba(22, 140, 255, 0.35)
+        );
 }
+
+.nav-brand span {
+    color: #59b9ff;
+}
+
+
+/* =========================
+   DESKTOP NAVIGATION
+========================= */
 
 .nav-links {
     display: flex;
-    gap: 20px;
-    font-size: 13px;
-    font-weight: 700;
+    align-items: center;
+
+    gap: 6px;
 }
 
 .nav-links a {
-    opacity: 0.8;
+    position: relative;
+
+    padding: 12px 16px;
+
+    border-radius: 11px;
+
+    color: #dfe7f2;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    transition: 0.25s ease;
 }
 
-.nav-links a:hover {
-    opacity: 1;
-    color: #3ca8ff;
+.nav-links a:hover,
+.nav-links a.active {
+    color: #ffffff;
+
+    background:
+        rgba(22, 140, 255, 0.13);
 }
 
-.hero {
+.nav-links a.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 16px;
+    right: 16px;
+    bottom: 5px;
+
+    height: 2px;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #168cff,
+            #59b9ff
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(22, 140, 255, 0.75);
+}
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+.menu-toggle {
+    display: none;
+
+    border:
+        1px solid
+        rgba(89, 185, 255, 0.35);
+
+    background:
+        rgba(22, 140, 255, 0.12);
+
+    color: #ffffff;
+
+    border-radius: 11px;
+
+    padding: 11px 15px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 13px;
+    font-weight: 900;
+
+    letter-spacing: 0.06em;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.page-hero {
+    padding: 90px 0 60px;
+
     text-align: center;
-    padding: 80px 0 50px;
 }
 
-.logo {
-    width: 190px;
-    height: 190px;
+.page-logo {
+    width: 230px;
+    height: 230px;
+
     object-fit: contain;
-    margin-bottom: 20px;
+
+    margin-bottom: 25px;
+
+    filter:
+        drop-shadow(
+            0 0 28px
+            rgba(22, 140, 255, 0.32)
+        );
 }
 
-h1 {
-    font-size: clamp(38px, 7vw, 68px);
+.eyebrow {
+    margin-bottom: 12px;
+
+    color: #59b9ff;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    letter-spacing: 0.16em;
+
+    text-transform: uppercase;
+}
+
+.page-hero h1 {
     margin: 0;
+
+    font-size:
+        clamp(
+            40px,
+            7vw,
+            72px
+        );
+
+    line-height: 0.96;
+
+    letter-spacing: -3px;
+
+    font-weight: 950;
 }
 
-h1 span {
-    color: #3daaff;
+.page-hero h1 span {
+    color: #59b9ff;
 }
 
-.intro {
-    max-width: 720px;
-    margin: 20px auto;
-    line-height: 1.7;
-    color: #ccd3dd;
+.page-hero p {
+    max-width: 760px;
+
+    margin: 24px auto 0;
+
+    color: #cbd4df;
+
+    line-height: 1.75;
+
+    font-size: 1.05rem;
 }
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+section {
+    padding: 88px 0;
+}
+
+.section-heading {
+    max-width: 760px;
+
+    margin:
+        0 auto 42px;
+
+    text-align: center;
+}
+
+.section-heading h2 {
+    margin:
+        0 0 15px;
+
+    font-size:
+        clamp(
+            32px,
+            5vw,
+            54px
+        );
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+}
+
+.section-heading h2 span {
+    color: #59b9ff;
+}
+
+.section-heading p {
+    color: #b8c3d1;
+
+    line-height: 1.75;
+}
+
+
+/* =========================
+   MAIN PANEL
+========================= */
 
 .panel {
-    margin: 30px 0 80px;
+    margin:
+        25px 0 75px;
+
     padding: 40px;
+
     text-align: center;
-    background: rgba(3,7,14,0.76);
-    border: 1px solid rgba(255,255,255,0.10);
+
     border-radius: 26px;
-    backdrop-filter: blur(15px);
+
+    background:
+        rgba(3, 7, 14, 0.78);
+
+    border:
+        1px solid
+        rgba(89, 185, 255, 0.22);
+
+    backdrop-filter:
+        blur(15px);
+
+    box-shadow:
+        0 24px 70px
+        rgba(0,0,0,0.45);
 }
 
 .panel h2 {
+    margin:
+        0 0 15px;
+
     font-size: 32px;
-    margin-top: 0;
+}
+
+.panel h2 span {
+    color: #59b9ff;
 }
 
 .panel p {
-    max-width: 720px;
-    margin: 15px auto;
-    color: #c9d0da;
+    max-width: 760px;
+
+    margin:
+        15px auto;
+
+    color: #c9d2de;
+
     line-height: 1.8;
 }
 
-.coming-soon {
+
+/* =========================
+   GALLERY COMING SOON
+========================= */
+
+.gallery-preview {
     margin-top: 35px;
-    padding: 35px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.04);
-    border: 1px dashed rgba(255,255,255,0.18);
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 16px;
 }
 
-.coming-soon h3 {
-    margin-top: 0;
-    font-size: 25px;
+.gallery-card {
+    min-height: 190px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(22,140,255,0.09),
+            rgba(255,255,255,0.025)
+        );
+
+    border:
+        1px dashed
+        rgba(89,185,255,0.30);
 }
+
+.gallery-card h3 {
+    margin:
+        0 0 8px;
+
+    font-size: 20px;
+}
+
+.gallery-card p {
+    margin: 0;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about {
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 40px;
+
+    border-radius: 26px;
+
+    background:
+        rgba(4,8,14,0.76);
+
+    border:
+        1px solid
+        rgba(89,185,255,0.22);
+
+    backdrop-filter:
+        blur(14px);
+
+    box-shadow:
+        0 24px 70px
+        rgba(0,0,0,0.42);
+}
+
+.about h2 {
+    margin-top: 0;
+
+    font-size: 34px;
+}
+
+.about h2 span {
+    color: #59b9ff;
+}
+
+.about p {
+    color: #d0d7e1;
+
+    line-height: 1.8;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
 
 footer {
     padding: 45px 0;
+
     text-align: center;
-    color: #9ba4b1;
-    border-top: 1px solid rgba(255,255,255,0.08);
+
+    color: #929daa;
+
+    border-top:
+        1px solid
+        rgba(89,185,255,0.15);
 }
 
-@media (max-width: 700px) {
 
-    .nav-links {
-        gap: 10px;
-        font-size: 11px;
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    .nav {
+        min-height: 68px;
+
+        padding:
+            10px 0;
     }
 
-    .logo {
-        width: 145px;
-        height: 145px;
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+
+        position: absolute;
+
+        top: 68px;
+
+        left: 4%;
+        right: 4%;
+
+        padding: 10px;
+
+        flex-direction: column;
+
+        gap: 6px;
+
+        background:
+            rgba(4,8,14,0.98);
+
+        border:
+            1px solid
+            rgba(89,185,255,0.28);
+
+        border-radius: 17px;
+
+        box-shadow:
+            0 22px 55px
+            rgba(0,0,0,0.60);
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links a {
+        width: 100%;
+
+        min-height: 54px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        font-size: 16px;
+
+        border:
+            1px solid
+            rgba(255,255,255,0.05);
+    }
+
+    .nav-links a.active::after {
+        left: 25%;
+        right: 25%;
+    }
+
+    .page-hero {
+        padding:
+            62px 0 45px;
+    }
+
+    .page-logo {
+        width: 180px;
+        height: 180px;
+    }
+
+    section {
+        padding:
+            65px 0;
     }
 
     .panel {
-        padding: 25px 20px;
+        padding:
+            28px 20px;
+    }
+
+    .gallery-preview {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-card {
+        min-height: 150px;
+    }
+
+    .about {
+        padding:
+            30px 22px;
+    }
+
+}
+
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
     }
 
 }
@@ -192,100 +655,332 @@ footer {
 
 <body>
 
-<header>
 
-<div class="container nav">
+<header class="site-header">
 
-<a href="index.html" class="brand">
-NEWITT <span>MEDIA</span>
-</a>
+    <div class="container nav">
 
-<nav class="nav-links">
-<a href="index.html">Home</a>
-<a href="skyline.html">Skyline</a>
-<a href="paranormal.html">Paranormal</a>
-<a href="photography.html">Photography</a>
-</nav>
 
-</div>
+        <a
+            href="index.html"
+            class="nav-brand"
+        >
+
+            <img
+                src="newitt-media-logo.png.PNG"
+                alt="NEWITT Media logo"
+            >
+
+            NEWITT <span>MEDIA</span>
+
+        </a>
+
+
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="main-menu"
+            onclick="toggleMenu()"
+        >
+            MENU
+        </button>
+
+
+        <nav
+            class="nav-links"
+            id="main-menu"
+            aria-label="Main navigation"
+        >
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="skyline.html">
+                Skyline
+            </a>
+
+            <a href="paranormal.html">
+                Paranormal
+            </a>
+
+            <a
+                href="photography.html"
+                class="active"
+            >
+                Photography
+            </a>
+
+        </nav>
+
+    </div>
 
 </header>
 
+
 <main>
 
-<section class="hero">
 
-<div class="container">
+<section class="page-hero">
 
-<img
-src="newitt-media-logo.png.PNG"
-alt="NEWITT Media logo"
-class="logo"
->
+    <div class="container">
 
-<h1>
-NEWITT <span>Photography</span>
-</h1>
 
-<p class="intro">
-Sometimes you don't need a drone, a haunted building or
-a complicated plan.
+        <img
+            src="newitt-media-logo.png.PNG"
+            alt="NEWITT Media Photography logo"
+            class="page-logo"
+        >
 
-Sometimes you just need the camera in the right place
-at the right time.
-</p>
 
-</div>
+        <div class="eyebrow">
+            NEWITT Media Photography
+        </div>
+
+
+        <h1>
+            See the moment.
+            <span>Capture the moment.</span>
+        </h1>
+
+
+        <p>
+            Sometimes you do not need a drone,
+            a haunted building or a complicated plan.
+
+            Sometimes you just need the camera
+            in the right place at the right time.
+        </p>
+
+    </div>
 
 </section>
+
 
 <section>
 
-<div class="container">
+    <div class="container">
 
-<div class="panel">
 
-<h2>The photography collection</h2>
+        <div class="section-heading">
 
-<p>
-This section is being built for the photographs that deserve
-their own little corner of the internet.
-</p>
+            <div class="eyebrow">
+                The photography collection
+            </div>
 
-<p>
-Landscapes, places, adventures, unusual moments and whatever
-else catches the eye before the camera gets put away.
-</p>
 
-<div class="coming-soon">
+            <h2>
+                A place for the
+                <span>good stuff.</span>
+            </h2>
 
-<h3>The gallery is coming together</h3>
 
-<p>
-New photographs will be added here as the collection grows.
-There is no rush. Good photographs tend to be worth waiting for.
-</p>
+            <p>
+                Landscapes, places, adventures,
+                unusual moments and photographs
+                that deserve more than five seconds
+                of attention before someone scrolls away.
+            </p>
 
-</div>
+        </div>
 
-</div>
 
-</div>
+        <div class="panel">
+
+            <h2>
+                The gallery is
+                <span>coming together.</span>
+            </h2>
+
+
+            <p>
+                This section is being built for the
+                photographs that deserve their own
+                little corner of the internet.
+            </p>
+
+
+            <p>
+                There is no rush.
+
+                Good photographs tend to be worth
+                waiting for.
+            </p>
+
+
+            <div class="gallery-preview">
+
+
+                <div class="gallery-card">
+
+                    <div>
+
+                        <h3>
+                            Landscapes
+                        </h3>
+
+                        <p>
+                            Places worth stopping for.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="gallery-card">
+
+                    <div>
+
+                        <h3>
+                            Adventures
+                        </h3>
+
+                        <p>
+                            The moments that happen
+                            along the way.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="gallery-card">
+
+                    <div>
+
+                        <h3>
+                            Everything Else
+                        </h3>
+
+                        <p>
+                            If it catches the eye,
+                            it belongs here.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
+
+<section>
+
+    <div class="container">
+
+
+        <div class="about">
+
+            <div class="eyebrow">
+                Coming next
+            </div>
+
+
+            <h2>
+                A gallery with a bit more
+                <span>personality.</span>
+            </h2>
+
+
+            <p>
+                When the photography collection is
+                ready, this space can become a proper
+                gallery with large images, captions
+                and featured work.
+            </p>
+
+
+            <p>
+                No giant wall of tiny thumbnails.
+
+                We will let the photographs breathe.
+            </p>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
 </main>
+
 
 <footer>
 
-<div class="container">
+    <div class="container">
 
-NEWITT Media Photography<br>
-See the moment. Capture the moment.
+        NEWITT Media Photography<br>
 
-</div>
+        See the moment. Capture the moment.
+
+    </div>
 
 </footer>
+
+
+<script>
+
+function toggleMenu() {
+
+    const menu =
+        document.getElementById("main-menu");
+
+    const button =
+        document.querySelector(".menu-toggle");
+
+    const isOpen =
+        menu.classList.toggle("open");
+
+    button.setAttribute(
+        "aria-expanded",
+        isOpen
+    );
+
+}
+
+
+/* Close menu after selecting a page */
+
+document
+    .querySelectorAll(".nav-links a")
+    .forEach(function(link) {
+
+        link.addEventListener(
+            "click",
+            function() {
+
+                const menu =
+                    document.getElementById("main-menu");
+
+                const button =
+                    document.querySelector(".menu-toggle");
+
+                menu.classList.remove("open");
+
+                button.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
+        );
+
+    });
+
+</script>
+
 
 </body>
 </html>
