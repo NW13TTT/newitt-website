@@ -1,719 +1,429 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
+<meta name="description" content="NEWITT Skyline Media. Drone footage, aerial photography and views from above.">
 
-<meta
-  name="theme-color"
-  content="#05070b"
->
-
-<meta
-  name="description"
-  content="NEWITT Skyline Media. Drone footage, aerial photography and unique perspectives from above."
->
-
-<title>NEWITT Skyline Media | Aerial Media</title>
-
+<title>NEWITT Skyline Media</title>
 
 <style>
 
 /* =========================================================
    NEWITT SKYLINE MEDIA
-   MASTER SKYLINE PAGE
-   ========================================================= */
+   COMPLETE PAGE CSS
+========================================================= */
 
-:root {
+:root{
+  --black:#05070b;
+  --panel:rgba(5,10,17,.78);
+  --panel-solid:#0a111a;
 
-  --black:
-    #030609;
+  --white:#f7f9fc;
+  --muted:#b8c3d1;
 
-  --black-soft:
-    #070b10;
+  --blue:#168cff;
+  --blue-bright:#59b9ff;
+  --blue-dark:#0759ad;
 
-  --blue:
-    #168cff;
+  --line:rgba(89,185,255,.24);
 
-  --blue-bright:
-    #59b9ff;
-
-  --blue-dark:
-    #0759ad;
-
-  --white:
-    #f7f9fc;
-
-  --muted:
-    #b8c3d1;
-
-  --dim:
-    #7f8b97;
-
-  --line:
-    rgba(89,185,255,0.20);
-
-  --line-soft:
-    rgba(255,255,255,0.08);
-
-  --panel:
-    rgba(4,8,14,0.62);
-
-  --shadow:
-    0 25px 75px rgba(0,0,0,0.55);
+  --shadow:0 24px 70px rgba(0,0,0,.45);
 }
-
 
 /* =========================================================
    RESET
-   ========================================================= */
+========================================================= */
 
-* {
-  box-sizing:
-    border-box;
+*{
+  box-sizing:border-box;
 }
 
-html {
-  scroll-behavior:
-    smooth;
+html{
+  scroll-behavior:smooth;
 }
 
-body {
-
-  margin:
-    0;
-
-  color:
-    var(--white);
-
-  background:
-    var(--black);
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  overflow-x:
-    hidden;
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--white);
+  background:var(--black);
+  overflow-x:hidden;
 }
-
-a {
-  color:
-    inherit;
-
-  text-decoration:
-    none;
-}
-
-img {
-  max-width:
-    100%;
-
-  display:
-    block;
-}
-
 
 /* =========================================================
    BACKGROUND
-   ========================================================= */
+========================================================= */
 
-body::before {
-
-  content:
-    "";
-
-  position:
-    fixed;
-
-  inset:
-    0;
-
-  z-index:
-    -5;
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-3;
 
   background:
-
     linear-gradient(
-      rgba(3,7,14,0.48),
-      rgba(3,7,14,0.80)
+      rgba(3,7,14,.52),
+      rgba(3,7,14,.76)
     ),
-
     url("background.png.PNG")
-    center / cover
+    center/cover
     no-repeat;
 
-  transform:
-    scale(1.02);
+  transform:scale(1.02);
 }
 
-
-body::after {
-
-  content:
-    "";
-
-  position:
-    fixed;
-
-  inset:
-    0;
-
-  z-index:
-    -4;
-
-  pointer-events:
-    none;
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
 
   background:
-
     radial-gradient(
       circle at 50% 8%,
-      rgba(22,140,255,0.13),
+      rgba(22,140,255,.20),
       transparent 38%
     ),
-
     linear-gradient(
       180deg,
-      rgba(0,0,0,0.02),
-      rgba(0,0,0,0.52)
+      rgba(0,0,0,.04),
+      rgba(0,0,0,.45)
     );
-}
 
+  pointer-events:none;
+}
 
 /* =========================================================
    GENERAL
-   ========================================================= */
+========================================================= */
 
-.container {
-
-  width:
-    min(1180px,92%);
-
-  margin:
-    0 auto;
+a{
+  color:inherit;
+  text-decoration:none;
 }
 
-section {
-
-  padding:
-    90px 0;
+img{
+  max-width:100%;
+  display:block;
 }
 
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
 
 /* =========================================================
    HEADER
-   ========================================================= */
+========================================================= */
 
-.site-header {
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:1000;
 
-  position:
-    sticky;
+  background:rgba(3,6,12,.86);
 
-  top:
-    0;
-
-  z-index:
-    1000;
-
-  background:
-    rgba(3,6,12,0.88);
-
-  backdrop-filter:
-    blur(18px);
-
-  -webkit-backdrop-filter:
-    blur(18px);
+  backdrop-filter:blur(18px);
 
   border-bottom:
-    1px solid
-    rgba(89,185,255,0.15);
+    1px solid rgba(89,185,255,.18);
 }
 
+.nav{
+  min-height:76px;
 
-.nav {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 
-  min-height:
-    74px;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    space-between;
-
-  gap:
-    20px;
+  gap:22px;
 }
 
+.nav-brand{
+  display:flex;
+  align-items:center;
 
-/* =========================================================
-   BRAND
-   ========================================================= */
+  gap:10px;
 
-.nav-brand {
+  font-size:18px;
+  font-weight:900;
 
-  display:
-    flex;
+  letter-spacing:1px;
 
-  align-items:
-    center;
-
-  gap:
-    10px;
-
-  font-size:
-    17px;
-
-  font-weight:
-    900;
-
-  letter-spacing:
-    1px;
-
-  white-space:
-    nowrap;
+  white-space:nowrap;
 }
 
+.nav-brand img{
+  width:42px;
+  height:42px;
 
-.nav-brand img {
-
-  width:
-    42px;
-
-  height:
-    42px;
-
-  object-fit:
-    contain;
+  object-fit:contain;
 
   filter:
     drop-shadow(
-      0 0 14px
-      rgba(22,140,255,0.20)
+      0 0 12px
+      rgba(22,140,255,.28)
     );
 }
 
-
-.nav-brand span {
-
-  color:
-    var(--blue-bright);
+.nav-brand span{
+  color:var(--blue-bright);
 }
-
 
 /* =========================================================
    NAVIGATION
-   ========================================================= */
+========================================================= */
 
-.nav-links {
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  gap:
-    5px;
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:6px;
 }
 
+.nav-links a{
+  position:relative;
 
-.nav-links a {
+  padding:12px 15px;
 
-  position:
-    relative;
+  border-radius:11px;
 
-  padding:
-    11px 15px;
+  color:#dfe7f2;
 
-  border-radius:
-    9px;
+  font-size:14px;
+  font-weight:800;
 
-  color:
-    #dce6f0;
-
-  font-size:
-    12px;
-
-  font-weight:
-    800;
-
-  transition:
-    0.25s ease;
+  transition:.2s ease;
 }
 
-
-.nav-links a:hover {
-
-  color:
-    #ffffff;
+.nav-links a:hover,
+.nav-links a.active{
+  color:#fff;
 
   background:
-    rgba(22,140,255,0.08);
+    rgba(22,140,255,.12);
 }
 
+.nav-links a.active::after{
+  content:"";
 
-.nav-links a.active {
+  position:absolute;
 
-  color:
-    #ffffff;
-}
+  left:15px;
+  right:15px;
+  bottom:5px;
 
+  height:2px;
 
-.nav-links a.active::after {
-
-  content:
-    "";
-
-  position:
-    absolute;
-
-  left:
-    17px;
-
-  right:
-    17px;
-
-  bottom:
-    4px;
-
-  height:
-    2px;
+  border-radius:2px;
 
   background:
-    var(--blue);
+    linear-gradient(
+      90deg,
+      var(--blue),
+      var(--blue-bright)
+    );
 
   box-shadow:
-    0 0 10px
-    rgba(22,140,255,0.50);
+    0 0 12px
+    rgba(22,140,255,.7);
 }
-
 
 /* =========================================================
    MOBILE MENU
-   ========================================================= */
+========================================================= */
 
-.menu-toggle {
-
-  display:
-    none;
-
-  padding:
-    10px 14px;
+.menu-toggle{
+  display:none;
 
   border:
     1px solid
-    rgba(89,185,255,0.28);
-
-  border-radius:
-    10px;
+    rgba(89,185,255,.30);
 
   background:
-    rgba(22,140,255,0.07);
+    rgba(22,140,255,.10);
 
-  color:
-    #ffffff;
+  color:#fff;
 
-  font-size:
-    12px;
+  border-radius:11px;
 
-  font-weight:
-    900;
+  padding:10px 14px;
 
-  letter-spacing:
-    0.08em;
+  font:
+    800 13px
+    Arial,
+    sans-serif;
 
-  cursor:
-    pointer;
+  letter-spacing:.05em;
+
+  cursor:pointer;
 }
 
-
 /* =========================================================
-   HERO
-   ========================================================= */
+   SKYLINE HERO
+========================================================= */
 
-.skyline-hero {
+.skyline-hero{
+  position:relative;
 
-  position:
-    relative;
+  overflow:hidden;
 
-  min-height:
-    610px;
+  min-height:610px;
 
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  overflow:
-    hidden;
+  display:grid;
+  place-items:center;
 
   border-bottom:
     1px solid
-    rgba(89,185,255,0.13);
+    rgba(89,185,255,.14);
 }
 
+.skyline-hero::before{
+  content:"";
 
-.skyline-hero::before {
-
-  content:
-    "";
-
-  position:
-    absolute;
-
-  inset:
-    0;
+  position:absolute;
+  inset:0;
 
   background:
 
     linear-gradient(
       90deg,
-      rgba(3,6,10,0.90),
-      rgba(3,6,10,0.52),
-      rgba(3,6,10,0.30)
+      rgba(3,6,10,.88),
+      rgba(3,6,10,.45),
+      rgba(3,6,10,.25)
     ),
 
     url("background.png.PNG")
-    center / cover
+    center/cover
     no-repeat;
 }
 
+.skyline-hero-content{
+  position:relative;
 
-.skyline-hero::after {
+  z-index:1;
 
-  content:
-    "";
+  width:min(1100px,92%);
 
-  position:
-    absolute;
-
-  inset:
-    0;
-
-  background:
-    radial-gradient(
-      circle at 75% 45%,
-      rgba(22,140,255,0.15),
-      transparent 38%
-    );
-}
-
-
-.skyline-hero-content {
-
-  position:
-    relative;
-
-  z-index:
-    2;
-
-  width:
-    min(1100px,92%);
-
-  margin:
-    0 auto;
-
-  display:
-    grid;
+  display:grid;
 
   grid-template-columns:
-    220px 1fr;
+    210px 1fr;
 
-  gap:
-    45px;
+  gap:40px;
 
-  align-items:
-    center;
+  align-items:center;
 }
 
+.skyline-logo{
+  width:210px;
+  height:210px;
 
-.page-logo {
-
-  width:
-    215px;
-
-  height:
-    215px;
-
-  object-fit:
-    contain;
+  object-fit:contain;
 
   filter:
     drop-shadow(
-      0 18px 35px
-      rgba(0,0,0,0.65)
+      0 0 24px
+      rgba(22,140,255,.30)
     );
 }
 
+.eyebrow{
+  color:var(--blue-bright);
 
-.eyebrow {
+  text-transform:uppercase;
 
-  margin-bottom:
-    12px;
+  letter-spacing:.16em;
 
-  color:
-    var(--blue-bright);
+  font-size:.78rem;
+
+  font-weight:900;
+
+  margin-bottom:10px;
+}
+
+.skyline-hero h1{
+  margin:0;
 
   font-size:
-    10px;
+    clamp(
+      40px,
+      7vw,
+      76px
+    );
 
-  font-weight:
-    900;
+  line-height:.96;
 
-  letter-spacing:
-    0.25em;
+  font-weight:950;
 
-  text-transform:
-    uppercase;
+  letter-spacing:-3px;
 }
 
-
-.skyline-hero h1 {
-
-  margin:
-    0;
-
-  max-width:
-    850px;
-
-  color:
-    #ffffff;
-
-  font-size:
-    clamp(42px,7vw,76px);
-
-  font-weight:
-    950;
-
-  line-height:
-    0.97;
-
-  letter-spacing:
-    -3px;
+.skyline-hero h1 span{
+  color:var(--blue-bright);
 }
 
+.skyline-hero p{
+  max-width:760px;
 
-.skyline-hero h1 span {
+  color:#d2dbe6;
 
-  color:
-    var(--blue-bright);
+  font-size:1.08rem;
+
+  margin:22px 0;
+
+  line-height:1.75;
 }
-
-
-.skyline-hero p {
-
-  max-width:
-    760px;
-
-  margin:
-    23px 0 0;
-
-  color:
-    #d0dbe6;
-
-  font-size:
-    16px;
-
-  line-height:
-    1.8;
-}
-
 
 /* =========================================================
-   HERO BUTTONS
-   ========================================================= */
+   BUTTONS
+========================================================= */
 
-.hero-actions {
+.buttons{
+  display:flex;
 
-  display:
-    flex;
+  justify-content:center;
 
-  flex-wrap:
-    wrap;
+  flex-wrap:wrap;
 
-  gap:
-    12px;
+  gap:12px;
 
-  margin-top:
-    30px;
+  margin-top:28px;
 }
 
+.hero-actions{
+  justify-content:flex-start;
+}
 
-.button {
+.button{
+  display:inline-flex;
 
-  min-height:
-    47px;
+  align-items:center;
+  justify-content:center;
 
-  display:
-    inline-flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
+  min-height:48px;
 
   padding:
-    0 21px;
+    0 20px;
+
+  border-radius:12px;
 
   border:
     1px solid
-    rgba(89,185,255,0.30);
-
-  border-radius:
-    9px;
+    rgba(89,185,255,.25);
 
   background:
-    rgba(22,140,255,0.07);
+    rgba(255,255,255,.07);
 
-  color:
-    #dfeaf4;
+  color:#fff;
 
-  font-size:
-    11px;
+  font-weight:850;
 
-  font-weight:
-    900;
-
-  letter-spacing:
-    0.07em;
-
-  text-transform:
-    uppercase;
-
-  transition:
-    0.25s ease;
+  transition:.2s ease;
 }
 
-
-.button:hover {
-
-  transform:
-    translateY(-3px);
-
-  border-color:
-    rgba(89,185,255,0.60);
-
-  background:
-    rgba(22,140,255,0.14);
-}
-
-
-.button.primary {
-
+.button.primary{
   background:
     linear-gradient(
       135deg,
@@ -721,1059 +431,466 @@ section {
       var(--blue-dark)
     );
 
-  color:
-    #ffffff;
-
-  border-color:
-    var(--blue);
+  border-color:var(--blue);
 
   box-shadow:
-    0 12px 35px
-    rgba(22,140,255,0.20);
+    0 10px 30px
+    rgba(22,140,255,.22);
 }
 
+.button:hover{
+  transform:translateY(-2px);
+
+  border-color:
+    rgba(89,185,255,.72);
+
+  box-shadow:
+    0 14px 35px
+    rgba(22,140,255,.20);
+}
 
 /* =========================================================
-   SECTION HEADING
-   ========================================================= */
+   SECTIONS
+========================================================= */
 
-.section-heading {
-
-  max-width:
-    780px;
-
-  margin:
-    0 auto 42px;
-
-  text-align:
-    center;
+section{
+  padding:88px 0;
 }
 
+.section-heading{
+  text-align:center;
 
-.section-heading h2 {
+  max-width:780px;
 
+  margin:
+    0 auto
+    42px;
+}
+
+.section-heading h2{
+  font-size:
+    clamp(
+      32px,
+      5vw,
+      54px
+    );
+
+  line-height:1;
+
+  margin:
+    0 0 15px;
+
+  letter-spacing:-2px;
+}
+
+.section-heading h2 span{
+  color:var(--blue-bright);
+}
+
+.section-heading p{
+  color:var(--muted);
+
+  line-height:1.75;
+}
+
+/* =========================================================
+   PANEL
+========================================================= */
+
+.panel{
+  background:var(--panel);
+
+  border:
+    1px solid
+    var(--line);
+
+  backdrop-filter:blur(14px);
+
+  box-shadow:var(--shadow);
+
+  padding:34px;
+
+  border-radius:26px;
+}
+
+.panel h2{
   margin:
     0 0 14px;
 
-  font-size:
-    clamp(32px,5vw,52px);
-
-  line-height:
-    1;
-
-  font-weight:
-    950;
-
-  letter-spacing:
-    -2px;
+  font-size:31px;
 }
 
+.panel p{
+  color:#c9d2de;
 
-.section-heading h2 span {
-
-  color:
-    var(--blue-bright);
+  line-height:1.75;
 }
-
-
-.section-heading p {
-
-  max-width:
-    700px;
-
-  margin:
-    0 auto;
-
-  color:
-    var(--muted);
-
-  font-size:
-    14px;
-
-  line-height:
-    1.8;
-}
-
 
 /* =========================================================
-   FEATURED GLOUCESTER PRISON
-   ========================================================= */
+   GLOUCESTER PRISON GALLERY
+========================================================= */
 
-.feature-panel {
-
-  display:
-    grid;
+.gallery{
+  display:grid;
 
   grid-template-columns:
-    0.85fr 1.35fr;
+    repeat(2,1fr);
 
-  overflow:
-    hidden;
+  gap:22px;
+
+  width:100%;
+}
+
+.gallery-card{
+  overflow:hidden;
+
+  background:
+    rgba(5,10,17,.82);
 
   border:
     1px solid
-    rgba(89,185,255,0.18);
+    var(--line);
 
-  border-radius:
-    22px;
+  border-radius:22px;
 
-  background:
-    rgba(4,8,14,0.64);
+  box-shadow:var(--shadow);
 
-  box-shadow:
-    var(--shadow);
+  transition:
+    transform .25s ease,
+    border-color .25s ease;
 }
 
+.gallery-card:hover{
+  transform:translateY(-5px);
 
-.feature-copy {
+  border-color:
+    rgba(89,185,255,.55);
+}
 
+.gallery-image-link{
+  display:block;
+
+  overflow:hidden;
+
+  cursor:pointer;
+}
+
+.gallery-card img{
+  width:100%;
+
+  aspect-ratio:16 / 10;
+
+  object-fit:cover;
+
+  display:block;
+
+  transition:
+    transform .3s ease,
+    filter .3s ease;
+}
+
+.gallery-image-link:hover img{
+  transform:scale(1.025);
+
+  filter:brightness(1.08);
+}
+
+.gallery-caption{
   padding:
-    45px;
-
-  display:
-    flex;
-
-  flex-direction:
-    column;
-
-  justify-content:
-    center;
+    20px 22px 22px;
 }
 
-
-.feature-copy h2 {
-
+.gallery-caption h3{
   margin:
     0 0 8px;
 
-  font-size:
-    clamp(30px,4vw,47px);
-
-  line-height:
-    1;
-
-  letter-spacing:
-    -1px;
+  font-size:20px;
 }
 
+.gallery-caption p{
+  margin:0;
 
-.feature-copy h2 span {
+  color:#aeb8c4;
 
-  display:
-    block;
+  line-height:1.6;
 
-  margin-top:
-    7px;
-
-  color:
-    var(--blue-bright);
+  font-size:13px;
 }
-
-
-.blue-line {
-
-  width:
-    70px;
-
-  height:
-    2px;
-
-  margin:
-    19px 0;
-
-  background:
-    var(--blue);
-}
-
-
-.feature-copy p {
-
-  margin:
-    0;
-
-  color:
-    #b8c5d1;
-
-  font-size:
-    14px;
-
-  line-height:
-    1.85;
-}
-
-
-.feature-image {
-
-  min-height:
-    400px;
-
-  background:
-    #05080c;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  overflow:
-    hidden;
-}
-
-
-/*
-  This is deliberately a controlled image area.
-  We will use your actual Gloucester Prison aerial
-  photograph here when the final image filename is
-  placed in the public folder.
-*/
-
-.feature-image img {
-
-  width:
-    100%;
-
-  height:
-    100%;
-
-  min-height:
-    400px;
-
-  object-fit:
-    cover;
-}
-
-
-.image-placeholder {
-
-  width:
-    100%;
-
-  min-height:
-    400px;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  padding:
-    30px;
-
-  text-align:
-    center;
-
-  color:
-    var(--dim);
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(22,140,255,0.07),
-      transparent 45%
-    );
-}
-
-
-.image-placeholder strong {
-
-  display:
-    block;
-
-  margin-bottom:
-    8px;
-
-  color:
-    #b7c1ca;
-
-  font-size:
-    15px;
-}
-
-
-.feature-caption {
-
-  position:
-    absolute;
-
-  bottom:
-    0;
-
-  left:
-    0;
-
-  right:
-    0;
-
-  padding:
-    18px 22px;
-
-  color:
-    #dfeaf4;
-
-  font-size:
-    11px;
-
-  background:
-    linear-gradient(
-      transparent,
-      rgba(0,0,0,0.78)
-    );
-}
-
-
-/* =========================================================
-   GALLERY
-   ========================================================= */
-
-.gallery-panel {
-
-  padding:
-    40px 35px;
-
-  border:
-    1px solid
-    rgba(89,185,255,0.14);
-
-  border-radius:
-    22px;
-
-  background:
-    rgba(3,6,10,0.48);
-
-  box-shadow:
-    var(--shadow);
-}
-
-
-.gallery-heading {
-
-  text-align:
-    center;
-
-  margin-bottom:
-    30px;
-}
-
-
-.gallery-heading h2 {
-
-  margin:
-    0 0
-    12px;
-
-  font-size:
-    clamp(30px,5vw,45px);
-
-  letter-spacing:
-    -1px;
-}
-
-
-.gallery-heading h2 span {
-
-  color:
-    var(--blue-bright);
-}
-
-
-.gallery-heading p {
-
-  margin:
-    0;
-
-  color:
-    var(--muted);
-
-  font-size:
-    13px;
-
-  line-height:
-    1.7;
-}
-
-
-.gallery-grid {
-
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap:
-    18px;
-}
-
-
-.gallery-item {
-
-  overflow:
-    hidden;
-
-  border-radius:
-    15px;
-
-  border:
-    1px solid
-    rgba(255,255,255,0.08);
-
-  background:
-    rgba(0,0,0,0.30);
-
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease;
-}
-
-
-.gallery-item:hover {
-
-  transform:
-    translateY(-4px);
-
-  border-color:
-    rgba(89,185,255,0.35);
-}
-
-
-.gallery-image {
-
-  aspect-ratio:
-    4 / 3;
-
-  overflow:
-    hidden;
-
-  background:
-    #05080c;
-}
-
-
-.gallery-image img {
-
-  width:
-    100%;
-
-  height:
-    100%;
-
-  object-fit:
-    cover;
-}
-
-
-.gallery-placeholder {
-
-  width:
-    100%;
-
-  height:
-    100%;
-
-  min-height:
-    210px;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  padding:
-    20px;
-
-  text-align:
-    center;
-
-  color:
-    #64717d;
-
-  font-size:
-    12px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(22,140,255,0.05),
-      rgba(0,0,0,0.20)
-    );
-}
-
-
-.gallery-info {
-
-  padding:
-    17px;
-}
-
-
-.gallery-info h3 {
-
-  margin:
-    0 0
-    7px;
-
-  font-size:
-    14px;
-
-  line-height:
-    1.3;
-}
-
-
-.gallery-info p {
-
-  margin:
-    0;
-
-  color:
-    #84909c;
-
-  font-size:
-    11px;
-
-  line-height:
-    1.6;
-}
-
 
 /* =========================================================
    TIKTOK
-   ========================================================= */
+========================================================= */
 
-.tiktok-panel {
+.tiktok-box{
+  width:100%;
 
-  padding:
-    42px 35px;
-
-  border:
-    1px solid
-    rgba(89,185,255,0.16);
-
-  border-radius:
-    22px;
-
-  background:
-    rgba(3,6,10,0.56);
-
-  box-shadow:
-    var(--shadow);
-
-  text-align:
-    center;
-}
-
-
-.tiktok-panel h2 {
+  max-width:780px;
 
   margin:
-    0 0
-    13px;
+    30px auto 0;
 
-  font-size:
-    clamp(29px,5vw,44px);
+  min-height:500px;
 
-  letter-spacing:
-    -1px;
+  overflow:hidden;
+
+  border-radius:18px;
+
+  background:#fff;
 }
 
-
-.tiktok-panel h2 span {
-
-  color:
-    var(--blue-bright);
-}
-
-
-.tiktok-panel > p {
-
-  max-width:
-    650px;
-
+.tiktok-embed{
   margin:
-    0 auto 28px;
-
-  color:
-    var(--muted);
-
-  font-size:
-    13px;
-
-  line-height:
-    1.8;
+    0 auto !important;
 }
-
-
-.tiktok-box {
-
-  display:
-    flex;
-
-  justify-content:
-    center;
-
-  min-height:
-    420px;
-
-  margin-bottom:
-    25px;
-}
-
 
 /* =========================================================
    ABOUT
-   ========================================================= */
+========================================================= */
 
-.about {
+.about{
+  max-width:900px;
 
-  padding:
-    40px;
+  margin:auto;
+
+  padding:40px;
+
+  border-radius:26px;
+
+  background:var(--panel);
 
   border:
     1px solid
-    rgba(89,185,255,0.12);
+    var(--line);
 
-  border-radius:
-    22px;
+  backdrop-filter:blur(14px);
 
-  background:
-    rgba(3,6,10,0.52);
-
-  box-shadow:
-    var(--shadow);
+  box-shadow:var(--shadow);
 }
 
+.about p{
+  color:#c9d2de;
 
-.about h2 {
-
-  margin:
-    0 0
-    17px;
-
-  font-size:
-    clamp(30px,5vw,45px);
-
-  line-height:
-    1;
+  line-height:1.75;
 }
-
-
-.about h2 span {
-
-  color:
-    var(--blue-bright);
-}
-
-
-.about p {
-
-  max-width:
-    850px;
-
-  margin:
-    0 0
-    15px;
-
-  color:
-    #b5c0cb;
-
-  font-size:
-    14px;
-
-  line-height:
-    1.85;
-}
-
 
 /* =========================================================
-   CONTACT CTA
-   ========================================================= */
+   LIGHTBOX
+========================================================= */
 
-.contact-panel {
+.lightbox{
+  position:fixed;
 
-  display:
-    flex;
+  inset:0;
 
-  align-items:
-    center;
+  z-index:2000;
 
-  justify-content:
-    space-between;
+  display:none;
 
-  gap:
-    30px;
+  align-items:center;
+  justify-content:center;
 
-  padding:
-    32px 35px;
+  padding:25px;
+
+  background:
+    rgba(0,0,0,.94);
+}
+
+.lightbox.open{
+  display:flex;
+}
+
+.lightbox img{
+  max-width:94vw;
+
+  max-height:88vh;
+
+  width:auto;
+
+  height:auto;
+
+  border-radius:12px;
+
+  box-shadow:
+    0 25px 80px
+    #000;
+}
+
+.lightbox-close{
+  position:absolute;
+
+  top:18px;
+  right:22px;
+
+  width:46px;
+  height:46px;
 
   border:
     1px solid
-    rgba(89,185,255,0.25);
+    rgba(255,255,255,.25);
 
-  border-radius:
-    20px;
+  border-radius:50%;
 
   background:
-    linear-gradient(
-      100deg,
-      rgba(7,25,44,0.75),
-      rgba(3,8,14,0.68)
-    );
+    rgba(0,0,0,.55);
+
+  color:#fff;
+
+  font-size:28px;
+
+  cursor:pointer;
+
+  z-index:2001;
 }
-
-
-.contact-panel h2 {
-
-  margin:
-    0 0
-    8px;
-
-  font-size:
-    25px;
-}
-
-
-.contact-panel p {
-
-  margin:
-    0;
-
-  color:
-    #9daab6;
-
-  font-size:
-    13px;
-}
-
-
-.contact-actions {
-
-  display:
-    flex;
-
-  flex-wrap:
-    wrap;
-
-  gap:
-    10px;
-}
-
 
 /* =========================================================
    FOOTER
-   ========================================================= */
+========================================================= */
 
-footer {
+footer{
+  padding:45px 0;
 
-  padding:
-    45px 20px
-    55px;
+  text-align:center;
 
-  text-align:
-    center;
+  color:#8f9baa;
 
   border-top:
     1px solid
-    rgba(89,185,255,0.10);
-
-  color:
-    #687581;
-
-  font-size:
-    10px;
-
-  letter-spacing:
-    0.14em;
-
-  text-transform:
-    uppercase;
+    rgba(89,185,255,.14);
 }
-
-
-footer strong {
-
-  color:
-    var(--blue-bright);
-}
-
 
 /* =========================================================
    MOBILE
-   ========================================================= */
+========================================================= */
 
-@media(max-width:800px) {
+@media(max-width:800px){
 
-  .menu-toggle {
+  .nav{
+    min-height:68px;
 
-    display:
-      block;
+    padding:10px 0;
   }
 
+  .menu-toggle{
+    display:block;
+  }
 
-  .nav-links {
+  .nav-links{
+    display:none;
 
-    display:
-      none;
+    position:absolute;
 
-    position:
-      absolute;
+    top:68px;
 
-    top:
-      68px;
+    left:4%;
+    right:4%;
 
-    left:
-      4%;
+    padding:10px;
 
-    right:
-      4%;
+    flex-direction:column;
 
-    padding:
-      10px;
-
-    flex-direction:
-      column;
-
-    gap:
-      5px;
+    gap:6px;
 
     background:
-      rgba(3,6,10,0.98);
+      rgba(4,8,14,.97);
 
     border:
       1px solid
-      rgba(89,185,255,0.16);
+      rgba(89,185,255,.24);
 
-    border-radius:
-      15px;
+    border-radius:16px;
 
     box-shadow:
-      0 25px 60px
-      rgba(0,0,0,0.68);
+      0 22px 55px
+      rgba(0,0,0,.55);
   }
 
-
-  .nav-links.open {
-
-    display:
-      flex;
+  .nav-links.open{
+    display:flex;
   }
 
+  .nav-links a{
+    width:100%;
 
-  .nav-links a {
+    min-height:52px;
 
-    width:
-      100%;
+    display:flex;
 
-    min-height:
-      50px;
+    align-items:center;
 
-    display:
-      flex;
+    justify-content:center;
 
-    align-items:
-      center;
+    font-size:16px;
 
-    justify-content:
-      center;
-
-    font-size:
-      15px;
+    border:
+      1px solid
+      rgba(255,255,255,.05);
   }
 
-
-  .skyline-hero {
-
-    min-height:
-      650px;
-
-    text-align:
-      center;
+  .nav-links a.active::after{
+    left:25%;
+    right:25%;
   }
 
-
-  .skyline-hero-content {
-
-    grid-template-columns:
-      1fr;
-
-    gap:
-      25px;
+  .skyline-hero{
+    min-height:620px;
   }
 
+  .skyline-hero-content{
+    grid-template-columns:1fr;
 
-  .skyline-hero .page-logo {
+    text-align:center;
 
-    margin:
-      0 auto;
-
-    width:
-      175px;
-
-    height:
-      175px;
+    gap:22px;
   }
 
+  .skyline-logo{
+    margin:auto;
 
-  .skyline-hero h1 {
-
-    font-size:
-      45px;
-
-    letter-spacing:
-      -2px;
+    width:175px;
+    height:175px;
   }
 
-
-  .skyline-hero p {
-
-    margin:
-      20px auto 0;
-
-    font-size:
-      14px;
+  .skyline-hero p{
+    margin:20px auto;
   }
 
-
-  .hero-actions {
-
-    justify-content:
-      center;
+  .hero-actions{
+    justify-content:center;
   }
 
-
-  .feature-panel {
-
-    grid-template-columns:
-      1fr;
+  .gallery{
+    grid-template-columns:1fr;
   }
 
+  section{
+    padding:65px 0;
+  }
 
-  .feature-copy {
-
+  .panel,
+  .about{
     padding:
-      32px 25px;
-  }
-
-
-  .feature-image {
-
-    min-height:
-      300px;
-  }
-
-
-  .feature-image img {
-
-    min-height:
-      300px;
-  }
-
-
-  .gallery-grid {
-
-    grid-template-columns:
-      1fr;
-  }
-
-
-  .gallery-panel {
-
-    padding:
-      30px 20px;
-  }
-
-
-  .contact-panel {
-
-    flex-direction:
-      column;
-
-    align-items:
-      flex-start;
-  }
-
-
-  .contact-actions {
-
-    width:
-      100%;
-  }
-
-
-  .contact-actions .button {
-
-    width:
-      100%;
+      25px 20px;
   }
 
 }
 
+@media(max-width:480px){
 
-@media(max-width:480px) {
-
-  section {
-
-    padding:
-      65px 0;
+  .skyline-hero h1{
+    font-size:38px;
   }
 
-
-  .container {
-
-    width:
-      90%;
+  .button{
+    width:100%;
   }
 
-
-  .skyline-hero h1 {
-
-    font-size:
-      38px;
-  }
-
-
-  .hero-actions {
-
-    flex-direction:
-      column;
-  }
-
-
-  .hero-actions .button {
-
-    width:
-      100%;
-  }
-
-
-  .tiktok-panel {
-
-    padding:
-      30px 15px;
-  }
-
-
-  .about {
-
-    padding:
-      30px 22px;
+  .gallery-caption h3{
+    font-size:18px;
   }
 
 }
 
 </style>
-
 </head>
 
 
@@ -1782,12 +899,11 @@ footer strong {
 
 <!-- =======================================================
      HEADER
-     ======================================================= -->
+======================================================= -->
 
 <header class="site-header">
 
   <div class="container nav">
-
 
     <a
       href="index.html"
@@ -1824,24 +940,20 @@ footer strong {
         Home
       </a>
 
-
       <a
-        href="skyline.html"
         class="active"
+        href="skyline.html"
       >
         Skyline
       </a>
-
 
       <a href="paranormal.html">
         Paranormal
       </a>
 
-
       <a href="photography.html">
         Photography
       </a>
-
 
       <a href="contact.html">
         Contact
@@ -1860,7 +972,7 @@ footer strong {
 
 <!-- =======================================================
      SKYLINE HERO
-     ======================================================= -->
+======================================================= -->
 
 <section class="skyline-hero">
 
@@ -1870,7 +982,7 @@ footer strong {
     <img
       src="sky-logo.png.PNG"
       alt="NEWITT Skyline Media logo"
-      class="page-logo"
+      class="skyline-logo"
     >
 
 
@@ -1888,23 +1000,19 @@ footer strong {
 
 
       <p>
-
-        Welcome to the view from above.
-        Drone footage, aerial photography and
-        places that look completely different
-        once you stop looking at them from
-        ground level.
-
+        Welcome to the view from above. Drone footage,
+        aerial photography and places that look completely
+        different once you stop looking at them from ground level.
       </p>
 
 
-      <div class="hero-actions">
+      <div class="buttons hero-actions">
 
         <a
-          href="#gloucester"
+          href="#gloucester-gallery"
           class="button primary"
         >
-          View Aerial Work
+          Explore Skyline
         </a>
 
 
@@ -1912,13 +1020,12 @@ footer strong {
           href="#tiktok"
           class="button"
         >
-          Latest TikTok
+          Skyline TikTok
         </a>
 
       </div>
 
     </div>
-
 
   </div>
 
@@ -1927,10 +1034,12 @@ footer strong {
 
 
 <!-- =======================================================
-     GLOUCESTER PRISON FEATURE
-     ======================================================= -->
+     GLOUCESTER PRISON GALLERY
+======================================================= -->
 
-<section id="gloucester">
+<section
+  id="gloucester-gallery"
+>
 
   <div class="container">
 
@@ -1938,249 +1047,179 @@ footer strong {
     <div class="section-heading">
 
       <div class="eyebrow">
-        Featured location
+        Skyline Gallery
       </div>
 
 
       <h2>
-        The view from <span>up here.</span>
+        Gloucester Prison
+        <span>from above.</span>
       </h2>
 
 
       <p>
-
         Some places look ordinary from the ground.
         Give them a little altitude and suddenly
         they start showing off.
-
       </p>
 
     </div>
 
 
 
-    <div class="feature-panel">
+    <div class="gallery">
 
 
-      <div class="feature-copy">
+      <!-- =================================================
+           IMAGE 01
+      ================================================== -->
+
+      <article class="gallery-card">
+
+        <a
+          href="media/skyline/Gloucester-prison-aerial-01.JPG"
+          class="gallery-image-link"
+          aria-label="Open Gloucester Prison aerial photograph 01"
+        >
+
+          <img
+            src="media/skyline/Gloucester-prison-aerial-01.JPG"
+            alt="Gloucester Prison aerial view 01"
+            loading="eager"
+          >
+
+        </a>
 
 
-        <div class="eyebrow">
-          NEWITT Skyline Media
-        </div>
+        <div class="gallery-caption">
 
+          <h3>
+            Gloucester Prison • Aerial View 01
+          </h3>
 
-        <h2>
-          GLOUCESTER PRISON
-          <span>FROM ABOVE</span>
-        </h2>
-
-
-        <div class="blue-line"></div>
-
-
-        <p>
-
-          Aerial photography captured over
-          Gloucester Prison, showing the historic
-          buildings, surrounding area and layout
-          from above.
-
-        </p>
-
-
-      </div>
-
-
-
-      <!--
-        IMPORTANT:
-        Replace the filename below with the actual
-        Gloucester Prison hero image filename once
-        it is in the public folder.
-
-        Do not use a random stock image.
-      -->
-
-      <div class="feature-image">
-
-        <div class="image-placeholder">
-
-          <div>
-
-            <strong>
-              Gloucester Prison
-            </strong>
-
-            Main aerial photograph
-
-          </div>
+          <p>
+            An aerial view across Gloucester Prison
+            and the surrounding area, captured by
+            NEWITT Skyline Media.
+          </p>
 
         </div>
 
-      </div>
-
-
-    </div>
-
-
-  </div>
-
-</section>
+      </article>
 
 
 
-<!-- =======================================================
-     SKYLINE GALLERY
-     ======================================================= -->
+      <!-- =================================================
+           IMAGE 02
+      ================================================== -->
 
-<section>
+      <article class="gallery-card">
 
-  <div class="container">
+        <a
+          href="media/skyline/Gloucester-prison-aerial-02.JPG"
+          class="gallery-image-link"
+          aria-label="Open Gloucester Prison aerial photograph 02"
+        >
+
+          <img
+            src="media/skyline/Gloucester-prison-aerial-02.JPG"
+            alt="Gloucester Prison aerial view 02"
+            loading="lazy"
+          >
+
+        </a>
 
 
-    <div class="gallery-panel">
+        <div class="gallery-caption">
 
+          <h3>
+            Gloucester Prison • Aerial View 02
+          </h3>
 
-      <div class="gallery-heading">
+          <p>
+            A different perspective across the
+            prison complex and surrounding buildings.
+          </p>
 
-
-        <div class="eyebrow">
-          Skyline Gallery
         </div>
 
+      </article>
 
-        <h2>
-          SKYLINE <span>GALLERY</span>
-        </h2>
 
 
-        <p>
+      <!-- =================================================
+           IMAGE 03
+      ================================================== -->
 
-          A selection of aerial views captured
-          by NEWITT Skyline Media.
+      <article class="gallery-card">
 
-        </p>
+        <a
+          href="media/skyline/Gloucester-prison-aerial-03.JPG"
+          class="gallery-image-link"
+          aria-label="Open Gloucester Prison aerial photograph 03"
+        >
 
+          <img
+            src="media/skyline/Gloucester-prison-aerial-03.JPG"
+            alt="Gloucester Prison aerial view 03"
+            loading="lazy"
+          >
 
-      </div>
+        </a>
 
 
+        <div class="gallery-caption">
 
-      <div class="gallery-grid">
+          <h3>
+            Gloucester Prison • Aerial View 03
+          </h3>
 
+          <p>
+            Another aerial perspective showing
+            the scale and layout of the historic site.
+          </p>
 
-        <!-- IMAGE 02 -->
+        </div>
 
-        <article class="gallery-item">
+      </article>
 
 
-          <div class="gallery-image">
 
-            <div class="gallery-placeholder">
+      <!-- =================================================
+           IMAGE 04
+      ================================================== -->
 
-              Gloucester Prison
-              <br>
-              Aerial View 02
+      <article class="gallery-card">
 
-            </div>
+        <a
+          href="media/skyline/Gloucester-prison-aerial-04.JPG"
+          class="gallery-image-link"
+          aria-label="Open Gloucester Prison aerial photograph 04"
+        >
 
-          </div>
+          <img
+            src="media/skyline/Gloucester-prison-aerial-04.JPG"
+            alt="Gloucester Prison aerial view 04"
+            loading="lazy"
+          >
 
+        </a>
 
-          <div class="gallery-info">
 
-            <h3>
-              Gloucester Prison • Aerial View 02
-            </h3>
+        <div class="gallery-caption">
 
+          <h3>
+            Gloucester Prison • Aerial View 04
+          </h3>
 
-            <p>
-              Wider view showing the prison complex
-              and surrounding streets.
-            </p>
+          <p>
+            A wider aerial perspective captured
+            from above by NEWITT Skyline Media.
+          </p>
 
-          </div>
+        </div>
 
-
-        </article>
-
-
-
-        <!-- IMAGE 03 -->
-
-        <article class="gallery-item">
-
-
-          <div class="gallery-image">
-
-            <div class="gallery-placeholder">
-
-              Gloucester Prison
-              <br>
-              Aerial View 03
-
-            </div>
-
-          </div>
-
-
-          <div class="gallery-info">
-
-            <h3>
-              Gloucester Prison • Aerial View 03
-            </h3>
-
-
-            <p>
-              Inside the prison complex showing
-              different buildings and rooftops.
-            </p>
-
-          </div>
-
-
-        </article>
-
-
-
-        <!-- IMAGE 04 -->
-
-        <article class="gallery-item">
-
-
-          <div class="gallery-image">
-
-            <div class="gallery-placeholder">
-
-              Gloucester Prison
-              <br>
-              Aerial View 04
-
-            </div>
-
-          </div>
-
-
-          <div class="gallery-info">
-
-            <h3>
-              Gloucester Prison • Aerial View 04
-            </h3>
-
-
-            <p>
-              Another perspective showing the scale
-              and layout of the Gloucester Prison site.
-            </p>
-
-          </div>
-
-
-        </article>
-
-
-      </div>
+      </article>
 
 
     </div>
@@ -2193,54 +1232,48 @@ footer strong {
 
 <!-- =======================================================
      TIKTOK
-     ======================================================= -->
+======================================================= -->
 
 <section id="tiktok">
 
   <div class="container">
 
-
-    <div class="tiktok-panel">
+    <div class="panel">
 
 
       <div class="eyebrow">
-        Latest from Skyline
+        The Skyline feed
       </div>
 
 
       <h2>
-        What's happening over on
+        What is happening over on
         <span>TikTok?</span>
       </h2>
 
 
       <p>
-
-        Follow NEWITT Skyline Media for new
-        drone footage, aerial views and
-        upcoming projects.
-
+        The latest clips and aerial views live here too.
+        If it flies, looks good and survives the editing
+        process, it may well turn up.
       </p>
 
 
       <div class="tiktok-box">
-
 
         <blockquote
           class="tiktok-embed"
           cite="https://www.tiktok.com/@newittskylinemedia"
           data-unique-id="newittskylinemedia"
           data-embed-type="creator"
-          style="
-            max-width:780px;
-            min-width:288px;
-          "
+          style="max-width:780px;min-width:288px;"
         >
 
           <section>
 
             <a
               target="_blank"
+              rel="noopener"
               href="https://www.tiktok.com/@newittskylinemedia"
             >
               @newittskylinemedia
@@ -2250,19 +1283,21 @@ footer strong {
 
         </blockquote>
 
-
       </div>
 
 
-      <a
-        href="https://www.tiktok.com/@newittskylinemedia"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="button primary"
-      >
-        Visit Skyline TikTok
-      </a>
+      <div class="buttons">
 
+        <a
+          href="https://www.tiktok.com/@newittskylinemedia"
+          target="_blank"
+          rel="noopener"
+          class="button primary"
+        >
+          Visit Skyline TikTok
+        </a>
+
+      </div>
 
     </div>
 
@@ -2273,16 +1308,14 @@ footer strong {
 
 
 <!-- =======================================================
-     ABOUT SKYLINE
-     ======================================================= -->
+     WHY SKYLINE
+======================================================= -->
 
 <section>
 
   <div class="container">
 
-
     <div class="about">
-
 
       <div class="eyebrow">
         Why Skyline?
@@ -2296,87 +1329,16 @@ footer strong {
 
 
       <p>
-
-        NEWITT Skyline Media is the aerial side
-        of the brand, built around drone footage,
-        landscapes, aerial photography and those
-        moments where the view makes you stop
-        for a second.
-
+        NEWITT Skyline Media is the aerial side of the brand,
+        built around drone footage, landscapes, aerial photography
+        and those moments where the view makes you stop for a second.
       </p>
 
 
       <p>
-
-        From locations such as Gloucester Prison
-        to future projects across the UK, Skyline
-        is about showing places from a perspective
-        that most people never get to see.
-
+        There is a lot more to come.
+        The sky is, quite literally, the limit.
       </p>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =======================================================
-     CONTACT
-     ======================================================= -->
-
-<section>
-
-  <div class="container">
-
-
-    <div class="contact-panel">
-
-
-      <div>
-
-        <div class="eyebrow">
-          NEWITT Skyline Media
-        </div>
-
-
-        <h2>
-          Want something captured from above?
-        </h2>
-
-
-        <p>
-          If you have a project, location or idea
-          you'd like to discuss, get in touch.
-        </p>
-
-      </div>
-
-
-      <div class="contact-actions">
-
-
-        <a
-          href="mailto:n.skyline.media@gmail.com"
-          class="button primary"
-        >
-          Get in Touch
-        </a>
-
-
-        <a
-          href="index.html"
-          class="button"
-        >
-          Back to Home
-        </a>
-
-
-      </div>
-
 
     </div>
 
@@ -2390,33 +1352,59 @@ footer strong {
 
 
 <!-- =======================================================
+     IMAGE LIGHTBOX
+======================================================= -->
+
+<div
+  class="lightbox"
+  id="lightbox"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Full size gallery image"
+>
+
+  <button
+    class="lightbox-close"
+    id="lightboxClose"
+    aria-label="Close image"
+  >
+    &times;
+  </button>
+
+
+  <img
+    id="lightboxImage"
+    src=""
+    alt=""
+  >
+
+</div>
+
+
+
+<!-- =======================================================
      FOOTER
-     ======================================================= -->
+======================================================= -->
 
 <footer>
 
-  <strong>
-    NEWITT SKYLINE MEDIA
-  </strong>
+  <div class="container">
 
-  <br>
-  <br>
+    NEWITT Skyline Media
 
-  A fresh view from above.
+    <br><br>
 
-  <br>
-  <br>
+    A fresh view from above.
 
-  © 2026 NEWITT Media.
-  All rights reserved.
+  </div>
 
 </footer>
 
 
 
 <!-- =======================================================
-     TIKTOK EMBED
-     ======================================================= -->
+     TIKTOK SCRIPT
+======================================================= -->
 
 <script
   async
@@ -2426,16 +1414,20 @@ footer strong {
 
 
 <!-- =======================================================
-     MOBILE MENU
-     ======================================================= -->
+     JAVASCRIPT
+======================================================= -->
 
 <script>
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
 const menuButton =
   document.querySelector(".menu-toggle");
 
 const menu =
-  document.querySelector("#main-menu");
+  document.getElementById("main-menu");
 
 
 menuButton.addEventListener(
@@ -2447,7 +1439,7 @@ menuButton.addEventListener(
 
     menuButton.setAttribute(
       "aria-expanded",
-      open
+      open ? "true" : "false"
     );
 
   }
@@ -2455,7 +1447,7 @@ menuButton.addEventListener(
 
 
 document
-  .querySelectorAll("#main-menu a")
+  .querySelectorAll(".nav-links a")
   .forEach(function(link){
 
     link.addEventListener(
@@ -2474,9 +1466,97 @@ document
 
   });
 
+
+
+/* =========================================================
+   GALLERY LIGHTBOX
+========================================================= */
+
+const lightbox =
+  document.getElementById("lightbox");
+
+const lightboxImage =
+  document.getElementById("lightboxImage");
+
+const lightboxClose =
+  document.getElementById("lightboxClose");
+
+
+document
+  .querySelectorAll(".gallery-image-link")
+  .forEach(function(link){
+
+    link.addEventListener(
+      "click",
+      function(event){
+
+        event.preventDefault();
+
+        const image =
+          link.querySelector("img");
+
+        lightboxImage.src =
+          link.getAttribute("href");
+
+        lightboxImage.alt =
+          image.alt;
+
+        lightbox.classList.add("open");
+
+      }
+    );
+
+  });
+
+
+
+/* =========================================================
+   CLOSE LIGHTBOX
+========================================================= */
+
+function closeLightbox(){
+
+  lightbox.classList.remove("open");
+
+  lightboxImage.src="";
+
+}
+
+
+lightboxClose.addEventListener(
+  "click",
+  closeLightbox
+);
+
+
+lightbox.addEventListener(
+  "click",
+  function(event){
+
+    if(event.target === lightbox){
+
+      closeLightbox();
+
+    }
+
+  }
+);
+
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(event.key === "Escape"){
+
+      closeLightbox();
+
+    }
+
+  }
+);
+
 </script>
 
-
 </body>
-
 </html>
