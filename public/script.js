@@ -27,7 +27,7 @@ function setMenu(open) {
 
     menu.classList.toggle(
         "open",
-        open
+        Boolean(open)
     );
 
 
@@ -261,6 +261,12 @@ function setupGallery() {
                     );
 
 
+                    lightbox.setAttribute(
+                        "aria-hidden",
+                        "false"
+                    );
+
+
                     document.body.style.overflow =
                         "hidden";
 
@@ -330,12 +336,20 @@ function closeLightbox() {
             "open"
         );
 
+
+        lightbox.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
     }
 
 
     if (lightboxImage) {
 
         lightboxImage.src = "";
+
+        lightboxImage.alt = "";
 
     }
 
@@ -408,9 +422,6 @@ function setupKeyboardControls() {
         "keydown",
         function (event) {
 
-
-            /* Escape closes mobile menu */
-
             if (
                 event.key ===
                 "Escape"
@@ -424,6 +435,34 @@ function setupKeyboardControls() {
 
         }
     );
+
+}
+
+
+/* =====================================================
+   CLOSE MENU AFTER NAVIGATION
+===================================================== */
+
+function setupNavigationLinks() {
+
+    document
+        .querySelectorAll(
+            ".nav-links a"
+        )
+        .forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        setMenu(false);
+
+                    }
+                );
+
+            }
+        );
 
 }
 
@@ -446,28 +485,7 @@ document.addEventListener(
 
         setupKeyboardControls();
 
-
-        /* Close mobile menu after
-           selecting a page */
-
-        document
-            .querySelectorAll(
-                ".nav-links a"
-            )
-            .forEach(
-                function (link) {
-
-                    link.addEventListener(
-                        "click",
-                        function () {
-
-                            setMenu(false);
-
-                        }
-                    );
-
-                }
-            );
+        setupNavigationLinks();
 
     }
 );
