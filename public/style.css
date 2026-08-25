@@ -1,7 +1,7 @@
 /* =========================================================
    NEWITT MEDIA
    MASTER WEBSITE STYLESHEET
-   FINAL LOGO BLENDING EDITION
+   PHASE 1.1 CINEMATIC BACKGROUND EDITION
    ========================================================= */
 
 :root {
@@ -53,10 +53,17 @@ body {
         sans-serif;
 
     color: var(--white);
-    background: var(--black);
+    background: #000;
 
     overflow-x: hidden;
 }
+
+
+/* =========================================================
+   CINEMATIC BACKGROUND
+   Scenery remains visible at the sides.
+   Centre fades to deep black for readability.
+   ========================================================= */
 
 body::before {
     content: "";
@@ -68,8 +75,14 @@ body::before {
 
     background:
         linear-gradient(
-            rgba(3, 7, 14, 0.55),
-            rgba(3, 7, 14, 0.82)
+            90deg,
+            rgba(3, 7, 14, 0.25) 0%,
+            rgba(3, 7, 14, 0.48) 20%,
+            rgba(0, 0, 0, 0.94) 42%,
+            rgba(0, 0, 0, 1) 50%,
+            rgba(0, 0, 0, 0.94) 58%,
+            rgba(3, 7, 14, 0.48) 80%,
+            rgba(3, 7, 14, 0.25) 100%
         ),
         url("background.png.PNG")
         center / cover
@@ -90,14 +103,12 @@ body::after {
 
     background:
         radial-gradient(
-            circle at 50% 8%,
-            rgba(255,255,255,0.08),
-            transparent 38%
-        ),
-        linear-gradient(
-            180deg,
-            rgba(0,0,0,0.04),
-            rgba(0,0,0,0.52)
+            ellipse at center,
+            rgba(0, 0, 0, 0.12) 0%,
+            rgba(0, 0, 0, 0.42) 42%,
+            rgba(0, 0, 0, 0.62) 55%,
+            rgba(0, 0, 0, 0.20) 80%,
+            rgba(0, 0, 0, 0.05) 100%
         );
 }
 
@@ -323,13 +334,13 @@ a {
     border-radius: 24px;
 
     background:
-        var(--panel);
+        rgba(3, 6, 10, 0.76);
 
     backdrop-filter:
-        blur(14px);
+        blur(10px);
 
     -webkit-backdrop-filter:
-        blur(14px);
+        blur(10px);
 
     box-shadow:
         var(--shadow);
@@ -362,8 +373,14 @@ a {
     margin:
         0 auto 26px;
 
-    background: transparent;
-    border: none;
+    background:
+        transparent;
+
+    border:
+        none;
+
+    box-shadow:
+        none;
 
     filter:
         drop-shadow(
@@ -778,11 +795,7 @@ section {
         #4eb4ff;
 
     font-size:
-        clamp(
-            13px,
-            1.8vw,
-            20px
-        );
+        clamp(13px,1.8vw,20px);
 
     font-weight:
         950;
@@ -806,11 +819,7 @@ section {
         1050px;
 
     font-size:
-        clamp(
-            40px,
-            6.5vw,
-            82px
-        );
+        clamp(40px,6.5vw,82px);
 
     line-height:
         0.93;
@@ -886,11 +895,7 @@ section {
         #ffffff;
 
     font-size:
-        clamp(
-            10px,
-            1.3vw,
-            16px
-        );
+        clamp(10px,1.3vw,16px);
 
     font-weight:
         900;
@@ -926,11 +931,7 @@ section {
         #dce5f0;
 
     font-size:
-        clamp(
-            14px,
-            1.8vw,
-            20px
-        );
+        clamp(14px,1.8vw,20px);
 
     text-shadow:
         0 2px 10px
@@ -1146,11 +1147,7 @@ section {
 
 .social-brand-name {
     font-size:
-        clamp(
-            44px,
-            5.3vw,
-            78px
-        );
+        clamp(44px,5.3vw,78px);
 
     line-height:
         0.85;
@@ -1194,11 +1191,7 @@ section {
         6px 0 12px;
 
     font-size:
-        clamp(
-            34px,
-            4.3vw,
-            62px
-        );
+        clamp(34px,4.3vw,62px);
 
     line-height:
         0.92;
@@ -1231,11 +1224,7 @@ section {
         #dfe8f2;
 
     font-size:
-        clamp(
-            11px,
-            1.3vw,
-            15px
-        );
+        clamp(11px,1.3vw,15px);
 
     font-weight:
         900;
@@ -1424,7 +1413,7 @@ section {
 
 
 /* =========================================================
-   MOVING FOLLOW US ON SOCIAL MEDIA BANNER
+   SOCIAL TICKER
    ========================================================= */
 
 .social-ticker {
@@ -1545,11 +1534,7 @@ section {
         nowrap;
 
     font-size:
-        clamp(
-            17px,
-            2.1vw,
-            30px
-        );
+        clamp(17px,2.1vw,30px);
 
     font-weight:
         950;
@@ -1718,11 +1703,7 @@ section {
         900px;
 
     font-size:
-        clamp(
-            38px,
-            6vw,
-            76px
-        );
+        clamp(38px,6vw,76px);
 
     line-height:
         0.95;
@@ -1770,11 +1751,7 @@ section {
         #cbd5e0;
 
     font-size:
-        clamp(
-            12px,
-            1.6vw,
-            18px
-        );
+        clamp(12px,1.6vw,18px);
 
     font-weight:
         900;
@@ -2035,7 +2012,7 @@ footer {
 
 
 /* =========================================================
-   SKYLINE HERO SUPPORT
+   SKYLINE HERO
    ========================================================= */
 
 .skyline-hero {
@@ -2244,7 +2221,7 @@ footer {
         22px;
 
     background:
-        var(--panel);
+        rgba(3,6,10,0.78);
 
     box-shadow:
         var(--shadow);
@@ -2265,6 +2242,104 @@ footer {
 
     flex-shrink:
         0;
+}
+
+
+/* =========================================================
+   CONTACT / PAGE LOGOS
+   ========================================================= */
+
+.paranormal-page-logo {
+    width:
+        170px;
+
+    height:
+        170px;
+
+    max-width:
+        65vw;
+
+    object-fit:
+        contain;
+
+    background:
+        transparent;
+
+    border:
+        none;
+
+    box-shadow:
+        none;
+
+    filter:
+        drop-shadow(
+            0 0 18px
+            rgba(255,31,50,0.18)
+        )
+        drop-shadow(
+            0 10px 24px
+            rgba(0,0,0,0.50)
+        );
+}
+
+.photography-logo {
+    width:
+        155px;
+
+    height:
+        155px;
+
+    object-fit:
+        contain;
+
+    background:
+        transparent;
+
+    border:
+        none;
+
+    box-shadow:
+        none;
+
+    filter:
+        drop-shadow(
+            0 0 16px
+            rgba(190,210,230,0.18)
+        )
+        drop-shadow(
+            0 10px 22px
+            rgba(0,0,0,0.48)
+        );
+}
+
+.contact-logo {
+    width:
+        155px;
+
+    height:
+        155px;
+
+    object-fit:
+        contain;
+
+    background:
+        transparent;
+
+    border:
+        none;
+
+    box-shadow:
+        none;
+
+    filter:
+        drop-shadow(
+            0 0 18px
+            rgba(89,185,255,0.18)
+        )
+        drop-shadow(
+            0 10px 22px
+            rgba(0,0,0,0.48)
+        );
 }
 
 
@@ -2435,6 +2510,23 @@ footer {
 
 @media (max-width: 800px) {
 
+    body::before {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(3,7,14,0.32) 0%,
+                rgba(0,0,0,0.68) 25%,
+                rgba(0,0,0,0.96) 42%,
+                rgba(0,0,0,1) 50%,
+                rgba(0,0,0,0.96) 58%,
+                rgba(0,0,0,0.68) 75%,
+                rgba(3,7,14,0.32) 100%
+            ),
+            url("background.png.PNG")
+            center / cover
+            no-repeat;
+    }
+
     .container {
         width:
             90%;
@@ -2592,9 +2684,7 @@ footer {
     }
 
 
-    /* =====================================================
-       SOCIAL HUB MOBILE
-    ===================================================== */
+    /* SOCIAL HUB */
 
     .social-hub-content {
         padding:
@@ -2731,9 +2821,7 @@ footer {
     }
 
 
-    /* =====================================================
-       MOVING BANNER MOBILE
-    ===================================================== */
+    /* MOVING BANNER */
 
     .social-ticker-group {
         min-height:
@@ -2755,9 +2843,7 @@ footer {
     }
 
 
-    /* =====================================================
-       FINAL SOCIAL SECTION MOBILE
-    ===================================================== */
+    /* FINAL SOCIAL SECTION */
 
     .social-final {
         min-height:
@@ -2796,9 +2882,7 @@ footer {
     }
 
 
-    /* =====================================================
-       CONTACT
-    ===================================================== */
+    /* CONTACT */
 
     .contact-panel {
         flex-direction:
@@ -2822,10 +2906,16 @@ footer {
             100%;
     }
 
+    .contact-logo {
+        width:
+            155px;
 
-    /* =====================================================
-       SKYLINE
-    ===================================================== */
+        height:
+            155px;
+    }
+
+
+    /* SKYLINE */
 
     .skyline-hero {
         min-height:
@@ -2851,44 +2941,6 @@ footer {
             145px;
     }
 
-
-    /* =====================================================
-       BUTTONS
-    ===================================================== */
-
-    .buttons {
-        flex-direction:
-            column;
-
-        width:
-            100%;
-    }
-
-    .buttons .button {
-        width:
-            min(100%,360px);
-    }
-
-
-    /* =====================================================
-       ABOUT
-    ===================================================== */
-
-    .about {
-        padding:
-            26px 22px;
-    }
-
-    section {
-        padding:
-            60px 0;
-    }
-
-
-    /* =====================================================
-       PARANORMAL / PHOTOGRAPHY / CONTACT LOGOS
-    ===================================================== */
-
     .paranormal-page-logo {
         width:
             160px;
@@ -2905,14 +2957,34 @@ footer {
             155px;
     }
 
-    .contact-logo {
-        width:
-            155px;
 
-        height:
-            155px;
+    /* BUTTONS */
+
+    .buttons {
+        flex-direction:
+            column;
+
+        width:
+            100%;
     }
 
+    .buttons .button {
+        width:
+            min(100%,360px);
+    }
+
+
+    /* ABOUT */
+
+    .about {
+        padding:
+            26px 22px;
+    }
+
+    section {
+        padding:
+            60px 0;
+    }
 }
 
 
@@ -2973,9 +3045,7 @@ footer {
     }
 
 
-    /* =====================================================
-       SOCIAL HUB
-    ===================================================== */
+    /* SOCIAL HUB */
 
     .social-hub-content {
         padding-top:
@@ -3053,9 +3123,7 @@ footer {
     }
 
 
-    /* =====================================================
-       SKYLINE
-    ===================================================== */
+    /* SKYLINE */
 
     .skyline-hero-content .page-logo {
         width:
@@ -3066,9 +3134,7 @@ footer {
     }
 
 
-    /* =====================================================
-       PARANORMAL
-    ===================================================== */
+    /* PARANORMAL */
 
     .paranormal-page-logo {
         width:
@@ -3079,9 +3145,7 @@ footer {
     }
 
 
-    /* =====================================================
-       PHOTOGRAPHY
-    ===================================================== */
+    /* PHOTOGRAPHY */
 
     .photography-logo {
         width:
@@ -3092,9 +3156,7 @@ footer {
     }
 
 
-    /* =====================================================
-       CONTACT
-    ===================================================== */
+    /* CONTACT */
 
     .contact-logo {
         width:
@@ -3105,9 +3167,7 @@ footer {
     }
 
 
-    /* =====================================================
-       LIGHTBOX
-    ===================================================== */
+    /* LIGHTBOX */
 
     .lightbox {
         padding:
@@ -3123,9 +3183,7 @@ footer {
     }
 
 
-    /* =====================================================
-       FOOTER
-    ===================================================== */
+    /* FOOTER */
 
     footer {
         padding:
@@ -3134,19 +3192,12 @@ footer {
         font-size:
             9px;
     }
-
 }
 
 
 /* =========================================================
-   FINAL LOGO BLENDING SAFETY
+   LOGO SAFETY
    ========================================================= */
-
-/*
-   Transparent PNG logos should visually sit inside the page.
-   These rules deliberately remove any accidental box,
-   background or border styling from logo elements.
-*/
 
 .hero-logo,
 .brand-logo,
@@ -3166,12 +3217,11 @@ footer {
 
     box-shadow:
         none !important;
-
 }
 
 
 /* =========================================================
-   FINAL LOGO DESKTOP CONTROL
+   DESKTOP LOGO CONTROL
    ========================================================= */
 
 @media (min-width: 801px) {
@@ -3239,15 +3289,22 @@ footer {
         height:
             95px !important;
     }
-
 }
 
 
 /* =========================================================
-   FINAL LOGO MOBILE CONTROL
+   FINAL MOBILE LOGO CONTROL
    ========================================================= */
 
 @media (max-width: 800px) {
+
+    .nav-brand img {
+        width:
+            36px !important;
+
+        height:
+            36px !important;
+    }
 
     .hero-logo {
         width:
@@ -3312,12 +3369,11 @@ footer {
         height:
             92px !important;
     }
-
 }
 
 
 /* =========================================================
-   FINAL LOGO SMALL PHONE CONTROL
+   FINAL SMALL PHONE LOGO CONTROL
    ========================================================= */
 
 @media (max-width: 480px) {
@@ -3393,7 +3449,6 @@ footer {
         height:
             85px !important;
     }
-
 }
 
 
@@ -3423,5 +3478,4 @@ footer {
         scroll-behavior:
             auto !important;
     }
-
 }
