@@ -31,14 +31,13 @@
     box-sizing: border-box;
 }
 
-
 html {
     scroll-behavior: smooth;
 }
 
-
 body {
     margin: 0;
+
     font-family:
         Arial,
         Helvetica,
@@ -50,7 +49,6 @@ body {
 
     overflow-x: hidden;
 }
-
 
 body::before {
     content: "";
@@ -72,7 +70,6 @@ body::before {
 
     transform: scale(1.02);
 }
-
 
 body::after {
     content: "";
@@ -98,20 +95,17 @@ body::after {
         );
 }
 
-
 a {
     color: inherit;
 
     text-decoration: none;
 }
 
-
 img {
     max-width: 100%;
 
     display: block;
 }
-
 
 button,
 a {
@@ -120,7 +114,7 @@ a {
 
 
 /* =====================================================
-   MAIN CONTAINER
+   CONTAINER
 ===================================================== */
 
 .container {
@@ -151,7 +145,6 @@ a {
         1px solid var(--line);
 }
 
-
 .nav {
     min-height: 76px;
 
@@ -166,7 +159,7 @@ a {
 
 
 /* =====================================================
-   NEWITT MEDIA HEADER BRAND
+   NAV BRAND
 ===================================================== */
 
 .nav-brand {
@@ -185,7 +178,6 @@ a {
     white-space: nowrap;
 }
 
-
 .nav-brand img {
     width: 42px;
 
@@ -194,14 +186,13 @@ a {
     object-fit: contain;
 }
 
-
 .nav-brand span {
     color: var(--silver-bright);
 }
 
 
 /* =====================================================
-   DESKTOP NAVIGATION
+   NAVIGATION
 ===================================================== */
 
 .nav-links {
@@ -211,7 +202,6 @@ a {
 
     gap: 6px;
 }
-
 
 .nav-links a {
     position: relative;
@@ -232,16 +222,15 @@ a {
         transform 0.2s ease;
 }
 
-
 .nav-links a:hover {
     color: #ffffff;
 
     background:
         rgba(215, 221, 230, 0.10);
 
-    transform: translateY(-1px);
+    transform:
+        translateY(-1px);
 }
-
 
 .nav-links a.active {
     color: #ffffff;
@@ -249,7 +238,6 @@ a {
     background:
         rgba(215, 221, 230, 0.10);
 }
-
 
 .nav-links a.active::after {
     content: "";
@@ -276,7 +264,7 @@ a {
 
 
 /* =====================================================
-   MOBILE MENU BUTTON
+   MOBILE MENU
 ===================================================== */
 
 .menu-toggle {
@@ -313,20 +301,16 @@ a {
 .hero,
 .page-hero {
     padding:
-        92px
-        0
-        70px;
+        92px 0 70px;
 
     text-align: center;
 }
-
 
 .hero-card,
 .panel,
 .about {
     border:
-        1px solid
-        var(--line);
+        1px solid var(--line);
 
     border-radius: 24px;
 
@@ -338,7 +322,6 @@ a {
     box-shadow:
         var(--shadow);
 }
-
 
 .hero-card {
     width:
@@ -353,7 +336,7 @@ a {
 
 
 /* =====================================================
-   MAIN LOGO
+   HERO LOGO
 ===================================================== */
 
 .hero-logo {
@@ -393,17 +376,12 @@ a {
     text-transform: uppercase;
 }
 
-
 h1 {
     margin:
         12px 0 18px;
 
     font-size:
-        clamp(
-            40px,
-            8vw,
-            82px
-        );
+        clamp(40px, 8vw, 82px);
 
     line-height:
         0.95;
@@ -414,32 +392,24 @@ h1 {
         -3px;
 }
 
-
 h2 {
     font-size:
-        clamp(
-            30px,
-            5vw,
-            52px
-        );
+        clamp(30px, 5vw, 52px);
 
     margin:
         0 0 14px;
 }
-
 
 h3 {
     margin:
         10px 0;
 }
 
-
 h1 span,
 h2 span {
     color:
         var(--silver-bright);
 }
-
 
 p {
     color:
@@ -465,7 +435,6 @@ p {
 
     margin-top: 26px;
 }
-
 
 .button {
     display: inline-flex;
@@ -496,7 +465,6 @@ p {
         background 0.2s ease;
 }
 
-
 .button:hover {
     transform:
         translateY(-2px);
@@ -507,7 +475,6 @@ p {
     background:
         rgba(255, 255, 255, 0.11);
 }
-
 
 .button.primary {
     background:
@@ -534,7 +501,6 @@ section {
         75px 0;
 }
 
-
 .section-heading {
     text-align:
         center;
@@ -556,21 +522,16 @@ section {
         grid;
 
     grid-template-columns:
-        repeat(
-            3,
-            1fr
-        );
+        repeat(3, 1fr);
 
     gap:
         20px;
 }
 
-
 .brand-card,
 .gallery-card {
     border:
-        1px solid
-        var(--line);
+        1px solid var(--line);
 
     border-radius:
         20px;
@@ -585,12 +546,10 @@ section {
         var(--shadow);
 }
 
-
 .brand-card {
     padding:
         26px;
 }
-
 
 .brand-logo {
     width:
@@ -608,7 +567,7 @@ section {
 
 
 /* =====================================================
-   GALLERY
+   SKYLINE GALLERY
 ===================================================== */
 
 .gallery {
@@ -616,15 +575,27 @@ section {
         grid;
 
     grid-template-columns:
-        repeat(
-            2,
-            1fr
-        );
+        repeat(2, 1fr);
 
     gap:
         20px;
 }
 
+.gallery-card {
+    position:
+        relative;
+}
+
+.gallery-link {
+    display:
+        block;
+
+    overflow:
+        hidden;
+
+    cursor:
+        pointer;
+}
 
 .gallery-card img {
     width:
@@ -637,22 +608,11 @@ section {
         cover;
 }
 
-
-.gallery-link {
-    display:
-        block;
-
-    overflow:
-        hidden;
-}
-
-
 .gallery-link img {
     transition:
         transform 0.3s ease,
         filter 0.3s ease;
 }
-
 
 .gallery-link:hover img {
     transform:
@@ -662,7 +622,6 @@ section {
         brightness(1.06);
 }
 
-
 .gallery-caption {
     padding:
         18px;
@@ -670,7 +629,136 @@ section {
 
 
 /* =====================================================
-   ABOUT / INFORMATION PANELS
+   SKYLINE GALLERY LIGHTBOX
+===================================================== */
+
+.lightbox {
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        2000;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        24px;
+
+    background:
+        rgba(0, 0, 0, 0.92);
+
+    opacity:
+        0;
+
+    visibility:
+        hidden;
+
+    pointer-events:
+        none;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+}
+
+.lightbox.open {
+    opacity:
+        1;
+
+    visibility:
+        visible;
+
+    pointer-events:
+        auto;
+}
+
+.lightbox-image {
+    display:
+        block;
+
+    width:
+        auto;
+
+    height:
+        auto;
+
+    max-width:
+        min(94vw, 1400px);
+
+    max-height:
+        88vh;
+
+    object-fit:
+        contain;
+
+    border-radius:
+        10px;
+
+    box-shadow:
+        0 30px 100px
+        rgba(0, 0, 0, 0.75);
+}
+
+.lightbox-close {
+    position:
+        fixed;
+
+    top:
+        18px;
+
+    right:
+        20px;
+
+    z-index:
+        2001;
+
+    width:
+        48px;
+
+    height:
+        48px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.30);
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(10, 14, 20, 0.85);
+
+    color:
+        #ffffff;
+
+    font-size:
+        25px;
+
+    line-height:
+        1;
+
+    cursor:
+        pointer;
+}
+
+.lightbox-close:hover {
+    background:
+        rgba(255, 255, 255, 0.12);
+}
+
+
+/* =====================================================
+   ABOUT / INFORMATION
 ===================================================== */
 
 .about {
@@ -706,10 +794,8 @@ section {
         center;
 
     border-bottom:
-        1px solid
-        var(--line);
+        1px solid var(--line);
 }
-
 
 .skyline-hero::before {
     content:
@@ -733,7 +819,6 @@ section {
         no-repeat;
 }
 
-
 .skyline-hero-content {
     position:
         relative;
@@ -756,7 +841,6 @@ section {
     align-items:
         center;
 }
-
 
 .skyline-hero p {
     max-width:
@@ -784,7 +868,7 @@ section {
 
 
 /* =====================================================
-   TIKTOK / SOCIAL EMBED AREA
+   SOCIAL / TIKTOK AREA
 ===================================================== */
 
 .tiktok-box {
@@ -798,8 +882,7 @@ section {
         center;
 
     border:
-        1px solid
-        var(--line);
+        1px solid var(--line);
 
     border-radius:
         18px;
@@ -827,8 +910,7 @@ section {
         24px;
 
     border:
-        1px solid
-        var(--line);
+        1px solid var(--line);
 
     border-radius:
         16px;
@@ -839,20 +921,14 @@ section {
 
 
 /* =====================================================
-   PARANORMAL PAGE
+   PARANORMAL
 ===================================================== */
 
 .paranormal-page .page-hero,
 .paranormal-page .panel {
     border-color:
-        rgba(
-            217,
-            31,
-            50,
-            0.30
-        );
+        rgba(217, 31, 50, 0.30);
 }
-
 
 .paranormal-page h1 span,
 .paranormal-page h2 span {
@@ -860,12 +936,10 @@ section {
         var(--paranormal-red-light);
 }
 
-
 .paranormal-page .eyebrow {
     color:
         #ffb0b8;
 }
-
 
 .paranormal-page .button.primary {
     background:
@@ -884,7 +958,7 @@ section {
 
 
 /* =====================================================
-   PHOTOGRAPHY PAGE
+   PHOTOGRAPHY
 ===================================================== */
 
 .photography-page h1 span,
@@ -895,7 +969,7 @@ section {
 
 
 /* =====================================================
-   CONTACT PAGE
+   CONTACT
 ===================================================== */
 
 .site-contact {
@@ -903,10 +977,7 @@ section {
         grid;
 
     grid-template-columns:
-        repeat(
-            2,
-            1fr
-        );
+        repeat(2, 1fr);
 
     gap:
         18px;
@@ -918,14 +989,12 @@ section {
         0 auto;
 }
 
-
 .contact-card {
     padding:
         26px;
 
     border:
-        1px solid
-        var(--line);
+        1px solid var(--line);
 
     border-radius:
         18px;
@@ -962,16 +1031,10 @@ section {
         50%;
 
     border:
-        1px solid
-        var(--line);
+        1px solid var(--line);
 
     background:
-        rgba(
-            5,
-            8,
-            12,
-            0.88
-        );
+        rgba(5, 8, 12, 0.88);
 
     color:
         #ffffff;
@@ -992,7 +1055,6 @@ section {
     cursor:
         pointer;
 }
-
 
 .back-top.show {
     opacity:
@@ -1039,7 +1101,6 @@ footer {
             block;
     }
 
-
     .nav-links {
         display:
             none;
@@ -1066,16 +1127,10 @@ footer {
             6px;
 
         background:
-            rgba(
-                4,
-                8,
-                14,
-                0.97
-            );
+            rgba(4, 8, 14, 0.97);
 
         border:
-            1px solid
-            var(--line);
+            1px solid var(--line);
 
         border-radius:
             16px;
@@ -1084,12 +1139,10 @@ footer {
             var(--shadow);
     }
 
-
     .nav-links.open {
         display:
             flex;
     }
-
 
     .nav-links a {
         width:
@@ -1108,19 +1161,16 @@ footer {
             center;
     }
 
-
     .brand-grid,
     .site-contact {
         grid-template-columns:
             1fr;
     }
 
-
     .gallery {
         grid-template-columns:
             1fr;
     }
-
 
     .skyline-hero-content {
         grid-template-columns:
@@ -1133,7 +1183,6 @@ footer {
             22px;
     }
 
-
     .page-logo {
         margin:
             0 auto;
@@ -1145,24 +1194,41 @@ footer {
             175px;
     }
 
-
     .hero {
         padding:
             62px 0 50px;
     }
-
 
     .hero-card {
         padding:
             38px 20px;
     }
 
-
     section {
         padding:
             65px 0;
     }
 
+    .lightbox {
+        padding:
+            12px;
+    }
+
+    .lightbox-image {
+        max-width:
+            96vw;
+
+        max-height:
+            82vh;
+    }
+
+    .lightbox-close {
+        top:
+            12px;
+
+        right:
+            12px;
+    }
 }
 
 
@@ -1180,12 +1246,10 @@ footer {
             -1.5px;
     }
 
-
     .button {
         width:
             100%;
     }
-
 
     .hero-logo {
         width:
@@ -1195,4 +1259,16 @@ footer {
             240px;
     }
 
+    .brand-logo {
+        width:
+            150px;
+
+        height:
+            150px;
+    }
+
+    .gallery-caption {
+        padding:
+            15px;
+    }
 }
