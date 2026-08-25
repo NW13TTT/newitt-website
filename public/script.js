@@ -347,9 +347,11 @@ function closeLightbox() {
 
     if (lightboxImage) {
 
-        lightboxImage.src = "";
+        lightboxImage.src =
+            "";
 
-        lightboxImage.alt = "";
+        lightboxImage.alt =
+            "";
 
     }
 
@@ -394,9 +396,11 @@ function setupOutsideMenuClose() {
                 menu.classList.contains(
                     "open"
                 ) &&
+
                 !menu.contains(
                     event.target
                 ) &&
+
                 !menuButton.contains(
                     event.target
                 )
@@ -422,6 +426,10 @@ function setupKeyboardControls() {
         "keydown",
         function (event) {
 
+
+            /* Escape closes mobile menu
+               and image lightbox */
+
             if (
                 event.key ===
                 "Escape"
@@ -440,7 +448,7 @@ function setupKeyboardControls() {
 
 
 /* =====================================================
-   CLOSE MENU AFTER NAVIGATION
+   NAVIGATION LINK HANDLING
 ===================================================== */
 
 function setupNavigationLinks() {
