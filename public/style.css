@@ -1,54 +1,42 @@
 /* =========================================================
    NEWITT MEDIA
    MASTER WEBSITE STYLESHEET
-   FINAL RESPONSIVE VERSION
+   PREMIUM RESPONSIVE VERSION
    ========================================================= */
 
 
 /* =========================================================
-   ROOT VARIABLES
+   ROOT
    ========================================================= */
 
 :root {
 
-    --black:
-        #030508;
-
-    --black-two:
-        #070b11;
+    --black: #030508;
+    --black-two: #070b11;
 
     --panel:
-        rgba(7, 12, 19, 0.84);
+        rgba(7, 12, 19, 0.86);
 
     --panel-soft:
-        rgba(5, 10, 17, 0.72);
+        rgba(5, 10, 17, 0.74);
 
-    --white:
-        #f7f9fc;
+    --white: #f7f9fc;
 
-    --silver:
-        #d7dde6;
+    --silver: #d7dde6;
 
-    --silver-bright:
-        #ffffff;
+    --silver-bright: #ffffff;
 
-    --muted:
-        #b8c3d1;
+    --muted: #b8c3d1;
 
-    --dim:
-        #7f8a97;
+    --dim: #7f8a97;
 
-    --sky-blue:
-        #168cff;
+    --sky-blue: #168cff;
 
-    --sky-blue-light:
-        #59b9ff;
+    --sky-blue-light: #59b9ff;
 
-    --paranormal-red:
-        #d91f32;
+    --paranormal-red: #d91f32;
 
-    --paranormal-red-light:
-        #ff4a5d;
+    --paranormal-red-light: #ff4a5d;
 
     --line:
         rgba(215, 221, 230, 0.20);
@@ -66,21 +54,23 @@
 
 
 /* =========================================================
-   GLOBAL RESET
+   RESET
    ========================================================= */
 
 * {
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
-    max-width: 100%;
-    overflow-x: hidden;
 }
 
+
 body {
+
     margin: 0;
+
     min-height: 100vh;
 
     font-family:
@@ -89,10 +79,13 @@ body {
         sans-serif;
 
     color: var(--white);
+
     background: var(--black);
 
     overflow-x: hidden;
+
 }
+
 
 body::before {
 
@@ -107,8 +100,8 @@ body::before {
     background:
 
         linear-gradient(
-            rgba(3, 7, 14, 0.55),
-            rgba(3, 7, 14, 0.82)
+            rgba(3, 7, 14, 0.52),
+            rgba(3, 7, 14, 0.80)
         ),
 
         url("background.png.PNG")
@@ -116,7 +109,9 @@ body::before {
         no-repeat;
 
     transform: scale(1.02);
+
 }
+
 
 body::after {
 
@@ -134,30 +129,42 @@ body::after {
 
         radial-gradient(
             circle at 50% 8%,
-            rgba(255, 255, 255, 0.08),
+            rgba(255,255,255,0.08),
             transparent 38%
         ),
 
         linear-gradient(
             180deg,
-            rgba(0, 0, 0, 0.04),
-            rgba(0, 0, 0, 0.52)
+            rgba(0,0,0,0.03),
+            rgba(0,0,0,0.50)
         );
+
 }
+
 
 a {
+
     color: inherit;
+
     text-decoration: none;
+
 }
 
+
 img {
+
     max-width: 100%;
+
     display: block;
+
 }
+
 
 button,
 a {
+
     touch-action: manipulation;
+
 }
 
 
@@ -171,7 +178,9 @@ a {
         min(1180px, 92%);
 
     margin-left: auto;
+
     margin-right: auto;
+
 }
 
 
@@ -188,7 +197,7 @@ a {
     z-index: 1000;
 
     background:
-        rgba(3, 6, 12, 0.92);
+        rgba(3,6,12,0.94);
 
     backdrop-filter:
         blur(18px);
@@ -199,11 +208,13 @@ a {
     border-bottom:
         1px solid
         var(--line-soft);
+
 }
+
 
 .nav {
 
-    min-height: 76px;
+    min-height: 78px;
 
     display: flex;
 
@@ -212,7 +223,13 @@ a {
     justify-content: space-between;
 
     gap: 22px;
+
 }
+
+
+/* =========================================================
+   HEADER BRAND
+   ========================================================= */
 
 .nav-brand {
 
@@ -220,27 +237,63 @@ a {
 
     align-items: center;
 
-    gap: 10px;
+    gap: 9px;
 
-    font-size: 18px;
+    min-width: 0;
 
-    font-weight: 900;
-
-    letter-spacing: 1px;
+    font-weight: 950;
 
     white-space: nowrap;
+
+    text-shadow:
+        0 0 14px rgba(255,255,255,0.15),
+        0 5px 18px rgba(0,0,0,0.65);
+
 }
+
 
 .nav-brand img {
 
-    width: 42px;
-    height: 42px;
+    width: 46px;
+
+    height: 46px;
 
     object-fit: contain;
+
+    flex-shrink: 0;
+
+    filter:
+        drop-shadow(
+            0 0 11px
+            rgba(255,255,255,0.18)
+        );
+
 }
 
-.nav-brand span {
-    color: var(--silver-bright);
+
+.nav-brand-name {
+
+    color: #ffffff;
+
+    font-size: 19px;
+
+    letter-spacing: 1.8px;
+
+}
+
+
+.nav-brand-media {
+
+    color: #cbd3dc;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    margin-left: -4px;
+
 }
 
 
@@ -255,7 +308,9 @@ a {
     align-items: center;
 
     gap: 6px;
+
 }
+
 
 .nav-links a {
 
@@ -275,26 +330,32 @@ a {
         color 0.2s ease,
         background 0.2s ease,
         transform 0.2s ease;
+
 }
+
 
 .nav-links a:hover {
 
     color: #ffffff;
 
     background:
-        rgba(215, 221, 230, 0.10);
+        rgba(215,221,230,0.10);
 
     transform:
         translateY(-1px);
+
 }
+
 
 .nav-links a.active {
 
     color: #ffffff;
 
     background:
-        rgba(215, 221, 230, 0.10);
+        rgba(215,221,230,0.10);
+
 }
+
 
 .nav-links a.active::after {
 
@@ -303,6 +364,7 @@ a {
     position: absolute;
 
     left: 15px;
+
     right: 15px;
 
     bottom: 5px;
@@ -317,6 +379,7 @@ a {
             var(--silver),
             #ffffff
         );
+
 }
 
 
@@ -334,23 +397,22 @@ a {
 
     border:
         1px solid
-        rgba(215, 221, 230, 0.30);
+        rgba(215,221,230,0.30);
 
     border-radius: 11px;
 
     background:
-        rgba(215, 221, 230, 0.08);
+        rgba(215,221,230,0.08);
 
     color: #ffffff;
 
     font:
-        800 13px
-        Arial,
-        sans-serif;
+        800 13px Arial, sans-serif;
 
     letter-spacing: 0.05em;
 
     cursor: pointer;
+
 }
 
 
@@ -362,19 +424,23 @@ a {
 .page-hero {
 
     padding:
-        92px 0 70px;
+        105px 0 90px;
 
     text-align: center;
+
 }
+
 
 .page-hero-content {
 
     width:
-        min(900px, 92%);
+        min(900px,92%);
 
     margin:
         0 auto;
+
 }
+
 
 .hero-card,
 .panel,
@@ -398,6 +464,7 @@ a {
 
     box-shadow:
         var(--shadow);
+
 }
 
 
@@ -408,56 +475,157 @@ a {
 .hero-card {
 
     width:
-        min(900px, 100%);
+        min(920px,100%);
 
     margin:
         0 auto;
 
     padding:
-        54px 36px;
+        64px 52px 70px;
+
 }
 
 
 /* =========================================================
-   HERO LOGOS
+   HERO LOGO
    ========================================================= */
 
 .hero-logo {
 
-    width: 300px;
-    height: 300px;
+    width:
+        320px;
 
-    max-width: 72%;
+    height:
+        320px;
 
-    object-fit: contain;
+    max-width:
+        72vw;
+
+    object-fit:
+        contain;
 
     margin:
-        0 auto 26px;
+        0 auto 25px;
 
     filter:
         drop-shadow(
-            0 10px 25px
-            rgba(255, 255, 255, 0.12)
+            0 12px 30px
+            rgba(0,0,0,0.58)
+        )
+
+        drop-shadow(
+            0 0 18px
+            rgba(255,255,255,0.12)
         );
+
 }
 
-.page-logo {
 
-    width: 210px;
-    height: 210px;
+/* =========================================================
+   MAIN BRAND TITLE
+   ========================================================= */
 
-    max-width: 70vw;
+.main-brand-title {
 
-    object-fit: contain;
+    display:
+        flex;
+
+    align-items:
+        baseline;
+
+    justify-content:
+        center;
+
+    gap:
+        18px;
+
+    width:
+        100%;
 
     margin:
-        0 auto 24px;
+        18px 0 17px;
 
-    filter:
-        drop-shadow(
-            0 15px 30px
-            rgba(0, 0, 0, 0.50)
+    white-space:
+        nowrap;
+
+    font-size:
+        clamp(48px,6vw,80px);
+
+    line-height:
+        0.95;
+
+    font-weight:
+        950;
+
+    letter-spacing:
+        -2.5px;
+
+    text-transform:
+        uppercase;
+
+    text-shadow:
+        0 0 20px
+        rgba(255,255,255,0.14),
+
+        0 10px 35px
+        rgba(0,0,0,0.72);
+
+}
+
+
+.brand-newitt {
+
+    color:
+        #ffffff;
+
+}
+
+
+.brand-media {
+
+    color:
+        #c1cad4;
+
+    font-size:
+        0.66em;
+
+    letter-spacing:
+        0.20em;
+
+    text-shadow:
+        0 0 17px
+        rgba(215,221,230,0.24);
+
+}
+
+
+/* =========================================================
+   BRAND LINE
+   ========================================================= */
+
+.brand-title-line {
+
+    width:
+        min(470px,72%);
+
+    height:
+        1px;
+
+    margin:
+        0 auto 22px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.78),
+            transparent
         );
+
+    box-shadow:
+        0 0 13px
+        rgba(255,255,255,0.22);
+
 }
 
 
@@ -470,14 +638,20 @@ a {
     color:
         var(--silver);
 
-    font-size: 12px;
+    font-size:
+        12px;
 
-    font-weight: 900;
+    font-weight:
+        900;
 
-    letter-spacing: 2px;
+    letter-spacing:
+        2px;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
+
 }
+
 
 h1 {
 
@@ -485,14 +659,19 @@ h1 {
         12px 0 18px;
 
     font-size:
-        clamp(40px, 8vw, 82px);
+        clamp(40px,8vw,82px);
 
-    line-height: 0.95;
+    line-height:
+        0.95;
 
-    font-weight: 950;
+    font-weight:
+        950;
 
-    letter-spacing: -3px;
+    letter-spacing:
+        -3px;
+
 }
+
 
 h2 {
 
@@ -500,27 +679,77 @@ h2 {
         0 0 14px;
 
     font-size:
-        clamp(30px, 5vw, 52px);
+        clamp(30px,5vw,52px);
 
-    line-height: 1.05;
+    line-height:
+        1.05;
+
 }
+
 
 h3 {
+
     margin:
         10px 0;
+
 }
+
 
 h1 span,
 h2 span {
-    color: var(--silver-bright);
+
+    color:
+        var(--silver-bright);
+
 }
+
 
 p {
 
     color:
         var(--muted);
 
-    line-height: 1.75;
+    line-height:
+        1.75;
+
+}
+
+
+/* =========================================================
+   HERO TEXT
+   ========================================================= */
+
+.hero-tagline {
+
+    margin:
+        0 auto 14px;
+
+    color:
+        #f1f4f7;
+
+    font-size:
+        13px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        0.15em;
+
+    line-height:
+        1.6;
+
+}
+
+
+.hero-description {
+
+    width:
+        min(700px,100%);
+
+    margin:
+        0 auto;
+
 }
 
 
@@ -532,25 +761,35 @@ section {
 
     padding:
         75px 0;
+
 }
+
 
 .section-heading {
 
     width:
-        min(820px, 100%);
+        min(820px,100%);
 
     margin:
         0 auto 34px;
 
-    text-align: center;
+    text-align:
+        center;
+
 }
+
 
 .section-heading p {
 
-    margin-left: auto;
-    margin-right: auto;
+    margin-left:
+        auto;
 
-    max-width: 720px;
+    margin-right:
+        auto;
+
+    max-width:
+        720px;
+
 }
 
 
@@ -563,54 +802,70 @@ section {
     display:
         flex;
 
-    flex-wrap: wrap;
+    flex-wrap:
+        wrap;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: center;
+    justify-content:
+        center;
 
-    gap: 12px;
+    gap:
+        12px;
 
-    margin-top: 26px;
+    margin-top:
+        26px;
+
 }
+
 
 .button {
 
     display:
         inline-flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: center;
+    justify-content:
+        center;
 
-    min-height: 48px;
+    min-height:
+        48px;
 
     padding:
         12px 20px;
 
     border:
         1px solid
-        rgba(215, 221, 230, 0.25);
+        rgba(215,221,230,0.30);
 
-    border-radius: 12px;
+    border-radius:
+        12px;
 
     background:
-        rgba(215, 221, 230, 0.07);
+        rgba(215,221,230,0.08);
 
     color:
         var(--white);
 
-    font-size: 13px;
+    font-size:
+        13px;
 
-    font-weight: 900;
+    font-weight:
+        900;
 
-    text-align: center;
+    text-align:
+        center;
 
     transition:
         transform 0.2s ease,
         border-color 0.2s ease,
         background 0.2s ease;
+
 }
+
 
 .button:hover {
 
@@ -618,26 +873,31 @@ section {
         translateY(-2px);
 
     border-color:
-        var(--silver-bright);
+        rgba(255,255,255,0.75);
 
     background:
-        rgba(255, 255, 255, 0.11);
+        rgba(255,255,255,0.13);
+
 }
 
-.button.primary {
 
-    background:
-        linear-gradient(
-            135deg,
-            #e8edf3,
-            #9fa9b6
-        );
+/* =========================================================
+   HERO BUTTONS
+   ========================================================= */
 
-    color:
-        #030508;
+.hero-buttons {
 
-    border-color:
-        #ffffff;
+    margin-top:
+        30px;
+
+}
+
+
+.hero-buttons .button {
+
+    min-width:
+        210px;
+
 }
 
 
@@ -651,11 +911,14 @@ section {
         grid;
 
     grid-template-columns:
-        repeat(3, minmax(0, 1fr));
+        repeat(3,minmax(0,1fr));
 
-    gap: 20px;
+    gap:
+        24px;
 
-    align-items: stretch;
+    align-items:
+        stretch;
+
 }
 
 
@@ -671,50 +934,105 @@ section {
         var(--line);
 
     border-radius:
-        20px;
+        22px;
 
     overflow:
         hidden;
 
     background:
-        rgba(5, 10, 17, 0.82);
+        rgba(5,10,17,0.84);
 
     box-shadow:
         var(--shadow);
+
 }
+
 
 .brand-card {
 
-    min-width: 0;
+    min-width:
+        0;
 
-    padding: 26px;
+    height:
+        100%;
 
-    display: flex;
+    padding:
+        30px;
 
-    flex-direction: column;
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
 }
 
+
+.brand-logo {
+
+    width:
+        155px;
+
+    height:
+        155px;
+
+    max-width:
+        100%;
+
+    object-fit:
+        contain;
+
+    margin:
+        0 auto 18px;
+
+    filter:
+        drop-shadow(
+            0 10px 22px
+            rgba(0,0,0,0.45)
+        );
+
+}
+
+
+.brand-card-content {
+
+    flex:
+        1;
+
+}
+
+
+.brand-card h3 {
+
+    font-size:
+        23px;
+
+    line-height:
+        1.2;
+
+}
+
+
 .brand-card p {
-    margin-bottom: 22px;
+
+    margin-bottom:
+        24px;
+
 }
 
 
 /* =========================================================
-   BRAND LOGOS
+   BRAND CARD BUTTONS
    ========================================================= */
 
-.brand-logo {
+.brand-card > .button {
 
-    width: 100%;
+    width:
+        100%;
 
-    max-width: 210px;
+    margin-top:
+        auto;
 
-    height: 150px;
-
-    object-fit: contain;
-
-    margin:
-        0 auto 18px;
 }
 
 
@@ -732,28 +1050,45 @@ section {
 
     min-height:
         100%;
+
 }
 
+
 .contact-brand-card .eyebrow {
-    margin-bottom: 10px;
+
+    margin-bottom:
+        10px;
+
 }
+
 
 .contact-brand-card h3 {
 
-    font-size: 25px;
+    font-size:
+        25px;
 
-    line-height: 1.15;
+    line-height:
+        1.15;
+
 }
+
 
 .contact-brand-card p {
-    flex: 1;
+
+    flex:
+        1;
+
 }
+
 
 .contact-brand-card .button {
 
-    width: 100%;
+    width:
+        100%;
 
-    margin-top: auto;
+    margin-top:
+        auto;
+
 }
 
 
@@ -766,27 +1101,15 @@ section {
     border-top:
         2px solid
         var(--sky-blue);
+
 }
+
 
 .skyline-card .eyebrow {
+
     color:
         var(--sky-blue-light);
-}
 
-.skyline-card .button.primary {
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--sky-blue),
-            #0759ad
-        );
-
-    color:
-        #ffffff;
-
-    border-color:
-        var(--sky-blue);
 }
 
 
@@ -799,28 +1122,15 @@ section {
     border-top:
         2px solid
         var(--paranormal-red);
+
 }
+
 
 .paranormal-card .eyebrow {
 
     color:
         var(--paranormal-red-light);
-}
 
-.paranormal-card .button.primary {
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--paranormal-red-light),
-            #9d2727
-        );
-
-    color:
-        #ffffff;
-
-    border-color:
-        var(--paranormal-red);
 }
 
 
@@ -833,28 +1143,15 @@ section {
     border-top:
         2px solid
         var(--silver);
+
 }
+
 
 .photography-card .eyebrow {
 
     color:
         var(--silver-bright);
-}
 
-.photography-card .button.primary {
-
-    background:
-        linear-gradient(
-            135deg,
-            #edf1f5,
-            #8f9aa5
-        );
-
-    color:
-        #050608;
-
-    border-color:
-        var(--silver-bright);
 }
 
 
@@ -872,13 +1169,18 @@ section {
 
     min-height:
         100%;
+
 }
+
 
 .social-card .button {
 
-    width: 100%;
+    width:
+        100%;
 
-    margin-top: auto;
+    margin-top:
+        auto;
+
 }
 
 
@@ -892,40 +1194,58 @@ section {
         grid;
 
     grid-template-columns:
-        repeat(2, minmax(0, 1fr));
+        repeat(2,minmax(0,1fr));
 
-    gap: 20px;
+    gap:
+        20px;
+
 }
+
 
 .gallery-card {
-    position: relative;
+
+    position:
+        relative;
+
 }
+
 
 .gallery-link {
 
-    display: block;
+    display:
+        block;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
-    cursor: pointer;
+    cursor:
+        pointer;
+
 }
+
 
 .gallery-card img {
 
-    width: 100%;
+    width:
+        100%;
 
     aspect-ratio:
         16 / 10;
 
-    object-fit: cover;
+    object-fit:
+        cover;
+
 }
+
 
 .gallery-link img {
 
     transition:
         transform 0.3s ease,
         filter 0.3s ease;
+
 }
+
 
 .gallery-link:hover img {
 
@@ -934,10 +1254,15 @@ section {
 
     filter:
         brightness(1.06);
+
 }
 
+
 .gallery-caption {
-    padding: 18px;
+
+    padding:
+        18px;
+
 }
 
 
@@ -947,99 +1272,132 @@ section {
 
 .lightbox {
 
-    position: fixed;
+    position:
+        fixed;
 
-    inset: 0;
+    inset:
+        0;
 
-    z-index: 2000;
+    z-index:
+        2000;
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: center;
+    justify-content:
+        center;
 
-    padding: 24px;
+    padding:
+        24px;
 
     background:
-        rgba(0, 0, 0, 0.92);
+        rgba(0,0,0,0.92);
 
-    opacity: 0;
+    opacity:
+        0;
 
-    visibility: hidden;
+    visibility:
+        hidden;
 
-    pointer-events: none;
+    pointer-events:
+        none;
 
     transition:
         opacity 0.2s ease,
         visibility 0.2s ease;
+
 }
+
 
 .lightbox.open {
 
-    opacity: 1;
+    opacity:
+        1;
 
-    visibility: visible;
+    visibility:
+        visible;
 
-    pointer-events: auto;
+    pointer-events:
+        auto;
+
 }
+
 
 .lightbox-image {
 
-    display: block;
+    display:
+        block;
 
-    width: auto;
-    height: auto;
+    width:
+        auto;
+
+    height:
+        auto;
 
     max-width:
-        min(94vw, 1400px);
+        min(94vw,1400px);
 
     max-height:
         88vh;
 
-    object-fit: contain;
+    object-fit:
+        contain;
 
-    border-radius: 10px;
+    border-radius:
+        10px;
 
     box-shadow:
         0 30px 100px
-        rgba(0, 0, 0, 0.75);
+        rgba(0,0,0,0.75);
+
 }
+
 
 .lightbox-close {
 
-    position: fixed;
+    position:
+        fixed;
 
-    top: 18px;
-    right: 20px;
+    top:
+        18px;
 
-    z-index: 2001;
+    right:
+        20px;
 
-    width: 48px;
-    height: 48px;
+    z-index:
+        2001;
+
+    width:
+        48px;
+
+    height:
+        48px;
 
     border:
         1px solid
-        rgba(255, 255, 255, 0.30);
+        rgba(255,255,255,0.30);
 
-    border-radius: 50%;
-
-    background:
-        rgba(10, 14, 20, 0.85);
-
-    color: #ffffff;
-
-    font-size: 25px;
-
-    line-height: 1;
-
-    cursor: pointer;
-}
-
-.lightbox-close:hover {
+    border-radius:
+        50%;
 
     background:
-        rgba(255, 255, 255, 0.12);
+        rgba(10,14,20,0.85);
+
+    color:
+        #ffffff;
+
+    font-size:
+        25px;
+
+    line-height:
+        1;
+
+    cursor:
+        pointer;
+
 }
 
 
@@ -1050,16 +1408,22 @@ section {
 .about {
 
     width:
-        min(980px, 100%);
+        min(980px,100%);
 
     margin:
         0 auto;
 
-    padding: 32px;
+    padding:
+        32px;
+
 }
 
+
 .about p:last-child {
-    margin-bottom: 0;
+
+    margin-bottom:
+        0;
+
 }
 
 
@@ -1069,91 +1433,120 @@ section {
 
 .skyline-hero {
 
-    position: relative;
+    position:
+        relative;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
-    min-height: 610px;
+    min-height:
+        610px;
 
-    display: grid;
+    display:
+        grid;
 
-    place-items: center;
+    place-items:
+        center;
 
     border-bottom:
         1px solid
         var(--line);
+
 }
+
 
 .skyline-hero::before {
 
-    content: "";
+    content:
+        "";
 
-    position: absolute;
+    position:
+        absolute;
 
-    inset: 0;
+    inset:
+        0;
 
     background:
 
         linear-gradient(
             90deg,
-            rgba(3, 6, 10, 0.88),
-            rgba(3, 6, 10, 0.45),
-            rgba(3, 6, 10, 0.25)
+            rgba(3,6,10,0.88),
+            rgba(3,6,10,0.45),
+            rgba(3,6,10,0.25)
         ),
 
         url("background.png.PNG")
         center / cover
         no-repeat;
+
 }
+
 
 .skyline-hero-content {
 
-    position: relative;
+    position:
+        relative;
 
-    z-index: 1;
+    z-index:
+        1;
 
     width:
-        min(1100px, 92%);
+        min(1100px,92%);
 
-    display: grid;
+    display:
+        grid;
 
     grid-template-columns:
-        210px minmax(0, 1fr);
+        210px minmax(0,1fr);
 
-    gap: 40px;
+    gap:
+        40px;
 
-    align-items: center;
+    align-items:
+        center;
+
 }
 
+
 .skyline-hero p {
-    max-width: 720px;
+
+    max-width:
+        720px;
+
 }
 
 
 /* =========================================================
-   TIKTOK / SOCIAL AREA
+   TIKTOK
    ========================================================= */
 
 .tiktok-box {
 
-    min-height: 260px;
+    min-height:
+        260px;
 
-    display: grid;
+    display:
+        grid;
 
-    place-items: center;
+    place-items:
+        center;
 
-    margin: 24px 0;
+    margin:
+        24px 0;
 
     border:
         1px solid
         var(--line);
 
-    border-radius: 18px;
+    border-radius:
+        18px;
 
     background:
-        rgba(0, 0, 0, 0.20);
+        rgba(0,0,0,0.20);
 
-    overflow: hidden;
+    overflow:
+        hidden;
+
 }
 
 
@@ -1166,29 +1559,41 @@ section {
     margin:
         30px auto;
 
-    padding: 28px;
+    padding:
+        28px;
 
     border:
         1px solid
         var(--line-soft);
 
-    border-radius: 18px;
+    border-radius:
+        18px;
 
     background:
-        rgba(0, 0, 0, 0.20);
+        rgba(0,0,0,0.20);
 
-    text-align: center;
+    text-align:
+        center;
+
 }
+
 
 .coming-soon h3 {
 
-    margin-top: 0;
+    margin-top:
+        0;
 
-    font-size: 24px;
+    font-size:
+        24px;
+
 }
 
+
 .coming-soon p:last-child {
-    margin-bottom: 0;
+
+    margin-bottom:
+        0;
+
 }
 
 
@@ -1199,139 +1604,78 @@ section {
 .contact-panel {
 
     width:
-        min(1000px, 100%);
+        min(1000px,100%);
 
     margin:
         0 auto;
 
-    padding: 34px;
+    padding:
+        34px;
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
 
-    gap: 30px;
+    gap:
+        30px;
 
     border:
         1px solid
         var(--line);
 
-    border-radius: 22px;
+    border-radius:
+        22px;
 
     background:
         var(--panel);
 
     box-shadow:
         var(--shadow);
+
 }
+
 
 .contact-panel > div:first-child {
 
-    flex: 1;
+    flex:
+        1;
 
-    min-width: 0;
+    min-width:
+        0;
+
 }
 
-.contact-panel h2 {
-    margin-bottom: 10px;
-}
-
-.contact-panel p {
-    margin-bottom: 0;
-}
 
 .contact-actions {
 
-    display: flex;
+    display:
+        flex;
 
-    flex-wrap: wrap;
+    flex-wrap:
+        wrap;
 
-    justify-content: flex-end;
+    justify-content:
+        flex-end;
 
-    gap: 10px;
+    gap:
+        10px;
 
-    flex-shrink: 0;
+    flex-shrink:
+        0;
+
 }
+
 
 .contact-actions .button {
-    min-width: 145px;
-}
 
+    min-width:
+        145px;
 
-/* =========================================================
-   PHOTOGRAPHY
-   ========================================================= */
-
-.photography-page .page-hero {
-
-    min-height: 520px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-}
-
-.photography-page .page-hero-content {
-    margin: auto;
-}
-
-.photography-page .page-logo {
-
-    filter:
-        drop-shadow(
-            0 15px 35px
-            rgba(255, 255, 255, 0.12)
-        );
-}
-
-.photography-page .coming-soon {
-
-    border-color:
-        rgba(215, 221, 230, 0.18);
-}
-
-
-/* =========================================================
-   CONTACT PAGE
-   ========================================================= */
-
-.contact-page .page-hero {
-
-    min-height: 520px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-}
-
-.contact-page .page-hero-content {
-    margin: auto;
-}
-
-
-/* =========================================================
-   PARANORMAL PAGE
-   ========================================================= */
-
-.paranormal-page .page-hero {
-
-    min-height: 520px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-}
-
-.paranormal-page .page-hero-content {
-    margin: auto;
 }
 
 
@@ -1344,7 +1688,8 @@ footer {
     padding:
         45px 20px 55px;
 
-    text-align: center;
+    text-align:
+        center;
 
     border-top:
         1px solid
@@ -1353,18 +1698,26 @@ footer {
     color:
         #69737b;
 
-    font-size: 10px;
+    font-size:
+        10px;
 
-    line-height: 1.7;
+    line-height:
+        1.7;
 
     letter-spacing:
         0.14em;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
+
 }
 
+
 footer strong {
-    color: var(--silver);
+
+    color:
+        var(--silver);
+
 }
 
 
@@ -1374,54 +1727,79 @@ footer strong {
 
 #backTop {
 
-    position: fixed;
+    position:
+        fixed;
 
-    right: 20px;
-    bottom: 20px;
+    right:
+        20px;
 
-    z-index: 1500;
+    bottom:
+        20px;
 
-    width: 46px;
-    height: 46px;
+    z-index:
+        1500;
 
-    display: flex;
+    width:
+        46px;
 
-    align-items: center;
-    justify-content: center;
+    height:
+        46px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
 
     border:
         1px solid
-        rgba(215, 221, 230, 0.30);
+        rgba(215,221,230,0.30);
 
-    border-radius: 50%;
+    border-radius:
+        50%;
 
     background:
-        rgba(5, 8, 12, 0.90);
+        rgba(5,8,12,0.90);
 
-    color: #ffffff;
+    color:
+        #ffffff;
 
-    opacity: 0;
+    opacity:
+        0;
 
-    visibility: hidden;
+    visibility:
+        hidden;
 
-    pointer-events: none;
+    pointer-events:
+        none;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
     transition:
         opacity 0.2s ease,
         visibility 0.2s ease,
         transform 0.2s ease;
+
 }
+
 
 #backTop.show {
 
-    opacity: 1;
+    opacity:
+        1;
 
-    visibility: visible;
+    visibility:
+        visible;
 
-    pointer-events: auto;
+    pointer-events:
+        auto;
+
 }
+
 
 #backTop:hover {
 
@@ -1429,7 +1807,8 @@ footer strong {
         translateY(-3px);
 
     background:
-        rgba(255, 255, 255, 0.10);
+        rgba(255,255,255,0.10);
+
 }
 
 
@@ -1437,27 +1816,37 @@ footer strong {
    TABLET
    ========================================================= */
 
-@media (max-width: 950px) {
+@media (max-width:950px) {
 
     .brand-grid {
 
         grid-template-columns:
-            repeat(2, minmax(0, 1fr));
+            repeat(2,minmax(0,1fr));
+
     }
+
 
     .skyline-hero-content {
 
         grid-template-columns:
-            180px minmax(0, 1fr);
+            180px minmax(0,1fr);
 
-        gap: 25px;
+        gap:
+            25px;
+
     }
+
 
     .page-logo {
 
-        width: 190px;
-        height: 190px;
+        width:
+            190px;
+
+        height:
+            190px;
+
     }
+
 }
 
 
@@ -1465,253 +1854,431 @@ footer strong {
    MOBILE
    ========================================================= */
 
-@media (max-width: 800px) {
+@media (max-width:800px) {
 
     .container {
-        width: 90%;
+
+        width:
+            90%;
+
     }
+
 
     .nav {
-        min-height: 68px;
+
+        min-height:
+            68px;
+
     }
+
 
     .nav-brand {
-        font-size: 16px;
+
+        gap:
+            7px;
+
     }
+
 
     .nav-brand img {
-        width: 38px;
-        height: 38px;
+
+        width:
+            38px;
+
+        height:
+            38px;
+
     }
 
-    .menu-toggle {
-        display: block;
+
+    .nav-brand-name {
+
+        font-size:
+            16px;
+
+        letter-spacing:
+            1px;
+
     }
+
+
+    .nav-brand-media {
+
+        font-size:
+            11px;
+
+        letter-spacing:
+            2px;
+
+        margin-left:
+            -3px;
+
+    }
+
+
+    .menu-toggle {
+
+        display:
+            block;
+
+    }
+
 
     .nav-links {
 
-        display: none;
+        display:
+            none;
 
-        position: absolute;
+        position:
+            absolute;
 
-        top: 68px;
+        top:
+            68px;
 
-        left: 5%;
-        right: 5%;
+        left:
+            5%;
 
-        width: 90%;
+        right:
+            5%;
 
-        padding: 10px;
+        width:
+            90%;
 
-        flex-direction: column;
+        padding:
+            10px;
 
-        gap: 5px;
+        flex-direction:
+            column;
+
+        gap:
+            5px;
 
         background:
-            rgba(3, 4, 7, 0.98);
+            rgba(3,4,7,0.98);
 
         border:
             1px solid
-            rgba(215, 221, 230, 0.15);
+            rgba(215,221,230,0.15);
 
-        border-radius: 16px;
+        border-radius:
+            16px;
 
         box-shadow:
             0 25px 60px
-            rgba(0, 0, 0, 0.72);
+            rgba(0,0,0,0.72);
+
     }
 
+
     .nav-links.open {
-        display: flex;
+
+        display:
+            flex;
+
     }
+
 
     .nav-links a {
 
-        width: 100%;
+        width:
+            100%;
 
-        min-height: 50px;
+        min-height:
+            50px;
 
-        display: flex;
+        display:
+            flex;
 
-        align-items: center;
+        align-items:
+            center;
 
-        justify-content: center;
+        justify-content:
+            center;
 
-        padding: 12px;
+        padding:
+            12px;
 
-        font-size: 15px;
+        font-size:
+            15px;
+
     }
+
 
     .nav-links a.active::after {
 
-        left: 25%;
-        right: 25%;
+        left:
+            25%;
+
+        right:
+            25%;
+
     }
+
 
     .hero,
     .page-hero {
 
         padding:
             70px 0 55px;
+
     }
 
-    .page-hero-content {
-        width: 92%;
+
+    .hero-card {
+
+        padding:
+            44px 22px 50px;
+
     }
+
 
     .hero-logo {
 
-        width: 220px;
-        height: 220px;
+        width:
+            220px;
 
-        max-width: 65vw;
+        height:
+            220px;
+
     }
 
-    .page-logo {
 
-        width: 180px;
-        height: 180px;
+    .main-brand-title {
+
+        gap:
+            10px;
+
+        font-size:
+            clamp(38px,10vw,56px);
+
+        letter-spacing:
+            -1.5px;
+
     }
+
+
+    .brand-media {
+
+        letter-spacing:
+            0.12em;
+
+    }
+
+
+    .brand-title-line {
+
+        width:
+            78%;
+
+    }
+
+
+    .hero-tagline {
+
+        font-size:
+            11px;
+
+        letter-spacing:
+            0.09em;
+
+    }
+
 
     h1 {
 
         font-size:
-            clamp(38px, 11vw, 58px);
+            clamp(38px,11vw,58px);
 
-        letter-spacing: -2px;
+        letter-spacing:
+            -2px;
+
     }
+
 
     h2 {
 
         font-size:
-            clamp(30px, 8vw, 44px);
+            clamp(30px,8vw,44px);
+
     }
+
 
     .brand-grid {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
+
     }
 
-    .gallery {
-        grid-template-columns: 1fr;
-    }
 
     .brand-card {
-        padding: 25px 22px;
+
+        padding:
+            25px 22px;
+
     }
+
 
     .brand-logo {
 
-        max-width: 180px;
+        width:
+            145px;
 
-        height: 125px;
+        height:
+            145px;
+
     }
+
+
+    .gallery {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
 
     .contact-brand-card {
-        min-height: 0;
+
+        min-height:
+            0;
+
     }
+
 
     .contact-panel {
 
-        flex-direction: column;
+        flex-direction:
+            column;
 
-        align-items: stretch;
+        align-items:
+            stretch;
 
-        text-align: center;
+        text-align:
+            center;
 
-        padding: 28px 22px;
+        padding:
+            28px 22px;
+
     }
+
 
     .contact-actions {
 
-        justify-content: center;
+        justify-content:
+            center;
 
-        width: 100%;
+        width:
+            100%;
+
     }
+
 
     .contact-actions .button {
 
         flex:
             1 1 180px;
+
     }
+
 
     .skyline-hero {
 
-        min-height: 540px;
+        min-height:
+            540px;
+
     }
+
 
     .skyline-hero-content {
 
-        width: 90%;
+        width:
+            90%;
 
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
 
-        text-align: center;
+        text-align:
+            center;
+
     }
+
 
     .skyline-hero-content .page-logo {
 
-        margin-left: auto;
-        margin-right: auto;
+        margin-left:
+            auto;
+
+        margin-right:
+            auto;
+
     }
+
 
     .skyline-hero p {
 
-        margin-left: auto;
-        margin-right: auto;
+        margin-left:
+            auto;
+
+        margin-right:
+            auto;
+
     }
+
 
     .buttons {
 
-        flex-direction: column;
+        flex-direction:
+            column;
 
-        width: 100%;
+        width:
+            100%;
+
     }
+
 
     .buttons .button {
 
         width:
-            min(100%, 360px);
+            min(100%,360px);
+
     }
+
+
+    .hero-buttons .button {
+
+        width:
+            min(100%,360px);
+
+        min-width:
+            0;
+
+    }
+
 
     .about {
-        padding: 26px 22px;
-    }
-
-    section {
-        padding: 60px 0;
-    }
-
-    .section-heading {
-        margin-bottom: 28px;
-    }
-
-    .photography-page .page-hero,
-    .contact-page .page-hero,
-    .paranormal-page .page-hero {
-
-        min-height: 0;
 
         padding:
-            65px 0 50px;
+            26px 22px;
+
     }
 
-    .photography-page .page-hero-content,
-    .contact-page .page-hero-content,
-    .paranormal-page .page-hero-content {
 
-        width: 92%;
+    section {
+
+        padding:
+            60px 0;
+
     }
 
-    .tiktok-box {
 
-        width: 100%;
+    .section-heading {
 
-        min-height: 220px;
+        margin-bottom:
+            28px;
+
     }
 
-    .contact-panel {
-        width: 100%;
-    }
 }
 
 
@@ -1719,162 +2286,274 @@ footer strong {
    SMALL PHONES
    ========================================================= */
 
-@media (max-width: 480px) {
+@media (max-width:480px) {
 
     .container {
-        width: 90%;
+
+        width:
+            90%;
+
     }
+
 
     .nav-brand {
 
-        font-size: 14px;
+        gap:
+            5px;
 
-        gap: 7px;
     }
+
 
     .nav-brand img {
 
-        width: 34px;
-        height: 34px;
+        width:
+            34px;
+
+        height:
+            34px;
+
     }
+
+
+    .nav-brand-name {
+
+        font-size:
+            14px;
+
+    }
+
+
+    .nav-brand-media {
+
+        font-size:
+            9px;
+
+        letter-spacing:
+            1.5px;
+
+    }
+
 
     .menu-toggle {
 
-        padding: 9px 12px;
+        padding:
+            9px 12px;
 
-        font-size: 12px;
+        font-size:
+            12px;
+
     }
+
 
     .nav-links {
-        top: 66px;
+
+        top:
+            66px;
+
     }
 
-    .page-logo {
-
-        width: 155px;
-        height: 155px;
-    }
 
     .hero-logo {
 
-        width: 165px;
-        height: 165px;
+        width:
+            165px;
+
+        height:
+            165px;
+
     }
 
-    .hero-card {
 
-        padding:
-            30px 18px;
+    .main-brand-title {
 
-        border-radius: 20px;
+        gap:
+            6px;
+
+        font-size:
+            34px;
+
+        letter-spacing:
+            -1px;
+
     }
+
+
+    .brand-media {
+
+        letter-spacing:
+            0.07em;
+
+    }
+
+
+    .brand-title-line {
+
+        width:
+            82%;
+
+    }
+
+
+    .hero-tagline {
+
+        font-size:
+            10px;
+
+    }
+
 
     h1 {
 
-        font-size: 37px;
+        font-size:
+            37px;
 
-        line-height: 1;
+        line-height:
+            1;
+
     }
+
 
     h2 {
-        font-size: 30px;
+
+        font-size:
+            30px;
+
     }
 
+
     p {
-        font-size: 14px;
+
+        font-size:
+            14px;
+
     }
+
 
     .eyebrow {
 
-        font-size: 10px;
+        font-size:
+            10px;
 
-        letter-spacing: 1.5px;
+        letter-spacing:
+            1.5px;
+
     }
+
 
     .brand-card {
 
         padding:
             23px 20px;
 
-        border-radius: 18px;
+        border-radius:
+            18px;
+
     }
+
 
     .brand-logo {
 
-        max-width: 155px;
+        width:
+            135px;
 
-        height: 110px;
+        height:
+            135px;
+
     }
 
-    .contact-brand-card h3 {
-        font-size: 23px;
+
+    .brand-card h3 {
+
+        font-size:
+            22px;
+
     }
+
 
     .button {
 
-        min-height: 47px;
+        min-height:
+            47px;
 
-        font-size: 12px;
+        font-size:
+            12px;
+
     }
 
-    .buttons {
-
-        gap: 10px;
-    }
-
-    .buttons .button {
-
-        width: 100%;
-
-        max-width: none;
-    }
 
     .contact-actions {
 
-        flex-direction: column;
+        flex-direction:
+            column;
+
     }
+
 
     .contact-actions .button {
 
-        width: 100%;
+        width:
+            100%;
 
-        flex: none;
+        flex:
+            none;
+
     }
+
 
     .coming-soon {
 
         padding:
             22px 18px;
+
     }
+
 
     .lightbox {
 
-        padding: 12px;
+        padding:
+            12px;
+
     }
+
 
     .lightbox-image {
 
-        max-width: 96vw;
+        max-width:
+            96vw;
 
-        max-height: 82vh;
+        max-height:
+            82vh;
+
     }
+
 
     .lightbox-close {
 
-        top: 12px;
-        right: 12px;
+        top:
+            12px;
 
-        width: 44px;
-        height: 44px;
+        right:
+            12px;
+
+        width:
+            44px;
+
+        height:
+            44px;
+
     }
+
 
     footer {
 
         padding:
             38px 18px 48px;
 
-        font-size: 9px;
+        font-size:
+            9px;
+
     }
+
 }
 
 
@@ -1885,8 +2564,12 @@ footer strong {
 @media (prefers-reduced-motion: reduce) {
 
     html {
-        scroll-behavior: auto;
+
+        scroll-behavior:
+            auto;
+
     }
+
 
     *,
     *::before,
@@ -1903,5 +2586,7 @@ footer strong {
 
         scroll-behavior:
             auto !important;
+
     }
+
 }
