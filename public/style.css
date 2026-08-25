@@ -310,14 +310,62 @@ a {
     text-align: center;
 }
 
-.hero-card,
+
+/* =========================================================
+   HERO CARD
+   SEAMLESS WITH BACKGROUND
+   ========================================================= */
+
+.hero-card {
+    width:
+        min(900px,100%);
+
+    margin:
+        0 auto;
+
+    padding:
+        54px 36px;
+
+    /*
+       IMPORTANT:
+       The hero is no longer a glass/card panel.
+       This allows the logo and hero content to
+       blend directly into the page background.
+    */
+
+    border:
+        none;
+
+    border-radius:
+        0;
+
+    background:
+        transparent;
+
+    backdrop-filter:
+        none;
+
+    -webkit-backdrop-filter:
+        none;
+
+    box-shadow:
+        none;
+}
+
+
+/* =========================================================
+   OTHER CONTENT PANELS
+   These remain boxed.
+   ========================================================= */
+
 .panel,
 .about {
     border:
         1px solid
         var(--line);
 
-    border-radius: 24px;
+    border-radius:
+        24px;
 
     background:
         var(--panel);
@@ -332,37 +380,42 @@ a {
         var(--shadow);
 }
 
-.hero-card {
-    width:
-        min(900px,100%);
-
-    margin:
-        0 auto;
-
-    padding:
-        54px 36px;
-}
-
 
 /* =========================================================
    HERO LOGO
    ========================================================= */
 
 .hero-logo {
-    width: 300px;
-    height: 300px;
+    width:
+        300px;
 
-    max-width: 72%;
+    height:
+        300px;
 
-    object-fit: contain;
+    max-width:
+        72%;
+
+    object-fit:
+        contain;
 
     margin:
         0 auto 26px;
 
+    /*
+       Subtle glow rather than a box.
+       The logo remains visible without
+       looking like it is sitting inside a card.
+    */
+
     filter:
         drop-shadow(
-            0 10px 25px
-            rgba(255,255,255,0.12)
+            0 0 20px
+            rgba(89,185,255,0.20)
+        )
+
+        drop-shadow(
+            0 12px 28px
+            rgba(0,0,0,0.58)
         );
 }
 
@@ -647,6 +700,23 @@ section {
 
     margin:
         0 auto 18px;
+
+    /*
+       Brand logos now blend slightly
+       into their cards instead of looking
+       like solid square images.
+    */
+
+    filter:
+        drop-shadow(
+            0 0 14px
+            rgba(89,185,255,0.12)
+        )
+
+        drop-shadow(
+            0 8px 20px
+            rgba(0,0,0,0.45)
+        );
 }
 
 .brand-card p {
@@ -2442,6 +2512,11 @@ footer {
             70px 0 55px;
     }
 
+    .hero-card {
+        padding:
+            50px 20px 45px;
+    }
+
     .hero-logo {
         width:
             220px;
@@ -2627,7 +2702,7 @@ footer {
 
     /* =====================================================
        MOVING BANNER MOBILE
-    ===================================================== */
+       ===================================================== */
 
     .social-ticker-group {
         min-height:
@@ -2651,7 +2726,7 @@ footer {
 
     /* =====================================================
        FINAL SOCIAL SECTION MOBILE
-    ===================================================== */
+       ===================================================== */
 
     .social-final {
         min-height:
@@ -2692,7 +2767,7 @@ footer {
 
     /* =====================================================
        CONTACT
-    ===================================================== */
+       ===================================================== */
 
     .contact-panel {
         flex-direction:
@@ -2719,7 +2794,7 @@ footer {
 
     /* =====================================================
        SKYLINE
-    ===================================================== */
+       ===================================================== */
 
     .skyline-hero {
         min-height:
@@ -2740,7 +2815,7 @@ footer {
 
     /* =====================================================
        BUTTONS
-    ===================================================== */
+       ===================================================== */
 
     .buttons {
         flex-direction:
@@ -2758,7 +2833,7 @@ footer {
 
     /* =====================================================
        ABOUT
-    ===================================================== */
+       ===================================================== */
 
     .about {
         padding:
@@ -2805,6 +2880,11 @@ footer {
 
         font-size:
             12px;
+    }
+
+    .hero-card {
+        padding:
+            45px 15px 40px;
     }
 
     .hero-logo {
@@ -2961,4 +3041,5 @@ footer {
         scroll-behavior:
             auto !important;
     }
+
 }
