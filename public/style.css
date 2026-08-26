@@ -3685,3 +3685,138 @@ button:focus-visible {
             none !important;
     }
 }
+/* =========================================================
+   NEWITT MEDIA
+   PHASE 4.2
+   FINAL VIEWPORT + OVERFLOW SAFETY
+========================================================= */
+
+/*
+   This phase does not redesign the website.
+   It protects the existing layout from accidental
+   horizontal overflow and oversized content.
+*/
+
+/* Keep every element inside the viewport */
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Prevent long text, links or filenames from
+   forcing the page wider */
+p,
+h1,
+h2,
+h3,
+a,
+button {
+    overflow-wrap: break-word;
+}
+
+/* Keep flex and grid children from forcing
+   their parent wider */
+.nav,
+.nav-links,
+.hero-card,
+.contact-panel,
+.social-brand-inner,
+.social-brand-content,
+.brand-card,
+.gallery-card {
+    min-width: 0;
+}
+
+/* Prevent media from exceeding its container */
+img,
+video,
+iframe {
+    max-width: 100%;
+}
+
+/* Keep buttons from creating unexpected overflow */
+.button,
+.social-button,
+.menu-toggle {
+    max-width: 100%;
+}
+
+/* Keep the main content safely inside the viewport */
+.container {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   MOBILE VIEWPORT SAFETY
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .hero-card {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .social-brand-inner {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .social-brand-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .contact-panel {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .gallery-card {
+        width: 100%;
+        max-width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONE SAFETY
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .hero-card,
+    .about,
+    .contact-panel,
+    .brand-card,
+    .gallery-card,
+    .social-brand {
+        max-width: 100%;
+    }
+
+    .social-main-title,
+    .social-brand-name,
+    .social-brand-content h3,
+    .social-final h3 {
+        overflow-wrap: anywhere;
+    }
+
+}
+
+
+/* =========================================================
+   PHASE 4.2 REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+    }
+
+}
