@@ -584,3 +584,90 @@ document.addEventListener(
 
     }
 );
+/* =====================================================
+   PHASE 3.1
+   MOBILE NAVIGATION POLISH
+===================================================== */
+
+function setupMobileNavigationPolish() {
+
+    const menu =
+        document.getElementById("main-menu");
+
+    const menuButton =
+        document.querySelector(".menu-toggle");
+
+    if (!menu || !menuButton) {
+        return;
+    }
+
+
+    /* Close menu when screen becomes desktop size */
+
+    window.addEventListener(
+        "resize",
+        function () {
+
+            if (window.innerWidth > 800) {
+
+                setMenu(false);
+
+            }
+
+        }
+    );
+
+
+    /* Close menu after selecting a navigation link */
+
+    menu.querySelectorAll("a").forEach(
+        function (link) {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    setMenu(false);
+
+                }
+            );
+
+        }
+    );
+
+
+    /* Keep menu button state accessible */
+
+    menuButton.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Enter" ||
+                event.key === " "
+            ) {
+
+                event.preventDefault();
+
+                toggleMenu();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   PHASE 3.1 INITIALISATION
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        setupMobileNavigationPolish();
+
+    }
+);
