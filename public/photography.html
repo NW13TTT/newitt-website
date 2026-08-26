@@ -12,7 +12,7 @@
 
     <meta
         name="description"
-        content="NEWITT Media Photography - photography from places, landscapes, adventures and creative projects."
+        content="NEWITT Media Photography. Photography from places, landscapes, adventures and creative projects."
     >
 
     <meta
@@ -35,60 +35,83 @@
 
     <!-- =====================================================
          PHOTOGRAPHY PAGE
-         PHASE 1
-         Silver / cinematic styling
+         PREMIUM SILVER / CINEMATIC STYLING
     ====================================================== -->
 
     <style>
 
         /* =================================================
            PHOTOGRAPHY PAGE IDENTITY
-        ================================================== */
+        ================================================= */
 
         body.photography-page {
             --photo-accent: #d7dde6;
             --photo-accent-bright: #ffffff;
-            --photo-border: rgba(215,221,230,.22);
+            --photo-border: rgba(215,221,230,0.22);
         }
 
 
         /* =================================================
            PHOTOGRAPHY HERO
-        ================================================== */
+        ================================================= */
 
         .photography-page .page-hero {
             position: relative;
+
+            min-height: 520px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
             padding: 92px 0 70px;
+
             text-align: center;
+
+            overflow: hidden;
         }
 
 
         .photography-page .page-hero::before {
             content: "";
+
             position: absolute;
+
             inset: 0;
+
             pointer-events: none;
 
             background:
                 radial-gradient(
                     circle at 50% 18%,
-                    rgba(255,255,255,.07),
+                    rgba(255,255,255,0.07),
                     transparent 38%
                 );
         }
 
 
         /* =================================================
-           LOGO
-           PNG ONLY
-           NO SQUARE / NO BORDER
-        ================================================== */
+           PHOTOGRAPHY HERO CONTENT
+        ================================================= */
 
-        .photography-page .page-logo {
-
+        .photography-page .page-hero .container {
             position: relative;
+
             z-index: 1;
 
+            width: min(1000px,92%);
+        }
+
+
+        /* =================================================
+           PHOTOGRAPHY LOGO
+           PNG ONLY
+           NO BOX
+           NO BORDER
+        ================================================= */
+
+        .photography-page .page-logo {
             width: 220px;
             height: 220px;
 
@@ -109,36 +132,32 @@
             filter:
                 drop-shadow(
                     0 0 18px
-                    rgba(255,255,255,.16)
+                    rgba(255,255,255,0.16)
                 )
                 drop-shadow(
                     0 12px 28px
-                    rgba(0,0,0,.55)
+                    rgba(0,0,0,0.55)
                 );
-
         }
 
 
         /* =================================================
            HERO TEXT
-        ================================================== */
+        ================================================= */
 
         .photography-page .page-hero .eyebrow {
-
-            position: relative;
-            z-index: 1;
-
             color:
                 var(--photo-accent-bright);
 
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
         }
 
 
         .photography-page .page-hero h1 {
-
-            position: relative;
-            z-index: 1;
-
             margin:
                 12px auto 18px;
 
@@ -149,27 +168,23 @@
                 clamp(40px,7vw,78px);
 
             line-height:
-                .96;
+                0.96;
+
+            font-weight:
+                950;
 
             letter-spacing:
                 -2.5px;
-
         }
 
 
         .photography-page .page-hero h1 span {
-
             color:
                 var(--photo-accent-bright);
-
         }
 
 
         .photography-page .page-hero p {
-
-            position: relative;
-            z-index: 1;
-
             max-width:
                 760px;
 
@@ -182,12 +197,14 @@
             line-height:
                 1.75;
 
+            font-size:
+                16px;
         }
 
 
         /* =================================================
            PHOTOGRAPHY PANELS
-        ================================================== */
+        ================================================= */
 
         .photography-page .panel,
         .photography-page .about {
@@ -199,52 +216,48 @@
             background:
                 linear-gradient(
                     180deg,
-                    rgba(10,15,22,.90),
-                    rgba(3,7,12,.94)
+                    rgba(10,15,22,0.90),
+                    rgba(3,7,12,0.94)
                 );
 
             box-shadow:
                 0 24px 70px
-                rgba(0,0,0,.52);
-
+                rgba(0,0,0,0.52);
         }
 
 
         .photography-page .panel h2,
         .photography-page .about h2 {
-
             color:
                 #f7f9fc;
-
         }
 
 
         .photography-page .panel h2 span,
         .photography-page .about h2 span {
-
             color:
                 #ffffff;
-
         }
 
 
         .photography-page .panel p,
         .photography-page .about p {
-
             color:
                 #c5ced8;
 
             line-height:
                 1.75;
-
         }
 
 
         /* =================================================
-           COMING SOON
-        ================================================== */
+           COMING SOON PANEL
+        ================================================= */
 
         .photography-page .coming-soon {
+
+            min-height:
+                190px;
 
             margin:
                 30px auto 0;
@@ -252,9 +265,18 @@
             padding:
                 34px 28px;
 
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            justify-content:
+                center;
+
             border:
                 1px solid
-                rgba(215,221,230,.17);
+                rgba(215,221,230,0.17);
 
             border-radius:
                 20px;
@@ -262,8 +284,8 @@
             background:
                 linear-gradient(
                     135deg,
-                    rgba(255,255,255,.045),
-                    rgba(255,255,255,.012)
+                    rgba(255,255,255,0.045),
+                    rgba(255,255,255,0.012)
                 );
 
             text-align:
@@ -271,13 +293,11 @@
 
             box-shadow:
                 inset 0 1px 0
-                rgba(255,255,255,.04);
-
+                rgba(255,255,255,0.04);
         }
 
 
         .photography-page .coming-soon h3 {
-
             margin:
                 0 0 12px;
 
@@ -286,52 +306,44 @@
 
             font-size:
                 25px;
-
         }
 
 
         .photography-page .coming-soon p {
-
             max-width:
                 680px;
 
             margin:
                 0 auto;
-
         }
 
 
         /* =================================================
-           SILVER BUTTONS
-        ================================================== */
+           PHOTOGRAPHY BUTTONS
+        ================================================= */
 
         .photography-page .button {
-
             border-color:
-                rgba(215,221,230,.28);
+                rgba(215,221,230,0.28);
 
             background:
-                rgba(215,221,230,.07);
+                rgba(215,221,230,0.07);
 
             color:
                 #f7f9fc;
-
         }
 
 
         .photography-page .button:hover {
-
             border-color:
                 #ffffff;
 
             background:
-                rgba(255,255,255,.11);
-
+                rgba(255,255,255,0.11);
         }
 
 
         .photography-page .button.primary {
-
             background:
                 linear-gradient(
                     135deg,
@@ -344,99 +356,22 @@
 
             border-color:
                 #ffffff;
-
         }
 
 
         /* =================================================
-           DESKTOP
-        ================================================== */
-
-        @media (min-width: 951px) {
-
-            .photography-page .page-hero {
-
-                min-height:
-                    520px;
-
-                display:
-                    flex;
-
-                align-items:
-                    center;
-
-                justify-content:
-                    center;
-
-            }
-
-
-            .photography-page .page-hero
-            .container {
-
-                width:
-                    min(1000px,92%);
-
-            }
-
-
-            .photography-page .panel {
-
-                padding:
-                    42px;
-
-            }
-
-
-            .photography-page .coming-soon {
-
-                min-height:
-                    190px;
-
-                display:
-                    flex;
-
-                flex-direction:
-                    column;
-
-                justify-content:
-                    center;
-
-            }
-
-        }
-
-
-        /* =================================================
-           TABLET
-        ================================================== */
-
-        @media (max-width: 950px) {
-
-            .photography-page .page-logo {
-
-                width:
-                    200px;
-
-                height:
-                    200px;
-
-            }
-
-        }
-
-
-        /* =================================================
-           MOBILE
-        ================================================== */
+           MOBILE HERO
+        ================================================= */
 
         @media (max-width: 800px) {
 
             .photography-page .page-hero {
 
+                min-height:
+                    0;
+
                 padding:
                     62px 0 45px;
-
             }
 
 
@@ -450,7 +385,6 @@
 
                 max-width:
                     70%;
-
             }
 
 
@@ -459,9 +393,11 @@
                 font-size:
                     clamp(36px,10vw,56px);
 
+                line-height:
+                    0.96;
+
                 letter-spacing:
                     -1.5px;
-
             }
 
 
@@ -475,7 +411,6 @@
 
                 line-height:
                     1.7;
-
             }
 
 
@@ -483,15 +418,16 @@
 
                 padding:
                     24px 20px;
-
             }
 
 
             .photography-page .coming-soon {
 
+                min-height:
+                    0;
+
                 padding:
                     28px 20px;
-
             }
 
         }
@@ -499,7 +435,7 @@
 
         /* =================================================
            SMALL PHONES
-        ================================================== */
+        ================================================= */
 
         @media (max-width: 480px) {
 
@@ -507,7 +443,6 @@
 
                 padding:
                     52px 0 40px;
-
             }
 
 
@@ -518,7 +453,6 @@
 
                 height:
                     155px;
-
             }
 
 
@@ -526,7 +460,13 @@
 
                 font-size:
                     35px;
+            }
 
+
+            .photography-page .page-hero p {
+
+                font-size:
+                    14px;
             }
 
 
@@ -534,7 +474,6 @@
 
                 padding:
                     22px 17px;
-
             }
 
 
@@ -542,7 +481,6 @@
 
                 padding:
                     25px 17px;
-
             }
 
 
@@ -550,15 +488,14 @@
 
                 font-size:
                     22px;
-
             }
 
         }
 
 
         /* =================================================
-           ACCESSIBILITY / MOTION
-        ================================================== */
+           ACCESSIBILITY
+        ================================================= */
 
         @media (prefers-reduced-motion: reduce) {
 
@@ -567,11 +504,16 @@
             .photography-page *::after {
 
                 animation-duration:
-                    .01ms !important;
+                    0.01ms !important;
+
+                animation-iteration-count:
+                    1 !important;
 
                 transition-duration:
-                    .01ms !important;
+                    0.01ms !important;
 
+                scroll-behavior:
+                    auto !important;
             }
 
         }
@@ -583,324 +525,269 @@
 
 <!-- =====================================================
      BODY
-     THIS CLASS ACTIVATES THE PHOTOGRAPHY PHASE 1 STYLING
 ====================================================== -->
 
 <body class="photography-page">
 
 
-<!-- =====================================================
-     HEADER
-====================================================== -->
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
-<header class="site-header">
+    <header class="site-header">
 
-    <div class="container nav">
-
-
-        <!-- =================================================
-             NEWITT MEDIA LOGO
-             CORRECT PNG FILENAME
-        ================================================== -->
-
-        <a
-            href="index.html"
-            class="nav-brand"
-            aria-label="NEWITT Media Home"
-        >
-
-            <img
-                src="newitt-media-logo.png.png"
-                alt="NEWITT Media logo"
-            >
-
-            <strong>
-                NEWITT <span>MEDIA</span>
-            </strong>
-
-        </a>
+        <div class="container nav">
 
 
-        <!-- =================================================
-             MOBILE MENU
-        ================================================== -->
-
-        <button
-            class="menu-toggle"
-            type="button"
-            aria-expanded="false"
-            aria-controls="main-menu"
-            onclick="toggleMenu()"
-        >
-            MENU
-        </button>
-
-
-        <!-- =================================================
-             MAIN NAVIGATION
-        ================================================== -->
-
-        <nav
-            class="nav-links"
-            id="main-menu"
-            aria-label="Main navigation"
-        >
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="skyline.html">
-                Skyline
-            </a>
-
-            <a href="paranormal.html">
-                Paranormal
-            </a>
+            <!-- =================================================
+                 NEWITT MEDIA BRAND
+            ================================================== -->
 
             <a
-                href="photography.html"
-                class="active"
-                aria-current="page"
-            >
-                Photography
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
-
-        </nav>
-
-    </div>
-
-</header>
-
-
-<!-- =====================================================
-     MAIN
-====================================================== -->
-
-<main>
-
-
-    <!-- =================================================
-         PHOTOGRAPHY HERO
-    ================================================== -->
-
-    <section class="page-hero">
-
-        <div class="container">
-
-
-            <!-- CORRECT PNG
-                 NO SQUARE
-                 NO BORDER -->
-
-            <img
-                src="newitt-media-logo.png.png"
-                alt="NEWITT Media Photography logo"
-                class="page-logo"
+                href="index.html"
+                class="nav-brand"
+                aria-label="NEWITT Media Home"
             >
 
+                <img
+                    src="newitt-media-logo.png.png"
+                    alt="NEWITT Media logo"
+                >
 
-            <div class="eyebrow">
-                NEWITT Media Photography
-            </div>
+                <strong>
+                    NEWITT <span>MEDIA</span>
+                </strong>
+
+            </a>
 
 
-            <h1>
-                See the moment.
-                <span>Capture the moment.</span>
-            </h1>
+            <!-- =================================================
+                 MOBILE MENU BUTTON
+            ================================================== -->
+
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="main-menu"
+                onclick="toggleMenu()"
+            >
+                MENU
+            </button>
 
 
-            <p>
-                Sometimes you do not need a drone,
-                a haunted building or a complicated plan.
-                Sometimes you just need the camera in the
-                right place at the right time.
-            </p>
+            <!-- =================================================
+                 MAIN NAVIGATION
+            ================================================== -->
+
+            <nav
+                class="nav-links"
+                id="main-menu"
+                aria-label="Main navigation"
+            >
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="skyline.html">
+                    Skyline
+                </a>
+
+                <a href="paranormal.html">
+                    Paranormal
+                </a>
+
+                <a
+                    href="photography.html"
+                    class="active"
+                    aria-current="page"
+                >
+                    Photography
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </nav>
 
         </div>
 
-    </section>
+    </header>
 
 
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
 
-    <!-- =================================================
-         PHOTOGRAPHY COLLECTION
-    ================================================== -->
+    <main>
 
-    <section>
 
-        <div class="container">
+        <!-- =================================================
+             PHOTOGRAPHY HERO
+        ================================================== -->
 
-            <div class="panel">
+        <section class="page-hero">
+
+            <div class="container">
+
+
+                <img
+                    src="newitt-media-logo.png.png"
+                    alt="NEWITT Media Photography logo"
+                    class="page-logo"
+                >
 
 
                 <div class="eyebrow">
-                    The photography collection
+                    NEWITT Media Photography
                 </div>
 
 
-                <h2>
-                    A place for the
-                    <span>good stuff.</span>
-                </h2>
+                <h1>
+                    See the moment.
+                    <span>Capture the moment.</span>
+                </h1>
 
 
                 <p>
-                    This section is being built for photographs
-                    that deserve their own little corner of the
-                    internet.
+                    Sometimes you do not need a drone,
+                    a haunted building or a complicated plan.
+                    Sometimes you just need the camera in the
+                    right place at the right time.
                 </p>
 
+            </div>
 
-                <p>
-                    Landscapes, places, adventures, unusual
-                    moments and whatever else catches the eye
-                    before the camera gets put away.
-                </p>
+        </section>
 
 
-                <div class="coming-soon">
+        <!-- =================================================
+             PHOTOGRAPHY COLLECTION
+        ================================================== -->
 
-                    <h3>
-                        The gallery is coming together
-                    </h3>
+        <section>
+
+            <div class="container">
+
+                <div class="panel">
+
+                    <div class="eyebrow">
+                        The photography collection
+                    </div>
+
+
+                    <h2>
+                        A place for the
+                        <span>good stuff.</span>
+                    </h2>
 
 
                     <p>
-                        New photographs will be added here as
-                        the collection grows. There is no rush.
-                        Good photographs tend to be worth waiting
-                        for.
+                        This section is being built for photographs
+                        that deserve their own little corner of the
+                        internet.
+                    </p>
+
+
+                    <p>
+                        Landscapes, places, adventures, unusual
+                        moments and whatever else catches the eye
+                        before the camera gets put away.
+                    </p>
+
+
+                    <div class="coming-soon">
+
+                        <h3>
+                            The gallery is coming together
+                        </h3>
+
+                        <p>
+                            New photographs will be added here as
+                            the collection grows. There is no rush.
+                            Good photographs tend to be worth waiting
+                            for.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             COMING NEXT
+        ================================================== -->
+
+        <section>
+
+            <div class="container">
+
+                <div class="about">
+
+                    <div class="eyebrow">
+                        Coming next
+                    </div>
+
+
+                    <h2>
+                        A gallery with a bit more
+                        <span>personality.</span>
+                    </h2>
+
+
+                    <p>
+                        When the photography collection is ready,
+                        this space can become a proper gallery with
+                        large images, captions and featured work.
+                    </p>
+
+
+                    <p>
+                        No giant wall of tiny thumbnails.
+                        We will let the photographs breathe.
                     </p>
 
                 </div>
 
             </div>
 
-        </div>
-
-    </section>
+        </section>
 
 
+    </main>
 
-    <!-- =================================================
-         COMING NEXT
-    ================================================== -->
 
-    <section>
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
 
         <div class="container">
 
-            <div class="about">
+            NEWITT Media Photography
 
+            <br>
 
-                <div class="eyebrow">
-                    Coming next
-                </div>
-
-
-                <h2>
-                    A gallery with a bit more
-                    <span>personality.</span>
-                </h2>
-
-
-                <p>
-                    When the photography collection is ready,
-                    this space can become a proper gallery with
-                    large images, captions and featured work.
-                </p>
-
-
-                <p>
-                    No giant wall of tiny thumbnails.
-                    We will let the photographs breathe.
-                </p>
-
-            </div>
+            See the moment. Capture the moment.
 
         </div>
 
-    </section>
+    </footer>
 
 
-</main>
+    <!-- =====================================================
+         NEWITT MEDIA MASTER JAVASCRIPT
+         One master script for the whole website
+    ====================================================== -->
 
-
-<!-- =====================================================
-     FOOTER
-====================================================== -->
-
-<footer>
-
-    <div class="container">
-
-        NEWITT Media Photography<br>
-
-        See the moment. Capture the moment.
-
-    </div>
-
-</footer>
-
-
-<!-- =====================================================
-     MOBILE MENU JAVASCRIPT
-====================================================== -->
-
-<script>
-
-function toggleMenu() {
-
-    const menu =
-        document.getElementById("main-menu");
-
-    const button =
-        document.querySelector(".menu-toggle");
-
-    const open =
-        menu.classList.toggle("open");
-
-    button.setAttribute(
-        "aria-expanded",
-        open ? "true" : "false"
-    );
-
-}
-
-
-document
-    .querySelectorAll(".nav-links a")
-    .forEach(link => {
-
-        link.addEventListener(
-            "click",
-            () => {
-
-                const menu =
-                    document.getElementById("main-menu");
-
-                const button =
-                    document.querySelector(".menu-toggle");
-
-                menu.classList.remove("open");
-
-                button.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-            }
-        );
-
-    });
-
-</script>
+    <script src="script.js"></script>
 
 
 </body>
