@@ -3909,7 +3909,114 @@ button,
 .nav-brand img {
     height: auto;
 }
+/* =========================================================
+   PHASE 2.5
+   MOBILE HEADER POLISH
+   ========================================================= */
 
+@media (max-width: 800px) {
+
+    .site-header {
+        background:
+            rgba(3, 6, 12, 0.97);
+
+        border-bottom:
+            1px solid
+            rgba(89, 185, 255, 0.14);
+    }
+
+    .nav {
+        min-height:
+            72px;
+
+        padding:
+            4px 0;
+    }
+
+    .nav-brand {
+        color:
+            #ffffff !important;
+
+        text-shadow:
+            0 0 12px
+            rgba(255,255,255,0.18);
+    }
+
+    .nav-brand span {
+        color:
+            #ffffff !important;
+    }
+
+    .nav-brand img {
+        filter:
+            drop-shadow(
+                0 0 10px
+                rgba(89,185,255,0.35)
+            );
+    }
+
+    .menu-toggle {
+        color:
+            #ffffff;
+
+        background:
+            rgba(215,221,230,0.08);
+
+        border-color:
+            rgba(215,221,230,0.32);
+
+        box-shadow:
+            0 0 18px
+            rgba(89,185,255,0.08);
+    }
+
+    .menu-toggle:active {
+        transform:
+            scale(0.97);
+    }
+
+    .nav-links {
+        top:
+            72px;
+    }
+
+}
+
+
+/* =========================================================
+   PHASE 2.5
+   SMALL PHONE HEADER
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .nav {
+        min-height:
+            68px;
+    }
+
+    .nav-brand {
+        font-size:
+            15px;
+
+        letter-spacing:
+            0.8px;
+    }
+
+    .menu-toggle {
+        min-height:
+            44px;
+
+        padding:
+            10px 14px;
+    }
+
+    .nav-links {
+        top:
+            68px;
+    }
+
+}
 /* Prevent oversized images from creating horizontal overflow */
 img {
     max-width: 100%;
