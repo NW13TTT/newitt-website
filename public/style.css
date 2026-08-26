@@ -1,4 +1,4 @@
-/* =========================================================
+hi/* =========================================================
    NEWITT MEDIA
    MASTER WEBSITE STYLESHEET
    PHASE 1.1 CINEMATIC BACKGROUND EDITION
@@ -3890,4 +3890,36 @@ button,
     .back-top {
         transition: none !important;
     }
+}
+/* =========================================================
+   PHASE 3.2
+   IMAGE LOADING STABILITY
+   ========================================================= */
+
+/* Keep image containers stable while images load */
+.gallery-card img,
+.brand-logo,
+.hero-logo,
+.page-logo,
+.paranormal-page-logo,
+.photography-logo,
+.contact-logo,
+.social-logo-wrap img,
+.social-final-logo,
+.nav-brand img {
+    height: auto;
+}
+
+/* Prevent oversized images from creating horizontal overflow */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Keep gallery images visually stable */
+.gallery-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
 }
