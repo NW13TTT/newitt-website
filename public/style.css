@@ -3832,3 +3832,62 @@ img {
 [hidden] {
     display: none !important;
 }
+/* =========================================================
+   PHASE 2.9
+   ACCESSIBILITY / TECHNICAL POLISH
+   ========================================================= */
+
+/* Clear keyboard focus indicator */
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--sky-blue-light);
+    outline-offset: 4px;
+}
+
+/* Keep focus visible on dark backgrounds */
+.nav-links a:focus-visible,
+.button:focus-visible,
+.social-button:focus-visible {
+    box-shadow:
+        0 0 0 3px rgba(3,5,8,0.95),
+        0 0 0 6px var(--sky-blue-light);
+}
+
+/* Make interactive gallery images keyboard friendly */
+.gallery-link:focus-visible {
+    outline: 3px solid var(--sky-blue-light);
+    outline-offset: -3px;
+}
+
+/* Improve button and menu touch targets */
+.menu-toggle,
+.back-top,
+.lightbox-close {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent accidental text selection on UI controls */
+button,
+.button,
+.social-button,
+.menu-toggle,
+.lightbox-close {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+    .social-ticker-track {
+        animation: none !important;
+    }
+
+    .gallery-link img,
+    .gallery-card,
+    .button,
+    .social-button,
+    .back-top {
+        transition: none !important;
+    }
+}
