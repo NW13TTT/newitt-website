@@ -4330,61 +4330,130 @@ body.paranormal-page .button.primary {
 
 /* ---------------------------------------------------------
    PHOTOGRAPHY HERO
-   Keep the intended centred composition shown in the current
-   photography page. No artificial logo panel.
+   Desktop: logo left, text right.
+   Photography keeps its own premium silver identity while
+   using the same hero architecture as Skyline.
 --------------------------------------------------------- */
 
 .photography-page .page-hero {
     position: relative;
-    min-height: 520px;
-    padding: 72px 0 64px;
+    min-height: 560px;
+    padding: 70px 0;
     display: grid;
     place-items: center;
-    text-align: center;
+    text-align: left;
     background: transparent;
 }
 
+/* Keep the cinematic background clean around the logo.
+   No artificial glow panel or square behind it. */
 .photography-page .page-hero::before {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: radial-gradient(
-        circle at 50% 22%,
-        rgba(255,255,255,.055),
-        transparent 38%
+    background: linear-gradient(
+        90deg,
+        rgba(3,7,14,.12) 0%,
+        rgba(3,7,14,.22) 24%,
+        rgba(0,0,0,.42) 48%,
+        rgba(0,0,0,.70) 100%
     );
 }
 
 .photography-page .page-hero > .container {
     position: relative;
     z-index: 1;
+    width: min(1100px, 92%);
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr);
+    align-items: center;
+    gap: 54px;
 }
 
 .photography-page .page-hero .page-logo {
-    width: 185px;
-    height: 185px;
-    max-width: 70vw;
-    margin: 0 auto 22px;
+    grid-column: 1;
+    grid-row: 1 / span 4;
+    justify-self: center;
+    align-self: center;
+    width: 210px;
+    height: 210px;
+    max-width: 100%;
+    margin: 0;
     object-fit: contain;
     background: transparent !important;
     border: 0 !important;
+    outline: none !important;
     box-shadow: none !important;
     filter:
-        drop-shadow(0 0 18px rgba(255,255,255,.16))
-        drop-shadow(0 12px 28px rgba(0,0,0,.55));
+        drop-shadow(0 0 18px rgba(255,255,255,.10))
+        drop-shadow(0 12px 28px rgba(0,0,0,.60));
+}
+
+.photography-page .page-hero .eyebrow,
+.photography-page .page-hero h1,
+.photography-page .page-hero p {
+    grid-column: 2;
+    position: relative;
+    z-index: 1;
+    text-align: left;
+}
+
+.photography-page .page-hero .eyebrow {
+    margin: 0 0 8px;
+    color: #ffffff;
 }
 
 .photography-page .page-hero h1 {
-    max-width: 1000px;
-    margin: 10px auto 18px;
-    font-size: clamp(40px, 7vw, 78px);
+    max-width: 760px;
+    margin: 0 0 20px;
+    font-size: clamp(42px, 5.5vw, 72px);
     line-height: .96;
+    letter-spacing: -2.5px;
+}
+
+.photography-page .page-hero h1 span {
+    color: #ffffff;
 }
 
 .photography-page .page-hero p {
-    max-width: 760px;
-    margin: 0 auto;
+    max-width: 720px;
+    margin: 0 0 14px;
+    color: #cbd2da;
+    line-height: 1.75;
+}
+
+/* ---------------------------------------------------------
+   PHOTOGRAPHY PANELS
+--------------------------------------------------------- */
+
+.photography-page .panel,
+.photography-page .about {
+    border: 1px solid rgba(215,221,230,.18);
+    background:
+        linear-gradient(
+            180deg,
+            rgba(8,14,22,.88),
+            rgba(2,6,12,.94)
+        );
+    box-shadow:
+        0 24px 70px rgba(0,0,0,.55);
+}
+
+.photography-page .panel h2,
+.photography-page .about h2 {
+    color: #f7f9fc;
+}
+
+.photography-page .panel h2 span,
+.photography-page .about h2 span {
+    color: #ffffff;
+}
+
+.photography-page .panel p,
+.photography-page .about p {
+    color: #c5ced8;
+    line-height: 1.75;
 }
 
 /* ---------------------------------------------------------
@@ -4494,11 +4563,32 @@ body.paranormal-page .button.primary {
     .photography-page .page-hero {
         min-height: 0;
         padding: 62px 0 45px;
+        text-align: center;
+    }
+
+    .photography-page .page-hero > .container {
+        width: 90%;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+        text-align: center;
     }
 
     .photography-page .page-hero .page-logo {
+        grid-column: 1;
+        grid-row: 1;
         width: 175px;
         height: 175px;
+        margin: 0 auto 20px;
+    }
+
+    .photography-page .page-hero .eyebrow,
+    .photography-page .page-hero h1,
+    .photography-page .page-hero p {
+        grid-column: 1;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
@@ -4519,6 +4609,10 @@ body.paranormal-page .button.primary {
     .photography-page .page-hero .page-logo {
         width: 155px;
         height: 155px;
+    }
+
+    .photography-page .page-hero h1 {
+        font-size: 35px;
     }
 
     .skyline-hero-content h1,
