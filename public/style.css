@@ -4030,3 +4030,65 @@ img {
     aspect-ratio: 16 / 10;
     object-fit: cover;
 }
+/* =========================================================
+   PHASE 2.8
+   ACCESSIBILITY + TOUCH INTERACTION POLISH
+   ========================================================= */
+
+button:focus-visible,
+a:focus-visible {
+    outline:
+        2px solid
+        #59b9ff;
+
+    outline-offset:
+        4px;
+
+    border-radius:
+        8px;
+}
+
+
+/* Make navigation and buttons easier to use on touchscreens */
+
+@media (max-width: 800px) {
+
+    .nav-links a,
+    .button,
+    .social-button,
+    .menu-toggle,
+    .back-top {
+        -webkit-tap-highlight-color:
+            transparent;
+    }
+
+    .nav-links a:active,
+    .button:active,
+    .social-button:active {
+        transform:
+            scale(0.98);
+    }
+
+}
+
+
+/* Keep anchor targets clear of the sticky header */
+
+section[id] {
+    scroll-margin-top:
+        88px;
+}
+
+
+/* Prevent accidental text selection on interface controls */
+
+.menu-toggle,
+.button,
+.social-button,
+.back-top {
+    user-select:
+        none;
+
+    -webkit-user-select:
+        none;
+}
