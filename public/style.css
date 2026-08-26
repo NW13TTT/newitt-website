@@ -3479,3 +3479,313 @@ footer {
             auto !important;
     }
 }
+/* =========================================================
+   NEWITT MEDIA
+   PHOTOGRAPHY PAGE ADD-ON
+   PHASE 1
+   ========================================================= */
+
+/*
+   IMPORTANT:
+   This is an ADD-ON.
+   Do not delete the existing CSS above.
+*/
+
+
+/* =========================================================
+   PHOTOGRAPHY PAGE
+   PREMIUM BLACK CENTRE
+   ========================================================= */
+
+body.photography-page::before {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(3, 7, 14, 0.18) 0%,
+            rgba(3, 7, 14, 0.35) 18%,
+            rgba(0, 0, 0, 0.82) 36%,
+            rgba(0, 0, 0, 1) 48%,
+            rgba(0, 0, 0, 1) 52%,
+            rgba(0, 0, 0, 0.82) 64%,
+            rgba(3, 7, 14, 0.35) 82%,
+            rgba(3, 7, 14, 0.18) 100%
+        ),
+        url("background.png.PNG")
+        center / cover
+        no-repeat;
+
+    transform: scale(1.02);
+}
+
+
+/* =========================================================
+   PHOTOGRAPHY HERO
+   ========================================================= */
+
+.photography-logo {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 0 18px
+            rgba(255,255,255,0.18)
+        )
+        drop-shadow(
+            0 12px 28px
+            rgba(0,0,0,0.65)
+        );
+}
+
+
+/* =========================================================
+   PHOTOGRAPHY PAGE HERO PANEL
+   ========================================================= */
+
+.photography-page .hero-card,
+.photography-page .page-hero .hero-card {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0.72),
+            rgba(0,0,0,0.88)
+        );
+
+    border:
+        1px solid
+        rgba(215,221,230,0.18);
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,0.70),
+
+        inset 0 0 40px
+        rgba(255,255,255,0.015);
+}
+
+
+/* =========================================================
+   PHOTOGRAPHY SECTION PANELS
+   ========================================================= */
+
+.photography-page .panel,
+.photography-page .about {
+    background:
+        rgba(0,0,0,0.82);
+
+    border:
+        1px solid
+        rgba(215,221,230,0.16);
+
+    box-shadow:
+        0 22px 65px
+        rgba(0,0,0,0.65);
+}
+
+
+/* =========================================================
+   PHOTOGRAPHY GALLERY
+   ========================================================= */
+
+.photography-page .gallery {
+    position:
+        relative;
+
+    z-index:
+        1;
+}
+
+.photography-page .gallery-card {
+    background:
+        rgba(0,0,0,0.88);
+
+    border:
+        1px solid
+        rgba(215,221,230,0.18);
+
+    box-shadow:
+        0 20px 55px
+        rgba(0,0,0,0.65);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.photography-page .gallery-card:hover {
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(255,255,255,0.34);
+
+    box-shadow:
+        0 28px 75px
+        rgba(0,0,0,0.78);
+}
+
+
+/* =========================================================
+   PHOTOGRAPHY GALLERY IMAGES
+   ========================================================= */
+
+.photography-page .gallery-card img {
+    background:
+        #000;
+
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease;
+}
+
+.photography-page .gallery-link:hover img {
+    transform:
+        scale(1.035);
+
+    filter:
+        brightness(1.08)
+        contrast(1.04);
+}
+
+
+/* =========================================================
+   PHOTOGRAPHY CAPTIONS
+   ========================================================= */
+
+.photography-page .gallery-caption {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0.92),
+            rgba(0,0,0,1)
+        );
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.08);
+}
+
+.photography-page .gallery-caption h3 {
+    color:
+        #ffffff;
+
+    text-shadow:
+        0 0 12px
+        rgba(255,255,255,0.10);
+}
+
+
+/* =========================================================
+   PHOTOGRAPHY PAGE HEADINGS
+   ========================================================= */
+
+.photography-page h1,
+.photography-page h2,
+.photography-page h3 {
+    color:
+        #ffffff;
+}
+
+.photography-page p {
+    color:
+        #c5ced9;
+}
+
+
+/* =========================================================
+   PHOTOGRAPHY BUTTONS
+   ========================================================= */
+
+.photography-page .button {
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.photography-page .button:hover {
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(255,255,255,0.55);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,0.40);
+}
+
+
+/* =========================================================
+   PHOTOGRAPHY MOBILE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    body.photography-page::before {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(3,7,14,0.25) 0%,
+                rgba(0,0,0,0.68) 25%,
+                rgba(0,0,0,0.96) 42%,
+                rgba(0,0,0,1) 50%,
+                rgba(0,0,0,0.96) 58%,
+                rgba(0,0,0,0.68) 75%,
+                rgba(3,7,14,0.25) 100%
+            ),
+            url("background.png.PNG")
+            center / cover
+            no-repeat;
+    }
+
+    .photography-page .gallery-card {
+        box-shadow:
+            0 16px 45px
+            rgba(0,0,0,0.65);
+    }
+
+    .photography-page .gallery-card:hover {
+        transform:
+            none;
+    }
+
+    .photography-page .gallery-link:hover img {
+        transform:
+            none;
+
+        filter:
+            none;
+    }
+}
+/* =========================================================
+   PHOTOGRAPHY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .photography-page .gallery {
+        gap:
+            16px;
+    }
+
+    .photography-page .gallery-card {
+        border-radius:
+            16px;
+    }
+
+    .photography-page .gallery-caption {
+        padding:
+            16px;
+    }
+
+    .photography-page .gallery-card img {
+        aspect-ratio:
+            16 / 10;
+    }
+}
