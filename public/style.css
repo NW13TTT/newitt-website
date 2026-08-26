@@ -1,8 +1,11 @@
-/* =========================================================
+/*
+=========================================================
    NEWITT MEDIA
    MASTER WEBSITE STYLESHEET
-   PHASE 1.1 CINEMATIC BACKGROUND EDITION
-   ========================================================= */
+   CINEMATIC BACKGROUND EDITION
+   PHASE 4.1 CLEAN MASTER
+=========================================================
+*/
 
 :root {
     --black: #030508;
@@ -33,7 +36,7 @@
 
 /* =========================================================
    GLOBAL RESET
-   ========================================================= */
+========================================================= */
 
 * {
     box-sizing: border-box;
@@ -41,6 +44,8 @@
 
 html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 body {
@@ -56,14 +61,30 @@ body {
     background: #000;
 
     overflow-x: hidden;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body,
+h1,
+h2,
+h3,
+p,
+a,
+button {
+    font-synthesis: none;
+}
+
+[hidden] {
+    display: none !important;
 }
 
 
 /* =========================================================
    CINEMATIC BACKGROUND
-   Scenery remains visible at the sides.
-   Centre fades to deep black for readability.
-   ========================================================= */
+========================================================= */
 
 body::before {
     content: "";
@@ -76,19 +97,21 @@ body::before {
     background:
         linear-gradient(
             90deg,
-            rgba(3, 7, 14, 0.25) 0%,
-            rgba(3, 7, 14, 0.48) 20%,
-            rgba(0, 0, 0, 0.94) 42%,
-            rgba(0, 0, 0, 1) 50%,
-            rgba(0, 0, 0, 0.94) 58%,
-            rgba(3, 7, 14, 0.48) 80%,
-            rgba(3, 7, 14, 0.25) 100%
+            rgba(3,7,14,0.25) 0%,
+            rgba(3,7,14,0.48) 20%,
+            rgba(0,0,0,0.94) 42%,
+            rgba(0,0,0,1) 50%,
+            rgba(0,0,0,0.94) 58%,
+            rgba(3,7,14,0.48) 80%,
+            rgba(3,7,14,0.25) 100%
         ),
         url("background.png.PNG")
         center / cover
         no-repeat;
 
     transform: scale(1.02);
+
+    contain: paint;
 }
 
 body::after {
@@ -104,33 +127,38 @@ body::after {
     background:
         radial-gradient(
             ellipse at center,
-            rgba(0, 0, 0, 0.12) 0%,
-            rgba(0, 0, 0, 0.42) 42%,
-            rgba(0, 0, 0, 0.62) 55%,
-            rgba(0, 0, 0, 0.20) 80%,
-            rgba(0, 0, 0, 0.05) 100%
+            rgba(0,0,0,0.12) 0%,
+            rgba(0,0,0,0.42) 42%,
+            rgba(0,0,0,0.62) 55%,
+            rgba(0,0,0,0.20) 80%,
+            rgba(0,0,0,0.05) 100%
         );
+
+    contain: paint;
 }
 
 a {
     color: inherit;
     text-decoration: none;
+    touch-action: manipulation;
 }
 
 img {
     max-width: 100%;
+    height: auto;
     display: block;
+    image-rendering: auto;
+    -webkit-user-drag: none;
 }
 
-button,
-a {
+button {
     touch-action: manipulation;
 }
 
 
 /* =========================================================
    CONTAINER
-   ========================================================= */
+========================================================= */
 
 .container {
     width: min(1180px, 92%);
@@ -141,16 +169,15 @@ a {
 
 /* =========================================================
    HEADER
-   ========================================================= */
+========================================================= */
 
 .site-header {
     position: sticky;
     top: 0;
-
     z-index: 1000;
 
     background:
-        rgba(3, 6, 12, 0.94);
+        rgba(3,6,12,0.94);
 
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
@@ -158,6 +185,8 @@ a {
     border-bottom:
         1px solid
         var(--line-soft);
+
+    contain: layout style;
 }
 
 .nav {
@@ -211,7 +240,7 @@ a {
 
 /* =========================================================
    DESKTOP NAVIGATION
-   ========================================================= */
+========================================================= */
 
 .nav-links {
     display: flex;
@@ -281,7 +310,7 @@ a {
 
 /* =========================================================
    MOBILE MENU
-   ========================================================= */
+========================================================= */
 
 .menu-toggle {
     display: none;
@@ -309,12 +338,15 @@ a {
     letter-spacing: 0.05em;
 
     cursor: pointer;
+
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 
 /* =========================================================
    HERO
-   ========================================================= */
+========================================================= */
 
 .hero,
 .page-hero {
@@ -334,7 +366,7 @@ a {
     border-radius: 24px;
 
     background:
-        rgba(3, 6, 10, 0.76);
+        rgba(3,6,10,0.76);
 
     backdrop-filter:
         blur(10px);
@@ -360,7 +392,7 @@ a {
 
 /* =========================================================
    HERO LOGO
-   ========================================================= */
+========================================================= */
 
 .hero-logo {
     width: 220px;
@@ -373,14 +405,9 @@ a {
     margin:
         0 auto 26px;
 
-    background:
-        transparent;
-
-    border:
-        none;
-
-    box-shadow:
-        none;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 
     filter:
         drop-shadow(
@@ -396,7 +423,7 @@ a {
 
 /* =========================================================
    TYPOGRAPHY
-   ========================================================= */
+========================================================= */
 
 .eyebrow {
     color:
@@ -430,6 +457,8 @@ h1 {
 
     letter-spacing:
         -3px;
+
+    text-wrap: balance;
 }
 
 h2 {
@@ -441,11 +470,15 @@ h2 {
 
     line-height:
         1.05;
+
+    text-wrap: balance;
 }
 
 h3 {
     margin:
         10px 0;
+
+    text-wrap: balance;
 }
 
 h1 span,
@@ -476,11 +509,18 @@ p {
 
 /* =========================================================
    GENERAL SECTIONS
-   ========================================================= */
+========================================================= */
 
 section {
     padding:
         75px 0;
+
+    contain: layout style;
+}
+
+section[id] {
+    scroll-margin-top:
+        88px;
 }
 
 .section-heading {
@@ -508,7 +548,7 @@ section {
 
 /* =========================================================
    BUTTONS
-   ========================================================= */
+========================================================= */
 
 .buttons {
     display:
@@ -568,6 +608,18 @@ section {
     text-align:
         center;
 
+    cursor:
+        pointer;
+
+    user-select:
+        none;
+
+    -webkit-user-select:
+        none;
+
+    touch-action:
+        manipulation;
+
     transition:
         transform 0.2s ease,
         border-color 0.2s ease,
@@ -608,7 +660,7 @@ section {
 
 /* =========================================================
    BRAND GRID
-   ========================================================= */
+========================================================= */
 
 .brand-grid {
     display:
@@ -630,7 +682,7 @@ section {
 
 /* =========================================================
    BRAND CARDS
-   ========================================================= */
+========================================================= */
 
 .brand-card {
     min-width:
@@ -660,6 +712,9 @@ section {
 
     box-shadow:
         var(--shadow);
+
+    contain:
+        layout style;
 }
 
 .brand-logo {
@@ -676,13 +731,13 @@ section {
         0 auto 18px;
 
     background:
-        transparent;
+        transparent !important;
 
     border:
-        none;
+        none !important;
 
     box-shadow:
-        none;
+        none !important;
 
     filter:
         drop-shadow(
@@ -711,7 +766,7 @@ section {
 
 /* =========================================================
    SOCIAL HUB
-   ========================================================= */
+========================================================= */
 
 .social-hub {
     position:
@@ -728,6 +783,9 @@ section {
 
     background:
         #020307;
+
+    contain:
+        paint;
 }
 
 .social-hub-art {
@@ -777,7 +835,7 @@ section {
 
 /* =========================================================
    SOCIAL INTRO
-   ========================================================= */
+========================================================= */
 
 .social-intro {
     max-width:
@@ -941,7 +999,7 @@ section {
 
 /* =========================================================
    SOCIAL BRAND CARDS
-   ========================================================= */
+========================================================= */
 
 .social-brand-grid {
     display:
@@ -985,6 +1043,9 @@ section {
 
         inset 0 0 35px
         rgba(0,0,0,0.48);
+
+    contain:
+        layout style;
 }
 
 .social-brand::before {
@@ -1120,13 +1181,13 @@ section {
         contain;
 
     background:
-        transparent;
+        transparent !important;
 
     border:
-        none;
+        none !important;
 
     box-shadow:
-        none;
+        none !important;
 
     filter:
         drop-shadow(
@@ -1247,7 +1308,7 @@ section {
 
 /* =========================================================
    SOCIAL BUTTONS
-   ========================================================= */
+========================================================= */
 
 .social-buttons {
     display:
@@ -1304,6 +1365,18 @@ section {
     box-shadow:
         inset 0 0 18px
         rgba(255,255,255,0.03);
+
+    cursor:
+        pointer;
+
+    user-select:
+        none;
+
+    -webkit-user-select:
+        none;
+
+    touch-action:
+        manipulation;
 
     transition:
         transform 0.2s ease,
@@ -1414,7 +1487,7 @@ section {
 
 /* =========================================================
    SOCIAL TICKER
-   ========================================================= */
+========================================================= */
 
 .social-ticker {
     position:
@@ -1447,6 +1520,9 @@ section {
 
         inset 0 0 20px
         rgba(22,140,255,0.12);
+
+    contain:
+        layout paint;
 }
 
 .social-ticker::before,
@@ -1576,7 +1652,6 @@ section {
 }
 
 @keyframes socialTickerMove {
-
     from {
         transform:
             translateX(0);
@@ -1586,13 +1661,12 @@ section {
         transform:
             translateX(-50%);
     }
-
 }
 
 
 /* =========================================================
    FINAL SOCIAL MESSAGE
-   ========================================================= */
+========================================================= */
 
 .social-final {
     position:
@@ -1783,13 +1857,13 @@ section {
         0 auto;
 
     background:
-        transparent;
+        transparent !important;
 
     border:
-        none;
+        none !important;
 
     box-shadow:
-        none;
+        none !important;
 
     filter:
         drop-shadow(
@@ -1805,11 +1879,14 @@ section {
 
 /* =========================================================
    ABOUT
-   ========================================================= */
+========================================================= */
 
 .about {
     padding:
         32px;
+
+    contain:
+        layout style;
 }
 
 .about p:last-child {
@@ -1820,7 +1897,7 @@ section {
 
 /* =========================================================
    BACK TO TOP
-   ========================================================= */
+========================================================= */
 
 .back-top {
     position:
@@ -1879,6 +1956,12 @@ section {
         opacity 0.2s ease,
         visibility 0.2s ease,
         transform 0.2s ease;
+
+    user-select:
+        none;
+
+    -webkit-user-select:
+        none;
 }
 
 .back-top.show {
@@ -1903,7 +1986,7 @@ section {
 
 /* =========================================================
    FOOTER
-   ========================================================= */
+========================================================= */
 
 footer {
     padding:
@@ -1935,7 +2018,7 @@ footer {
 
 /* =========================================================
    GALLERY
-   ========================================================= */
+========================================================= */
 
 .gallery {
     display:
@@ -1967,6 +2050,20 @@ footer {
 
     box-shadow:
         var(--shadow);
+
+    contain:
+        layout style;
+
+    content-visibility:
+        auto;
+
+    contain-intrinsic-size:
+        420px;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 .gallery-link {
@@ -1978,23 +2075,36 @@ footer {
 
     cursor:
         pointer;
+
+    user-select:
+        none;
+
+    -webkit-user-select:
+        none;
 }
 
 .gallery-card img {
+    display:
+        block;
+
     width:
         100%;
+
+    height:
+        auto;
 
     aspect-ratio:
         16 / 10;
 
     object-fit:
         cover;
-}
 
-.gallery-link img {
+    background:
+        #000;
+
     transition:
-        transform 0.3s ease,
-        filter 0.3s ease;
+        transform 0.35s ease,
+        filter 0.35s ease;
 }
 
 .gallery-link:hover img {
@@ -2013,7 +2123,7 @@ footer {
 
 /* =========================================================
    SKYLINE HERO
-   ========================================================= */
+========================================================= */
 
 .skyline-hero {
     position:
@@ -2101,13 +2211,13 @@ footer {
         contain;
 
     background:
-        transparent;
+        transparent !important;
 
     border:
-        none;
+        none !important;
 
     box-shadow:
-        none;
+        none !important;
 
     filter:
         drop-shadow(
@@ -2128,7 +2238,7 @@ footer {
 
 /* =========================================================
    TIKTOK / COMING SOON
-   ========================================================= */
+========================================================= */
 
 .tiktok-box {
     min-height:
@@ -2189,7 +2299,7 @@ footer {
 
 /* =========================================================
    CONTACT PANEL
-   ========================================================= */
+========================================================= */
 
 .contact-panel {
     width:
@@ -2225,6 +2335,9 @@ footer {
 
     box-shadow:
         var(--shadow);
+
+    contain:
+        layout style;
 }
 
 .contact-actions {
@@ -2246,8 +2359,8 @@ footer {
 
 
 /* =========================================================
-   CONTACT / PAGE LOGOS
-   ========================================================= */
+   PAGE LOGOS
+========================================================= */
 
 .paranormal-page-logo {
     width:
@@ -2263,13 +2376,13 @@ footer {
         contain;
 
     background:
-        transparent;
+        transparent !important;
 
     border:
-        none;
+        none !important;
 
     box-shadow:
-        none;
+        none !important;
 
     filter:
         drop-shadow(
@@ -2293,22 +2406,22 @@ footer {
         contain;
 
     background:
-        transparent;
+        transparent !important;
 
     border:
-        none;
+        none !important;
 
     box-shadow:
-        none;
+        none !important;
 
     filter:
         drop-shadow(
-            0 0 16px
-            rgba(190,210,230,0.18)
+            0 0 18px
+            rgba(255,255,255,0.18)
         )
         drop-shadow(
-            0 10px 22px
-            rgba(0,0,0,0.48)
+            0 12px 28px
+            rgba(0,0,0,0.65)
         );
 }
 
@@ -2323,13 +2436,13 @@ footer {
         contain;
 
     background:
-        transparent;
+        transparent !important;
 
     border:
-        none;
+        none !important;
 
     box-shadow:
-        none;
+        none !important;
 
     filter:
         drop-shadow(
@@ -2344,8 +2457,162 @@ footer {
 
 
 /* =========================================================
+   PHOTOGRAPHY PAGE
+========================================================= */
+
+body.photography-page::before {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(3,7,14,0.18) 0%,
+            rgba(3,7,14,0.35) 18%,
+            rgba(0,0,0,0.82) 36%,
+            rgba(0,0,0,1) 48%,
+            rgba(0,0,0,1) 52%,
+            rgba(0,0,0,0.82) 64%,
+            rgba(3,7,14,0.35) 82%,
+            rgba(3,7,14,0.18) 100%
+        ),
+        url("background.png.PNG")
+        center / cover
+        no-repeat;
+
+    transform:
+        scale(1.02);
+}
+
+.photography-page .hero-card,
+.photography-page .page-hero .hero-card {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0.72),
+            rgba(0,0,0,0.88)
+        );
+
+    border:
+        1px solid
+        rgba(215,221,230,0.18);
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,0.70),
+
+        inset 0 0 40px
+        rgba(255,255,255,0.015);
+}
+
+.photography-page .panel,
+.photography-page .about {
+    background:
+        rgba(0,0,0,0.82);
+
+    border:
+        1px solid
+        rgba(215,221,230,0.16);
+
+    box-shadow:
+        0 22px 65px
+        rgba(0,0,0,0.65);
+}
+
+.photography-page .gallery {
+    position:
+        relative;
+
+    z-index:
+        1;
+}
+
+.photography-page .gallery-card {
+    background:
+        rgba(0,0,0,0.88);
+
+    border:
+        1px solid
+        rgba(215,221,230,0.18);
+
+    box-shadow:
+        0 20px 55px
+        rgba(0,0,0,0.65);
+}
+
+.photography-page .gallery-card:hover {
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(255,255,255,0.34);
+
+    box-shadow:
+        0 28px 75px
+        rgba(0,0,0,0.78);
+}
+
+.photography-page .gallery-card img {
+    background:
+        #000;
+}
+
+.photography-page .gallery-link:hover img {
+    transform:
+        scale(1.035);
+
+    filter:
+        brightness(1.08)
+        contrast(1.04);
+}
+
+.photography-page .gallery-caption {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0.92),
+            rgba(0,0,0,1)
+        );
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.08);
+}
+
+.photography-page .gallery-caption h3 {
+    color:
+        #ffffff;
+
+    text-shadow:
+        0 0 12px
+        rgba(255,255,255,0.10);
+}
+
+.photography-page h1,
+.photography-page h2,
+.photography-page h3 {
+    color:
+        #ffffff;
+}
+
+.photography-page p {
+    color:
+        #c5ced9;
+}
+
+.photography-page .button:hover {
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(255,255,255,0.55);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,0.40);
+}
+
+
+/* =========================================================
    LIGHTBOX
-   ========================================================= */
+========================================================= */
 
 .lightbox {
     position:
@@ -2464,12 +2731,78 @@ footer {
 
     cursor:
         pointer;
+
+    user-select:
+        none;
+
+    -webkit-user-select:
+        none;
+}
+
+
+/* =========================================================
+   KEYBOARD ACCESSIBILITY
+========================================================= */
+
+a:focus-visible,
+button:focus-visible {
+    outline:
+        3px solid
+        var(--sky-blue-light);
+
+    outline-offset:
+        4px;
+
+    border-radius:
+        8px;
+}
+
+.nav-links a:focus-visible {
+    background:
+        rgba(22,140,255,0.14);
+
+    color:
+        #ffffff;
+}
+
+.button:focus-visible,
+.social-button:focus-visible {
+    box-shadow:
+        0 0 0 3px
+        rgba(3,5,8,0.95),
+
+        0 0 0 6px
+        var(--sky-blue-light);
+}
+
+.social-button:focus-visible {
+    outline:
+        3px solid
+        currentColor;
+}
+
+.gallery-link:focus-visible {
+    outline:
+        3px solid
+        var(--sky-blue-light);
+
+    outline-offset:
+        -3px;
+}
+
+.lightbox-close:focus-visible {
+    outline:
+        3px solid
+        #ffffff;
+
+    outline-offset:
+        4px;
 }
 
 
 /* =========================================================
    TABLET
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 950px) {
 
@@ -2506,7 +2839,7 @@ footer {
 
 /* =========================================================
    MOBILE
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 800px) {
 
@@ -2532,14 +2865,34 @@ footer {
             90%;
     }
 
+    .site-header {
+        background:
+            rgba(3,6,12,0.97);
+
+        border-bottom:
+            1px solid
+            rgba(89,185,255,0.14);
+    }
+
     .nav {
         min-height:
-            68px;
+            72px;
+
+        padding:
+            4px 0;
     }
 
     .nav-brand {
         font-size:
             16px;
+
+        color:
+            #ffffff !important;
+    }
+
+    .nav-brand span {
+        color:
+            #ffffff !important;
     }
 
     .nav-brand img {
@@ -2548,11 +2901,35 @@ footer {
 
         height:
             36px;
+
+        filter:
+            drop-shadow(
+                0 0 10px
+                rgba(89,185,255,0.35)
+            );
     }
 
     .menu-toggle {
         display:
             block;
+
+        color:
+            #ffffff;
+
+        background:
+            rgba(215,221,230,0.08);
+
+        border-color:
+            rgba(215,221,230,0.32);
+
+        box-shadow:
+            0 0 18px
+            rgba(89,185,255,0.08);
+    }
+
+    .menu-toggle:active {
+        transform:
+            scale(0.97);
     }
 
     .nav-links {
@@ -2563,7 +2940,7 @@ footer {
             absolute;
 
         top:
-            68px;
+            72px;
 
         left:
             5%;
@@ -2638,9 +3015,6 @@ footer {
 
         height:
             180px;
-
-        max-width:
-            60vw;
     }
 
     h1 {
@@ -2821,7 +3195,7 @@ footer {
     }
 
 
-    /* MOVING BANNER */
+    /* TICKER */
 
     .social-ticker-group {
         min-height:
@@ -2843,7 +3217,7 @@ footer {
     }
 
 
-    /* FINAL SOCIAL SECTION */
+    /* FINAL SOCIAL */
 
     .social-final {
         min-height:
@@ -2985,12 +3359,51 @@ footer {
         padding:
             60px 0;
     }
+
+
+    /* PHOTOGRAPHY */
+
+    body.photography-page::before {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(3,7,14,0.25) 0%,
+                rgba(0,0,0,0.68) 25%,
+                rgba(0,0,0,0.96) 42%,
+                rgba(0,0,0,1) 50%,
+                rgba(0,0,0,0.96) 58%,
+                rgba(0,0,0,0.68) 75%,
+                rgba(3,7,14,0.25) 100%
+            ),
+            url("background.png.PNG")
+            center / cover
+            no-repeat;
+    }
+
+    .photography-page .gallery-card {
+        box-shadow:
+            0 16px 45px
+            rgba(0,0,0,0.65);
+    }
+
+    .photography-page .gallery-card:hover {
+        transform:
+            none;
+    }
+
+    .photography-page .gallery-link:hover img {
+        transform:
+            none;
+
+        filter:
+            none;
+    }
 }
 
 
 /* =========================================================
    SMALL PHONES
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 480px) {
 
@@ -2999,9 +3412,17 @@ footer {
             90%;
     }
 
+    .nav {
+        min-height:
+            68px;
+    }
+
     .nav-brand {
         font-size:
-            14px;
+            15px;
+
+        letter-spacing:
+            0.8px;
 
         gap:
             7px;
@@ -3016,11 +3437,19 @@ footer {
     }
 
     .menu-toggle {
+        min-height:
+            44px;
+
         padding:
-            9px 12px;
+            10px 14px;
 
         font-size:
             12px;
+    }
+
+    .nav-links {
+        top:
+            68px;
     }
 
     .hero-logo {
@@ -3155,6 +3584,26 @@ footer {
             140px;
     }
 
+    .photography-page .gallery {
+        gap:
+            16px;
+    }
+
+    .photography-page .gallery-card {
+        border-radius:
+            16px;
+    }
+
+    .photography-page .gallery-caption {
+        padding:
+            16px;
+    }
+
+    .photography-page .gallery-card img {
+        aspect-ratio:
+            16 / 10;
+    }
+
 
     /* CONTACT */
 
@@ -3196,265 +3645,8 @@ footer {
 
 
 /* =========================================================
-   LOGO SAFETY
-   ========================================================= */
-
-.hero-logo,
-.brand-logo,
-.page-logo,
-.paranormal-page-logo,
-.photography-logo,
-.contact-logo,
-.social-logo-wrap img,
-.social-final-logo,
-.nav-brand img {
-
-    background:
-        transparent !important;
-
-    border:
-        none !important;
-
-    box-shadow:
-        none !important;
-}
-
-
-/* =========================================================
-   DESKTOP LOGO CONTROL
-   ========================================================= */
-
-@media (min-width: 801px) {
-
-    .hero-logo {
-        width:
-            220px !important;
-
-        height:
-            220px !important;
-    }
-
-    .brand-logo {
-        width:
-            135px !important;
-
-        height:
-            115px !important;
-    }
-
-    .skyline-hero-content .page-logo {
-        width:
-            145px !important;
-
-        height:
-            145px !important;
-    }
-
-    .paranormal-page-logo {
-        width:
-            170px !important;
-
-        height:
-            170px !important;
-    }
-
-    .photography-logo {
-        width:
-            155px !important;
-
-        height:
-            155px !important;
-    }
-
-    .contact-logo {
-        width:
-            155px !important;
-
-        height:
-            155px !important;
-    }
-
-    .social-logo-wrap img {
-        width:
-            170px !important;
-
-        height:
-            170px !important;
-    }
-
-    .social-final-logo {
-        width:
-            145px !important;
-
-        height:
-            95px !important;
-    }
-}
-
-
-/* =========================================================
-   FINAL MOBILE LOGO CONTROL
-   ========================================================= */
-
-@media (max-width: 800px) {
-
-    .nav-brand img {
-        width:
-            36px !important;
-
-        height:
-            36px !important;
-    }
-
-    .hero-logo {
-        width:
-            180px !important;
-
-        height:
-            180px !important;
-    }
-
-    .brand-logo {
-        width:
-            130px !important;
-
-        height:
-            110px !important;
-    }
-
-    .skyline-hero-content .page-logo {
-        width:
-            145px !important;
-
-        height:
-            145px !important;
-    }
-
-    .paranormal-page-logo {
-        width:
-            160px !important;
-
-        height:
-            160px !important;
-    }
-
-    .photography-logo {
-        width:
-            155px !important;
-
-        height:
-            155px !important;
-    }
-
-    .contact-logo {
-        width:
-            155px !important;
-
-        height:
-            155px !important;
-    }
-
-    .social-logo-wrap img {
-        width:
-            160px !important;
-
-        height:
-            160px !important;
-    }
-
-    .social-final-logo {
-        width:
-            140px !important;
-
-        height:
-            92px !important;
-    }
-}
-
-
-/* =========================================================
-   FINAL SMALL PHONE LOGO CONTROL
-   ========================================================= */
-
-@media (max-width: 480px) {
-
-    .nav-brand img {
-        width:
-            32px !important;
-
-        height:
-            32px !important;
-    }
-
-    .hero-logo {
-        width:
-            155px !important;
-
-        height:
-            155px !important;
-    }
-
-    .brand-logo {
-        width:
-            120px !important;
-
-        height:
-            100px !important;
-    }
-
-    .skyline-hero-content .page-logo {
-        width:
-            125px !important;
-
-        height:
-            125px !important;
-    }
-
-    .paranormal-page-logo {
-        width:
-            145px !important;
-
-        height:
-            145px !important;
-    }
-
-    .photography-logo {
-        width:
-            140px !important;
-
-        height:
-            140px !important;
-    }
-
-    .contact-logo {
-        width:
-            140px !important;
-
-        height:
-            140px !important;
-    }
-
-    .social-logo-wrap img {
-        width:
-            145px !important;
-
-        height:
-            145px !important;
-    }
-
-    .social-final-logo {
-        width:
-            130px !important;
-
-        height:
-            85px !important;
-    }
-}
-
-
-/* =========================================================
    REDUCED MOTION
-   ========================================================= */
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -3478,409 +3670,10 @@ footer {
         scroll-behavior:
             auto !important;
     }
-}
-/* =========================================================
-   NEWITT MEDIA
-   PHOTOGRAPHY PAGE ADD-ON
-   PHASE 1
-   ========================================================= */
-
-/*
-   IMPORTANT:
-   This is an ADD-ON.
-   Do not delete the existing CSS above.
-*/
-
-
-/* =========================================================
-   PHOTOGRAPHY PAGE
-   PREMIUM BLACK CENTRE
-   ========================================================= */
-
-body.photography-page::before {
-    background:
-        linear-gradient(
-            90deg,
-            rgba(3, 7, 14, 0.18) 0%,
-            rgba(3, 7, 14, 0.35) 18%,
-            rgba(0, 0, 0, 0.82) 36%,
-            rgba(0, 0, 0, 1) 48%,
-            rgba(0, 0, 0, 1) 52%,
-            rgba(0, 0, 0, 0.82) 64%,
-            rgba(3, 7, 14, 0.35) 82%,
-            rgba(3, 7, 14, 0.18) 100%
-        ),
-        url("background.png.PNG")
-        center / cover
-        no-repeat;
-
-    transform: scale(1.02);
-}
-
-
-/* =========================================================
-   PHOTOGRAPHY HERO
-   ========================================================= */
-
-.photography-logo {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-
-    object-fit: contain;
-
-    filter:
-        drop-shadow(
-            0 0 18px
-            rgba(255,255,255,0.18)
-        )
-        drop-shadow(
-            0 12px 28px
-            rgba(0,0,0,0.65)
-        );
-}
-
-
-/* =========================================================
-   PHOTOGRAPHY PAGE HERO PANEL
-   ========================================================= */
-
-.photography-page .hero-card,
-.photography-page .page-hero .hero-card {
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0,0,0,0.72),
-            rgba(0,0,0,0.88)
-        );
-
-    border:
-        1px solid
-        rgba(215,221,230,0.18);
-
-    box-shadow:
-        0 25px 80px
-        rgba(0,0,0,0.70),
-
-        inset 0 0 40px
-        rgba(255,255,255,0.015);
-}
-
-
-/* =========================================================
-   PHOTOGRAPHY SECTION PANELS
-   ========================================================= */
-
-.photography-page .panel,
-.photography-page .about {
-    background:
-        rgba(0,0,0,0.82);
-
-    border:
-        1px solid
-        rgba(215,221,230,0.16);
-
-    box-shadow:
-        0 22px 65px
-        rgba(0,0,0,0.65);
-}
-
-
-/* =========================================================
-   PHOTOGRAPHY GALLERY
-   ========================================================= */
-
-.photography-page .gallery {
-    position:
-        relative;
-
-    z-index:
-        1;
-}
-
-.photography-page .gallery-card {
-    background:
-        rgba(0,0,0,0.88);
-
-    border:
-        1px solid
-        rgba(215,221,230,0.18);
-
-    box-shadow:
-        0 20px 55px
-        rgba(0,0,0,0.65);
-
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-.photography-page .gallery-card:hover {
-    transform:
-        translateY(-4px);
-
-    border-color:
-        rgba(255,255,255,0.34);
-
-    box-shadow:
-        0 28px 75px
-        rgba(0,0,0,0.78);
-}
-
-
-/* =========================================================
-   PHOTOGRAPHY GALLERY IMAGES
-   ========================================================= */
-
-.photography-page .gallery-card img {
-    background:
-        #000;
-
-    transition:
-        transform 0.35s ease,
-        filter 0.35s ease;
-}
-
-.photography-page .gallery-link:hover img {
-    transform:
-        scale(1.035);
-
-    filter:
-        brightness(1.08)
-        contrast(1.04);
-}
-
-
-/* =========================================================
-   PHOTOGRAPHY CAPTIONS
-   ========================================================= */
-
-.photography-page .gallery-caption {
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0,0,0,0.92),
-            rgba(0,0,0,1)
-        );
-
-    border-top:
-        1px solid
-        rgba(255,255,255,0.08);
-}
-
-.photography-page .gallery-caption h3 {
-    color:
-        #ffffff;
-
-    text-shadow:
-        0 0 12px
-        rgba(255,255,255,0.10);
-}
-
-
-/* =========================================================
-   PHOTOGRAPHY PAGE HEADINGS
-   ========================================================= */
-
-.photography-page h1,
-.photography-page h2,
-.photography-page h3 {
-    color:
-        #ffffff;
-}
-
-.photography-page p {
-    color:
-        #c5ced9;
-}
-
-
-/* =========================================================
-   PHOTOGRAPHY BUTTONS
-   ========================================================= */
-
-.photography-page .button {
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.photography-page .button:hover {
-    transform:
-        translateY(-2px);
-
-    border-color:
-        rgba(255,255,255,0.55);
-
-    box-shadow:
-        0 8px 25px
-        rgba(0,0,0,0.40);
-}
-
-
-/* =========================================================
-   PHOTOGRAPHY MOBILE
-   ========================================================= */
-
-@media (max-width: 800px) {
-
-    body.photography-page::before {
-        background:
-            linear-gradient(
-                90deg,
-                rgba(3,7,14,0.25) 0%,
-                rgba(0,0,0,0.68) 25%,
-                rgba(0,0,0,0.96) 42%,
-                rgba(0,0,0,1) 50%,
-                rgba(0,0,0,0.96) 58%,
-                rgba(0,0,0,0.68) 75%,
-                rgba(3,7,14,0.25) 100%
-            ),
-            url("background.png.PNG")
-            center / cover
-            no-repeat;
-    }
-
-    .photography-page .gallery-card {
-        box-shadow:
-            0 16px 45px
-            rgba(0,0,0,0.65);
-    }
-
-    .photography-page .gallery-card:hover {
-        transform:
-            none;
-    }
-
-    .photography-page .gallery-link:hover img {
-        transform:
-            none;
-
-        filter:
-            none;
-    }
-}
-/* =========================================================
-   PHOTOGRAPHY SMALL PHONES
-   ========================================================= */
-
-@media (max-width: 480px) {
-
-    .photography-page .gallery {
-        gap:
-            16px;
-    }
-
-    .photography-page .gallery-card {
-        border-radius:
-            16px;
-    }
-
-    .photography-page .gallery-caption {
-        padding:
-            16px;
-    }
-
-    .photography-page .gallery-card img {
-        aspect-ratio:
-            16 / 10;
-    }
-}
-/* =========================================================
-   PHASE 2.4
-   FONT / RENDERING OPTIMISATION
-   ========================================================= */
-
-/* Keep text rendering lightweight and consistent */
-html {
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-}
-
-body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-}
-
-/* Prevent synthetic font styles from adding rendering work */
-h1,
-h2,
-h3,
-p,
-a,
-button {
-    font-synthesis: none;
-}
-
-/* Improve heading wrapping on modern browsers */
-h1,
-h2,
-h3 {
-    text-wrap: balance;
-}
-
-/* Keep images from interfering with text rendering */
-img {
-    image-rendering: auto;
-}
-
-/* Avoid unnecessary layout work from hidden elements */
-[hidden] {
-    display: none !important;
-}
-/* =========================================================
-   PHASE 2.9
-   ACCESSIBILITY / TECHNICAL POLISH
-   ========================================================= */
-
-/* Clear keyboard focus indicator */
-a:focus-visible,
-button:focus-visible {
-    outline: 3px solid var(--sky-blue-light);
-    outline-offset: 4px;
-}
-
-/* Keep focus visible on dark backgrounds */
-.nav-links a:focus-visible,
-.button:focus-visible,
-.social-button:focus-visible {
-    box-shadow:
-        0 0 0 3px rgba(3,5,8,0.95),
-        0 0 0 6px var(--sky-blue-light);
-}
-
-/* Make interactive gallery images keyboard friendly */
-.gallery-link:focus-visible {
-    outline: 3px solid var(--sky-blue-light);
-    outline-offset: -3px;
-}
-
-/* Improve button and menu touch targets */
-.menu-toggle,
-.back-top,
-.lightbox-close {
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* Prevent accidental text selection on UI controls */
-button,
-.button,
-.social-button,
-.menu-toggle,
-.lightbox-close {
-    user-select: none;
-    -webkit-user-select: none;
-}
-
-/* Respect reduced-motion preferences */
-@media (prefers-reduced-motion: reduce) {
 
     .social-ticker-track {
-        animation: none !important;
+        animation:
+            none !important;
     }
 
     .gallery-link img,
@@ -3888,499 +3681,7 @@ button,
     .button,
     .social-button,
     .back-top {
-        transition: none !important;
-    }
-}
-/* =========================================================
-   PHASE 3.2
-   IMAGE LOADING STABILITY
-   ========================================================= */
-
-/* Keep image containers stable while images load */
-.gallery-card img,
-.brand-logo,
-.hero-logo,
-.page-logo,
-.paranormal-page-logo,
-.photography-logo,
-.contact-logo,
-.social-logo-wrap img,
-.social-final-logo,
-.nav-brand img {
-    height: auto;
-}
-/* =========================================================
-   PHASE 2.5
-   MOBILE HEADER POLISH
-   ========================================================= */
-
-@media (max-width: 800px) {
-
-    .site-header {
-        background:
-            rgba(3, 6, 12, 0.97);
-
-        border-bottom:
-            1px solid
-            rgba(89, 185, 255, 0.14);
-    }
-
-    .nav {
-        min-height:
-            72px;
-
-        padding:
-            4px 0;
-    }
-
-    .nav-brand {
-        color:
-            #ffffff !important;
-
-        text-shadow:
-            0 0 12px
-            rgba(255,255,255,0.18);
-    }
-
-    .nav-brand span {
-        color:
-            #ffffff !important;
-    }
-
-    .nav-brand img {
-        filter:
-            drop-shadow(
-                0 0 10px
-                rgba(89,185,255,0.35)
-            );
-    }
-
-    .menu-toggle {
-        color:
-            #ffffff;
-
-        background:
-            rgba(215,221,230,0.08);
-
-        border-color:
-            rgba(215,221,230,0.32);
-
-        box-shadow:
-            0 0 18px
-            rgba(89,185,255,0.08);
-    }
-
-    .menu-toggle:active {
-        transform:
-            scale(0.97);
-    }
-
-    .nav-links {
-        top:
-            72px;
-    }
-
-}
-
-
-/* =========================================================
-   PHASE 2.5
-   SMALL PHONE HEADER
-   ========================================================= */
-
-@media (max-width: 480px) {
-
-    .nav {
-        min-height:
-            68px;
-    }
-
-    .nav-brand {
-        font-size:
-            15px;
-
-        letter-spacing:
-            0.8px;
-    }
-
-    .menu-toggle {
-        min-height:
-            44px;
-
-        padding:
-            10px 14px;
-    }
-
-    .nav-links {
-        top:
-            68px;
-    }
-
-}
-/* Prevent oversized images from creating horizontal overflow */
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Keep gallery images visually stable */
-.gallery-card img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
-}
-/* =========================================================
-   PHASE 2.8
-   ACCESSIBILITY + TOUCH INTERACTION POLISH
-   ========================================================= */
-
-button:focus-visible,
-a:focus-visible {
-    outline:
-        2px solid
-        #59b9ff;
-
-    outline-offset:
-        4px;
-
-    border-radius:
-        8px;
-}
-
-
-/* Make navigation and buttons easier to use on touchscreens */
-
-@media (max-width: 800px) {
-
-    .nav-links a,
-    .button,
-    .social-button,
-    .menu-toggle,
-    .back-top {
-        -webkit-tap-highlight-color:
-            transparent;
-    }
-
-    .nav-links a:active,
-    .button:active,
-    .social-button:active {
-        transform:
-            scale(0.98);
-    }
-
-}
-
-
-/* Keep anchor targets clear of the sticky header */
-
-section[id] {
-    scroll-margin-top:
-        88px;
-}
-
-
-/* Prevent accidental text selection on interface controls */
-
-.menu-toggle,
-.button,
-.social-button,
-.back-top {
-    user-select:
-        none;
-
-    -webkit-user-select:
-        none;
-}
-/* =========================================================
-   PHASE 3.6
-   ACCESSIBILITY + FOCUS POLISH
-   ========================================================= */
-
-a:focus-visible,
-button:focus-visible {
-    outline:
-        3px solid
-        var(--sky-blue-light);
-
-    outline-offset:
-        4px;
-
-    border-radius:
-        8px;
-}
-
-
-/* Keep keyboard focus clear on dark backgrounds */
-
-.nav-links a:focus-visible {
-    background:
-        rgba(22,140,255,0.14);
-
-    color:
-        #ffffff;
-}
-
-
-/* Social buttons */
-
-.social-button:focus-visible {
-    outline:
-        3px solid
-        currentColor;
-
-    outline-offset:
-        4px;
-}
-
-
-/* Gallery images */
-
-.gallery-link:focus-visible {
-    outline:
-        3px solid
-        var(--sky-blue-light);
-
-    outline-offset:
-        4px;
-}
-
-
-/* Lightbox close button */
-
-.lightbox-close:focus-visible {
-    outline:
-        3px solid
-        #ffffff;
-
-    outline-offset:
-        4px;
-}
-
-
-/* Do not introduce animations for reduced-motion users */
-
-@media (prefers-reduced-motion: reduce) {
-
-    a:focus-visible,
-    button:focus-visible {
         transition:
             none !important;
     }
-
-}
-/* =========================================================
-   PHASE 3.7
-   MOBILE TOUCH + INTERACTION POLISH
-   ========================================================= */
-
-button,
-a {
-    -webkit-tap-highlight-color:
-        rgba(89,185,255,0.12);
-}
-
-
-/* Prevent accidental text selection on interface controls */
-
-.menu-toggle,
-.button,
-.social-button,
-.back-top,
-.lightbox-close {
-    user-select:
-        none;
-
-    -webkit-user-select:
-        none;
-}
-
-
-/* Keep interactive controls comfortably tappable */
-
-.menu-toggle,
-.button,
-.social-button,
-.back-top,
-.lightbox-close {
-    touch-action:
-        manipulation;
-}
-
-
-/* Keep images from behaving like draggable page objects */
-
-.gallery-link img,
-.brand-logo,
-.hero-logo,
-.page-logo,
-.social-logo-wrap img,
-.social-final-logo,
-.nav-brand img {
-    -webkit-user-drag:
-        none;
-}
-
-
-/* Respect reduced-motion preferences */
-
-@media (prefers-reduced-motion: reduce) {
-
-    button,
-    a {
-        -webkit-tap-highlight-color:
-            transparent;
-    }
-
-}
-/* =========================================================
-   PHASE 3.9
-   IMAGE LOADING + VISUAL STABILITY POLISH
-   ========================================================= */
-
-/* Keep image content inside its intended boundaries */
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Prevent image dragging on desktop */
-img {
-    -webkit-user-drag: none;
-}
-
-/* Keep important brand images visually stable */
-.hero-logo,
-.brand-logo,
-.page-logo,
-.paranormal-page-logo,
-.photography-logo,
-.contact-logo,
-.social-logo-wrap img,
-.social-final-logo,
-.nav-brand img {
-    object-fit: contain;
-}
-
-/* Keep gallery images consistent */
-.gallery-card img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
-}
-
-/* Prevent image links from creating unwanted selection */
-.gallery-link {
-    -webkit-user-select: none;
-    user-select: none;
-}
-
-/* Respect reduced-motion settings */
-@media (prefers-reduced-motion: reduce) {
-
-    .gallery-link img,
-    .gallery-card {
-        transition: none !important;
-    }
-
-}
-/* =========================================================
-   PHASE 4.0
-   PERFORMANCE + RENDERING POLISH
-   ========================================================= */
-
-/* Tell the browser that these elements can change */
-.gallery-card,
-.gallery-link img,
-.button,
-.social-button,
-.back-top {
-    will-change: auto;
-}
-
-
-/* Keep the large fixed cinematic background efficient */
-body::before,
-body::after {
-    contain: paint;
-}
-
-
-/* Keep the Social Hub artwork isolated from the rest
-   of the page rendering */
-.social-hub {
-    contain: paint;
-}
-
-
-/* Keep the moving social banner isolated */
-.social-ticker {
-    contain: layout paint;
-}
-
-
-/* Avoid unnecessary rendering work for elements
-   that are outside the immediate viewport */
-.gallery-card {
-    content-visibility: auto;
-    contain-intrinsic-size: 420px;
-}
-
-
-/* Respect reduced-motion preferences */
-@media (prefers-reduced-motion: reduce) {
-
-    .social-ticker-track {
-        animation: none !important;
-    }
-
-}
-/* =========================================================
-   PHASE 4.1
-   CONTENT LOADING POLISH
-   ========================================================= */
-
-/* Improve rendering of content-heavy sections */
-section {
-    contain: layout style;
-}
-
-
-/* Keep cards from causing unnecessary layout work */
-.brand-card,
-.social-brand,
-.gallery-card,
-.panel,
-.about,
-.contact-panel {
-    contain: layout style;
-}
-
-
-/* Keep the navigation rendering isolated */
-.site-header {
-    contain: layout style;
-}
-
-
-/* Keep interactive elements responsive */
-.button,
-.social-button,
-.menu-toggle,
-.back-top {
-    cursor: pointer;
-}
-
-
-/* Avoid animation work when reduced motion is requested */
-@media (prefers-reduced-motion: reduce) {
-
-    section,
-    .brand-card,
-    .social-brand,
-    .gallery-card {
-        contain: none;
-    }
-
 }
