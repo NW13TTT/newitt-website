@@ -3820,3 +3820,75 @@ iframe {
     }
 
 }
+/* =========================================================
+   NEWITT MEDIA
+   PHASE 4.3
+   RESPONSIVE TEXT + BUTTON SAFETY
+========================================================= */
+
+/* Prevent headings and buttons from becoming wider
+   than the space available */
+h1,
+h2,
+h3,
+.button,
+.social-button {
+    max-width: 100%;
+}
+
+/* Keep long words and text from breaking layouts */
+h1,
+h2,
+h3,
+p,
+.button,
+.social-button {
+    overflow-wrap: break-word;
+}
+
+/* Keep buttons centred when they wrap */
+.buttons,
+.social-buttons {
+    max-width: 100%;
+}
+
+/* =========================================================
+   MOBILE BUTTON SAFETY
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .buttons,
+    .social-buttons {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .button,
+    .social-button {
+        max-width: 100%;
+        overflow-wrap: break-word;
+    }
+
+}
+
+/* =========================================================
+   SMALL PHONE TEXT SAFETY
+========================================================= */
+
+@media (max-width: 480px) {
+
+    h1,
+    h2,
+    h3 {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    .button,
+    .social-button {
+        white-space: normal;
+        line-height: 1.25;
+    }
+
+}
