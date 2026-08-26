@@ -4233,3 +4233,55 @@ a {
     }
 
 }
+/* =========================================================
+   PHASE 3.9
+   IMAGE LOADING + VISUAL STABILITY POLISH
+   ========================================================= */
+
+/* Keep image content inside its intended boundaries */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Prevent image dragging on desktop */
+img {
+    -webkit-user-drag: none;
+}
+
+/* Keep important brand images visually stable */
+.hero-logo,
+.brand-logo,
+.page-logo,
+.paranormal-page-logo,
+.photography-logo,
+.contact-logo,
+.social-logo-wrap img,
+.social-final-logo,
+.nav-brand img {
+    object-fit: contain;
+}
+
+/* Keep gallery images consistent */
+.gallery-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+/* Prevent image links from creating unwanted selection */
+.gallery-link {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Respect reduced-motion settings */
+@media (prefers-reduced-motion: reduce) {
+
+    .gallery-link img,
+    .gallery-card {
+        transition: none !important;
+    }
+
+}
