@@ -3941,3 +3941,97 @@ button:focus-visible {
     }
 
 }
+/* =========================================================
+   NEWITT MEDIA
+   PHASE 4.5
+   FINAL MEDIA + LAYOUT PROTECTION
+========================================================= */
+
+/* Keep all content inside its available space */
+*,
+*::before,
+*::after {
+    max-width: 100%;
+}
+
+/* Allow normal block elements to size naturally */
+body,
+main,
+section,
+footer {
+    width: 100%;
+}
+
+/* Keep media contained */
+img,
+video,
+iframe,
+svg {
+    max-width: 100%;
+}
+
+/* Prevent long content from creating a wider layout */
+p,
+h1,
+h2,
+h3,
+a {
+    overflow-wrap: break-word;
+}
+
+/* Keep cards and panels from exceeding their containers */
+.hero-card,
+.panel,
+.about,
+.brand-card,
+.social-brand,
+.gallery-card,
+.contact-panel {
+    max-width: 100%;
+}
+
+/* =========================================================
+   MOBILE PROTECTION
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .container {
+        width: 90%;
+        max-width: 100%;
+    }
+
+    .hero-card,
+    .panel,
+    .about,
+    .brand-card,
+    .social-brand,
+    .gallery-card,
+    .contact-panel {
+        width: 100%;
+        max-width: 100%;
+    }
+
+}
+
+/* =========================================================
+   SMALL PHONE PROTECTION
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .container {
+        width: 90%;
+    }
+
+    .hero-card,
+    .panel,
+    .about,
+    .brand-card,
+    .social-brand,
+    .gallery-card,
+    .contact-panel {
+        max-width: 100%;
+    }
+
+}
