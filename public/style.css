@@ -4092,3 +4092,80 @@ section[id] {
     -webkit-user-select:
         none;
 }
+/* =========================================================
+   PHASE 3.6
+   ACCESSIBILITY + FOCUS POLISH
+   ========================================================= */
+
+a:focus-visible,
+button:focus-visible {
+    outline:
+        3px solid
+        var(--sky-blue-light);
+
+    outline-offset:
+        4px;
+
+    border-radius:
+        8px;
+}
+
+
+/* Keep keyboard focus clear on dark backgrounds */
+
+.nav-links a:focus-visible {
+    background:
+        rgba(22,140,255,0.14);
+
+    color:
+        #ffffff;
+}
+
+
+/* Social buttons */
+
+.social-button:focus-visible {
+    outline:
+        3px solid
+        currentColor;
+
+    outline-offset:
+        4px;
+}
+
+
+/* Gallery images */
+
+.gallery-link:focus-visible {
+    outline:
+        3px solid
+        var(--sky-blue-light);
+
+    outline-offset:
+        4px;
+}
+
+
+/* Lightbox close button */
+
+.lightbox-close:focus-visible {
+    outline:
+        3px solid
+        #ffffff;
+
+    outline-offset:
+        4px;
+}
+
+
+/* Do not introduce animations for reduced-motion users */
+
+@media (prefers-reduced-motion: reduce) {
+
+    a:focus-visible,
+    button:focus-visible {
+        transition:
+            none !important;
+    }
+
+}
