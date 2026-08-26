@@ -4285,3 +4285,54 @@ img {
     }
 
 }
+/* =========================================================
+   PHASE 4.0
+   PERFORMANCE + RENDERING POLISH
+   ========================================================= */
+
+/* Tell the browser that these elements can change */
+.gallery-card,
+.gallery-link img,
+.button,
+.social-button,
+.back-top {
+    will-change: auto;
+}
+
+
+/* Keep the large fixed cinematic background efficient */
+body::before,
+body::after {
+    contain: paint;
+}
+
+
+/* Keep the Social Hub artwork isolated from the rest
+   of the page rendering */
+.social-hub {
+    contain: paint;
+}
+
+
+/* Keep the moving social banner isolated */
+.social-ticker {
+    contain: layout paint;
+}
+
+
+/* Avoid unnecessary rendering work for elements
+   that are outside the immediate viewport */
+.gallery-card {
+    content-visibility: auto;
+    contain-intrinsic-size: 420px;
+}
+
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+    .social-ticker-track {
+        animation: none !important;
+    }
+
+}
