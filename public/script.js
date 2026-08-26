@@ -476,6 +476,91 @@ function setupNavigationLinks() {
 
 
 /* =====================================================
+   PHASE 2.2
+   SMART IMAGE PERFORMANCE
+===================================================== */
+
+function setupImagePerformance() {
+
+    const images =
+        document.querySelectorAll(
+            "img"
+        );
+
+
+    if (!images.length) {
+        return;
+    }
+
+
+    images.forEach(
+        function (image, index) {
+
+            /*
+             * Decode images asynchronously where supported.
+             * This helps prevent image decoding from blocking
+             * the main page rendering process.
+             */
+
+            if (
+                "decoding" in image
+            ) {
+
+                image.decoding =
+                    "async";
+
+            }
+
+
+            /*
+             * The first important image is treated as a
+             * high-priority image.
+             */
+
+            if (
+                index === 0
+            ) {
+
+                image.setAttribute(
+                    "fetchpriority",
+                    "high"
+                );
+
+                image.loading =
+                    "eager";
+
+            } else {
+
+                /*
+                 * Other images can load lazily as the user
+                 * approaches them.
+                 */
+
+                if (
+                    !image.hasAttribute(
+                        "loading"
+                    )
+                ) {
+
+                    image.loading =
+                        "lazy";
+
+                }
+
+                image.setAttribute(
+                    "fetchpriority",
+                    "low"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================================
    PAGE INITIALISATION
 ===================================================== */
 
@@ -484,6 +569,8 @@ document.addEventListener(
     function () {
 
         setupBackToTop();
+
+        setupImagePerformance();
 
         setupSmoothLinks();
 
