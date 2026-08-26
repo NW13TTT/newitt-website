@@ -12,7 +12,7 @@
 
     <meta
         name="description"
-        content="NEWITT Media Photography - photography from places, people, adventures and everything in between."
+        content="NEWITT Media Photography - photography from places, landscapes, adventures and creative projects."
     >
 
     <meta
@@ -22,24 +22,30 @@
 
     <title>NEWITT Media Photography</title>
 
-    <!-- MASTER NEWITT MEDIA STYLESHEET -->
-    <link rel="stylesheet" href="style.css">
+
+    <!-- =====================================================
+         NEWITT MEDIA MASTER CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
 
     <!-- =====================================================
-         PHOTOGRAPHY PAGE ADD-ON
+         PHOTOGRAPHY PAGE
          PHASE 1
-         Silver photography styling
-         Desktop + tablet + mobile
+         Silver / cinematic styling
     ====================================================== -->
 
     <style>
 
         /* =================================================
-           PHOTOGRAPHY PAGE
+           PHOTOGRAPHY PAGE IDENTITY
         ================================================== */
 
-        .photography-page {
+        body.photography-page {
             --photo-accent: #d7dde6;
             --photo-accent-bright: #ffffff;
             --photo-border: rgba(215,221,230,.22);
@@ -56,6 +62,7 @@
             text-align: center;
         }
 
+
         .photography-page .page-hero::before {
             content: "";
             position: absolute;
@@ -65,70 +72,116 @@
             background:
                 radial-gradient(
                     circle at 50% 18%,
-                    rgba(255,255,255,.08),
+                    rgba(255,255,255,.07),
                     transparent 38%
                 );
         }
 
 
+        /* =================================================
+           LOGO
+           PNG ONLY
+           NO SQUARE / NO BORDER
+        ================================================== */
+
         .photography-page .page-logo {
+
             position: relative;
             z-index: 1;
 
-            width: 240px;
-            height: 240px;
-            max-width: 72%;
+            width: 220px;
+            height: 220px;
+
+            max-width: 70%;
 
             object-fit: contain;
 
-            margin: 0 auto 25px;
+            margin: 0 auto 26px;
+
+            background: transparent !important;
+
+            border: none !important;
+
+            outline: none !important;
+
+            box-shadow: none !important;
 
             filter:
                 drop-shadow(
-                    0 12px 28px rgba(255,255,255,.16)
+                    0 0 18px
+                    rgba(255,255,255,.16)
+                )
+                drop-shadow(
+                    0 12px 28px
+                    rgba(0,0,0,.55)
                 );
+
         }
 
 
-        .photography-page .eyebrow {
+        /* =================================================
+           HERO TEXT
+        ================================================== */
+
+        .photography-page .page-hero .eyebrow {
+
             position: relative;
             z-index: 1;
 
-            color: var(--photo-accent-bright);
+            color:
+                var(--photo-accent-bright);
+
         }
 
 
         .photography-page .page-hero h1 {
+
             position: relative;
             z-index: 1;
 
-            margin: 0 auto;
+            margin:
+                12px auto 18px;
+
+            max-width:
+                1000px;
 
             font-size:
-                clamp(40px, 7vw, 72px);
+                clamp(40px,7vw,78px);
 
-            line-height: .98;
+            line-height:
+                .96;
 
-            letter-spacing: -2px;
+            letter-spacing:
+                -2.5px;
+
         }
 
 
         .photography-page .page-hero h1 span {
-            color: var(--photo-accent-bright);
+
+            color:
+                var(--photo-accent-bright);
+
         }
 
 
         .photography-page .page-hero p {
+
             position: relative;
             z-index: 1;
 
-            max-width: 760px;
+            max-width:
+                760px;
 
-            margin: 24px auto 0;
+            margin:
+                0 auto;
 
-            color: #cbd2da;
+            color:
+                #cbd2da;
 
-            line-height: 1.75;
+            line-height:
+                1.75;
+
         }
 
 
@@ -139,24 +192,29 @@
         .photography-page .panel,
         .photography-page .about {
 
-            border-color: var(--photo-border);
+            border:
+                1px solid
+                var(--photo-border);
 
             background:
                 linear-gradient(
                     180deg,
-                    rgba(12,17,24,.86),
-                    rgba(5,9,14,.88)
+                    rgba(10,15,22,.90),
+                    rgba(3,7,12,.94)
                 );
 
             box-shadow:
-                0 24px 70px rgba(0,0,0,.48);
+                0 24px 70px
+                rgba(0,0,0,.52);
+
         }
 
 
         .photography-page .panel h2,
         .photography-page .about h2 {
 
-            color: #f7f9fc;
+            color:
+                #f7f9fc;
 
         }
 
@@ -164,7 +222,8 @@
         .photography-page .panel h2 span,
         .photography-page .about h2 span {
 
-            color: var(--photo-accent-bright);
+            color:
+                #ffffff;
 
         }
 
@@ -172,40 +231,47 @@
         .photography-page .panel p,
         .photography-page .about p {
 
-            color: #c9d1da;
+            color:
+                #c5ced8;
 
-            line-height: 1.75;
+            line-height:
+                1.75;
 
         }
 
 
         /* =================================================
-           COMING SOON / GALLERY PLACEHOLDER
+           COMING SOON
         ================================================== */
 
         .photography-page .coming-soon {
 
-            margin: 30px auto 0;
+            margin:
+                30px auto 0;
 
-            padding: 36px 30px;
+            padding:
+                34px 28px;
 
             border:
                 1px solid
-                rgba(215,221,230,.18);
+                rgba(215,221,230,.17);
 
-            border-radius: 20px;
+            border-radius:
+                20px;
 
             background:
                 linear-gradient(
                     135deg,
                     rgba(255,255,255,.045),
-                    rgba(255,255,255,.015)
+                    rgba(255,255,255,.012)
                 );
 
-            text-align: center;
+            text-align:
+                center;
 
             box-shadow:
-                inset 0 1px 0 rgba(255,255,255,.04);
+                inset 0 1px 0
+                rgba(255,255,255,.04);
 
         }
 
@@ -215,29 +281,28 @@
             margin:
                 0 0 12px;
 
-            color: #ffffff;
+            color:
+                #ffffff;
 
-            font-size: 25px;
+            font-size:
+                25px;
 
         }
 
 
         .photography-page .coming-soon p {
 
-            max-width: 680px;
+            max-width:
+                680px;
 
             margin:
                 0 auto;
-
-            color: #bfc8d2;
-
-            line-height: 1.75;
 
         }
 
 
         /* =================================================
-           PHOTOGRAPHY BUTTONS
+           SILVER BUTTONS
         ================================================== */
 
         .photography-page .button {
@@ -248,7 +313,8 @@
             background:
                 rgba(215,221,230,.07);
 
-            color: #f7f9fc;
+            color:
+                #f7f9fc;
 
         }
 
@@ -256,7 +322,7 @@
         .photography-page .button:hover {
 
             border-color:
-                rgba(255,255,255,.72);
+                #ffffff;
 
             background:
                 rgba(255,255,255,.11);
@@ -273,26 +339,11 @@
                     #9fa9b6
                 );
 
-            color: #030508;
+            color:
+                #030508;
 
-            border-color: #ffffff;
-
-            box-shadow:
-                0 10px 30px
-                rgba(215,221,230,.16);
-
-        }
-
-
-        /* =================================================
-           PHOTOGRAPHY FOOTER
-        ================================================== */
-
-        .photography-page footer {
-
-            border-top:
-                1px solid
-                rgba(215,221,230,.14);
+            border-color:
+                #ffffff;
 
         }
 
@@ -305,38 +356,51 @@
 
             .photography-page .page-hero {
 
-                min-height: 520px;
+                min-height:
+                    520px;
 
-                display: flex;
+                display:
+                    flex;
 
-                align-items: center;
+                align-items:
+                    center;
 
-                justify-content: center;
+                justify-content:
+                    center;
 
             }
+
 
             .photography-page .page-hero
             .container {
 
-                width: min(1000px, 92%);
+                width:
+                    min(1000px,92%);
 
             }
+
 
             .photography-page .panel {
 
-                padding: 42px;
+                padding:
+                    42px;
 
             }
 
+
             .photography-page .coming-soon {
 
-                min-height: 190px;
+                min-height:
+                    190px;
 
-                display: flex;
+                display:
+                    flex;
 
-                flex-direction: column;
+                flex-direction:
+                    column;
 
-                justify-content: center;
+                justify-content:
+                    center;
 
             }
 
@@ -351,9 +415,11 @@
 
             .photography-page .page-logo {
 
-                width: 210px;
+                width:
+                    200px;
 
-                height: 210px;
+                height:
+                    200px;
 
             }
 
@@ -376,11 +442,14 @@
 
             .photography-page .page-logo {
 
-                width: 175px;
+                width:
+                    175px;
 
-                height: 175px;
+                height:
+                    175px;
 
-                max-width: 70%;
+                max-width:
+                    70%;
 
             }
 
@@ -388,7 +457,7 @@
             .photography-page .page-hero h1 {
 
                 font-size:
-                    clamp(36px, 10vw, 54px);
+                    clamp(36px,10vw,56px);
 
                 letter-spacing:
                     -1.5px;
@@ -398,11 +467,14 @@
 
             .photography-page .page-hero p {
 
-                margin-top: 20px;
+                margin-top:
+                    20px;
 
-                font-size: 15px;
+                font-size:
+                    15px;
 
-                line-height: 1.7;
+                line-height:
+                    1.7;
 
             }
 
@@ -422,21 +494,6 @@
 
             }
 
-
-            .photography-page .coming-soon h3 {
-
-                font-size: 22px;
-
-            }
-
-
-            .photography-page .about {
-
-                padding:
-                    28px 22px;
-
-            }
-
         }
 
 
@@ -446,19 +503,21 @@
 
         @media (max-width: 480px) {
 
-            .photography-page .page-logo {
+            .photography-page .page-hero {
 
-                width: 155px;
-
-                height: 155px;
+                padding:
+                    52px 0 40px;
 
             }
 
 
-            .photography-page .page-hero {
+            .photography-page .page-logo {
 
-                padding:
-                    52px 0 38px;
+                width:
+                    155px;
+
+                height:
+                    155px;
 
             }
 
@@ -486,12 +545,46 @@
 
             }
 
+
+            .photography-page .coming-soon h3 {
+
+                font-size:
+                    22px;
+
+            }
+
+        }
+
+
+        /* =================================================
+           ACCESSIBILITY / MOTION
+        ================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .photography-page *,
+            .photography-page *::before,
+            .photography-page *::after {
+
+                animation-duration:
+                    .01ms !important;
+
+                transition-duration:
+                    .01ms !important;
+
+            }
+
         }
 
     </style>
 
 </head>
 
+
+<!-- =====================================================
+     BODY
+     THIS CLASS ACTIVATES THE PHOTOGRAPHY PHASE 1 STYLING
+====================================================== -->
 
 <body class="photography-page">
 
@@ -504,6 +597,12 @@
 
     <div class="container nav">
 
+
+        <!-- =================================================
+             NEWITT MEDIA LOGO
+             CORRECT PNG FILENAME
+        ================================================== -->
+
         <a
             href="index.html"
             class="nav-brand"
@@ -511,7 +610,7 @@
         >
 
             <img
-                src="newitt-media-logo.png.PNG"
+                src="newitt-media-logo.png.png"
                 alt="NEWITT Media logo"
             >
 
@@ -521,6 +620,10 @@
 
         </a>
 
+
+        <!-- =================================================
+             MOBILE MENU
+        ================================================== -->
 
         <button
             class="menu-toggle"
@@ -532,6 +635,10 @@
             MENU
         </button>
 
+
+        <!-- =================================================
+             MAIN NAVIGATION
+        ================================================== -->
 
         <nav
             class="nav-links"
@@ -554,6 +661,7 @@
             <a
                 href="photography.html"
                 class="active"
+                aria-current="page"
             >
                 Photography
             </a>
@@ -570,7 +678,7 @@
 
 
 <!-- =====================================================
-     MAIN CONTENT
+     MAIN
 ====================================================== -->
 
 <main>
@@ -584,8 +692,13 @@
 
         <div class="container">
 
+
+            <!-- CORRECT PNG
+                 NO SQUARE
+                 NO BORDER -->
+
             <img
-                src="newitt-media-logo.png.PNG"
+                src="newitt-media-logo.png.png"
                 alt="NEWITT Media Photography logo"
                 class="page-logo"
             >
@@ -624,6 +737,7 @@
         <div class="container">
 
             <div class="panel">
+
 
                 <div class="eyebrow">
                     The photography collection
@@ -684,6 +798,7 @@
 
             <div class="about">
 
+
                 <div class="eyebrow">
                     Coming next
                 </div>
@@ -735,7 +850,7 @@
 
 
 <!-- =====================================================
-     MENU SCRIPT
+     MOBILE MENU JAVASCRIPT
 ====================================================== -->
 
 <script>
@@ -767,16 +882,18 @@ document
             "click",
             () => {
 
-                document
-                    .getElementById("main-menu")
-                    ?.classList.remove("open");
+                const menu =
+                    document.getElementById("main-menu");
 
-                document
-                    .querySelector(".menu-toggle")
-                    ?.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
+                const button =
+                    document.querySelector(".menu-toggle");
+
+                menu.classList.remove("open");
+
+                button.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
 
             }
         );
