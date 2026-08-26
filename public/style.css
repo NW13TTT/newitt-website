@@ -4336,3 +4336,51 @@ body::after {
     }
 
 }
+/* =========================================================
+   PHASE 4.1
+   CONTENT LOADING POLISH
+   ========================================================= */
+
+/* Improve rendering of content-heavy sections */
+section {
+    contain: layout style;
+}
+
+
+/* Keep cards from causing unnecessary layout work */
+.brand-card,
+.social-brand,
+.gallery-card,
+.panel,
+.about,
+.contact-panel {
+    contain: layout style;
+}
+
+
+/* Keep the navigation rendering isolated */
+.site-header {
+    contain: layout style;
+}
+
+
+/* Keep interactive elements responsive */
+.button,
+.social-button,
+.menu-toggle,
+.back-top {
+    cursor: pointer;
+}
+
+
+/* Avoid animation work when reduced motion is requested */
+@media (prefers-reduced-motion: reduce) {
+
+    section,
+    .brand-card,
+    .social-brand,
+    .gallery-card {
+        contain: none;
+    }
+
+}
