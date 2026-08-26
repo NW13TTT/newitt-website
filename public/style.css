@@ -3789,3 +3789,46 @@ body.photography-page::before {
             16 / 10;
     }
 }
+/* =========================================================
+   PHASE 2.4
+   FONT / RENDERING OPTIMISATION
+   ========================================================= */
+
+/* Keep text rendering lightweight and consistent */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Prevent synthetic font styles from adding rendering work */
+h1,
+h2,
+h3,
+p,
+a,
+button {
+    font-synthesis: none;
+}
+
+/* Improve heading wrapping on modern browsers */
+h1,
+h2,
+h3 {
+    text-wrap: balance;
+}
+
+/* Keep images from interfering with text rendering */
+img {
+    image-rendering: auto;
+}
+
+/* Avoid unnecessary layout work from hidden elements */
+[hidden] {
+    display: none !important;
+}
