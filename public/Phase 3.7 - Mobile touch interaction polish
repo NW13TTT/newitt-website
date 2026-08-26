@@ -4169,3 +4169,67 @@ button:focus-visible {
     }
 
 }
+/* =========================================================
+   PHASE 3.7
+   MOBILE TOUCH + INTERACTION POLISH
+   ========================================================= */
+
+button,
+a {
+    -webkit-tap-highlight-color:
+        rgba(89,185,255,0.12);
+}
+
+
+/* Prevent accidental text selection on interface controls */
+
+.menu-toggle,
+.button,
+.social-button,
+.back-top,
+.lightbox-close {
+    user-select:
+        none;
+
+    -webkit-user-select:
+        none;
+}
+
+
+/* Keep interactive controls comfortably tappable */
+
+.menu-toggle,
+.button,
+.social-button,
+.back-top,
+.lightbox-close {
+    touch-action:
+        manipulation;
+}
+
+
+/* Keep images from behaving like draggable page objects */
+
+.gallery-link img,
+.brand-logo,
+.hero-logo,
+.page-logo,
+.social-logo-wrap img,
+.social-final-logo,
+.nav-brand img {
+    -webkit-user-drag:
+        none;
+}
+
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+
+    button,
+    a {
+        -webkit-tap-highlight-color:
+            transparent;
+    }
+
+}
