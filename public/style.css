@@ -4085,80 +4085,120 @@ body {
 }
 
 /* ---------------------------------------------------------
-   BRAND COLOUR SYSTEM
-   Homepage / master: blue-cyan
-   Skyline: blue-cyan
-   Paranormal: red
-   Photography: silver
+   FINAL NEWITT MEDIA PAGE IDENTITY + HERO SYSTEM
+   Shared geometry, individual page identity.
+
+   Desktop:
+   155px logo | text block
+
+   Skyline     = blue/cyan
+   Paranormal  = haunting red
+   Photography = premium platinum/silver
 --------------------------------------------------------- */
 
-body:not(.skyline-page):not(.paranormal-page):not(.photography-page) {
-    --page-accent: var(--brand-cyan);
-    --page-accent-light: var(--brand-cyan-light);
-    --page-accent-bright: var(--brand-cyan-bright);
-}
+:root {
+    --newitt-hero-logo-size: 155px;
 
-body.skyline-page {
-    --page-accent: var(--brand-cyan);
-    --page-accent-light: var(--brand-cyan-light);
-    --page-accent-bright: var(--brand-cyan-bright);
-}
+    --skyline-accent: #168cff;
+    --skyline-accent-light: #59b9ff;
+    --skyline-accent-bright: #8bd3ff;
 
-body.photography-page {
-    --page-accent: #d7dde6;
-    --page-accent-light: #ffffff;
-    --page-accent-bright: #ffffff;
-}
+    --paranormal-accent: #b51224;
+    --paranormal-accent-light: #ff3045;
+    --paranormal-accent-bright: #ff7180;
 
-/* Supports the current Paranormal HTML even when its body has
-   not yet been given a page class. */
-body:has(.paranormal-page-hero),
-body.paranormal-page {
-    --page-accent: var(--brand-red);
-    --page-accent-light: var(--brand-red-light);
-    --page-accent-bright: var(--brand-red-bright);
+    --photography-accent: #c7ced8;
+    --photography-accent-light: #e8edf3;
+    --photography-accent-bright: #ffffff;
 }
 
 /* ---------------------------------------------------------
-   PAGE ACCENTED HEADINGS / EYEBROWS
+   BACKGROUND
+--------------------------------------------------------- */
+
+.hero,
+.page-hero,
+.skyline-hero,
+.paranormal-page-hero,
+.paranormal-hero,
+.photography-hero {
+    background: transparent;
+}
+
+/* ---------------------------------------------------------
+   PAGE IDENTITY
+--------------------------------------------------------- */
+
+body.skyline-page {
+    --page-accent: var(--skyline-accent);
+    --page-accent-light: var(--skyline-accent-light);
+    --page-accent-bright: var(--skyline-accent-bright);
+}
+
+body.paranormal-page {
+    --page-accent: var(--paranormal-accent);
+    --page-accent-light: var(--paranormal-accent-light);
+    --page-accent-bright: var(--paranormal-accent-bright);
+}
+
+body.photography-page {
+    --page-accent: var(--photography-accent);
+    --page-accent-light: var(--photography-accent-light);
+    --page-accent-bright: var(--photography-accent-bright);
+}
+
+/* ---------------------------------------------------------
+   ACCENTED TEXT
 --------------------------------------------------------- */
 
 body.skyline-page .eyebrow,
 body.skyline-page h1 span,
-body.skyline-page h2 span {
-    color: var(--brand-cyan-light);
+body.skyline-page h2 span,
+body.skyline-page h3 span {
+    color: var(--skyline-accent-light);
+}
+
+body.paranormal-page .eyebrow,
+body.paranormal-page h1 span,
+body.paranormal-page h2 span,
+body.paranormal-page h3 span {
+    color: var(--paranormal-accent-light);
+    text-shadow: 0 0 14px rgba(255, 48, 69, .28);
 }
 
 body.photography-page .eyebrow,
 body.photography-page h1 span,
-body.photography-page h2 span {
-    color: #d7dde6;
-}
-
-body:has(.paranormal-page-hero) .eyebrow,
-body:has(.paranormal-page-hero) h1 span,
-body:has(.paranormal-page-hero) h2 span,
-body.paranormal-page .eyebrow,
-body.paranormal-page h1 span,
-body.paranormal-page h2 span {
-    color: var(--brand-red-light);
+body.photography-page h2 span,
+body.photography-page h3 span {
+    color: var(--photography-accent-light);
 }
 
 /* ---------------------------------------------------------
-   NAVIGATION ACCENTS
+   ACTIVE NAVIGATION
 --------------------------------------------------------- */
 
 body.skyline-page .nav-links a.active::after {
-    background: linear-gradient(90deg, #168cff, #8bd3ff);
+    background: linear-gradient(
+        90deg,
+        var(--skyline-accent),
+        var(--skyline-accent-bright)
+    );
+}
+
+body.paranormal-page .nav-links a.active::after {
+    background: linear-gradient(
+        90deg,
+        var(--paranormal-accent),
+        var(--paranormal-accent-bright)
+    );
 }
 
 body.photography-page .nav-links a.active::after {
-    background: linear-gradient(90deg, #d7dde6, #ffffff);
-}
-
-body:has(.paranormal-page-hero) .nav-links a.active::after,
-body.paranormal-page .nav-links a.active::after {
-    background: linear-gradient(90deg, #d91f32, #ff7180);
+    background: linear-gradient(
+        90deg,
+        var(--photography-accent),
+        var(--photography-accent-bright)
+    );
 }
 
 /* ---------------------------------------------------------
@@ -4166,300 +4206,206 @@ body.paranormal-page .nav-links a.active::after {
 --------------------------------------------------------- */
 
 body.skyline-page .button.primary {
-    background: linear-gradient(135deg, #168cff, #0759ad);
+    background: linear-gradient(
+        135deg,
+        #168cff,
+        #0759ad
+    );
     color: #ffffff;
     border-color: #59b9ff;
-    box-shadow: 0 8px 24px rgba(22,140,255,.20);
+    box-shadow: 0 8px 24px rgba(22, 140, 255, .20);
+}
+
+body.paranormal-page .button.primary {
+    background: linear-gradient(
+        135deg,
+        #ff3045,
+        #8d0d1c
+    );
+    color: #ffffff;
+    border-color: #ff7180;
+    box-shadow: 0 8px 26px rgba(181, 18, 36, .28);
 }
 
 body.photography-page .button.primary {
-    background: linear-gradient(135deg, #e8edf3, #9fa9b6);
+    background: linear-gradient(
+        135deg,
+        #e8edf3,
+        #9fa9b6
+    );
     color: #030508;
     border-color: #ffffff;
-}
-
-body:has(.paranormal-page-hero) .button.primary,
-body.paranormal-page .button.primary {
-    background: linear-gradient(135deg, #ff4a5d, #a80f20);
-    color: #ffffff;
-    border-color: #ff7180;
-    box-shadow: 0 8px 24px rgba(217,31,50,.20);
+    box-shadow: 0 8px 24px rgba(215, 221, 230, .14);
 }
 
 /* ---------------------------------------------------------
-   SKYLINE DESKTOP HERO
-   Existing HTML already has the correct two-column structure.
+   SHARED DESKTOP HERO GEOMETRY
+
+   This is the important part:
+   all three pages use the same physical arrangement.
+
+   LOGO | TEXT
 --------------------------------------------------------- */
 
-.skyline-hero {
+.skyline-hero,
+.paranormal-hero,
+.photography-hero {
     min-height: 610px;
     padding: 76px 0;
     display: grid;
     place-items: center;
+    text-align: left;
 }
 
-.skyline-hero-content {
+.skyline-hero-content,
+.paranormal-hero-content,
+.photography-hero-content {
     position: relative;
     z-index: 1;
+
     width: min(1100px, 92%);
     margin: 0 auto;
+
     display: grid;
     grid-template-columns: 190px minmax(0, 1fr);
     gap: 48px;
+
     align-items: center;
 }
 
-.skyline-hero-content > div:first-child {
+/* ---------------------------------------------------------
+   SHARED LOGO COLUMN
+--------------------------------------------------------- */
+
+.skyline-hero-content > div:first-child,
+.paranormal-hero-logo,
+.photography-hero-logo {
     display: grid;
     place-items: center;
-}
-
-.skyline-hero-content > div:last-child {
     min-width: 0;
-    text-align: left;
 }
 
-.skyline-hero-content .page-logo {
-    width: 150px;
-    height: 150px;
-    object-fit: contain;
-    margin: 0 auto;
-    background: transparent !important;
-    border: 0 !important;
-    box-shadow: none !important;
-    filter:
-        drop-shadow(0 0 18px rgba(22,140,255,.22))
-        drop-shadow(0 12px 25px rgba(0,0,0,.55));
-}
+.skyline-hero-content .page-logo,
+.paranormal-page-logo,
+.photography-page-logo {
+    width: var(--newitt-hero-logo-size);
+    height: var(--newitt-hero-logo-size);
 
-.skyline-hero-content h1 {
-    max-width: 900px;
-    margin: 10px 0 18px;
-}
-
-.skyline-hero-content p {
-    max-width: 760px;
-    margin: 0 0 14px;
-}
-
-.skyline-hero-content .buttons {
-    justify-content: flex-start;
-}
-
-/* ---------------------------------------------------------
-   PARANORMAL DESKTOP HERO
-   Works with the current simple markup as well as the newer
-   two-column version. The logo occupies the first column and
-   the text naturally stacks in the second column.
---------------------------------------------------------- */
-
-.paranormal-page-hero {
-    min-height: 610px;
-    padding: 76px 0;
-    display: grid;
-    place-items: center;
-    text-align: left;
-}
-
-.paranormal-page-hero > .container {
-    position: relative;
-    z-index: 1;
-    width: min(1100px, 92%);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 190px minmax(0, 1fr);
-    grid-template-rows: auto auto auto auto;
-    column-gap: 48px;
-    align-items: center;
-}
-
-.paranormal-page-hero > .container > .paranormal-page-logo,
-.paranormal-page-hero > .container > .page-logo {
-    grid-column: 1;
-    grid-row: 1 / -1;
-    align-self: center;
-    justify-self: center;
-}
-
-.paranormal-page-hero > .container > .eyebrow,
-.paranormal-page-hero > .container > h1,
-.paranormal-page-hero > .container > p,
-.paranormal-page-hero > .container > .buttons {
-    grid-column: 2;
-}
-
-.paranormal-page-hero > .container > .eyebrow {
-    grid-row: 1;
-}
-
-.paranormal-page-hero > .container > h1 {
-    grid-row: 2;
-    margin: 10px 0 18px;
-    max-width: 900px;
-}
-
-.paranormal-page-hero > .container > p {
-    grid-row: 3;
-    max-width: 760px;
-    margin: 0 0 12px;
-}
-
-.paranormal-page-hero > .container > .buttons {
-    grid-row: 4;
-    justify-content: flex-start;
-}
-
-.paranormal-page-logo {
-    width: 150px;
-    height: 150px;
     max-width: 100%;
+    max-height: 100%;
+
     object-fit: contain;
+
     margin: 0;
-    background: transparent !important;
-    border: 0 !important;
-    box-shadow: none !important;
-    filter:
-        drop-shadow(0 0 20px rgba(217,31,50,.22))
-        drop-shadow(0 12px 28px rgba(0,0,0,.58));
-}
 
-/* No separate panel behind the Paranormal logo. */
-.paranormal-page-hero::before {
-    display: none !important;
-}
-
-/* ---------------------------------------------------------
-   PHOTOGRAPHY HERO
-   Desktop: logo left, text right.
-   Photography keeps its own premium silver identity while
-   using the same hero architecture as Skyline.
---------------------------------------------------------- */
-
-.photography-page .page-hero {
-    position: relative;
-    min-height: 560px;
-    padding: 70px 0;
-    display: grid;
-    place-items: center;
-    text-align: left;
-    background: transparent;
-}
-
-/* Keep the cinematic background clean around the logo.
-   No artificial glow panel or square behind it. */
-.photography-page .page-hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: linear-gradient(
-        90deg,
-        rgba(3,7,14,.12) 0%,
-        rgba(3,7,14,.22) 24%,
-        rgba(0,0,0,.42) 48%,
-        rgba(0,0,0,.70) 100%
-    );
-}
-
-.photography-page .page-hero > .container {
-    position: relative;
-    z-index: 1;
-    width: min(1100px, 92%);
-    display: grid;
-    grid-template-columns: 250px minmax(0, 1fr);
-    align-items: center;
-    gap: 54px;
-}
-
-.photography-page .page-hero .page-logo {
-    grid-column: 1;
-    grid-row: 1 / span 4;
-    justify-self: center;
-    align-self: center;
-    width: 210px;
-    height: 210px;
-    max-width: 100%;
-    margin: 0;
-    object-fit: contain;
     background: transparent !important;
     border: 0 !important;
     outline: none !important;
     box-shadow: none !important;
-    filter:
-        drop-shadow(0 0 18px rgba(255,255,255,.10))
-        drop-shadow(0 12px 28px rgba(0,0,0,.60));
+
+    display: block;
 }
 
-.photography-page .page-hero .eyebrow,
-.photography-page .page-hero h1,
-.photography-page .page-hero p {
-    grid-column: 2;
-    position: relative;
-    z-index: 1;
+/* ---------------------------------------------------------
+   LOGO IDENTITY GLOW
+--------------------------------------------------------- */
+
+.skyline-hero-content .page-logo {
+    filter:
+        drop-shadow(0 0 18px rgba(22, 140, 255, .22))
+        drop-shadow(0 12px 25px rgba(0, 0, 0, .55));
+}
+
+.paranormal-page-logo {
+    filter:
+        drop-shadow(0 0 18px rgba(181, 18, 36, .26))
+        drop-shadow(0 12px 28px rgba(0, 0, 0, .58));
+}
+
+.photography-page-logo {
+    filter:
+        drop-shadow(0 0 16px rgba(232, 237, 243, .12))
+        drop-shadow(0 12px 28px rgba(0, 0, 0, .58));
+}
+
+/* ---------------------------------------------------------
+   SHARED TEXT COLUMN
+--------------------------------------------------------- */
+
+.skyline-hero-content > div:last-child,
+.paranormal-hero-text,
+.photography-hero-text {
+    min-width: 0;
     text-align: left;
 }
 
-.photography-page .page-hero .eyebrow {
-    margin: 0 0 8px;
-    color: #ffffff;
+.skyline-hero-content h1,
+.paranormal-hero-text h1,
+.photography-hero-text h1 {
+    max-width: 900px;
+    margin: 10px 0 18px;
 }
 
-.photography-page .page-hero h1 {
+.skyline-hero-content p,
+.paranormal-hero-text p,
+.photography-hero-text p {
     max-width: 760px;
-    margin: 0 0 20px;
-    font-size: clamp(42px, 5.5vw, 72px);
-    line-height: .96;
-    letter-spacing: -2.5px;
-}
-
-.photography-page .page-hero h1 span {
-    color: #ffffff;
-}
-
-.photography-page .page-hero p {
-    max-width: 720px;
     margin: 0 0 14px;
-    color: #cbd2da;
-    line-height: 1.75;
+}
+
+.skyline-hero-content .buttons,
+.paranormal-hero-text .buttons,
+.photography-hero-text .buttons {
+    justify-content: flex-start;
 }
 
 /* ---------------------------------------------------------
-   PHOTOGRAPHY PANELS
+   PARANORMAL
 --------------------------------------------------------- */
 
-.photography-page .panel,
-.photography-page .about {
-    border: 1px solid rgba(215,221,230,.18);
-    background:
-        linear-gradient(
-            180deg,
-            rgba(8,14,22,.88),
-            rgba(2,6,12,.94)
-        );
-    box-shadow:
-        0 24px 70px rgba(0,0,0,.55);
+.paranormal-hero {
+    position: relative;
 }
 
-.photography-page .panel h2,
-.photography-page .about h2 {
-    color: #f7f9fc;
+.paranormal-hero::before,
+.paranormal-hero::after {
+    display: none !important;
 }
 
-.photography-page .panel h2 span,
-.photography-page .about h2 span {
-    color: #ffffff;
+.paranormal-hero-text .hero-tagline {
+    color: #f3d9dc;
 }
 
-.photography-page .panel p,
-.photography-page .about p {
-    color: #c5ced8;
-    line-height: 1.75;
+.paranormal-hero-text h1 span {
+    color: var(--paranormal-accent-light);
+    text-shadow:
+        0 0 12px rgba(255, 48, 69, .35),
+        0 0 28px rgba(181, 18, 36, .22);
 }
 
 /* ---------------------------------------------------------
-   PANELS
-   Keep the panels dark and subtle. Never place one behind
-   the hero logos.
+   PHOTOGRAPHY
+--------------------------------------------------------- */
+
+.photography-hero {
+    position: relative;
+}
+
+.photography-hero::before,
+.photography-hero::after {
+    display: none !important;
+}
+
+.photography-hero-text .hero-tagline {
+    color: #dce2e9;
+}
+
+.photography-hero-text h1 span {
+    color: var(--photography-accent-light);
+}
+
+/* ---------------------------------------------------------
+   COMMON PANELS
 --------------------------------------------------------- */
 
 .panel,
@@ -4472,154 +4418,158 @@ body.paranormal-page .button.primary {
 }
 
 /* ---------------------------------------------------------
-   MOBILE HERO CALIBRATION
+   PHOTOGRAPHY PANELS
+--------------------------------------------------------- */
+
+body.photography-page .panel,
+body.photography-page .about,
+body.photography-page .contact-panel {
+    border-color: rgba(215, 221, 230, .18);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, .55);
+}
+
+body.photography-page .panel h2,
+body.photography-page .about h2,
+body.photography-page .contact-panel h2 {
+    color: #f7f9fc;
+}
+
+body.photography-page .panel p,
+body.photography-page .about p,
+body.photography-page .contact-panel p {
+    color: #c5ced8;
+}
+
+/* ---------------------------------------------------------
+   MOBILE
 --------------------------------------------------------- */
 
 @media (max-width: 800px) {
 
     .skyline-hero,
-    .paranormal-page-hero {
+    .paranormal-hero,
+    .photography-hero {
         min-height: 0;
         padding: 62px 0 52px;
+        text-align: center;
     }
 
     .skyline-hero-content,
-    .paranormal-page-hero > .container {
+    .paranormal-hero-content,
+    .photography-hero-content {
         width: 90%;
         grid-template-columns: 1fr;
-        grid-template-rows: auto;
         gap: 0;
         text-align: center;
     }
 
     .skyline-hero-content > div:first-child,
-    .skyline-hero-content > div:last-child {
+    .paranormal-hero-logo,
+    .photography-hero-logo {
         grid-column: 1;
+        margin: 0 auto 18px;
     }
 
-    .skyline-hero-content > div:first-child {
-        grid-row: auto;
-        margin-bottom: 18px;
-    }
-
-    .skyline-hero-content > div:last-child {
+    .skyline-hero-content > div:last-child,
+    .paranormal-hero-text,
+    .photography-hero-text {
+        grid-column: 1;
         text-align: center;
     }
 
-    .skyline-hero-content .page-logo {
+    .skyline-hero-content .page-logo,
+    .paranormal-page-logo,
+    .photography-page-logo {
         width: 145px;
         height: 145px;
     }
 
-    .skyline-hero-content h1 {
+    .skyline-hero-content h1,
+    .paranormal-hero-text h1,
+    .photography-hero-text h1 {
         margin: 8px 0 16px;
     }
 
-    .skyline-hero-content p {
+    .skyline-hero-content p,
+    .paranormal-hero-text p,
+    .photography-hero-text p {
         margin-left: auto;
         margin-right: auto;
     }
 
     .skyline-hero-content .buttons,
-    .paranormal-page-hero > .container > .buttons {
+    .paranormal-hero-text .buttons,
+    .photography-hero-text .buttons {
         justify-content: center;
-    }
-
-    .paranormal-page-hero > .container > .paranormal-page-logo,
-    .paranormal-page-hero > .container > .page-logo {
-        grid-column: 1;
-        grid-row: auto;
-        width: 145px;
-        height: 145px;
-        margin: 0 auto 18px;
-        justify-self: center;
-    }
-
-    .paranormal-page-hero > .container > .eyebrow,
-    .paranormal-page-hero > .container > h1,
-    .paranormal-page-hero > .container > p,
-    .paranormal-page-hero > .container > .buttons {
-        grid-column: 1;
-        grid-row: auto;
-    }
-
-    .paranormal-page-hero > .container > .eyebrow,
-    .paranormal-page-hero > .container > h1,
-    .paranormal-page-hero > .container > p {
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .paranormal-page-hero > .container > h1 {
-        margin-top: 8px;
-        margin-bottom: 16px;
-    }
-
-    .paranormal-page-hero > .container > p {
-        margin-bottom: 12px;
-    }
-
-    .photography-page .page-hero {
-        min-height: 0;
-        padding: 62px 0 45px;
-        text-align: center;
-    }
-
-    .photography-page .page-hero > .container {
-        width: 90%;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 0;
-        text-align: center;
-    }
-
-    .photography-page .page-hero .page-logo {
-        grid-column: 1;
-        grid-row: 1;
-        width: 175px;
-        height: 175px;
-        margin: 0 auto 20px;
-    }
-
-    .photography-page .page-hero .eyebrow,
-    .photography-page .page-hero h1,
-    .photography-page .page-hero p {
-        grid-column: 1;
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
     }
 }
 
 @media (max-width: 480px) {
 
     .skyline-hero,
-    .paranormal-page-hero {
+    .paranormal-hero,
+    .photography-hero {
         padding: 52px 0 42px;
     }
 
     .skyline-hero-content .page-logo,
-    .paranormal-page-hero > .container > .paranormal-page-logo,
-    .paranormal-page-hero > .container > .page-logo {
+    .paranormal-page-logo,
+    .photography-page-logo {
         width: 130px;
         height: 130px;
     }
 
-    .photography-page .page-hero .page-logo {
-        width: 155px;
-        height: 155px;
-    }
-
-    .photography-page .page-hero h1 {
-        font-size: 35px;
-    }
-
     .skyline-hero-content h1,
-    .paranormal-page-hero h1 {
+    .paranormal-hero-text h1,
+    .photography-hero-text h1 {
         font-size: clamp(34px, 9.5vw, 50px);
         letter-spacing: -1.5px;
     }
+}
+
+/* ---------------------------------------------------------
+   ACCESSIBILITY
+--------------------------------------------------------- */
+
+body.skyline-page a:focus-visible,
+body.skyline-page button:focus-visible {
+    outline-color: var(--skyline-accent-light);
+}
+
+body.paranormal-page a:focus-visible,
+body.paranormal-page button:focus-visible {
+    outline-color: var(--paranormal-accent-light);
+}
+
+body.photography-page a:focus-visible,
+body.photography-page button:focus-visible {
+    outline-color: var(--photography-accent-light);
+}
+
+/* ---------------------------------------------------------
+   NO HORIZONTAL SCROLL
+--------------------------------------------------------- */
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+img,
+video,
+iframe,
+svg {
+    max-width: 100%;
+}
+
+p,
+h1,
+h2,
+h3,
+a,
+button {
+    overflow-wrap: break-word;
 }
 
 /* ---------------------------------------------------------
