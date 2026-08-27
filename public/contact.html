@@ -19,61 +19,66 @@
 
   <link rel="stylesheet" href="style.css">
 
-
   <style>
 
     /* =========================================
        CONTACT PAGE
-       Matches the Skyline page proportions
+       Uses the single master website background.
+       No second background image here.
     ========================================== */
 
     .contact-hero {
 
-      position:
-        relative;
+      position: relative;
 
-      overflow:
-        hidden;
+      overflow: hidden;
 
-      min-height:
-        610px;
+      min-height: 610px;
 
-      display:
-        grid;
+      display: grid;
 
-      place-items:
-        center;
+      place-items: center;
 
       border-bottom:
         1px solid
         rgba(89,185,255,.14);
 
+      background:
+        transparent !important;
+
+      background-image:
+        none !important;
+
     }
 
 
+    /* IMPORTANT:
+       Do NOT place background.png.PNG here.
+       The master style.css supplies the one
+       website background. */
+
     .contact-hero::before {
 
-      content:
-        "";
+      content: none !important;
 
-      position:
-        absolute;
+      display: none !important;
 
-      inset:
-        0;
+      background: none !important;
 
-      background:
+      background-image: none !important;
 
-        linear-gradient(
-          90deg,
-          rgba(3,6,10,.88),
-          rgba(3,6,10,.48),
-          rgba(3,6,10,.28)
-        ),
+    }
 
-        url("background.png.PNG")
-        center / cover
-        no-repeat;
+
+    .contact-hero::after {
+
+      content: none !important;
+
+      display: none !important;
+
+      background: none !important;
+
+      background-image: none !important;
 
     }
 
@@ -144,7 +149,8 @@
     .contact-hero h1 span {
 
       color:
-        var(--blue-bright);
+        var(--brand-cyan-light,
+        #59b9ff);
 
     }
 
@@ -223,7 +229,8 @@
     .contact-box h2 span {
 
       color:
-        var(--blue-bright);
+        var(--brand-cyan-light,
+        #59b9ff);
 
     }
 
@@ -369,6 +376,12 @@
         min-height:
           620px;
 
+        background:
+          transparent !important;
+
+        background-image:
+          none !important;
+
       }
 
 
@@ -428,6 +441,14 @@
 
     @media(max-width:480px) {
 
+      .contact-hero {
+
+        min-height:
+          600px;
+
+      }
+
+
       .contact-hero h1 {
 
         font-size:
@@ -440,6 +461,17 @@
 
         padding:
           25px 20px;
+
+      }
+
+
+      .contact-logo {
+
+        width:
+          150px;
+
+        height:
+          150px;
 
       }
 
@@ -811,6 +843,10 @@ function toggleMenu(){
 
   const button =
     document.querySelector(".menu-toggle");
+
+  if (!menu || !button) {
+    return;
+  }
 
   const open =
     menu.classList.toggle("open");
