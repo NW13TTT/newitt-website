@@ -2,14 +2,33 @@
 
 /* =========================================================
    NEWITT MEDIA
-   CLEAN MASTER JAVASCRIPT
+   MASTER JAVASCRIPT
+   Home / Skyline / Paranormal / Photography / Contact
 ========================================================= */
 
 (() => {
 
-    const menu = document.getElementById("main-menu");
-    const menuButton = document.querySelector(".menu-toggle");
-    const backTop = document.getElementById("backTop");
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
+
+    const menu =
+        document.getElementById("main-menu");
+
+    const menuButton =
+        document.querySelector(".menu-toggle");
+
+    const backTop =
+        document.getElementById("backTop");
+
+    const lightbox =
+        document.getElementById("lightbox");
+
+    const lightboxImage =
+        document.getElementById("lightboxImage");
+
+    const lightboxClose =
+        document.getElementById("lightboxClose");
 
 
     /* =====================================================
@@ -22,7 +41,10 @@
             return;
         }
 
-        menu.classList.toggle("open", open);
+        menu.classList.toggle(
+            "open",
+            open
+        );
 
         menuButton.setAttribute(
             "aria-expanded",
@@ -32,7 +54,7 @@
     }
 
 
-    window.toggleMenu = () => {
+    function toggleMenu() {
 
         if (!menu) {
             return;
@@ -42,20 +64,20 @@
             !menu.classList.contains("open")
         );
 
-    };
+    }
 
 
     if (menuButton) {
 
         menuButton.addEventListener(
             "click",
-            () => {
-                window.toggleMenu();
-            }
+            toggleMenu
         );
 
     }
 
+
+    /* Close menu after selecting a page */
 
     if (menu) {
 
@@ -93,7 +115,9 @@
                 !menu.contains(event.target) &&
                 !menuButton.contains(event.target)
             ) {
+
                 setMenu(false);
+
             }
 
         }
@@ -115,27 +139,7 @@
 
 
     /* =====================================================
-       KEYBOARD CONTROLS
-    ===================================================== */
-
-    document.addEventListener(
-        "keydown",
-        event => {
-
-            if (event.key === "Escape") {
-
-                setMenu(false);
-
-                closeLightbox();
-
-            }
-
-        }
-    );
-
-
-    /* =====================================================
-       INTERNAL SMOOTH LINKS
+       SMOOTH INTERNAL LINKS
     ===================================================== */
 
     document.querySelectorAll(
@@ -150,6 +154,7 @@
                     const id =
                         link.getAttribute("href");
 
+
                     if (
                         !id ||
                         id === "#"
@@ -157,19 +162,32 @@
                         return;
                     }
 
-                    const target =
-                        document.querySelector(id);
+
+                    let target = null;
+
+                    try {
+
+                        target =
+                            document.querySelector(id);
+
+                    } catch {
+                        return;
+                    }
+
 
                     if (!target) {
                         return;
                     }
 
+
                     event.preventDefault();
+
 
                     target.scrollIntoView({
                         behavior: "smooth",
                         block: "start"
                     });
+
 
                     setMenu(false);
 
@@ -181,21 +199,16 @@
 
 
     /* =====================================================
-       SKYLINE GALLERY LIGHTBOX
+       GALLERY LIGHTBOX
     ===================================================== */
 
     function closeLightbox() {
 
-        const lightbox =
-            document.getElementById("lightbox");
-
-        const image =
-            document.getElementById("lightboxImage");
-
-
         if (lightbox) {
 
-            lightbox.classList.remove("open");
+            lightbox.classList.remove(
+                "open"
+            );
 
             lightbox.setAttribute(
                 "aria-hidden",
@@ -205,16 +218,67 @@
         }
 
 
-        if (image) {
+        if (lightboxImage) {
 
-            image.removeAttribute("src");
+            lightboxImage.removeAttribute(
+                "src"
+            );
 
-            image.alt = "";
+            lightboxImage.alt = "";
 
         }
 
 
         document.body.style.overflow = "";
+
+    }
+
+
+    function openLightbox(link) {
+
+        if (
+            !lightbox ||
+            !lightboxImage
+        ) {
+            return;
+        }
+
+
+        const source =
+            link.getAttribute("href");
+
+
+        if (!source) {
+            return;
+        }
+
+
+        const thumbnail =
+            link.querySelector("img");
+
+
+        lightboxImage.src =
+            source;
+
+
+        lightboxImage.alt =
+            thumbnail?.alt ||
+            "Gallery image";
+
+
+        lightbox.classList.add(
+            "open"
+        );
+
+
+        lightbox.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+
+        document.body.style.overflow =
+            "hidden";
 
     }
 
@@ -228,68 +292,15 @@
                 "click",
                 event => {
 
-                    const lightbox =
-                        document.getElementById("lightbox");
-
-                    const image =
-                        document.getElementById("lightboxImage");
-
-
-                    if (
-                        !lightbox ||
-                        !image
-                    ) {
-                        return;
-                    }
-
-
                     event.preventDefault();
 
-
-                    const source =
-                        link.getAttribute("href");
-
-
-                    if (!source) {
-                        return;
-                    }
-
-
-                    const thumbnail =
-                        link.querySelector("img");
-
-
-                    image.src = source;
-
-                    image.alt =
-                        thumbnail?.alt ||
-                        "Skyline gallery image";
-
-
-                    lightbox.classList.add(
-                        "open"
-                    );
-
-                    lightbox.setAttribute(
-                        "aria-hidden",
-                        "false"
-                    );
-
-
-                    document.body.style.overflow =
-                        "hidden";
+                    openLightbox(link);
 
                 }
             );
 
         }
     );
-
-
-    const lightboxClose =
-        document.getElementById(
-            "lightboxClose"
-        );
 
 
     if (lightboxClose) {
@@ -302,10 +313,6 @@
     }
 
 
-    const lightbox =
-        document.getElementById("lightbox");
-
-
     if (lightbox) {
 
         lightbox.addEventListener(
@@ -315,7 +322,9 @@
                 if (
                     event.target === lightbox
                 ) {
+
                     closeLightbox();
+
                 }
 
             }
@@ -325,20 +334,41 @@
 
 
     /* =====================================================
+       KEYBOARD CONTROLS
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                setMenu(false);
+
+                closeLightbox();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
        BACK TO TOP
     ===================================================== */
 
     if (backTop) {
 
-        const updateBackTop =
-            () => {
+        function updateBackTop() {
 
-                backTop.classList.toggle(
-                    "show",
-                    window.scrollY > 500
-                );
+            backTop.classList.toggle(
+                "show",
+                window.scrollY > 500
+            );
 
-            };
+        }
 
 
         window.addEventListener(
@@ -377,12 +407,18 @@
     ).forEach(
         (image, index) => {
 
-            image.decoding = "async";
+            image.decoding =
+                "async";
 
+
+            /*
+               Keep the first visible image eager.
+            */
 
             if (index === 0) {
 
-                image.loading = "eager";
+                image.loading =
+                    "eager";
 
                 image.setAttribute(
                     "fetchpriority",
@@ -391,13 +427,22 @@
 
             } else {
 
+                /*
+                   Do not override an explicit
+                   loading attribute from HTML.
+                */
+
                 if (
-                    !image.hasAttribute("loading")
+                    !image.hasAttribute(
+                        "loading"
+                    )
                 ) {
 
-                    image.loading = "lazy";
+                    image.loading =
+                        "lazy";
 
                 }
+
 
                 image.setAttribute(
                     "fetchpriority",
@@ -408,5 +453,15 @@
 
         }
     );
+
+
+    /* =====================================================
+       EXPOSE MENU FUNCTION
+       Useful if another page/script calls toggleMenu().
+    ===================================================== */
+
+    window.toggleMenu =
+        toggleMenu;
+
 
 })();
