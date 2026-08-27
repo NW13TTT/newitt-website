@@ -5197,3 +5197,165 @@ body.photography-page a:focus-visible,
 body.photography-page button:focus-visible {
     outline-color: var(--final-photo-silver-bright) !important;
 }
+/* =========================================================
+   NEWITT MEDIA - FINAL WALLPAPER OVERRIDE
+   ONE WALLPAPER / ALL PAGES / NO HERO BACKGROUNDS
+========================================================= */
+
+html,
+body {
+    min-height: 100% !important;
+}
+
+body {
+    position: relative !important;
+    isolation: isolate !important;
+
+    background-color: #030508 !important;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(3,7,14,0.18) 0%,
+            rgba(3,7,14,0.38) 18%,
+            rgba(0,0,0,0.72) 38%,
+            rgba(0,0,0,0.88) 50%,
+            rgba(0,0,0,0.72) 62%,
+            rgba(3,7,14,0.38) 82%,
+            rgba(3,7,14,0.18) 100%
+        ),
+        url("./background.png.PNG") !important;
+
+    background-position: center center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+}
+
+
+/* KILL EVERY OLD BODY BACKGROUND LAYER */
+
+body::before,
+body::after {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+    background-image: none !important;
+}
+
+
+/* HEROES ARE TRANSPARENT.
+   THEY MUST SHOW THE MASTER WALLPAPER. */
+
+.hero,
+.page-hero,
+.skyline-hero,
+.paranormal-hero,
+.photography-hero,
+.contact-hero {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+
+/* KILL ANY HERO PSEUDO-BACKGROUND */
+
+.hero::before,
+.hero::after,
+.page-hero::before,
+.page-hero::after,
+.skyline-hero::before,
+.skyline-hero::after,
+.paranormal-hero::before,
+.paranormal-hero::after,
+.photography-hero::before,
+.photography-hero::after,
+.contact-hero::before,
+.contact-hero::after {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+    background-image: none !important;
+}
+
+
+/* KEEP WEBSITE CONTENT ABOVE THE WALLPAPER */
+
+.site-header,
+main,
+footer {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    body {
+        background-attachment: scroll !important;
+        background-position: center top !important;
+    }
+
+}
+
+
+/* =========================================================
+   PARANORMAL LOWER SECTIONS
+   KEEP THE FIX THAT WORKED
+========================================================= */
+
+body.paranormal-page main > section:not(#latest-investigations) .about,
+body.paranormal-page #contact-message .about {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+}
+
+
+/* =========================================================
+   PAGE COLOURS
+========================================================= */
+
+body.paranormal-page .eyebrow,
+body.paranormal-page h1 span,
+body.paranormal-page h2 span,
+body.paranormal-page h3 span {
+    color: #ff3b4f !important;
+}
+
+body.skyline-page .eyebrow,
+body.skyline-page h1 span,
+body.skyline-page h2 span,
+body.skyline-page h3 span {
+    color: #58b5ff !important;
+}
+
+body.photography-page .eyebrow,
+body.photography-page h1 span,
+body.photography-page h2 span,
+body.photography-page h3 span {
+    color: #6faf68 !important;
+}
+
+
+/* =========================================================
+   FINAL MOBILE HERO SAFETY
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .skyline-hero,
+    .paranormal-hero,
+    .photography-hero {
+        background: transparent !important;
+        background-image: none !important;
+    }
+
+}
