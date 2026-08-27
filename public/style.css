@@ -5359,3 +5359,37 @@ body.photography-page h3 span {
     }
 
 }
+/* =========================================================
+   FINAL HEADER + FOOTER LINE REMOVAL
+========================================================= */
+
+.site-header,
+footer {
+    border-top: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove any pseudo-element lines */
+
+.site-header::before,
+.site-header::after,
+footer::before,
+footer::after {
+    content: none !important;
+    display: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: none !important;
+}
+
+/* Mobile header line too */
+
+@media (max-width: 800px) {
+
+    .site-header {
+        border-top: none !important;
+        border-bottom: none !important;
+    }
+
+}
