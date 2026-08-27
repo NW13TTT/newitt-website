@@ -1,147 +1,154 @@
 "use strict";
 
-
-/* =====================================================
+/* =========================================================
    NEWITT MEDIA
-   FINAL MASTER JAVASCRIPT
-===================================================== */
+   CLEAN MASTER JAVASCRIPT
+========================================================= */
+
+(() => {
+
+    const menu = document.getElementById("main-menu");
+    const menuButton = document.querySelector(".menu-toggle");
+    const backTop = document.getElementById("backTop");
 
 
-/* =====================================================
-   MOBILE NAVIGATION
-===================================================== */
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
 
-function setMenu(open) {
+    function setMenu(open) {
 
-    const menu =
-        document.getElementById("main-menu");
-
-    const button =
-        document.querySelector(".menu-toggle");
-
-
-    if (!menu || !button) {
-        return;
-    }
-
-
-    menu.classList.toggle(
-        "open",
-        Boolean(open)
-    );
-
-
-    button.setAttribute(
-        "aria-expanded",
-        open ? "true" : "false"
-    );
-
-}
-
-
-/* =====================================================
-   MENU TOGGLE
-===================================================== */
-
-function toggleMenu() {
-
-    const menu =
-        document.getElementById("main-menu");
-
-
-    if (!menu) {
-        return;
-    }
-
-
-    setMenu(
-        !menu.classList.contains("open")
-    );
-
-}
-
-
-/* =====================================================
-   BACK TO TOP
-===================================================== */
-
-function setupBackToTop() {
-
-    const topButton =
-        document.getElementById("backTop");
-
-
-    if (!topButton) {
-        return;
-    }
-
-
-    function updateButton() {
-
-        if (window.scrollY > 500) {
-
-            topButton.classList.add("show");
-
-        } else {
-
-            topButton.classList.remove("show");
-
+        if (!menu || !menuButton) {
+            return;
         }
 
-    }
+        menu.classList.toggle("open", open);
 
-
-    window.addEventListener(
-        "scroll",
-        updateButton,
-        {
-            passive: true
-        }
-    );
-
-
-    topButton.addEventListener(
-        "click",
-        function () {
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
-        }
-    );
-
-
-    updateButton();
-
-}
-
-
-/* =====================================================
-   SMOOTH INTERNAL LINKS
-===================================================== */
-
-function setupSmoothLinks() {
-
-    const links =
-        document.querySelectorAll(
-            'a[href^="#"]'
+        menuButton.setAttribute(
+            "aria-expanded",
+            String(open)
         );
 
+    }
 
-    links.forEach(
-        function (link) {
+
+    window.toggleMenu = () => {
+
+        if (!menu) {
+            return;
+        }
+
+        setMenu(
+            !menu.classList.contains("open")
+        );
+
+    };
+
+
+    if (menuButton) {
+
+        menuButton.addEventListener(
+            "click",
+            () => {
+                window.toggleMenu();
+            }
+        );
+
+    }
+
+
+    if (menu) {
+
+        menu.querySelectorAll("a").forEach(
+            link => {
+
+                link.addEventListener(
+                    "click",
+                    () => {
+                        setMenu(false);
+                    }
+                );
+
+            }
+        );
+
+    }
+
+
+    /* Close menu when clicking outside */
+
+    document.addEventListener(
+        "click",
+        event => {
+
+            if (
+                !menu ||
+                !menuButton ||
+                !menu.classList.contains("open")
+            ) {
+                return;
+            }
+
+            if (
+                !menu.contains(event.target) &&
+                !menuButton.contains(event.target)
+            ) {
+                setMenu(false);
+            }
+
+        }
+    );
+
+
+    /* Close menu when returning to desktop */
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+            if (window.innerWidth > 800) {
+                setMenu(false);
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       KEYBOARD CONTROLS
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (event.key === "Escape") {
+
+                setMenu(false);
+
+                closeLightbox();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       INTERNAL SMOOTH LINKS
+    ===================================================== */
+
+    document.querySelectorAll(
+        'a[href^="#"]'
+    ).forEach(
+        link => {
 
             link.addEventListener(
                 "click",
-                function (event) {
+                event => {
 
                     const id =
-                        link.getAttribute(
-                            "href"
-                        );
-
+                        link.getAttribute("href");
 
                     if (
                         !id ||
@@ -150,26 +157,19 @@ function setupSmoothLinks() {
                         return;
                     }
 
-
                     const target =
-                        document.querySelector(
-                            id
-                        );
-
+                        document.querySelector(id);
 
                     if (!target) {
                         return;
                     }
 
-
                     event.preventDefault();
-
 
                     target.scrollIntoView({
                         behavior: "smooth",
                         block: "start"
                     });
-
 
                     setMenu(false);
 
@@ -179,87 +179,96 @@ function setupSmoothLinks() {
         }
     );
 
-}
+
+    /* =====================================================
+       SKYLINE GALLERY LIGHTBOX
+    ===================================================== */
+
+    function closeLightbox() {
+
+        const lightbox =
+            document.getElementById("lightbox");
+
+        const image =
+            document.getElementById("lightboxImage");
 
 
-/* =====================================================
-   SKYLINE GALLERY LIGHTBOX
-===================================================== */
+        if (lightbox) {
 
-function setupGallery() {
+            lightbox.classList.remove("open");
 
-    const galleryLinks =
-        document.querySelectorAll(
-            ".gallery-link"
-        );
+            lightbox.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+        }
 
 
-    if (!galleryLinks.length) {
-        return;
+        if (image) {
+
+            image.removeAttribute("src");
+
+            image.alt = "";
+
+        }
+
+
+        document.body.style.overflow = "";
+
     }
 
 
-    const lightbox =
-        document.getElementById(
-            "lightbox"
-        );
-
-
-    const lightboxImage =
-        document.getElementById(
-            "lightboxImage"
-        );
-
-
-    if (
-        !lightbox ||
-        !lightboxImage
-    ) {
-        return;
-    }
-
-
-    galleryLinks.forEach(
-        function (link) {
+    document.querySelectorAll(
+        ".gallery-link"
+    ).forEach(
+        link => {
 
             link.addEventListener(
                 "click",
-                function (event) {
+                event => {
+
+                    const lightbox =
+                        document.getElementById("lightbox");
+
+                    const image =
+                        document.getElementById("lightboxImage");
+
+
+                    if (
+                        !lightbox ||
+                        !image
+                    ) {
+                        return;
+                    }
+
 
                     event.preventDefault();
 
 
-                    const imageSource =
-                        link.getAttribute(
-                            "href"
-                        );
+                    const source =
+                        link.getAttribute("href");
 
 
-                    if (!imageSource) {
+                    if (!source) {
                         return;
                     }
 
 
                     const thumbnail =
-                        link.querySelector(
-                            "img"
-                        );
+                        link.querySelector("img");
 
 
-                    lightboxImage.src =
-                        imageSource;
+                    image.src = source;
 
-
-                    lightboxImage.alt =
-                        thumbnail
-                            ? thumbnail.alt
-                            : "Skyline gallery image";
+                    image.alt =
+                        thumbnail?.alt ||
+                        "Skyline gallery image";
 
 
                     lightbox.classList.add(
                         "open"
                     );
-
 
                     lightbox.setAttribute(
                         "aria-hidden",
@@ -277,15 +286,15 @@ function setupGallery() {
     );
 
 
-    const closeButton =
+    const lightboxClose =
         document.getElementById(
             "lightboxClose"
         );
 
 
-    if (closeButton) {
+    if (lightboxClose) {
 
-        closeButton.addEventListener(
+        lightboxClose.addEventListener(
             "click",
             closeLightbox
         );
@@ -293,257 +302,100 @@ function setupGallery() {
     }
 
 
-    lightbox.addEventListener(
-        "click",
-        function (event) {
-
-            if (
-                event.target ===
-                lightbox
-            ) {
-
-                closeLightbox();
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   CLOSE LIGHTBOX
-===================================================== */
-
-function closeLightbox() {
-
     const lightbox =
-        document.getElementById(
-            "lightbox"
-        );
-
-
-    const lightboxImage =
-        document.getElementById(
-            "lightboxImage"
-        );
+        document.getElementById("lightbox");
 
 
     if (lightbox) {
 
-        lightbox.classList.remove(
-            "open"
-        );
+        lightbox.addEventListener(
+            "click",
+            event => {
 
+                if (
+                    event.target === lightbox
+                ) {
+                    closeLightbox();
+                }
 
-        lightbox.setAttribute(
-            "aria-hidden",
-            "true"
+            }
         );
 
     }
 
 
-    if (lightboxImage) {
+    /* =====================================================
+       BACK TO TOP
+    ===================================================== */
 
-        lightboxImage.src =
-            "";
+    if (backTop) {
 
-        lightboxImage.alt =
-            "";
+        const updateBackTop =
+            () => {
 
-    }
-
-
-    document.body.style.overflow =
-        "";
-
-}
-
-
-/* =====================================================
-   CLOSE MENU WHEN CLICKING OUTSIDE
-===================================================== */
-
-function setupOutsideMenuClose() {
-
-    document.addEventListener(
-        "click",
-        function (event) {
-
-            const menu =
-                document.getElementById(
-                    "main-menu"
+                backTop.classList.toggle(
+                    "show",
+                    window.scrollY > 500
                 );
 
-
-            const menuButton =
-                document.querySelector(
-                    ".menu-toggle"
-                );
+            };
 
 
-            if (
-                !menu ||
-                !menuButton
-            ) {
-                return;
+        window.addEventListener(
+            "scroll",
+            updateBackTop,
+            {
+                passive: true
             }
+        );
 
 
-            if (
-                menu.classList.contains(
-                    "open"
-                ) &&
+        backTop.addEventListener(
+            "click",
+            () => {
 
-                !menu.contains(
-                    event.target
-                ) &&
-
-                !menuButton.contains(
-                    event.target
-                )
-            ) {
-
-                setMenu(false);
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   KEYBOARD CONTROLS
-===================================================== */
-
-function setupKeyboardControls() {
-
-    document.addEventListener(
-        "keydown",
-        function (event) {
-
-
-            /* Escape closes mobile menu
-               and image lightbox */
-
-            if (
-                event.key ===
-                "Escape"
-            ) {
-
-                setMenu(false);
-
-                closeLightbox();
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   NAVIGATION LINK HANDLING
-===================================================== */
-
-function setupNavigationLinks() {
-
-    document
-        .querySelectorAll(
-            ".nav-links a"
-        )
-        .forEach(
-            function (link) {
-
-                link.addEventListener(
-                    "click",
-                    function () {
-
-                        setMenu(false);
-
-                    }
-                );
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
 
             }
         );
 
-}
 
+        updateBackTop();
 
-/* =====================================================
-   PHASE 2.2
-   SMART IMAGE PERFORMANCE
-===================================================== */
-
-function setupImagePerformance() {
-
-    const images =
-        document.querySelectorAll(
-            "img"
-        );
-
-
-    if (!images.length) {
-        return;
     }
 
 
-    images.forEach(
-        function (image, index) {
+    /* =====================================================
+       IMAGE PERFORMANCE
+    ===================================================== */
 
-            /*
-             * Decode images asynchronously where supported.
-             * This helps prevent image decoding from blocking
-             * the main page rendering process.
-             */
+    document.querySelectorAll(
+        "img"
+    ).forEach(
+        (image, index) => {
 
-            if (
-                "decoding" in image
-            ) {
-
-                image.decoding =
-                    "async";
-
-            }
+            image.decoding = "async";
 
 
-            /*
-             * The first important image is treated as a
-             * high-priority image.
-             */
+            if (index === 0) {
 
-            if (
-                index === 0
-            ) {
+                image.loading = "eager";
 
                 image.setAttribute(
                     "fetchpriority",
                     "high"
                 );
 
-                image.loading =
-                    "eager";
-
             } else {
 
-                /*
-                 * Other images can load lazily as the user
-                 * approaches them.
-                 */
-
                 if (
-                    !image.hasAttribute(
-                        "loading"
-                    )
+                    !image.hasAttribute("loading")
                 ) {
 
-                    image.loading =
-                        "lazy";
+                    image.loading = "lazy";
 
                 }
 
@@ -557,117 +409,4 @@ function setupImagePerformance() {
         }
     );
 
-}
-
-
-/* =====================================================
-   PAGE INITIALISATION
-===================================================== */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        setupBackToTop();
-
-        setupImagePerformance();
-
-        setupSmoothLinks();
-
-        setupGallery();
-
-        setupOutsideMenuClose();
-
-        setupKeyboardControls();
-
-        setupNavigationLinks();
-
-    }
-);
-/* =====================================================
-   PHASE 3.1
-   MOBILE NAVIGATION POLISH
-===================================================== */
-
-function setupMobileNavigationPolish() {
-
-    const menu =
-        document.getElementById("main-menu");
-
-    const menuButton =
-        document.querySelector(".menu-toggle");
-
-    if (!menu || !menuButton) {
-        return;
-    }
-
-
-    /* Close menu when screen becomes desktop size */
-
-    window.addEventListener(
-        "resize",
-        function () {
-
-            if (window.innerWidth > 800) {
-
-                setMenu(false);
-
-            }
-
-        }
-    );
-
-
-    /* Close menu after selecting a navigation link */
-
-    menu.querySelectorAll("a").forEach(
-        function (link) {
-
-            link.addEventListener(
-                "click",
-                function () {
-
-                    setMenu(false);
-
-                }
-            );
-
-        }
-    );
-
-
-    /* Keep menu button state accessible */
-
-    menuButton.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (
-                event.key === "Enter" ||
-                event.key === " "
-            ) {
-
-                event.preventDefault();
-
-                toggleMenu();
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   PHASE 3.1 INITIALISATION
-===================================================== */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        setupMobileNavigationPolish();
-
-    }
-);
+})();
