@@ -3,7 +3,14 @@
 /* =========================================================
    NEWITT MEDIA
    MASTER JAVASCRIPT
-   Home / Skyline / Paranormal / Photography / Contact
+   FINAL CLEAN VERSION
+
+   Works across:
+   Home
+   Skyline
+   Paranormal
+   Photography
+   Contact
 ========================================================= */
 
 (() => {
@@ -12,11 +19,8 @@
        ELEMENTS
     ===================================================== */
 
-    const menu =
-        document.getElementById("main-menu");
-
-    const menuButton =
-        document.querySelector(".menu-toggle");
+    const menu = document.getElementById("main-menu");
+    const menuButton = document.querySelector(".menu-toggle");
 
     const backTop =
         document.getElementById("backTop");
@@ -71,13 +75,21 @@
 
         menuButton.addEventListener(
             "click",
-            toggleMenu
+            event => {
+
+                event.stopPropagation();
+
+                toggleMenu();
+
+            }
         );
 
     }
 
 
-    /* Close menu after selecting a page */
+    /* =====================================================
+       CLOSE MOBILE MENU AFTER NAVIGATION
+    ===================================================== */
 
     if (menu) {
 
@@ -87,7 +99,9 @@
                 link.addEventListener(
                     "click",
                     () => {
+
                         setMenu(false);
+
                     }
                 );
 
@@ -97,7 +111,9 @@
     }
 
 
-    /* Close menu when clicking outside */
+    /* =====================================================
+       CLOSE MENU WHEN CLICKING OUTSIDE
+    ===================================================== */
 
     document.addEventListener(
         "click",
@@ -124,14 +140,20 @@
     );
 
 
-    /* Close menu when returning to desktop */
+    /* =====================================================
+       CLOSE MENU WHEN RESIZING TO DESKTOP
+    ===================================================== */
 
     window.addEventListener(
         "resize",
         () => {
 
-            if (window.innerWidth > 800) {
+            if (
+                window.innerWidth > 800
+            ) {
+
                 setMenu(false);
+
             }
 
         }
@@ -139,7 +161,7 @@
 
 
     /* =====================================================
-       SMOOTH INTERNAL LINKS
+       INTERNAL SMOOTH LINKS
     ===================================================== */
 
     document.querySelectorAll(
@@ -159,24 +181,20 @@
                         !id ||
                         id === "#"
                     ) {
+
                         return;
+
                     }
 
 
-                    let target = null;
-
-                    try {
-
-                        target =
-                            document.querySelector(id);
-
-                    } catch {
-                        return;
-                    }
+                    const target =
+                        document.querySelector(id);
 
 
                     if (!target) {
+
                         return;
+
                     }
 
 
@@ -184,8 +202,11 @@
 
 
                     target.scrollIntoView({
+
                         behavior: "smooth",
+
                         block: "start"
+
                     });
 
 
@@ -199,8 +220,47 @@
 
 
     /* =====================================================
-       GALLERY LIGHTBOX
+       SKYLINE GALLERY LIGHTBOX
     ===================================================== */
+
+    function openLightbox(source, altText) {
+
+        if (
+            !lightbox ||
+            !lightboxImage ||
+            !source
+        ) {
+
+            return;
+
+        }
+
+
+        lightboxImage.src =
+            source;
+
+
+        lightboxImage.alt =
+            altText ||
+            "NEWITT Skyline Media photograph";
+
+
+        lightbox.classList.add(
+            "open"
+        );
+
+
+        lightbox.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+
+        document.body.style.overflow =
+            "hidden";
+
+    }
+
 
     function closeLightbox() {
 
@@ -229,56 +289,8 @@
         }
 
 
-        document.body.style.overflow = "";
-
-    }
-
-
-    function openLightbox(link) {
-
-        if (
-            !lightbox ||
-            !lightboxImage
-        ) {
-            return;
-        }
-
-
-        const source =
-            link.getAttribute("href");
-
-
-        if (!source) {
-            return;
-        }
-
-
-        const thumbnail =
-            link.querySelector("img");
-
-
-        lightboxImage.src =
-            source;
-
-
-        lightboxImage.alt =
-            thumbnail?.alt ||
-            "Gallery image";
-
-
-        lightbox.classList.add(
-            "open"
-        );
-
-
-        lightbox.setAttribute(
-            "aria-hidden",
-            "false"
-        );
-
-
         document.body.style.overflow =
-            "hidden";
+            "";
 
     }
 
@@ -292,9 +304,47 @@
                 "click",
                 event => {
 
+                    if (
+                        !lightbox ||
+                        !lightboxImage
+                    ) {
+
+                        return;
+
+                    }
+
+
                     event.preventDefault();
 
-                    openLightbox(link);
+
+                    const source =
+                        link.getAttribute(
+                            "href"
+                        );
+
+
+                    if (!source) {
+
+                        return;
+
+                    }
+
+
+                    const thumbnail =
+                        link.querySelector(
+                            "img"
+                        );
+
+
+                    const altText =
+                        thumbnail?.alt ||
+                        "NEWITT Skyline Media photograph";
+
+
+                    openLightbox(
+                        source,
+                        altText
+                    );
 
                 }
             );
@@ -302,6 +352,10 @@
         }
     );
 
+
+    /* =====================================================
+       LIGHTBOX CLOSE BUTTON
+    ===================================================== */
 
     if (lightboxClose) {
 
@@ -312,6 +366,10 @@
 
     }
 
+
+    /* =====================================================
+       CLOSE LIGHTBOX BY CLICKING BACKDROP
+    ===================================================== */
 
     if (lightbox) {
 
@@ -341,6 +399,8 @@
         "keydown",
         event => {
 
+            /* ESC */
+
             if (
                 event.key === "Escape"
             ) {
@@ -348,6 +408,25 @@
                 setMenu(false);
 
                 closeLightbox();
+
+            }
+
+
+            /* ENTER / SPACE FOR LIGHTBOX CLOSE */
+
+            if (
+                event.key === "Enter" ||
+                event.key === " "
+            ) {
+
+                if (
+                    document.activeElement ===
+                    lightboxClose
+                ) {
+
+                    closeLightbox();
+
+                }
 
             }
 
@@ -385,8 +464,11 @@
             () => {
 
                 window.scrollTo({
+
                     top: 0,
+
                     behavior: "smooth"
+
                 });
 
             }
@@ -402,9 +484,13 @@
        IMAGE PERFORMANCE
     ===================================================== */
 
-    document.querySelectorAll(
-        "img"
-    ).forEach(
+    const images =
+        document.querySelectorAll(
+            "img"
+        );
+
+
+    images.forEach(
         (image, index) => {
 
             image.decoding =
@@ -412,7 +498,11 @@
 
 
             /*
-               Keep the first visible image eager.
+               The first image on each page
+               gets priority.
+
+               Existing loading settings
+               are respected.
             */
 
             if (index === 0) {
@@ -427,11 +517,6 @@
 
             } else {
 
-                /*
-                   Do not override an explicit
-                   loading attribute from HTML.
-                */
-
                 if (
                     !image.hasAttribute(
                         "loading"
@@ -442,7 +527,6 @@
                         "lazy";
 
                 }
-
 
                 image.setAttribute(
                     "fetchpriority",
@@ -456,12 +540,44 @@
 
 
     /* =====================================================
+       TIKTOK EMBED SAFETY
+    ===================================================== */
+
+    /*
+       TikTok's own embed.js handles
+       the actual creator embeds.
+
+       We do not attempt to control
+       the third-party script here.
+    */
+
+
+    /* =====================================================
        EXPOSE MENU FUNCTION
-       Useful if another page/script calls toggleMenu().
+       Useful if anything else on the site
+       needs to open / close the menu.
     ===================================================== */
 
     window.toggleMenu =
         toggleMenu;
 
+
+    /* =====================================================
+       INITIAL LIGHTBOX STATE
+    ===================================================== */
+
+    if (lightbox) {
+
+        lightbox.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+    }
+
+
+    /* =====================================================
+       COMPLETE
+    ===================================================== */
 
 })();
