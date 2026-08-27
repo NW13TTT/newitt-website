@@ -3779,3 +3779,41 @@ body.photography-page :focus-visible { outline-color:var(--photography-green-lig
 /* =========================================================
    END FINAL MASTER CSS
 ========================================================= */
+/* =========================================================
+   PARANORMAL LOWER SECTIONS
+   REMOVE UNWANTED BOX TREATMENT
+========================================================= */
+
+body.paranormal-page main > section:not(#latest-investigations) .about {
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+body.paranormal-page main > section:not(#latest-investigations) .section-heading {
+    margin-bottom: 28px;
+}
+
+body.paranormal-page main > section:not(#latest-investigations) .section-heading h2 {
+    margin-bottom: 16px;
+}
+
+body.paranormal-page main > section:not(#latest-investigations) .section-heading p {
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.paranormal-page #contact-message .about {
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+    padding: 0;
+}
