@@ -5393,3 +5393,30 @@ footer::after {
     }
 
 }
+/* FINAL PAGE FRAME LINE REMOVAL */
+
+.site-header,
+footer,
+.skyline-hero,
+.paranormal-hero,
+.photography-hero,
+.contact-hero {
+    border-top: none !important;
+    border-bottom: none !important;
+}
+
+.site-header::before,
+.site-header::after,
+footer::before,
+footer::after,
+.skyline-hero::before,
+.skyline-hero::after,
+.paranormal-hero::before,
+.paranormal-hero::after,
+.photography-hero::before,
+.photography-hero::after,
+.contact-hero::before,
+.contact-hero::after {
+    border: none !important;
+    box-shadow: none !important;
+}
