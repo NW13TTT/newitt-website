@@ -1,5422 +1,938 @@
-/*
-=========================================================
-   NEWITT MEDIA
-   MASTER WEBSITE STYLESHEET
-   CINEMATIC BACKGROUND EDITION
-   PHASE 4.1 CLEAN MASTER
-=========================================================
-*/
-
-:root {
-    --black: #030508;
-    --black-two: #070b11;
-    --panel: rgba(7, 12, 19, 0.84);
-
-    --white: #f7f9fc;
-    --silver: #d7dde6;
-    --silver-bright: #ffffff;
-    --muted: #b8c3d1;
-    --dim: #7f8a97;
-
-    --sky-blue: #168cff;
-    --sky-blue-light: #59b9ff;
-    --sky-blue-bright: #8bd3ff;
-
-    --paranormal-red: #d91f32;
-    --paranormal-red-light: #ff4a5d;
-    --paranormal-red-bright: #ff7180;
-
-    --line: rgba(215, 221, 230, 0.20);
-    --line-soft: rgba(215, 221, 230, 0.10);
-
-    --shadow: 0 24px 70px rgba(0,0,0,0.48);
-    --shadow-heavy: 0 30px 90px rgba(0,0,0,0.68);
-}
-
-
 /* =========================================================
-   GLOBAL RESET
+   NEWITT MEDIA
+   CLEAN MASTER STYLESHEET
+   One layout system for Home / Skyline / Paranormal /
+   Photography / Contact
 ========================================================= */
 
-* {
-    box-sizing: border-box;
+:root {
+  --black: #030508;
+  --black-2: #070b11;
+  --white: #f7f9fc;
+  --platinum: #d7dde6;
+  --muted: #b8c3d1;
+  --dim: #7f8a97;
+
+  --blue: #168cff;
+  --blue-light: #59b9ff;
+  --blue-bright: #8bd3ff;
+
+  --red: #d91f32;
+  --red-light: #ff4a5d;
+  --red-bright: #ff7180;
+
+  --green: #6faf68;
+  --green-light: #9acf8f;
+  --green-bright: #b9e5b1;
+
+  --line: rgba(215,221,230,.16);
+  --line-soft: rgba(215,221,230,.08);
+
+  --panel: rgba(5,10,17,.82);
+  --panel-strong: rgba(4,8,14,.90);
+
+  --shadow: 0 24px 70px rgba(0,0,0,.48);
+  --shadow-heavy: 0 30px 90px rgba(0,0,0,.68);
+
+  --radius: 22px;
+  --content: 1180px;
 }
 
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
 html {
-    scroll-behavior: smooth;
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
+  min-height: 100%;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: var(--black);
 }
 
 body {
-    margin: 0;
-    min-height: 100vh;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    color: var(--white);
-    background: #000;
-
-    overflow-x: hidden;
-
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--white);
+  background:
+    linear-gradient(90deg,
+      rgba(3,7,14,.18) 0%,
+      rgba(3,7,14,.40) 20%,
+      rgba(0,0,0,.78) 42%,
+      rgba(0,0,0,.90) 50%,
+      rgba(0,0,0,.78) 58%,
+      rgba(3,7,14,.40) 80%,
+      rgba(3,7,14,.18) 100%),
+    url("background.png.PNG") center top / cover no-repeat;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-body,
-h1,
-h2,
-h3,
-p,
-a,
-button {
-    font-synthesis: none;
-}
+body::before,
+body::after { display: none; content: none; }
 
-[hidden] {
-    display: none !important;
-}
-
-
-/* =========================================================
-   CINEMATIC BACKGROUND
-========================================================= */
-
-body::before {
-    content: "";
-
-    position: fixed;
-    inset: 0;
-
-    z-index: -3;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(3,7,14,0.25) 0%,
-            rgba(3,7,14,0.48) 20%,
-            rgba(0,0,0,0.94) 42%,
-            rgba(0,0,0,1) 50%,
-            rgba(0,0,0,0.94) 58%,
-            rgba(3,7,14,0.48) 80%,
-            rgba(3,7,14,0.25) 100%
-        ),
-        url("background.png.PNG")
-        center / cover
-        no-repeat;
-
-    transform: scale(1.02);
-
-    contain: paint;
-}
-
-body::after {
-    content: "";
-
-    position: fixed;
-    inset: 0;
-
-    z-index: -2;
-
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            ellipse at center,
-            rgba(0,0,0,0.12) 0%,
-            rgba(0,0,0,0.42) 42%,
-            rgba(0,0,0,0.62) 55%,
-            rgba(0,0,0,0.20) 80%,
-            rgba(0,0,0,0.05) 100%
-        );
-
-    contain: paint;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-    touch-action: manipulation;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    image-rendering: auto;
-    -webkit-user-drag: none;
-}
-
-button {
-    touch-action: manipulation;
-}
-
-
-/* =========================================================
-   CONTAINER
-========================================================= */
+a { color: inherit; text-decoration: none; }
+button, a { touch-action: manipulation; }
+button { font: inherit; }
+img { display: block; max-width: 100%; height: auto; }
+[hidden] { display: none !important; }
 
 .container {
-    width: min(1180px, 92%);
-    margin-left: auto;
-    margin-right: auto;
+  width: min(var(--content), 92%);
+  margin-inline: auto;
 }
 
+main { position: relative; z-index: 1; }
+section { position: relative; padding: 78px 0; }
+section[id] { scroll-margin-top: 92px; }
 
-/* =========================================================
-   HEADER
-========================================================= */
-
+/* Header */
 .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-
-    background:
-        rgba(3,6,12,0.94);
-
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-
-    border-bottom:
-        1px solid
-        var(--line-soft);
-
-    contain: layout style;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(3,6,12,.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 0 !important;
+  box-shadow: none !important;
 }
 
 .nav {
-    min-height: 76px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 22px;
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
 }
 
 .nav-brand {
-    display: flex;
-    align-items: center;
-
-    gap: 10px;
-
-    font-size: 18px;
-    font-weight: 900;
-
-    letter-spacing: 1px;
-
-    white-space: nowrap;
-
-    text-shadow:
-        0 0 12px
-        rgba(255,255,255,0.18);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 1px;
 }
 
 .nav-brand img {
-    width: 42px;
-    height: 42px;
-
-    object-fit: contain;
-
-    background: transparent;
-    border: none;
-
-    filter:
-        drop-shadow(
-            0 0 10px
-            rgba(255,255,255,0.16)
-        );
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
 }
 
-.nav-brand span {
-    color: var(--silver-bright);
-}
-
-
-/* =========================================================
-   DESKTOP NAVIGATION
-========================================================= */
+.nav-brand span { color: var(--platinum); }
 
 .nav-links {
-    display: flex;
-
-    align-items: center;
-
-    gap: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .nav-links a {
-    position: relative;
-
-    padding: 12px 15px;
-
-    border-radius: 11px;
-
-    color: #dfe7f2;
-
-    font-size: 14px;
-    font-weight: 800;
-
-    transition:
-        color 0.2s ease,
-        background 0.2s ease,
-        transform 0.2s ease;
+  position: relative;
+  padding: 11px 14px;
+  border-radius: 10px;
+  color: var(--platinum);
+  font-size: 14px;
+  font-weight: 800;
+  transition: background .2s ease, color .2s ease, transform .2s ease;
 }
 
 .nav-links a:hover {
-    color: #ffffff;
-
-    background:
-        rgba(215,221,230,0.10);
-
-    transform:
-        translateY(-1px);
+  color: #fff;
+  background: rgba(255,255,255,.08);
+  transform: translateY(-1px);
 }
 
 .nav-links a.active {
-    color: #ffffff;
-
-    background:
-        rgba(215,221,230,0.10);
+  color: #fff;
+  background: rgba(255,255,255,.08);
 }
 
 .nav-links a.active::after {
-    content: "";
-
-    position: absolute;
-
-    left: 15px;
-    right: 15px;
-
-    bottom: 5px;
-
-    height: 2px;
-
-    border-radius: 2px;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--silver),
-            #ffffff
-        );
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg,var(--platinum),#fff);
 }
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
 
 .menu-toggle {
-    display: none;
-
-    min-height: 42px;
-
-    padding: 10px 15px;
-
-    border:
-        1px solid
-        rgba(215,221,230,0.30);
-
-    border-radius: 11px;
-
-    background:
-        rgba(215,221,230,0.08);
-
-    color: #ffffff;
-
-    font:
-        800 13px
-        Arial,
-        sans-serif;
-
-    letter-spacing: 0.05em;
-
-    cursor: pointer;
-
-    user-select: none;
-    -webkit-user-select: none;
+  display: none;
+  min-height: 42px;
+  padding: 9px 14px;
+  border: 1px solid rgba(215,221,230,.28);
+  border-radius: 10px;
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .05em;
+  cursor: pointer;
 }
 
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero,
-.page-hero {
-    padding:
-        92px 0 70px;
-
-    text-align: center;
-}
-
-.hero-card,
-.panel,
-.about {
-    border:
-        1px solid
-        var(--line);
-
-    border-radius: 24px;
-
-    background:
-        rgba(3,6,10,0.76);
-
-    backdrop-filter:
-        blur(10px);
-
-    -webkit-backdrop-filter:
-        blur(10px);
-
-    box-shadow:
-        var(--shadow);
-}
-
-.hero-card {
-    width:
-        min(900px,100%);
-
-    margin:
-        0 auto;
-
-    padding:
-        54px 36px;
-}
-
-
-/* =========================================================
-   HERO LOGO
-========================================================= */
-
-.hero-logo {
-    width: 220px;
-    height: 220px;
-
-    max-width: 62vw;
-
-    object-fit: contain;
-
-    margin:
-        0 auto 26px;
-
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-
-    filter:
-        drop-shadow(
-            0 0 18px
-            rgba(89,185,255,0.18)
-        )
-        drop-shadow(
-            0 10px 25px
-            rgba(0,0,0,0.50)
-        );
-}
-
-
-/* =========================================================
-   TYPOGRAPHY
-========================================================= */
-
+/* Typography */
 .eyebrow {
-    color:
-        var(--silver);
-
-    font-size:
-        12px;
-
-    font-weight:
-        900;
-
-    letter-spacing:
-        2px;
-
-    text-transform:
-        uppercase;
+  margin-bottom: 12px;
+  color: var(--platinum);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
+
+h1,h2,h3,p { margin-top: 0; }
 
 h1 {
-    margin:
-        12px 0 18px;
-
-    font-size:
-        clamp(40px,8vw,82px);
-
-    line-height:
-        0.95;
-
-    font-weight:
-        950;
-
-    letter-spacing:
-        -3px;
-
-    text-wrap: balance;
+  margin-bottom: 18px;
+  font-size: clamp(42px,7vw,82px);
+  line-height: .96;
+  letter-spacing: -3px;
+  font-weight: 950;
+  text-wrap: balance;
 }
 
 h2 {
-    margin:
-        0 0 14px;
-
-    font-size:
-        clamp(30px,5vw,52px);
-
-    line-height:
-        1.05;
-
-    text-wrap: balance;
+  margin-bottom: 16px;
+  font-size: clamp(30px,5vw,54px);
+  line-height: 1.04;
+  letter-spacing: -1.8px;
+  font-weight: 900;
+  text-wrap: balance;
 }
 
 h3 {
-    margin:
-        10px 0;
-
-    text-wrap: balance;
-}
-
-h1 span,
-h2 span {
-    color:
-        var(--silver-bright);
+  font-size: clamp(20px,3vw,28px);
+  line-height: 1.15;
+  text-wrap: balance;
 }
 
 p {
-    color:
-        var(--muted);
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.75;
+}
 
-    line-height:
-        1.75;
+h1 span,h2 span { color: var(--platinum); }
+
+/* Shared hero */
+.hero,
+.skyline-hero,
+.paranormal-hero,
+.photography-hero,
+.contact-hero {
+  min-height: 560px;
+  padding: 88px 0 70px;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.hero-card {
+  width: min(900px,100%);
+  margin-inline: auto;
+  padding: 50px 34px;
+  text-align: center;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.hero-logo {
+  width: 220px;
+  height: 220px;
+  max-width: 62vw;
+  margin: 0 auto 26px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 18px rgba(89,185,255,.16))
+          drop-shadow(0 12px 28px rgba(0,0,0,.55));
+}
+
+.hero-card p,
+.hero-card .eyebrow,
+.skyline-hero-content p,
+.skyline-hero-content .eyebrow,
+.paranormal-hero-text p,
+.paranormal-hero-text .eyebrow {
+  text-shadow: 0 2px 12px rgba(0,0,0,.78);
 }
 
 .hero-tagline {
-    color:
-        var(--silver-bright);
-
-    font-weight:
-        900;
-
-    letter-spacing:
-        1.5px;
+  color: #fff;
+  font-weight: 900;
+  letter-spacing: 1.5px;
 }
 
-
-/* =========================================================
-   GENERAL SECTIONS
-========================================================= */
-
-section {
-    padding:
-        75px 0;
-
-    contain: layout style;
+/* Shared page hero */
+.skyline-hero-content {
+  width: min(1080px,92%);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 230px minmax(0,1fr);
+  align-items: center;
+  gap: 48px;
 }
 
-section[id] {
-    scroll-margin-top:
-        88px;
+.skyline-hero-content > div:first-child { display: flex; justify-content: center; }
+
+.page-logo {
+  width: 210px;
+  height: 210px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px rgba(255,255,255,.13))
+          drop-shadow(0 12px 28px rgba(0,0,0,.55));
 }
 
-.section-heading {
-    width:
-        min(820px,100%);
-
-    margin:
-        0 auto 34px;
-
-    text-align:
-        center;
+.skyline-hero-content > div:last-child {
+  max-width: 760px;
 }
 
-.section-heading p {
-    max-width:
-        720px;
-
-    margin-left:
-        auto;
-
-    margin-right:
-        auto;
+.skyline-hero-content p,
+.paranormal-hero-text p,
+.photography-hero p {
+  max-width: 760px;
 }
 
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
+/* Buttons */
 .buttons {
-    display:
-        flex;
-
-    flex-wrap:
-        wrap;
-
-    align-items:
-        stretch;
-
-    justify-content:
-        center;
-
-    gap:
-        12px;
-
-    margin-top:
-        26px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-top: 26px;
 }
 
 .button {
-    display:
-        inline-flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    min-height:
-        48px;
-
-    padding:
-        12px 20px;
-
-    border:
-        1px solid
-        rgba(215,221,230,0.25);
-
-    border-radius:
-        12px;
-
-    background:
-        rgba(215,221,230,0.07);
-
-    color:
-        var(--white);
-
-    font-size:
-        13px;
-
-    font-weight:
-        900;
-
-    text-align:
-        center;
-
-    cursor:
-        pointer;
-
-    user-select:
-        none;
-
-    -webkit-user-select:
-        none;
-
-    touch-action:
-        manipulation;
-
-    transition:
-        transform 0.2s ease,
-        border-color 0.2s ease,
-        background 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 20px;
+  border: 1px solid rgba(215,221,230,.25);
+  border-radius: 12px;
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+  text-align: center;
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease, border-color .2s ease;
 }
 
 .button:hover {
-    transform:
-        translateY(-2px);
-
-    border-color:
-        var(--silver-bright);
-
-    background:
-        rgba(255,255,255,0.11);
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.11);
+  border-color: rgba(255,255,255,.6);
 }
 
 .button.primary {
-    background:
-        linear-gradient(
-            135deg,
-            #e8edf3,
-            #9fa9b6
-        );
-
-    color:
-        #030508;
-
-    border-color:
-        #ffffff;
+  color: #030508;
+  background: linear-gradient(135deg,#eef2f6,#9fa9b6);
+  border-color: #fff;
 }
 
-.hero-buttons .button {
-    flex:
-        1 1 230px;
+.buttons .button { min-width: 150px; }
+
+/* Content */
+.section-heading {
+  width: min(820px,100%);
+  margin: 0 auto 34px;
+  text-align: center;
 }
 
+.section-heading p {
+  max-width: 720px;
+  margin-inline: auto;
+}
 
-/* =========================================================
-   BRAND GRID
-========================================================= */
+.about,
+.panel {
+  padding: 34px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(3,6,10,.68);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
 
+.about > p:last-child { margin-bottom: 0; }
+
+/* Home brand cards */
 .brand-grid {
-    display:
-        grid;
-
-    grid-template-columns:
-        repeat(
-            3,
-            minmax(0,1fr)
-        );
-
-    gap:
-        20px;
-
-    align-items:
-        stretch;
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 20px;
 }
-
-
-/* =========================================================
-   BRAND CARDS
-========================================================= */
 
 .brand-card {
-    min-width:
-        0;
-
-    padding:
-        26px;
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    border:
-        1px solid
-        var(--line);
-
-    border-radius:
-        20px;
-
-    overflow:
-        hidden;
-
-    background:
-        rgba(5,10,17,0.82);
-
-    box-shadow:
-        var(--shadow);
-
-    contain:
-        layout style;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(5,10,17,.82);
+  box-shadow: var(--shadow);
 }
 
 .brand-logo {
-    width:
-        135px;
-
-    height:
-        115px;
-
-    object-fit:
-        contain;
-
-    margin:
-        0 auto 18px;
-
-    background:
-        transparent !important;
-
-    border:
-        none !important;
-
-    box-shadow:
-        none !important;
-
-    filter:
-        drop-shadow(
-            0 0 12px
-            rgba(255,255,255,0.10)
-        )
-        drop-shadow(
-            0 8px 18px
-            rgba(0,0,0,0.40)
-        );
+  width: 135px;
+  height: 115px;
+  margin: 0 auto 18px;
+  object-fit: contain;
 }
 
-.brand-card p {
-    margin-bottom:
-        22px;
+.brand-card h3 { margin-bottom: 10px; }
+.brand-card p { margin-bottom: 24px; }
+.brand-card .button { width: 100%; margin-top: auto; }
+
+/* Galleries */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 22px;
 }
 
-.brand-card .button {
-    width:
-        100%;
-
-    margin-top:
-        auto;
+.gallery-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(5,10,17,.84);
+  box-shadow: var(--shadow);
 }
 
+.gallery-link { display: block; }
+.gallery-link img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  transition: transform .35s ease;
+}
 
-/* =========================================================
-   SOCIAL HUB
-========================================================= */
+.gallery-link:hover img { transform: scale(1.025); }
 
+.gallery-caption { padding: 20px; }
+.gallery-caption h3 { margin-bottom: 8px; }
+.gallery-caption p { margin: 0; }
+
+/* TikTok */
+.tiktok-box {
+  width: min(780px,100%);
+  margin: 28px auto 0;
+  padding: 18px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(0,0,0,.42);
+}
+
+.tiktok-box blockquote { margin: 0 auto !important; }
+
+/* Coming soon */
+.coming-soon {
+  margin-top: 28px;
+  padding: 24px;
+  border-left: 3px solid var(--platinum);
+  background: rgba(255,255,255,.035);
+}
+
+.coming-soon p { margin-bottom: 0; }
+
+/* Social hub */
 .social-hub {
-    position:
-        relative;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 86px 0;
+  background: rgba(2,3,7,.86);
+}
 
-    isolation:
-        isolate;
-
-    overflow:
-        hidden;
-
-    padding:
-        0;
-
-    background:
-        #020307;
-
-    contain:
-        paint;
+.social-hub-art,
+.social-hub-shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
 .social-hub-art {
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    z-index:
-        -3;
-
-    background:
-        url("newitt-social-hub-background.PNG")
-        center top / cover
-        no-repeat;
-
-    background-attachment:
-        scroll;
+  z-index: -2;
+  background: url("newitt-social-hub-background.PNG") center / cover no-repeat;
 }
 
 .social-hub-shade {
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    z-index:
-        -2;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0,0,0,0.14) 0%,
-            rgba(0,0,0,0.18) 28%,
-            rgba(0,0,0,0.72) 62%,
-            rgba(0,0,0,0.96) 100%
-        );
+  z-index: -1;
+  background: linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.92));
 }
 
-.social-hub-content {
-    padding:
-        92px 0 54px;
-}
-
-
-/* =========================================================
-   SOCIAL INTRO
-========================================================= */
+.social-hub-content { position: relative; }
 
 .social-intro {
-    max-width:
-        1080px;
-
-    margin:
-        0 auto 44px;
-
-    text-align:
-        center;
+  max-width: 820px;
+  margin: 0 auto 46px;
+  text-align: center;
 }
 
 .social-kicker {
-    color:
-        #4eb4ff;
-
-    font-size:
-        clamp(13px,1.8vw,20px);
-
-    font-weight:
-        950;
-
-    letter-spacing:
-        3px;
-
-    text-transform:
-        uppercase;
-
-    text-shadow:
-        0 0 18px
-        rgba(22,140,255,0.75);
+  color: var(--platinum);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 2px;
 }
 
 .social-main-title {
-    margin:
-        12px auto 18px;
-
-    max-width:
-        1050px;
-
-    font-size:
-        clamp(40px,6.5vw,82px);
-
-    line-height:
-        0.93;
-
-    font-weight:
-        950;
-
-    letter-spacing:
-        -2px;
-
-    text-transform:
-        uppercase;
-
-    color:
-        #ffffff;
-
-    text-shadow:
-        0 4px 0
-        rgba(0,0,0,0.55),
-
-        0 0 24px
-        rgba(255,255,255,0.16);
+  margin: 12px 0 18px;
+  font-size: clamp(34px,6vw,64px);
+  line-height: .98;
+  letter-spacing: -2px;
 }
 
-.social-main-title span {
-    display:
-        block;
-
-    margin-top:
-        4px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #58baff 0%,
-            #8dd9ff 45%,
-            #ff7180 100%
-        );
-
-    -webkit-background-clip:
-        text;
-
-    background-clip:
-        text;
-
-    color:
-        transparent;
-}
-
+.social-main-title span { color: var(--platinum); }
 .social-category-line {
-    display:
-        flex;
-
-    flex-wrap:
-        wrap;
-
-    justify-content:
-        center;
-
-    align-items:
-        center;
-
-    gap:
-        9px 13px;
-
-    max-width:
-        1000px;
-
-    margin:
-        0 auto;
-
-    color:
-        #ffffff;
-
-    font-size:
-        clamp(10px,1.3vw,16px);
-
-    font-weight:
-        900;
-
-    letter-spacing:
-        1.2px;
-
-    text-transform:
-        uppercase;
-
-    text-shadow:
-        0 2px 8px
-        #000;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 16px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1px;
 }
 
-.social-category-line b {
-    color:
-        #45adff;
-
-    text-shadow:
-        0 0 12px
-        #168cff;
-}
-
-.social-funny {
-    max-width:
-        760px;
-
-    margin:
-        20px auto 0;
-
-    color:
-        #dce5f0;
-
-    font-size:
-        clamp(14px,1.8vw,20px);
-
-    text-shadow:
-        0 2px 10px
-        #000;
-}
-
-
-/* =========================================================
-   SOCIAL BRAND CARDS
-========================================================= */
+.social-category-line b { color: var(--platinum); }
+.social-funny { margin: 22px auto 0; max-width: 680px; }
 
 .social-brand-grid {
-    display:
-        grid;
-
-    grid-template-columns:
-        1fr;
-
-    gap:
-        22px;
-
-    max-width:
-        1100px;
-
-    margin:
-        0 auto;
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 20px;
 }
 
 .social-brand {
-    position:
-        relative;
-
-    overflow:
-        hidden;
-
-    border-radius:
-        24px;
-
-    background:
-        rgba(2,5,9,0.76);
-
-    backdrop-filter:
-        blur(5px);
-
-    -webkit-backdrop-filter:
-        blur(5px);
-
-    box-shadow:
-        0 18px 55px
-        rgba(0,0,0,0.65),
-
-        inset 0 0 35px
-        rgba(0,0,0,0.48);
-
-    contain:
-        layout style;
-}
-
-.social-brand::before {
-    content:
-        "";
-
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    pointer-events:
-        none;
-
-    opacity:
-        0.42;
-}
-
-.skyline-social {
-    border:
-        2px solid
-        #168cff;
-
-    box-shadow:
-        0 0 10px
-        rgba(22,140,255,0.75),
-
-        0 0 32px
-        rgba(22,140,255,0.42),
-
-        inset 0 0 35px
-        rgba(22,140,255,0.08);
-}
-
-.skyline-social::before {
-    background:
-        linear-gradient(
-            90deg,
-            rgba(0,90,190,0.24),
-            transparent 55%
-        ),
-
-        radial-gradient(
-            circle at 88% 40%,
-            rgba(22,140,255,0.30),
-            transparent 35%
-        );
-}
-
-.paranormal-social {
-    border:
-        2px solid
-        #ff3348;
-
-    box-shadow:
-        0 0 10px
-        rgba(255,31,50,0.75),
-
-        0 0 32px
-        rgba(255,31,50,0.40),
-
-        inset 0 0 35px
-        rgba(255,31,50,0.08);
-}
-
-.paranormal-social::before {
-    background:
-        linear-gradient(
-            90deg,
-            rgba(150,0,18,0.22),
-            transparent 55%
-        ),
-
-        radial-gradient(
-            circle at 88% 40%,
-            rgba(255,31,50,0.30),
-            transparent 35%
-        );
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(3,7,13,.82);
+  box-shadow: var(--shadow);
+  overflow: hidden;
 }
 
 .social-brand-inner {
-    position:
-        relative;
-
-    z-index:
-        1;
-
-    min-height:
-        300px;
-
-    padding:
-        24px;
-
-    display:
-        grid;
-
-    grid-template-columns:
-        250px minmax(0,1fr);
-
-    align-items:
-        center;
-
-    gap:
-        28px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 24px;
 }
 
 .social-logo-wrap {
-    display:
-        grid;
-
-    place-items:
-        center;
-
-    background:
-        transparent;
-
-    border:
-        none;
-
-    box-shadow:
-        none;
+  flex: 0 0 120px;
 }
 
 .social-logo-wrap img {
-    width:
-        170px;
-
-    height:
-        170px;
-
-    object-fit:
-        contain;
-
-    background:
-        transparent !important;
-
-    border:
-        none !important;
-
-    box-shadow:
-        none !important;
-
-    filter:
-        drop-shadow(
-            0 0 16px
-            rgba(255,255,255,0.12)
-        )
-
-        drop-shadow(
-            0 10px 24px
-            rgba(0,0,0,0.58)
-        );
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
 }
 
-.social-brand-content {
-    min-width:
-        0;
-}
-
+.social-brand-content { min-width: 0; }
 .social-brand-name {
-    font-size:
-        clamp(44px,5.3vw,78px);
-
-    line-height:
-        0.85;
-
-    font-weight:
-        950;
-
-    letter-spacing:
-        -2px;
-
-    text-transform:
-        uppercase;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 2px;
 }
-
-.blue-text {
-    color:
-        #00a8ff;
-
-    text-shadow:
-        0 0 12px
-        rgba(0,168,255,0.8),
-
-        0 3px 0
-        rgba(0,48,110,0.9);
-}
-
-.red-text {
-    color:
-        #ff303c;
-
-    text-shadow:
-        0 0 12px
-        rgba(255,48,60,0.8),
-
-        0 3px 0
-        rgba(110,0,10,0.9);
-}
-
-.social-brand-content h3 {
-    margin:
-        6px 0 12px;
-
-    font-size:
-        clamp(34px,4.3vw,62px);
-
-    line-height:
-        0.92;
-
-    font-weight:
-        950;
-
-    letter-spacing:
-        -1.5px;
-
-    text-transform:
-        uppercase;
-
-    color:
-        #ffffff;
-
-    text-shadow:
-        0 3px 0
-        rgba(0,0,0,0.8),
-
-        0 0 18px
-        rgba(255,255,255,0.12);
-}
-
-.social-brand-content p {
-    margin:
-        0 0 18px;
-
-    color:
-        #dfe8f2;
-
-    font-size:
-        clamp(11px,1.3vw,15px);
-
-    font-weight:
-        900;
-
-    letter-spacing:
-        1.2px;
-
-    text-transform:
-        uppercase;
-}
-
-.social-brand-content p span {
-    margin:
-        0 6px;
-
-    color:
-        #ffffff;
-}
-
-
-/* =========================================================
-   SOCIAL BUTTONS
-========================================================= */
+.blue-text { color: var(--blue-light); }
+.social-brand h3 { margin: 4px 0 8px; }
+.social-brand p { margin: 0 0 18px; font-size: 12px; font-weight: 800; letter-spacing: 1px; }
 
 .social-buttons {
-    display:
-        flex;
-
-    flex-wrap:
-        wrap;
-
-    gap:
-        12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .social-button {
-    min-width:
-        170px;
-
-    min-height:
-        54px;
-
-    padding:
-        11px 22px;
-
-    display:
-        inline-flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    gap:
-        10px;
-
-    border-radius:
-        12px;
-
-    background:
-        rgba(3,5,9,0.84);
-
-    color:
-        #ffffff;
-
-    font-size:
-        17px;
-
-    font-weight:
-        950;
-
-    border:
-        1px solid
-        currentColor;
-
-    box-shadow:
-        inset 0 0 18px
-        rgba(255,255,255,0.03);
-
-    cursor:
-        pointer;
-
-    user-select:
-        none;
-
-    -webkit-user-select:
-        none;
-
-    touch-action:
-        manipulation;
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 900;
 }
-
-.social-button:hover {
-    transform:
-        translateY(-3px)
-        scale(1.015);
-
-    background:
-        rgba(255,255,255,0.08);
-}
-
-.skyline-button {
-    border-color:
-        #00a8ff;
-
-    box-shadow:
-        0 0 10px
-        rgba(0,168,255,0.5),
-
-        inset 0 0 14px
-        rgba(0,168,255,0.08);
-}
-
-.paranormal-button {
-    border-color:
-        #ff263c;
-
-    box-shadow:
-        0 0 10px
-        rgba(255,38,60,0.45),
-
-        inset 0 0 14px
-        rgba(255,38,60,0.08);
-}
-
-.social-icon {
-    width:
-        30px;
-
-    height:
-        30px;
-
-    display:
-        inline-grid;
-
-    place-items:
-        center;
-
-    border-radius:
-        8px;
-
-    font-size:
-        20px;
-
-    font-weight:
-        950;
-
-    flex:
-        0 0 30px;
-}
-
-.tiktok-icon {
-    color:
-        #ffffff;
-
-    text-shadow:
-        2px 0 #25f4ee,
-        -2px 0 #fe2c55;
-}
-
-.youtube-icon {
-    color:
-        #ffffff;
-
-    background:
-        #ff0000;
-
-    font-size:
-        14px;
-}
-
-.instagram-icon {
-    color:
-        #ffffff;
-
-    background:
-        linear-gradient(
-            135deg,
-            #7b2cff,
-            #ff2d55,
-            #ffb52e
-        );
-}
-
-.facebook-icon {
-    color:
-        #ffffff;
-
-    background:
-        #1877f2;
-}
-
-
-/* =========================================================
-   SOCIAL TICKER
-========================================================= */
-
-.social-ticker {
-    position:
-        relative;
-
-    width:
-        100%;
-
-    overflow:
-        hidden;
-
-    border-top:
-        2px solid
-        #158cff;
-
-    border-bottom:
-        2px solid
-        #158cff;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0,17,40,0.96),
-            rgba(1,5,14,0.98)
-        );
-
-    box-shadow:
-        0 0 16px
-        rgba(22,140,255,0.55),
-
-        inset 0 0 20px
-        rgba(22,140,255,0.12);
-
-    contain:
-        layout paint;
-}
-
-.social-ticker::before,
-.social-ticker::after {
-    content:
-        "";
-
-    position:
-        absolute;
-
-    top:
-        0;
-
-    bottom:
-        0;
-
-    width:
-        90px;
-
-    z-index:
-        2;
-
-    pointer-events:
-        none;
-}
-
-.social-ticker::before {
-    left:
-        0;
-
-    background:
-        linear-gradient(
-            90deg,
-            #01040a,
-            transparent
-        );
-}
-
-.social-ticker::after {
-    right:
-        0;
-
-    background:
-        linear-gradient(
-            270deg,
-            #01040a,
-            transparent
-        );
-}
-
-.social-ticker-track {
-    width:
-        max-content;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    animation:
-        socialTickerMove
-        20s
-        linear
-        infinite;
-}
-
-.social-ticker-group {
-    min-height:
-        72px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        28px;
-
-    padding:
-        0 34px;
-
-    white-space:
-        nowrap;
-
-    font-size:
-        clamp(17px,2.1vw,30px);
-
-    font-weight:
-        950;
-
-    letter-spacing:
-        1px;
-
-    text-transform:
-        uppercase;
-}
-
-.social-ticker-group span {
-    color:
-        #ffffff;
-}
-
-.social-ticker-group strong {
-    color:
-        #39b7ff;
-
-    text-shadow:
-        0 0 10px
-        rgba(57,183,255,0.8),
-
-        0 0 25px
-        rgba(57,183,255,0.35);
-}
-
-.social-ticker-group b {
-    color:
-        #6ecbff;
-
-    font-size:
-        1.1em;
-
-    text-shadow:
-        0 0 12px
-        #168cff;
-}
-
-@keyframes socialTickerMove {
-    from {
-        transform:
-            translateX(0);
-    }
-
-    to {
-        transform:
-            translateX(-50%);
-    }
-}
-
-
-/* =========================================================
-   FINAL SOCIAL MESSAGE
-========================================================= */
 
 .social-final {
-    position:
-        relative;
-
-    min-height:
-        430px;
-
-    padding:
-        88px 20px 70px;
-
-    text-align:
-        center;
-
-    overflow:
-        hidden;
-
-    background:
-        radial-gradient(
-            circle at 8% 60%,
-            rgba(0,126,255,0.30),
-            transparent 34%
-        ),
-
-        radial-gradient(
-            circle at 92% 60%,
-            rgba(255,25,45,0.26),
-            transparent 34%
-        ),
-
-        linear-gradient(
-            180deg,
-            #03050a,
-            #010205
-        );
-}
-
-.social-final::before,
-.social-final::after {
-    content:
-        "";
-
-    position:
-        absolute;
-
-    width:
-        38%;
-
-    height:
-        70%;
-
-    top:
-        15%;
-
-    opacity:
-        0.45;
-
-    filter:
-        blur(1px);
-
-    pointer-events:
-        none;
-}
-
-.social-final::before {
-    left:
-        -12%;
-
-    background:
-        repeating-linear-gradient(
-            135deg,
-            transparent 0 14px,
-            rgba(0,136,255,0.22) 15px 17px,
-            transparent 18px 34px
-        );
-
-    transform:
-        skewX(-18deg);
-}
-
-.social-final::after {
-    right:
-        -12%;
-
-    background:
-        repeating-linear-gradient(
-            45deg,
-            transparent 0 14px,
-            rgba(255,35,55,0.22) 15px 17px,
-            transparent 18px 34px
-        );
-
-    transform:
-        skewX(18deg);
+  margin-top: 48px;
+  text-align: center;
 }
 
 .social-final h3 {
-    position:
-        relative;
-
-    z-index:
-        1;
-
-    margin:
-        0 auto;
-
-    max-width:
-        900px;
-
-    font-size:
-        clamp(38px,6vw,76px);
-
-    line-height:
-        0.95;
-
-    font-weight:
-        950;
-
-    letter-spacing:
-        -2px;
-
-    text-transform:
-        uppercase;
-
-    color:
-        #ffffff;
-
-    text-shadow:
-        0 4px 0
-        rgba(0,0,0,0.7);
+  margin-bottom: 14px;
+  font-size: clamp(28px,5vw,50px);
+  line-height: 1;
 }
 
-.social-final h3 span {
-    color:
-        #ff3f56;
-
-    text-shadow:
-        0 0 16px
-        rgba(255,63,86,0.6),
-
-        0 4px 0
-        rgba(100,0,10,0.65);
-}
-
-.social-final p {
-    position:
-        relative;
-
-    z-index:
-        1;
-
-    margin:
-        24px auto 28px;
-
-    color:
-        #cbd5e0;
-
-    font-size:
-        clamp(12px,1.6vw,18px);
-
-    font-weight:
-        900;
-
-    letter-spacing:
-        1.5px;
-
-    text-transform:
-        uppercase;
-}
-
+.social-final h3 span { color: var(--platinum); }
+.social-final p { font-size: 12px; font-weight: 900; letter-spacing: 1px; }
 .social-final-logo {
-    position:
-        relative;
-
-    z-index:
-        1;
-
-    width:
-        145px;
-
-    height:
-        95px;
-
-    object-fit:
-        contain;
-
-    margin:
-        0 auto;
-
-    background:
-        transparent !important;
-
-    border:
-        none !important;
-
-    box-shadow:
-        none !important;
-
-    filter:
-        drop-shadow(
-            0 0 16px
-            rgba(255,255,255,0.16)
-        )
-        drop-shadow(
-            0 10px 22px
-            rgba(0,0,0,0.48)
-        );
+  width: 120px;
+  margin: 22px auto 0;
 }
 
-
-/* =========================================================
-   ABOUT
-========================================================= */
-
-.about {
-    padding:
-        32px;
-
-    contain:
-        layout style;
+/* Moving ticker */
+.social-ticker {
+  overflow: hidden;
+  margin: 48px 0 0;
+  border-block: 1px solid var(--line-soft);
+  background: rgba(0,0,0,.30);
 }
 
-.about p:last-child {
-    margin-bottom:
-        0;
+.social-ticker-track {
+  width: max-content;
+  display: flex;
+  animation: social-scroll 24s linear infinite;
 }
 
+.social-ticker-group {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 340px;
+  padding: 14px 24px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
 
-/* =========================================================
-   BACK TO TOP
-========================================================= */
+.social-ticker-group strong { color: var(--platinum); }
+.social-ticker-group b { color: var(--platinum); }
 
+@keyframes social-scroll {
+  to { transform: translateX(-50%); }
+}
+
+/* Back to top */
 .back-top {
-    position:
-        fixed;
-
-    right:
-        20px;
-
-    bottom:
-        20px;
-
-    z-index:
-        1500;
-
-    width:
-        46px;
-
-    height:
-        46px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    border:
-        1px solid
-        rgba(215,221,230,0.30);
-
-    border-radius:
-        50%;
-
-    background:
-        rgba(5,8,12,0.90);
-
-    color:
-        #ffffff;
-
-    opacity:
-        0;
-
-    visibility:
-        hidden;
-
-    pointer-events:
-        none;
-
-    cursor:
-        pointer;
-
-    transition:
-        opacity 0.2s ease,
-        visibility 0.2s ease,
-        transform 0.2s ease;
-
-    user-select:
-        none;
-
-    -webkit-user-select:
-        none;
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 1100;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  min-width: 52px;
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(3,6,12,.92);
+  color: #fff;
+  cursor: pointer;
+  transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
 }
 
 .back-top.show {
-    opacity:
-        1;
-
-    visibility:
-        visible;
-
-    pointer-events:
-        auto;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
-.back-top:hover {
-    transform:
-        translateY(-3px);
-
-    background:
-        rgba(255,255,255,0.10);
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer {
-    padding:
-        45px 20px 55px;
-
-    text-align:
-        center;
-
-    border-top:
-        1px solid
-        var(--line-soft);
-
-    color:
-        #69737b;
-
-    font-size:
-        10px;
-
-    line-height:
-        1.7;
-
-    letter-spacing:
-        0.14em;
-
-    text-transform:
-        uppercase;
-}
-
-
-/* =========================================================
-   GALLERY
-========================================================= */
-
-.gallery {
-    display:
-        grid;
-
-    grid-template-columns:
-        repeat(
-            2,
-            minmax(0,1fr)
-        );
-
-    gap:
-        20px;
-}
-
-.gallery-card {
-    border:
-        1px solid
-        var(--line);
-
-    border-radius:
-        20px;
-
-    overflow:
-        hidden;
-
-    background:
-        rgba(5,10,17,0.82);
-
-    box-shadow:
-        var(--shadow);
-
-    contain:
-        layout style;
-
-    content-visibility:
-        auto;
-
-    contain-intrinsic-size:
-        420px;
-
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-.gallery-link {
-    display:
-        block;
-
-    overflow:
-        hidden;
-
-    cursor:
-        pointer;
-
-    user-select:
-        none;
-
-    -webkit-user-select:
-        none;
-}
-
-.gallery-card img {
-    display:
-        block;
-
-    width:
-        100%;
-
-    height:
-        auto;
-
-    aspect-ratio:
-        16 / 10;
-
-    object-fit:
-        cover;
-
-    background:
-        #000;
-
-    transition:
-        transform 0.35s ease,
-        filter 0.35s ease;
-}
-
-.gallery-link:hover img {
-    transform:
-        scale(1.025);
-
-    filter:
-        brightness(1.06);
-}
-
-.gallery-caption {
-    padding:
-        18px;
-}
-
-
-/* =========================================================
-   SKYLINE HERO
-========================================================= */
-
-.skyline-hero {
-    position:
-        relative;
-
-    overflow:
-        hidden;
-
-    min-height:
-        610px;
-
-    display:
-        grid;
-
-    place-items:
-        center;
-
-    border-bottom:
-        1px solid
-        var(--line);
-}
-
-.skyline-hero::before {
-    content:
-        "";
-
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(3,6,10,0.88),
-            rgba(3,6,10,0.45),
-            rgba(3,6,10,0.25)
-        ),
-
-        url("background.png.PNG")
-        center / cover
-        no-repeat;
-}
-
-.skyline-hero-content {
-    position:
-        relative;
-
-    z-index:
-        1;
-
-    width:
-        min(1100px,92%);
-
-    display:
-        grid;
-
-    grid-template-columns:
-        210px minmax(0,1fr);
-
-    gap:
-        40px;
-
-    align-items:
-        center;
-}
-
-.skyline-hero-content > div:first-child {
-    display:
-        grid;
-
-    place-items:
-        center;
-}
-
-.skyline-hero-content .page-logo {
-    width:
-        145px;
-
-    height:
-        145px;
-
-    object-fit:
-        contain;
-
-    background:
-        transparent !important;
-
-    border:
-        none !important;
-
-    box-shadow:
-        none !important;
-
-    filter:
-        drop-shadow(
-            0 0 16px
-            rgba(22,140,255,0.18)
-        )
-        drop-shadow(
-            0 10px 22px
-            rgba(0,0,0,0.48)
-        );
-}
-
-.skyline-hero p {
-    max-width:
-        720px;
-}
-
-
-/* =========================================================
-   TIKTOK / COMING SOON
-========================================================= */
-
-.tiktok-box {
-    min-height:
-        260px;
-
-    display:
-        grid;
-
-    place-items:
-        center;
-
-    margin:
-        24px 0;
-
-    border:
-        1px solid
-        var(--line);
-
-    border-radius:
-        18px;
-
-    background:
-        rgba(0,0,0,0.20);
-
-    overflow:
-        hidden;
-}
-
-.coming-soon {
-    margin:
-        30px auto;
-
-    padding:
-        28px;
-
-    border:
-        1px solid
-        var(--line-soft);
-
-    border-radius:
-        18px;
-
-    background:
-        rgba(0,0,0,0.20);
-
-    text-align:
-        center;
-}
-
-.coming-soon h3 {
-    margin-top:
-        0;
-
-    font-size:
-        24px;
-}
-
-
-/* =========================================================
-   CONTACT PANEL
-========================================================= */
-
-.contact-panel {
-    width:
-        min(1000px,100%);
-
-    margin:
-        0 auto;
-
-    padding:
-        34px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        space-between;
-
-    gap:
-        30px;
-
-    border:
-        1px solid
-        var(--line);
-
-    border-radius:
-        22px;
-
-    background:
-        rgba(3,6,10,0.78);
-
-    box-shadow:
-        var(--shadow);
-
-    contain:
-        layout style;
-}
-
-.contact-actions {
-    display:
-        flex;
-
-    flex-wrap:
-        wrap;
-
-    justify-content:
-        flex-end;
-
-    gap:
-        10px;
-
-    flex-shrink:
-        0;
-}
-
-
-/* =========================================================
-   PAGE LOGOS
-========================================================= */
-
-.paranormal-page-logo {
-    width:
-        170px;
-
-    height:
-        170px;
-
-    max-width:
-        65vw;
-
-    object-fit:
-        contain;
-
-    background:
-        transparent !important;
-
-    border:
-        none !important;
-
-    box-shadow:
-        none !important;
-
-    filter:
-        drop-shadow(
-            0 0 18px
-            rgba(255,31,50,0.18)
-        )
-        drop-shadow(
-            0 10px 24px
-            rgba(0,0,0,0.50)
-        );
-}
-
-.photography-logo {
-    width:
-        155px;
-
-    height:
-        155px;
-
-    object-fit:
-        contain;
-
-    background:
-        transparent !important;
-
-    border:
-        none !important;
-
-    box-shadow:
-        none !important;
-
-    filter:
-        drop-shadow(
-            0 0 18px
-            rgba(255,255,255,0.18)
-        )
-        drop-shadow(
-            0 12px 28px
-            rgba(0,0,0,0.65)
-        );
-}
-
-.contact-logo {
-    width:
-        155px;
-
-    height:
-        155px;
-
-    object-fit:
-        contain;
-
-    background:
-        transparent !important;
-
-    border:
-        none !important;
-
-    box-shadow:
-        none !important;
-
-    filter:
-        drop-shadow(
-            0 0 18px
-            rgba(89,185,255,0.18)
-        )
-        drop-shadow(
-            0 10px 22px
-            rgba(0,0,0,0.48)
-        );
-}
-
-
-/* =========================================================
-   PHOTOGRAPHY PAGE
-========================================================= */
-
-body.photography-page::before {
-    background:
-        linear-gradient(
-            90deg,
-            rgba(3,7,14,0.18) 0%,
-            rgba(3,7,14,0.35) 18%,
-            rgba(0,0,0,0.82) 36%,
-            rgba(0,0,0,1) 48%,
-            rgba(0,0,0,1) 52%,
-            rgba(0,0,0,0.82) 64%,
-            rgba(3,7,14,0.35) 82%,
-            rgba(3,7,14,0.18) 100%
-        ),
-        url("background.png.PNG")
-        center / cover
-        no-repeat;
-
-    transform:
-        scale(1.02);
-}
-
-.photography-page .hero-card,
-.photography-page .page-hero .hero-card {
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0,0,0,0.72),
-            rgba(0,0,0,0.88)
-        );
-
-    border:
-        1px solid
-        rgba(215,221,230,0.18);
-
-    box-shadow:
-        0 25px 80px
-        rgba(0,0,0,0.70),
-
-        inset 0 0 40px
-        rgba(255,255,255,0.015);
-}
-
-.photography-page .panel,
-.photography-page .about {
-    background:
-        rgba(0,0,0,0.82);
-
-    border:
-        1px solid
-        rgba(215,221,230,0.16);
-
-    box-shadow:
-        0 22px 65px
-        rgba(0,0,0,0.65);
-}
-
-.photography-page .gallery {
-    position:
-        relative;
-
-    z-index:
-        1;
-}
-
-.photography-page .gallery-card {
-    background:
-        rgba(0,0,0,0.88);
-
-    border:
-        1px solid
-        rgba(215,221,230,0.18);
-
-    box-shadow:
-        0 20px 55px
-        rgba(0,0,0,0.65);
-}
-
-.photography-page .gallery-card:hover {
-    transform:
-        translateY(-4px);
-
-    border-color:
-        rgba(255,255,255,0.34);
-
-    box-shadow:
-        0 28px 75px
-        rgba(0,0,0,0.78);
-}
-
-.photography-page .gallery-card img {
-    background:
-        #000;
-}
-
-.photography-page .gallery-link:hover img {
-    transform:
-        scale(1.035);
-
-    filter:
-        brightness(1.08)
-        contrast(1.04);
-}
-
-.photography-page .gallery-caption {
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0,0,0,0.92),
-            rgba(0,0,0,1)
-        );
-
-    border-top:
-        1px solid
-        rgba(255,255,255,0.08);
-}
-
-.photography-page .gallery-caption h3 {
-    color:
-        #ffffff;
-
-    text-shadow:
-        0 0 12px
-        rgba(255,255,255,0.10);
-}
-
-.photography-page h1,
-.photography-page h2,
-.photography-page h3 {
-    color:
-        #ffffff;
-}
-
-.photography-page p {
-    color:
-        #c5ced9;
-}
-
-.photography-page .button:hover {
-    transform:
-        translateY(-2px);
-
-    border-color:
-        rgba(255,255,255,0.55);
-
-    box-shadow:
-        0 8px 25px
-        rgba(0,0,0,0.40);
-}
-
-
-/* =========================================================
-   LIGHTBOX
-========================================================= */
-
+/* Lightbox */
 .lightbox {
-    position:
-        fixed;
-
-    inset:
-        0;
-
-    z-index:
-        2000;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    padding:
-        24px;
-
-    background:
-        rgba(0,0,0,0.92);
-
-    opacity:
-        0;
-
-    visibility:
-        hidden;
-
-    pointer-events:
-        none;
-
-    transition:
-        opacity 0.2s ease,
-        visibility 0.2s ease;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background: rgba(0,0,0,.94);
 }
 
-.lightbox.open {
-    opacity:
-        1;
-
-    visibility:
-        visible;
-
-    pointer-events:
-        auto;
-}
+.lightbox.open { display: flex; }
 
 .lightbox-image {
-    display:
-        block;
-
-    width:
-        auto;
-
-    height:
-        auto;
-
-    max-width:
-        min(94vw,1400px);
-
-    max-height:
-        88vh;
-
-    object-fit:
-        contain;
-
-    border-radius:
-        10px;
-
-    box-shadow:
-        0 30px 100px
-        rgba(0,0,0,0.75);
+  max-width: min(1100px,92vw);
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 10px;
 }
 
 .lightbox-close {
-    position:
-        fixed;
-
-    top:
-        18px;
-
-    right:
-        20px;
-
-    z-index:
-        2001;
-
-    width:
-        48px;
-
-    height:
-        48px;
-
-    border:
-        1px solid
-        rgba(255,255,255,0.30);
-
-    border-radius:
-        50%;
-
-    background:
-        rgba(10,14,20,0.85);
-
-    color:
-        #ffffff;
-
-    font-size:
-        25px;
-
-    line-height:
-        1;
-
-    cursor:
-        pointer;
-
-    user-select:
-        none;
-
-    -webkit-user-select:
-        none;
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgba(0,0,0,.6);
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
 }
 
-
-/* =========================================================
-   KEYBOARD ACCESSIBILITY
-========================================================= */
-
-a:focus-visible,
-button:focus-visible {
-    outline:
-        3px solid
-        var(--sky-blue-light);
-
-    outline-offset:
-        4px;
-
-    border-radius:
-        8px;
-}
-
-.nav-links a:focus-visible {
-    background:
-        rgba(22,140,255,0.14);
-
-    color:
-        #ffffff;
-}
-
-.button:focus-visible,
-.social-button:focus-visible {
-    box-shadow:
-        0 0 0 3px
-        rgba(3,5,8,0.95),
-
-        0 0 0 6px
-        var(--sky-blue-light);
-}
-
-.social-button:focus-visible {
-    outline:
-        3px solid
-        currentColor;
-}
-
-.gallery-link:focus-visible {
-    outline:
-        3px solid
-        var(--sky-blue-light);
-
-    outline-offset:
-        -3px;
-}
-
-.lightbox-close:focus-visible {
-    outline:
-        3px solid
-        #ffffff;
-
-    outline-offset:
-        4px;
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 950px) {
-
-    .brand-grid {
-        grid-template-columns:
-            repeat(
-                2,
-                minmax(0,1fr)
-            );
-    }
-
-    .social-brand-inner {
-        grid-template-columns:
-            190px minmax(0,1fr);
-    }
-
-    .social-logo-wrap img {
-        width:
-            170px;
-
-        height:
-            170px;
-    }
-
-    .skyline-hero-content {
-        grid-template-columns:
-            180px minmax(0,1fr);
-
-        gap:
-            25px;
-    }
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 800px) {
-
-    body::before {
-        background:
-            linear-gradient(
-                90deg,
-                rgba(3,7,14,0.32) 0%,
-                rgba(0,0,0,0.68) 25%,
-                rgba(0,0,0,0.96) 42%,
-                rgba(0,0,0,1) 50%,
-                rgba(0,0,0,0.96) 58%,
-                rgba(0,0,0,0.68) 75%,
-                rgba(3,7,14,0.32) 100%
-            ),
-            url("background.png.PNG")
-            center / cover
-            no-repeat;
-    }
-
-    .container {
-        width:
-            90%;
-    }
-
-    .site-header {
-        background:
-            rgba(3,6,12,0.97);
-
-        border-bottom:
-            1px solid
-            rgba(89,185,255,0.14);
-    }
-
-    .nav {
-        min-height:
-            72px;
-
-        padding:
-            4px 0;
-    }
-
-    .nav-brand {
-        font-size:
-            16px;
-
-        color:
-            #ffffff !important;
-    }
-
-    .nav-brand span {
-        color:
-            #ffffff !important;
-    }
-
-    .nav-brand img {
-        width:
-            36px;
-
-        height:
-            36px;
-
-        filter:
-            drop-shadow(
-                0 0 10px
-                rgba(89,185,255,0.35)
-            );
-    }
-
-    .menu-toggle {
-        display:
-            block;
-
-        color:
-            #ffffff;
-
-        background:
-            rgba(215,221,230,0.08);
-
-        border-color:
-            rgba(215,221,230,0.32);
-
-        box-shadow:
-            0 0 18px
-            rgba(89,185,255,0.08);
-    }
-
-    .menu-toggle:active {
-        transform:
-            scale(0.97);
-    }
-
-    .nav-links {
-        display:
-            none;
-
-        position:
-            absolute;
-
-        top:
-            72px;
-
-        left:
-            5%;
-
-        right:
-            5%;
-
-        width:
-            90%;
-
-        padding:
-            10px;
-
-        flex-direction:
-            column;
-
-        gap:
-            5px;
-
-        background:
-            rgba(3,4,7,0.98);
-
-        border:
-            1px solid
-            rgba(215,221,230,0.15);
-
-        border-radius:
-            16px;
-
-        box-shadow:
-            0 25px 60px
-            rgba(0,0,0,0.72);
-    }
-
-    .nav-links.open {
-        display:
-            flex;
-    }
-
-    .nav-links a {
-        width:
-            100%;
-
-        min-height:
-            50px;
-
-        display:
-            flex;
-
-        align-items:
-            center;
-
-        justify-content:
-            center;
-
-        padding:
-            12px;
-
-        font-size:
-            15px;
-    }
-
-    .hero,
-    .page-hero {
-        padding:
-            70px 0 55px;
-    }
-
-    .hero-logo {
-        width:
-            180px;
-
-        height:
-            180px;
-    }
-
-    h1 {
-        font-size:
-            clamp(
-                38px,
-                11vw,
-                58px
-            );
-
-        letter-spacing:
-            -2px;
-    }
-
-    h2 {
-        font-size:
-            clamp(
-                30px,
-                8vw,
-                44px
-            );
-    }
-
-    .brand-grid,
-    .gallery {
-        grid-template-columns:
-            1fr;
-    }
-
-    .brand-card {
-        padding:
-            25px 22px;
-    }
-
-    .brand-logo {
-        width:
-            130px;
-
-        height:
-            110px;
-    }
-
-
-    /* SOCIAL HUB */
-
-    .social-hub-content {
-        padding:
-            70px 0 45px;
-    }
-
-    .social-hub-art {
-        background-position:
-            center top;
-
-        background-size:
-            auto 520px;
-    }
-
-    .social-hub-shade {
-        background:
-            linear-gradient(
-                180deg,
-                rgba(0,0,0,0.20),
-                rgba(0,0,0,0.50) 28%,
-                rgba(0,0,0,0.92) 60%,
-                rgba(0,0,0,0.98) 100%
-            );
-    }
-
-    .social-intro {
-        margin-bottom:
-            34px;
-    }
-
-    .social-main-title {
-        font-size:
-            clamp(
-                38px,
-                10.8vw,
-                58px
-            );
-
-        line-height:
-            0.92;
-
-        letter-spacing:
-            -1.5px;
-    }
-
-    .social-category-line {
-        font-size:
-            10px;
-
-        line-height:
-            1.7;
-    }
-
-    .social-funny {
-        font-size:
-            14px;
-    }
-
-    .social-brand-grid {
-        gap:
-            18px;
-    }
-
-    .social-brand-inner {
-        grid-template-columns:
-            1fr;
-
-        min-height:
-            0;
-
-        padding:
-            24px 18px 22px;
-
-        gap:
-            10px;
-
-        text-align:
-            center;
-    }
-
-    .social-logo-wrap img {
-        width:
-            160px;
-
-        height:
-            160px;
-
-        margin:
-            0 auto;
-    }
-
-    .social-brand-name {
-        font-size:
-            48px;
-    }
-
-    .social-brand-content h3 {
-        font-size:
-            clamp(
-                30px,
-                8.2vw,
-                46px
-            );
-    }
-
-    .social-brand-content p {
-        font-size:
-            10px;
-
-        line-height:
-            1.7;
-    }
-
-    .social-buttons {
-        display:
-            grid;
-
-        grid-template-columns:
-            1fr;
-
-        gap:
-            10px;
-    }
-
-    .social-button {
-        width:
-            100%;
-
-        min-width:
-            0;
-
-        min-height:
-            52px;
-    }
-
-
-    /* TICKER */
-
-    .social-ticker-group {
-        min-height:
-            62px;
-
-        gap:
-            20px;
-
-        padding:
-            0 24px;
-
-        font-size:
-            18px;
-    }
-
-    .social-ticker-track {
-        animation-duration:
-            15s;
-    }
-
-
-    /* FINAL SOCIAL */
-
-    .social-final {
-        min-height:
-            390px;
-
-        padding:
-            68px 18px 55px;
-    }
-
-    .social-final h3 {
-        font-size:
-            clamp(
-                35px,
-                9.5vw,
-                54px
-            );
-
-        line-height:
-            0.96;
-    }
-
-    .social-final p {
-        font-size:
-            11px;
-
-        line-height:
-            1.7;
-    }
-
-    .social-final-logo {
-        width:
-            140px;
-
-        height:
-            92px;
-    }
-
-
-    /* CONTACT */
-
-    .contact-panel {
-        flex-direction:
-            column;
-
-        align-items:
-            stretch;
-
-        text-align:
-            center;
-
-        padding:
-            28px 22px;
-    }
-
-    .contact-actions {
-        justify-content:
-            center;
-
-        width:
-            100%;
-    }
-
-    .contact-logo {
-        width:
-            155px;
-
-        height:
-            155px;
-    }
-
-
-    /* SKYLINE */
-
-    .skyline-hero {
-        min-height:
-            540px;
-    }
-
-    .skyline-hero-content {
-        width:
-            90%;
-
-        grid-template-columns:
-            1fr;
-
-        text-align:
-            center;
-    }
-
-    .skyline-hero-content .page-logo {
-        width:
-            145px;
-
-        height:
-            145px;
-    }
-
-    .paranormal-page-logo {
-        width:
-            160px;
-
-        height:
-            160px;
-    }
-
-    .photography-logo {
-        width:
-            155px;
-
-        height:
-            155px;
-    }
-
-
-    /* BUTTONS */
-
-    .buttons {
-        flex-direction:
-            column;
-
-        width:
-            100%;
-    }
-
-    .buttons .button {
-        width:
-            min(100%,360px);
-    }
-
-
-    /* ABOUT */
-
-    .about {
-        padding:
-            26px 22px;
-    }
-
-    section {
-        padding:
-            60px 0;
-    }
-
-
-    /* PHOTOGRAPHY */
-
-    body.photography-page::before {
-        background:
-            linear-gradient(
-                90deg,
-                rgba(3,7,14,0.25) 0%,
-                rgba(0,0,0,0.68) 25%,
-                rgba(0,0,0,0.96) 42%,
-                rgba(0,0,0,1) 50%,
-                rgba(0,0,0,0.96) 58%,
-                rgba(0,0,0,0.68) 75%,
-                rgba(3,7,14,0.25) 100%
-            ),
-            url("background.png.PNG")
-            center / cover
-            no-repeat;
-    }
-
-    .photography-page .gallery-card {
-        box-shadow:
-            0 16px 45px
-            rgba(0,0,0,0.65);
-    }
-
-    .photography-page .gallery-card:hover {
-        transform:
-            none;
-    }
-
-    .photography-page .gallery-link:hover img {
-        transform:
-            none;
-
-        filter:
-            none;
-    }
-}
-
-
-/* =========================================================
-   SMALL PHONES
-========================================================= */
-
-@media (max-width: 480px) {
-
-    .container {
-        width:
-            90%;
-    }
-
-    .nav {
-        min-height:
-            68px;
-    }
-
-    .nav-brand {
-        font-size:
-            15px;
-
-        letter-spacing:
-            0.8px;
-
-        gap:
-            7px;
-    }
-
-    .nav-brand img {
-        width:
-            32px;
-
-        height:
-            32px;
-    }
-
-    .menu-toggle {
-        min-height:
-            44px;
-
-        padding:
-            10px 14px;
-
-        font-size:
-            12px;
-    }
-
-    .nav-links {
-        top:
-            68px;
-    }
-
-    .hero-logo {
-        width:
-            155px;
-
-        height:
-            155px;
-    }
-
-    p {
-        font-size:
-            14px;
-    }
-
-    .eyebrow {
-        font-size:
-            10px;
-
-        letter-spacing:
-            1.5px;
-    }
-
-
-    /* SOCIAL HUB */
-
-    .social-hub-content {
-        padding-top:
-            58px;
-    }
-
-    .social-hub-art {
-        background-size:
-            auto 440px;
-    }
-
-    .social-main-title {
-        font-size:
-            36px;
-    }
-
-    .social-category-line {
-        font-size:
-            9px;
-    }
-
-    .social-logo-wrap img {
-        width:
-            145px;
-
-        height:
-            145px;
-    }
-
-    .social-brand-name {
-        font-size:
-            42px;
-    }
-
-    .social-brand-content h3 {
-        font-size:
-            29px;
-    }
-
-    .social-brand-content p {
-        font-size:
-            9px;
-    }
-
-    .social-ticker-group {
-        min-height:
-            56px;
-
-        font-size:
-            16px;
-
-        padding:
-            0 18px;
-
-        gap:
-            16px;
-    }
-
-    .social-final {
-        padding-top:
-            58px;
-    }
-
-    .social-final h3 {
-        font-size:
-            34px;
-    }
-
-    .social-final-logo {
-        width:
-            130px;
-
-        height:
-            85px;
-    }
-
-
-    /* SKYLINE */
-
-    .skyline-hero-content .page-logo {
-        width:
-            125px;
-
-        height:
-            125px;
-    }
-
-
-    /* PARANORMAL */
-
-    .paranormal-page-logo {
-        width:
-            145px;
-
-        height:
-            145px;
-    }
-
-
-    /* PHOTOGRAPHY */
-
-    .photography-logo {
-        width:
-            140px;
-
-        height:
-            140px;
-    }
-
-    .photography-page .gallery {
-        gap:
-            16px;
-    }
-
-    .photography-page .gallery-card {
-        border-radius:
-            16px;
-    }
-
-    .photography-page .gallery-caption {
-        padding:
-            16px;
-    }
-
-    .photography-page .gallery-card img {
-        aspect-ratio:
-            16 / 10;
-    }
-
-
-    /* CONTACT */
-
-    .contact-logo {
-        width:
-            140px;
-
-        height:
-            140px;
-    }
-
-
-    /* LIGHTBOX */
-
-    .lightbox {
-        padding:
-            12px;
-    }
-
-    .lightbox-image {
-        max-width:
-            96vw;
-
-        max-height:
-            82vh;
-    }
-
-
-    /* FOOTER */
-
-    footer {
-        padding:
-            38px 18px 48px;
-
-        font-size:
-            9px;
-    }
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior:
-            auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        animation-duration:
-            0.01ms !important;
-
-        animation-iteration-count:
-            1 !important;
-
-        transition-duration:
-            0.01ms !important;
-
-        scroll-behavior:
-            auto !important;
-    }
-
-    .social-ticker-track {
-        animation:
-            none !important;
-    }
-
-    .gallery-link img,
-    .gallery-card,
-    .button,
-    .social-button,
-    .back-top {
-        transition:
-            none !important;
-    }
-}
-/* =========================================================
-   NEWITT MEDIA
-   PHASE 4.2
-   FINAL VIEWPORT + OVERFLOW SAFETY
-========================================================= */
-
-/*
-   This phase does not redesign the website.
-   It protects the existing layout from accidental
-   horizontal overflow and oversized content.
-*/
-
-/* Keep every element inside the viewport */
-html,
-body {
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-/* Prevent long text, links or filenames from
-   forcing the page wider */
-p,
-h1,
-h2,
-h3,
-a,
-button {
-    overflow-wrap: break-word;
-}
-
-/* Keep flex and grid children from forcing
-   their parent wider */
-.nav,
-.nav-links,
-.hero-card,
-.contact-panel,
-.social-brand-inner,
-.social-brand-content,
-.brand-card,
-.gallery-card {
-    min-width: 0;
-}
-
-/* Prevent media from exceeding its container */
-img,
-video,
-iframe {
-    max-width: 100%;
-}
-
-/* Keep buttons from creating unexpected overflow */
-.button,
-.social-button,
-.menu-toggle {
-    max-width: 100%;
-}
-
-/* Keep the main content safely inside the viewport */
-.container {
-    max-width: 100%;
-}
-
-
-/* =========================================================
-   MOBILE VIEWPORT SAFETY
-========================================================= */
-
-@media (max-width: 800px) {
-
-    .hero-card {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .social-brand-inner {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .social-brand-content {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .contact-panel {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .gallery-card {
-        width: 100%;
-        max-width: 100%;
-    }
-
-}
-
-
-/* =========================================================
-   SMALL PHONE SAFETY
-========================================================= */
-
-@media (max-width: 480px) {
-
-    .hero-card,
-    .about,
-    .contact-panel,
-    .brand-card,
-    .gallery-card,
-    .social-brand {
-        max-width: 100%;
-    }
-
-    .social-main-title,
-    .social-brand-name,
-    .social-brand-content h3,
-    .social-final h3 {
-        overflow-wrap: anywhere;
-    }
-
-}
-
-
-/* =========================================================
-   PHASE 4.2 REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-    }
-
-}
-/* =========================================================
-   NEWITT MEDIA
-   PHASE 4.3
-   RESPONSIVE TEXT + BUTTON SAFETY
-========================================================= */
-
-/* Prevent headings and buttons from becoming wider
-   than the space available */
-h1,
-h2,
-h3,
-.button,
-.social-button {
-    max-width: 100%;
-}
-
-/* Keep long words and text from breaking layouts */
-h1,
-h2,
-h3,
-p,
-.button,
-.social-button {
-    overflow-wrap: break-word;
-}
-
-/* Keep buttons centred when they wrap */
-.buttons,
-.social-buttons {
-    max-width: 100%;
-}
-
-/* =========================================================
-   MOBILE BUTTON SAFETY
-========================================================= */
-
-@media (max-width: 800px) {
-
-    .buttons,
-    .social-buttons {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .button,
-    .social-button {
-        max-width: 100%;
-        overflow-wrap: break-word;
-    }
-
-}
-
-/* =========================================================
-   SMALL PHONE TEXT SAFETY
-========================================================= */
-
-@media (max-width: 480px) {
-
-    h1,
-    h2,
-    h3 {
-        max-width: 100%;
-        overflow-wrap: anywhere;
-    }
-
-    .button,
-    .social-button {
-        white-space: normal;
-        line-height: 1.25;
-    }
-
-}
-/* =========================================================
-   NEWITT MEDIA
-   PHASE 4.4
-   FINAL INTERACTION + FOCUS POLISH
-========================================================= */
-
-/* Keep keyboard navigation clearly visible */
-a:focus-visible,
-button:focus-visible {
-    outline: 3px solid var(--sky-blue-light);
-    outline-offset: 4px;
-}
-
-/* Keep navigation focus easy to see */
-.nav-links a:focus-visible {
-    background: rgba(22,140,255,0.14);
-    color: #ffffff;
-}
-
-/* Keep buttons visually separated from dark backgrounds */
-.button:focus-visible,
-.social-button:focus-visible,
-.menu-toggle:focus-visible {
-    box-shadow:
-        0 0 0 3px rgba(3,5,8,0.95),
-        0 0 0 6px var(--sky-blue-light);
-}
-
-/* Gallery keyboard focus */
-.gallery-link:focus-visible {
-    outline: 3px solid var(--sky-blue-light);
-    outline-offset: -3px;
-}
-
-/* Lightbox close button */
-.lightbox-close:focus-visible {
-    outline: 3px solid #ffffff;
-    outline-offset: 4px;
-}
-
-/* Remove focus animation for reduced-motion users */
-@media (prefers-reduced-motion: reduce) {
-
-    a:focus-visible,
-    button:focus-visible {
-        transition: none !important;
-    }
-
-}
-/* =========================================================
-   NEWITT MEDIA
-   PHASE 4.5
-   FINAL MEDIA + LAYOUT PROTECTION
-========================================================= */
-
-/* Keep all content inside its available space */
-*,
-*::before,
-*::after {
-    max-width: 100%;
-}
-
-/* Allow normal block elements to size naturally */
-body,
-main,
-section,
-footer {
-    width: 100%;
-}
-
-/* Keep media contained */
-img,
-video,
-iframe,
-svg {
-    max-width: 100%;
-}
-
-/* Prevent long content from creating a wider layout */
-p,
-h1,
-h2,
-h3,
-a {
-    overflow-wrap: break-word;
-}
-
-/* Keep cards and panels from exceeding their containers */
-.hero-card,
-.panel,
-.about,
-.brand-card,
-.social-brand,
-.gallery-card,
-.contact-panel {
-    max-width: 100%;
-}
-
-/* =========================================================
-   MOBILE PROTECTION
-========================================================= */
-
-@media (max-width: 800px) {
-
-    .container {
-        width: 90%;
-        max-width: 100%;
-    }
-
-    .hero-card,
-    .panel,
-    .about,
-    .brand-card,
-    .social-brand,
-    .gallery-card,
-    .contact-panel {
-        width: 100%;
-        max-width: 100%;
-    }
-
-}
-
-/* =========================================================
-   SMALL PHONE PROTECTION
-========================================================= */
-
-@media (max-width: 480px) {
-
-    .container {
-        width: 90%;
-    }
-
-    .hero-card,
-    .panel,
-    .about,
-    .brand-card,
-    .social-brand,
-    .gallery-card,
-    .contact-panel {
-        max-width: 100%;
-    }
-
-}
-/* =========================================================
-   NEWITT MEDIA
-   MASTER FINAL VISUAL CALIBRATION
-   Restores the intended cinematic blue/cyan identity,
-   preserves the existing page structures, and aligns the
-   desktop hero layouts without adding logo background panels.
-========================================================= */
-
-:root {
-    --brand-cyan: #168cff;
-    --brand-cyan-light: #59b9ff;
-    --brand-cyan-bright: #8bd3ff;
-    --brand-red: #d91f32;
-    --brand-red-light: #ff4a5d;
-    --brand-red-bright: #ff7180;
-}
-
-/* ---------------------------------------------------------
-   CORE CINEMATIC SURFACE
---------------------------------------------------------- */
-
-body {
-    background: #000;
-}
-
-/* Never create a box, plate or square behind a logo. */
-.hero-logo,
-.brand-logo,
-.page-logo,
-.paranormal-page-logo,
-.photography-logo,
-.contact-logo,
-.social-logo-wrap,
-.social-logo-wrap img,
-.nav-brand img {
-    background: transparent !important;
-    border: 0 !important;
-    outline: 0 !important;
-    box-shadow: none !important;
-}
-
-/* The site background remains the single cinematic image. */
-.hero,
-.page-hero,
-.skyline-hero,
-.paranormal-page-hero {
-    background: transparent;
-}
-
-/* ---------------------------------------------------------
-   FINAL NEWITT MEDIA PAGE IDENTITY + HERO SYSTEM
-   Shared geometry, individual page identity.
-
-   Desktop:
-   155px logo | text block
-
-   Skyline     = blue/cyan
-   Paranormal  = haunting red
-   Photography = premium platinum/silver
---------------------------------------------------------- */
-
-:root {
-    --newitt-hero-logo-size: 155px;
-
-    --skyline-accent: #168cff;
-    --skyline-accent-light: #59b9ff;
-    --skyline-accent-bright: #8bd3ff;
-
-    --paranormal-accent: #b51224;
-    --paranormal-accent-light: #ff3045;
-    --paranormal-accent-bright: #ff7180;
-
-    --photography-accent: #c7ced8;
-    --photography-accent-light: #e8edf3;
-    --photography-accent-bright: #ffffff;
-}
-
-/* ---------------------------------------------------------
-   BACKGROUND
---------------------------------------------------------- */
-
-.hero,
-.page-hero,
-.skyline-hero,
-.paranormal-page-hero,
-.paranormal-hero,
-.photography-hero {
-    background: transparent;
-}
-
-/* ---------------------------------------------------------
-   PAGE IDENTITY
---------------------------------------------------------- */
-
-body.skyline-page {
-    --page-accent: var(--skyline-accent);
-    --page-accent-light: var(--skyline-accent-light);
-    --page-accent-bright: var(--skyline-accent-bright);
-}
-
-body.paranormal-page {
-    --page-accent: var(--paranormal-accent);
-    --page-accent-light: var(--paranormal-accent-light);
-    --page-accent-bright: var(--paranormal-accent-bright);
-}
-
-body.photography-page {
-    --page-accent: var(--photography-accent);
-    --page-accent-light: var(--photography-accent-light);
-    --page-accent-bright: var(--photography-accent-bright);
-}
-
-/* ---------------------------------------------------------
-   ACCENTED TEXT
---------------------------------------------------------- */
-
+/* Skyline identity */
 body.skyline-page .eyebrow,
 body.skyline-page h1 span,
-body.skyline-page h2 span,
-body.skyline-page h3 span {
-    color: var(--skyline-accent-light);
+body.skyline-page h2 span { color: var(--blue-light); }
+
+body.skyline-page .button.primary {
+  background: linear-gradient(135deg,var(--blue-light),var(--blue));
+  color: #fff;
+  border-color: var(--blue-bright);
 }
 
+body.skyline-page .about,
+body.skyline-page .panel,
+body.skyline-page .gallery-card { border-color: rgba(89,185,255,.22); }
+
+/* Paranormal identity */
 body.paranormal-page .eyebrow,
 body.paranormal-page h1 span,
-body.paranormal-page h2 span,
-body.paranormal-page h3 span {
-    color: var(--paranormal-accent-light);
-    text-shadow: 0 0 14px rgba(255, 48, 69, .28);
-}
-
-body.photography-page .eyebrow,
-body.photography-page h1 span,
-body.photography-page h2 span,
-body.photography-page h3 span {
-    color: var(--photography-accent-light);
-}
-
-/* ---------------------------------------------------------
-   ACTIVE NAVIGATION
---------------------------------------------------------- */
-
-body.skyline-page .nav-links a.active::after {
-    background: linear-gradient(
-        90deg,
-        var(--skyline-accent),
-        var(--skyline-accent-bright)
-    );
-}
-
-body.paranormal-page .nav-links a.active::after {
-    background: linear-gradient(
-        90deg,
-        var(--paranormal-accent),
-        var(--paranormal-accent-bright)
-    );
-}
-
-body.photography-page .nav-links a.active::after {
-    background: linear-gradient(
-        90deg,
-        var(--photography-accent),
-        var(--photography-accent-bright)
-    );
-}
-
-/* ---------------------------------------------------------
-   PRIMARY BUTTONS
---------------------------------------------------------- */
-
-body.skyline-page .button.primary {
-    background: linear-gradient(
-        135deg,
-        #168cff,
-        #0759ad
-    );
-    color: #ffffff;
-    border-color: #59b9ff;
-    box-shadow: 0 8px 24px rgba(22, 140, 255, .20);
-}
+body.paranormal-page h2 span { color: var(--red-light); }
 
 body.paranormal-page .button.primary {
-    background: linear-gradient(
-        135deg,
-        #ff3045,
-        #8d0d1c
-    );
-    color: #ffffff;
-    border-color: #ff7180;
-    box-shadow: 0 8px 26px rgba(181, 18, 36, .28);
+  background: linear-gradient(135deg,var(--red-light),var(--red));
+  color: #fff;
+  border-color: var(--red-bright);
 }
 
-body.photography-page .button.primary {
-    background: linear-gradient(
-        135deg,
-        #e8edf3,
-        #9fa9b6
-    );
-    color: #030508;
-    border-color: #ffffff;
-    box-shadow: 0 8px 24px rgba(215, 221, 230, .14);
-}
-
-/* ---------------------------------------------------------
-   SHARED DESKTOP HERO GEOMETRY
-
-   This is the important part:
-   all three pages use the same physical arrangement.
-
-   LOGO | TEXT
---------------------------------------------------------- */
-
-.skyline-hero,
-.paranormal-hero,
-.photography-hero {
-    min-height: 610px;
-    padding: 76px 0;
-    display: grid;
-    place-items: center;
-    text-align: left;
-}
-
-.skyline-hero-content,
-.paranormal-hero-content,
-.photography-hero-content {
-    position: relative;
-    z-index: 1;
-
-    width: min(1100px, 92%);
-    margin: 0 auto;
-
-    display: grid;
-    grid-template-columns: 190px minmax(0, 1fr);
-    gap: 48px;
-
-    align-items: center;
-}
-
-/* ---------------------------------------------------------
-   SHARED LOGO COLUMN
---------------------------------------------------------- */
-
-.skyline-hero-content > div:first-child,
-.paranormal-hero-logo,
-.photography-hero-logo {
-    display: grid;
-    place-items: center;
-    min-width: 0;
-}
-
-.skyline-hero-content .page-logo,
-.paranormal-page-logo,
-.photography-page-logo {
-    width: var(--newitt-hero-logo-size);
-    height: var(--newitt-hero-logo-size);
-
-    max-width: 100%;
-    max-height: 100%;
-
-    object-fit: contain;
-
-    margin: 0;
-
-    background: transparent !important;
-    border: 0 !important;
-    outline: none !important;
-    box-shadow: none !important;
-
-    display: block;
-}
-
-/* ---------------------------------------------------------
-   LOGO IDENTITY GLOW
---------------------------------------------------------- */
-
-.skyline-hero-content .page-logo {
-    filter:
-        drop-shadow(0 0 18px rgba(22, 140, 255, .22))
-        drop-shadow(0 12px 25px rgba(0, 0, 0, .55));
-}
-
-.paranormal-page-logo {
-    filter:
-        drop-shadow(0 0 18px rgba(181, 18, 36, .26))
-        drop-shadow(0 12px 28px rgba(0, 0, 0, .58));
-}
-
-.photography-page-logo {
-    filter:
-        drop-shadow(0 0 16px rgba(232, 237, 243, .12))
-        drop-shadow(0 12px 28px rgba(0, 0, 0, .58));
-}
-
-/* ---------------------------------------------------------
-   SHARED TEXT COLUMN
---------------------------------------------------------- */
-
-.skyline-hero-content > div:last-child,
-.paranormal-hero-text,
-.photography-hero-text {
-    min-width: 0;
-    text-align: left;
-}
-
-.skyline-hero-content h1,
-.paranormal-hero-text h1,
-.photography-hero-text h1 {
-    max-width: 900px;
-    margin: 10px 0 18px;
-}
-
-.skyline-hero-content p,
-.paranormal-hero-text p,
-.photography-hero-text p {
-    max-width: 760px;
-    margin: 0 0 14px;
-}
-
-.skyline-hero-content .buttons,
-.paranormal-hero-text .buttons,
-.photography-hero-text .buttons {
-    justify-content: flex-start;
-}
-
-/* ---------------------------------------------------------
-   PARANORMAL
---------------------------------------------------------- */
-
-.paranormal-hero {
-    position: relative;
-}
-
-.paranormal-hero::before,
-.paranormal-hero::after {
-    display: none !important;
-}
-
-.paranormal-hero-text .hero-tagline {
-    color: #f3d9dc;
-}
-
-.paranormal-hero-text h1 span {
-    color: var(--paranormal-accent-light);
-    text-shadow:
-        0 0 12px rgba(255, 48, 69, .35),
-        0 0 28px rgba(181, 18, 36, .22);
-}
-
-/* ---------------------------------------------------------
-   PHOTOGRAPHY
---------------------------------------------------------- */
-
-.photography-hero {
-    position: relative;
-}
-
-.photography-hero::before,
-.photography-hero::after {
-    display: none !important;
-}
-
-.photography-hero-text .hero-tagline {
-    color: #dce2e9;
-}
-
-.photography-hero-text h1 span {
-    color: var(--photography-accent-light);
-}
-
-/* ---------------------------------------------------------
-   COMMON PANELS
---------------------------------------------------------- */
-
-.panel,
-.about,
-.contact-panel,
-.brand-card,
-.gallery-card,
-.coming-soon {
-    background: rgba(3, 8, 15, .78);
-}
-
-/* ---------------------------------------------------------
-   PHOTOGRAPHY PANELS
---------------------------------------------------------- */
-
-body.photography-page .panel,
-body.photography-page .about,
-body.photography-page .contact-panel {
-    border-color: rgba(215, 221, 230, .18);
-    box-shadow: 0 24px 70px rgba(0, 0, 0, .55);
-}
-
-body.photography-page .panel h2,
-body.photography-page .about h2,
-body.photography-page .contact-panel h2 {
-    color: #f7f9fc;
-}
-
-body.photography-page .panel p,
-body.photography-page .about p,
-body.photography-page .contact-panel p {
-    color: #c5ced8;
-}
-
-/* ---------------------------------------------------------
-   MOBILE
---------------------------------------------------------- */
-
-@media (max-width: 800px) {
-
-    .skyline-hero,
-    .paranormal-hero,
-    .photography-hero {
-        min-height: 0;
-        padding: 62px 0 52px;
-        text-align: center;
-    }
-
-    .skyline-hero-content,
-    .paranormal-hero-content,
-    .photography-hero-content {
-        width: 90%;
-        grid-template-columns: 1fr;
-        gap: 0;
-        text-align: center;
-    }
-
-    .skyline-hero-content > div:first-child,
-    .paranormal-hero-logo,
-    .photography-hero-logo {
-        grid-column: 1;
-        margin: 0 auto 18px;
-    }
-
-    .skyline-hero-content > div:last-child,
-    .paranormal-hero-text,
-    .photography-hero-text {
-        grid-column: 1;
-        text-align: center;
-    }
-
-    .skyline-hero-content .page-logo,
-    .paranormal-page-logo,
-    .photography-page-logo {
-        width: 145px;
-        height: 145px;
-    }
-
-    .skyline-hero-content h1,
-    .paranormal-hero-text h1,
-    .photography-hero-text h1 {
-        margin: 8px 0 16px;
-    }
-
-    .skyline-hero-content p,
-    .paranormal-hero-text p,
-    .photography-hero-text p {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .skyline-hero-content .buttons,
-    .paranormal-hero-text .buttons,
-    .photography-hero-text .buttons {
-        justify-content: center;
-    }
-}
-
-@media (max-width: 480px) {
-
-    .skyline-hero,
-    .paranormal-hero,
-    .photography-hero {
-        padding: 52px 0 42px;
-    }
-
-    .skyline-hero-content .page-logo,
-    .paranormal-page-logo,
-    .photography-page-logo {
-        width: 130px;
-        height: 130px;
-    }
-
-    .skyline-hero-content h1,
-    .paranormal-hero-text h1,
-    .photography-hero-text h1 {
-        font-size: clamp(34px, 9.5vw, 50px);
-        letter-spacing: -1.5px;
-    }
-}
-
-/* ---------------------------------------------------------
-   ACCESSIBILITY
---------------------------------------------------------- */
-
-body.skyline-page a:focus-visible,
-body.skyline-page button:focus-visible {
-    outline-color: var(--skyline-accent-light);
-}
-
-body.paranormal-page a:focus-visible,
-body.paranormal-page button:focus-visible {
-    outline-color: var(--paranormal-accent-light);
-}
-
-body.photography-page a:focus-visible,
-body.photography-page button:focus-visible {
-    outline-color: var(--photography-accent-light);
-}
-
-/* ---------------------------------------------------------
-   NO HORIZONTAL SCROLL
---------------------------------------------------------- */
-
-html,
-body {
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-img,
-video,
-iframe,
-svg {
-    max-width: 100%;
-}
-
-p,
-h1,
-h2,
-h3,
-a,
-button {
-    overflow-wrap: break-word;
-}
-
-/* ---------------------------------------------------------
-   FINAL ACCESSIBILITY COLOUR CALIBRATION
---------------------------------------------------------- */
-
-body.skyline-page a:focus-visible,
-body.skyline-page button:focus-visible {
-    outline-color: var(--brand-cyan-light);
-}
-
-body.photography-page a:focus-visible,
-body.photography-page button:focus-visible {
-    outline-color: #ffffff;
-}
-
-body:has(.paranormal-page-hero) a:focus-visible,
-body:has(.paranormal-page-hero) button:focus-visible,
-body.paranormal-page a:focus-visible,
-body.paranormal-page button:focus-visible {
-    outline-color: var(--brand-red-light);
-}
-
-/* ---------------------------------------------------------
-   SAFETY: NO HORIZONTAL SCROLL
---------------------------------------------------------- */
-
-html,
-body {
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-img,
-video,
-iframe,
-svg {
-    max-width: 100%;
-}
-
-p,
-h1,
-h2,
-h3,
-a,
-button {
-    overflow-wrap: break-word;
-}
-
-/* =========================================================
-   NEWITT MEDIA FINAL MASTER OVERRIDES
-   FINAL VISUAL + LAYOUT CALIBRATION
-
-   IMPORTANT:
-   This block intentionally comes LAST so that older Phase 4
-   rules cannot override the final page identities/layout.
-========================================================= */
-
-:root {
-    /* Skyline identity */
-    --final-sky-blue: #168cff;
-    --final-sky-blue-light: #59b9ff;
-    --final-sky-blue-bright: #8bd3ff;
-
-    /* Paranormal identity */
-    --final-paranormal-red: #b51224;
-    --final-paranormal-red-light: #ff3045;
-    --final-paranormal-red-bright: #ff7180;
-
-    /* Photography identity: visibly platinum/silver */
-    --final-photo-silver-dark: #8f9aa8;
-    --final-photo-silver: #b8c1cc;
-    --final-photo-silver-bright: #d7dde6;
-    --final-photo-silver-white: #edf1f5;
-
-    --final-logo-size: 155px;
-}
-
-/* =========================================================
-   ONE CINEMATIC WEBSITE BACKGROUND
-
-   background.png.PNG is used once for the main site surface.
-   Page-specific background declarations are neutralised below.
-========================================================= */
-
-html,
-body {
-    background-color: #000 !important;
-    overflow-x: hidden;
-}
-
-body::before {
-    content: "" !important;
-    position: fixed !important;
-    inset: 0 !important;
-    z-index: -3 !important;
-    pointer-events: none !important;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(3,7,14,0.25) 0%,
-            rgba(3,7,14,0.48) 20%,
-            rgba(0,0,0,0.94) 42%,
-            rgba(0,0,0,1) 50%,
-            rgba(0,0,0,0.94) 58%,
-            rgba(3,7,14,0.48) 80%,
-            rgba(3,7,14,0.25) 100%
-        ),
-        url("background.png.PNG") center / cover no-repeat !important;
-
-    transform: scale(1.02) !important;
-}
-
-/* Do not let individual pages replace the master background. */
-body.skyline-page::before,
-body.paranormal-page::before,
-body.photography-page::before {
-    background:
-        linear-gradient(
-            90deg,
-            rgba(3,7,14,0.25) 0%,
-            rgba(3,7,14,0.48) 20%,
-            rgba(0,0,0,0.94) 42%,
-            rgba(0,0,0,1) 50%,
-            rgba(0,0,0,0.94) 58%,
-            rgba(3,7,14,0.48) 80%,
-            rgba(3,7,14,0.25) 100%
-        ),
-        url("background.png.PNG") center / cover no-repeat !important;
-}
-
-/* The vignette is an overlay, not another image. */
-body::after {
-    background:
-        radial-gradient(
-            ellipse at center,
-            rgba(0,0,0,0.12) 0%,
-            rgba(0,0,0,0.42) 42%,
-            rgba(0,0,0,0.62) 55%,
-            rgba(0,0,0,0.20) 80%,
-            rgba(0,0,0,0.05) 100%
-        ) !important;
-}
-
-/* =========================================================
-   REMOVE DUPLICATE SKYLINE HERO BACKGROUND
-========================================================= */
-
-.skyline-hero,
-.skyline-hero::before,
-.skyline-hero::after {
-    background-image: none !important;
-}
-
-.skyline-hero::before,
-.skyline-hero::after {
-    content: none !important;
-    display: none !important;
-}
-
-/* All new hero sections are transparent windows onto the
-   single master background. */
-.paranormal-hero,
-.paranormal-hero::before,
-.paranormal-hero::after,
-.photography-hero,
-.photography-hero::before,
-.photography-hero::after {
-    background-image: none !important;
-}
-
-.paranormal-hero::before,
-.paranormal-hero::after,
-.photography-hero::before,
-.photography-hero::after {
-    content: none !important;
-    display: none !important;
-}
-
-/* =========================================================
-   LOGO SYSTEM
-   Same desktop image box as the Contact reference.
-========================================================= */
-
-.skyline-hero-content .page-logo,
-.paranormal-page-logo,
-.photography-page-logo {
-    width: var(--final-logo-size) !important;
-    height: var(--final-logo-size) !important;
-    max-width: var(--final-logo-size) !important;
-    max-height: var(--final-logo-size) !important;
-    object-fit: contain !important;
-    margin: 0 !important;
-    padding: 0 !important;
-
-    background: transparent !important;
-    border: 0 !important;
-    outline: 0 !important;
-    box-shadow: none !important;
-}
-
-.skyline-hero-content .page-logo {
-    filter:
-        drop-shadow(0 0 18px rgba(22,140,255,.22))
-        drop-shadow(0 12px 25px rgba(0,0,0,.55)) !important;
-}
-
-.paranormal-page-logo {
-    filter:
-        drop-shadow(0 0 18px rgba(181,18,36,.28))
-        drop-shadow(0 12px 28px rgba(0,0,0,.58)) !important;
-}
-
-.photography-page-logo {
-    filter:
-        drop-shadow(0 0 16px rgba(215,221,230,.14))
-        drop-shadow(0 12px 28px rgba(0,0,0,.58)) !important;
-}
-
-/* =========================================================
-   COMMON DESKTOP HERO GEOMETRY
-========================================================= */
-
-.skyline-hero,
-.paranormal-hero,
-.photography-hero {
-    min-height: 610px !important;
-    padding: 76px 0 !important;
-    display: grid !important;
-    place-items: center !important;
-    text-align: left !important;
-}
-
-.skyline-hero-content,
-.paranormal-hero-content,
-.photography-hero-content {
-    position: relative !important;
-    z-index: 1 !important;
-    width: min(1100px, 92%) !important;
-    margin: 0 auto !important;
-
-    display: grid !important;
-    grid-template-columns: 190px minmax(0, 1fr) !important;
-    gap: 48px !important;
-    align-items: center !important;
-}
-
-.skyline-hero-content > div:first-child,
-.paranormal-hero-logo,
-.photography-hero-logo {
-    display: grid !important;
-    place-items: center !important;
-    min-width: 0 !important;
-}
-
-.skyline-hero-content > div:last-child,
-.paranormal-hero-text,
-.photography-hero-text {
-    min-width: 0 !important;
-    text-align: left !important;
-}
-
-.skyline-hero-content h1,
-.paranormal-hero-text h1,
-.photography-hero-text h1 {
-    max-width: 900px !important;
-    margin: 10px 0 18px !important;
-}
-
-.skyline-hero-content p,
-.paranormal-hero-text p,
-.photography-hero-text p {
-    max-width: 760px !important;
-    margin: 0 0 14px !important;
-}
-
-.skyline-hero-content .buttons,
-.paranormal-hero-text .buttons,
-.photography-hero-text .buttons {
-    justify-content: flex-start !important;
-}
-
-/* =========================================================
-   PAGE COLOUR IDENTITIES
-========================================================= */
-
-/* SKYLINE */
-body.skyline-page {
-    --page-accent: var(--final-sky-blue);
-    --page-accent-light: var(--final-sky-blue-light);
-    --page-accent-bright: var(--final-sky-blue-bright);
-}
-
-body.skyline-page h1 span,
-body.skyline-page h2 span,
-body.skyline-page h3 span,
-body.skyline-page .eyebrow {
-    color: var(--final-sky-blue-light) !important;
-}
-
-body.skyline-page .button.primary {
-    background: linear-gradient(135deg, #168cff, #0759ad) !important;
-    color: #fff !important;
-    border-color: #59b9ff !important;
-    box-shadow: 0 8px 24px rgba(22,140,255,.20) !important;
-}
-
-body.skyline-page .nav-links a.active::after {
-    background: linear-gradient(90deg, #168cff, #8bd3ff) !important;
-}
-
-/* PARANORMAL */
-body.paranormal-page {
-    --page-accent: var(--final-paranormal-red);
-    --page-accent-light: var(--final-paranormal-red-light);
-    --page-accent-bright: var(--final-paranormal-red-bright);
-}
-
-body.paranormal-page h1 span,
-body.paranormal-page h2 span,
-body.paranormal-page h3 span,
-body.paranormal-page .eyebrow {
-    color: var(--final-paranormal-red-light) !important;
-    text-shadow:
-        0 0 12px rgba(255,48,69,.35),
-        0 0 28px rgba(181,18,36,.22) !important;
-}
-
-body.paranormal-page .button.primary {
-    background: linear-gradient(135deg, #ff3045, #8d0d1c) !important;
-    color: #fff !important;
-    border-color: #ff7180 !important;
-    box-shadow: 0 8px 26px rgba(181,18,36,.28) !important;
-}
-
-body.paranormal-page .nav-links a.active::after {
-    background: linear-gradient(90deg, #b51224, #ff7180) !important;
-}
-
-/* PHOTOGRAPHY: clearly visible platinum/silver */
-body.photography-page {
-    --page-accent: var(--final-photo-silver);
-    --page-accent-light: var(--final-photo-silver-bright);
-    --page-accent-bright: var(--final-photo-silver-white);
-}
-
-body.photography-page h1 span,
-body.photography-page h2 span,
-body.photography-page h3 span {
-    color: var(--final-photo-silver-bright) !important;
-    text-shadow:
-        0 0 10px rgba(215,221,230,.16) !important;
-}
-
-body.photography-page .eyebrow {
-    color: var(--final-photo-silver) !important;
-}
-
-body.photography-page .hero-tagline {
-    color: var(--final-photo-silver-white) !important;
-}
-
-body.photography-page .button.primary {
-    background: linear-gradient(
-        135deg,
-        #edf1f5,
-        #aab4c0
-    ) !important;
-    color: #030508 !important;
-    border-color: #d7dde6 !important;
-    box-shadow: 0 8px 24px rgba(215,221,230,.16) !important;
-}
-
-body.photography-page .nav-links a.active::after {
-    background: linear-gradient(
-        90deg,
-        #8f9aa8,
-        #edf1f5
-    ) !important;
-}
-
-/* =========================================================
-   PHOTOGRAPHY CONTENT PANELS
-   Correct internal positioning on desktop and mobile.
-========================================================= */
-
-body.photography-page .photography-content-panel {
-    width: 100% !important;
-    max-width: 1000px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding: 42px 46px !important;
-
-    box-sizing: border-box !important;
-    text-align: left !important;
-
-    background: rgba(3,8,15,.82) !important;
-    border: 1px solid rgba(215,221,230,.20) !important;
-    border-radius: 24px !important;
-    box-shadow: 0 24px 70px rgba(0,0,0,.55) !important;
-}
-
-body.photography-page .photography-content-panel .eyebrow {
-    display: block !important;
-    margin: 0 0 12px !important;
-}
-
-body.photography-page .photography-content-panel h2 {
-    margin: 0 0 18px !important;
-    color: #f7f9fc !important;
-    text-align: left !important;
-}
-
-body.photography-page .photography-content-panel h2 span,
-body.photography-page .photography-content-panel h3 span {
-    color: var(--final-photo-silver-bright) !important;
-}
-
-body.photography-page .photography-content-panel p {
-    max-width: 760px !important;
-    margin: 0 0 14px !important;
-    color: #c5ced9 !important;
-    text-align: left !important;
-}
-
-body.photography-page .photography-content-panel p:last-child {
-    margin-bottom: 0 !important;
-}
-
-body.photography-page .photography-content-panel .coming-soon {
-    width: 100% !important;
-    margin-top: 28px !important;
-    padding: 28px 30px !important;
-    box-sizing: border-box !important;
-
-    background: rgba(7,12,19,.72) !important;
-    border: 1px solid rgba(215,221,230,.16) !important;
-    border-radius: 18px !important;
-}
-
-body.photography-page .photography-content-panel .coming-soon h3 {
-    margin: 0 0 10px !important;
-    color: #f7f9fc !important;
-}
-
-/* =========================================================
-   PARANORMAL CONTENT PANELS
-========================================================= */
-
-body.paranormal-page .panel,
 body.paranormal-page .about,
-body.paranormal-page .contact-panel {
-    border-color: rgba(181,18,36,.24) !important;
-}
+body.paranormal-page .panel { border-color: rgba(217,31,50,.22); }
 
-body.paranormal-page .button:not(.primary):hover {
-    border-color: rgba(255,48,69,.55) !important;
-}
-
-/* =========================================================
-   GENERAL LOGO PLATES REMAIN TRANSPARENT
-========================================================= */
-
-.hero-logo,
-.page-logo,
-.paranormal-page-logo,
-.photography-page-logo,
-.contact-logo,
-.brand-logo,
-.nav-brand img {
-    background: transparent !important;
-    border: 0 !important;
-    outline: 0 !important;
-}
-
-/* =========================================================
-   MOBILE FINAL CALIBRATION
-========================================================= */
-
-@media (max-width: 800px) {
-
-    .skyline-hero,
-    .paranormal-hero,
-    .photography-hero {
-        min-height: 0 !important;
-        padding: 62px 0 52px !important;
-        text-align: center !important;
-    }
-
-    .skyline-hero-content,
-    .paranormal-hero-content,
-    .photography-hero-content {
-        width: 90% !important;
-        grid-template-columns: 1fr !important;
-        gap: 0 !important;
-        text-align: center !important;
-    }
-
-    .skyline-hero-content > div:first-child,
-    .paranormal-hero-logo,
-    .photography-hero-logo {
-        grid-column: 1 !important;
-        margin: 0 auto 18px !important;
-    }
-
-    .skyline-hero-content > div:last-child,
-    .paranormal-hero-text,
-    .photography-hero-text {
-        grid-column: 1 !important;
-        text-align: center !important;
-    }
-
-    .skyline-hero-content .page-logo,
-    .paranormal-page-logo,
-    .photography-page-logo {
-        width: 145px !important;
-        height: 145px !important;
-        max-width: 145px !important;
-        max-height: 145px !important;
-    }
-
-    .skyline-hero-content h1,
-    .paranormal-hero-text h1,
-    .photography-hero-text h1 {
-        margin: 8px 0 16px !important;
-    }
-
-    .skyline-hero-content p,
-    .paranormal-hero-text p,
-    .photography-hero-text p {
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
-
-    .skyline-hero-content .buttons,
-    .paranormal-hero-text .buttons,
-    .photography-hero-text .buttons {
-        justify-content: center !important;
-    }
-
-    body.photography-page .photography-content-panel {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 30px 24px !important;
-        text-align: center !important;
-    }
-
-    body.photography-page .photography-content-panel .eyebrow,
-    body.photography-page .photography-content-panel h2,
-    body.photography-page .photography-content-panel h3,
-    body.photography-page .photography-content-panel p {
-        text-align: center !important;
-    }
-
-    body.photography-page .photography-content-panel .coming-soon {
-        padding: 24px 20px !important;
-        text-align: center !important;
-    }
-
-    /* Keep the same single site background on mobile. */
-    body::before,
-    body.skyline-page::before,
-    body.paranormal-page::before,
-    body.photography-page::before {
-        background:
-            linear-gradient(
-                90deg,
-                rgba(3,7,14,.32) 0%,
-                rgba(0,0,0,.68) 25%,
-                rgba(0,0,0,.96) 42%,
-                rgba(0,0,0,1) 50%,
-                rgba(0,0,0,.96) 58%,
-                rgba(0,0,0,.68) 75%,
-                rgba(3,7,14,.32) 100%
-            ),
-            url("background.png.PNG") center / cover no-repeat !important;
-    }
-}
-
-@media (max-width: 480px) {
-
-    .skyline-hero,
-    .paranormal-hero,
-    .photography-hero {
-        padding: 52px 0 42px !important;
-    }
-
-    .skyline-hero-content .page-logo,
-    .paranormal-page-logo,
-    .photography-page-logo {
-        width: 130px !important;
-        height: 130px !important;
-        max-width: 130px !important;
-        max-height: 130px !important;
-    }
-
-    .skyline-hero-content h1,
-    .paranormal-hero-text h1,
-    .photography-hero-text h1 {
-        font-size: clamp(34px, 9.5vw, 50px) !important;
-        letter-spacing: -1.5px !important;
-    }
-
-    body.photography-page .photography-content-panel {
-        padding: 26px 20px !important;
-    }
-}
-
-/* =========================================================
-   FINAL FOCUS COLOURS
-========================================================= */
-
-body.skyline-page a:focus-visible,
-body.skyline-page button:focus-visible {
-    outline-color: var(--final-sky-blue-light) !important;
-}
-
-body.paranormal-page a:focus-visible,
-body.paranormal-page button:focus-visible {
-    outline-color: var(--final-paranormal-red-light) !important;
-}
-
-body.photography-page a:focus-visible,
-body.photography-page button:focus-visible {
-    outline-color: var(--final-photo-silver-bright) !important;
-}
-/* =========================================================
-   NEWITT MEDIA - FINAL WALLPAPER OVERRIDE
-   ONE WALLPAPER / ALL PAGES / NO HERO BACKGROUNDS
-========================================================= */
-
-html,
-body {
-    min-height: 100% !important;
-}
-
-body {
-    position: relative !important;
-    isolation: isolate !important;
-
-    background-color: #030508 !important;
-
-    background-image:
-        linear-gradient(
-            90deg,
-            rgba(3,7,14,0.18) 0%,
-            rgba(3,7,14,0.38) 18%,
-            rgba(0,0,0,0.72) 38%,
-            rgba(0,0,0,0.88) 50%,
-            rgba(0,0,0,0.72) 62%,
-            rgba(3,7,14,0.38) 82%,
-            rgba(3,7,14,0.18) 100%
-        ),
-        url("./background.png.PNG") !important;
-
-    background-position: center center !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-    background-attachment: fixed !important;
-}
-
-
-/* KILL EVERY OLD BODY BACKGROUND LAYER */
-
-body::before,
-body::after {
-    content: none !important;
-    display: none !important;
-    background: none !important;
-    background-image: none !important;
-}
-
-
-/* HEROES ARE TRANSPARENT.
-   THEY MUST SHOW THE MASTER WALLPAPER. */
-
-.hero,
-.page-hero,
-.skyline-hero,
-.paranormal-hero,
-.photography-hero,
-.contact-hero {
-    background: transparent !important;
-    background-color: transparent !important;
-    background-image: none !important;
-}
-
-
-/* KILL ANY HERO PSEUDO-BACKGROUND */
-
-.hero::before,
-.hero::after,
-.page-hero::before,
-.page-hero::after,
-.skyline-hero::before,
-.skyline-hero::after,
-.paranormal-hero::before,
-.paranormal-hero::after,
-.photography-hero::before,
-.photography-hero::after,
-.contact-hero::before,
-.contact-hero::after {
-    content: none !important;
-    display: none !important;
-    background: none !important;
-    background-image: none !important;
-}
-
-
-/* KEEP WEBSITE CONTENT ABOVE THE WALLPAPER */
-
-.site-header,
-main,
-footer {
-    position: relative !important;
-    z-index: 1 !important;
-}
-
-
-/* MOBILE */
-
-@media (max-width: 800px) {
-
-    body {
-        background-attachment: scroll !important;
-        background-position: center top !important;
-    }
-
-}
-
-
-/* =========================================================
-   PARANORMAL LOWER SECTIONS
-   KEEP THE FIX THAT WORKED
-========================================================= */
-
+/* Keep the working Paranormal lower sections clean */
 body.paranormal-page main > section:not(#latest-investigations) .about,
 body.paranormal-page #contact-message .about {
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    padding: 0 !important;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  padding: 0;
 }
 
-
-/* =========================================================
-   PAGE COLOURS
-========================================================= */
-
-body.paranormal-page .eyebrow,
-body.paranormal-page h1 span,
-body.paranormal-page h2 span,
-body.paranormal-page h3 span {
-    color: #ff3b4f !important;
-}
-
-body.skyline-page .eyebrow,
-body.skyline-page h1 span,
-body.skyline-page h2 span,
-body.skyline-page h3 span {
-    color: #58b5ff !important;
-}
-
+/* Photography identity */
 body.photography-page .eyebrow,
 body.photography-page h1 span,
-body.photography-page h2 span,
-body.photography-page h3 span {
-    color: #6faf68 !important;
+body.photography-page h2 span { color: var(--green-light); }
+
+body.photography-page .button.primary {
+  background: linear-gradient(135deg,var(--green-light),var(--green));
+  color: #071007;
+  border-color: var(--green-bright);
 }
 
+body.photography-page .about,
+body.photography-page .panel { border-color: rgba(111,175,104,.24); }
 
-/* =========================================================
-   FINAL MOBILE HERO SAFETY
-========================================================= */
-
-@media (max-width: 800px) {
-
-    .skyline-hero,
-    .paranormal-hero,
-    .photography-hero {
-        background: transparent !important;
-        background-image: none !important;
-    }
-
+/* Contact */
+.contact-hero-content {
+  width: min(1100px,92%);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 210px minmax(0,1fr);
+  gap: 40px;
+  align-items: center;
 }
-/* =========================================================
-   FINAL HEADER + FOOTER LINE REMOVAL
-========================================================= */
 
-.site-header,
+.contact-logo {
+  width: 210px;
+  height: 210px;
+  object-fit: contain;
+}
+
+.contact-hero-content > div:last-child { max-width: 780px; }
+
+.contact-hero h1 span { color: var(--platinum); }
+
+.contact-box {
+  width: min(900px,100%);
+  margin: 0 auto;
+  padding: 38px;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: rgba(5,10,17,.84);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.contact-options {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 22px;
+  width: min(900px,100%);
+  margin: 30px auto 0;
+}
+
+.contact-card {
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(5,10,17,.84);
+  box-shadow: var(--shadow);
+}
+
+.contact-card p { font-size: 14px; }
+.contact-card .button { width: 100%; }
+
+.contact-funny {
+  width: min(780px,100%);
+  margin: 42px auto 0;
+  text-align: center;
+}
+
+.contact-funny strong { color: #fff; }
+
+/* Footer */
 footer {
-    border-top: none !important;
-    border-bottom: none !important;
-    box-shadow: none !important;
+  position: relative;
+  z-index: 1;
+  padding: 34px 0;
+  color: var(--dim);
+  font-size: 12px;
+  line-height: 1.7;
+  text-align: center;
+  border: 0 !important;
+  box-shadow: none !important;
+  background: rgba(2,4,8,.78);
 }
 
-/* Remove any pseudo-element lines */
-
-.site-header::before,
-.site-header::after,
 footer::before,
-footer::after {
-    content: none !important;
-    display: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    background: none !important;
-}
+footer::after { display: none !important; content: none !important; }
 
-/* Mobile header line too */
-
-@media (max-width: 800px) {
-
-    .site-header {
-        border-top: none !important;
-        border-bottom: none !important;
-    }
-
-}
-/* FINAL PAGE FRAME LINE REMOVAL */
-
+/* No page-frame lines */
 .site-header,
-footer,
+.hero,
 .skyline-hero,
 .paranormal-hero,
 .photography-hero,
-.contact-hero {
-    border-top: none !important;
-    border-bottom: none !important;
+.contact-hero,
+footer { border-top: 0 !important; border-bottom: 0 !important; }
+
+/* Mobile */
+@media (max-width: 800px) {
+  body {
+    background-position: center top;
+    background-attachment: scroll;
+  }
+
+  .nav { min-height: 68px; }
+  .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+
+  .nav-links {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 4%;
+    right: 4%;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 10px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: rgba(3,6,12,.97);
+    box-shadow: var(--shadow-heavy);
+  }
+
+  .nav-links.open { display: flex; }
+  .nav-links a { text-align: center; }
+
+  section { padding: 62px 0; }
+
+  .hero,
+  .skyline-hero,
+  .paranormal-hero,
+  .photography-hero,
+  .contact-hero {
+    min-height: auto;
+    padding: 62px 0 52px;
+  }
+
+  .hero-card { padding: 28px 8px; }
+  .hero-logo { width: 180px; height: 180px; }
+
+  .skyline-hero-content,
+  .contact-hero-content {
+    width: min(680px,92%);
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .page-logo,
+  .contact-logo {
+    width: 170px;
+    height: 170px;
+    margin-inline: auto;
+  }
+
+  .skyline-hero-content > div:last-child,
+  .contact-hero-content > div:last-child { margin-inline: auto; }
+
+  .buttons { justify-content: center; }
+  .buttons .button { flex: 1 1 190px; }
+
+  .brand-grid,
+  .gallery,
+  .social-brand-grid,
+  .contact-options { grid-template-columns: 1fr; }
+
+  .brand-card,
+  .about,
+  .panel,
+  .contact-box { padding: 25px 20px; }
+
+  .social-brand-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .social-logo-wrap { flex-basis: auto; }
+  .social-buttons { justify-content: center; }
+
+  .social-ticker-track { animation-duration: 30s; }
 }
 
-.site-header::before,
-.site-header::after,
-footer::before,
-footer::after,
-.skyline-hero::before,
-.skyline-hero::after,
-.paranormal-hero::before,
-.paranormal-hero::after,
-.photography-hero::before,
-.photography-hero::after,
-.contact-hero::before,
-.contact-hero::after {
-    border: none !important;
-    box-shadow: none !important;
+@media (max-width: 480px) {
+  .container { width: min(94%,var(--content)); }
+
+  h1 {
+    font-size: clamp(36px,12vw,52px);
+    letter-spacing: -2px;
+  }
+
+  h2 {
+    font-size: clamp(28px,9vw,42px);
+    letter-spacing: -1px;
+  }
+
+  p { font-size: 15px; }
+
+  .hero-logo { width: 150px; height: 150px; }
+
+  .page-logo,
+  .contact-logo { width: 145px; height: 145px; }
+
+  .button {
+    width: 100%;
+    min-width: 0 !important;
+  }
+
+  .lightbox { padding: 18px; }
 }
