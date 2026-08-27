@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
 
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0"
+        content="width=device-width, initial-scale=1"
     >
 
     <meta
@@ -17,12 +17,17 @@
 
     <meta
         name="description"
-        content="NEWITT's Paranormal Adventures. Paranormal investigations, haunted locations, strange stories and unexplained experiences."
+        content="NEWITT's Paranormal Adventures - paranormal investigations, haunted locations, strange stories and unexplained experiences."
     >
 
     <meta
         name="robots"
         content="index, follow"
+    >
+
+    <link
+        rel="canonical"
+        href="https://newittmedia.co.uk/paranormal.html"
     >
 
     <title>NEWITT's Paranormal Adventures | NEWITT Media</title>
@@ -38,14 +43,13 @@
 <body class="paranormal-page">
 
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
+    <!-- =================================================
+         MAIN NAVIGATION
+    ================================================== -->
 
     <header class="site-header">
 
         <div class="container nav">
-
 
             <a
                 href="index.html"
@@ -58,9 +62,7 @@
                     alt="NEWITT Media logo"
                 >
 
-                <strong>
-                    NEWITT <span>MEDIA</span>
-                </strong>
+                NEWITT <span>MEDIA</span>
 
             </a>
 
@@ -70,7 +72,6 @@
                 type="button"
                 aria-expanded="false"
                 aria-controls="main-menu"
-                onclick="toggleMenu()"
             >
                 MENU
             </button>
@@ -114,45 +115,37 @@
 
 
 
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
-
     <main>
 
 
         <!-- =================================================
              PARANORMAL HERO
-
-             DESKTOP:
-             LOGO LEFT
-             TEXT RIGHT
-
+             
              SAME STRUCTURE AS SKYLINE
+             PARANORMAL COLOUR IS CONTROLLED BY CSS
         ================================================== -->
 
-        <section class="paranormal-hero">
+        <section class="skyline-hero paranormal-hero">
 
-            <div class="paranormal-hero-content">
+            <div class="skyline-hero-content">
 
 
-                <!-- LOGO -->
+                <!-- PARANORMAL LOGO -->
 
-                <div class="paranormal-hero-logo">
+                <div>
 
                     <img
                         src="paranormal-logo.png.png"
                         alt="NEWITT's Paranormal Adventures logo"
-                        class="paranormal-page-logo"
+                        class="page-logo"
                     >
 
                 </div>
 
 
-                <!-- TEXT -->
+                <!-- PARANORMAL HERO TEXT -->
 
-                <div class="paranormal-hero-text">
-
+                <div>
 
                     <div class="eyebrow">
                         NEWITT Media after dark
@@ -160,10 +153,13 @@
 
 
                     <h1>
+
                         NEWITT's
+
                         <span>
                             Paranormal Adventures
                         </span>
+
                     </h1>
 
 
@@ -185,25 +181,24 @@
                     </p>
 
 
-                    <div class="buttons paranormal-hero-buttons">
+                    <div class="buttons">
 
                         <a
-                            href="#latest-investigations"
                             class="button primary"
+                            href="#latest-investigations"
                         >
                             Latest Investigations
                         </a>
 
 
                         <a
-                            href="#contact-message"
                             class="button"
+                            href="#contact-message"
                         >
                             Get in Touch
                         </a>
 
                     </div>
-
 
                 </div>
 
@@ -217,35 +212,42 @@
              LATEST INVESTIGATIONS
         ================================================== -->
 
-        <section
-            id="latest-investigations"
-        >
+        <section id="latest-investigations">
 
             <div class="container">
 
+                <div class="about">
 
-                <div class="panel">
+
+                    <div class="section-heading">
+
+                        <div class="eyebrow">
+                            Latest investigations
+                        </div>
 
 
-                    <div class="eyebrow">
-                        Latest investigations
+                        <h2>
+
+                            What is happening in the
+
+                            <span>
+                                dark?
+                            </span>
+
+                        </h2>
+
+
+                        <p>
+                            This is where the latest paranormal
+                            TikTok content appears. If something
+                            strange happens, this is probably
+                            where you will see it first.
+                        </p>
+
                     </div>
 
 
-                    <h2>
-                        What is happening in the
-                        <span>
-                            dark?
-                        </span>
-                    </h2>
-
-
-                    <p>
-                        This is where the latest paranormal TikTok
-                        content appears. If something strange happens,
-                        this is probably where you will see it first.
-                    </p>
-
+                    <!-- PARANORMAL TIKTOK -->
 
                     <div class="tiktok-box">
 
@@ -254,7 +256,6 @@
                             cite="https://www.tiktok.com/@nw13ttt"
                             data-unique-id="nw13ttt"
                             data-embed-type="creator"
-                            style="max-width:780px;min-width:288px;"
                         >
 
                             <section>
@@ -277,10 +278,10 @@
                     <div class="buttons">
 
                         <a
+                            class="button primary"
                             href="https://www.tiktok.com/@nw13ttt"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="button primary"
                         >
                             Visit Paranormal TikTok
                         </a>
@@ -304,29 +305,35 @@
 
             <div class="container">
 
-
                 <div class="about">
 
 
-                    <div class="eyebrow">
-                        The idea
+                    <div class="section-heading">
+
+                        <div class="eyebrow">
+                            The idea
+                        </div>
+
+
+                        <h2>
+
+                            Find the story.
+                            Test the
+
+                            <span>
+                                evidence.
+                            </span>
+
+                        </h2>
+
+
+                        <p>
+                            Haunted locations are full of stories.
+                            Our job is to explore them, document what
+                            happens and let you make up your own mind.
+                        </p>
+
                     </div>
-
-
-                    <h2>
-                        Find the story.
-                        Test the
-                        <span>
-                            evidence.
-                        </span>
-                    </h2>
-
-
-                    <p>
-                        Haunted locations are full of stories.
-                        Our job is to explore them, document what
-                        happens and let you make up your own mind.
-                    </p>
 
 
                     <p>
@@ -352,35 +359,41 @@
 
             <div class="container">
 
+                <div class="about">
 
-                <div class="paranormal-intro">
+
+                    <div class="section-heading">
+
+                        <div class="eyebrow">
+                            Got a story?
+                        </div>
 
 
-                    <div class="eyebrow">
-                        Got a story?
+                        <h2>
+
+                            Please contact us on
+
+                            <span>
+                                how we can help you.
+                            </span>
+
+                        </h2>
+
+
+                        <p>
+                            Whether you have a location, a story,
+                            an investigation idea or simply want
+                            to get in touch, we'd love to hear from you.
+                        </p>
+
                     </div>
-
-
-                    <h2>
-                        Please contact us on
-                        <span>
-                            how we can help you.
-                        </span>
-                    </h2>
-
-
-                    <p>
-                        Whether you have a location, a story,
-                        an investigation idea or simply want to
-                        get in touch, we'd love to hear from you.
-                    </p>
 
 
                     <div class="buttons">
 
                         <a
-                            href="mailto:nw13ttt@gmail.com"
                             class="button primary"
+                            href="mailto:nw13ttt@gmail.com"
                         >
                             Contact Paranormal
                         </a>
@@ -399,9 +412,9 @@
 
 
 
-    <!-- =====================================================
+    <!-- =================================================
          FOOTER
-    ====================================================== -->
+    ================================================== -->
 
     <footer>
 
@@ -420,9 +433,9 @@
 
 
 
-    <!-- =====================================================
+    <!-- =================================================
          TIKTOK EMBED
-    ====================================================== -->
+    ================================================== -->
 
     <script
         async
@@ -430,58 +443,14 @@
     ></script>
 
 
+    <!-- =================================================
+         MASTER SITE JAVASCRIPT
+    ================================================== -->
 
-    <!-- =====================================================
-         MOBILE MENU
-    ====================================================== -->
-
-    <script>
-
-        function toggleMenu() {
-
-            const menu =
-                document.getElementById("main-menu");
-
-            const button =
-                document.querySelector(".menu-toggle");
-
-            const open =
-                menu.classList.toggle("open");
-
-            button.setAttribute(
-                "aria-expanded",
-                open ? "true" : "false"
-            );
-
-        }
-
-
-        document
-            .querySelectorAll(".nav-links a")
-            .forEach(link => {
-
-                link.addEventListener(
-                    "click",
-                    () => {
-
-                        document
-                            .getElementById("main-menu")
-                            ?.classList
-                            .remove("open");
-
-                        document
-                            .querySelector(".menu-toggle")
-                            ?.setAttribute(
-                                "aria-expanded",
-                                "false"
-                            );
-
-                    }
-                );
-
-            });
-
-    </script>
+    <script
+        src="script.js"
+        defer
+    ></script>
 
 
 </body>
