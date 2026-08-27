@@ -2164,7 +2164,7 @@ footer {
             rgba(3,6,10,0.25)
         ),
 
-        url("background.png.PNG")
+        none
         center / cover
         no-repeat;
 }
@@ -2473,7 +2473,7 @@ body.photography-page::before {
             rgba(3,7,14,0.35) 82%,
             rgba(3,7,14,0.18) 100%
         ),
-        url("background.png.PNG")
+        none
         center / cover
         no-repeat;
 
@@ -2855,7 +2855,7 @@ button:focus-visible {
                 rgba(0,0,0,0.68) 75%,
                 rgba(3,7,14,0.32) 100%
             ),
-            url("background.png.PNG")
+            none
             center / cover
             no-repeat;
     }
@@ -3375,7 +3375,7 @@ button:focus-visible {
                 rgba(0,0,0,0.68) 75%,
                 rgba(3,7,14,0.25) 100%
             ),
-            url("background.png.PNG")
+            none
             center / cover
             no-repeat;
     }
@@ -3685,290 +3685,97 @@ button:focus-visible {
             none !important;
     }
 }
-/* =========================================================
-   NEWITT MEDIA
-   PHASE 4.2
-   FINAL VIEWPORT + OVERFLOW SAFETY
-========================================================= */
 
 /* =========================================================
-   NEWITT MEDIA | FINAL MASTER SYSTEM
-   Clean final overrides and responsive page identities
+   NEWITT MEDIA | FINAL CLEAN DESIGN SYSTEM
 ========================================================= */
-
 :root {
-    --newitt-blue: #18b8ff;
-    --newitt-blue-light: #55ccff;
-    --skyline-blue: #18b8ff;
-    --skyline-blue-light: #55ccff;
-    --paranormal-red: #d91f32;
-    --paranormal-red-light: #ff5364;
-    --photo-platinum: #d7dde6;
-    --photo-platinum-light: #f2f4f7;
+    --newitt-cyan:#18b8ff; --newitt-cyan-light:#55ccff;
+    --skyline-blue:#168cff; --skyline-blue-light:#58b5ff;
+    --paranormal-red:#ff3b4f; --paranormal-red-light:#ff6675;
+    --photography-green:#6faf68; --photography-green-light:#9acf8f;
 }
 
-/* ONE site background. Page heroes never paint a second copy. */
+/* ONE wallpaper. Heroes never load it. */
+body { position:relative; min-height:100vh; background:#030508; }
 body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -3;
-    pointer-events: none;
-    background:
-        linear-gradient(
-            90deg,
-            rgba(3,7,14,.20) 0%,
-            rgba(0,0,0,.48) 24%,
-            rgba(0,0,0,.78) 42%,
-            rgba(0,0,0,.88) 50%,
-            rgba(0,0,0,.78) 58%,
-            rgba(0,0,0,.48) 76%,
-            rgba(3,7,14,.20) 100%
-        ),
-        url("background.png.PNG") center center / cover no-repeat;
+    content:""; position:fixed; inset:0; z-index:-3; pointer-events:none;
+    background:linear-gradient(90deg,rgba(3,7,14,.20),rgba(0,0,0,.48) 24%,rgba(0,0,0,.78) 42%,rgba(0,0,0,.88) 50%,rgba(0,0,0,.78) 58%,rgba(0,0,0,.48) 76%,rgba(3,7,14,.20)),none center/cover no-repeat;
 }
-
 body::after {
-    background: radial-gradient(
-        ellipse at center,
-        rgba(0,0,0,.02) 0%,
-        rgba(0,0,0,.16) 62%,
-        rgba(0,0,0,.36) 100%
-    ) !important;
+    content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
+    background:radial-gradient(ellipse at center,rgba(0,0,0,.02),rgba(0,0,0,.14) 62%,rgba(0,0,0,.32));
 }
 
-/* Heroes and page shells are transparent over the master background. */
-.hero,
-.page-hero,
-.skyline-hero,
-.paranormal-hero,
-.photography-hero,
-.contact-hero,
-body.skyline-page .page-hero,
-body.paranormal-page .page-hero,
-body.photography-page .page-hero {
-    background: transparent !important;
-    background-image: none !important;
+.hero,.page-hero,.skyline-hero,.paranormal-hero,.photography-hero,.contact-hero {
+    background:transparent !important; background-image:none !important; border:0 !important;
+}
+.skyline-hero::before,.skyline-hero::after,.paranormal-hero::before,.paranormal-hero::after,.photography-hero::before,.photography-hero::after,.contact-hero::before,.contact-hero::after {
+    content:none !important; display:none !important; background:none !important; background-image:none !important;
 }
 
-.hero::before,
-.hero::after,
-.page-hero::before,
-.page-hero::after,
-.skyline-hero::before,
-.skyline-hero::after,
-.paranormal-hero::before,
-.paranormal-hero::after,
-.photography-hero::before,
-.photography-hero::after,
-.contact-hero::before,
-.contact-hero::after,
-body.skyline-page .page-hero::before,
-body.skyline-page .page-hero::after,
-body.paranormal-page .page-hero::before,
-body.paranormal-page .page-hero::after,
-body.photography-page .page-hero::before,
-body.photography-page .page-hero::after {
-    content: none !important;
-    display: none !important;
-    background: none !important;
-    background-image: none !important;
+/* Shared hero: desktop logo left / text right. */
+.skyline-hero,.paranormal-hero,.photography-hero {
+    min-height:610px !important; padding:76px 0 !important; display:grid !important; place-items:center !important; box-sizing:border-box !important;
+}
+.skyline-hero-content,.paranormal-hero-content,.photography-hero-content {
+    width:min(1100px,92%) !important; margin:0 auto !important; display:grid !important; grid-template-columns:155px minmax(0,1fr) !important; gap:48px !important; align-items:center !important;
+}
+.skyline-hero-content > div:first-child,.paranormal-hero-logo,.photography-hero-logo { width:155px !important; min-width:155px !important; display:grid !important; place-items:center !important; }
+.skyline-hero-content > div:last-child,.paranormal-hero-text,.photography-hero-text { min-width:0 !important; text-align:left !important; }
+.skyline-hero-content .page-logo,.paranormal-page-logo,.photography-page-logo {
+    width:155px !important; height:155px !important; max-width:155px !important; max-height:155px !important; object-fit:contain !important; margin:0 !important; padding:0 !important; background:transparent !important; border:0 !important; box-shadow:none !important;
 }
 
-/* Shared desktop hero geometry. */
-.skyline-hero,
-.paranormal-hero,
-.photography-hero {
-    min-height: 610px !important;
-    padding: 76px 0 !important;
-    display: grid !important;
-    place-items: center !important;
+/* Page identities. */
+body.skyline-page .eyebrow,body.skyline-page h1 span,body.skyline-page h2 span,body.skyline-page h3 span { color:var(--skyline-blue-light) !important; }
+body.skyline-page .button.primary { background:var(--skyline-blue) !important; border-color:var(--skyline-blue) !important; color:#fff !important; }
+body.skyline-page .about,body.skyline-page .panel { border-color:rgba(22,140,255,.20) !important; }
+
+body.paranormal-page .eyebrow,body.paranormal-page h1 span,body.paranormal-page h2 span,body.paranormal-page h3 span { color:var(--paranormal-red) !important; text-shadow:0 0 14px rgba(255,59,79,.16); }
+body.paranormal-page .button.primary { background:var(--paranormal-red) !important; border-color:var(--paranormal-red) !important; color:#fff !important; }
+body.paranormal-page .button.primary:hover { background:var(--paranormal-red-light) !important; border-color:var(--paranormal-red-light) !important; }
+
+body.photography-page .eyebrow,body.photography-page h1 span,body.photography-page h2 span,body.photography-page h3 span { color:var(--photography-green) !important; text-shadow:0 0 14px rgba(111,175,104,.12); }
+body.photography-page .button.primary { background:var(--photography-green) !important; border-color:var(--photography-green) !important; color:#071007 !important; }
+body.photography-page .button.primary:hover { background:var(--photography-green-light) !important; border-color:var(--photography-green-light) !important; }
+
+/* Matched content panels. */
+body.paranormal-page #latest-investigations .panel,body.photography-page .photography-content-panel,body.photography-page .contact-panel {
+    width:min(1100px,92%) !important; max-width:1100px !important; margin-inline:auto !important; box-sizing:border-box !important; padding:36px !important;
+    background:rgba(3,6,10,.80) !important; border-radius:24px !important; box-shadow:0 22px 65px rgba(0,0,0,.58) !important;
+}
+body.paranormal-page #latest-investigations .panel { border:1px solid rgba(255,59,79,.22) !important; text-align:left !important; }
+body.paranormal-page #latest-investigations .panel h2 { margin:10px 0 18px !important; }
+body.paranormal-page #latest-investigations .panel p { max-width:780px !important; }
+body.paranormal-page #latest-investigations .tiktok-box { width:100% !important; max-width:820px !important; margin:28px auto !important; border-color:rgba(255,59,79,.16) !important; }
+body.photography-page .photography-content-panel,body.photography-page .contact-panel { border:1px solid rgba(111,175,104,.22) !important; }
+body.photography-page .photography-content-panel h2 { margin:10px 0 18px !important; max-width:780px !important; }
+body.photography-page .photography-content-panel p { max-width:780px !important; }
+
+body.skyline-page :focus-visible { outline-color:var(--skyline-blue-light) !important; }
+body.paranormal-page :focus-visible { outline-color:var(--paranormal-red-light) !important; }
+body.photography-page :focus-visible { outline-color:var(--photography-green-light) !important; }
+
+@media (max-width:800px) {
+    .skyline-hero,.paranormal-hero,.photography-hero { min-height:auto !important; padding:60px 0 50px !important; }
+    .skyline-hero-content,.paranormal-hero-content,.photography-hero-content { width:min(680px,92%) !important; display:flex !important; flex-direction:column !important; gap:24px !important; align-items:center !important; text-align:center !important; }
+    .skyline-hero-content > div:first-child,.paranormal-hero-logo,.photography-hero-logo { width:145px !important; min-width:145px !important; }
+    .skyline-hero-content > div:last-child,.paranormal-hero-text,.photography-hero-text { width:100% !important; text-align:center !important; }
+    .skyline-hero-content .page-logo,.paranormal-page-logo,.photography-page-logo { width:145px !important; height:145px !important; max-width:145px !important; max-height:145px !important; }
+    body.paranormal-page #latest-investigations .panel,body.photography-page .photography-content-panel,body.photography-page .contact-panel { width:92% !important; padding:30px 24px !important; text-align:center !important; }
+    body.paranormal-page #latest-investigations .panel h2,body.paranormal-page #latest-investigations .panel p,body.photography-page .photography-content-panel h2,body.photography-page .photography-content-panel p { margin-left:auto !important; margin-right:auto !important; }
 }
 
-.skyline-hero-content,
-.paranormal-hero-content,
-.photography-hero-content {
-    width: min(1100px, 92%) !important;
-    margin-inline: auto !important;
-    display: grid !important;
-    grid-template-columns: 155px minmax(0, 1fr) !important;
-    gap: 48px !important;
-    align-items: center !important;
+@media (max-width:480px) {
+    .skyline-hero,.paranormal-hero,.photography-hero { padding:52px 0 42px !important; }
+    .skyline-hero-content .page-logo,.paranormal-page-logo,.photography-page-logo { width:130px !important; height:130px !important; max-width:130px !important; max-height:130px !important; }
+    .skyline-hero-content > div:first-child,.paranormal-hero-logo,.photography-hero-logo { width:130px !important; min-width:130px !important; }
+    body.paranormal-page #latest-investigations .panel,body.photography-page .photography-content-panel,body.photography-page .contact-panel { width:calc(100% - 30px) !important; padding:26px 20px !important; }
 }
 
-.skyline-hero-content > div:last-child,
-.paranormal-hero-text,
-.photography-hero-text {
-    min-width: 0 !important;
-    text-align: left !important;
-}
+@media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto !important; } }
 
-/* One consistent desktop logo footprint. */
-.skyline-hero-content .page-logo,
-.paranormal-page-logo,
-.photography-page-logo {
-    width: 155px !important;
-    height: 155px !important;
-    max-width: 155px !important;
-    max-height: 155px !important;
-    object-fit: contain !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background: transparent !important;
-    border: 0 !important;
-    box-shadow: none !important;
-}
-
-/* Skyline: electric blue. */
-body.skyline-page .eyebrow,
-body.skyline-page h1 span,
-body.skyline-page h2 span,
-body.skyline-page h3 span {
-    color: var(--skyline-blue-light) !important;
-}
-
-body.skyline-page .button.primary {
-    background: var(--skyline-blue) !important;
-    border-color: var(--skyline-blue) !important;
-    color: #fff !important;
-}
-
-/* Paranormal: controlled haunting red. */
-body.paranormal-page .eyebrow,
-body.paranormal-page h1 span,
-body.paranormal-page h2 span,
-body.paranormal-page h3 span {
-    color: var(--paranormal-red-light) !important;
-}
-
-body.paranormal-page .button.primary {
-    background: var(--paranormal-red) !important;
-    border-color: var(--paranormal-red) !important;
-    color: #fff !important;
-}
-
-/* Photography: platinum, not blue and not pure white. */
-body.photography-page .eyebrow,
-body.photography-page h1 span,
-body.photography-page h2 span,
-body.photography-page h3 span {
-    color: var(--photo-platinum) !important;
-}
-
-body.photography-page .button.primary {
-    background: var(--photo-platinum) !important;
-    border-color: var(--photo-platinum) !important;
-    color: #030508 !important;
-}
-
-/* Common panel geometry. */
-body.skyline-page .about,
-body.paranormal-page .about,
-body.paranormal-page .panel,
-body.photography-page .about,
-body.photography-page .panel,
-body.photography-page .photography-content-panel {
-    width: min(1100px, 92%) !important;
-    max-width: 1100px !important;
-    margin-inline: auto !important;
-    box-sizing: border-box !important;
-}
-
-/* Photography collection text stays inside the same panel system. */
-body.photography-page .photography-content-panel {
-    padding: 36px !important;
-}
-
-body.photography-page .photography-content-panel h2,
-body.photography-page .photography-content-panel p,
-body.photography-page .photography-content-panel .eyebrow {
-    max-width: 100% !important;
-}
-
-/* Accessibility focus colours follow each page identity. */
-body.skyline-page :focus-visible {
-    outline-color: var(--skyline-blue-light) !important;
-}
-
-body.paranormal-page :focus-visible {
-    outline-color: var(--paranormal-red-light) !important;
-}
-
-body.photography-page :focus-visible {
-    outline-color: var(--photo-platinum-light) !important;
-}
-
-/* Mobile: same design language, stacked cleanly. */
-@media (max-width: 800px) {
-    .skyline-hero,
-    .paranormal-hero,
-    .photography-hero {
-        min-height: auto !important;
-        padding: 60px 0 50px !important;
-    }
-
-    .skyline-hero-content,
-    .paranormal-hero-content,
-    .photography-hero-content {
-        width: min(680px, 92%) !important;
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 24px !important;
-        align-items: center !important;
-        text-align: center !important;
-    }
-
-    .skyline-hero-content > div:last-child,
-    .paranormal-hero-text,
-    .photography-hero-text {
-        text-align: center !important;
-    }
-
-    .skyline-hero-content .page-logo,
-    .paranormal-page-logo,
-    .photography-page-logo {
-        width: 145px !important;
-        height: 145px !important;
-        max-width: 145px !important;
-        max-height: 145px !important;
-    }
-
-    body.photography-page .photography-content-panel {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 30px 24px !important;
-    }
-
-    body.photography-page .photography-content-panel,
-    body.paranormal-page .panel,
-    body.paranormal-page .about {
-        text-align: center !important;
-    }
-
-    body.photography-page .photography-content-panel p,
-    body.paranormal-page .panel p,
-    body.paranormal-page .about p {
-        margin-inline: auto !important;
-    }
-}
-
-@media (max-width: 480px) {
-    .skyline-hero,
-    .paranormal-hero,
-    .photography-hero {
-        padding: 52px 0 42px !important;
-    }
-
-    .skyline-hero-content .page-logo,
-    .paranormal-page-logo,
-    .photography-page-logo {
-        width: 130px !important;
-        height: 130px !important;
-        max-width: 130px !important;
-        max-height: 130px !important;
-    }
-
-    body.photography-page .photography-content-panel {
-        padding: 26px 20px !important;
-    }
-}
+/* =========================================================
+   END FINAL MASTER CSS
+========================================================= */
