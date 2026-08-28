@@ -1,703 +1,633 @@
-"use strict";
-
 /* =========================================================
    NEWITT MEDIA
-   MASTER JAVASCRIPT
-   Navigation + Lightbox + Back To Top
-   Social Hub Animation
+   MASTER SCRIPT
+   Opening animation • mobile navigation • top button
+   languages • lightbox • safe page-wide behaviour
 ========================================================= */
 
 (() => {
+    "use strict";
 
-    /* =====================================================
-       ELEMENTS
-    ===================================================== */
-
-    const menu =
-        document.getElementById("main-menu");
-
-    const menuButton =
-        document.querySelector(".menu-toggle");
-
-    const backTop =
-        document.getElementById("backTop");
-
-
-    /* =====================================================
-       MOBILE MENU
-    ===================================================== */
-
-    function setMenu(open) {
-
-        if (!menu || !menuButton) {
-            return;
+    const ready = (fn) => {
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", fn, { once: true });
+        } else {
+            fn();
         }
-
-        menu.classList.toggle(
-            "open",
-            open
-        );
-
-        menuButton.setAttribute(
-            "aria-expanded",
-            String(open)
-        );
-
-        menuButton.setAttribute(
-            "aria-label",
-            open
-                ? "Close navigation menu"
-                : "Open navigation menu"
-        );
-
-    }
-
-
-    window.toggleMenu = () => {
-
-        if (!menu) {
-            return;
-        }
-
-        setMenu(
-            !menu.classList.contains("open")
-        );
-
     };
 
+    ready(() => {
 
-    if (menuButton) {
+        /* =====================================================
+           OPENING ANIMATION
+        ===================================================== */
 
-        menuButton.addEventListener(
-            "click",
-            event => {
+        const intro = document.getElementById("site-intro");
 
-                event.stopPropagation();
+        if (intro) {
+            const INTRO_SEEN_KEY = "newittMediaIntroSeen";
 
-                window.toggleMenu();
+            const revealSite = () => {
+                intro.classList.add("intro-finished");
+                document.body.classList.remove("no-scroll");
+
+                window.setTimeout(() => {
+                    intro.setAttribute("hidden", "");
+                    intro.setAttribute("aria-hidden", "true");
+                }, 900);
+            };
+
+            let alreadySeen = false;
+
+            try {
+                alreadySeen =
+                    sessionStorage.getItem(INTRO_SEEN_KEY) === "true";
+            } catch (error) {
+                alreadySeen = false;
+            }
+
+            if (alreadySeen) {
+
+                intro.setAttribute("hidden", "");
+                intro.setAttribute("aria-hidden", "true");
+
+            } else {
+
+                document.body.classList.add("no-scroll");
+
+                try {
+                    sessionStorage.setItem(
+                        INTRO_SEEN_KEY,
+                        "true"
+                    );
+                } catch (error) {
+                    /* Continue if storage is unavailable. */
+                }
+
+                window.setTimeout(
+                    revealSite,
+                    3600
+                );
+            }
+        }
+
+
+        /* =====================================================
+           MOBILE NAVIGATION
+        ===================================================== */
+
+        const menuToggle =
+            document.querySelector(".menu-toggle");
+
+        const navLinks =
+            document.querySelector(".nav-links");
+
+
+        const closeMenu = () => {
+
+            if (!menuToggle || !navLinks) {
+                return;
+            }
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            navLinks.classList.remove("open");
+            navLinks.classList.remove("active");
+
+        };
+
+
+        if (menuToggle && navLinks) {
+
+            menuToggle.addEventListener(
+                "click",
+                () => {
+
+                    const isOpen =
+                        menuToggle.getAttribute(
+                            "aria-expanded"
+                        ) === "true";
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        String(!isOpen)
+                    );
+
+                    navLinks.classList.toggle(
+                        "open",
+                        !isOpen
+                    );
+
+                }
+            );
+
+
+            navLinks
+                .querySelectorAll("a")
+                .forEach((link) => {
+
+                    link.addEventListener(
+                        "click",
+                        closeMenu
+                    );
+
+                });
+
+
+            document.addEventListener(
+                "click",
+                (event) => {
+
+                    if (
+                        !navLinks.contains(event.target) &&
+                        !menuToggle.contains(event.target)
+                    ) {
+                        closeMenu();
+                    }
+
+                }
+            );
+
+
+            document.addEventListener(
+                "keydown",
+                (event) => {
+
+                    if (event.key === "Escape") {
+                        closeMenu();
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           BACK TO TOP
+        ===================================================== */
+
+        const topButton =
+            document.getElementById(
+                "back-to-top"
+            );
+
+
+        if (topButton) {
+
+            const updateTopButton = () => {
+
+                if (window.scrollY > 420) {
+
+                    topButton.classList.add(
+                        "visible"
+                    );
+
+                } else {
+
+                    topButton.classList.remove(
+                        "visible"
+                    );
+
+                }
+
+            };
+
+
+            updateTopButton();
+
+
+            window.addEventListener(
+                "scroll",
+                updateTopButton,
+                {
+                    passive: true
+                }
+            );
+
+
+            topButton.addEventListener(
+                "click",
+                (event) => {
+
+                    event.preventDefault();
+
+                    const reducedMotion =
+                        window.matchMedia(
+                            "(prefers-reduced-motion: reduce)"
+                        ).matches;
+
+                    window.scrollTo({
+                        top: 0,
+                        behavior:
+                            reducedMotion
+                                ? "auto"
+                                : "smooth"
+                    });
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           LANGUAGE SELECTOR
+        ===================================================== */
+
+        const languageToggle =
+            document.querySelector(
+                ".language-toggle"
+            );
+
+        const languageMenu =
+            document.getElementById(
+                "language-menu"
+            );
+
+
+        if (
+            languageToggle &&
+            languageMenu
+        ) {
+
+            languageToggle.addEventListener(
+                "click",
+                (event) => {
+
+                    event.stopPropagation();
+
+                    const isOpen =
+                        languageToggle.getAttribute(
+                            "aria-expanded"
+                        ) === "true";
+
+                    languageToggle.setAttribute(
+                        "aria-expanded",
+                        String(!isOpen)
+                    );
+
+                    languageMenu.hidden =
+                        isOpen;
+
+                }
+            );
+
+
+            languageMenu
+                .querySelectorAll("[data-lang]")
+                .forEach((button) => {
+
+                    button.addEventListener(
+                        "click",
+                        () => {
+
+                            const language =
+                                button.getAttribute(
+                                    "data-lang"
+                                );
+
+                            if (!language) {
+                                return;
+                            }
+
+
+                            try {
+
+                                localStorage.setItem(
+                                    "newittMediaLanguage",
+                                    language
+                                );
+
+                            } catch (error) {
+                                /* Ignore storage errors. */
+                            }
+
+
+                            languageToggle.textContent =
+                                language.toUpperCase();
+
+
+                            languageToggle.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+
+                            languageMenu.hidden =
+                                true;
+
+                        }
+                    );
+
+                });
+
+
+            document.addEventListener(
+                "click",
+                () => {
+
+                    languageToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                    languageMenu.hidden =
+                        true;
+
+                }
+            );
+
+
+            document.addEventListener(
+                "keydown",
+                (event) => {
+
+                    if (event.key === "Escape") {
+
+                        languageToggle.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                        languageMenu.hidden =
+                            true;
+
+                    }
+
+                }
+            );
+
+
+            try {
+
+                const savedLanguage =
+                    localStorage.getItem(
+                        "newittMediaLanguage"
+                    );
+
+                if (savedLanguage) {
+
+                    languageToggle.textContent =
+                        savedLanguage.toUpperCase();
+
+                }
+
+            } catch (error) {
+                /* Ignore storage errors. */
+            }
+
+        }
+
+
+        /* =====================================================
+           GALLERY / LIGHTBOX
+        ===================================================== */
+
+        const galleryItems =
+            document.querySelectorAll(
+                ".gallery-item img"
+            );
+
+        const lightbox =
+            document.querySelector(
+                ".lightbox"
+            );
+
+
+        if (
+            galleryItems.length &&
+            lightbox
+        ) {
+
+            const lightboxImage =
+                lightbox.querySelector(
+                    "img"
+                );
+
+            const closeButton =
+                lightbox.querySelector(
+                    ".lightbox-close"
+                );
+
+
+            const closeLightbox = () => {
+
+                lightbox.classList.remove(
+                    "active"
+                );
+
+                document.body.classList.remove(
+                    "no-scroll"
+                );
+
+                if (lightboxImage) {
+
+                    lightboxImage.removeAttribute(
+                        "src"
+                    );
+
+                }
+
+            };
+
+
+            galleryItems.forEach(
+                (image) => {
+
+                    image.addEventListener(
+                        "click",
+                        () => {
+
+                            if (!lightboxImage) {
+                                return;
+                            }
+
+                            lightboxImage.src =
+                                image.currentSrc ||
+                                image.src;
+
+                            lightboxImage.alt =
+                                image.alt ||
+                                "NEWITT Media image";
+
+                            lightbox.classList.add(
+                                "active"
+                            );
+
+                            document.body.classList.add(
+                                "no-scroll"
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+
+            if (closeButton) {
+
+                closeButton.addEventListener(
+                    "click",
+                    closeLightbox
+                );
 
             }
-        );
-
-    }
 
 
-    if (menu) {
+            lightbox.addEventListener(
+                "click",
+                (event) => {
 
-        menu.querySelectorAll("a")
-            .forEach(link => {
+                    if (
+                        event.target ===
+                        lightbox
+                    ) {
+
+                        closeLightbox();
+
+                    }
+
+                }
+            );
+
+
+            document.addEventListener(
+                "keydown",
+                (event) => {
+
+                    if (
+                        event.key === "Escape" &&
+                        lightbox.classList.contains(
+                            "active"
+                        )
+                    ) {
+
+                        closeLightbox();
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           SMOOTH INTERNAL LINKS
+        ===================================================== */
+
+        document
+            .querySelectorAll(
+                'a[href^="#"]'
+            )
+            .forEach((link) => {
 
                 link.addEventListener(
                     "click",
-                    () => {
+                    (event) => {
 
-                        setMenu(false);
+                        const targetId =
+                            link.getAttribute(
+                                "href"
+                            );
+
+                        if (
+                            !targetId ||
+                            targetId === "#"
+                        ) {
+                            return;
+                        }
+
+
+                        const target =
+                            document.querySelector(
+                                targetId
+                            );
+
+                        if (!target) {
+                            return;
+                        }
+
+
+                        event.preventDefault();
+
+
+                        const reducedMotion =
+                            window.matchMedia(
+                                "(prefers-reduced-motion: reduce)"
+                            ).matches;
+
+
+                        target.scrollIntoView({
+                            behavior:
+                                reducedMotion
+                                    ? "auto"
+                                    : "smooth",
+                            block: "start"
+                        });
 
                     }
                 );
 
             });
 
-    }
 
+        /* =====================================================
+           IMAGE SAFETY
+        ===================================================== */
 
-    document.addEventListener(
-        "click",
-        event => {
+        document
+            .querySelectorAll("img")
+            .forEach((image) => {
 
-            if (
-                !menu ||
-                !menuButton ||
-                !menu.classList.contains("open")
-            ) {
-                return;
-            }
-
-            if (
-                !menu.contains(event.target) &&
-                !menuButton.contains(event.target)
-            ) {
-
-                setMenu(false);
-
-            }
-
-        }
-    );
-
-
-    window.addEventListener(
-        "resize",
-        () => {
-
-            if (window.innerWidth > 800) {
-
-                setMenu(false);
-
-            }
-
-        }
-    );
-
-
-    /* =====================================================
-       INTERNAL SMOOTH LINKS
-    ===================================================== */
-
-    document.querySelectorAll(
-        'a[href^="#"]'
-    ).forEach(link => {
-
-        link.addEventListener(
-            "click",
-            event => {
-
-                const id =
-                    link.getAttribute("href");
-
-                if (
-                    !id ||
-                    id === "#"
-                ) {
-                    return;
-                }
-
-                const target =
-                    document.querySelector(id);
-
-                if (!target) {
-                    return;
-                }
-
-                event.preventDefault();
-
-                target.scrollIntoView({
-                    behavior:
-                        window.matchMedia(
-                            "(prefers-reduced-motion: reduce)"
-                        ).matches
-                            ? "auto"
-                            : "smooth",
-                    block:
-                        "start"
-                });
-
-                setMenu(false);
-
-            }
-        );
-
-    });
-
-
-    /* =====================================================
-       LIGHTBOX
-    ===================================================== */
-
-    function closeLightbox() {
-
-        const lightbox =
-            document.getElementById(
-                "lightbox"
-            );
-
-        const image =
-            document.getElementById(
-                "lightboxImage"
-            );
-
-
-        if (lightbox) {
-
-            lightbox.classList.remove(
-                "open"
-            );
-
-            lightbox.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
-        }
-
-
-        if (image) {
-
-            image.removeAttribute(
-                "src"
-            );
-
-            image.alt = "";
-
-        }
-
-
-        document.body.style.overflow =
-            "";
-
-    }
-
-
-    document.querySelectorAll(
-        ".gallery-link"
-    ).forEach(link => {
-
-        link.addEventListener(
-            "click",
-            event => {
-
-                const lightbox =
-                    document.getElementById(
-                        "lightbox"
-                    );
-
-                const image =
-                    document.getElementById(
-                        "lightboxImage"
-                    );
-
-
-                if (
-                    !lightbox ||
-                    !image
-                ) {
-                    return;
-                }
-
-
-                const source =
-                    link.getAttribute(
-                        "href"
-                    );
-
-
-                if (!source) {
-                    return;
-                }
-
-
-                event.preventDefault();
-
-
-                const thumbnail =
-                    link.querySelector(
-                        "img"
-                    );
-
-
-                image.src =
-                    source;
-
-                image.alt =
-                    thumbnail?.alt ||
-                    "Gallery image";
-
-
-                lightbox.classList.add(
-                    "open"
-                );
-
-                lightbox.setAttribute(
-                    "aria-hidden",
-                    "false"
-                );
-
-
-                document.body.style.overflow =
-                    "hidden";
-
-            }
-        );
-
-    });
-
-
-    const lightboxClose =
-        document.getElementById(
-            "lightboxClose"
-        );
-
-
-    if (lightboxClose) {
-
-        lightboxClose.addEventListener(
-            "click",
-            closeLightbox
-        );
-
-    }
-
-
-    const lightbox =
-        document.getElementById(
-            "lightbox"
-        );
-
-
-    if (lightbox) {
-
-        lightbox.addEventListener(
-            "click",
-            event => {
-
-                if (
-                    event.target === lightbox
-                ) {
-
-                    closeLightbox();
-
-                }
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       KEYBOARD CONTROLS
-    ===================================================== */
-
-    document.addEventListener(
-        "keydown",
-        event => {
-
-            if (event.key === "Escape") {
-
-                setMenu(false);
-
-                closeLightbox();
-
-            }
-
-        }
-    );
-
-
-    /* =====================================================
-       BACK TO TOP
-    ===================================================== */
-
-    if (backTop) {
-
-        const updateBackTop =
-            () => {
-
-                backTop.classList.toggle(
-                    "show",
-                    window.scrollY > 500
-                );
-
-            };
-
-
-        window.addEventListener(
-            "scroll",
-            updateBackTop,
-            {
-                passive: true
-            }
-        );
-
-
-        backTop.addEventListener(
-            "click",
-            () => {
-
-                window.scrollTo({
-
-                    top:
-                        0,
-
-                    behavior:
-                        window.matchMedia(
-                            "(prefers-reduced-motion: reduce)"
-                        ).matches
-                            ? "auto"
-                            : "smooth"
-
-                });
-
-            }
-        );
-
-
-        updateBackTop();
-
-    }
-
-
-    /* =====================================================
-       SOCIAL HUB
-       SLOW SPOOKY PARANORMAL LOGO MOVEMENT
-       CONTINUOUS LOOP
-    ===================================================== */
-
-    const paranormalLogo =
-        document.querySelector(
-            ".paranormal-social .social-logo-wrap img"
-        );
-
-
-    const reducedMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
-
-
-    if (
-        paranormalLogo &&
-        !reducedMotion
-    ) {
-
-        let rotation =
-            0;
-
-        let direction =
-            1;
-
-        let nextChange =
-            performance.now() +
-            2500;
-
-
-        const animateParanormalLogo =
-            now => {
-
-                /*
-                   Very slow movement.
-
-                   The direction changes occasionally,
-                   rather than constantly, creating the
-                   slow unpredictable spooky movement.
-                */
-
-                if (
-                    now >=
-                    nextChange
-                ) {
-
-                    direction *=
-                        -1;
-
-                    nextChange =
-                        now +
-                        (
-                            2200 +
-                            Math.random() * 3000
-                        );
-
-                }
-
-
-                rotation +=
-                    direction *
-                    0.018;
-
-
-                if (
-                    rotation > 5
-                ) {
-
-                    rotation =
-                        5;
-
-                    direction =
-                        -1;
-
-                }
-
-
-                if (
-                    rotation < -5
-                ) {
-
-                    rotation =
-                        -5;
-
-                    direction =
-                        1;
-
-                }
-
-
-                paranormalLogo.style.transform =
-                    `rotate(${rotation}deg)`;
-
-
-                requestAnimationFrame(
-                    animateParanormalLogo
-                );
-
-            };
-
-
-        requestAnimationFrame(
-            animateParanormalLogo
-        );
-
-    }
-
-
-    /* =====================================================
-       SOCIAL HUB
-       SUBTLE AMBIENT LIGHT EFFECT
-    ===================================================== */
-
-    const socialHub =
-        document.querySelector(
-            ".social-hub"
-        );
-
-
-    if (
-        socialHub &&
-        !reducedMotion
-    ) {
-
-        let pulseTimer =
-            null;
-
-
-        const ambientPulse =
-            () => {
-
-                socialHub.classList.add(
-                    "ambient-pulse"
-                );
-
-
-                window.setTimeout(
+                image.addEventListener(
+                    "error",
                     () => {
 
-                        socialHub.classList.remove(
-                            "ambient-pulse"
+                        image.classList.add(
+                            "image-load-error"
                         );
 
                     },
-                    650
+                    {
+                        once: true
+                    }
                 );
 
-
-                pulseTimer =
-                    window.setTimeout(
-                        ambientPulse,
-                        7000 +
-                        Math.random() * 9000
-                    );
-
-            };
+            });
 
 
-        pulseTimer =
-            window.setTimeout(
-                ambientPulse,
-                5000 +
-                Math.random() * 5000
-            );
+        /* =====================================================
+           PAGE READY
+        ===================================================== */
 
-
-        window.addEventListener(
-            "pagehide",
-            () => {
-
-                if (pulseTimer) {
-
-                    window.clearTimeout(
-                        pulseTimer
-                    );
-
-                }
-
-            }
+        document.documentElement.classList.add(
+            "newitt-js-ready"
         );
 
-    }
 
+        /* =====================================================
+           EXTERNAL SOCIAL LINKS
+        ===================================================== */
 
-    /* =====================================================
-       IMAGE PERFORMANCE
-    ===================================================== */
+        document
+            .querySelectorAll(
+                'a[target="_blank"]'
+            )
+            .forEach((link) => {
 
-    document.querySelectorAll(
-        "img"
-    ).forEach(
-        (image, index) => {
-
-            image.decoding =
-                "async";
-
-
-            /*
-               Do not override an intentional loading
-               attribute already written into the HTML.
-            */
-
-            if (index === 0) {
-
-                image.loading =
-                    "eager";
-
-                image.setAttribute(
-                    "fetchpriority",
-                    "high"
+                link.setAttribute(
+                    "rel",
+                    "noopener noreferrer"
                 );
 
-            } else {
+            });
 
-                if (
-                    !image.hasAttribute(
-                        "loading"
-                    )
-                ) {
-
-                    image.loading =
-                        "lazy";
-
-                }
-
-                /*
-                   Gallery images that are deliberately
-                   marked eager remain eager.
-                */
-
-                if (
-                    image.loading !==
-                    "eager"
-                ) {
-
-                    image.setAttribute(
-                        "fetchpriority",
-                        "low"
-                    );
-
-                }
-
-            }
-
-        }
-    );
-
-
-    /* =====================================================
-       CLOSE MOBILE MENU WHEN ESCAPING
-    ===================================================== */
-
-    window.addEventListener(
-        "orientationchange",
-        () => {
-
-            if (
-                window.innerWidth >
-                800
-            ) {
-
-                setMenu(false);
-
-            }
-
-        }
-    );
-
+    });
 
 })();
