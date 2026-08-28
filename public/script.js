@@ -3,9 +3,14 @@
 /* =========================================================
    NEWITT MEDIA
    MASTER JAVASCRIPT
+   NAVIGATION + LIGHTBOX + SITE CONTROLS
 ========================================================= */
 
 (() => {
+
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
 
     const menu =
         document.getElementById("main-menu");
@@ -69,7 +74,9 @@
     }
 
 
-    /* Close menu after navigation */
+    /* =====================================================
+       CLOSE MENU AFTER NAVIGATION
+    ===================================================== */
 
     if (menu) {
 
@@ -79,7 +86,9 @@
                 link.addEventListener(
                     "click",
                     () => {
+
                         setMenu(false);
+
                     }
                 );
 
@@ -88,7 +97,9 @@
     }
 
 
-    /* Close menu outside */
+    /* =====================================================
+       CLOSE MENU WHEN CLICKING OUTSIDE
+    ===================================================== */
 
     document.addEventListener(
         "click",
@@ -106,14 +117,18 @@
                 !menu.contains(event.target) &&
                 !menuButton.contains(event.target)
             ) {
+
                 setMenu(false);
+
             }
 
         }
     );
 
 
-    /* Close menu on desktop */
+    /* =====================================================
+       CLOSE MENU WHEN RETURNING TO DESKTOP
+    ===================================================== */
 
     window.addEventListener(
         "resize",
@@ -122,7 +137,9 @@
             if (
                 window.innerWidth > 800
             ) {
+
                 setMenu(false);
+
             }
 
         }
@@ -144,26 +161,39 @@
                 const id =
                     link.getAttribute("href");
 
+
                 if (
                     !id ||
                     id === "#"
                 ) {
+
                     return;
+
                 }
+
 
                 const target =
                     document.querySelector(id);
 
+
                 if (!target) {
+
                     return;
+
                 }
+
 
                 event.preventDefault();
 
+
                 target.scrollIntoView({
+
                     behavior: "smooth",
+
                     block: "start"
+
                 });
+
 
                 setMenu(false);
 
@@ -183,7 +213,9 @@
             document.getElementById("lightbox");
 
         const image =
-            document.getElementById("lightboxImage");
+            document.getElementById(
+                "lightboxImage"
+            );
 
 
         if (lightbox) {
@@ -226,17 +258,23 @@
             event => {
 
                 const lightbox =
-                    document.getElementById("lightbox");
+                    document.getElementById(
+                        "lightbox"
+                    );
 
                 const image =
-                    document.getElementById("lightboxImage");
+                    document.getElementById(
+                        "lightboxImage"
+                    );
 
 
                 if (
                     !lightbox ||
                     !image
                 ) {
+
                     return;
+
                 }
 
 
@@ -244,16 +282,22 @@
 
 
                 const source =
-                    link.getAttribute("href");
+                    link.getAttribute(
+                        "href"
+                    );
 
 
                 if (!source) {
+
                     return;
+
                 }
 
 
                 const thumbnail =
-                    link.querySelector("img");
+                    link.querySelector(
+                        "img"
+                    );
 
 
                 image.src =
@@ -283,6 +327,10 @@
     });
 
 
+    /* =====================================================
+       LIGHTBOX CLOSE BUTTON
+    ===================================================== */
+
     const lightboxClose =
         document.getElementById(
             "lightboxClose"
@@ -299,6 +347,10 @@
     }
 
 
+    /* =====================================================
+       LIGHTBOX BACKGROUND CLOSE
+    ===================================================== */
+
     const lightbox =
         document.getElementById(
             "lightbox"
@@ -312,9 +364,12 @@
             event => {
 
                 if (
-                    event.target === lightbox
+                    event.target ===
+                    lightbox
                 ) {
+
                     closeLightbox();
+
                 }
 
             }
@@ -376,8 +431,11 @@
             () => {
 
                 window.scrollTo({
+
                     top: 0,
+
                     behavior: "smooth"
+
                 });
 
             }
@@ -434,6 +492,39 @@
 
         }
     );
+
+
+    /* =====================================================
+       ANIMATED SOCIAL SECTION
+       
+       The visual animation itself is handled entirely
+       by CSS. No JavaScript timer is required.
+
+       This means:
+       - Gold ticker loops continuously
+       - Lightning flashes automatically
+       - House lights pulse automatically
+       - Blue atmosphere moves automatically
+       - Red atmosphere moves automatically
+       - Paranormal logo slowly turns/reverses
+       
+       Keeping these animations in CSS gives better
+       performance, particularly on mobile devices.
+    ===================================================== */
+
+    const animatedSocial =
+        document.querySelector(
+            ".animated-social-section"
+        );
+
+
+    if (animatedSocial) {
+
+        animatedSocial.classList.add(
+            "animations-ready"
+        );
+
+    }
 
 
 })();
