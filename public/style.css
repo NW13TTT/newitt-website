@@ -1,7 +1,7 @@
 /* =========================================================
    NEWITT MEDIA
    MASTER STYLESHEET
-   FINAL WEBSITE BUILD
+   FINAL REBUILD
 ========================================================= */
 
 :root {
@@ -33,8 +33,8 @@
   --line: rgba(255,255,255,.15);
   --line-soft: rgba(255,255,255,.08);
 
-  --panel-soft: rgba(2,5,10,.20);
-  --panel-medium: rgba(2,5,10,.42);
+  --panel: rgba(2,5,10,.84);
+  --panel-heavy: rgba(1,3,7,.94);
 
   --shadow:
     0 24px 70px rgba(0,0,0,.60);
@@ -82,13 +82,10 @@ body {
   color: var(--text);
 
   /*
-     MASTER SITE BACKGROUND
+     MASTER WEBSITE BACKGROUND
 
-     This remains the main background for the
-     entire website.
-
-     IMPORTANT:
-     No full-page black overlay is placed over it.
+     The supplied artwork is the complete background.
+     It stays behind the website content.
   */
 
   background:
@@ -101,7 +98,7 @@ body {
       rgba(0,0,0,.24) 100%
     ),
     url("background.png.PNG")
-    center top / cover no-repeat fixed;
+    center top / 100% 100% no-repeat fixed;
 
   font-family:
     Arial,
@@ -167,10 +164,8 @@ section {
   /*
      IMPORTANT
 
-     Sections are transparent.
-
-     The master site background therefore remains
-     visible behind the page content.
+     Normal sections are transparent.
+     The master body background remains visible.
   */
 
   background: transparent;
@@ -442,9 +437,6 @@ p {
   font-size: 16px;
 
   line-height: 1.75;
-
-  text-shadow:
-    0 2px 12px rgba(0,0,0,.55);
 }
 
 h1 span,
@@ -487,12 +479,8 @@ h2 span {
 
   text-align: center;
 
-  /*
-     NO LARGE BLACK PANEL HERE.
-     THE MAIN BACKGROUND SHOWS THROUGH.
-  */
-
-  background: transparent;
+  background:
+    transparent;
 
   border: 0;
 
@@ -519,12 +507,10 @@ h2 span {
 .hero-card .eyebrow,
 .skyline-hero-content p,
 .skyline-hero-content .eyebrow,
-.paranormal-hero-text p,
-.paranormal-hero-text .eyebrow,
-.contact-hero-content p,
-.contact-hero-content .eyebrow {
+.paranormal-hero p,
+.contact-hero-content p {
   text-shadow:
-    0 2px 14px rgba(0,0,0,.90);
+    0 2px 14px rgba(0,0,0,.88);
 }
 
 .hero-tagline {
@@ -685,19 +671,24 @@ h2 span {
    CONTENT PANELS
 ========================================================= */
 
-/*
-   IMPORTANT MASTER CHANGE
+.section-heading {
+  width:
+    min(820px,100%);
 
-   The previous version created the large black
-   rectangles seen across the pages.
+  margin:
+    0 auto 34px;
 
-   Those large backgrounds are now REMOVED.
+  text-align:
+    center;
+}
 
-   .about and .panel are transparent.
+.section-heading p {
+  max-width:
+    720px;
 
-   The website background therefore remains visible
-   directly behind the text.
-*/
+  margin-inline:
+    auto;
+}
 
 .about,
 .panel {
@@ -705,22 +696,22 @@ h2 span {
     34px;
 
   border:
-    0;
+    1px solid var(--line);
 
   border-radius:
-    0;
+    var(--radius);
 
   background:
-    transparent;
+    rgba(3,6,10,.76);
 
   box-shadow:
-    none;
+    var(--shadow);
 
   backdrop-filter:
-    none;
+    blur(8px);
 
   -webkit-backdrop-filter:
-    none;
+    blur(8px);
 }
 
 .about > p:last-child {
@@ -757,31 +748,17 @@ h2 span {
   padding:
     26px;
 
-  /*
-     These are individual cards, not the giant
-     page-covering boxes.
-
-     Keep them lightly transparent so the artwork
-     can still be seen.
-  */
-
   border:
-    1px solid rgba(245,180,0,.22);
+    1px solid rgba(245,180,0,.18);
 
   border-radius:
     20px;
 
   background:
-    rgba(3,6,10,.30);
+    rgba(3,6,10,.84);
 
   box-shadow:
-    0 18px 55px rgba(0,0,0,.34);
-
-  backdrop-filter:
-    blur(2px);
-
-  -webkit-backdrop-filter:
-    blur(2px);
+    var(--shadow);
 
   transition:
     transform .25s ease,
@@ -797,7 +774,7 @@ h2 span {
     rgba(245,180,0,.48);
 
   box-shadow:
-    0 25px 70px rgba(0,0,0,.50),
+    0 25px 70px rgba(0,0,0,.70),
     0 0 25px rgba(245,180,0,.08);
 }
 
@@ -842,7 +819,7 @@ h2 span {
 
 /* =========================================================
    SOCIAL HUB
-   FRONT PAGE SOCIAL MEDIA AREA
+   CORRECT LAYERING
 ========================================================= */
 
 .social-hub {
@@ -858,39 +835,35 @@ h2 span {
   padding:
     86px 0;
 
-  /*
-     IMPORTANT
-
-     The Social Hub uses its OWN artwork.
-
-     There is no solid black background covering it.
-  */
-
   background:
-    transparent;
+    #020305;
 }
 
-.social-hub-art,
-.social-hub-shade,
-.social-effect {
+
+/*
+   IMPORTANT:
+
+   The artwork is now a POSITIVE stacking layer
+   inside the Social Hub.
+
+   It is NOT placed at z-index:-2.
+
+   This prevents the section's own background
+   from covering the artwork.
+*/
+
+.social-hub-art {
   position:
     absolute;
 
   inset:
     0;
 
-  pointer-events:
-    none;
-}
-
-
-/* =========================================================
-   SOCIAL HUB ARTWORK
-========================================================= */
-
-.social-hub-art {
   z-index:
     0;
+
+  pointer-events:
+    none;
 
   background:
     url("newitt-social-hub-background.PNG")
@@ -905,13 +878,22 @@ h2 span {
 }
 
 
-/* =========================================================
-   SOCIAL HUB SHADE
-========================================================= */
+/*
+   Darkening layer sits above artwork.
+*/
 
 .social-hub-shade {
+  position:
+    absolute;
+
+  inset:
+    0;
+
   z-index:
     1;
+
+  pointer-events:
+    none;
 
   background:
     linear-gradient(
@@ -923,7 +905,7 @@ h2 span {
     linear-gradient(
       180deg,
       rgba(0,0,0,.10),
-      rgba(0,0,0,.48)
+      rgba(0,0,0,.66)
     );
 
   transition:
@@ -931,38 +913,118 @@ h2 span {
 }
 
 
-/* =========================================================
-   SOCIAL EFFECT LAYERS
-========================================================= */
+/*
+   Effects sit above artwork and below content.
+*/
 
-.social-lightning,
-.social-house-glow,
-.social-paranormal-glow {
+.social-effect {
+  position:
+    absolute;
+
+  pointer-events:
+    none;
+
   z-index:
     2;
+}
+
+
+/* =========================================================
+   SOCIAL EFFECTS
+========================================================= */
+
+.social-lightning {
+  inset:
+    0;
 
   opacity:
     0;
 
-  transition:
-    opacity .65s ease;
+  background:
+    linear-gradient(
+      112deg,
+      transparent 0%,
+      transparent 46%,
+      rgba(255,255,255,.28) 48%,
+      transparent 50%,
+      transparent 100%
+    );
+
+  mix-blend-mode:
+    screen;
+}
+
+.social-house-glow {
+  width:
+    260px;
+
+  height:
+    260px;
+
+  right:
+    8%;
+
+  top:
+    12%;
+
+  border-radius:
+    50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,210,100,.12),
+      transparent 68%
+    );
+
+  filter:
+    blur(18px);
+}
+
+.social-paranormal-glow {
+  width:
+    300px;
+
+  height:
+    300px;
+
+  left:
+    7%;
+
+  bottom:
+    5%;
+
+  border-radius:
+    50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(226,27,45,.10),
+      transparent 70%
+    );
+
+  filter:
+    blur(22px);
+}
+
+
+/* =========================================================
+   SOCIAL CONTENT STACK
+========================================================= */
+
+.social-hub-content {
+  position:
+    relative;
+
+  z-index:
+    5;
 }
 
 
 /* =========================================================
    AMBIENT SOCIAL EFFECT
 ========================================================= */
-
-/*
-   CORRECTED SELECTOR
-
-   The previous CSS accidentally created a descendant
-   selector because the class names were split across
-   lines.
-
-   This now correctly targets the artwork when
-   .ambient-pulse is added to .social-hub by JavaScript.
-*/
 
 .social-hub.ambient-pulse .social-hub-art {
   filter:
@@ -978,17 +1040,36 @@ h2 span {
     .72;
 }
 
+.social-hub.ambient-pulse .social-lightning {
+  animation:
+    social-lightning-flash
+    .65s
+    ease-out
+    1;
+}
 
-/* =========================================================
-   SOCIAL HUB CONTENT LAYER
-========================================================= */
+@keyframes social-lightning-flash {
 
-.social-hub-content {
-  position:
-    relative;
+  0% {
+    opacity: 0;
+  }
 
-  z-index:
-    5;
+  18% {
+    opacity: .85;
+  }
+
+  27% {
+    opacity: .08;
+  }
+
+  40% {
+    opacity: .55;
+  }
+
+  100% {
+    opacity: 0;
+  }
+
 }
 
 
@@ -1102,6 +1183,9 @@ h2 span {
 }
 
 .social-brand {
+  position:
+    relative;
+
   min-width:
     0;
 
@@ -1114,31 +1198,21 @@ h2 span {
   border-radius:
     22px;
 
-  /*
-     Keep these as translucent foreground panels.
-
-     They are NOT the giant page-covering box.
-     The artwork remains visible around and through
-     the section.
-  */
-
   background:
-    rgba(1,4,9,.38);
+    rgba(1,4,9,.72);
 
   box-shadow:
-    0 25px 75px rgba(0,0,0,.50);
+    0 25px 75px rgba(0,0,0,.70);
 
   backdrop-filter:
-    blur(3px);
+    blur(4px);
 
   -webkit-backdrop-filter:
-    blur(3px);
+    blur(4px);
 }
 
 
-/* =========================================================
-   SKYLINE SOCIAL
-========================================================= */
+/* SKYLINE */
 
 .skyline-social {
   border-color:
@@ -1146,13 +1220,11 @@ h2 span {
 
   box-shadow:
     0 0 25px rgba(22,140,255,.18),
-    0 25px 75px rgba(0,0,0,.52);
+    0 25px 75px rgba(0,0,0,.72);
 }
 
 
-/* =========================================================
-   PARANORMAL SOCIAL
-========================================================= */
+/* PARANORMAL */
 
 .paranormal-social {
   border-color:
@@ -1160,10 +1232,16 @@ h2 span {
 
   box-shadow:
     0 0 25px rgba(226,27,45,.18),
-    0 25px 75px rgba(0,0,0,.52);
+    0 25px 75px rgba(0,0,0,.72);
 }
 
 .social-brand-inner {
+  position:
+    relative;
+
+  z-index:
+    2;
+
   display:
     flex;
 
@@ -1176,11 +1254,6 @@ h2 span {
   padding:
     26px;
 }
-
-
-/* =========================================================
-   SOCIAL LOGOS
-========================================================= */
 
 .social-logo-wrap {
   flex:
@@ -1381,7 +1454,7 @@ h2 span {
     relative;
 
   z-index:
-    6;
+    5;
 
   width:
     100%;
@@ -1399,7 +1472,7 @@ h2 span {
     2px solid var(--gold);
 
   background:
-    rgba(0,0,0,.68);
+    rgba(0,0,0,.78);
 
   box-shadow:
     0 0 8px rgba(245,180,0,.75),
@@ -1637,22 +1710,11 @@ h2 span {
   border-radius:
     20px;
 
-  /*
-     Individual gallery cards remain,
-     but are much more transparent than before.
-  */
-
   background:
-    rgba(3,7,13,.34);
+    rgba(3,7,13,.86);
 
   box-shadow:
-    0 18px 55px rgba(0,0,0,.38);
-
-  backdrop-filter:
-    blur(2px);
-
-  -webkit-backdrop-filter:
-    blur(2px);
+    var(--shadow);
 }
 
 .gallery-link {
@@ -1718,16 +1780,8 @@ h2 span {
   border-radius:
     18px;
 
-  /*
-     Keep the TikTok embed readable without
-     creating a giant page-covering box.
-  */
-
   background:
-    rgba(0,0,0,.28);
-
-  box-shadow:
-    0 18px 55px rgba(0,0,0,.32);
+    rgba(0,0,0,.48);
 }
 
 .tiktok-box blockquote {
@@ -1790,9 +1844,10 @@ body.skyline-page .button.primary {
 }
 
 body.skyline-page .about,
-body.skyline-page .panel {
+body.skyline-page .panel,
+body.skyline-page .gallery-card {
   border-color:
-    transparent;
+    rgba(89,185,255,.24);
 }
 
 
@@ -1828,7 +1883,7 @@ body.paranormal-page .button.primary {
 body.paranormal-page .about,
 body.paranormal-page .panel {
   border-color:
-    transparent;
+    rgba(226,27,45,.24);
 }
 
 
@@ -1898,7 +1953,7 @@ body.photography-page .button.primary {
 body.photography-page .about,
 body.photography-page .panel {
   border-color:
-    transparent;
+    rgba(99,184,93,.24);
 }
 
 
@@ -1953,18 +2008,6 @@ body.photography-page .panel {
     18px;
 }
 
-
-/* =========================================================
-   CONTACT BOX
-========================================================= */
-
-/*
-   The old contact-box was one of the large black
-   blocks covering the page.
-
-   It is now transparent.
-*/
-
 .contact-box {
   width:
     min(900px,100%);
@@ -1979,28 +2022,23 @@ body.photography-page .panel {
     center;
 
   border:
-    0;
+    1px solid rgba(245,180,0,.22);
 
   border-radius:
-    0;
+    24px;
 
   background:
-    transparent;
+    rgba(3,6,10,.84);
 
   box-shadow:
-    none;
+    var(--shadow);
 
   backdrop-filter:
-    none;
+    blur(10px);
 
   -webkit-backdrop-filter:
-    none;
+    blur(10px);
 }
-
-
-/* =========================================================
-   CONTACT OPTIONS
-========================================================= */
 
 .contact-options {
   display:
@@ -2022,11 +2060,6 @@ body.photography-page .panel {
     stretch;
 }
 
-
-/* =========================================================
-   CONTACT CARDS
-========================================================= */
-
 .contact-card {
   display:
     flex;
@@ -2046,22 +2079,11 @@ body.photography-page .panel {
   border-radius:
     20px;
 
-  /*
-     Individual card only.
-     The large page-covering box is gone.
-  */
-
   background:
-    rgba(3,6,10,.30);
+    rgba(3,6,10,.84);
 
   box-shadow:
-    0 18px 55px rgba(0,0,0,.36);
-
-  backdrop-filter:
-    blur(2px);
-
-  -webkit-backdrop-filter:
-    blur(2px);
+    var(--shadow);
 
   text-align:
     center;
@@ -2111,7 +2133,7 @@ footer {
     relative;
 
   z-index:
-    1;
+    10;
 
   padding:
     34px 0;
@@ -2132,7 +2154,7 @@ footer {
     1px solid rgba(245,180,0,.16);
 
   background:
-    rgba(1,3,7,.78);
+    rgba(1,3,7,.90);
 }
 
 footer::before,
@@ -2320,6 +2342,15 @@ footer::after {
   }
 
   body {
+    /*
+       IMPORTANT:
+
+       Do not use cover here.
+
+       The supplied artwork must not be cropped
+       into the dark centre on tall phones.
+    */
+
     background:
       linear-gradient(
         180deg,
@@ -2327,7 +2358,7 @@ footer::after {
         rgba(0,0,0,.38)
       ),
       url("background.png.PNG")
-      center top / cover no-repeat scroll;
+      center top / 100% 100% no-repeat scroll;
   }
 
   .container {
@@ -2336,9 +2367,7 @@ footer::after {
   }
 
 
-  /* =======================================================
-     HEADER
-  ======================================================= */
+  /* HEADER */
 
   .nav {
     min-height:
@@ -2444,9 +2473,7 @@ footer::after {
   }
 
 
-  /* =======================================================
-     TYPE
-  ======================================================= */
+  /* TYPE */
 
   h1 {
     font-size:
@@ -2484,9 +2511,7 @@ footer::after {
   }
 
 
-  /* =======================================================
-     HERO
-  ======================================================= */
+  /* HERO */
 
   .hero,
   .skyline-hero,
@@ -2570,9 +2595,7 @@ footer::after {
   }
 
 
-  /* =======================================================
-     BUTTONS
-  ======================================================= */
+  /* BUTTONS */
 
   .buttons,
   .contact-hero-content .buttons {
@@ -2601,9 +2624,7 @@ footer::after {
   }
 
 
-  /* =======================================================
-     CONTENT
-  ======================================================= */
+  /* CONTENT */
 
   section {
     padding:
@@ -2618,10 +2639,6 @@ footer::after {
       28px;
   }
 
-  /*
-     Keep page content transparent on mobile too.
-  */
-
   .about,
   .panel,
   .contact-box {
@@ -2629,19 +2646,7 @@ footer::after {
       24px 18px;
 
     border-radius:
-      0;
-
-    background:
-      transparent;
-
-    box-shadow:
-      none;
-
-    backdrop-filter:
-      none;
-
-    -webkit-backdrop-filter:
-      none;
+      18px;
   }
 
   .brand-grid,
@@ -2656,20 +2661,14 @@ footer::after {
   }
 
 
-  /* =======================================================
-     SOCIAL HUB
-  ======================================================= */
+  /* SOCIAL */
 
   .social-hub {
     padding:
       62px 0;
 
-    /*
-       Dedicated Social Hub artwork remains visible.
-    */
-
     background:
-      transparent;
+      #020305;
   }
 
   .social-hub-art {
@@ -2677,7 +2676,7 @@ footer::after {
       center center;
 
     background-size:
-      cover;
+      100% 100%;
 
     min-height:
       100%;
@@ -2745,15 +2744,8 @@ footer::after {
       center;
   }
 
-  .social-brand {
-    background:
-      rgba(1,4,9,.34);
-  }
 
-
-  /* =======================================================
-     GOLD MOVING BANNER
-  ======================================================= */
+  /* GOLD MOVING BANNER */
 
   .social-ticker {
     margin-top:
@@ -2791,19 +2783,7 @@ footer::after {
   }
 
 
-  /* =======================================================
-     GALLERY
-  ======================================================= */
-
-  .gallery-card {
-    background:
-      rgba(3,7,13,.30);
-  }
-
-
-  /* =======================================================
-     CONTACT
-  ======================================================= */
+  /* CONTACT */
 
   .contact-box {
     width:
@@ -2819,15 +2799,10 @@ footer::after {
   .contact-card {
     text-align:
       center;
-
-    background:
-      rgba(3,6,10,.30);
   }
 
 
-  /* =======================================================
-     FOOTER
-  ======================================================= */
+  /* FOOTER */
 
   footer {
     padding:
@@ -2946,14 +2921,8 @@ footer::after {
   }
 
   .social-ticker-track {
-    animation-duration:
-      45s;
-  }
-
-  .paranormal-social
-  .social-logo-wrap img {
-    transform:
-      none !important;
+    animation:
+      none;
   }
 
   .button,
