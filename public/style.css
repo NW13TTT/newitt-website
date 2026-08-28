@@ -1,7 +1,7 @@
 /* =========================================================
    NEWITT MEDIA
    MASTER STYLESHEET
-   GOLD BRANDING + RESTORED BACKGROUNDS
+   FINAL HOME + ANIMATED SOCIAL SECTION
 ========================================================= */
 
 :root {
@@ -13,23 +13,19 @@
   --muted: #c0c7d1;
   --dim: #858e9a;
 
-  /* NEWITT GOLD */
   --gold: #f5b400;
   --gold-light: #ffd84d;
   --gold-bright: #fff0a3;
   --gold-dark: #9b6500;
 
-  /* SKYLINE */
   --blue: #168cff;
   --blue-light: #59b9ff;
   --blue-bright: #8bd3ff;
 
-  /* PARANORMAL */
   --red: #e21b2d;
   --red-light: #ff4054;
   --red-bright: #ff7180;
 
-  /* PHOTOGRAPHY */
   --green: #63b85d;
   --green-light: #9bd995;
   --green-bright: #c0efba;
@@ -68,17 +64,22 @@
 
 html {
   min-height: 100%;
+
   scroll-behavior: smooth;
+
   background: var(--black);
+
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
 
 body {
   position: relative;
+
   isolation: isolate;
 
   min-height: 100vh;
+
   margin: 0;
 
   overflow-x: hidden;
@@ -86,20 +87,23 @@ body {
   color: var(--text);
 
   /*
-     MAIN WEBSITE BACKGROUND
-     KEEP THIS FILE NAME EXACTLY
+     SITE-WIDE BACKGROUND
+
+     IMPORTANT:
+     This is the confirmed filename supplied for the website.
   */
+
   background:
     linear-gradient(
       90deg,
       rgba(0,0,0,.30) 0%,
-      rgba(0,0,0,.18) 25%,
-      rgba(0,0,0,.46) 50%,
-      rgba(0,0,0,.18) 75%,
+      rgba(0,0,0,.16) 24%,
+      rgba(0,0,0,.42) 50%,
+      rgba(0,0,0,.16) 76%,
       rgba(0,0,0,.30) 100%
     ),
     url("background.png.PNG")
-    center top / cover no-repeat fixed;
+    center top / cover fixed no-repeat;
 
   font-family:
     Arial,
@@ -108,17 +112,20 @@ body {
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
   text-rendering: optimizeLegibility;
 }
 
 body::before,
 body::after {
   display: none;
+
   content: none;
 }
 
 a {
   color: inherit;
+
   text-decoration: none;
 }
 
@@ -133,7 +140,9 @@ button {
 
 img {
   display: block;
+
   max-width: 100%;
+
   height: auto;
 }
 
@@ -148,16 +157,19 @@ img {
 
 .container {
   width: min(var(--content), 92%);
+
   margin-inline: auto;
 }
 
 main {
   position: relative;
+
   z-index: 1;
 }
 
 section {
   position: relative;
+
   padding: 78px 0;
 }
 
@@ -172,7 +184,9 @@ section[id] {
 
 .site-header {
   position: sticky;
+
   top: 0;
+
   z-index: 1000;
 
   background:
@@ -182,20 +196,26 @@ section[id] {
       rgba(2,4,8,.93)
     );
 
-  border-bottom: 1px solid rgba(245,180,0,.20);
+  border-bottom:
+    1px solid rgba(245,180,0,.20);
 
   box-shadow:
     0 8px 30px rgba(0,0,0,.55);
 
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter:
+    blur(16px);
+
+  -webkit-backdrop-filter:
+    blur(16px);
 }
 
 .nav {
   min-height: 86px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   gap: 24px;
@@ -203,11 +223,12 @@ section[id] {
 
 
 /* =========================================================
-   BRAND
+   NAV BRAND
 ========================================================= */
 
 .nav-brand {
   display: inline-flex;
+
   align-items: center;
 
   gap: 12px;
@@ -217,6 +238,7 @@ section[id] {
   color: #fff;
 
   font-size: 22px;
+
   font-weight: 950;
 
   letter-spacing: 1.5px;
@@ -227,16 +249,21 @@ section[id] {
 
 .nav-brand img {
   width: 58px;
+
   height: 58px;
 
   object-fit: contain;
 
   filter:
-    drop-shadow(0 0 7px rgba(245,180,0,.35));
+    drop-shadow(
+      0 0 7px
+      rgba(245,180,0,.35)
+    );
 }
 
 .nav-brand span {
-  color: var(--gold-light);
+  color:
+    var(--gold-light);
 }
 
 
@@ -246,7 +273,9 @@ section[id] {
 
 .nav-links {
   display: flex;
+
   align-items: center;
+
   gap: 5px;
 }
 
@@ -260,6 +289,7 @@ section[id] {
   color: #fff;
 
   font-size: 14px;
+
   font-weight: 900;
 
   letter-spacing: .7px;
@@ -271,17 +301,22 @@ section[id] {
 }
 
 .nav-links a:hover {
-  color: var(--gold-light);
+  color:
+    var(--gold-light);
 
-  background: rgba(245,180,0,.08);
+  background:
+    rgba(245,180,0,.08);
 
-  transform: translateY(-1px);
+  transform:
+    translateY(-1px);
 }
 
 .nav-links a.active {
-  color: var(--gold-light);
+  color:
+    var(--gold-light);
 
-  background: rgba(245,180,0,.08);
+  background:
+    rgba(245,180,0,.08);
 }
 
 .nav-links a.active::after {
@@ -290,6 +325,7 @@ section[id] {
   position: absolute;
 
   left: 15px;
+
   right: 15px;
 
   bottom: 4px;
@@ -306,7 +342,8 @@ section[id] {
       var(--gold)
     );
 
-  box-shadow: var(--gold-glow);
+  box-shadow:
+    var(--gold-glow);
 }
 
 
@@ -321,14 +358,20 @@ section[id] {
 
   padding: 10px 16px;
 
-  border: 1px solid rgba(245,180,0,.65);
+  border:
+    1px solid
+    rgba(245,180,0,.65);
+
   border-radius: 11px;
 
-  background: rgba(245,180,0,.05);
+  background:
+    rgba(245,180,0,.05);
 
-  color: var(--gold-light);
+  color:
+    var(--gold-light);
 
   font-size: 13px;
+
   font-weight: 950;
 
   letter-spacing: 1px;
@@ -336,7 +379,8 @@ section[id] {
   cursor: pointer;
 
   box-shadow:
-    0 0 12px rgba(245,180,0,.12);
+    0 0 12px
+    rgba(245,180,0,.12);
 }
 
 
@@ -347,9 +391,11 @@ section[id] {
 .eyebrow {
   margin-bottom: 12px;
 
-  color: var(--gold-light);
+  color:
+    var(--gold-light);
 
   font-size: 12px;
+
   font-weight: 950;
 
   letter-spacing: 2.5px;
@@ -357,7 +403,8 @@ section[id] {
   text-transform: uppercase;
 
   text-shadow:
-    0 0 12px rgba(245,180,0,.25);
+    0 0 12px
+    rgba(245,180,0,.25);
 }
 
 h1,
@@ -371,7 +418,7 @@ h1 {
   margin-bottom: 20px;
 
   font-size:
-    clamp(42px, 7vw, 82px);
+    clamp(42px,7vw,82px);
 
   line-height: .96;
 
@@ -382,14 +429,15 @@ h1 {
   text-wrap: balance;
 
   text-shadow:
-    0 4px 22px rgba(0,0,0,.65);
+    0 4px 22px
+    rgba(0,0,0,.65);
 }
 
 h2 {
   margin-bottom: 16px;
 
   font-size:
-    clamp(30px, 5vw, 54px);
+    clamp(30px,5vw,54px);
 
   line-height: 1.04;
 
@@ -402,7 +450,7 @@ h2 {
 
 h3 {
   font-size:
-    clamp(20px, 3vw, 28px);
+    clamp(20px,3vw,28px);
 
   line-height: 1.15;
 
@@ -410,7 +458,8 @@ h3 {
 }
 
 p {
-  color: var(--muted);
+  color:
+    var(--muted);
 
   font-size: 16px;
 
@@ -419,7 +468,8 @@ p {
 
 h1 span,
 h2 span {
-  color: var(--gold-light);
+  color:
+    var(--gold-light);
 }
 
 
@@ -437,31 +487,38 @@ h2 span {
   padding:
     88px 0 70px;
 
-  background: transparent !important;
+  background:
+    transparent !important;
 
   border: 0 !important;
 
-  box-shadow: none !important;
+  box-shadow:
+    none !important;
 }
 
 .hero-card {
-  width: min(900px, 100%);
+  width:
+    min(900px,100%);
 
   margin-inline: auto;
 
-  padding: 50px 34px;
+  padding:
+    50px 34px;
 
   text-align: center;
 
-  background: transparent;
+  background:
+    transparent;
 
   border: 0;
 
-  box-shadow: none;
+  box-shadow:
+    none;
 }
 
 .hero-logo {
   width: 220px;
+
   height: 220px;
 
   max-width: 62vw;
@@ -472,8 +529,14 @@ h2 span {
   object-fit: contain;
 
   filter:
-    drop-shadow(0 0 18px rgba(245,180,0,.20))
-    drop-shadow(0 15px 35px rgba(0,0,0,.65));
+    drop-shadow(
+      0 0 18px
+      rgba(245,180,0,.20)
+    )
+    drop-shadow(
+      0 15px 35px
+      rgba(0,0,0,.65)
+    );
 }
 
 .hero-card p,
@@ -483,7 +546,8 @@ h2 span {
 .paranormal-hero-text p,
 .paranormal-hero-text .eyebrow {
   text-shadow:
-    0 2px 14px rgba(0,0,0,.88);
+    0 2px 14px
+    rgba(0,0,0,.88);
 }
 
 .hero-tagline {
@@ -501,7 +565,8 @@ h2 span {
 
 .skyline-hero-content,
 .contact-hero-content {
-  width: min(1080px, 92%);
+  width:
+    min(1080px,92%);
 
   margin-inline: auto;
 
@@ -509,7 +574,7 @@ h2 span {
 
   grid-template-columns:
     230px
-    minmax(0, 1fr);
+    minmax(0,1fr);
 
   align-items: center;
 
@@ -519,19 +584,27 @@ h2 span {
 .skyline-hero-content > div:first-child,
 .contact-hero-content > div:first-child {
   display: flex;
+
   justify-content: center;
 }
 
 .page-logo,
 .contact-logo {
   width: 210px;
+
   height: 210px;
 
   object-fit: contain;
 
   filter:
-    drop-shadow(0 0 20px rgba(245,180,0,.12))
-    drop-shadow(0 14px 30px rgba(0,0,0,.60));
+    drop-shadow(
+      0 0 20px
+      rgba(245,180,0,.12)
+    )
+    drop-shadow(
+      0 14px 30px
+      rgba(0,0,0,.60)
+    );
 }
 
 .skyline-hero-content > div:last-child,
@@ -567,6 +640,7 @@ h2 span {
   display: inline-flex;
 
   align-items: center;
+
   justify-content: center;
 
   min-height: 48px;
@@ -575,7 +649,8 @@ h2 span {
     12px 20px;
 
   border:
-    1px solid rgba(255,255,255,.25);
+    1px solid
+    rgba(255,255,255,.25);
 
   border-radius: 12px;
 
@@ -585,6 +660,7 @@ h2 span {
   color: #fff;
 
   font-size: 13px;
+
   font-weight: 950;
 
   text-align: center;
@@ -599,7 +675,8 @@ h2 span {
 }
 
 .button:hover {
-  transform: translateY(-2px);
+  transform:
+    translateY(-2px);
 
   background:
     rgba(255,255,255,.11);
@@ -609,7 +686,8 @@ h2 span {
 }
 
 .button.primary {
-  color: #100b00;
+  color:
+    #100b00;
 
   background:
     linear-gradient(
@@ -623,12 +701,14 @@ h2 span {
     var(--gold-light);
 
   box-shadow:
-    0 0 18px rgba(245,180,0,.18);
+    0 0 18px
+    rgba(245,180,0,.18);
 }
 
 .button.primary:hover {
   box-shadow:
-    0 0 28px rgba(245,180,0,.35);
+    0 0 28px
+    rgba(245,180,0,.35);
 }
 
 .buttons .button {
@@ -641,7 +721,8 @@ h2 span {
 ========================================================= */
 
 .section-heading {
-  width: min(820px, 100%);
+  width:
+    min(820px,100%);
 
   margin:
     0 auto 34px;
@@ -660,17 +741,23 @@ h2 span {
   padding: 34px;
 
   border:
-    1px solid var(--line);
+    1px solid
+    var(--line);
 
-  border-radius: var(--radius);
+  border-radius:
+    var(--radius);
 
   background:
     rgba(3,6,10,.76);
 
-  box-shadow: var(--shadow);
+  box-shadow:
+    var(--shadow);
 
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter:
+    blur(8px);
+
+  -webkit-backdrop-filter:
+    blur(8px);
 }
 
 .about > p:last-child {
@@ -686,7 +773,7 @@ h2 span {
   display: grid;
 
   grid-template-columns:
-    repeat(3, minmax(0, 1fr));
+    repeat(3,minmax(0,1fr));
 
   gap: 20px;
 }
@@ -701,14 +788,16 @@ h2 span {
   padding: 26px;
 
   border:
-    1px solid rgba(245,180,0,.18);
+    1px solid
+    rgba(245,180,0,.18);
 
   border-radius: 20px;
 
   background:
     rgba(3,6,10,.84);
 
-  box-shadow: var(--shadow);
+  box-shadow:
+    var(--shadow);
 
   transition:
     transform .25s ease,
@@ -717,18 +806,22 @@ h2 span {
 }
 
 .brand-card:hover {
-  transform: translateY(-4px);
+  transform:
+    translateY(-4px);
 
   border-color:
     rgba(245,180,0,.48);
 
   box-shadow:
-    0 25px 70px rgba(0,0,0,.70),
-    0 0 25px rgba(245,180,0,.08);
+    0 25px 70px
+    rgba(0,0,0,.70),
+    0 0 25px
+    rgba(245,180,0,.08);
 }
 
 .brand-logo {
   width: 135px;
+
   height: 115px;
 
   margin:
@@ -757,8 +850,7 @@ h2 span {
 
 
 /* =========================================================
-   SOCIAL HUB
-   RESTORED BLUE / RED BACKGROUND
+   ANIMATED SOCIAL HUB
 ========================================================= */
 
 .social-hub {
@@ -768,136 +860,472 @@ h2 span {
 
   overflow: hidden;
 
-  padding:
-    86px 0;
+  margin:
+    34px 0 56px;
 
-  /*
-     IMPORTANT:
-     This is the blue drone / red paranormal image.
-  */
+  padding:
+    70px 0 74px;
 
   background:
-    rgba(0,0,0,.72);
+    rgba(0,0,0,.66);
+
+  border-top:
+    1px solid
+    rgba(245,180,0,.18);
+
+  border-bottom:
+    1px solid
+    rgba(245,180,0,.18);
+
+  box-shadow:
+    0 25px 80px
+    rgba(0,0,0,.55);
 }
 
-.social-hub-art,
+
+/*
+   The artwork is deliberately kept behind everything.
+
+   The confirmed site background is used here as a safe fallback.
+   Once the exact social JPG filename is supplied, only this
+   background declaration needs changing.
+*/
+
+.social-hub-art {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -4;
+
+  pointer-events: none;
+
+  background:
+    url("background.png.PNG")
+    center center / cover no-repeat;
+
+  transform:
+    scale(1.01);
+}
+
+
+/* =========================================================
+   SOCIAL ART DARKENING
+========================================================= */
+
 .social-hub-shade {
   position: absolute;
 
   inset: 0;
 
+  z-index: -3;
+
   pointer-events: none;
-}
-
-.social-hub-art {
-  z-index: -2;
-
-  background:
-    url("newitt-social-hub-background.PNG")
-    center center / cover no-repeat;
-}
-
-.social-hub-shade {
-  z-index: -1;
 
   background:
     linear-gradient(
+      90deg,
+      rgba(0,0,0,.12),
+      rgba(0,0,0,.30) 50%,
+      rgba(0,0,0,.12)
+    ),
+    linear-gradient(
       180deg,
-      rgba(0,0,0,.16),
-      rgba(0,0,0,.72)
+      rgba(0,0,0,.05),
+      rgba(0,0,0,.50)
     );
 }
 
-.social-hub-content {
-  position: relative;
-}
-
 
 /* =========================================================
-   SOCIAL INTRO
+   BLUE ATMOSPHERE
 ========================================================= */
 
-.social-intro {
-  max-width: 820px;
+.social-blue-atmosphere {
+  position: absolute;
 
-  margin:
-    0 auto 46px;
+  z-index: -2;
 
-  text-align: center;
+  left: -12%;
+
+  top: 10%;
+
+  width: 58%;
+
+  height: 70%;
+
+  pointer-events: none;
+
+  opacity: .28;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(22,140,255,.55),
+      rgba(22,140,255,.12) 42%,
+      transparent 72%
+    );
+
+  filter:
+    blur(18px);
+
+  mix-blend-mode:
+    screen;
+
+  animation:
+    blue-atmosphere
+    12s
+    ease-in-out
+    infinite;
 }
 
-.social-kicker {
-  color: var(--gold-light);
+@keyframes blue-atmosphere {
 
-  font-size: 12px;
+  0%,
+  100% {
+    opacity: .18;
+  }
 
-  font-weight: 950;
+  47% {
+    opacity: .30;
+  }
 
-  letter-spacing: 2.5px;
-}
+  50% {
+    opacity: .40;
+  }
 
-.social-main-title {
-  margin:
-    12px 0 18px;
+  54% {
+    opacity: .22;
+  }
 
-  font-size:
-    clamp(34px, 6vw, 64px);
-
-  line-height: .98;
-
-  letter-spacing: -2px;
-}
-
-.social-main-title span {
-  color: var(--gold-light);
-
-  text-shadow:
-    0 0 18px rgba(245,180,0,.25);
-}
-
-.social-category-line {
-  display: flex;
-
-  flex-wrap: wrap;
-
-  justify-content: center;
-
-  gap: 10px 16px;
-
-  color: #fff;
-
-  font-size: 12px;
-
-  font-weight: 900;
-
-  letter-spacing: 1px;
-}
-
-.social-category-line b {
-  color: var(--gold-light);
-}
-
-.social-funny {
-  margin:
-    22px auto 0;
-
-  max-width: 680px;
-
-  color: #fff;
 }
 
 
 /* =========================================================
-   SOCIAL BRAND CARDS
+   RED ATMOSPHERE
+========================================================= */
+
+.social-red-atmosphere {
+  position: absolute;
+
+  z-index: -2;
+
+  right: -12%;
+
+  top: 8%;
+
+  width: 58%;
+
+  height: 72%;
+
+  pointer-events: none;
+
+  opacity: .20;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(226,27,45,.52),
+      rgba(226,27,45,.12) 44%,
+      transparent 72%
+    );
+
+  filter:
+    blur(20px);
+
+  mix-blend-mode:
+    screen;
+
+  animation:
+    red-atmosphere
+    15s
+    ease-in-out
+    infinite;
+}
+
+@keyframes red-atmosphere {
+
+  0%,
+  100% {
+    opacity: .13;
+  }
+
+  42% {
+    opacity: .20;
+  }
+
+  50% {
+    opacity: .34;
+  }
+
+  56% {
+    opacity: .16;
+  }
+
+}
+
+
+/* =========================================================
+   BLUE LIGHTNING
+========================================================= */
+
+.social-lightning {
+  position: absolute;
+
+  z-index: 2;
+
+  left: 0;
+
+  top: 0;
+
+  width: 50%;
+
+  height: 58%;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  background:
+    rgba(215,242,255,.55);
+
+  mix-blend-mode:
+    screen;
+
+  animation:
+    lightning-flash
+    10s
+    linear
+    infinite;
+}
+
+.lightning-bolt {
+  position: absolute;
+
+  left: 55%;
+
+  top: 4%;
+
+  width: 7px;
+
+  height: 250px;
+
+  background:
+    #fff;
+
+  filter:
+    drop-shadow(
+      0 0 5px #fff
+    )
+    drop-shadow(
+      0 0 18px #69c8ff
+    )
+    drop-shadow(
+      0 0 34px #168cff
+    );
+
+  clip-path:
+    polygon(
+      44% 0,
+      100% 0,
+      64% 34%,
+      96% 34%,
+      19% 100%,
+      40% 47%,
+      4% 47%
+    );
+}
+
+@keyframes lightning-flash {
+
+  0%,
+  63%,
+  64%,
+  100% {
+    opacity: 0;
+  }
+
+  63.15% {
+    opacity: .85;
+  }
+
+  63.30% {
+    opacity: .08;
+  }
+
+  63.48% {
+    opacity: .95;
+  }
+
+  63.75% {
+    opacity: .05;
+  }
+
+}
+
+
+/* =========================================================
+   HAUNTED HOUSE LIGHTS
+========================================================= */
+
+.haunted-house-lights {
+  position: absolute;
+
+  z-index: 3;
+
+  right: 13%;
+
+  top: 20%;
+
+  width: 31%;
+
+  height: 45%;
+
+  pointer-events: none;
+}
+
+.haunted-house-lights span {
+  position: absolute;
+
+  width: 12px;
+
+  height: 18px;
+
+  border-radius: 2px;
+
+  background:
+    rgba(255,220,110,.16);
+
+  box-shadow:
+    0 0 0
+    rgba(255,220,110,0);
+
+  opacity: .18;
+
+  mix-blend-mode:
+    screen;
+
+  animation:
+    house-light
+    13s
+    ease-in-out
+    infinite;
+}
+
+.haunted-house-lights span:nth-child(1) {
+  left: 22%;
+  top: 23%;
+  animation-delay: -2s;
+}
+
+.haunted-house-lights span:nth-child(2) {
+  left: 39%;
+  top: 27%;
+  animation-delay: -6s;
+}
+
+.haunted-house-lights span:nth-child(3) {
+  left: 57%;
+  top: 20%;
+  animation-delay: -9s;
+}
+
+.haunted-house-lights span:nth-child(4) {
+  left: 31%;
+  top: 45%;
+  animation-delay: -4s;
+}
+
+.haunted-house-lights span:nth-child(5) {
+  left: 51%;
+  top: 49%;
+  animation-delay: -11s;
+}
+
+.haunted-house-lights span:nth-child(6) {
+  left: 68%;
+  top: 43%;
+  animation-delay: -7s;
+}
+
+@keyframes house-light {
+
+  0%,
+  35%,
+  100% {
+    opacity: .10;
+
+    background:
+      rgba(255,220,110,.12);
+
+    box-shadow:
+      0 0 0
+      rgba(255,220,110,0);
+  }
+
+  40% {
+    opacity: .42;
+
+    background:
+      rgba(255,225,130,.58);
+
+    box-shadow:
+      0 0 12px
+      rgba(255,220,110,.50);
+  }
+
+  45% {
+    opacity: .88;
+
+    background:
+      rgba(255,238,170,.92);
+
+    box-shadow:
+      0 0 20px
+      rgba(255,220,110,.85),
+      0 0 35px
+      rgba(255,170,40,.30);
+  }
+
+  49% {
+    opacity: .22;
+  }
+
+  53% {
+    opacity: .70;
+  }
+
+  57% {
+    opacity: .12;
+  }
+
+}
+
+
+/* =========================================================
+   SOCIAL CONTENT
+========================================================= */
+
+.social-hub-content {
+  position: relative;
+
+  z-index: 5;
+}
+
+
+/* =========================================================
+   TWO SOCIAL BRAND PANELS
 ========================================================= */
 
 .social-brand-grid {
   display: grid;
 
   grid-template-columns:
-    repeat(2, minmax(0, 1fr));
+    repeat(2,minmax(0,1fr));
 
   gap: 24px;
+
+  align-items: stretch;
 }
 
 .social-brand {
@@ -906,40 +1334,61 @@ h2 span {
   overflow: hidden;
 
   border:
-    1px solid rgba(255,255,255,.18);
+    1px solid
+    rgba(255,255,255,.18);
 
   border-radius: 22px;
 
   background:
-    rgba(1,4,9,.88);
+    rgba(1,4,9,.82);
 
   box-shadow:
-    0 25px 75px rgba(0,0,0,.70);
+    0 25px 75px
+    rgba(0,0,0,.70);
+
+  backdrop-filter:
+    blur(7px);
+
+  -webkit-backdrop-filter:
+    blur(7px);
 }
 
 
-/* Skyline */
+/* =========================================================
+   SKYLINE SOCIAL PANEL
+========================================================= */
 
 .skyline-social {
   border-color:
     rgba(22,140,255,.70);
 
   box-shadow:
-    0 0 25px rgba(22,140,255,.18),
-    0 25px 75px rgba(0,0,0,.72);
+    0 0 25px
+    rgba(22,140,255,.18),
+    0 25px 75px
+    rgba(0,0,0,.72);
 }
 
 
-/* Paranormal */
+/* =========================================================
+   PARANORMAL SOCIAL PANEL
+========================================================= */
 
 .paranormal-social {
   border-color:
     rgba(226,27,45,.72);
 
   box-shadow:
-    0 0 25px rgba(226,27,45,.18),
-    0 25px 75px rgba(0,0,0,.72);
+    0 0 25px
+    rgba(226,27,45,.18),
+    0 25px 75px
+    rgba(0,0,0,.72);
 }
+
+
+/* =========================================================
+   SOCIAL PANEL INNER
+========================================================= */
 
 .social-brand-inner {
   display: flex;
@@ -948,20 +1397,185 @@ h2 span {
 
   gap: 26px;
 
+  min-height: 230px;
+
   padding: 26px;
 }
+
+
+/* =========================================================
+   LOGOS
+========================================================= */
 
 .social-logo-wrap {
   flex:
     0 0 150px;
+
+  display: grid;
+
+  place-items: center;
 }
 
 .social-logo-wrap img {
   width: 150px;
+
   height: 150px;
 
   object-fit: contain;
 }
+
+
+/* =========================================================
+   PARANORMAL LOGO
+   SLOW + SPOOKY
+========================================================= */
+
+.paranormal-logo-animation {
+  width: 150px;
+
+  height: 150px;
+
+  display: grid;
+
+  place-items: center;
+
+  transform-origin:
+    center center;
+
+  animation:
+    paranormal-spooky-spin
+    30s
+    ease-in-out
+    infinite;
+}
+
+.paranormal-logo-animation img {
+  width: 150px;
+
+  height: 150px;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0 0 8px
+      rgba(255,30,45,.18)
+    );
+
+  animation:
+    paranormal-glow
+    30s
+    ease-in-out
+    infinite;
+}
+
+
+/*
+   Slow directional movement.
+
+   It deliberately does NOT rotate continuously.
+   It turns, pauses, reverses and pauses.
+*/
+
+@keyframes paranormal-spooky-spin {
+
+  0% {
+    transform:
+      rotate(0deg);
+  }
+
+  12% {
+    transform:
+      rotate(18deg);
+  }
+
+  22% {
+    transform:
+      rotate(18deg);
+  }
+
+  34% {
+    transform:
+      rotate(-14deg);
+  }
+
+  45% {
+    transform:
+      rotate(-14deg);
+  }
+
+  58% {
+    transform:
+      rotate(11deg);
+  }
+
+  68% {
+    transform:
+      rotate(11deg);
+  }
+
+  80% {
+    transform:
+      rotate(-20deg);
+  }
+
+  90% {
+    transform:
+      rotate(-20deg);
+  }
+
+  100% {
+    transform:
+      rotate(0deg);
+  }
+
+}
+
+@keyframes paranormal-glow {
+
+  0%,
+  100% {
+    filter:
+      drop-shadow(
+        0 0 7px
+        rgba(255,30,45,.16)
+      )
+      brightness(1);
+  }
+
+  38% {
+    filter:
+      drop-shadow(
+        0 0 12px
+        rgba(255,30,45,.25)
+      )
+      brightness(1.02);
+  }
+
+  50% {
+    filter:
+      drop-shadow(
+        0 0 20px
+        rgba(255,30,45,.48)
+      )
+      brightness(1.08);
+  }
+
+  62% {
+    filter:
+      drop-shadow(
+        0 0 11px
+        rgba(255,30,45,.22)
+      )
+      brightness(1.01);
+  }
+
+}
+
+
+/* =========================================================
+   SOCIAL BRAND CONTENT
+========================================================= */
 
 .social-brand-content {
   min-width: 0;
@@ -978,17 +1592,21 @@ h2 span {
 }
 
 .blue-text {
-  color: var(--blue-light);
+  color:
+    var(--blue-light);
 
   text-shadow:
-    0 0 14px rgba(89,185,255,.28);
+    0 0 14px
+    rgba(89,185,255,.28);
 }
 
 .red-text {
-  color: var(--red-light);
+  color:
+    var(--red-light);
 
   text-shadow:
-    0 0 14px rgba(255,64,84,.28);
+    0 0 14px
+    rgba(255,64,84,.28);
 }
 
 .social-brand h3 {
@@ -996,7 +1614,7 @@ h2 span {
     4px 0 10px;
 
   font-size:
-    clamp(22px, 3vw, 32px);
+    clamp(22px,3vw,32px);
 }
 
 .social-brand p {
@@ -1009,7 +1627,8 @@ h2 span {
 
   letter-spacing: 1px;
 
-  color: var(--muted);
+  color:
+    var(--muted);
 }
 
 
@@ -1040,14 +1659,16 @@ h2 span {
     10px 15px;
 
   border:
-    1px solid rgba(255,255,255,.20);
+    1px solid
+    rgba(255,255,255,.20);
 
   border-radius: 10px;
 
   background:
     rgba(255,255,255,.035);
 
-  color: #fff;
+  color:
+    #fff;
 
   font-size: 12px;
 
@@ -1056,11 +1677,13 @@ h2 span {
   transition:
     transform .2s ease,
     background .2s ease,
-    border-color .2s ease;
+    border-color .2s ease,
+    box-shadow .2s ease;
 }
 
 .social-button:hover {
-  transform: translateY(-2px);
+  transform:
+    translateY(-2px);
 
   background:
     rgba(255,255,255,.09);
@@ -1074,7 +1697,8 @@ h2 span {
     var(--blue-light);
 
   box-shadow:
-    0 0 16px rgba(22,140,255,.18);
+    0 0 16px
+    rgba(22,140,255,.18);
 }
 
 .paranormal-button:hover {
@@ -1082,7 +1706,8 @@ h2 span {
     var(--red-light);
 
   box-shadow:
-    0 0 16px rgba(226,27,45,.18);
+    0 0 16px
+    rgba(226,27,45,.18);
 }
 
 .social-icon {
@@ -1091,10 +1716,10 @@ h2 span {
 
 
 /* =========================================================
-   GOLD MOVING SOCIAL BANNER
+   MODERN GOLD SOCIAL TICKER
 ========================================================= */
 
-.social-ticker {
+.gold-social-ticker {
   position: relative;
 
   width: 100%;
@@ -1102,33 +1727,36 @@ h2 span {
   overflow: hidden;
 
   margin:
-    48px 0 0;
+    44px 0 0;
 
   border-top:
-    2px solid var(--gold);
+    2px solid
+    var(--gold);
 
   border-bottom:
-    2px solid var(--gold);
+    2px solid
+    var(--gold);
 
   background:
-    rgba(0,0,0,.86);
+    rgba(0,0,0,.84);
 
   box-shadow:
-    0 0 8px rgba(245,180,0,.75),
-    0 0 25px rgba(245,180,0,.38),
-    inset 0 0 18px rgba(245,180,0,.08);
+    0 0 8px
+    rgba(245,180,0,.75),
+    0 0 25px
+    rgba(245,180,0,.38),
+    inset 0 0 18px
+    rgba(245,180,0,.08);
 }
 
-
-/* glowing top and bottom highlights */
-
-.social-ticker::before,
-.social-ticker::after {
+.gold-social-ticker::before,
+.gold-social-ticker::after {
   content: "";
 
   position: absolute;
 
   left: 0;
+
   right: 0;
 
   height: 1px;
@@ -1142,19 +1770,22 @@ h2 span {
     );
 
   box-shadow:
-    0 0 12px var(--gold);
+    0 0 12px
+    var(--gold);
 }
 
-.social-ticker::before {
+.gold-social-ticker::before {
   top: 3px;
 }
 
-.social-ticker::after {
+.gold-social-ticker::after {
   bottom: 3px;
 }
 
 
-/* scrolling track */
+/* =========================================================
+   ENDLESS TICKER TRACK
+========================================================= */
 
 .social-ticker-track {
   width: max-content;
@@ -1163,7 +1794,8 @@ h2 span {
 
   align-items: center;
 
-  will-change: transform;
+  will-change:
+    transform;
 
   animation:
     social-scroll
@@ -1171,13 +1803,6 @@ h2 span {
     linear
     infinite;
 }
-
-
-/*
-   IMPORTANT:
-   The repeated groups are deliberately identical.
-   -50% creates the seamless loop.
-*/
 
 .social-ticker-group {
   flex:
@@ -1189,14 +1814,15 @@ h2 span {
 
   justify-content: center;
 
-  gap: 18px;
+  gap: 16px;
 
   min-height: 66px;
 
   padding:
     15px 28px;
 
-  color: #fff;
+  color:
+    #fff;
 
   font-size: 18px;
 
@@ -1211,12 +1837,10 @@ h2 span {
   white-space: nowrap;
 
   text-shadow:
-    0 0 8px rgba(255,255,255,.25),
-    0 0 18px rgba(245,180,0,.22);
-}
-
-.social-ticker-group span {
-  color: #fff;
+    0 0 8px
+    rgba(255,255,255,.25),
+    0 0 18px
+    rgba(245,180,0,.22);
 }
 
 .social-ticker-group strong {
@@ -1226,76 +1850,53 @@ h2 span {
   font-weight: 950;
 
   text-shadow:
-    0 0 8px rgba(245,180,0,.90),
-    0 0 20px rgba(245,180,0,.60);
+    0 0 8px
+    rgba(245,180,0,.90),
+    0 0 20px
+    rgba(245,180,0,.60);
 }
 
-.social-ticker-group b {
+.ticker-star {
   color:
     var(--gold-light);
 
-  font-size: 24px;
+  font-size: 20px;
 
   text-shadow:
     var(--gold-glow);
 }
 
+.ticker-slash {
+  color:
+    rgba(255,255,255,.70);
+
+  font-size: 20px;
+
+  font-weight: 400;
+}
+
 @keyframes social-scroll {
 
   from {
-    transform: translateX(0);
+    transform:
+      translateX(0);
   }
 
   to {
-    transform: translateX(-50%);
+    transform:
+      translateX(-50%);
   }
 
 }
 
 
 /* =========================================================
-   SOCIAL FINAL
+   SOCIAL SECTION SPACE
 ========================================================= */
 
-.social-final {
-  margin-top: 52px;
-
-  text-align: center;
-}
-
-.social-final h3 {
-  margin-bottom: 16px;
-
-  font-size:
-    clamp(28px, 5vw, 50px);
-
-  line-height: 1;
-
-  font-weight: 950;
-}
-
-.social-final h3 span {
-  color: var(--gold-light);
-}
-
-.social-final p {
-  color: #fff;
-
-  font-size: 12px;
-
-  font-weight: 900;
-
-  letter-spacing: 1px;
-}
-
-.social-final-logo {
-  width: 120px;
-
-  margin:
-    22px auto 0;
-
-  filter:
-    drop-shadow(0 0 15px rgba(245,180,0,.20));
+.animated-social-section {
+  margin-bottom:
+    70px;
 }
 
 
@@ -1307,7 +1908,7 @@ h2 span {
   display: grid;
 
   grid-template-columns:
-    repeat(2, minmax(0, 1fr));
+    repeat(2,minmax(0,1fr));
 
   gap: 22px;
 }
@@ -1316,14 +1917,16 @@ h2 span {
   overflow: hidden;
 
   border:
-    1px solid rgba(89,185,255,.22);
+    1px solid
+    rgba(89,185,255,.22);
 
   border-radius: 20px;
 
   background:
     rgba(3,7,13,.86);
 
-  box-shadow: var(--shadow);
+  box-shadow:
+    var(--shadow);
 }
 
 .gallery-link {
@@ -1333,7 +1936,8 @@ h2 span {
 .gallery-link img {
   width: 100%;
 
-  aspect-ratio: 16 / 10;
+  aspect-ratio:
+    16 / 10;
 
   object-fit: cover;
 
@@ -1342,7 +1946,8 @@ h2 span {
 }
 
 .gallery-link:hover img {
-  transform: scale(1.025);
+  transform:
+    scale(1.025);
 }
 
 .gallery-caption {
@@ -1363,7 +1968,8 @@ h2 span {
 ========================================================= */
 
 .tiktok-box {
-  width: min(780px,100%);
+  width:
+    min(780px,100%);
 
   margin:
     28px auto 0;
@@ -1373,7 +1979,8 @@ h2 span {
   overflow: hidden;
 
   border:
-    1px solid var(--line);
+    1px solid
+    var(--line);
 
   border-radius: 18px;
 
@@ -1397,7 +2004,8 @@ h2 span {
   padding: 24px;
 
   border-left:
-    3px solid var(--gold);
+    3px solid
+    var(--gold);
 
   background:
     rgba(245,180,0,.035);
@@ -1415,7 +2023,8 @@ h2 span {
 body.skyline-page .eyebrow,
 body.skyline-page h1 span,
 body.skyline-page h2 span {
-  color: var(--blue-light);
+  color:
+    var(--blue-light);
 }
 
 body.skyline-page .button.primary {
@@ -1432,7 +2041,8 @@ body.skyline-page .button.primary {
     var(--blue-bright);
 
   box-shadow:
-    0 0 18px rgba(22,140,255,.18);
+    0 0 18px
+    rgba(22,140,255,.18);
 }
 
 body.skyline-page .about,
@@ -1450,7 +2060,8 @@ body.skyline-page .gallery-card {
 body.paranormal-page .eyebrow,
 body.paranormal-page h1 span,
 body.paranormal-page h2 span {
-  color: var(--red-light);
+  color:
+    var(--red-light);
 }
 
 body.paranormal-page .button.primary {
@@ -1467,7 +2078,8 @@ body.paranormal-page .button.primary {
     var(--red-bright);
 
   box-shadow:
-    0 0 18px rgba(226,27,45,.18);
+    0 0 18px
+    rgba(226,27,45,.18);
 }
 
 body.paranormal-page .about,
@@ -1478,7 +2090,7 @@ body.paranormal-page .panel {
 
 
 /* =========================================================
-   PARANORMAL CLEAN LOWER SECTIONS
+   PARANORMAL LOWER SECTIONS
 ========================================================= */
 
 body.paranormal-page
@@ -1511,11 +2123,13 @@ body.paranormal-page
 body.photography-page .eyebrow,
 body.photography-page h1 span,
 body.photography-page h2 span {
-  color: var(--green-light);
+  color:
+    var(--green-light);
 }
 
 body.photography-page .button.primary {
-  color: #071007;
+  color:
+    #071007;
 
   background:
     linear-gradient(
@@ -1528,7 +2142,8 @@ body.photography-page .button.primary {
     var(--green-bright);
 
   box-shadow:
-    0 0 18px rgba(99,184,93,.16);
+    0 0 18px
+    rgba(99,184,93,.16);
 }
 
 body.photography-page .about,
@@ -1543,7 +2158,8 @@ body.photography-page .panel {
 ========================================================= */
 
 .contact-hero-content {
-  width: min(1100px,92%);
+  width:
+    min(1100px,92%);
 
   grid-template-columns:
     210px
@@ -1556,6 +2172,7 @@ body.photography-page .panel {
 
 .contact-logo {
   width: 210px;
+
   height: 210px;
 
   object-fit: contain;
@@ -1578,7 +2195,8 @@ body.photography-page .panel {
 }
 
 .contact-box {
-  width: min(900px,100%);
+  width:
+    min(900px,100%);
 
   margin:
     0 auto;
@@ -1588,18 +2206,22 @@ body.photography-page .panel {
   text-align: center;
 
   border:
-    1px solid rgba(245,180,0,.22);
+    1px solid
+    rgba(245,180,0,.22);
 
   border-radius: 24px;
 
   background:
     rgba(3,6,10,.84);
 
-  box-shadow: var(--shadow);
+  box-shadow:
+    var(--shadow);
 
-  backdrop-filter: blur(10px);
+  backdrop-filter:
+    blur(10px);
 
-  -webkit-backdrop-filter: blur(10px);
+  -webkit-backdrop-filter:
+    blur(10px);
 }
 
 .contact-options {
@@ -1610,7 +2232,8 @@ body.photography-page .panel {
 
   gap: 22px;
 
-  width: min(900px,100%);
+  width:
+    min(900px,100%);
 
   margin:
     30px auto 0;
@@ -1628,14 +2251,16 @@ body.photography-page .panel {
   padding: 28px;
 
   border:
-    1px solid rgba(245,180,0,.20);
+    1px solid
+    rgba(245,180,0,.20);
 
   border-radius: 20px;
 
   background:
     rgba(3,6,10,.84);
 
-  box-shadow: var(--shadow);
+  box-shadow:
+    var(--shadow);
 
   text-align: center;
 }
@@ -1655,7 +2280,8 @@ body.photography-page .panel {
 }
 
 .contact-funny {
-  width: min(780px,100%);
+  width:
+    min(780px,100%);
 
   margin:
     42px auto 0;
@@ -1680,7 +2306,8 @@ footer {
   padding:
     34px 0;
 
-  color: var(--dim);
+  color:
+    var(--dim);
 
   font-size: 12px;
 
@@ -1689,7 +2316,8 @@ footer {
   text-align: center;
 
   border-top:
-    1px solid rgba(245,180,0,.16);
+    1px solid
+    rgba(245,180,0,.16);
 
   background:
     rgba(1,3,7,.90);
@@ -1697,9 +2325,11 @@ footer {
 
 footer::before,
 footer::after {
-  display: none !important;
+  display:
+    none !important;
 
-  content: none !important;
+  content:
+    none !important;
 }
 
 
@@ -1711,6 +2341,7 @@ footer::after {
   position: fixed;
 
   right: 22px;
+
   bottom: 22px;
 
   z-index: 1100;
@@ -1719,13 +2350,16 @@ footer::after {
 
   visibility: hidden;
 
-  transform: translateY(10px);
+  transform:
+    translateY(10px);
 
   min-width: 58px;
+
   min-height: 46px;
 
   border:
-    1px solid rgba(245,180,0,.40);
+    1px solid
+    rgba(245,180,0,.40);
 
   border-radius: 12px;
 
@@ -1743,7 +2377,8 @@ footer::after {
     visibility .2s ease;
 
   box-shadow:
-    0 0 15px rgba(245,180,0,.10);
+    0 0 15px
+    rgba(245,180,0,.10);
 }
 
 .back-top.show {
@@ -1751,7 +2386,8 @@ footer::after {
 
   visibility: visible;
 
-  transform: translateY(0);
+  transform:
+    translateY(0);
 }
 
 
@@ -1793,20 +2429,24 @@ footer::after {
   border-radius: 10px;
 
   box-shadow:
-    0 20px 80px rgba(0,0,0,.85);
+    0 20px 80px
+    rgba(0,0,0,.85);
 }
 
 .lightbox-close {
   position: absolute;
 
   top: 18px;
+
   right: 22px;
 
   width: 46px;
+
   height: 46px;
 
   border:
-    1px solid rgba(245,180,0,.40);
+    1px solid
+    rgba(245,180,0,.40);
 
   border-radius: 50%;
 
@@ -1838,22 +2478,14 @@ footer::after {
   }
 
   body {
-    /*
-       MOBILE MAIN BACKGROUND
-       KEEP THE ORIGINAL FILE
-    */
     background:
       linear-gradient(
         180deg,
-        rgba(0,0,0,.20),
-        rgba(0,0,0,.48)
+        rgba(0,0,0,.16),
+        rgba(0,0,0,.45)
       ),
       url("background.png.PNG")
-      center top / cover no-repeat scroll;
-  }
-
-  .container {
-    width: min(92%,680px);
+      center top / cover no-repeat;
   }
 
 
@@ -1873,6 +2505,7 @@ footer::after {
 
   .nav-brand img {
     width: 38px;
+
     height: 38px;
   }
 
@@ -1893,6 +2526,7 @@ footer::after {
       calc(100% + 8px);
 
     left: 4%;
+
     right: 4%;
 
     display: none;
@@ -1906,7 +2540,8 @@ footer::after {
     padding: 10px;
 
     border:
-      1px solid rgba(245,180,0,.28);
+      1px solid
+      rgba(245,180,0,.28);
 
     border-radius: 16px;
 
@@ -1932,6 +2567,7 @@ footer::after {
 
   .nav-links a.active::after {
     left: 22%;
+
     right: 22%;
   }
 
@@ -1990,6 +2626,7 @@ footer::after {
 
   .hero-logo {
     width: 150px;
+
     height: 150px;
 
     margin-bottom: 20px;
@@ -2010,6 +2647,7 @@ footer::after {
   .page-logo,
   .contact-logo {
     width: 150px;
+
     height: 150px;
 
     margin-inline: auto;
@@ -2081,7 +2719,6 @@ footer::after {
 
   .brand-grid,
   .gallery,
-  .social-brand-grid,
   .contact-options {
     grid-template-columns: 1fr;
 
@@ -2089,54 +2726,80 @@ footer::after {
   }
 
 
-  /* SOCIAL */
+  /* =====================================================
+     MOBILE SOCIAL HUB
+  ===================================================== */
 
   .social-hub {
-    padding:
-      62px 0;
+    margin:
+      24px 0 52px;
 
-    background:
-      rgba(0,0,0,.76);
+    padding:
+      48px 0 52px;
   }
 
   .social-hub-art {
-    background-position:
-      center center;
-
-    background-size:
-      auto 100%;
-
-    min-height: 100%;
+    background:
+      url("background.png.PNG")
+      center center / cover no-repeat;
   }
 
-  .social-intro {
-    width: 100%;
-
-    margin-bottom: 32px;
+  .social-hub-shade {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(0,0,0,.10),
+        rgba(0,0,0,.62)
+      );
   }
 
-  .social-main-title {
-    font-size:
-      clamp(32px,10vw,48px);
+  .social-blue-atmosphere {
+    left: -35%;
 
-    line-height: 1;
+    width: 85%;
 
-    letter-spacing: -1.5px;
+    height: 50%;
   }
 
-  .social-category-line {
-    gap:
-      8px 12px;
+  .social-red-atmosphere {
+    right: -35%;
 
-    font-size: 10px;
+    width: 85%;
 
-    line-height: 1.5;
+    height: 50%;
+  }
+
+  .social-lightning {
+    width: 65%;
+
+    height: 42%;
+  }
+
+  .haunted-house-lights {
+    right: 8%;
+
+    width: 44%;
+
+    height: 38%;
+  }
+
+
+  /* =====================================================
+     MOBILE SOCIAL CARDS
+  ===================================================== */
+
+  .social-brand-grid {
+    grid-template-columns: 1fr;
+
+    gap: 16px;
   }
 
   .social-brand-inner {
     flex-direction: column;
 
     gap: 18px;
+
+    min-height: 0;
 
     padding:
       24px 18px;
@@ -2148,9 +2811,21 @@ footer::after {
     flex-basis: auto;
   }
 
-  .social-logo-wrap img {
-    width: 145px;
-    height: 145px;
+  .social-logo-wrap img,
+  .paranormal-logo-animation,
+  .paranormal-logo-animation img {
+    width: 135px;
+
+    height: 135px;
+  }
+
+  .social-brand-content {
+    width: 100%;
+  }
+
+  .social-brand h3 {
+    font-size:
+      clamp(21px,7vw,29px);
   }
 
   .social-buttons {
@@ -2158,10 +2833,13 @@ footer::after {
   }
 
 
-  /* GOLD SCROLLING BANNER */
+  /* =====================================================
+     MOBILE TICKER
+  ===================================================== */
 
-  .social-ticker {
-    margin-top: 34px;
+  .gold-social-ticker {
+    margin-top:
+      30px;
   }
 
   .social-ticker-track {
@@ -2180,7 +2858,7 @@ footer::after {
       14px 18px;
 
     gap:
-      12px;
+      10px;
 
     font-size:
       12px;
@@ -2189,13 +2867,20 @@ footer::after {
       1.4px;
   }
 
-  .social-ticker-group b {
+  .ticker-star {
     font-size:
-      20px;
+      16px;
+  }
+
+  .ticker-slash {
+    font-size:
+      16px;
   }
 
 
-  /* CONTACT */
+  /* =====================================================
+     OTHER MOBILE CONTENT
+  ===================================================== */
 
   .contact-box {
     width: 100%;
@@ -2216,6 +2901,7 @@ footer::after {
     padding:
       28px 0;
   }
+
 }
 
 
@@ -2235,6 +2921,7 @@ footer::after {
 
   .nav-brand img {
     width: 34px;
+
     height: 34px;
   }
 
@@ -2256,12 +2943,14 @@ footer::after {
 
   .hero-logo {
     width: 135px;
+
     height: 135px;
   }
 
   .page-logo,
   .contact-logo {
     width: 135px;
+
     height: 135px;
   }
 
@@ -2316,6 +3005,15 @@ footer::after {
   .social-ticker-track {
     animation-duration:
       45s;
+  }
+
+  .social-lightning,
+  .social-blue-atmosphere,
+  .social-red-atmosphere,
+  .haunted-house-lights span,
+  .paranormal-logo-animation,
+  .paranormal-logo-animation img {
+    animation: none !important;
   }
 
   .button,
