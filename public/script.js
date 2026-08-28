@@ -3,14 +3,11 @@
 /* =========================================================
    NEWITT MEDIA
    MASTER JAVASCRIPT
-   NAVIGATION + LIGHTBOX + SITE CONTROLS
+   Navigation + Lightbox + Back To Top
+   Social Hub Animation
 ========================================================= */
 
 (() => {
-
-    /* =====================================================
-       ELEMENTS
-    ===================================================== */
 
     const menu =
         document.getElementById("main-menu");
@@ -74,10 +71,6 @@
     }
 
 
-    /* =====================================================
-       CLOSE MENU AFTER NAVIGATION
-    ===================================================== */
-
     if (menu) {
 
         menu.querySelectorAll("a")
@@ -86,9 +79,7 @@
                 link.addEventListener(
                     "click",
                     () => {
-
                         setMenu(false);
-
                     }
                 );
 
@@ -96,10 +87,6 @@
 
     }
 
-
-    /* =====================================================
-       CLOSE MENU WHEN CLICKING OUTSIDE
-    ===================================================== */
 
     document.addEventListener(
         "click",
@@ -117,29 +104,19 @@
                 !menu.contains(event.target) &&
                 !menuButton.contains(event.target)
             ) {
-
                 setMenu(false);
-
             }
 
         }
     );
 
 
-    /* =====================================================
-       CLOSE MENU WHEN RETURNING TO DESKTOP
-    ===================================================== */
-
     window.addEventListener(
         "resize",
         () => {
 
-            if (
-                window.innerWidth > 800
-            ) {
-
+            if (window.innerWidth > 800) {
                 setMenu(false);
-
             }
 
         }
@@ -161,39 +138,26 @@
                 const id =
                     link.getAttribute("href");
 
-
                 if (
                     !id ||
                     id === "#"
                 ) {
-
                     return;
-
                 }
-
 
                 const target =
                     document.querySelector(id);
 
-
                 if (!target) {
-
                     return;
-
                 }
-
 
                 event.preventDefault();
 
-
                 target.scrollIntoView({
-
                     behavior: "smooth",
-
                     block: "start"
-
                 });
-
 
                 setMenu(false);
 
@@ -213,9 +177,7 @@
             document.getElementById("lightbox");
 
         const image =
-            document.getElementById(
-                "lightboxImage"
-            );
+            document.getElementById("lightboxImage");
 
 
         if (lightbox) {
@@ -258,23 +220,17 @@
             event => {
 
                 const lightbox =
-                    document.getElementById(
-                        "lightbox"
-                    );
+                    document.getElementById("lightbox");
 
                 const image =
-                    document.getElementById(
-                        "lightboxImage"
-                    );
+                    document.getElementById("lightboxImage");
 
 
                 if (
                     !lightbox ||
                     !image
                 ) {
-
                     return;
-
                 }
 
 
@@ -282,22 +238,16 @@
 
 
                 const source =
-                    link.getAttribute(
-                        "href"
-                    );
+                    link.getAttribute("href");
 
 
                 if (!source) {
-
                     return;
-
                 }
 
 
                 const thumbnail =
-                    link.querySelector(
-                        "img"
-                    );
+                    link.querySelector("img");
 
 
                 image.src =
@@ -327,10 +277,6 @@
     });
 
 
-    /* =====================================================
-       LIGHTBOX CLOSE BUTTON
-    ===================================================== */
-
     const lightboxClose =
         document.getElementById(
             "lightboxClose"
@@ -347,10 +293,6 @@
     }
 
 
-    /* =====================================================
-       LIGHTBOX BACKGROUND CLOSE
-    ===================================================== */
-
     const lightbox =
         document.getElementById(
             "lightbox"
@@ -364,12 +306,9 @@
             event => {
 
                 if (
-                    event.target ===
-                    lightbox
+                    event.target === lightbox
                 ) {
-
                     closeLightbox();
-
                 }
 
             }
@@ -386,9 +325,7 @@
         "keydown",
         event => {
 
-            if (
-                event.key === "Escape"
-            ) {
+            if (event.key === "Escape") {
 
                 setMenu(false);
 
@@ -431,11 +368,8 @@
             () => {
 
                 window.scrollTo({
-
                     top: 0,
-
                     behavior: "smooth"
-
                 });
 
             }
@@ -443,6 +377,155 @@
 
 
         updateBackTop();
+
+    }
+
+
+    /* =====================================================
+       SOCIAL HUB
+       SLOW SPOOKY PARANORMAL LOGO MOVEMENT
+       CONTINUOUS LOOP
+    ===================================================== */
+
+    const paranormalLogo =
+        document.querySelector(
+            ".paranormal-social .social-logo-wrap img"
+        );
+
+
+    if (paranormalLogo) {
+
+        let rotation = 0;
+
+        let direction = 1;
+
+        let nextChange =
+            performance.now() + 2500;
+
+
+        const animateParanormalLogo =
+            now => {
+
+                /*
+                   Very slow movement.
+
+                   The direction changes occasionally,
+                   rather than constantly, creating the
+                   slow unpredictable spooky movement
+                   we agreed on.
+                */
+
+                if (now >= nextChange) {
+
+                    direction *= -1;
+
+                    nextChange =
+                        now +
+                        (2200 + Math.random() * 3000);
+
+                }
+
+
+                rotation +=
+                    direction *
+                    0.018;
+
+
+                if (rotation > 5) {
+                    rotation = 5;
+                    direction = -1;
+                }
+
+                if (rotation < -5) {
+                    rotation = -5;
+                    direction = 1;
+                }
+
+
+                paranormalLogo.style.transform =
+                    `rotate(${rotation}deg)`;
+
+
+                requestAnimationFrame(
+                    animateParanormalLogo
+                );
+
+            };
+
+
+        requestAnimationFrame(
+            animateParanormalLogo
+        );
+
+    }
+
+
+    /* =====================================================
+       SOCIAL HUB
+       SUBTLE AMBIENT LIGHT EFFECT
+    ===================================================== */
+
+    const socialHub =
+        document.querySelector(
+            ".social-hub"
+        );
+
+
+    if (socialHub) {
+
+        let pulseTimer = null;
+
+
+        const ambientPulse =
+            () => {
+
+                socialHub.classList.add(
+                    "ambient-pulse"
+                );
+
+
+                window.setTimeout(
+                    () => {
+
+                        socialHub.classList.remove(
+                            "ambient-pulse"
+                        );
+
+                    },
+                    650
+                );
+
+
+                pulseTimer =
+                    window.setTimeout(
+                        ambientPulse,
+                        7000 +
+                        Math.random() * 9000
+                    );
+
+            };
+
+
+        pulseTimer =
+            window.setTimeout(
+                ambientPulse,
+                5000 +
+                Math.random() * 5000
+            );
+
+
+        window.addEventListener(
+            "pagehide",
+            () => {
+
+                if (pulseTimer) {
+                    window.clearTimeout(
+                        pulseTimer
+                    );
+                }
+
+            }
+        );
 
     }
 
@@ -492,39 +575,6 @@
 
         }
     );
-
-
-    /* =====================================================
-       ANIMATED SOCIAL SECTION
-       
-       The visual animation itself is handled entirely
-       by CSS. No JavaScript timer is required.
-
-       This means:
-       - Gold ticker loops continuously
-       - Lightning flashes automatically
-       - House lights pulse automatically
-       - Blue atmosphere moves automatically
-       - Red atmosphere moves automatically
-       - Paranormal logo slowly turns/reverses
-       
-       Keeping these animations in CSS gives better
-       performance, particularly on mobile devices.
-    ===================================================== */
-
-    const animatedSocial =
-        document.querySelector(
-            ".animated-social-section"
-        );
-
-
-    if (animatedSocial) {
-
-        animatedSocial.classList.add(
-            "animations-ready"
-        );
-
-    }
 
 
 })();
