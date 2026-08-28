@@ -211,6 +211,10 @@
 <main>
 
 
+<!-- =====================================================
+     HERO
+===================================================== -->
+
 <section class="hero">
 
     <div class="hero-card">
@@ -248,6 +252,10 @@
 
 </section>
 
+
+<!-- =====================================================
+     THREE BRANDS
+===================================================== -->
 
 <section>
 
@@ -359,6 +367,7 @@
 
             </article>
 
+
         </div>
 
     </div>
@@ -368,13 +377,24 @@
 
 <!-- =====================================================
      NEWITT SOCIAL MEDIA SECTION
-     ===================================================== -->
+
+     This is deliberately a self-contained section.
+
+     The artwork sits behind the content.
+     Animation layers are added by CSS / JavaScript.
+
+     No large NEWITT MEDIA heading is used here.
+     No extra paragraph clutter is used here.
+===================================================== -->
 
 <section
     class="social-hub"
     id="social"
+    aria-label="NEWITT Media social media"
 >
 
+
+    <!-- MASTER BACKGROUND ARTWORK -->
 
     <div
         class="social-hub-art"
@@ -382,8 +402,35 @@
     ></div>
 
 
+    <!-- DARKENING LAYER -->
+
     <div
         class="social-hub-shade"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =================================================
+         ANIMATION LAYERS
+         These are intentionally empty.
+         CSS / JavaScript will animate them later.
+    ================================================== -->
+
+
+    <div
+        class="social-effect social-lightning"
+        aria-hidden="true"
+    ></div>
+
+
+    <div
+        class="social-effect social-house-glow"
+        aria-hidden="true"
+    ></div>
+
+
+    <div
+        class="social-effect social-paranormal-glow"
         aria-hidden="true"
     ></div>
 
@@ -391,12 +438,16 @@
     <div class="container social-hub-content">
 
 
-        <!-- SKYLINE + PARANORMAL SOCIAL CARDS -->
+        <!-- =================================================
+             TWO BRAND PANELS
+        ================================================== -->
 
         <div class="social-brand-grid">
 
 
-            <!-- SKYLINE -->
+            <!-- =============================================
+                 SKYLINE
+            ============================================== -->
 
             <article class="social-brand skyline-social">
 
@@ -423,24 +474,22 @@
                             SKYLINE MEDIA
                         </h3>
 
-                        <p>
-                            DRONE VIDEO
-                            <span>•</span>
-                            AERIAL CONTENT
-                            <span>•</span>
-                            EPIC VIEWS
-                        </p>
-
 
                         <div class="social-buttons">
+
 
                             <a
                                 href="https://www.tiktok.com/@newittskylinemedia"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="social-button skyline-button"
+                                aria-label="NEWITT Skyline Media TikTok"
                             >
-                                <span class="social-icon">
+
+                                <span
+                                    class="social-icon"
+                                    aria-hidden="true"
+                                >
                                     ♪
                                 </span>
 
@@ -454,14 +503,20 @@
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="social-button skyline-button"
+                                aria-label="NEWITT Skyline Media YouTube"
                             >
-                                <span class="social-icon">
+
+                                <span
+                                    class="social-icon"
+                                    aria-hidden="true"
+                                >
                                     ▶
                                 </span>
 
                                 YouTube
 
                             </a>
+
 
                         </div>
 
@@ -472,14 +527,16 @@
             </article>
 
 
-            <!-- PARANORMAL -->
+            <!-- =============================================
+                 PARANORMAL
+            ============================================== -->
 
             <article class="social-brand paranormal-social">
 
                 <div class="social-brand-inner">
 
 
-                    <div class="social-logo-wrap">
+                    <div class="social-logo-wrap paranormal-logo-animation">
 
                         <img
                             src="paranormal-logo.png.png"
@@ -499,24 +556,22 @@
                             PARANORMAL ADVENTURES
                         </h3>
 
-                        <p>
-                            INVESTIGATIONS
-                            <span>•</span>
-                            HAUNTINGS
-                            <span>•</span>
-                            REAL EXPERIENCES
-                        </p>
-
 
                         <div class="social-buttons">
+
 
                             <a
                                 href="https://www.tiktok.com/@nw13ttt"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="social-button paranormal-button"
+                                aria-label="NEWITT's Paranormal Adventures TikTok"
                             >
-                                <span class="social-icon">
+
+                                <span
+                                    class="social-icon"
+                                    aria-hidden="true"
+                                >
                                     ♪
                                 </span>
 
@@ -530,8 +585,13 @@
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="social-button paranormal-button"
+                                aria-label="NEWITT's Paranormal Adventures Instagram"
                             >
-                                <span class="social-icon">
+
+                                <span
+                                    class="social-icon"
+                                    aria-hidden="true"
+                                >
                                     ◎
                                 </span>
 
@@ -545,8 +605,13 @@
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="social-button paranormal-button"
+                                aria-label="NEWITT's Paranormal Adventures YouTube"
                             >
-                                <span class="social-icon">
+
+                                <span
+                                    class="social-icon"
+                                    aria-hidden="true"
+                                >
                                     ▶
                                 </span>
 
@@ -560,14 +625,20 @@
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="social-button paranormal-button"
+                                aria-label="NEWITT's Paranormal Adventures Facebook"
                             >
-                                <span class="social-icon">
+
+                                <span
+                                    class="social-icon"
+                                    aria-hidden="true"
+                                >
                                     f
                                 </span>
 
                                 Facebook
 
                             </a>
+
 
                         </div>
 
@@ -582,8 +653,11 @@
 
 
         <!-- =================================================
-             GOLD CONTINUOUS SOCIAL MEDIA TICKER
-             ================================================= -->
+             GOLD FOLLOW US TICKER
+
+             This is intentionally endless.
+             JavaScript/CSS will keep it running continuously.
+        ================================================== -->
 
         <div
             class="social-ticker"
@@ -595,12 +669,12 @@
 
                 <div class="social-ticker-group">
 
-                    <span>
-                        FOLLOW US
-                    </span>
+                    <b>
+                        ✦
+                    </b>
 
                     <strong>
-                        ON SOCIAL MEDIA
+                        FOLLOW US ON SOCIAL MEDIA
                     </strong>
 
                     <b>
@@ -615,12 +689,12 @@
                     aria-hidden="true"
                 >
 
-                    <span>
-                        FOLLOW US
-                    </span>
+                    <b>
+                        ✦
+                    </b>
 
                     <strong>
-                        ON SOCIAL MEDIA
+                        FOLLOW US ON SOCIAL MEDIA
                     </strong>
 
                     <b>
@@ -635,12 +709,12 @@
                     aria-hidden="true"
                 >
 
-                    <span>
-                        FOLLOW US
-                    </span>
+                    <b>
+                        ✦
+                    </b>
 
                     <strong>
-                        ON SOCIAL MEDIA
+                        FOLLOW US ON SOCIAL MEDIA
                     </strong>
 
                     <b>
@@ -655,12 +729,12 @@
                     aria-hidden="true"
                 >
 
-                    <span>
-                        FOLLOW US
-                    </span>
+                    <b>
+                        ✦
+                    </b>
 
                     <strong>
-                        ON SOCIAL MEDIA
+                        FOLLOW US ON SOCIAL MEDIA
                     </strong>
 
                     <b>
@@ -680,6 +754,10 @@
 </section>
 
 
+<!-- =====================================================
+     LOWER HOME CONTENT
+===================================================== -->
+
 <section>
 
     <div class="container">
@@ -692,7 +770,7 @@
 
             <h2>
                 NEWITT Media is
-                <span>arriving soon.</span>
+                <span>growing.</span>
             </h2>
 
             <p>
@@ -717,6 +795,10 @@
 </main>
 
 
+<!-- =====================================================
+     BACK TO TOP
+===================================================== -->
+
 <button
     id="backTop"
     class="back-top"
@@ -727,12 +809,18 @@
 </button>
 
 
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer>
 
     <div class="container">
 
         NEWITT Media
+
         <br>
+
         Drone work. Photography. Paranormal adventures.
 
     </div>
