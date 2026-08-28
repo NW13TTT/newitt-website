@@ -9,6 +9,10 @@
 
 (() => {
 
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
+
     const menu =
         document.getElementById("main-menu");
 
@@ -37,6 +41,13 @@
         menuButton.setAttribute(
             "aria-expanded",
             String(open)
+        );
+
+        menuButton.setAttribute(
+            "aria-label",
+            open
+                ? "Close navigation menu"
+                : "Open navigation menu"
         );
 
     }
@@ -79,7 +90,9 @@
                 link.addEventListener(
                     "click",
                     () => {
+
                         setMenu(false);
+
                     }
                 );
 
@@ -104,7 +117,9 @@
                 !menu.contains(event.target) &&
                 !menuButton.contains(event.target)
             ) {
+
                 setMenu(false);
+
             }
 
         }
@@ -116,7 +131,9 @@
         () => {
 
             if (window.innerWidth > 800) {
+
                 setMenu(false);
+
             }
 
         }
@@ -155,8 +172,14 @@
                 event.preventDefault();
 
                 target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
+                    behavior:
+                        window.matchMedia(
+                            "(prefers-reduced-motion: reduce)"
+                        ).matches
+                            ? "auto"
+                            : "smooth",
+                    block:
+                        "start"
                 });
 
                 setMenu(false);
@@ -174,10 +197,14 @@
     function closeLightbox() {
 
         const lightbox =
-            document.getElementById("lightbox");
+            document.getElementById(
+                "lightbox"
+            );
 
         const image =
-            document.getElementById("lightboxImage");
+            document.getElementById(
+                "lightboxImage"
+            );
 
 
         if (lightbox) {
@@ -220,10 +247,14 @@
             event => {
 
                 const lightbox =
-                    document.getElementById("lightbox");
+                    document.getElementById(
+                        "lightbox"
+                    );
 
                 const image =
-                    document.getElementById("lightboxImage");
+                    document.getElementById(
+                        "lightboxImage"
+                    );
 
 
                 if (
@@ -234,11 +265,10 @@
                 }
 
 
-                event.preventDefault();
-
-
                 const source =
-                    link.getAttribute("href");
+                    link.getAttribute(
+                        "href"
+                    );
 
 
                 if (!source) {
@@ -246,8 +276,13 @@
                 }
 
 
+                event.preventDefault();
+
+
                 const thumbnail =
-                    link.querySelector("img");
+                    link.querySelector(
+                        "img"
+                    );
 
 
                 image.src =
@@ -308,7 +343,9 @@
                 if (
                     event.target === lightbox
                 ) {
+
                     closeLightbox();
+
                 }
 
             }
@@ -368,8 +405,17 @@
             () => {
 
                 window.scrollTo({
-                    top: 0,
-                    behavior: "smooth"
+
+                    top:
+                        0,
+
+                    behavior:
+                        window.matchMedia(
+                            "(prefers-reduced-motion: reduce)"
+                        ).matches
+                            ? "auto"
+                            : "smooth"
+
                 });
 
             }
@@ -393,14 +439,26 @@
         );
 
 
-    if (paranormalLogo) {
+    const reducedMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
 
-        let rotation = 0;
 
-        let direction = 1;
+    if (
+        paranormalLogo &&
+        !reducedMotion
+    ) {
+
+        let rotation =
+            0;
+
+        let direction =
+            1;
 
         let nextChange =
-            performance.now() + 2500;
+            performance.now() +
+            2500;
 
 
         const animateParanormalLogo =
@@ -411,17 +469,23 @@
 
                    The direction changes occasionally,
                    rather than constantly, creating the
-                   slow unpredictable spooky movement
-                   we agreed on.
+                   slow unpredictable spooky movement.
                 */
 
-                if (now >= nextChange) {
+                if (
+                    now >=
+                    nextChange
+                ) {
 
-                    direction *= -1;
+                    direction *=
+                        -1;
 
                     nextChange =
                         now +
-                        (2200 + Math.random() * 3000);
+                        (
+                            2200 +
+                            Math.random() * 3000
+                        );
 
                 }
 
@@ -431,14 +495,29 @@
                     0.018;
 
 
-                if (rotation > 5) {
-                    rotation = 5;
-                    direction = -1;
+                if (
+                    rotation > 5
+                ) {
+
+                    rotation =
+                        5;
+
+                    direction =
+                        -1;
+
                 }
 
-                if (rotation < -5) {
-                    rotation = -5;
-                    direction = 1;
+
+                if (
+                    rotation < -5
+                ) {
+
+                    rotation =
+                        -5;
+
+                    direction =
+                        1;
+
                 }
 
 
@@ -471,9 +550,13 @@
         );
 
 
-    if (socialHub) {
+    if (
+        socialHub &&
+        !reducedMotion
+    ) {
 
-        let pulseTimer = null;
+        let pulseTimer =
+            null;
 
 
         const ambientPulse =
@@ -519,9 +602,11 @@
             () => {
 
                 if (pulseTimer) {
+
                     window.clearTimeout(
                         pulseTimer
                     );
+
                 }
 
             }
@@ -542,6 +627,11 @@
             image.decoding =
                 "async";
 
+
+            /*
+               Do not override an intentional loading
+               attribute already written into the HTML.
+            */
 
             if (index === 0) {
 
@@ -566,10 +656,43 @@
 
                 }
 
-                image.setAttribute(
-                    "fetchpriority",
-                    "low"
-                );
+                /*
+                   Gallery images that are deliberately
+                   marked eager remain eager.
+                */
+
+                if (
+                    image.loading !==
+                    "eager"
+                ) {
+
+                    image.setAttribute(
+                        "fetchpriority",
+                        "low"
+                    );
+
+                }
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       CLOSE MOBILE MENU WHEN ESCAPING
+    ===================================================== */
+
+    window.addEventListener(
+        "orientationchange",
+        () => {
+
+            if (
+                window.innerWidth >
+                800
+            ) {
+
+                setMenu(false);
 
             }
 
