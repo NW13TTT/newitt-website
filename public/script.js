@@ -3,6 +3,7 @@
    MASTER JAVASCRIPT
    FINAL PROFESSIONAL BUILD
    VERSION: 29 AUGUST 2026
+   CINEMATIC INTRO TIMING UPDATE
 
    FUNCTIONS:
    1. First-visit cinematic intro
@@ -43,35 +44,46 @@
     /* =====================================================
        FIRST-VISIT CINEMATIC INTRO
 
-       The intro appears only the first time a visitor
-       arrives at NEWITT Media.
+       The intro appears only on the first visit.
 
-       Once completed, a localStorage flag is saved.
+       The sequence is deliberately longer so the branding
+       has time to appear properly before the intro closes.
 
-       If storage is unavailable, the intro still works
-       normally for that visit.
+       Timing:
+       0.00s  Intro begins
+       0.35s  Logo begins
+       1.65s  NEWITT MEDIA appears
+       2.65s  Gold line appears
+       3.05s  Tagline appears
+       7.30s  Intro closes
     ===================================================== */
 
     function initFirstVisitIntro() {
 
-        const intro = document.getElementById("site-intro");
+        const intro =
+            document.getElementById("site-intro");
+
 
         if (!intro) {
             return;
         }
 
 
-        const INTRO_STORAGE_KEY = "newittMediaIntroSeen";
+        const INTRO_STORAGE_KEY =
+            "newittMediaIntroSeen";
 
-        let introAlreadySeen = false;
+
+        const INTRO_DURATION =
+            7300;
 
 
-        /*
-         * Safely check localStorage.
-         *
-         * Some browsers / privacy settings can prevent
-         * storage access, so this must never break the site.
-         */
+        let introAlreadySeen =
+            false;
+
+
+        /* -------------------------------------------------
+           SAFELY CHECK LOCAL STORAGE
+        ------------------------------------------------- */
 
         try {
 
@@ -87,14 +99,15 @@
         }
 
 
-        /*
-         * Returning visitor:
-         * remove the intro immediately.
-         */
+        /* -------------------------------------------------
+           RETURNING VISITOR
+        ------------------------------------------------- */
 
         if (introAlreadySeen) {
 
-            intro.classList.add("intro-hidden");
+            intro.classList.add(
+                "intro-hidden"
+            );
 
             intro.setAttribute(
                 "aria-hidden",
@@ -109,20 +122,18 @@
         }
 
 
-        /*
-         * First visit:
-         * keep the intro visible.
-         */
+        /* -------------------------------------------------
+           FIRST VISIT
+        ------------------------------------------------- */
 
         document.body.classList.add(
             "intro-active"
         );
 
 
-        /*
-         * Prevent scrolling while the cinematic intro
-         * is playing.
-         */
+        /* -------------------------------------------------
+           PREVENT PAGE SCROLLING
+        ------------------------------------------------- */
 
         document.documentElement.style.overflow =
             "hidden";
@@ -131,12 +142,14 @@
             "hidden";
 
 
-        /*
-         * Mark the intro as seen immediately.
+        /* -------------------------------------------------
+           MARK INTRO AS SEEN
 
-         * This means that if the visitor refreshes after
-         * seeing the intro, it will not replay.
-         */
+           This happens immediately.
+
+           Refreshing the page will therefore not replay
+           the cinematic intro.
+        ------------------------------------------------- */
 
         try {
 
@@ -149,60 +162,72 @@
 
             /*
              * Storage unavailable.
-             * Nothing else needs to happen.
+             * Continue normally.
              */
 
         }
 
 
-        /*
-         * Give the animation enough time to establish
-         * the NEWITT Media brand before disappearing.
-         */
+        /* -------------------------------------------------
+           AUTOMATIC CLOSE
 
-        const INTRO_DURATION = 5200;
+           IMPORTANT:
+           This now matches the 7.3 second CSS sequence.
+        ------------------------------------------------- */
 
-
-        window.setTimeout(function () {
-
-            closeIntro();
-
-        }, INTRO_DURATION);
-
-
-        /*
-         * Allow the user to skip the intro by tapping it.
-         * Useful on mobile.
-         */
-
-        intro.addEventListener(
-            "click",
-            closeIntro
-        );
-
-
-        /*
-         * Also allow Escape to skip it.
-         */
-
-        document.addEventListener(
-            "keydown",
-            function handleIntroEscape(event) {
-
-                if (event.key === "Escape") {
+        const introTimer =
+            window.setTimeout(
+                function () {
 
                     closeIntro();
 
-                    document.removeEventListener(
-                        "keydown",
-                        handleIntroEscape
-                    );
+                },
+                INTRO_DURATION
+            );
 
-                }
+
+        /* -------------------------------------------------
+           TAP TO SKIP
+
+           The visitor can still skip the intro if desired.
+        ------------------------------------------------- */
+
+        intro.addEventListener(
+            "click",
+            function () {
+
+                closeIntro();
 
             }
         );
 
+
+        /* -------------------------------------------------
+           ESCAPE TO SKIP
+        ------------------------------------------------- */
+
+        function handleIntroEscape(event) {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                closeIntro();
+
+            }
+
+        }
+
+
+        document.addEventListener(
+            "keydown",
+            handleIntroEscape
+        );
+
+
+        /* -------------------------------------------------
+           CLOSE INTRO
+        ------------------------------------------------- */
 
         function closeIntro() {
 
@@ -211,8 +236,20 @@
                     "intro-hidden"
                 )
             ) {
+
                 return;
+
             }
+
+
+            /*
+             * Stop the automatic timer if the visitor
+             * manually skips the intro.
+             */
+
+            window.clearTimeout(
+                introTimer
+            );
 
 
             intro.classList.add(
@@ -231,23 +268,32 @@
             );
 
 
+            document.removeEventListener(
+                "keydown",
+                handleIntroEscape
+            );
+
+
             /*
-             * Restore normal scrolling after the
-             * fade-out has completed.
+             * Wait for the CSS fade-out to finish before
+             * removing the intro from the display.
              */
 
-            window.setTimeout(function () {
+            window.setTimeout(
+                function () {
 
-                document.documentElement.style.overflow =
-                    "";
+                    document.documentElement.style.overflow =
+                        "";
 
-                document.body.style.overflow =
-                    "";
+                    document.body.style.overflow =
+                        "";
 
-                intro.style.display =
-                    "none";
+                    intro.style.display =
+                        "none";
 
-            }, 950);
+                },
+                850
+            );
 
         }
 
@@ -275,7 +321,9 @@
             !menuToggle ||
             !navLinks
         ) {
+
             return;
+
         }
 
 
@@ -294,12 +342,10 @@
                     !isOpen
                 );
 
-
                 navLinks.classList.toggle(
                     "active",
                     !isOpen
                 );
-
 
                 navLinks.classList.toggle(
                     "menu-open",
@@ -324,10 +370,9 @@
         );
 
 
-        /*
-         * Close mobile menu when a navigation link
-         * is selected.
-         */
+        /* -------------------------------------------------
+           CLOSE MENU WHEN LINK SELECTED
+        ------------------------------------------------- */
 
         const links =
             navLinks.querySelectorAll(
@@ -335,39 +380,41 @@
             );
 
 
-        links.forEach(function (link) {
+        links.forEach(
+            function (link) {
 
-            link.addEventListener(
-                "click",
-                function () {
+                link.addEventListener(
+                    "click",
+                    function () {
 
-                    navLinks.classList.remove(
-                        "open",
-                        "active",
-                        "menu-open"
-                    );
-
-
-                    menuToggle.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
+                        navLinks.classList.remove(
+                            "open",
+                            "active",
+                            "menu-open"
+                        );
 
 
-                    menuToggle.setAttribute(
-                        "aria-label",
-                        "Open navigation menu"
-                    );
-
-                }
-            );
-
-        });
+                        menuToggle.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
 
 
-        /*
-         * Close the menu if the visitor taps outside it.
-         */
+                        menuToggle.setAttribute(
+                            "aria-label",
+                            "Open navigation menu"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* -------------------------------------------------
+           CLOSE WHEN CLICKING OUTSIDE
+        ------------------------------------------------- */
 
         document.addEventListener(
             "click",
@@ -406,10 +453,9 @@
         );
 
 
-        /*
-         * Close the mobile menu when resizing back
-         * to desktop.
-         */
+        /* -------------------------------------------------
+           CLOSE WHEN RETURNING TO DESKTOP
+        ------------------------------------------------- */
 
         window.addEventListener(
             "resize",
@@ -458,15 +504,16 @@
 
 
         if (!backToTop) {
+
             return;
+
         }
 
 
         function updateBackToTop() {
 
             if (
-                window.scrollY >
-                450
+                window.scrollY > 450
             ) {
 
                 backToTop.classList.add(
@@ -526,73 +573,72 @@
             );
 
 
-        anchors.forEach(function (anchor) {
+        anchors.forEach(
+            function (anchor) {
 
-            anchor.addEventListener(
-                "click",
-                function (event) {
+                anchor.addEventListener(
+                    "click",
+                    function (event) {
 
-                    const targetId =
-                        anchor.getAttribute(
-                            "href"
-                        );
+                        const targetId =
+                            anchor.getAttribute(
+                                "href"
+                            );
 
 
-                    if (
-                        !targetId ||
-                        targetId === "#"
-                    ) {
-                        return;
+                        if (
+                            !targetId ||
+                            targetId === "#"
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        const target =
+                            document.querySelector(
+                                targetId
+                            );
+
+
+                        if (!target) {
+
+                            return;
+
+                        }
+
+
+                        event.preventDefault();
+
+
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+
+
+                        try {
+
+                            window.history.replaceState(
+                                null,
+                                "",
+                                targetId
+                            );
+
+                        } catch (error) {
+
+                            /*
+                             * Ignore history errors.
+                             */
+
+                        }
+
                     }
+                );
 
-
-                    const target =
-                        document.querySelector(
-                            targetId
-                        );
-
-
-                    if (!target) {
-                        return;
-                    }
-
-
-                    event.preventDefault();
-
-
-                    target.scrollIntoView({
-                        behavior:
-                            "smooth",
-                        block:
-                            "start"
-                    });
-
-
-                    /*
-                     * Update URL without causing
-                     * another page jump.
-                     */
-
-                    try {
-
-                        window.history.replaceState(
-                            null,
-                            "",
-                            targetId
-                        );
-
-                    } catch (error) {
-
-                        /*
-                         * Ignore history errors.
-                         */
-
-                    }
-
-                }
-            );
-
-        });
+            }
+        );
 
     }
 
@@ -633,24 +679,12 @@
             );
 
 
-        /*
-         * Some pages may not contain a lightbox.
-         * That is completely fine.
-         */
-
         if (!lightbox) {
+
             return;
+
         }
 
-
-        /*
-         * Gallery images.
-
-         * Supports:
-         * .gallery-item
-         * .gallery-item img
-         * [data-lightbox]
-         */
 
         const galleryItems =
             document.querySelectorAll(
@@ -658,85 +692,89 @@
             );
 
 
-        galleryItems.forEach(function (item) {
+        galleryItems.forEach(
+            function (item) {
 
-            item.addEventListener(
-                "click",
-                function (event) {
+                item.addEventListener(
+                    "click",
+                    function (event) {
 
-                    event.preventDefault();
-
-
-                    let source =
-                        item.getAttribute(
-                            "data-lightbox"
-                        );
+                        event.preventDefault();
 
 
-                    if (!source) {
+                        let source =
+                            item.getAttribute(
+                                "data-lightbox"
+                            );
 
-                        const image =
+
+                        if (!source) {
+
+                            const image =
+                                item.querySelector(
+                                    "img"
+                                );
+
+
+                            if (image) {
+
+                                source =
+                                    image.getAttribute(
+                                        "src"
+                                    );
+
+                            }
+
+                        }
+
+
+                        if (
+                            !source ||
+                            !lightboxImage
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        lightboxImage.src =
+                            source;
+
+
+                        const imageAlt =
                             item.querySelector(
                                 "img"
                             );
 
 
-                        if (image) {
+                        if (imageAlt) {
 
-                            source =
-                                image.getAttribute(
-                                    "src"
-                                );
+                            lightboxImage.alt =
+                                imageAlt.alt || "";
 
                         }
 
-                    }
 
-
-                    if (
-                        !source ||
-                        !lightboxImage
-                    ) {
-                        return;
-                    }
-
-
-                    lightboxImage.src =
-                        source;
-
-
-                    const imageAlt =
-                        item.querySelector(
-                            "img"
+                        lightbox.classList.add(
+                            "active"
                         );
 
 
-                    if (imageAlt) {
+                        lightbox.setAttribute(
+                            "aria-hidden",
+                            "false"
+                        );
 
-                        lightboxImage.alt =
-                            imageAlt.alt || "";
+
+                        document.body.style.overflow =
+                            "hidden";
 
                     }
+                );
 
-
-                    lightbox.classList.add(
-                        "active"
-                    );
-
-
-                    lightbox.setAttribute(
-                        "aria-hidden",
-                        "false"
-                    );
-
-
-                    document.body.style.overflow =
-                        "hidden";
-
-                }
-            );
-
-        });
+            }
+        );
 
 
         function closeLightbox() {
@@ -757,11 +795,6 @@
 
 
             if (lightboxImage) {
-
-                /*
-                 * Clear the image after closing.
-                 * This prevents unnecessary memory use.
-                 */
 
                 window.setTimeout(
                     function () {
@@ -803,11 +836,6 @@
         }
 
 
-        /*
-         * Clicking the dark background closes
-         * the lightbox.
-         */
-
         lightbox.addEventListener(
             "click",
             function (event) {
@@ -824,10 +852,6 @@
             }
         );
 
-
-        /*
-         * Escape closes the lightbox.
-         */
 
         document.addEventListener(
             "keydown",
@@ -862,59 +886,55 @@
             );
 
 
-        links.forEach(function (link) {
+        links.forEach(
+            function (link) {
 
-            const url =
-                link.getAttribute(
-                    "href"
-                );
-
-
-            if (!url) {
-                return;
-            }
-
-
-            /*
-             * Keep NEWITT Media internal links in the
-             * current window.
-
-             * External social/media links open safely
-             * in a new tab.
-             */
-
-            try {
-
-                const linkUrl =
-                    new URL(
-                        url,
-                        window.location.href
+                const url =
+                    link.getAttribute(
+                        "href"
                     );
 
 
-                if (
-                    linkUrl.hostname !==
-                    window.location.hostname
-                ) {
+                if (!url) {
 
-                    link.target =
-                        "_blank";
-
-
-                    link.rel =
-                        "noopener noreferrer";
+                    return;
 
                 }
 
-            } catch (error) {
 
-                /*
-                 * Ignore malformed URLs.
-                 */
+                try {
+
+                    const linkUrl =
+                        new URL(
+                            url,
+                            window.location.href
+                        );
+
+
+                    if (
+                        linkUrl.hostname !==
+                        window.location.hostname
+                    ) {
+
+                        link.target =
+                            "_blank";
+
+
+                        link.rel =
+                            "noopener noreferrer";
+
+                    }
+
+                } catch (error) {
+
+                    /*
+                     * Ignore malformed URLs.
+                     */
+
+                }
 
             }
-
-        });
+        );
 
     }
 
