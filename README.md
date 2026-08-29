@@ -6,9 +6,9 @@
 
 **https://www.newittmedia.co.uk/**
 
-Official website for **NEWITT Media**.
+The official online home of **NEWITT Media**.
 
-NEWITT Media brings together three connected areas of creative work:
+NEWITT Media brings together three connected creative brands:
 
 - **NEWITT Skyline Media**
 - **NEWITT's Paranormal Adventures**
@@ -16,29 +16,19 @@ NEWITT Media brings together three connected areas of creative work:
 
 ---
 
-# NEWITT Media
+# ✨ NEWITT Media
 
-## From Above. After Dark. And Everything In Between.
+### From Above. After Dark. And Everything In Between.
 
-NEWITT Media is the central home for the NEWITT brand, bringing together aerial media, photography and paranormal adventures under one distinctive identity.
+NEWITT Media is a creative media brand bringing aerial media, photography and paranormal adventures together under one central identity.
 
-The website is designed to be:
-
-- Professional
-- Modern
-- Mobile friendly
-- Responsive
-- Fast loading
-- Easy to navigate
-- Search-engine friendly
-- Accessible
-- Ready for future expansion
+The website has been designed to provide a professional, modern and memorable experience across desktop, tablet and mobile devices.
 
 ---
 
-# Official Website Addresses
+# 🌐 Official Domains
 
-The NEWITT Media website is available through both domain versions:
+The website is available through both official domain addresses:
 
 ### Main domain
 
@@ -48,85 +38,98 @@ The NEWITT Media website is available through both domain versions:
 
 **https://www.newittmedia.co.uk/**
 
-Both addresses represent the official NEWITT Media website.
+Both addresses point to the official NEWITT Media website.
 
 ---
 
-# Website Structure
+# 📱 Website Features
 
-The website currently contains five main pages:
+The website has been designed around a responsive, premium dark-media experience.
 
-| Page | Purpose |
-|---|---|
-| `index.html` | Main NEWITT Media homepage |
-| `skyline.html` | NEWITT Skyline Media |
-| `paranormal.html` | NEWITT's Paranormal Adventures |
-| `photography.html` | NEWITT Media Photography |
-| `contact.html` | Contact and enquiries |
+Features include:
+
+- Responsive desktop design
+- Responsive mobile design
+- Premium dark visual style
+- NEWITT Media gold branding
+- Individual colour identities for each brand
+- Animated homepage opening experience
+- Animated visual effects
+- Social media hub
+- Animated social-media elements
+- Mobile navigation
+- Back-to-top button
+- Image gallery support
+- Gallery lightbox
+- Smooth internal navigation
+- Language selector framework
+- Accessible keyboard controls
+- Reduced-motion support
+- Search-engine optimisation
+- XML sitemap
+- Robots configuration
+- Cloudflare deployment
 
 ---
 
-# Homepage
+# 🏠 Homepage
 
-The homepage acts as the central hub for NEWITT Media.
+The homepage is the central hub for NEWITT Media.
 
-It contains:
+It introduces the main NEWITT Media brand before presenting the three creative areas.
 
-- NEWITT Media hero section
+The homepage includes:
+
+- Opening animation
 - Main NEWITT Media branding
-- Three brand sections
+- Hero section
 - NEWITT Skyline Media
 - NEWITT's Paranormal Adventures
 - NEWITT Media Photography
-- Social media hub
+- Social Media Hub
 - Social media links
-- Animated paranormal logo
-- Moving gold social-media banner
-- Future content section
+- Animated visual elements
+- Moving social-media banner
+- About/content areas
+- Contact call-to-action
 - Back-to-top button
+- Language selector
+- Footer
 
-The homepage brings the three sides of NEWITT Media together while keeping their individual identities.
+The design intentionally keeps the homepage visually striking without allowing the individual brands to lose their own identities.
 
 ---
 
-# NEWITT Skyline Media
+# 🚁 NEWITT Skyline Media
 
 NEWITT Skyline Media is the aerial-media side of NEWITT Media.
 
-It covers:
+It focuses on:
 
-- Drone aerial photography
-- Aerial video
-- Views from above
+- Drone photography
+- Drone video
+- Aerial views
 - Landscapes
 - Locations
 - Landmarks
 - Aerial projects
+- Future media projects
 
-## Skyline Gallery
+### Brand identity
 
-The Skyline page currently includes a Gloucester Prison aerial gallery.
+Primary colours:
 
-Gallery assets are stored in:
-
-`public/media/skyline/`
-
-Current images include:
-
-- `Gloucester-prison-aerial-01.webp`
-- `Gloucester-prison-aerial-02.webp`
-- `Gloucester-prison-aerial-03.webp`
-- `Gloucester-prison-aerial-04.webp`
-
-The corresponding full-resolution gallery files use the `.JPG` filenames referenced by the page.
+- Blue
+- Black
+- White
 
 ---
 
-# NEWITT's Paranormal Adventures
+# 👻 NEWITT's Paranormal Adventures
 
-NEWITT's Paranormal Adventures is the paranormal side of NEWITT Media.
+NEWITT's Paranormal Adventures is the paranormal investigation side of NEWITT Media.
 
-It covers:
+It focuses on:
 
 - Paranormal investigations
 - Haunted locations
@@ -134,17 +137,24 @@ It covers:
 - Unexplained experiences
 - Investigation content
 - Social-media content
-- Future investigations and locations
+- Future investigations
+- Haunted-location projects
 
-The Paranormal page includes the NEWITT Paranormal TikTok creator embed.
+### Brand identity
+
+Primary colours:
+
+- Red
+- Black
+- White
 
 ---
 
-# NEWITT Media Photography
+# 📸 NEWITT Media Photography
 
 NEWITT Media Photography is the photography side of the brand.
 
-It is intended for:
+It can feature:
 
 - Landscapes
 - Locations
@@ -153,13 +163,19 @@ It is intended for:
 - Adventures
 - Unusual moments
 - Featured photographs
-- Future photographic projects
+- Future photography projects
 
-The photography collection can be expanded as new work becomes available.
+### Brand identity
+
+Primary colours:
+
+- Green
+- Black
+- White
 
 ---
 
-# Social Media
+# 📲 Social Media
 
 ## NEWITT Skyline Media
 
@@ -193,29 +209,27 @@ https://www.facebook.com/share/1AiSkdbyM4/
 
 ---
 
-# Contact
+# 📧 Contact
 
-The website uses mail links for enquiries.
+The website uses contact buttons and mail links for enquiries.
 
-The email addresses are used by the appropriate contact buttons.
-
-## NEWITT Skyline Media
+### NEWITT Skyline Media
 
 `n.skyline.media@gmail.com`
 
-## NEWITT's Paranormal Adventures
+### NEWITT's Paranormal Adventures
 
 `nw13ttt@gmail.com`
 
+The email addresses are used for their appropriate contact functions and are not required to be displayed prominently on the website.
+
 ---
 
-# Brand Design
+# 🎨 Brand Design System
 
-NEWITT Media uses a dark premium visual design.
+NEWITT Media uses a premium dark visual system.
 
 ## NEWITT Media
-
-Primary identity:
 
 - Black
 - Gold
@@ -223,15 +237,11 @@ Primary identity:
 
 ## NEWITT Skyline Media
 
-Primary identity:
-
 - Blue
 - Black
 - White
 
 ## NEWITT's Paranormal Adventures
-
-Primary identity:
 
 - Red
 - Black
@@ -239,90 +249,61 @@ Primary identity:
 
 ## NEWITT Media Photography
 
-Primary identity:
-
 - Green
 - Black
 - White
 
-The colour system is controlled through:
+The main visual system is controlled by:
 
 `public/style.css`
 
 ---
 
-# Website Background
+# 🖼️ Website Background
 
-The main website background is:
+The primary website background is:
 
 `background.png.PNG`
 
-The dedicated Social Hub background is:
+The dedicated Social Hub artwork is:
 
 `newitt-social-hub-background.PNG`
 
-The Social Hub artwork is intentionally contained within the Social Hub section.
+The main background is used across the website while individual sections can use their own visual treatment.
 
-The main website background remains visible behind the normal page content.
-
----
-
-# Important Image Filename Rule
-
-The current project intentionally uses the existing image filenames.
-
-Some filenames contain:
-
-`.png.png`
-
-For example:
-
-`newitt-media-logo.png.png`
-
-These filenames should not be renamed unless all corresponding references are updated.
-
-When changing an image filename, check:
-
-- HTML
-- CSS
-- JavaScript
-- Open Graph metadata
-- Twitter metadata
-- Structured data
-- Other image references
-
-A filename change without updating its references can cause images to disappear from the live website.
+The Social Hub has its own artwork layer so its animation and atmosphere remain contained within the intended area.
 
 ---
 
-# JavaScript
+# 💻 JavaScript
 
-The master JavaScript file is:
+The shared website JavaScript file is:
 
 `public/script.js`
 
-It controls:
+It provides functionality including:
 
+- Opening animation
+- Page reveal
 - Mobile navigation
-- Mobile menu opening and closing
-- Internal smooth scrolling
+- Mobile menu controls
+- Back-to-top button
+- Language selector controls
 - Gallery lightbox
 - Lightbox closing
 - Escape-key controls
-- Back-to-top button
-- Slow paranormal logo movement
-- Social Hub ambient animation
-- Moving social-media ticker
-- Image loading behaviour
-- Reduced-motion handling
+- Smooth internal navigation
+- Image error handling
+- External-link security attributes
+- Reduced-motion compatibility
 
-The JavaScript is shared across the website.
+The JavaScript is written defensively so pages that do not contain a particular feature do not generate unnecessary errors.
 
 ---
 
-# CSS
+# 🎨 CSS
 
-The master stylesheet is:
+The shared stylesheet is:
 
 `public/style.css`
 
@@ -334,83 +315,138 @@ It controls:
 - Mobile navigation
 - Hero sections
 - Buttons
-- Content panels
 - Brand cards
 - Social Hub
+- Animated visual elements
 - Social-media panels
-- Social-media artwork
-- Social-media animation
-- Moving gold banner
 - Galleries
-- TikTok sections
 - Contact sections
 - Footer
 - Lightbox
 - Responsive layouts
-- Reduced-motion support
+- Desktop layout
+- Tablet layout
+- Mobile layout
+- Accessibility
+- Reduced-motion behaviour
 
-The main website background is controlled by the `body` background.
-
-Normal sections are transparent so the main background remains visible.
-
-The Social Hub has its own dedicated artwork layer.
+The stylesheet uses responsive breakpoints so the design adapts to different screen sizes.
 
 ---
 
-# SEO
+# 📱 Responsive Design
 
-The website includes:
+The website is designed for:
+
+- Desktop computers
+- Laptops
+- Tablets
+- Mobile phones
+
+The layout changes automatically according to screen width.
+
+Mobile-specific behaviour includes:
+
+- Compact navigation
+- Hamburger menu
+- Stacked content
+- Mobile-friendly buttons
+- Responsive brand cards
+- Mobile Social Hub layout
+- Responsive galleries
+- Floating back-to-top control
+
+---
+
+# ⬆️ Back To Top
+
+The website includes a back-to-top control.
+
+It appears after the visitor scrolls down the page and returns the visitor smoothly to the top.
+
+The functionality is provided by:
+
+`public/script.js`
+
+The appearance is controlled by:
+
+`public/style.css`
+
+---
+
+# 🌍 Language Support
+
+The website contains a language-selector framework designed for future multilingual support.
+
+The selector can remember the visitor's selected language using browser storage.
+
+Actual translated page content should be added before presenting a language as fully translated.
+
+This prevents the website from falsely claiming that a language version exists when it has not yet been created.
+
+---
+
+# 🔍 SEO
+
+The website is structured to support search-engine visibility.
+
+SEO-related elements include:
 
 - Page titles
 - Meta descriptions
 - Canonical URLs
 - Robots directives
 - Open Graph metadata
-- Twitter metadata
-- Organization structured data
-- Social profile references
+- Social metadata
+- Structured data
 - XML sitemap
 - `robots.txt`
 
-The official website addresses are:
+The official website is:
 
 **https://newittmedia.co.uk/**
+
+The WWW version is:
 
 **https://www.newittmedia.co.uk/**
 
 ---
 
-# Sitemap
+# 🤖 Robots
 
-The sitemap is:
-
-`public/sitemap.xml`
-
-It currently contains:
-
-- `https://newittmedia.co.uk/`
-- `https://newittmedia.co.uk/skyline.html`
-- `https://newittmedia.co.uk/paranormal.html`
-- `https://newittmedia.co.uk/photography.html`
-- `https://newittmedia.co.uk/contact.html`
-
-If additional public pages are added, the sitemap should be updated.
-
----
-
-# Robots
-
-The website uses:
+The robots file is:
 
 `public/robots.txt`
 
-Current configuration allows search engines to crawl the website and points search engines towards the XML sitemap.
+It allows search engines to crawl the public website and identifies the XML sitemap.
+
+The sitemap address is:
+
+`https://www.newittmedia.co.uk/sitemap.xml`
 
 ---
 
-# Cloudflare
+# 🗺️ Sitemap
 
-The website is configured for Cloudflare Workers Assets.
+The XML sitemap is:
+
+`public/sitemap.xml`
+
+Current public pages include:
+
+- `https://www.newittmedia.co.uk/`
+- `https://www.newittmedia.co.uk/skyline.html`
+- `https://www.newittmedia.co.uk/paranormal.html`
+- `https://www.newittmedia.co.uk/photography.html`
+- `https://www.newittmedia.co.uk/contact.html`
+
+Whenever a new public page is added, the sitemap should be reviewed and updated.
+
+---
+
+# ☁️ Cloudflare
+
+The website is deployed using Cloudflare Workers Assets.
 
 The Cloudflare configuration file is:
 
@@ -420,52 +456,16 @@ The project name is:
 
 `newitt-website`
 
-The website assets directory is:
+The public website directory is:
 
 `./public`
 
-The current compatibility date is:
-
-`2026-08-23`
-
 ---
 
-# Project Structure
+# ⚙️ Wrangler Configuration
 
-The expected project structure is:
+The current project uses:
 
 ```text
-newitt-website/
-│
-├── public/
-│   │
-│   ├── index.html
-│   ├── skyline.html
-│   ├── paranormal.html
-│   ├── photography.html
-│   ├── contact.html
-│   │
-│   ├── style.css
-│   ├── script.js
-│   ├── robots.txt
-│   ├── sitemap.xml
-│   │
-│   ├── background.png.PNG
-│   ├── newitt-social-hub-background.PNG
-│   ├── newitt-media-logo.png.png
-│   ├── sky-logo.png.png
-│   ├── paranormal-logo.png.png
-│   │
-│   └── media/
-│       └── skyline/
-│           ├── Gloucester-prison-aerial-01.webp
-│           ├── Gloucester-prison-aerial-02.webp
-│           ├── Gloucester-prison-aerial-03.webp
-│           ├── Gloucester-prison-aerial-04.webp
-│           ├── Gloucester-prison-aerial-01.JPG
-│           ├── Gloucester-prison-aerial-02.JPG
-│           ├── Gloucester-prison-aerial-03.JPG
-│           └── Gloucester-prison-aerial-04.JPG
-│
-├── README.md
-└── wrangler.jsonc
+name: newitt-website
+assets directory: ./public
