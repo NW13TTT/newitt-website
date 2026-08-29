@@ -117,7 +117,7 @@
 
 
     <title>
-        Contact NEWITT Media
+        Contact NEWITT Media | Get in Touch
     </title>
 
 
@@ -132,15 +132,170 @@
         "name": "NEWITT Media",
         "url": "https://www.newittmedia.co.uk/",
         "logo": "https://www.newittmedia.co.uk/newitt-media-logo.png",
-        "description": "NEWITT Media brings together aerial drone media, photography and paranormal adventures."
+        "description": "NEWITT Media brings together aerial drone media, photography and paranormal adventures.",
+        "email": "mailto:newittmedia@gmail.com",
+        "sameAs": [
+            "https://www.tiktok.com/@newittskylinemedia",
+            "https://www.youtube.com/@Newitt-skyline-media",
+            "https://www.tiktok.com/@nw13ttt",
+            "https://www.youtube.com/@NewittsParanormalAdventures",
+            "https://www.instagram.com/nw13ttt/",
+            "https://www.facebook.com/share/1AiSkdbyM4/"
+        ]
     }
     </script>
 
+
+    <!-- =====================================================
+         MASTER STYLESHEET
+    ====================================================== -->
 
     <link
         rel="stylesheet"
         href="style.css"
     >
+
+
+    <!-- =====================================================
+         CONTACT PAGE POLISH
+    ====================================================== -->
+
+    <style>
+
+        .contact-introduction {
+            width:
+                min(
+                    720px,
+                    100%
+                );
+
+            margin:
+                0 auto;
+
+            text-align: center;
+        }
+
+
+        .contact-email-card {
+            width:
+                min(
+                    760px,
+                    100%
+                );
+
+            margin:
+                30px auto 0;
+
+            padding:
+                26px 22px;
+
+            border:
+                1px solid
+                rgba(201, 164, 91, 0.20);
+
+            border-radius:
+                10px;
+
+            background:
+                rgba(4, 7, 12, 0.48);
+
+            text-align:
+                center;
+
+            backdrop-filter:
+                blur(7px);
+
+            -webkit-backdrop-filter:
+                blur(7px);
+        }
+
+
+        .contact-email-label {
+            margin-bottom:
+                7px;
+
+            color:
+                rgba(255, 255, 255, 0.50);
+
+            font-size:
+                0.65rem;
+
+            font-weight:
+                750;
+
+            letter-spacing:
+                0.16em;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        .contact-email-address {
+            margin:
+                0;
+
+            color:
+                #c9a45b;
+
+            font-size:
+                clamp(
+                    0.92rem,
+                    3vw,
+                    1.15rem
+                );
+
+            font-weight:
+                750;
+
+            letter-spacing:
+                0.03em;
+
+            overflow-wrap:
+                anywhere;
+        }
+
+
+        .contact-email-address a {
+            color:
+                inherit;
+
+            transition:
+                color 180ms ease;
+        }
+
+
+        .contact-email-address a:hover {
+            color:
+                #f5d38a;
+        }
+
+
+        .contact-social-note {
+            width:
+                min(
+                    680px,
+                    100%
+                );
+
+            margin:
+                0 auto;
+
+            text-align:
+                center;
+        }
+
+
+        @media (max-width: 600px) {
+
+            .contact-email-card {
+                padding:
+                    22px 16px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -266,11 +421,16 @@
         <div class="hero-rule"></div>
 
 
-        <p>
-            Whether you're interested in aerial media,
-            paranormal adventures, photography or simply
-            want to get in touch, we'd love to hear from you.
-        </p>
+        <div class="contact-introduction">
+
+            <p>
+                Whether you're interested in aerial media,
+                paranormal adventures, photography,
+                collaboration or simply want to say hello,
+                this is where you can connect with NEWITT Media.
+            </p>
+
+        </div>
 
 
         <div class="hero-actions">
@@ -311,7 +471,7 @@
         <div class="section-heading">
 
             <div class="eyebrow">
-                Contact
+                NEWITT Media
             </div>
 
             <h2>
@@ -320,9 +480,9 @@
             </h2>
 
             <p>
-                Select the NEWITT Media area you'd like
-                to explore or contact us through the
-                relevant social channel.
+                Explore the area of NEWITT Media you're
+                interested in, then connect through the
+                relevant page or social channel.
             </p>
 
         </div>
@@ -429,8 +589,8 @@
 
 
                 <p>
-                    People, places, landscapes and adventures.
-                    NEWITT Media Photography is coming soon.
+                    People, places, landscapes and adventures
+                    captured through the NEWITT Media lens.
                 </p>
 
 
@@ -440,12 +600,13 @@
                         href="photography.html"
                         class="button primary"
                     >
-                        Photography
+                        Explore Photography
                     </a>
 
                 </div>
 
             </article>
+
 
         </div>
 
@@ -473,10 +634,14 @@
                 <span>online.</span>
             </h2>
 
-            <p>
-                Follow the individual NEWITT Media worlds
-                across social media.
-            </p>
+            <div class="contact-social-note">
+
+                <p>
+                    Follow the individual NEWITT Media worlds
+                    across their social channels.
+                </p>
+
+            </div>
 
         </div>
 
@@ -573,7 +738,7 @@
         <div class="cta-panel">
 
             <div class="eyebrow">
-                NEWITT Media
+                Direct Contact
             </div>
 
 
@@ -584,18 +749,33 @@
 
 
             <p>
-                For enquiries, collaborations or general
-                contact, use the email option below.
+                For enquiries, collaborations, photography,
+                aerial media or general contact, email
+                NEWITT Media directly.
             </p>
 
 
-            <div class="hero-actions">
+            <div class="contact-email-card">
 
-                <!--
-                    Existing hidden Gmail/mail contact
-                    behaviour is intentionally preserved
-                    through the mailto link.
-                -->
+                <div class="contact-email-label">
+                    Email NEWITT Media
+                </div>
+
+
+                <p class="contact-email-address">
+
+                    <a
+                        href="mailto:newittmedia@gmail.com"
+                    >
+                        newittmedia@gmail.com
+                    </a>
+
+                </p>
+
+            </div>
+
+
+            <div class="hero-actions">
 
                 <a
                     href="mailto:newittmedia@gmail.com"
@@ -645,6 +825,7 @@
 <footer class="site-footer">
 
     <div class="container">
+
 
         <img
             src="newitt-media-logo.png"
