@@ -155,6 +155,80 @@
         href="style.css"
     >
 
+
+    <!-- =====================================================
+         RESPONSIVE TIKTOK EMBED FIX
+    ====================================================== -->
+
+    <style>
+
+        .tiktok-preview {
+            width: min(100%, 430px);
+            margin: 0 auto;
+            padding: 0;
+            overflow: hidden;
+
+            border: 1px solid rgba(78, 207, 255, 0.28);
+            border-radius: 14px;
+
+            background:
+                rgba(3, 7, 13, 0.72);
+
+            box-shadow:
+                inset 0 0 38px rgba(0, 135, 255, 0.05),
+                0 18px 45px rgba(0, 0, 0, 0.30);
+
+            isolation: isolate;
+        }
+
+        .tiktok-preview .tiktok-embed {
+            width: 100% !important;
+            max-width: 430px !important;
+            min-width: 0 !important;
+
+            margin: 0 auto !important;
+        }
+
+        .tiktok-preview blockquote {
+            width: 100% !important;
+            max-width: 430px !important;
+            min-width: 0 !important;
+
+            margin: 0 auto !important;
+        }
+
+        .tiktok-preview iframe {
+            width: 100% !important;
+            max-width: 100% !important;
+            border: 0 !important;
+        }
+
+        @media (max-width: 600px) {
+
+            .tiktok-preview {
+                width: min(100%, 390px);
+                border-radius: 12px;
+            }
+
+            .tiktok-preview .tiktok-embed,
+            .tiktok-preview blockquote {
+                width: 100% !important;
+                max-width: 390px !important;
+                min-width: 0 !important;
+            }
+
+        }
+
+        @media (max-width: 380px) {
+
+            .tiktok-preview {
+                width: calc(100vw - 32px);
+            }
+
+        }
+
+    </style>
+
 </head>
 
 
@@ -263,22 +337,18 @@
             class="page-logo skyline-logo"
         >
 
-
         <div class="eyebrow">
             NEWITT Skyline Media
         </div>
-
 
         <h1>
             From <span>Above.</span>
         </h1>
 
-
         <p>
             Aerial media, drone photography and cinematic
             views from a different perspective.
         </p>
-
 
         <div class="hero-actions">
 
@@ -290,7 +360,6 @@
             >
                 Follow on TikTok
             </a>
-
 
             <a
                 href="https://www.youtube.com/@Newitt-skyline-media"
@@ -322,12 +391,10 @@
                 The Skyline
             </div>
 
-
             <h2>
                 Media from a
                 <span>different angle.</span>
             </h2>
-
 
             <p>
                 NEWITT Skyline Media captures landscapes,
@@ -357,12 +424,10 @@
                 TikTok
             </div>
 
-
             <h2>
                 Follow the
                 <span>Skyline.</span>
             </h2>
-
 
             <p>
                 See the latest NEWITT Skyline Media
@@ -373,35 +438,16 @@
 
 
         <!-- =================================================
-             TIKTOK CREATOR PREVIEW
+             RESPONSIVE TIKTOK CREATOR PROFILE
         ================================================== -->
 
-        <div
-            class="tiktok-preview"
-            style="
-                width:min(605px,100%);
-                margin:0 auto;
-                min-height:760px;
-                overflow:hidden;
-                border:1px solid rgba(78,207,255,0.28);
-                border-radius:10px;
-                background:rgba(3,7,13,0.55);
-                box-shadow:
-                    inset 0 0 38px rgba(0,135,255,0.05),
-                    0 14px 38px rgba(0,0,0,0.28);
-            "
-        >
+        <div class="tiktok-preview">
 
             <blockquote
                 class="tiktok-embed"
                 cite="https://www.tiktok.com/@newittskylinemedia"
                 data-unique-id="newittskylinemedia"
                 data-embed-type="creator"
-                style="
-                    max-width:605px;
-                    min-width:325px;
-                    margin:0 auto;
-                "
             >
 
                 <section>
@@ -452,7 +498,6 @@
             <div class="eyebrow">
                 Skyline Media
             </div>
-
 
             <h2>
                 What we
@@ -542,7 +587,6 @@
                 Social Media
             </div>
 
-
             <h2>
                 Follow
                 <span>Skyline.</span>
@@ -593,18 +637,15 @@
                 NEWITT Media
             </div>
 
-
             <h2>
                 Explore the
                 <span>other worlds.</span>
             </h2>
 
-
             <p>
                 Continue exploring NEWITT Media,
                 from paranormal adventures to photography.
             </p>
-
 
             <div class="hero-actions">
 
@@ -615,14 +656,12 @@
                     Paranormal
                 </a>
 
-
                 <a
                     href="photography.html"
                     class="button secondary"
                 >
                     Photography
                 </a>
-
 
                 <a
                     href="contact.html"
@@ -671,16 +710,13 @@
             class="footer-logo"
         >
 
-
         <p class="footer-brand">
             NEWITT MEDIA
         </p>
 
-
         <p class="footer-tagline">
             FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
         </p>
-
 
         <p class="copyright">
 
@@ -694,7 +730,6 @@
             NEWITT Media Photography
 
         </p>
-
 
         <p class="website-address">
 
