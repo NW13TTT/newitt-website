@@ -1,12 +1,6 @@
 /* =========================================================
    NEWITT MEDIA
    MASTER SITE STYLESHEET
-   PHASE 1 FOUNDATION
-========================================================= */
-
-
-/* =========================================================
-   RESET
 ========================================================= */
 
 *,
@@ -26,8 +20,8 @@ body {
     background:
         linear-gradient(
             180deg,
-            rgba(2, 3, 5, 0.18),
-            rgba(2, 3, 5, 0.38)
+            rgba(2, 3, 5, 0.12),
+            rgba(2, 3, 5, 0.28)
         ),
         url("background.png") center top / cover fixed no-repeat;
     background-color: #020305;
@@ -47,12 +41,12 @@ body::before {
     content: "";
     position: fixed;
     inset: 0;
-    pointer-events: none;
     z-index: -1;
+    pointer-events: none;
     background:
         radial-gradient(
             circle at 50% 15%,
-            rgba(0, 174, 255, 0.08),
+            rgba(0, 174, 255, 0.055),
             transparent 42%
         );
 }
@@ -104,7 +98,7 @@ section {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(2, 3, 5, 0.78);
+    background: rgba(2, 3, 5, 0.76);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
@@ -128,8 +122,8 @@ section {
 .nav-brand img {
     width: 42px;
     height: 42px;
-    object-fit: contain;
     flex: 0 0 42px;
+    object-fit: contain;
 }
 
 .nav-brand span {
@@ -147,16 +141,17 @@ section {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 7px;
+    gap: 5px;
 }
 
 .nav-links a {
-    padding: 8px 13px;
+    width: auto;
+    padding: 8px 12px;
     border-radius: 7px;
     color: rgba(255, 255, 255, 0.76);
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     font-weight: 650;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     transition:
         color 180ms ease,
         background 180ms ease;
@@ -196,7 +191,7 @@ section {
 .eyebrow {
     margin-bottom: 10px;
     color: #c9a45b;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 800;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -223,7 +218,7 @@ h2 {
 
 h3 {
     margin-bottom: 10px;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
 }
 
 p {
@@ -233,28 +228,10 @@ p {
 
 .hero-tagline {
     color: #c9a45b;
-    font-size: clamp(0.82rem, 1.5vw, 1rem);
+    font-size: clamp(0.8rem, 1.5vw, 0.98rem);
     font-weight: 800;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-}
-
-
-/* =========================================================
-   GLOBAL SECTIONS
-========================================================= */
-
-section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-hero):not(.contact-hero) {
-    padding: 90px 0;
-}
-
-.about {
-    width: min(900px, 100%);
-    margin-inline: auto;
-}
-
-.section-heading {
-    margin-bottom: 32px;
 }
 
 .section-heading span,
@@ -265,9 +242,26 @@ h2 span {
 
 
 /* =========================================================
+   GLOBAL SECTIONS
+========================================================= */
+
+section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-hero):not(.contact-hero) {
+    padding: 82px 0;
+}
+
+.about {
+    width: min(900px, 100%);
+    margin-inline: auto;
+}
+
+.section-heading {
+    margin-bottom: 28px;
+}
+
+
+/* =========================================================
    BUTTON SYSTEM
-   PHASE 1 BASE
-   CONTENT-SIZED, NOT FULL-WIDTH
+   COMPACT / CONTENT WIDTH
 ========================================================= */
 
 .button,
@@ -275,21 +269,23 @@ h2 span {
 .hero-actions a,
 .social-button {
     display: inline-flex;
-    width: fit-content;
-    max-width: 100%;
+    width: auto;
+    max-width: max-content;
+    min-width: 0;
+    flex: 0 0 auto;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    min-height: 42px;
-    padding: 9px 17px;
+    gap: 7px;
+    min-height: 40px;
+    padding: 8px 14px;
     border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 7px;
+    border-radius: 6px;
     background: rgba(255, 255, 255, 0.045);
     color: #ffffff;
-    font-size: 0.78rem;
+    font-size: 0.73rem;
     font-weight: 750;
-    letter-spacing: 0.055em;
-    line-height: 1.15;
+    letter-spacing: 0.045em;
+    line-height: 1.1;
     white-space: nowrap;
     cursor: pointer;
     transition:
@@ -309,23 +305,24 @@ h2 span {
 }
 
 .button.primary {
-    background: rgba(201, 164, 91, 0.14);
-    border-color: rgba(201, 164, 91, 0.55);
+    background: rgba(201, 164, 91, 0.13);
+    border-color: rgba(201, 164, 91, 0.52);
     color: #f5d38a;
 }
 
 .button.primary:hover {
-    background: rgba(201, 164, 91, 0.22);
+    background: rgba(201, 164, 91, 0.2);
     box-shadow: 0 8px 25px rgba(201, 164, 91, 0.1);
 }
 
 .buttons,
 .hero-actions {
     display: flex;
+    width: 100%;
     flex-wrap: wrap;
     align-items: center;
-    gap: 10px;
-    margin-top: 24px;
+    gap: 9px;
+    margin-top: 22px;
 }
 
 .buttons a,
@@ -362,7 +359,12 @@ h2 span {
             rgba(0, 120, 255, 0.07),
             transparent 38%
         );
-    animation: introAtmosphere 5s ease-in-out infinite alternate;
+    animation:
+        introAtmosphere
+        5s
+        ease-in-out
+        infinite
+        alternate;
 }
 
 .intro-light-sweep {
@@ -371,14 +373,19 @@ h2 span {
     left: -30%;
     width: 28%;
     height: 140%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(130, 220, 255, 0.18),
-        transparent
-    );
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(130, 220, 255, 0.18),
+            transparent
+        );
     transform: rotate(18deg);
-    animation: introSweep 4.6s ease-in-out infinite;
+    animation:
+        introSweep
+        4.6s
+        ease-in-out
+        infinite;
 }
 
 .intro-content {
@@ -396,9 +403,19 @@ h2 span {
     height: auto;
     object-fit: contain;
     filter:
-        drop-shadow(0 0 20px rgba(0, 170, 255, 0.18))
-        drop-shadow(0 0 50px rgba(0, 170, 255, 0.08));
-    animation: introLogo 1.8s ease both;
+        drop-shadow(
+            0 0 20px
+            rgba(0, 170, 255, 0.18)
+        )
+        drop-shadow(
+            0 0 50px
+            rgba(0, 170, 255, 0.08)
+        );
+    animation:
+        introLogo
+        1.8s
+        ease
+        both;
 }
 
 .intro-name {
@@ -491,7 +508,11 @@ h2 span {
     width: 100%;
     height: auto;
     object-fit: contain;
-    filter: drop-shadow(0 0 28px rgba(0, 170, 255, 0.12));
+    filter:
+        drop-shadow(
+            0 0 28px
+            rgba(0, 170, 255, 0.12)
+        );
 }
 
 .hero-content h1 {
@@ -540,11 +561,19 @@ h2 span {
 }
 
 .skyline-logo {
-    filter: drop-shadow(0 0 28px rgba(0, 174, 255, 0.18));
+    filter:
+        drop-shadow(
+            0 0 28px
+            rgba(0, 174, 255, 0.18)
+        );
 }
 
 .paranormal-logo {
-    filter: drop-shadow(0 0 28px rgba(190, 30, 40, 0.22));
+    filter:
+        drop-shadow(
+            0 0 28px
+            rgba(190, 30, 40, 0.22)
+        );
 }
 
 .photography-mark {
@@ -585,7 +614,8 @@ h2 span {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
     gap: 14px;
 }
 
@@ -606,7 +636,8 @@ h2 span {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 450ms ease;
+    transition:
+        transform 450ms ease;
 }
 
 .gallery-item:hover img {
@@ -615,7 +646,7 @@ h2 span {
 
 .gallery-note {
     margin-top: 14px;
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     color: rgba(255, 255, 255, 0.55);
 }
 
@@ -672,8 +703,8 @@ h2 span {
 .social-hub {
     position: relative;
     overflow: hidden;
-    padding: 82px 0 58px;
-    background: rgba(2, 3, 5, 0.18);
+    padding: 70px 0 48px;
+    background: rgba(2, 3, 5, 0.08);
 }
 
 .social-hub-art {
@@ -693,8 +724,8 @@ h2 span {
     background:
         linear-gradient(
             180deg,
-            rgba(2, 3, 5, 0.25),
-            rgba(2, 3, 5, 0.48)
+            rgba(2, 3, 5, 0.18),
+            rgba(2, 3, 5, 0.34)
         );
 }
 
@@ -705,35 +736,39 @@ h2 span {
 
 .social-brand-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: stretch;
-    gap: 18px;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 14px;
+    width: min(900px, 100%);
+    margin-inline: auto;
 }
 
 .social-brand {
     position: relative;
     min-width: 0;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.13);
-    border-radius: 12px;
-    background: rgba(4, 7, 12, 0.62);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 9px;
+    background: rgba(4, 7, 12, 0.52);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
 }
 
 .social-brand-inner {
     display: grid;
-    grid-template-columns: 92px minmax(0, 1fr);
+    grid-template-columns:
+        62px minmax(0, 1fr);
     align-items: center;
-    gap: 18px;
-    min-height: 190px;
-    padding: 20px;
+    gap: 13px;
+    min-height: 0;
+    padding: 14px;
 }
 
 .social-logo-wrap {
     display: grid;
-    width: 92px;
-    height: 92px;
+    width: 62px;
+    height: 62px;
     place-items: center;
 }
 
@@ -744,7 +779,11 @@ h2 span {
 }
 
 .paranormal-social-logo img {
-    animation: paranormalFloat 6s ease-in-out infinite;
+    animation:
+        paranormalFloat
+        6s
+        ease-in-out
+        infinite;
 }
 
 .social-brand-content {
@@ -753,9 +792,9 @@ h2 span {
 
 .social-brand-name {
     margin-bottom: 2px;
-    font-size: 0.68rem;
+    font-size: 0.61rem;
     font-weight: 850;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.15em;
 }
 
 .blue-text {
@@ -767,22 +806,23 @@ h2 span {
 }
 
 .social-brand h3 {
-    margin-bottom: 14px;
-    font-size: clamp(0.95rem, 2vw, 1.25rem);
-    letter-spacing: 0.055em;
+    margin-bottom: 9px;
+    font-size: 0.9rem;
+    line-height: 1.2;
+    letter-spacing: 0.035em;
 }
 
 .social-buttons {
     display: flex;
     flex-wrap: wrap;
-    gap: 7px;
+    gap: 5px;
 }
 
 .social-button {
-    min-height: 34px;
-    padding: 7px 11px;
-    font-size: 0.68rem;
-    border-radius: 6px;
+    min-height: 30px;
+    padding: 6px 9px;
+    font-size: 0.61rem;
+    border-radius: 5px;
 }
 
 .skyline-button {
@@ -806,7 +846,12 @@ h2 span {
             rgba(0, 180, 255, 0.08),
             transparent 32%
         );
-    animation: skylineAmbient 5s ease-in-out infinite alternate;
+    animation:
+        skylineAmbient
+        5s
+        ease-in-out
+        infinite
+        alternate;
 }
 
 .social-house-glow {
@@ -820,7 +865,12 @@ h2 span {
             rgba(220, 30, 40, 0.07),
             transparent 30%
         );
-    animation: paranormalAmbient 6s ease-in-out infinite alternate;
+    animation:
+        paranormalAmbient
+        6s
+        ease-in-out
+        infinite
+        alternate;
 }
 
 .social-paranormal-glow {
@@ -834,70 +884,79 @@ h2 span {
             rgba(255, 60, 70, 0.035),
             transparent 22%
         );
-    animation: paranormalPulse 4s ease-in-out infinite;
+    animation:
+        paranormalPulse
+        4s
+        ease-in-out
+        infinite;
 }
 
 .social-ticker {
     position: relative;
     z-index: 8;
-    margin-top: 20px;
+    margin-top: 15px;
     overflow: hidden;
     border-top: 1px solid rgba(201, 164, 91, 0.28);
     border-bottom: 1px solid rgba(201, 164, 91, 0.28);
-    background: rgba(0, 0, 0, 0.26);
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .social-ticker-track {
     display: flex;
     width: max-content;
-    animation: tickerMove 24s linear infinite;
+    animation:
+        tickerMove
+        24s
+        linear
+        infinite;
 }
 
 .social-ticker-track span {
-    padding: 9px 32px;
+    padding: 8px 28px;
     color: #c9a45b;
-    font-size: 0.68rem;
+    font-size: 0.63rem;
     font-weight: 800;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.15em;
     white-space: nowrap;
 }
 
 
 /* =========================================================
-   INVESTIGATION CARDS
+   INVESTIGATION / PHOTOGRAPHY / CONTACT CARDS
 ========================================================= */
 
 .investigation-grid,
 .photography-focus-grid,
 .contact-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+    gap: 14px;
 }
 
 .investigation-card,
 .photography-focus-card,
 .contact-card {
     min-width: 0;
-    padding: 24px;
+    padding: 22px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    background: rgba(4, 7, 12, 0.58);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    border-radius: 9px;
+    background: rgba(4, 7, 12, 0.5);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
 }
 
 .investigation-card p,
 .photography-focus-card p,
 .contact-card p {
     margin-bottom: 0;
-    font-size: 0.9rem;
+    font-size: 0.87rem;
 }
 
 .photography-focus-icon,
 .contact-card-icon {
-    margin-bottom: 12px;
-    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
 }
 
 .photography-focus-icon {
@@ -917,7 +976,7 @@ h2 span {
 }
 
 .contact-card h2 {
-    font-size: 1.5rem;
+    font-size: 1.45rem;
 }
 
 
@@ -926,19 +985,19 @@ h2 span {
 ========================================================= */
 
 .home-cta {
-    padding: 76px 0;
+    padding: 70px 0;
 }
 
 .cta-panel {
     width: min(780px, 100%);
     margin-inline: auto;
-    padding: 42px;
+    padding: 38px;
     border: 1px solid rgba(201, 164, 91, 0.22);
-    border-radius: 12px;
-    background: rgba(3, 5, 8, 0.62);
+    border-radius: 10px;
+    background: rgba(3, 5, 8, 0.52);
     text-align: center;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .cta-panel .hero-actions {
@@ -995,49 +1054,49 @@ h2 span {
 ========================================================= */
 
 .site-footer {
-    padding: 54px 0 32px;
+    padding: 50px 0 30px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(2, 3, 5, 0.72);
+    background: rgba(2, 3, 5, 0.66);
     text-align: center;
 }
 
 .footer-logo {
-    width: 76px;
-    height: 76px;
-    margin: 0 auto 14px;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 13px;
     object-fit: contain;
 }
 
 .footer-brand {
     margin-bottom: 5px;
     color: #ffffff;
-    font-size: 0.9rem;
+    font-size: 0.86rem;
     font-weight: 850;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.15em;
 }
 
 .footer-tagline {
-    margin-bottom: 22px;
+    margin-bottom: 20px;
     color: #c9a45b;
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     font-weight: 750;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.11em;
 }
 
 .copyright,
 .website-address {
     margin-bottom: 0;
-    color: rgba(255, 255, 255, 0.48);
-    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.46);
+    font-size: 0.68rem;
     line-height: 1.8;
 }
 
 .website-address {
-    margin-top: 12px;
+    margin-top: 11px;
 }
 
 .website-address a {
-    color: rgba(255, 255, 255, 0.62);
+    color: rgba(255, 255, 255, 0.6);
 }
 
 
@@ -1046,6 +1105,7 @@ h2 span {
 ========================================================= */
 
 @keyframes introAtmosphere {
+
     from {
         transform: scale(1);
         opacity: 0.7;
@@ -1055,11 +1115,15 @@ h2 span {
         transform: scale(1.12);
         opacity: 1;
     }
+
 }
 
 @keyframes introSweep {
+
     0% {
-        transform: translateX(-120%) rotate(18deg);
+        transform:
+            translateX(-120%)
+            rotate(18deg);
         opacity: 0;
     }
 
@@ -1072,17 +1136,24 @@ h2 span {
     }
 
     100% {
-        transform: translateX(520%) rotate(18deg);
+        transform:
+            translateX(520%)
+            rotate(18deg);
         opacity: 0;
     }
+
 }
 
 @keyframes introLogo {
+
     from {
         opacity: 0;
         transform: scale(0.88);
         filter:
-            drop-shadow(0 0 0 rgba(0, 170, 255, 0))
+            drop-shadow(
+                0 0 0
+                rgba(0, 170, 255, 0)
+            )
             blur(5px);
     }
 
@@ -1090,12 +1161,17 @@ h2 span {
         opacity: 1;
         transform: scale(1);
         filter:
-            drop-shadow(0 0 20px rgba(0, 170, 255, 0.18))
+            drop-shadow(
+                0 0 20px
+                rgba(0, 170, 255, 0.18)
+            )
             blur(0);
     }
+
 }
 
 @keyframes skylineAmbient {
+
     from {
         opacity: 0.35;
         transform: translateX(-1%);
@@ -1105,9 +1181,11 @@ h2 span {
         opacity: 0.85;
         transform: translateX(1%);
     }
+
 }
 
 @keyframes paranormalAmbient {
+
     from {
         opacity: 0.3;
         transform: translateX(1%);
@@ -1117,9 +1195,11 @@ h2 span {
         opacity: 0.8;
         transform: translateX(-1%);
     }
+
 }
 
 @keyframes paranormalPulse {
+
     0%,
     100% {
         opacity: 0.25;
@@ -1128,20 +1208,28 @@ h2 span {
     50% {
         opacity: 0.8;
     }
+
 }
 
 @keyframes paranormalFloat {
+
     0%,
     100% {
-        transform: translateY(0) rotate(0deg);
+        transform:
+            translateY(0)
+            rotate(0deg);
     }
 
     50% {
-        transform: translateY(-5px) rotate(0.6deg);
+        transform:
+            translateY(-5px)
+            rotate(0.6deg);
     }
+
 }
 
 @keyframes tickerMove {
+
     from {
         transform: translateX(0);
     }
@@ -1149,6 +1237,7 @@ h2 span {
     to {
         transform: translateX(-25%);
     }
+
 }
 
 
@@ -1164,18 +1253,19 @@ h2 span {
 
     .nav-links a {
         padding-inline: 9px;
-        font-size: 0.74rem;
+        font-size: 0.73rem;
     }
 
     .social-brand-inner {
-        grid-template-columns: 78px minmax(0, 1fr);
-        gap: 14px;
-        padding: 17px;
+        grid-template-columns:
+            58px minmax(0, 1fr);
+        gap: 11px;
+        padding: 12px;
     }
 
     .social-logo-wrap {
-        width: 78px;
-        height: 78px;
+        width: 58px;
+        height: 58px;
     }
 
     .investigation-grid,
@@ -1190,11 +1280,10 @@ h2 span {
 @media (max-width: 700px) {
 
     .container {
-        width: min(100% - 28px, 620px);
-    }
-
-    .site-header {
-        position: sticky;
+        width: min(
+            calc(100% - 28px),
+            620px
+        );
     }
 
     .nav {
@@ -1208,7 +1297,7 @@ h2 span {
     }
 
     .nav-brand span {
-        font-size: 0.78rem;
+        font-size: 0.76rem;
     }
 
     .menu-toggle {
@@ -1224,11 +1313,13 @@ h2 span {
         flex-direction: column;
         align-items: stretch;
         gap: 4px;
-        padding: 10px;
+        padding: 9px;
         border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
+        border-radius: 9px;
         background: rgba(2, 3, 5, 0.96);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+        box-shadow:
+            0 20px 60px
+            rgba(0, 0, 0, 0.45);
     }
 
     .nav-links.open,
@@ -1239,7 +1330,7 @@ h2 span {
 
     .nav-links a {
         width: 100%;
-        padding: 12px;
+        padding: 11px;
         text-align: center;
     }
 
@@ -1249,11 +1340,11 @@ h2 span {
     .photography-hero,
     .contact-hero {
         min-height: auto;
-        padding: 84px 0;
+        padding: 78px 0;
     }
 
     section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-hero):not(.contact-hero) {
-        padding: 66px 0;
+        padding: 62px 0;
     }
 
     .hero-logo-wrap {
@@ -1273,36 +1364,50 @@ h2 span {
     .button,
     .buttons a,
     .hero-actions a {
-        min-height: 40px;
-        padding: 8px 14px;
-        font-size: 0.72rem;
+        min-height: 38px;
+        padding: 8px 12px;
+        font-size: 0.68rem;
+    }
+
+    .social-hub {
+        padding: 60px 0 42px;
     }
 
     .social-brand-grid {
         grid-template-columns: 1fr;
-        gap: 12px;
+        width: 100%;
+        gap: 10px;
     }
 
     .social-brand-inner {
-        grid-template-columns: 66px minmax(0, 1fr);
-        min-height: 0;
-        padding: 15px;
+        grid-template-columns:
+            54px minmax(0, 1fr);
+        padding: 11px;
     }
 
     .social-logo-wrap {
-        width: 66px;
-        height: 66px;
+        width: 54px;
+        height: 54px;
     }
 
     .social-brand h3 {
-        margin-bottom: 10px;
-        font-size: 0.9rem;
+        margin-bottom: 8px;
+        font-size: 0.82rem;
+    }
+
+    .social-brand-name {
+        font-size: 0.57rem;
     }
 
     .social-button {
-        min-height: 32px;
-        padding: 6px 9px;
-        font-size: 0.63rem;
+        min-height: 29px;
+        padding: 5px 8px;
+        font-size: 0.58rem;
+    }
+
+    .social-ticker-track span {
+        padding: 8px 22px;
+        font-size: 0.59rem;
     }
 
     .gallery-grid {
@@ -1310,7 +1415,7 @@ h2 span {
     }
 
     .cta-panel {
-        padding: 30px 20px;
+        padding: 28px 18px;
     }
 
     .back-to-top {
@@ -1330,24 +1435,25 @@ h2 span {
     .hero-actions,
     .buttons,
     .social-buttons {
-        gap: 8px;
+        gap: 7px;
     }
 
     .button,
     .buttons a,
     .hero-actions a {
-        min-height: 38px;
-        padding: 8px 12px;
-        font-size: 0.68rem;
+        min-height: 37px;
+        padding: 7px 11px;
+        font-size: 0.65rem;
     }
 
     .social-brand-inner {
-        grid-template-columns: 58px minmax(0, 1fr);
+        grid-template-columns:
+            50px minmax(0, 1fr);
     }
 
     .social-logo-wrap {
-        width: 58px;
-        height: 58px;
+        width: 50px;
+        height: 50px;
     }
 
 }
