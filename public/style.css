@@ -3,6 +3,7 @@
    MASTER PROFESSIONAL STYLESHEET
    FINAL WEBSITE BUILD
    VERSION: 29 AUGUST 2026
+   CINEMATIC INTRO TIMING UPDATE
 ========================================================= */
 
 *,
@@ -732,6 +733,7 @@ h2 span,
 
 /* =========================================================
    CINEMATIC FIRST-VISIT INTRO
+   PROFESSIONAL 7.3 SECOND SEQUENCE
 ========================================================= */
 
 .site-intro {
@@ -749,7 +751,18 @@ h2 span,
 
     background:
         #020305;
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
 }
+
+
+/* ---------------------------------------------------------
+   ATMOSPHERE
+--------------------------------------------------------- */
 
 .intro-atmosphere {
     position: absolute;
@@ -768,13 +781,19 @@ h2 span,
             transparent 38%
         );
 
+    opacity: 0;
+
     animation:
         introAtmosphere
-        5s
+        7.3s
         ease-in-out
-        infinite
-        alternate;
+        both;
 }
+
+
+/* ---------------------------------------------------------
+   LIGHT SWEEP
+--------------------------------------------------------- */
 
 .intro-light-sweep {
     position: absolute;
@@ -793,14 +812,28 @@ h2 span,
             transparent
         );
 
-    transform: rotate(18deg);
+    transform:
+        translateX(-120%)
+        rotate(18deg);
+
+    opacity: 0;
 
     animation:
         introSweep
-        6.5s
-        ease-in-out
-        infinite;
+        7.3s
+        cubic-bezier(
+            0.22,
+            0.61,
+            0.36,
+            1
+        )
+        both;
 }
+
+
+/* ---------------------------------------------------------
+   INTRO CONTENT
+--------------------------------------------------------- */
 
 .intro-content {
     position: relative;
@@ -823,14 +856,9 @@ h2 span,
 }
 
 
-/*
- * IMPORTANT:
- * The logo itself is deliberately NOT animated with
- * blur() or filter effects.
- *
- * This prevents Safari / iPhone from rendering the
- * transparent PNG as a white square during the intro.
- */
+/* ---------------------------------------------------------
+   INTRO LOGO
+--------------------------------------------------------- */
 
 .intro-logo {
     display: block;
@@ -850,24 +878,41 @@ h2 span,
     margin:
         0 auto;
 
-    opacity: 1;
+    opacity: 0;
 
     filter: none;
 
-    transform: translateZ(0);
+    transform:
+        scale(0.90)
+        translateY(8px)
+        translateZ(0);
 
-    -webkit-transform: translateZ(0);
+    -webkit-transform:
+        scale(0.90)
+        translateY(8px)
+        translateZ(0);
 
     backface-visibility: hidden;
 
     -webkit-backface-visibility: hidden;
 
     animation:
-        introLogoSafe
-        1.2s
-        ease-out
+        introLogoReveal
+        1.8s
+        cubic-bezier(
+            0.22,
+            0.61,
+            0.36,
+            1
+        )
+        0.35s
         both;
 }
+
+
+/* ---------------------------------------------------------
+   INTRO NAME
+--------------------------------------------------------- */
 
 .intro-name {
     margin-top: 22px;
@@ -884,11 +929,33 @@ h2 span,
     font-weight: 850;
 
     letter-spacing: 0.14em;
+
+    opacity: 0;
+
+    transform:
+        translateY(12px);
+
+    animation:
+        introTextReveal
+        1.1s
+        cubic-bezier(
+            0.22,
+            0.61,
+            0.36,
+            1
+        )
+        1.65s
+        both;
 }
 
 .intro-name span {
     color: #c9a45b;
 }
+
+
+/* ---------------------------------------------------------
+   INTRO LINE
+--------------------------------------------------------- */
 
 .intro-line {
     width: 90px;
@@ -899,7 +966,26 @@ h2 span,
 
     background:
         rgba(201, 164, 91, 0.7);
+
+    transform:
+        scaleX(0);
+
+    opacity: 0;
+
+    transform-origin: center;
+
+    animation:
+        introLineReveal
+        1s
+        ease-out
+        2.65s
+        both;
 }
+
+
+/* ---------------------------------------------------------
+   INTRO TAGLINE
+--------------------------------------------------------- */
 
 .intro-tagline {
     max-width: 680px;
@@ -921,7 +1007,29 @@ h2 span,
     line-height: 1.8;
 
     text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translateY(10px);
+
+    animation:
+        introTextReveal
+        1.2s
+        cubic-bezier(
+            0.22,
+            0.61,
+            0.36,
+            1
+        )
+        3.05s
+        both;
 }
+
+
+/* ---------------------------------------------------------
+   INTRO FADE OUT
+--------------------------------------------------------- */
 
 .site-intro.intro-hidden {
     opacity: 0;
@@ -931,8 +1039,14 @@ h2 span,
     pointer-events: none;
 
     transition:
-        opacity 900ms ease,
-        visibility 900ms ease;
+        opacity 800ms
+        cubic-bezier(
+            0.22,
+            0.61,
+            0.36,
+            1
+        ),
+        visibility 800ms ease;
 }
 
 
@@ -1113,12 +1227,6 @@ h2 span,
         box-shadow 350ms ease;
 }
 
-
-/*
- * Subtle professional movement.
- * The cards lift slightly when touched/hovered.
- */
-
 .newitt-intro-world:hover {
     transform:
         translateY(-7px);
@@ -1276,14 +1384,8 @@ h2 span,
     line-height: 1.35;
 }
 
-.newitt-intro-skyline .newitt-intro-text h3 {
-    color: #ffffff;
-}
-
-.newitt-intro-paranormal .newitt-intro-text h3 {
-    color: #ffffff;
-}
-
+.newitt-intro-skyline .newitt-intro-text h3,
+.newitt-intro-paranormal .newitt-intro-text h3,
 .newitt-intro-photography .newitt-intro-text h3 {
     color: #ffffff;
 }
@@ -1637,7 +1739,6 @@ h2 span,
 
 /* =========================================================
    CONTENT CARDS
-   Used by Skyline / Paranormal / Photography / Contact
 ========================================================= */
 
 .investigation-grid,
@@ -1866,23 +1967,37 @@ h2 span,
 
 
 /* =========================================================
-   ANIMATIONS
+   CINEMATIC ANIMATIONS
 ========================================================= */
 
 @keyframes introAtmosphere {
 
-    from {
-        transform: scale(1);
+    0% {
+        transform:
+            scale(0.96);
 
-        opacity: 0.7;
+        opacity: 0;
     }
 
-    to {
-        transform: scale(1.12);
+    25% {
+        opacity: 0.65;
+    }
+
+    65% {
+        transform:
+            scale(1.06);
+
+        opacity: 0.88;
+    }
+
+    100% {
+        transform:
+            scale(1.12);
 
         opacity: 1;
     }
 }
+
 
 @keyframes introSweep {
 
@@ -1894,12 +2009,20 @@ h2 span,
         opacity: 0;
     }
 
-    35% {
-        opacity: 1;
+    20% {
+        opacity: 0;
     }
 
-    70% {
-        opacity: 0.55;
+    38% {
+        opacity: 0.85;
+    }
+
+    58% {
+        opacity: 0.45;
+    }
+
+    78% {
+        opacity: 0;
     }
 
     100% {
@@ -1912,24 +2035,19 @@ h2 span,
 }
 
 
-/*
- * SAFE INTRO LOGO ANIMATION
- *
- * Deliberately uses opacity + scale only.
- * No blur.
- * No filter.
- *
- * This is the important iPhone/Safari fix.
- */
-
-@keyframes introLogoSafe {
+@keyframes introLogoReveal {
 
     0% {
         opacity: 0;
 
         transform:
-            scale(0.94)
+            scale(0.90)
+            translateY(8px)
             translateZ(0);
+    }
+
+    55% {
+        opacity: 1;
     }
 
     100% {
@@ -1937,7 +2055,44 @@ h2 span,
 
         transform:
             scale(1)
+            translateY(0)
             translateZ(0);
+    }
+}
+
+
+@keyframes introTextReveal {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(12px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes introLineReveal {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            scaleX(0);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            scaleX(1);
     }
 }
 
@@ -2004,7 +2159,6 @@ h2 span,
     body {
         background-attachment: scroll;
     }
-
 
     .container {
         width:
