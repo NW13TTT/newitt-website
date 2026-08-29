@@ -1,44 +1,29 @@
-# NEWITT Media Website
+# NEWITT Media
 
-Official website for **NEWITT Media**.
+Official website for NEWITT Media.
 
-## Official Website
+**Website:** https://www.newittmedia.co.uk/
 
-- https://newittmedia.co.uk/
-- https://www.newittmedia.co.uk/
+---
 
-## Repository
+## NEWITT Media
 
-https://github.com/NW13TTT/newitt-website
+NEWITT Media brings together three creative worlds under one identity:
 
-## Brands
+- NEWITT Skyline Media
+- NEWITT's Paranormal Adventures
+- NEWITT Media Photography
 
-### NEWITT Skyline Media
+**Tagline:**
 
-Aerial media, drone photography and video.
+> FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
 
-TikTok: `@newittskylinemedia`  
-YouTube: `@Newitt-skyline-media`  
-Contact: `n.skyline.media@gmail.com`
-
-### NEWITT's Paranormal Adventures
-
-Paranormal investigations, ghost hunting, haunted locations and unexplained experiences.
-
-TikTok: `@nw13ttt`  
-YouTube: `@NewittsParanormalAdventures`  
-Contact: `nw13ttt@gmail.com`
-
-### NEWITT Media Photography
-
-General photography covering people, places, landscapes and adventures.
+---
 
 ## Website Structure
 
-The website is contained inside `public/`.
-
 ```text
-public/
+/
 ├── index.html
 ├── skyline.html
 ├── paranormal.html
@@ -48,13 +33,21 @@ public/
 ├── script.js
 ├── robots.txt
 ├── sitemap.xml
-├── manifest.json
 ├── humans.txt
-├── background.png
+├── manifest.json
+│
 ├── newitt-media-logo.png
 ├── sky-logo.png
 ├── paranormal-logo.png
-├── newitt-social-hub-background.PNG
-├── newitt-social-hub-background-optimized.jpg
+├── background.png
+│
 └── media/
     └── skyline/
+        ├── Gloucester-prison-aerial-01.webp
+        ├── Gloucester-prison-aerial-01.JPG
+        ├── Gloucester-prison-aerial-02.webp
+        ├── Gloucester-prison-aerial-02.JPG
+        ├── Gloucester-prison-aerial-03.webp
+        ├── Gloucester-prison-aerial-03.JPG
+        ├── Gloucester-prison-aerial-04.webp
+        └── Gloucester-prison-aerial-04.JPG
