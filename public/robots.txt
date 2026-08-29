@@ -1,4 +1,7 @@
+# NEWITT Media
+# https://www.newittmedia.co.uk/
+
 User-agent: *
 Allow: /
 
-Sitemap: https://newittmedia.co.uk/sitemap.xml
+Sitemap: https://www.newittmedia.co.uk/sitemap.xml
