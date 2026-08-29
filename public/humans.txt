@@ -1,4 +1,30 @@
-NEWITT Media - www.newittmedia.co.uk
+/* TEAM */
+
+Developer: NEWITT Media
+Brand: NEWITT Media
+Website: https://newittmedia.co.uk/
+
+
+/* BRANDS */
+
+NEWITT Media
+NEWITT Skyline Media
+NEWITT's Paranormal Adventures
+NEWITT Media Photography
+
+
+/* TECHNOLOGY */
+
+Website: HTML5, CSS3, JavaScript
+Hosting: Cloudflare Workers
+Repository: GitHub
+
+
+/* COPYRIGHT */
+
+© 2026 NEWITT Media. All Rights Reserved.
+
+NEWITT Media • NEWITT Skyline Media • NEWITT's Paranormal Adventures • NEWITT Media PhotographyNEWITT Media - www.newittmedia.co.uk
 
 ========================================
 
