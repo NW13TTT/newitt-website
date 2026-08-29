@@ -1,9 +1,11 @@
 /* =========================================================
    NEWITT MEDIA
    MASTER JAVASCRIPT
+   VERSION: 29 AUGUST 2026
 ========================================================= */
 
 (function () {
+
     "use strict";
 
 
@@ -11,17 +13,26 @@
        DOM READY
     ====================================================== */
 
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
 
-        initialiseMobileMenu();
-        initialiseSmoothLinks();
-        initialiseBackToTop();
-        initialiseLightbox();
-        initialiseImagePerformance();
-        initialiseCinematicIntro();
-        initialiseSocialEffects();
+            initialiseMobileMenu();
 
-    });
+            initialiseSmoothLinks();
+
+            initialiseBackToTop();
+
+            initialiseLightbox();
+
+            initialiseImagePerformance();
+
+            initialiseCinematicIntro();
+
+            initialiseSocialEffects();
+
+        }
+    );
 
 
     /* =====================================================
@@ -31,10 +42,14 @@
     function initialiseMobileMenu() {
 
         const menuToggle =
-            document.querySelector(".menu-toggle");
+            document.querySelector(
+                ".menu-toggle"
+            );
 
         const navLinks =
-            document.querySelector(".nav-links");
+            document.querySelector(
+                ".nav-links"
+            );
 
         if (!menuToggle || !navLinks) {
             return;
@@ -64,7 +79,9 @@
 
         function openMenu() {
 
-            navLinks.classList.add("open");
+            navLinks.classList.add(
+                "open"
+            );
 
             menuToggle.setAttribute(
                 "aria-expanded",
@@ -90,10 +107,15 @@
                         "aria-expanded"
                     ) === "true";
 
+
                 if (isOpen) {
+
                     closeMenu();
+
                 } else {
+
                     openMenu();
+
                 }
 
             }
@@ -105,11 +127,15 @@
             function (event) {
 
                 const link =
-                    event.target.closest("a");
+                    event.target.closest(
+                        "a"
+                    );
+
 
                 if (!link) {
                     return;
                 }
+
 
                 closeMenu();
 
@@ -122,9 +148,15 @@
             function (event) {
 
                 if (
-                    navLinks.classList.contains("open") &&
-                    !navLinks.contains(event.target) &&
-                    !menuToggle.contains(event.target)
+                    navLinks.classList.contains(
+                        "open"
+                    ) &&
+                    !navLinks.contains(
+                        event.target
+                    ) &&
+                    !menuToggle.contains(
+                        event.target
+                    )
                 ) {
 
                     closeMenu();
@@ -139,8 +171,12 @@
             "resize",
             function () {
 
-                if (window.innerWidth > 700) {
+                if (
+                    window.innerWidth > 700
+                ) {
+
                     closeMenu();
+
                 }
 
             }
@@ -151,8 +187,12 @@
             "keydown",
             function (event) {
 
-                if (event.key === "Escape") {
+                if (
+                    event.key === "Escape"
+                ) {
+
                     closeMenu();
+
                 }
 
             }
@@ -172,6 +212,7 @@
                 'a[href^="#"]'
             );
 
+
         links.forEach(
             function (link) {
 
@@ -184,18 +225,33 @@
                                 "href"
                             );
 
+
                         if (
                             !targetId ||
                             targetId === "#"
                         ) {
+
                             return;
+
                         }
 
 
-                        const target =
-                            document.querySelector(
-                                targetId
-                            );
+                        let target = null;
+
+
+                        try {
+
+                            target =
+                                document.querySelector(
+                                    targetId
+                                );
+
+                        } catch (error) {
+
+                            return;
+
+                        }
+
 
                         if (!target) {
                             return;
@@ -210,6 +266,7 @@
                                 ".site-header"
                             );
 
+
                         const headerHeight =
                             header
                                 ? header.offsetHeight
@@ -217,23 +274,30 @@
 
 
                         const targetTop =
-                            target.getBoundingClientRect().top +
+                            target
+                                .getBoundingClientRect()
+                                .top +
                             window.scrollY -
                             headerHeight -
                             12;
 
 
+                        const reducedMotion =
+                            window.matchMedia(
+                                "(prefers-reduced-motion: reduce)"
+                            ).matches;
+
+
                         window.scrollTo({
 
-                            top: Math.max(
-                                0,
-                                targetTop
-                            ),
+                            top:
+                                Math.max(
+                                    0,
+                                    targetTop
+                                ),
 
                             behavior:
-                                window.matchMedia(
-                                    "(prefers-reduced-motion: reduce)"
-                                ).matches
+                                reducedMotion
                                     ? "auto"
                                     : "smooth"
 
@@ -259,6 +323,7 @@
                 "#back-to-top"
             );
 
+
         if (!backToTop) {
             return;
         }
@@ -266,7 +331,12 @@
 
         function updateBackToTop() {
 
-            if (window.scrollY > 420) {
+            const shouldShow =
+                window.scrollY >
+                420;
+
+
+            if (shouldShow) {
 
                 backToTop.classList.add(
                     "visible"
@@ -292,6 +362,12 @@
         );
 
 
+        window.addEventListener(
+            "load",
+            updateBackToTop
+        );
+
+
         updateBackToTop();
 
 
@@ -301,14 +377,19 @@
 
                 event.preventDefault();
 
+
+                const reducedMotion =
+                    window.matchMedia(
+                        "(prefers-reduced-motion: reduce)"
+                    ).matches;
+
+
                 window.scrollTo({
 
                     top: 0,
 
                     behavior:
-                        window.matchMedia(
-                            "(prefers-reduced-motion: reduce)"
-                        ).matches
+                        reducedMotion
                             ? "auto"
                             : "smooth"
 
@@ -331,6 +412,7 @@
                 "[data-lightbox]"
             );
 
+
         if (!galleryItems.length) {
             return;
         }
@@ -349,21 +431,26 @@
                     "div"
                 );
 
+
             lightbox.id =
                 "lightbox";
 
+
             lightbox.className =
                 "lightbox";
+
 
             lightbox.setAttribute(
                 "role",
                 "dialog"
             );
 
+
             lightbox.setAttribute(
                 "aria-modal",
                 "true"
             );
+
 
             lightbox.setAttribute(
                 "aria-label",
@@ -403,18 +490,35 @@
                 "#lightbox-image"
             );
 
+
         const closeButton =
             lightbox.querySelector(
                 "#lightbox-close"
             );
 
 
-        let previousOverflow = "";
+        if (
+            !lightboxImage ||
+            !closeButton
+        ) {
+
+            return;
+
+        }
+
+
+        let previousOverflow =
+            "";
+
+
+        let previousFocus =
+            null;
 
 
         function openLightbox(
             imageSource,
-            imageAlt
+            imageAlt,
+            trigger
         ) {
 
             if (!imageSource) {
@@ -422,8 +526,14 @@
             }
 
 
+            previousFocus =
+                trigger ||
+                document.activeElement;
+
+
             lightboxImage.src =
                 imageSource;
+
 
             lightboxImage.alt =
                 imageAlt || "";
@@ -467,15 +577,36 @@
                         )
                     ) {
 
-                        lightboxImage.src = "";
+                        lightboxImage.src =
+                            "";
 
-                        lightboxImage.alt = "";
+                        lightboxImage.alt =
+                            "";
 
                     }
 
                 },
                 250
             );
+
+
+            if (
+                previousFocus &&
+                typeof previousFocus.focus ===
+                    "function"
+            ) {
+
+                try {
+
+                    previousFocus.focus();
+
+                } catch (error) {
+
+                    /* Ignore focus restoration errors. */
+
+                }
+
+            }
 
         }
 
@@ -499,8 +630,10 @@
                             ) ||
                             (
                                 image
-                                    ? image.currentSrc ||
-                                      image.src
+                                    ? (
+                                        image.currentSrc ||
+                                        image.src
+                                    )
                                     : ""
                             );
 
@@ -513,7 +646,8 @@
 
                         openLightbox(
                             source,
-                            alt
+                            alt,
+                            item
                         );
 
                     }
@@ -534,7 +668,8 @@
             function (event) {
 
                 if (
-                    event.target === lightbox
+                    event.target ===
+                    lightbox
                 ) {
 
                     closeLightbox();
@@ -643,6 +778,7 @@
                 "#site-intro"
             );
 
+
         if (!intro) {
             return;
         }
@@ -654,33 +790,12 @@
             ).matches;
 
 
-        /*
-         * This flag remembers that the visitor has
-         * already experienced the NEWITT Media intro.
-         *
-         * The intro therefore:
-         *
-         * FIRST VISIT:
-         * Plays normally.
-         *
-         * REFRESH:
-         * Does not play again.
-         *
-         * MOVING BETWEEN PAGES:
-         * Does not play again.
-         *
-         * CLOSING AND REOPENING BROWSER:
-         * Does not play again.
-         *
-         * CLEARING WEBSITE DATA:
-         * Allows it to play again.
-         */
-
         const introKey =
             "newittMediaCinematicIntroSeen";
 
 
-        let alreadySeen = false;
+        let alreadySeen =
+            false;
 
 
         try {
@@ -692,14 +807,16 @@
 
         } catch (error) {
 
-            alreadySeen = false;
+            alreadySeen =
+                false;
 
         }
 
 
         /*
-         * Visitor has already seen the intro.
-         * Remove it immediately.
+         * If this visitor has already seen
+         * the cinematic introduction, remove
+         * it immediately.
          */
 
         if (alreadySeen) {
@@ -712,10 +829,9 @@
 
 
         /*
-         * Mark the intro as seen immediately.
-         *
-         * This prevents another page load from
-         * triggering the cinematic sequence again.
+         * Record the visit immediately so
+         * navigating around the website does
+         * not replay the introduction.
          */
 
         try {
@@ -728,19 +844,20 @@
         } catch (error) {
 
             /*
-             * Some browsers/private browsing modes
-             * may restrict storage.
-             *
-             * The intro will still complete normally.
+             * Storage may be unavailable in
+             * some private browsing situations.
+             * The introduction can still run.
              */
 
         }
 
 
         /*
-         * Five seconds gives the cinematic sequence
-         * enough time to breathe without making the
-         * visitor wait unnecessarily.
+         * Give the first visit a cinematic
+         * five-second sequence.
+         *
+         * Reduced-motion users receive a
+         * much shorter presentation.
          */
 
         const duration =
@@ -760,7 +877,14 @@
                 window.setTimeout(
                     function () {
 
-                        intro.remove();
+                        if (
+                            intro &&
+                            intro.parentNode
+                        ) {
+
+                            intro.remove();
+
+                        }
 
                     },
                     reducedMotion
@@ -776,7 +900,8 @@
 
 
     /* =====================================================
-       SOCIAL MEDIA HUB ATMOSPHERE
+       SOCIAL MEDIA HUB
+       CINEMATIC ATMOSPHERE
     ====================================================== */
 
     function initialiseSocialEffects() {
@@ -785,6 +910,7 @@
             document.querySelector(
                 ".social-hub"
             );
+
 
         if (!socialHub) {
             return;
@@ -814,7 +940,24 @@
             );
 
 
-        let lastTime = 0;
+        const houseGlow =
+            socialHub.querySelector(
+                ".social-house-glow"
+            );
+
+
+        const background =
+            socialHub.querySelector(
+                ".social-hub-art"
+            );
+
+
+        let animationFrame =
+            null;
+
+
+        let lastTime =
+            0;
 
 
         function animate(
@@ -822,13 +965,15 @@
         ) {
 
             if (
-                timestamp - lastTime <
-                50
+                timestamp -
+                lastTime <
+                45
             ) {
 
-                window.requestAnimationFrame(
-                    animate
-                );
+                animationFrame =
+                    window.requestAnimationFrame(
+                        animate
+                    );
 
                 return;
 
@@ -844,12 +989,12 @@
 
 
             /*
-             * Skyline electrical atmosphere
+             * Skyline electrical atmosphere.
              */
 
             if (skyline) {
 
-                const pulse =
+                const skylinePulse =
                     0.45 +
                     Math.sin(
                         time * 1.7
@@ -858,18 +1003,20 @@
 
 
                 skyline.style.opacity =
-                    pulse.toFixed(3);
+                    skylinePulse.toFixed(
+                        3
+                    );
 
             }
 
 
             /*
-             * Paranormal atmosphere
+             * Paranormal atmosphere.
              */
 
             if (paranormal) {
 
-                const pulse =
+                const paranormalPulse =
                     0.38 +
                     Math.sin(
                         time * 1.15 +
@@ -879,29 +1026,136 @@
 
 
                 paranormal.style.opacity =
-                    pulse.toFixed(3);
+                    paranormalPulse.toFixed(
+                        3
+                    );
 
             }
 
 
-            window.requestAnimationFrame(
-                animate
-            );
+            /*
+             * Haunted-house glow.
+             * A slower secondary pulse keeps
+             * the right side of the artwork alive.
+             */
+
+            if (houseGlow) {
+
+                const housePulse =
+                    0.34 +
+                    Math.sin(
+                        time * 0.9 +
+                        2
+                    ) *
+                    0.12;
+
+
+                houseGlow.style.opacity =
+                    housePulse.toFixed(
+                        3
+                    );
+
+            }
+
+
+            /*
+             * Very subtle artwork movement.
+             * CSS already provides the main
+             * cinematic movement. This only adds
+             * a tiny live positional shift.
+             */
+
+            if (background) {
+
+                const x =
+                    Math.sin(
+                        time * 0.18
+                    ) *
+                    0.15;
+
+
+                const y =
+                    Math.cos(
+                        time * 0.15
+                    ) *
+                    0.10;
+
+
+                background.style.translate =
+                    `${x.toFixed(2)}% ${y.toFixed(2)}%`;
+
+            }
+
+
+            animationFrame =
+                window.requestAnimationFrame(
+                    animate
+                );
 
         }
 
 
-        window.requestAnimationFrame(
-            animate
+        animationFrame =
+            window.requestAnimationFrame(
+                animate
+            );
+
+
+        /*
+         * Stop the animation when the page is
+         * hidden. This saves battery on phones.
+         */
+
+        document.addEventListener(
+            "visibilitychange",
+            function () {
+
+                if (
+                    document.hidden
+                ) {
+
+                    if (
+                        animationFrame
+                    ) {
+
+                        window.cancelAnimationFrame(
+                            animationFrame
+                        );
+
+                        animationFrame =
+                            null;
+
+                    }
+
+                } else {
+
+                    if (
+                        !animationFrame
+                    ) {
+
+                        lastTime =
+                            0;
+
+                        animationFrame =
+                            window.requestAnimationFrame(
+                                animate
+                            );
+
+                    }
+
+                }
+
+            }
         );
 
     }
 
 
     /* =====================================================
-       PUBLIC TOGGLE FUNCTION
+       PUBLIC MENU FUNCTION
        
-       Kept for compatibility with existing HTML.
+       Kept for compatibility with existing
+       HTML and previous versions of the site.
     ====================================================== */
 
     window.toggleMenu =
