@@ -1,17 +1,23 @@
 /* =========================================================
    NEWITT MEDIA
-   MASTER SCRIPT
+   MASTER WEBSITE SCRIPT
+   FINAL WEBSITE SYSTEM
 
-   Opening animation
-   Mobile navigation
-   Back to top
-   Language system
-   Gallery / lightbox
-   Smooth scrolling
-   Image safety
-   External-link safety
+   Handles:
+   - Opening animation
+   - Mobile navigation
+   - Back to top
+   - Language selector
+   - Page translations
+   - Gallery / lightbox
+   - Smooth scrolling
+   - Image error handling
+   - External-link safety
+   - Accessibility
+   - Keyboard controls
+   - Reduced-motion support
 
-   LANGUAGE SYSTEM
+   Supported languages:
    English
    Cymraeg
    Français
@@ -20,26 +26,27 @@
 ========================================================= */
 
 (() => {
+
     "use strict";
 
 
     /* =====================================================
-       READY
+       DOM READY
     ===================================================== */
 
-    const ready = (fn) => {
+    const ready = (callback) => {
 
         if (document.readyState === "loading") {
 
             document.addEventListener(
                 "DOMContentLoaded",
-                fn,
+                callback,
                 { once: true }
             );
 
         } else {
 
-            fn();
+            callback();
 
         }
 
@@ -47,6 +54,29 @@
 
 
     ready(() => {
+
+
+        /* =====================================================
+           GENERAL HELPERS
+        ===================================================== */
+
+        const prefersReducedMotion = () => {
+
+            return window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches;
+
+        };
+
+
+        const normalise = (value) => {
+
+            return String(value || "")
+                .replace(/\s+/g, " ")
+                .trim()
+                .toLowerCase();
+
+        };
 
 
         /* =====================================================
@@ -61,6 +91,29 @@
 
             const INTRO_SEEN_KEY =
                 "newittMediaIntroSeen";
+
+
+            const hideIntroImmediately = () => {
+
+                intro.classList.add(
+                    "intro-finished"
+                );
+
+                intro.setAttribute(
+                    "hidden",
+                    ""
+                );
+
+                intro.setAttribute(
+                    "aria-hidden",
+                    "true"
+                );
+
+                document.body.classList.remove(
+                    "no-scroll"
+                );
+
+            };
 
 
             const revealSite = () => {
@@ -110,15 +163,7 @@
 
             if (alreadySeen) {
 
-                intro.setAttribute(
-                    "hidden",
-                    ""
-                );
-
-                intro.setAttribute(
-                    "aria-hidden",
-                    "true"
-                );
+                hideIntroImmediately();
 
             } else {
 
@@ -143,7 +188,9 @@
 
                 window.setTimeout(
                     revealSite,
-                    3600
+                    prefersReducedMotion()
+                        ? 50
+                        : 3600
                 );
 
             }
@@ -202,11 +249,41 @@
         };
 
 
+        const openMenu = () => {
+
+            if (
+                !menuToggle ||
+                !navLinks
+            ) {
+
+                return;
+
+            }
+
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+
+
+            menuToggle.setAttribute(
+                "aria-label",
+                "Close navigation menu"
+            );
+
+
+            navLinks.classList.add(
+                "open"
+            );
+
+        };
+
+
         if (
             menuToggle &&
             navLinks
         ) {
-
 
             menuToggle.addEventListener(
                 "click",
@@ -221,24 +298,15 @@
                         ) === "true";
 
 
-                    menuToggle.setAttribute(
-                        "aria-expanded",
-                        String(!isOpen)
-                    );
+                    if (isOpen) {
 
+                        closeMenu();
 
-                    menuToggle.setAttribute(
-                        "aria-label",
-                        isOpen
-                            ? "Open navigation menu"
-                            : "Close navigation menu"
-                    );
+                    } else {
 
+                        openMenu();
 
-                    navLinks.classList.toggle(
-                        "open",
-                        !isOpen
-                    );
+                    }
 
                 }
             );
@@ -307,7 +375,6 @@
 
         if (topButton) {
 
-
             const updateTopButton = () => {
 
                 if (
@@ -348,18 +415,12 @@
                     event.preventDefault();
 
 
-                    const reducedMotion =
-                        window.matchMedia(
-                            "(prefers-reduced-motion: reduce)"
-                        ).matches;
-
-
                     window.scrollTo({
 
                         top: 0,
 
                         behavior:
-                            reducedMotion
+                            prefersReducedMotion()
                                 ? "auto"
                                 : "smooth"
 
@@ -403,28 +464,30 @@
         };
 
 
+        /*
+         * Translation dictionary.
+         *
+         * The existing page wording remains the English
+         * master wording. JavaScript replaces known interface
+         * strings without damaging links, HTML structure,
+         * images or branding.
+         */
+
         const TRANSLATIONS = {
-
-
-            /* =================================================
-               ENGLISH
-            ================================================= */
 
             en: {
 
                 navHome: "Home",
-
                 navSkyline: "Skyline",
-
                 navParanormal: "Paranormal",
-
                 navPhotography: "Photography",
-
                 navContact: "Contact",
 
-                explore: "Explore NEWITT Media",
+                explore:
+                    "Explore NEWITT Media",
 
-                getInTouch: "Get in Touch",
+                getInTouch:
+                    "Get in Touch",
 
                 oneBrandThreeWorlds:
                     "One brand. Three worlds.",
@@ -456,20 +519,12 @@
             },
 
 
-            /* =================================================
-               WELSH
-            ================================================= */
-
             cy: {
 
                 navHome: "Cartref",
-
                 navSkyline: "Skyline",
-
                 navParanormal: "Paranormal",
-
                 navPhotography: "Ffotograffiaeth",
-
                 navContact: "Cysylltu",
 
                 explore:
@@ -508,20 +563,12 @@
             },
 
 
-            /* =================================================
-               FRENCH
-            ================================================= */
-
             fr: {
 
                 navHome: "Accueil",
-
                 navSkyline: "Skyline",
-
                 navParanormal: "Paranormal",
-
                 navPhotography: "Photographie",
-
                 navContact: "Contact",
 
                 explore:
@@ -560,20 +607,12 @@
             },
 
 
-            /* =================================================
-               GERMAN
-            ================================================= */
-
             de: {
 
                 navHome: "Startseite",
-
                 navSkyline: "Skyline",
-
                 navParanormal: "Paranormal",
-
                 navPhotography: "Fotografie",
-
                 navContact: "Kontakt",
 
                 explore:
@@ -612,20 +651,12 @@
             },
 
 
-            /* =================================================
-               SPANISH
-            ================================================= */
-
             es: {
 
                 navHome: "Inicio",
-
                 navSkyline: "Skyline",
-
                 navParanormal: "Paranormal",
-
                 navPhotography: "Fotografía",
-
                 navContact: "Contacto",
 
                 explore:
@@ -667,7 +698,7 @@
 
 
         /* =====================================================
-           FIND / CREATE LANGUAGE SELECTOR
+           LANGUAGE SELECTOR
         ===================================================== */
 
         let languageSelector =
@@ -699,6 +730,7 @@
                     class="language-toggle"
                     aria-expanded="false"
                     aria-controls="language-menu"
+                    aria-label="Language: English"
                 >
                     EN
                 </button>
@@ -774,10 +806,6 @@
         ) {
 
 
-            /* ================================================
-               CLOSE LANGUAGE MENU
-            ================================================= */
-
             const closeLanguageMenu = () => {
 
                 languageToggle.setAttribute(
@@ -791,9 +819,18 @@
             };
 
 
-            /* ================================================
-               OPEN / CLOSE
-            ================================================= */
+            const openLanguageMenu = () => {
+
+                languageToggle.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+
+                languageMenu.hidden =
+                    false;
+
+            };
+
 
             languageToggle.addEventListener(
                 "click",
@@ -808,29 +845,25 @@
                         ) === "true";
 
 
-                    languageToggle.setAttribute(
-                        "aria-expanded",
-                        String(!isOpen)
-                    );
+                    if (isOpen) {
 
+                        closeLanguageMenu();
 
-                    languageMenu.hidden =
-                        isOpen;
+                    } else {
+
+                        openLanguageMenu();
+
+                    }
 
                 }
             );
 
-
-            /* ================================================
-               LANGUAGE BUTTONS
-            ================================================= */
 
             languageMenu
                 .querySelectorAll(
                     "[data-lang]"
                 )
                 .forEach((button) => {
-
 
                     button.addEventListener(
                         "click",
@@ -869,10 +902,6 @@
                 });
 
 
-            /* ================================================
-               CLICK OUTSIDE
-            ================================================= */
-
             document.addEventListener(
                 "click",
                 (event) => {
@@ -891,10 +920,6 @@
             );
 
 
-            /* ================================================
-               ESCAPE
-            ================================================= */
-
             document.addEventListener(
                 "keydown",
                 (event) => {
@@ -911,13 +936,369 @@
             );
 
 
-            /* ================================================
-               SET LANGUAGE
+            /* =================================================
+               LANGUAGE TRANSLATION HELPERS
             ================================================= */
 
-            function setLanguage(
-                language
-            ) {
+            const translateNavigation = (
+                dictionary
+            ) => {
+
+                const nav =
+                    document.querySelector(
+                        ".nav-links"
+                    );
+
+
+                if (!nav) {
+
+                    return;
+
+                }
+
+
+                nav.querySelectorAll("a")
+                    .forEach((link) => {
+
+                        const href =
+                            link.getAttribute(
+                                "href"
+                            );
+
+
+                        if (!href) {
+
+                            return;
+
+                        }
+
+
+                        if (
+                            href.includes(
+                                "index.html"
+                            ) ||
+                            href === "./" ||
+                            href === "/"
+                        ) {
+
+                            link.textContent =
+                                dictionary.navHome;
+
+                        } else if (
+                            href.includes(
+                                "skyline.html"
+                            )
+                        ) {
+
+                            link.textContent =
+                                dictionary.navSkyline;
+
+                        } else if (
+                            href.includes(
+                                "paranormal.html"
+                            )
+                        ) {
+
+                            link.textContent =
+                                dictionary.navParanormal;
+
+                        } else if (
+                            href.includes(
+                                "photography.html"
+                            )
+                        ) {
+
+                            link.textContent =
+                                dictionary.navPhotography;
+
+                        } else if (
+                            href.includes(
+                                "contact.html"
+                            )
+                        ) {
+
+                            link.textContent =
+                                dictionary.navContact;
+
+                        }
+
+                    });
+
+            };
+
+
+            const translateButton = (
+                button,
+                dictionary
+            ) => {
+
+                const href =
+                    button.getAttribute(
+                        "href"
+                    ) || "";
+
+
+                const original =
+                    button.dataset.newittOriginalText ||
+                    button.textContent.trim();
+
+
+                if (
+                    !button.dataset.newittOriginalText
+                ) {
+
+                    button.dataset.newittOriginalText =
+                        original;
+
+                }
+
+
+                const text =
+                    normalise(
+                        button.dataset.newittOriginalText
+                    );
+
+
+                if (
+                    text ===
+                    "explore newitt media"
+                ) {
+
+                    button.textContent =
+                        dictionary.explore;
+
+                    return;
+
+                }
+
+
+                if (
+                    text ===
+                    "get in touch"
+                ) {
+
+                    button.textContent =
+                        dictionary.getInTouch;
+
+                    return;
+
+                }
+
+
+                if (
+                    text ===
+                    "visit skyline" &&
+                    href.includes(
+                        "skyline.html"
+                    )
+                ) {
+
+                    button.textContent =
+                        dictionary.visitSkyline;
+
+                    return;
+
+                }
+
+
+                if (
+                    text ===
+                    "enter the paranormal" &&
+                    href.includes(
+                        "paranormal.html"
+                    )
+                ) {
+
+                    button.textContent =
+                        dictionary.enterParanormal;
+
+                    return;
+
+                }
+
+
+                if (
+                    text ===
+                    "visit photography" &&
+                    href.includes(
+                        "photography.html"
+                    )
+                ) {
+
+                    button.textContent =
+                        dictionary.visitPhotography;
+
+                }
+
+            };
+
+
+            const translateButtons = (
+                dictionary
+            ) => {
+
+                document
+                    .querySelectorAll(
+                        ".button"
+                    )
+                    .forEach((button) => {
+
+                        translateButton(
+                            button,
+                            dictionary
+                        );
+
+                    });
+
+            };
+
+
+            const translateHome = (
+                dictionary
+            ) => {
+
+                if (
+                    !document.body.classList.contains(
+                        "home-page"
+                    )
+                ) {
+
+                    return;
+
+                }
+
+
+                /*
+                 * One brand. Three worlds.
+                 */
+
+                document
+                    .querySelectorAll(
+                        ".section-heading .eyebrow"
+                    )
+                    .forEach((element) => {
+
+                        const original =
+                            element.dataset
+                                .newittOriginalText ||
+                            element.textContent.trim();
+
+
+                        if (
+                            !element.dataset
+                                .newittOriginalText
+                        ) {
+
+                            element.dataset
+                                .newittOriginalText =
+                                    original;
+
+                        }
+
+
+                        if (
+                            normalise(original) ===
+                            "one brand. three worlds."
+                        ) {
+
+                            element.textContent =
+                                dictionary
+                                    .oneBrandThreeWorlds;
+
+                        }
+
+                    });
+
+
+                /*
+                 * Choose your NEWITT experience.
+                 *
+                 * The heading is kept as two pieces so
+                 * the existing gold span remains intact.
+                 */
+
+                const experienceHeading =
+                    Array.from(
+                        document.querySelectorAll(
+                            ".section-heading h2"
+                        )
+                    ).find((heading) => {
+
+                        return normalise(
+                            heading.textContent
+                        ).includes(
+                            "choose your newitt experience"
+                        );
+
+                    });
+
+
+                if (experienceHeading) {
+
+                    const span =
+                        experienceHeading.querySelector(
+                            "span"
+                        );
+
+
+                    if (span) {
+
+                        const existingPrefix =
+                            experienceHeading
+                                .childNodes[0];
+
+
+                        if (
+                            existingPrefix &&
+                            existingPrefix.nodeType ===
+                            Node.TEXT_NODE
+                        ) {
+
+                            existingPrefix.textContent =
+                                dictionary
+                                    .chooseExperience
+                                    .replace(
+                                        /newitt experience\.$/i,
+                                        ""
+                                    );
+
+                        }
+
+
+                        span.textContent =
+                            dictionary
+                                .chooseExperience
+                                .match(
+                                    /newitt experience\.$/i
+                                )
+                                ? "NEWITT experience."
+                                : dictionary
+                                    .chooseExperience;
+
+                    }
+
+                }
+
+
+                /*
+                 * Social ticker
+                 */
+
+                document
+                    .querySelectorAll(
+                        ".social-ticker-track span"
+                    )
+                    .forEach((element) => {
+
+                        element.textContent =
+                            dictionary.followSocial;
+
+                    });
+
+            };
+
+
+            function setLanguage(language) {
 
                 if (
                     !SUPPORTED_LANGUAGES.includes(
@@ -943,19 +1324,9 @@
                 }
 
 
-                /* --------------------------------------------
-                   HTML LANGUAGE
-                -------------------------------------------- */
-
                 document.documentElement.lang =
-                    language === "cy"
-                        ? "cy"
-                        : language;
+                    language;
 
-
-                /* --------------------------------------------
-                   SAVE LANGUAGE
-                -------------------------------------------- */
 
                 try {
 
@@ -971,10 +1342,6 @@
                 }
 
 
-                /* --------------------------------------------
-                   BUTTON
-                -------------------------------------------- */
-
                 languageToggle.textContent =
                     language.toUpperCase();
 
@@ -985,440 +1352,20 @@
                 );
 
 
-                /* --------------------------------------------
-                   NAVIGATION
-                -------------------------------------------- */
+                translateNavigation(
+                    dictionary
+                );
 
-                const nav =
-                    document.querySelector(
-                        ".nav-links"
-                    );
 
+                translateButtons(
+                    dictionary
+                );
 
-                if (nav) {
 
-                    const navItems =
-                        nav.querySelectorAll(
-                            "a"
-                        );
+                translateHome(
+                    dictionary
+                );
 
-
-                    navItems.forEach(
-                        (link) => {
-
-                            const href =
-                                link.getAttribute(
-                                    "href"
-                                );
-
-
-                            if (!href) {
-
-                                return;
-
-                            }
-
-
-                            if (
-                                href.includes(
-                                    "index.html"
-                                ) ||
-                                href === "./" ||
-                                href === "/"
-                            ) {
-
-                                link.textContent =
-                                    dictionary.navHome;
-
-                            } else if (
-                                href.includes(
-                                    "skyline.html"
-                                )
-                            ) {
-
-                                link.textContent =
-                                    dictionary.navSkyline;
-
-                            } else if (
-                                href.includes(
-                                    "paranormal.html"
-                                )
-                            ) {
-
-                                link.textContent =
-                                    dictionary.navParanormal;
-
-                            } else if (
-                                href.includes(
-                                    "photography.html"
-                                )
-                            ) {
-
-                                link.textContent =
-                                    dictionary.navPhotography;
-
-                            } else if (
-                                href.includes(
-                                    "contact.html"
-                                )
-                            ) {
-
-                                link.textContent =
-                                    dictionary.navContact;
-
-                            }
-
-                        }
-                    );
-
-                }
-
-
-                /* --------------------------------------------
-                   COMMON BUTTONS
-                -------------------------------------------- */
-
-                document
-                    .querySelectorAll(
-                        ".button"
-                    )
-                    .forEach((button) => {
-
-                        const href =
-                            button.getAttribute(
-                                "href"
-                            );
-
-
-                        const text =
-                            button.textContent
-                                .trim()
-                                .toLowerCase();
-
-
-                        if (
-                            text.includes(
-                                "get in touch"
-                            ) ||
-                            text.includes(
-                                "nous contacter"
-                            ) ||
-                            text.includes(
-                                "kontakt"
-                            ) ||
-                            text.includes(
-                                "contactar"
-                            ) ||
-                            text.includes(
-                                "cysylltu"
-                            )
-                        ) {
-
-                            button.textContent =
-                                dictionary.getInTouch;
-
-                        }
-
-
-                        if (
-                            text.includes(
-                                "explore newitt"
-                            )
-                        ) {
-
-                            button.textContent =
-                                dictionary.explore;
-
-                        }
-
-
-                        if (
-                            href &&
-                            href.includes(
-                                "skyline.html"
-                            ) &&
-                            (
-                                text.includes(
-                                    "visit skyline"
-                                ) ||
-                                text.includes(
-                                    "skyline besuchen"
-                                ) ||
-                                text.includes(
-                                    "visitar skyline"
-                                ) ||
-                                text.includes(
-                                    "visiter skyline"
-                                ) ||
-                                text.includes(
-                                    "ewch i skyline"
-                                )
-                            )
-                        ) {
-
-                            button.textContent =
-                                dictionary.visitSkyline;
-
-                        }
-
-
-                        if (
-                            href &&
-                            href.includes(
-                                "paranormal.html"
-                            ) &&
-                            (
-                                text.includes(
-                                    "enter the paranormal"
-                                ) ||
-                                text.includes(
-                                    "zum paranormalen"
-                                ) ||
-                                text.includes(
-                                    "entrar en lo paranormal"
-                                ) ||
-                                text.includes(
-                                    "entrer dans le paranormal"
-                                ) ||
-                                text.includes(
-                                    "ewch i'r paranormal"
-                                )
-                            )
-                        ) {
-
-                            button.textContent =
-                                dictionary.enterParanormal;
-
-                        }
-
-
-                        if (
-                            href &&
-                            href.includes(
-                                "photography.html"
-                            ) &&
-                            (
-                                text.includes(
-                                    "visit photography"
-                                ) ||
-                                text.includes(
-                                    "fotografie ansehen"
-                                ) ||
-                                text.includes(
-                                    "ver fotografía"
-                                ) ||
-                                text.includes(
-                                    "voir la photographie"
-                                ) ||
-                                text.includes(
-                                    "ewch i ffotograffiaeth"
-                                )
-                            )
-                        ) {
-
-                            button.textContent =
-                                dictionary.visitPhotography;
-
-                        }
-
-                    });
-
-
-                /* --------------------------------------------
-                   HOME PAGE HEADINGS
-                -------------------------------------------- */
-
-                const homePage =
-                    document.body.classList.contains(
-                        "home-page"
-                    );
-
-
-                if (homePage) {
-
-                    const eybrows =
-                        document.querySelectorAll(
-                            ".section-heading .eyebrow"
-                        );
-
-
-                    eybrows.forEach(
-                        (element) => {
-
-                            const text =
-                                element.textContent
-                                    .trim()
-                                    .toLowerCase();
-
-
-                            if (
-                                text.includes(
-                                    "one brand"
-                                ) ||
-                                text.includes(
-                                    "un brand"
-                                ) ||
-                                text.includes(
-                                    "une marque"
-                                ) ||
-                                text.includes(
-                                    "eine marke"
-                                ) ||
-                                text.includes(
-                                    "una marca"
-                                )
-                            ) {
-
-                                element.textContent =
-                                    dictionary.oneBrandThreeWorlds;
-
-                            }
-
-                        }
-                    );
-
-
-                    const headings =
-                        document.querySelectorAll(
-                            ".section-heading h2"
-                        );
-
-
-                    headings.forEach(
-                        (heading) => {
-
-                            const text =
-                                heading.textContent
-                                    .replace(
-                                        /\s+/g,
-                                        " "
-                                    )
-                                    .trim()
-                                    .toLowerCase();
-
-
-                            if (
-                                text.includes(
-                                    "choose your"
-                                ) ||
-                                text.includes(
-                                    "choisissez"
-                                ) ||
-                                text.includes(
-                                    "wählen"
-                                ) ||
-                                text.includes(
-                                    "elige"
-                                ) ||
-                                text.includes(
-                                    "dewiswch"
-                                )
-                            ) {
-
-                                const span =
-                                    heading.querySelector(
-                                        "span"
-                                    );
-
-
-                                heading.childNodes
-                                    .forEach(
-                                        (node) => {
-
-                                            if (
-                                                node.nodeType ===
-                                                Node.TEXT_NODE
-                                            ) {
-
-                                                if (
-                                                    node.textContent
-                                                        .trim()
-                                                        .length
-                                                ) {
-
-                                                    node.textContent =
-                                                        dictionary
-                                                            .chooseExperience
-                                                            .replace(
-                                                                dictionary
-                                                                    .chooseExperience
-                                                                    .split(
-                                                                        " "
-                                                                    )
-                                                                    .slice(
-                                                                        2
-                                                                    )
-                                                                    .join(
-                                                                        " "
-                                                                    ),
-                                                                ""
-                                                            );
-
-                                                }
-
-                                            }
-
-                                        }
-                                    );
-
-
-                                if (span) {
-
-                                    span.textContent =
-                                        dictionary
-                                            .chooseExperience
-                                            .replace(
-                                                /^[^.]*?choose your\s*/i,
-                                                ""
-                                            )
-                                            .replace(
-                                                /^[^.]*?choisissez votre\s*/i,
-                                                ""
-                                            )
-                                            .replace(
-                                                /^[^.]*?wählen sie\s*/i,
-                                                ""
-                                            )
-                                            .replace(
-                                                /^[^.]*?elige tu\s*/i,
-                                                ""
-                                            )
-                                            .replace(
-                                                /^[^.]*?dewiswch eich\s*/i,
-                                                ""
-                                            );
-
-                                }
-
-                            }
-
-                        }
-                    );
-
-                }
-
-
-                /* --------------------------------------------
-                   SOCIAL TICKER
-                -------------------------------------------- */
-
-                document
-                    .querySelectorAll(
-                        ".social-ticker-track span"
-                    )
-                    .forEach(
-                        (element) => {
-
-                            element.textContent =
-                                dictionary.followSocial;
-
-                        }
-                    );
-
-
-                /* --------------------------------------------
-                   LANGUAGE EVENT
-                -------------------------------------------- */
 
                 document.dispatchEvent(
                     new CustomEvent(
@@ -1433,10 +1380,6 @@
 
             }
 
-
-            /* ================================================
-               LOAD SAVED LANGUAGE
-            ================================================= */
 
             let savedLanguage =
                 "en";
@@ -1534,6 +1477,74 @@
                         "src"
                     );
 
+                    lightboxImage.removeAttribute(
+                        "alt"
+                    );
+
+                }
+
+            };
+
+
+            const openLightbox = (
+                image
+            ) => {
+
+                if (!lightboxImage) {
+
+                    return;
+
+                }
+
+
+                const parentLink =
+                    image.closest("a");
+
+
+                const fullImage =
+                    parentLink &&
+                    parentLink.href
+                        ? parentLink.href
+                        : image.currentSrc ||
+                          image.src;
+
+
+                if (!fullImage) {
+
+                    return;
+
+                }
+
+
+                lightboxImage.src =
+                    fullImage;
+
+
+                lightboxImage.alt =
+                    image.alt ||
+                    "NEWITT Media image";
+
+
+                lightbox.classList.add(
+                    "active"
+                );
+
+
+                lightbox.setAttribute(
+                    "aria-hidden",
+                    "false"
+                );
+
+
+                document.body.classList.add(
+                    "no-scroll"
+                );
+
+
+                if (closeButton) {
+
+                    closeButton.focus();
+
                 }
 
             };
@@ -1548,52 +1559,8 @@
 
                             event.preventDefault();
 
-
-                            if (
-                                !lightboxImage
-                            ) {
-
-                                return;
-
-                            }
-
-
-                            const parentLink =
-                                image.closest(
-                                    "a"
-                                );
-
-
-                            const fullImage =
-                                parentLink &&
-                                parentLink.href
-                                    ? parentLink.href
-                                    : image.currentSrc ||
-                                      image.src;
-
-
-                            lightboxImage.src =
-                                fullImage;
-
-
-                            lightboxImage.alt =
-                                image.alt ||
-                                "NEWITT Media image";
-
-
-                            lightbox.classList.add(
-                                "active"
-                            );
-
-
-                            lightbox.setAttribute(
-                                "aria-hidden",
-                                "false"
-                            );
-
-
-                            document.body.classList.add(
-                                "no-scroll"
+                            openLightbox(
+                                image
                             );
 
                         }
@@ -1681,6 +1648,35 @@
                         }
 
 
+                        /*
+                         * #top should always return to
+                         * the very top of the page.
+                         */
+
+                        if (
+                            targetId === "#top"
+                        ) {
+
+                            event.preventDefault();
+
+
+                            window.scrollTo({
+
+                                top: 0,
+
+                                behavior:
+                                    prefersReducedMotion()
+                                        ? "auto"
+                                        : "smooth"
+
+                            });
+
+
+                            return;
+
+                        }
+
+
                         const target =
                             document.querySelector(
                                 targetId
@@ -1697,16 +1693,10 @@
                         event.preventDefault();
 
 
-                        const reducedMotion =
-                            window.matchMedia(
-                                "(prefers-reduced-motion: reduce)"
-                            ).matches;
-
-
                         target.scrollIntoView({
 
                             behavior:
-                                reducedMotion
+                                prefersReducedMotion()
                                     ? "auto"
                                     : "smooth",
 
@@ -1738,6 +1728,11 @@
                             "image-load-error"
                         );
 
+                        image.setAttribute(
+                            "data-image-error",
+                            "true"
+                        );
+
                     },
                     {
                         once: true
@@ -1748,16 +1743,7 @@
 
 
         /* =====================================================
-           PAGE READY
-        ===================================================== */
-
-        document.documentElement.classList.add(
-            "newitt-js-ready"
-        );
-
-
-        /* =====================================================
-           EXTERNAL SOCIAL LINKS
+           EXTERNAL LINK SAFETY
         ===================================================== */
 
         document
@@ -1772,6 +1758,122 @@
                 );
 
             });
+
+
+        /* =====================================================
+           LANGUAGE MENU KEYBOARD ACCESS
+        ===================================================== */
+
+        if (
+            languageSelector &&
+            languageToggle &&
+            languageMenu
+        ) {
+
+            languageToggle.addEventListener(
+                "keydown",
+                (event) => {
+
+                    if (
+                        event.key === "ArrowDown" ||
+                        event.key === "Enter" ||
+                        event.key === " "
+                    ) {
+
+                        event.preventDefault();
+
+                        languageToggle.click();
+
+                        const firstLanguage =
+                            languageMenu.querySelector(
+                                "[data-lang]"
+                            );
+
+
+                        if (firstLanguage) {
+
+                            firstLanguage.focus();
+
+                        }
+
+                    }
+
+                }
+            );
+
+
+            languageMenu
+                .querySelectorAll(
+                    "[data-lang]"
+                )
+                .forEach((button, index, buttons) => {
+
+                    button.addEventListener(
+                        "keydown",
+                        (event) => {
+
+                            if (
+                                event.key === "ArrowDown"
+                            ) {
+
+                                event.preventDefault();
+
+                                const next =
+                                    buttons[
+                                        (index + 1) %
+                                        buttons.length
+                                    ];
+
+                                next.focus();
+
+                            }
+
+
+                            if (
+                                event.key === "ArrowUp"
+                            ) {
+
+                                event.preventDefault();
+
+                                const previous =
+                                    buttons[
+                                        (index - 1 +
+                                            buttons.length) %
+                                        buttons.length
+                                    ];
+
+                                previous.focus();
+
+                            }
+
+
+                            if (
+                                event.key === "Escape"
+                            ) {
+
+                                event.preventDefault();
+
+                                languageToggle.click();
+
+                                languageToggle.focus();
+
+                            }
+
+                        }
+                    );
+
+                });
+
+        }
+
+
+        /* =====================================================
+           PAGE READY FLAG
+        ===================================================== */
+
+        document.documentElement.classList.add(
+            "newitt-js-ready"
+        );
 
 
     });
