@@ -1,46 +1,42 @@
 /* TEAM */
 
-Developer: NEWITT Media
-Brand: NEWITT Media
-Website: https://newittmedia.co.uk/
-
-
-/* BRANDS */
-
+Site:
 NEWITT Media
+
+Owner:
+Ian Newitt
+
+Brand:
+NEWITT Media
+
+Projects:
 NEWITT Skyline Media
 NEWITT's Paranormal Adventures
 NEWITT Media Photography
 
-
-/* TECHNOLOGY */
-
-Website: HTML5, CSS3, JavaScript
-Framework: Vanilla JavaScript
-Hosting: Cloudflare Workers
-Repository: GitHub
+Website:
+https://www.newittmedia.co.uk/
 
 
-/* COPYRIGHT */
+/* SITE */
 
+Standards:
+HTML5
+CSS3
+JavaScript
+Schema.org
+
+Language:
+English (United Kingdom)
+
+Copyright:
 © 2026 NEWITT Media. All Rights Reserved.
 
-NEWITT Media • NEWITT Skyline Media • NEWITT's Paranormal Adventures • NEWITT Media Photography
 
+/* CONTACT */
 
-/* SOCIAL MEDIA */
+Website:
+https://www.newittmedia.co.uk/
 
-TikTok: @newittskylinemedia, @nw13ttt
-YouTube: @Newitt-skyline-media, @NewittsParanormalAdventures
-Instagram: @nw13ttt
-Facebook: NEWITT's Paranormal Adventures
-
-
-/* ACCESSIBILITY */
-
-This website is designed to be accessible to all users.
-
-
-/* LAST UPDATED */
-
-2026-08-29
+Email:
+newittmedia@gmail.com
