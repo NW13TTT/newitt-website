@@ -2604,3 +2604,202 @@ h2 span,
     }
 
 }
+/* =========================================================
+   NEWITT MEDIA
+   HOMEPAGE FINAL POLISH
+   SAFE ADDITION
+   29 AUGUST 2026
+========================================================= */
+
+
+/* =========================================================
+   HOMEPAGE HERO POLISH
+========================================================= */
+
+.home-hero {
+    min-height: 78vh;
+}
+
+.home-hero .hero-content {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.home-hero .hero-logo-wrap {
+    margin-bottom: 22px;
+}
+
+.home-hero .hero-logo {
+    max-width: 230px;
+}
+
+.home-hero .hero-introduction {
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* =========================================================
+   HOMEPAGE WORLD CARDS
+========================================================= */
+
+.home-page .newitt-media-intro-worlds {
+    align-items: stretch;
+}
+
+.home-page .newitt-intro-world {
+    min-height: 100%;
+    text-decoration: none;
+}
+
+.home-page .newitt-intro-world:focus-visible {
+    outline: 2px solid #c9a45b;
+    outline-offset: 4px;
+}
+
+.home-page .newitt-intro-text {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home-page .newitt-intro-text p {
+    max-width: 360px;
+}
+
+
+/* =========================================================
+   WORLD LOGO CONSISTENCY
+========================================================= */
+
+.home-page .newitt-intro-logo-wrap {
+    flex-shrink: 0;
+}
+
+.home-page .newitt-intro-logo {
+    max-width: 175px;
+}
+
+
+/* =========================================================
+   SOCIAL CINEMATIC SECTION
+========================================================= */
+
+.home-page .social-hub {
+    width: 100%;
+    margin: 0;
+}
+
+.home-page .social-master-frame {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* =========================================================
+   HOMEPAGE CTA
+========================================================= */
+
+.home-page .home-cta {
+    text-align: center;
+}
+
+.home-page .cta-panel {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .home-hero {
+        min-height: 72vh;
+    }
+
+    .home-page .newitt-media-intro-worlds {
+        gap: 16px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .home-hero {
+        min-height: auto;
+        padding-top: 68px;
+        padding-bottom: 64px;
+    }
+
+    .home-hero .hero-content {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .home-hero .hero-logo-wrap {
+        width: min(180px, 48vw);
+        margin-bottom: 20px;
+    }
+
+    .home-hero .hero-logo {
+        max-width: 180px;
+    }
+
+    .home-hero .eyebrow {
+        margin-bottom: 9px;
+    }
+
+    .home-hero h1 {
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .home-hero .hero-introduction {
+        max-width: 340px;
+        font-size: 0.88rem;
+        line-height: 1.65;
+    }
+
+    .home-page .newitt-media-intro-world {
+        min-height: 0;
+    }
+
+    .home-page .newitt-intro-text p {
+        max-width: 330px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .home-hero {
+        padding-top: 58px;
+        padding-bottom: 55px;
+    }
+
+    .home-hero .hero-logo-wrap {
+        width: 165px;
+    }
+
+    .home-hero .hero-introduction {
+        max-width: 310px;
+        font-size: 0.82rem;
+    }
+
+}
