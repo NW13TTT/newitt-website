@@ -1,8 +1,6 @@
-<Files>
-Security contact information for NEWITT Media
+# NEWITT Media security contact
 
-For security issues, please email: security@newittmedia.co.uk
-
+Contact: mailto:ian.newitt@gmail.com
 Expires: 2027-08-29T00:00:00Z
 Preferred-Languages: en, cy
-</Files>
+Canonical: https://www.newittmedia.co.uk/.well-known/security.txt
