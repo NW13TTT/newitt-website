@@ -1,8 +1,17 @@
 /* =========================================================
    NEWITT MEDIA
    MASTER JAVASCRIPT
-   FINAL WEBSITE BUILD
+   FINAL PROFESSIONAL BUILD
    VERSION: 29 AUGUST 2026
+
+   FUNCTIONS:
+   1. First-visit cinematic intro
+   2. Mobile navigation
+   3. Back-to-top button
+   4. Smooth anchor scrolling
+   5. Lightbox support
+   6. Safe iframe / embed handling
+   7. Accessibility improvements
 ========================================================= */
 
 (function () {
@@ -12,271 +21,423 @@
 
     /* =====================================================
        DOM READY
-    ====================================================== */
+    ===================================================== */
 
-    document.addEventListener(
-        "DOMContentLoaded",
-        function () {
+    document.addEventListener("DOMContentLoaded", function () {
 
-            initialiseMobileMenu();
+        initFirstVisitIntro();
 
-            initialiseSmoothLinks();
+        initMobileNavigation();
 
-            initialiseBackToTop();
+        initBackToTop();
 
-            initialiseLightbox();
+        initSmoothScrolling();
 
-            initialiseImagePerformance();
+        initLightbox();
 
-            initialiseCinematicIntro();
+        initExternalLinks();
 
-            initialiseSocialEffects();
-
-        }
-    );
+    });
 
 
     /* =====================================================
-       MOBILE NAVIGATION
-    ====================================================== */
+       FIRST-VISIT CINEMATIC INTRO
 
-    function initialiseMobileMenu() {
+       The intro appears only the first time a visitor
+       arrives at NEWITT Media.
 
-        const menuToggle =
-            document.querySelector(".menu-toggle");
+       Once completed, a localStorage flag is saved.
 
-        const navLinks =
-            document.querySelector(".nav-links");
+       If storage is unavailable, the intro still works
+       normally for that visit.
+    ===================================================== */
 
+    function initFirstVisitIntro() {
 
-        if (!menuToggle || !navLinks) {
+        const intro = document.getElementById("site-intro");
+
+        if (!intro) {
             return;
         }
 
 
-        function closeMenu() {
+        const INTRO_STORAGE_KEY = "newittMediaIntroSeen";
 
-            navLinks.classList.remove(
-                "open",
-                "active",
-                "menu-open"
-            );
+        let introAlreadySeen = false;
 
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
 
-            menuToggle.setAttribute(
-                "aria-label",
-                "Open navigation menu"
-            );
+        /*
+         * Safely check localStorage.
+         *
+         * Some browsers / privacy settings can prevent
+         * storage access, so this must never break the site.
+         */
+
+        try {
+
+            introAlreadySeen =
+                window.localStorage.getItem(
+                    INTRO_STORAGE_KEY
+                ) === "true";
+
+        } catch (error) {
+
+            introAlreadySeen = false;
 
         }
 
 
-        function openMenu() {
+        /*
+         * Returning visitor:
+         * remove the intro immediately.
+         */
 
-            navLinks.classList.add("open");
+        if (introAlreadySeen) {
 
-            menuToggle.setAttribute(
-                "aria-expanded",
+            intro.classList.add("intro-hidden");
+
+            intro.setAttribute(
+                "aria-hidden",
                 "true"
             );
 
-            menuToggle.setAttribute(
-                "aria-label",
-                "Close navigation menu"
+            document.body.classList.remove(
+                "intro-active"
             );
 
+            return;
+        }
+
+
+        /*
+         * First visit:
+         * keep the intro visible.
+         */
+
+        document.body.classList.add(
+            "intro-active"
+        );
+
+
+        /*
+         * Prevent scrolling while the cinematic intro
+         * is playing.
+         */
+
+        document.documentElement.style.overflow =
+            "hidden";
+
+        document.body.style.overflow =
+            "hidden";
+
+
+        /*
+         * Mark the intro as seen immediately.
+
+         * This means that if the visitor refreshes after
+         * seeing the intro, it will not replay.
+         */
+
+        try {
+
+            window.localStorage.setItem(
+                INTRO_STORAGE_KEY,
+                "true"
+            );
+
+        } catch (error) {
+
+            /*
+             * Storage unavailable.
+             * Nothing else needs to happen.
+             */
+
+        }
+
+
+        /*
+         * Give the animation enough time to establish
+         * the NEWITT Media brand before disappearing.
+         */
+
+        const INTRO_DURATION = 5200;
+
+
+        window.setTimeout(function () {
+
+            closeIntro();
+
+        }, INTRO_DURATION);
+
+
+        /*
+         * Allow the user to skip the intro by tapping it.
+         * Useful on mobile.
+         */
+
+        intro.addEventListener(
+            "click",
+            closeIntro
+        );
+
+
+        /*
+         * Also allow Escape to skip it.
+         */
+
+        document.addEventListener(
+            "keydown",
+            function handleIntroEscape(event) {
+
+                if (event.key === "Escape") {
+
+                    closeIntro();
+
+                    document.removeEventListener(
+                        "keydown",
+                        handleIntroEscape
+                    );
+
+                }
+
+            }
+        );
+
+
+        function closeIntro() {
+
+            if (
+                intro.classList.contains(
+                    "intro-hidden"
+                )
+            ) {
+                return;
+            }
+
+
+            intro.classList.add(
+                "intro-hidden"
+            );
+
+
+            intro.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            document.body.classList.remove(
+                "intro-active"
+            );
+
+
+            /*
+             * Restore normal scrolling after the
+             * fade-out has completed.
+             */
+
+            window.setTimeout(function () {
+
+                document.documentElement.style.overflow =
+                    "";
+
+                document.body.style.overflow =
+                    "";
+
+                intro.style.display =
+                    "none";
+
+            }, 950);
+
+        }
+
+    }
+
+
+    /* =====================================================
+       MOBILE NAVIGATION
+    ===================================================== */
+
+    function initMobileNavigation() {
+
+        const menuToggle =
+            document.querySelector(
+                ".menu-toggle"
+            );
+
+        const navLinks =
+            document.querySelector(
+                ".nav-links"
+            );
+
+
+        if (
+            !menuToggle ||
+            !navLinks
+        ) {
+            return;
         }
 
 
         menuToggle.addEventListener(
             "click",
-            function (event) {
-
-                event.stopPropagation();
+            function () {
 
                 const isOpen =
-                    menuToggle.getAttribute(
-                        "aria-expanded"
-                    ) === "true";
+                    navLinks.classList.contains(
+                        "open"
+                    );
 
 
-                if (isOpen) {
-                    closeMenu();
-                } else {
-                    openMenu();
-                }
+                navLinks.classList.toggle(
+                    "open",
+                    !isOpen
+                );
+
+
+                navLinks.classList.toggle(
+                    "active",
+                    !isOpen
+                );
+
+
+                navLinks.classList.toggle(
+                    "menu-open",
+                    !isOpen
+                );
+
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    String(!isOpen)
+                );
+
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    !isOpen
+                        ? "Close navigation menu"
+                        : "Open navigation menu"
+                );
 
             }
         );
 
 
-        navLinks.addEventListener(
-            "click",
-            function (event) {
+        /*
+         * Close mobile menu when a navigation link
+         * is selected.
+         */
 
-                const link =
-                    event.target.closest("a");
+        const links =
+            navLinks.querySelectorAll(
+                "a"
+            );
 
 
-                if (!link) {
-                    return;
+        links.forEach(function (link) {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    navLinks.classList.remove(
+                        "open",
+                        "active",
+                        "menu-open"
+                    );
+
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+
+                    menuToggle.setAttribute(
+                        "aria-label",
+                        "Open navigation menu"
+                    );
+
                 }
+            );
+
+        });
 
 
-                closeMenu();
-
-            }
-        );
-
+        /*
+         * Close the menu if the visitor taps outside it.
+         */
 
         document.addEventListener(
             "click",
             function (event) {
 
                 if (
-                    navLinks.classList.contains("open") &&
-                    !navLinks.contains(event.target) &&
-                    !menuToggle.contains(event.target)
+                    !navLinks.contains(
+                        event.target
+                    ) &&
+                    !menuToggle.contains(
+                        event.target
+                    )
                 ) {
 
-                    closeMenu();
+                    navLinks.classList.remove(
+                        "open",
+                        "active",
+                        "menu-open"
+                    );
+
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+
+                    menuToggle.setAttribute(
+                        "aria-label",
+                        "Open navigation menu"
+                    );
 
                 }
 
             }
         );
 
+
+        /*
+         * Close the mobile menu when resizing back
+         * to desktop.
+         */
 
         window.addEventListener(
             "resize",
             function () {
 
-                if (window.innerWidth > 700) {
-                    closeMenu();
+                if (
+                    window.innerWidth > 700
+                ) {
+
+                    navLinks.classList.remove(
+                        "open",
+                        "active",
+                        "menu-open"
+                    );
+
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+
+                    menuToggle.setAttribute(
+                        "aria-label",
+                        "Open navigation menu"
+                    );
+
                 }
-
-            }
-        );
-
-
-        document.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (event.key === "Escape") {
-                    closeMenu();
-                }
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       SMOOTH INTERNAL LINKS
-    ====================================================== */
-
-    function initialiseSmoothLinks() {
-
-        const links =
-            document.querySelectorAll(
-                'a[href^="#"]'
-            );
-
-
-        links.forEach(
-            function (link) {
-
-                link.addEventListener(
-                    "click",
-                    function (event) {
-
-                        const targetId =
-                            link.getAttribute("href");
-
-
-                        if (
-                            !targetId ||
-                            targetId === "#"
-                        ) {
-                            return;
-                        }
-
-
-                        let target = null;
-
-
-                        try {
-
-                            target =
-                                document.querySelector(
-                                    targetId
-                                );
-
-                        } catch (error) {
-
-                            return;
-
-                        }
-
-
-                        if (!target) {
-                            return;
-                        }
-
-
-                        event.preventDefault();
-
-
-                        const header =
-                            document.querySelector(
-                                ".site-header"
-                            );
-
-
-                        const headerHeight =
-                            header
-                                ? header.offsetHeight
-                                : 0;
-
-
-                        const targetTop =
-                            target
-                                .getBoundingClientRect()
-                                .top +
-                            window.scrollY -
-                            headerHeight -
-                            12;
-
-
-                        const reducedMotion =
-                            window.matchMedia(
-                                "(prefers-reduced-motion: reduce)"
-                            ).matches;
-
-
-                        window.scrollTo({
-
-                            top:
-                                Math.max(
-                                    0,
-                                    targetTop
-                                ),
-
-                            behavior:
-                                reducedMotion
-                                    ? "auto"
-                                    : "smooth"
-
-                        });
-
-                    }
-                );
 
             }
         );
@@ -286,13 +447,13 @@
 
     /* =====================================================
        BACK TO TOP
-    ====================================================== */
+    ===================================================== */
 
-    function initialiseBackToTop() {
+    function initBackToTop() {
 
         const backToTop =
-            document.querySelector(
-                "#back-to-top"
+            document.getElementById(
+                "back-to-top"
             );
 
 
@@ -303,16 +464,35 @@
 
         function updateBackToTop() {
 
-            if (window.scrollY > 420) {
+            if (
+                window.scrollY >
+                450
+            ) {
 
                 backToTop.classList.add(
                     "visible"
+                );
+
+                backToTop.classList.add(
+                    "show"
+                );
+
+                backToTop.classList.add(
+                    "is-visible"
                 );
 
             } else {
 
                 backToTop.classList.remove(
                     "visible"
+                );
+
+                backToTop.classList.remove(
+                    "show"
+                );
+
+                backToTop.classList.remove(
+                    "is-visible"
                 );
 
             }
@@ -329,192 +509,234 @@
         );
 
 
-        window.addEventListener(
-            "load",
-            updateBackToTop
-        );
-
-
         updateBackToTop();
 
-
-        backToTop.addEventListener(
-            "click",
-            function (event) {
-
-                event.preventDefault();
+    }
 
 
-                const reducedMotion =
-                    window.matchMedia(
-                        "(prefers-reduced-motion: reduce)"
-                    ).matches;
+    /* =====================================================
+       SMOOTH INTERNAL SCROLLING
+    ===================================================== */
+
+    function initSmoothScrolling() {
+
+        const anchors =
+            document.querySelectorAll(
+                'a[href^="#"]'
+            );
 
 
-                window.scrollTo({
+        anchors.forEach(function (anchor) {
 
-                    top: 0,
+            anchor.addEventListener(
+                "click",
+                function (event) {
 
-                    behavior:
-                        reducedMotion
-                            ? "auto"
-                            : "smooth"
+                    const targetId =
+                        anchor.getAttribute(
+                            "href"
+                        );
 
-                });
 
-            }
-        );
+                    if (
+                        !targetId ||
+                        targetId === "#"
+                    ) {
+                        return;
+                    }
+
+
+                    const target =
+                        document.querySelector(
+                            targetId
+                        );
+
+
+                    if (!target) {
+                        return;
+                    }
+
+
+                    event.preventDefault();
+
+
+                    target.scrollIntoView({
+                        behavior:
+                            "smooth",
+                        block:
+                            "start"
+                    });
+
+
+                    /*
+                     * Update URL without causing
+                     * another page jump.
+                     */
+
+                    try {
+
+                        window.history.replaceState(
+                            null,
+                            "",
+                            targetId
+                        );
+
+                    } catch (error) {
+
+                        /*
+                         * Ignore history errors.
+                         */
+
+                    }
+
+                }
+            );
+
+        });
 
     }
 
 
     /* =====================================================
        LIGHTBOX
-    ====================================================== */
+    ===================================================== */
 
-    function initialiseLightbox() {
+    function initLightbox() {
 
-        const galleryItems =
-            document.querySelectorAll(
-                "[data-lightbox]"
+        const lightbox =
+            document.getElementById(
+                "lightbox"
             );
-
-
-        if (!galleryItems.length) {
-            return;
-        }
-
-
-        let lightbox =
-            document.querySelector(
-                "#lightbox"
-            );
-
-
-        if (!lightbox) {
-
-            lightbox =
-                document.createElement("div");
-
-
-            lightbox.id =
-                "lightbox";
-
-
-            lightbox.className =
-                "lightbox";
-
-
-            lightbox.setAttribute(
-                "role",
-                "dialog"
-            );
-
-
-            lightbox.setAttribute(
-                "aria-modal",
-                "true"
-            );
-
-
-            lightbox.setAttribute(
-                "aria-label",
-                "Image viewer"
-            );
-
-
-            lightbox.innerHTML = `
-
-                <button
-                    type="button"
-                    class="lightbox-close"
-                    id="lightbox-close"
-                    aria-label="Close image viewer"
-                >
-                    ×
-                </button>
-
-                <img
-                    id="lightbox-image"
-                    src=""
-                    alt=""
-                >
-
-            `;
-
-
-            document.body.appendChild(
-                lightbox
-            );
-
-        }
 
 
         const lightboxImage =
-            lightbox.querySelector(
-                "#lightbox-image"
+            document.getElementById(
+                "lightbox-image"
+            ) ||
+            (
+                lightbox
+                    ? lightbox.querySelector("img")
+                    : null
             );
 
 
         const closeButton =
-            lightbox.querySelector(
-                "#lightbox-close"
+            document.getElementById(
+                "lightbox-close"
+            ) ||
+            (
+                lightbox
+                    ? lightbox.querySelector(
+                        ".lightbox-close"
+                    )
+                    : null
             );
 
 
-        if (
-            !lightboxImage ||
-            !closeButton
-        ) {
+        /*
+         * Some pages may not contain a lightbox.
+         * That is completely fine.
+         */
+
+        if (!lightbox) {
             return;
         }
 
 
-        let previousOverflow = "";
+        /*
+         * Gallery images.
 
-        let previousFocus = null;
+         * Supports:
+         * .gallery-item
+         * .gallery-item img
+         * [data-lightbox]
+         */
 
-
-        function openLightbox(
-            imageSource,
-            imageAlt,
-            trigger
-        ) {
-
-            if (!imageSource) {
-                return;
-            }
-
-
-            previousFocus =
-                trigger ||
-                document.activeElement;
-
-
-            lightboxImage.src =
-                imageSource;
-
-
-            lightboxImage.alt =
-                imageAlt || "";
-
-
-            previousOverflow =
-                document.body.style.overflow;
-
-
-            document.body.style.overflow =
-                "hidden";
-
-
-            lightbox.classList.add(
-                "active"
+        const galleryItems =
+            document.querySelectorAll(
+                ".gallery-item, [data-lightbox]"
             );
 
 
-            closeButton.focus();
+        galleryItems.forEach(function (item) {
 
-        }
+            item.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    let source =
+                        item.getAttribute(
+                            "data-lightbox"
+                        );
+
+
+                    if (!source) {
+
+                        const image =
+                            item.querySelector(
+                                "img"
+                            );
+
+
+                        if (image) {
+
+                            source =
+                                image.getAttribute(
+                                    "src"
+                                );
+
+                        }
+
+                    }
+
+
+                    if (
+                        !source ||
+                        !lightboxImage
+                    ) {
+                        return;
+                    }
+
+
+                    lightboxImage.src =
+                        source;
+
+
+                    const imageAlt =
+                        item.querySelector(
+                            "img"
+                        );
+
+
+                    if (imageAlt) {
+
+                        lightboxImage.alt =
+                            imageAlt.alt || "";
+
+                    }
+
+
+                    lightbox.classList.add(
+                        "active"
+                    );
+
+
+                    lightbox.setAttribute(
+                        "aria-hidden",
+                        "false"
+                    );
+
+
+                    document.body.style.overflow =
+                        "hidden";
+
+                }
+            );
+
+        });
 
 
         function closeLightbox() {
@@ -524,109 +746,75 @@
             );
 
 
-            document.body.style.overflow =
-                previousOverflow;
-
-
-            window.setTimeout(
-                function () {
-
-                    if (
-                        !lightbox.classList.contains(
-                            "active"
-                        )
-                    ) {
-
-                        lightboxImage.src = "";
-
-                        lightboxImage.alt = "";
-
-                    }
-
-                },
-                250
+            lightbox.setAttribute(
+                "aria-hidden",
+                "true"
             );
 
 
-            if (
-                previousFocus &&
-                typeof previousFocus.focus ===
-                    "function"
-            ) {
+            document.body.style.overflow =
+                "";
 
-                try {
 
-                    previousFocus.focus();
+            if (lightboxImage) {
 
-                } catch (error) {
+                /*
+                 * Clear the image after closing.
+                 * This prevents unnecessary memory use.
+                 */
 
-                    /* Focus restoration is optional. */
+                window.setTimeout(
+                    function () {
 
-                }
+                        if (
+                            !lightbox.classList.contains(
+                                "active"
+                            )
+                        ) {
+
+                            lightboxImage.removeAttribute(
+                                "src"
+                            );
+
+                        }
+
+                    },
+                    250
+                );
 
             }
 
         }
 
 
-        galleryItems.forEach(
-            function (item) {
+        if (closeButton) {
 
-                item.addEventListener(
-                    "click",
-                    function () {
+            closeButton.addEventListener(
+                "click",
+                function (event) {
 
-                        const image =
-                            item.querySelector(
-                                "img"
-                            );
+                    event.preventDefault();
 
+                    closeLightbox();
 
-                        const source =
-                            item.getAttribute(
-                                "data-image"
-                            ) ||
-                            (
-                                image
-                                    ? (
-                                        image.currentSrc ||
-                                        image.src
-                                    )
-                                    : ""
-                            );
+                }
+            );
+
+        }
 
 
-                        const alt =
-                            image
-                                ? image.alt
-                                : "";
-
-
-                        openLightbox(
-                            source,
-                            alt,
-                            item
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-
-        closeButton.addEventListener(
-            "click",
-            closeLightbox
-        );
-
+        /*
+         * Clicking the dark background closes
+         * the lightbox.
+         */
 
         lightbox.addEventListener(
             "click",
             function (event) {
 
                 if (
-                    event.target === lightbox
+                    event.target ===
+                    lightbox
                 ) {
 
                     closeLightbox();
@@ -636,6 +824,10 @@
             }
         );
 
+
+        /*
+         * Escape closes the lightbox.
+         */
 
         document.addEventListener(
             "keydown",
@@ -659,272 +851,72 @@
 
 
     /* =====================================================
-       IMAGE PERFORMANCE
-    ====================================================== */
+       EXTERNAL LINKS
+    ===================================================== */
 
-    function initialiseImagePerformance() {
+    function initExternalLinks() {
 
-        const images =
-            document.querySelectorAll("img");
-
-
-        images.forEach(
-            function (image) {
-
-                if (
-                    !image.hasAttribute("decoding")
-                ) {
-
-                    image.setAttribute(
-                        "decoding",
-                        "async"
-                    );
-
-                }
-
-
-                const isLogo =
-                    image.classList.contains(
-                        "intro-logo"
-                    ) ||
-                    image.classList.contains(
-                        "hero-logo"
-                    ) ||
-                    image.classList.contains(
-                        "page-logo"
-                    ) ||
-                    image.classList.contains(
-                        "footer-logo"
-                    );
-
-
-                if (
-                    !isLogo &&
-                    !image.hasAttribute("loading")
-                ) {
-
-                    image.setAttribute(
-                        "loading",
-                        "lazy"
-                    );
-
-                }
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       CINEMATIC INTRO
-       PLAYS ON EVERY VISIT
-    ====================================================== */
-
-    function initialiseCinematicIntro() {
-
-        const intro =
-            document.querySelector(
-                "#site-intro"
+        const links =
+            document.querySelectorAll(
+                'a[href^="http://"], a[href^="https://"]'
             );
 
 
-        if (!intro) {
-            return;
-        }
+        links.forEach(function (link) {
 
-
-        const reducedMotion =
-            window.matchMedia(
-                "(prefers-reduced-motion: reduce)"
-            ).matches;
-
-
-        /*
-         * Always begin with the cinematic
-         * intro visible.
-         *
-         * There is deliberately NO
-         * localStorage check here.
-         *
-         * This means the intro plays
-         * every time the homepage loads.
-         */
-
-        intro.classList.remove(
-            "intro-hidden"
-        );
-
-
-        intro.style.opacity =
-            "1";
-
-
-        intro.style.visibility =
-            "visible";
-
-
-        intro.style.pointerEvents =
-            "auto";
-
-
-        /*
-         * Force browser reflow so the
-         * opening state is registered
-         * before the closing animation.
-         */
-
-        void intro.offsetWidth;
-
-
-        /*
-         * Cinematic timing.
-         *
-         * Normal:
-         * approximately 5.2 seconds.
-         *
-         * Reduced motion:
-         * approximately 1.2 seconds.
-         */
-
-        const displayTime =
-            reducedMotion
-                ? 1200
-                : 5200;
-
-
-        window.setTimeout(
-            function () {
-
-                if (!intro) {
-                    return;
-                }
-
-
-                intro.classList.add(
-                    "intro-hidden"
+            const url =
+                link.getAttribute(
+                    "href"
                 );
 
 
-                /*
-                 * Allow the CSS fade-out
-                 * to complete before removing
-                 * the element from the page.
-                 */
-
-                window.setTimeout(
-                    function () {
-
-                        if (
-                            intro &&
-                            intro.parentNode
-                        ) {
-
-                            intro.remove();
-
-                        }
-
-                    },
-                    reducedMotion
-                        ? 100
-                        : 950
-                );
-
-            },
-            displayTime
-        );
-
-    }
-
-
-    /* =====================================================
-       SOCIAL EFFECTS
-       
-       IMPORTANT:
-       The cinematic social artwork is controlled
-       by CSS / the animation itself.
-       
-       JavaScript does NOT continuously alter
-       opacity, transform or position.
-    ====================================================== */
-
-    function initialiseSocialEffects() {
-
-        const socialHub =
-            document.querySelector(
-                ".social-hub"
-            );
-
-
-        if (!socialHub) {
-            return;
-        }
-
-
-        /*
-         * Remove any legacy inline transform
-         * from an older version of the website.
-         */
-
-        const masterFrame =
-            socialHub.querySelector(
-                ".social-master-frame"
-            );
-
-
-        if (masterFrame) {
-
-            masterFrame.style.removeProperty(
-                "transform"
-            );
-
-            masterFrame.style.removeProperty(
-                "translate"
-            );
-
-            masterFrame.style.removeProperty(
-                "opacity"
-            );
-
-        }
-
-
-        /*
-         * The current social artwork uses
-         * its own animation.
-         *
-         * No requestAnimationFrame loop.
-         * No JavaScript opacity pulsing.
-         * No JavaScript movement.
-         */
-
-    }
-
-
-    /* =====================================================
-       PUBLIC MENU FUNCTION
-       
-       Kept for compatibility with older HTML
-       or previous versions of the website.
-    ====================================================== */
-
-    window.toggleMenu =
-        function () {
-
-            const menuToggle =
-                document.querySelector(
-                    ".menu-toggle"
-                );
-
-
-            if (!menuToggle) {
+            if (!url) {
                 return;
             }
 
 
-            menuToggle.click();
+            /*
+             * Keep NEWITT Media internal links in the
+             * current window.
 
-        };
+             * External social/media links open safely
+             * in a new tab.
+             */
+
+            try {
+
+                const linkUrl =
+                    new URL(
+                        url,
+                        window.location.href
+                    );
+
+
+                if (
+                    linkUrl.hostname !==
+                    window.location.hostname
+                ) {
+
+                    link.target =
+                        "_blank";
+
+
+                    link.rel =
+                        "noopener noreferrer";
+
+                }
+
+            } catch (error) {
+
+                /*
+                 * Ignore malformed URLs.
+                 */
+
+            }
+
+        });
+
+    }
 
 
 })();
