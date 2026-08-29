@@ -97,14 +97,6 @@
         }
 
 
-        /*
-         * Make sure the menu starts in a
-         * predictable closed state.
-         */
-
-        closeMenu();
-
-
         menuToggle.addEventListener(
             "click",
             function (event) {
@@ -611,10 +603,7 @@
 
                 } catch (error) {
 
-                    /*
-                     * Ignore focus restoration
-                     * errors.
-                     */
+                    /* Ignore focus restoration errors. */
 
                 }
 
@@ -779,7 +768,6 @@
 
     /* =====================================================
        CINEMATIC INTRO
-       
        FIRST VISIT ONLY
     ====================================================== */
 
@@ -826,13 +814,33 @@
 
 
         /*
-         * Returning visitors do not need to see
-         * the full cinematic opening again.
+         * Returning visitors do not need to watch
+         * the opening sequence again.
          */
 
         if (alreadySeen) {
 
-            intro.remove();
+            intro.classList.add(
+                "intro-hidden"
+            );
+
+
+            window.setTimeout(
+                function () {
+
+                    if (
+                        intro &&
+                        intro.parentNode
+                    ) {
+
+                        intro.remove();
+
+                    }
+
+                },
+                50
+            );
+
 
             return;
 
@@ -840,9 +848,11 @@
 
 
         /*
-         * Mark the cinematic introduction as
-         * seen immediately so navigation between
-         * pages does not replay it.
+         * Mark this visit immediately.
+         *
+         * This prevents the intro replaying simply
+         * because the visitor moves between pages
+         * during the same browsing session.
          */
 
         try {
@@ -855,34 +865,55 @@
         } catch (error) {
 
             /*
-             * Storage may be unavailable in
-             * private browsing situations.
-             * The introduction can still run.
+             * If storage is unavailable, the intro
+             * still runs normally.
              */
 
         }
 
 
         /*
-         * Full cinematic first-visit sequence.
-         *
-         * The existing five-second timing is
-         * deliberately preserved.
+         * Keep the intro visible long enough for
+         * the NEWITT Media logo and tagline to be
+         * clearly seen.
          */
 
-        const duration =
+        const displayTime =
             reducedMotion
-                ? 900
-                : 5000;
+                ? 1200
+                : 5200;
+
+
+        /*
+         * Make absolutely certain the intro is
+         * visible before starting the sequence.
+         */
+
+        intro.classList.remove(
+            "intro-hidden"
+        );
+
+
+        intro.style.opacity =
+            "1";
+
+        intro.style.visibility =
+            "visible";
+
+        intro.style.pointerEvents =
+            "auto";
+
+
+        /*
+         * Force the browser to recognise the
+         * opening state before the fade begins.
+         */
+
+        void intro.offsetWidth;
 
 
         window.setTimeout(
             function () {
-
-                if (!intro) {
-                    return;
-                }
-
 
                 intro.classList.add(
                     "intro-hidden"
@@ -903,20 +934,22 @@
 
                     },
                     reducedMotion
-                        ? 50
-                        : 750
+                        ? 100
+                        : 800
                 );
 
             },
-            duration
+            displayTime
         );
 
     }
 
 
     /* =====================================================
-       SOCIAL MEDIA HUB
-       CINEMATIC ATMOSPHERE
+       SOCIAL EFFECTS
+       
+       The master animation itself is deliberately
+       NOT manipulated here.
     ====================================================== */
 
     function initialiseSocialEffects() {
@@ -932,6 +965,37 @@
         }
 
 
+        /*
+         * The master cinematic animation is now
+         * responsible for its own artwork and
+         * timing.
+         *
+         * Do not apply additional transforms to
+         * the master frame here.
+         */
+
+        const masterFrame =
+            socialHub.querySelector(
+                ".social-master-frame"
+            );
+
+
+        if (masterFrame) {
+
+            masterFrame.style.transform =
+                "none";
+
+        }
+
+
+        /*
+         * Legacy atmospheric elements may still
+         * exist on older pages. They are allowed
+         * to run through CSS, but this JavaScript
+         * no longer fights their opacity or
+         * position every animation frame.
+         */
+
         const reducedMotion =
             window.matchMedia(
                 "(prefers-reduced-motion: reduce)"
@@ -943,199 +1007,14 @@
         }
 
 
-        const skyline =
-            socialHub.querySelector(
-                ".social-lightning"
-            );
-
-
-        const paranormal =
-            socialHub.querySelector(
-                ".social-paranormal-glow"
-            );
-
-
-        const houseGlow =
-            socialHub.querySelector(
-                ".social-house-glow"
-            );
-
-
-        let animationFrame =
-            null;
-
-
-        let lastTime =
-            0;
-
-
-        function animate(
-            timestamp
-        ) {
-
-            if (
-                timestamp -
-                lastTime <
-                45
-            ) {
-
-                animationFrame =
-                    window.requestAnimationFrame(
-                        animate
-                    );
-
-                return;
-
-            }
-
-
-            lastTime =
-                timestamp;
-
-
-            const time =
-                timestamp / 1000;
-
-
-            /*
-             * Skyline electrical atmosphere.
-             */
-
-            if (skyline) {
-
-                const skylinePulse =
-                    0.45 +
-                    Math.sin(
-                        time * 1.7
-                    ) *
-                    0.12;
-
-
-                skyline.style.opacity =
-                    skylinePulse.toFixed(
-                        3
-                    );
-
-            }
-
-
-            /*
-             * Paranormal atmosphere.
-             */
-
-            if (paranormal) {
-
-                const paranormalPulse =
-                    0.38 +
-                    Math.sin(
-                        time * 1.15 +
-                        1.5
-                    ) *
-                    0.18;
-
-
-                paranormal.style.opacity =
-                    paranormalPulse.toFixed(
-                        3
-                    );
-
-            }
-
-
-            /*
-             * Haunted-house glow.
-             */
-
-            if (houseGlow) {
-
-                const housePulse =
-                    0.34 +
-                    Math.sin(
-                        time * 0.9 +
-                        2
-                    ) *
-                    0.12;
-
-
-                houseGlow.style.opacity =
-                    housePulse.toFixed(
-                        3
-                    );
-
-            }
-
-
-            /*
-             * The artwork's movement remains
-             * controlled by CSS.
-             *
-             * We deliberately do not write
-             * transform/translate values here,
-             * preventing JavaScript from
-             * fighting the CSS animation.
-             */
-
-            animationFrame =
-                window.requestAnimationFrame(
-                    animate
-                );
-
-        }
-
-
-        animationFrame =
-            window.requestAnimationFrame(
-                animate
-            );
-
-
         /*
-         * Stop the effects when the page is
-         * hidden to reduce unnecessary CPU and
-         * battery usage on mobile devices.
+         * Keep this deliberately lightweight.
+         * No requestAnimationFrame loop is needed.
+         *
+         * This is important on iPhone because the
+         * previous live loop could compete with the
+         * CSS animation and create timing drift.
          */
-
-        document.addEventListener(
-            "visibilitychange",
-            function () {
-
-                if (
-                    document.hidden
-                ) {
-
-                    if (
-                        animationFrame
-                    ) {
-
-                        window.cancelAnimationFrame(
-                            animationFrame
-                        );
-
-                        animationFrame =
-                            null;
-
-                    }
-
-                } else {
-
-                    if (
-                        !animationFrame
-                    ) {
-
-                        lastTime =
-                            0;
-
-                        animationFrame =
-                            window.requestAnimationFrame(
-                                animate
-                            );
-
-                    }
-
-                }
-
-            }
-        );
 
     }
 
@@ -1144,7 +1023,7 @@
        PUBLIC MENU FUNCTION
        
        Kept for compatibility with existing
-       HTML and previous versions of the site.
+       HTML and previous versions of the website.
     ====================================================== */
 
     window.toggleMenu =
