@@ -1,6 +1,3 @@
-# NEWITT Media
-# https://www.newittmedia.co.uk/
-
 User-agent: *
 Allow: /
 
