@@ -17,7 +17,7 @@
 
     <meta
         name="description"
-        content="NEWITT Media Photography. Photography from NEWITT Media, covering people, places, landscapes, adventures and visual storytelling."
+        content="NEWITT Media Photography. People, places, landscapes and adventures captured through photography and visual storytelling."
     >
 
     <meta
@@ -62,12 +62,12 @@
 
     <meta
         property="og:title"
-        content="NEWITT Media Photography"
+        content="NEWITT Media Photography | People. Places. Adventures."
     >
 
     <meta
         property="og:description"
-        content="Photography from NEWITT Media, covering people, places, landscapes, adventures and visual storytelling."
+        content="Photography from NEWITT Media, capturing people, places, landscapes and adventures."
     >
 
     <meta
@@ -97,12 +97,12 @@
 
     <meta
         name="twitter:title"
-        content="NEWITT Media Photography"
+        content="NEWITT Media Photography | People. Places. Adventures."
     >
 
     <meta
         name="twitter:description"
-        content="Photography from NEWITT Media, covering people, places, landscapes, adventures and visual storytelling."
+        content="Photography from NEWITT Media, capturing people, places, landscapes and adventures."
     >
 
     <meta
@@ -117,7 +117,7 @@
 
 
     <title>
-        NEWITT Media Photography | Coming Soon
+        NEWITT Media Photography | People. Places. Adventures.
     </title>
 
 
@@ -142,10 +142,398 @@
     </script>
 
 
+    <!-- =====================================================
+         MASTER STYLESHEET
+    ====================================================== -->
+
     <link
         rel="stylesheet"
         href="style.css"
     >
+
+
+    <!-- =====================================================
+         PHOTOGRAPHY PAGE STYLES
+    ====================================================== -->
+
+    <style>
+
+        /* =================================================
+           PHOTOGRAPHY INTRO
+        ================================================= */
+
+        .photography-page .photography-hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photography-page .photography-hero::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            background:
+                radial-gradient(
+                    circle at 50% 35%,
+                    rgba(120, 213, 138, 0.055),
+                    transparent 42%
+                );
+        }
+
+        .photography-page .photography-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+
+        /* =================================================
+           PHOTOGRAPHY STATEMENT
+        ================================================= */
+
+        .photography-statement {
+            width: min(780px, 100%);
+
+            margin:
+                0 auto;
+
+            text-align: center;
+        }
+
+        .photography-statement p {
+            width: min(720px, 100%);
+
+            margin:
+                0 auto;
+
+            color:
+                rgba(244, 247, 250, 0.76);
+
+            font-size:
+                1rem;
+
+            line-height: 1.8;
+        }
+
+
+        /* =================================================
+           PORTFOLIO AREA
+        ================================================= */
+
+        .photography-portfolio {
+            width: 100%;
+        }
+
+        .photography-portfolio-heading {
+            width: min(760px, 100%);
+
+            margin:
+                0 auto 30px;
+
+            text-align: center;
+        }
+
+        .photography-portfolio-heading p {
+            margin-bottom: 0;
+        }
+
+
+        /* =================================================
+           GALLERY PLACEHOLDER
+        ================================================= */
+
+        .photography-gallery-placeholder {
+            position: relative;
+
+            width: 100%;
+
+            min-height: 260px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 40px 24px;
+
+            border:
+                1px solid
+                rgba(120, 213, 138, 0.18);
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(4, 8, 12, 0.76),
+                    rgba(3, 5, 8, 0.58)
+                );
+
+            box-shadow:
+                0 20px 60px
+                rgba(0, 0, 0, 0.24);
+
+            overflow: hidden;
+
+            text-align: center;
+        }
+
+        .photography-gallery-placeholder::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(120, 213, 138, 0.055),
+                    transparent 58%
+                );
+        }
+
+        .photography-gallery-placeholder-content {
+            position: relative;
+
+            z-index: 2;
+
+            width: min(620px, 100%);
+
+            margin-inline: auto;
+        }
+
+        .photography-gallery-icon {
+            margin-bottom: 16px;
+
+            color: #78d58a;
+
+            font-size: 2.6rem;
+
+            line-height: 1;
+        }
+
+        .photography-gallery-placeholder h3 {
+            margin-bottom: 10px;
+
+            font-size: 1.35rem;
+        }
+
+        .photography-gallery-placeholder p {
+            margin-bottom: 0;
+
+            color:
+                rgba(244, 247, 250, 0.62);
+
+            font-size: 0.88rem;
+
+            line-height: 1.7;
+        }
+
+
+        /* =================================================
+           FUTURE GALLERY
+        ================================================= */
+
+        .photography-gallery {
+            width: 100%;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+
+            gap: 14px;
+
+            margin-inline: auto;
+        }
+
+        .photography-gallery-item {
+            position: relative;
+
+            display: block;
+
+            width: 100%;
+
+            aspect-ratio: 16 / 10;
+
+            padding: 0;
+
+            overflow: hidden;
+
+            border:
+                1px solid
+                rgba(120, 213, 138, 0.16);
+
+            border-radius: 10px;
+
+            background:
+                rgba(2, 3, 5, 0.72);
+
+            cursor: pointer;
+        }
+
+        .photography-gallery-item img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition:
+                transform 450ms ease,
+                filter 450ms ease;
+        }
+
+        .photography-gallery-item:hover img {
+            transform: scale(1.035);
+
+            filter:
+                brightness(1.06);
+        }
+
+
+        /* =================================================
+           PHOTOGRAPHY LIGHTBOX
+        ================================================= */
+
+        .photography-lightbox {
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 6000;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 24px;
+
+            background:
+                rgba(0, 0, 0, 0.94);
+
+            backdrop-filter:
+                blur(8px);
+
+            -webkit-backdrop-filter:
+                blur(8px);
+        }
+
+        .photography-lightbox.active {
+            display: flex;
+        }
+
+        .photography-lightbox img {
+            display: block;
+
+            max-width: 94vw;
+            max-height: 88vh;
+
+            width: auto;
+            height: auto;
+
+            object-fit: contain;
+
+            border-radius: 6px;
+
+            box-shadow:
+                0 25px 90px
+                rgba(0, 0, 0, 0.65);
+        }
+
+        .photography-lightbox-close {
+            position: absolute;
+
+            top: 18px;
+            right: 20px;
+
+            z-index: 2;
+
+            width: 46px;
+            height: 46px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.22);
+
+            border-radius: 50%;
+
+            background:
+                rgba(2, 3, 5, 0.78);
+
+            color: #ffffff;
+
+            font-size: 1.5rem;
+
+            line-height: 1;
+
+            cursor: pointer;
+        }
+
+        .photography-lightbox-close:hover {
+            background:
+                rgba(255, 255, 255, 0.10);
+        }
+
+
+        /* =================================================
+           MOBILE
+        ================================================= */
+
+        @media (max-width: 600px) {
+
+            .photography-gallery {
+                grid-template-columns: 1fr;
+
+                gap: 14px;
+            }
+
+            .photography-gallery-placeholder {
+                min-height: 230px;
+
+                padding:
+                    32px 18px;
+
+                border-radius: 10px;
+            }
+
+            .photography-gallery-placeholder h3 {
+                font-size: 1.2rem;
+            }
+
+            .photography-statement p {
+                font-size: 0.92rem;
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .photography-gallery-placeholder {
+                min-height: 215px;
+
+                padding:
+                    28px 15px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -249,10 +637,6 @@
 
     <div class="container photography-hero-content">
 
-
-        <!-- GREEN SYMBOL REMOVED -->
-
-
         <img
             src="newitt-media-logo.png"
             alt="NEWITT Media"
@@ -266,8 +650,8 @@
 
 
         <h1>
-            Photography
-            <span>Coming Soon.</span>
+            Through the
+            <span>Lens.</span>
         </h1>
 
 
@@ -279,26 +663,25 @@
         </p>
 
 
-        <p>
-            A new visual chapter of NEWITT Media is currently
-            being developed.
-        </p>
+        <div class="photography-statement">
 
+            <p>
+                Photography is the still side of the
+                NEWITT Media story, capturing the people,
+                places, landscapes and experiences that
+                make every adventure worth remembering.
+            </p>
 
-        <p>
-            Photography will bring together people, places,
-            landscapes, adventures and visual storytelling
-            under the NEWITT Media identity.
-        </p>
+        </div>
 
 
         <div class="hero-actions">
 
             <a
-                href="index.html"
+                href="#portfolio"
                 class="button primary"
             >
-                Back to NEWITT Media
+                Explore Photography
             </a>
 
 
@@ -317,7 +700,7 @@
 
 
 <!-- =====================================================
-     COMING SOON
+     PHOTOGRAPHY FOCUS
 ===================================================== -->
 
 <section class="about">
@@ -327,18 +710,19 @@
         <div class="section-heading">
 
             <div class="eyebrow">
-                In Development
+                The Photography
             </div>
 
             <h2>
-                Something
-                <span>new is coming.</span>
+                More than a
+                <span>picture.</span>
             </h2>
 
             <p>
-                NEWITT Media Photography is being developed as
-                a dedicated home for still imagery and visual
-                stories.
+                Every image is part of a wider story.
+                From people and places to landscapes and
+                adventures, photography gives NEWITT Media
+                another way to capture the moment.
             </p>
 
         </div>
@@ -361,8 +745,8 @@
                 </h3>
 
                 <p>
-                    Portraits, moments and stories centred
-                    around people.
+                    Portraits, moments and genuine experiences
+                    captured naturally.
                 </p>
 
             </article>
@@ -382,8 +766,8 @@
                 </h3>
 
                 <p>
-                    Locations, architecture and places worth
-                    stopping to look at.
+                    Locations, architecture and environments
+                    with their own stories to tell.
                 </p>
 
             </article>
@@ -399,15 +783,16 @@
                 </div>
 
                 <h3>
-                    Adventures
+                    Landscapes &amp; Adventures
                 </h3>
 
                 <p>
-                    Images from the journeys and experiences
-                    that make NEWITT Media what it is.
+                    Landscapes, journeys and experiences
+                    captured as part of the NEWITT story.
                 </p>
 
             </article>
+
 
         </div>
 
@@ -417,7 +802,83 @@
 
 
 <!-- =====================================================
-     THREE WORLDS CROSS-LINK
+     PORTFOLIO
+===================================================== -->
+
+<section
+    class="about"
+    id="portfolio"
+>
+
+    <div class="container">
+
+        <div class="photography-portfolio">
+
+            <div class="photography-portfolio-heading">
+
+                <div class="eyebrow">
+                    Portfolio
+                </div>
+
+                <h2>
+                    The gallery is
+                    <span>growing.</span>
+                </h2>
+
+                <p>
+                    Photography is being developed into a
+                    dedicated collection of images from the
+                    people, places and adventures behind
+                    NEWITT Media.
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 SAFE EMPTY GALLERY STATE
+
+                 This keeps the page professional until
+                 photographs are added.
+
+                 Future images can be added here without
+                 changing the rest of the page.
+            ================================================== -->
+
+            <div class="photography-gallery-placeholder">
+
+                <div class="photography-gallery-placeholder-content">
+
+                    <div
+                        class="photography-gallery-icon"
+                        aria-hidden="true"
+                    >
+                        ◉
+                    </div>
+
+                    <h3>
+                        NEWITT Media Photography
+                    </h3>
+
+                    <p>
+                        The portfolio is currently being
+                        built. New photographs will appear
+                        here as the collection develops.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CROSS-LINK
 ===================================================== -->
 
 <section class="home-cta">
@@ -430,15 +891,17 @@
                 NEWITT Media
             </div>
 
+
             <h2>
-                Explore the
-                <span>other worlds.</span>
+                Three worlds.
+                <span>One identity.</span>
             </h2>
 
+
             <p>
-                Photography is coming soon. In the meantime,
-                explore NEWITT Skyline Media or join the
-                paranormal adventures.
+                Explore the aerial world of NEWITT Skyline
+                Media or head into the darkness with
+                NEWITT's Paranormal Adventures.
             </p>
 
 
@@ -546,6 +1009,37 @@
 
 
 <!-- =====================================================
+     PHOTOGRAPHY LIGHTBOX
+     
+     Ready for future portfolio photographs.
+===================================================== -->
+
+<div
+    class="photography-lightbox"
+    id="photography-lightbox"
+    aria-hidden="true"
+>
+
+    <button
+        type="button"
+        class="photography-lightbox-close"
+        id="photography-lightbox-close"
+        aria-label="Close image"
+    >
+        ×
+    </button>
+
+
+    <img
+        id="photography-lightbox-image"
+        src=""
+        alt=""
+    >
+
+</div>
+
+
+<!-- =====================================================
      MASTER JAVASCRIPT
 ===================================================== -->
 
@@ -553,6 +1047,160 @@
     src="script.js"
     defer
 ></script>
+
+
+<!-- =====================================================
+     PHOTOGRAPHY LIGHTBOX JAVASCRIPT
+===================================================== -->
+
+<script>
+
+(function () {
+
+    const galleryItems =
+        document.querySelectorAll(
+            ".photography-gallery-item"
+        );
+
+    const lightbox =
+        document.getElementById(
+            "photography-lightbox"
+        );
+
+    const lightboxImage =
+        document.getElementById(
+            "photography-lightbox-image"
+        );
+
+    const closeButton =
+        document.getElementById(
+            "photography-lightbox-close"
+        );
+
+
+    /*
+     * The gallery is intentionally empty at present.
+     *
+     * This script safely does nothing until photographs
+     * are added to the gallery.
+     */
+
+    if (
+        !galleryItems.length ||
+        !lightbox ||
+        !lightboxImage ||
+        !closeButton
+    ) {
+        return;
+    }
+
+
+    function openLightbox(item) {
+
+        const image =
+            item.getAttribute(
+                "data-full-image"
+            );
+
+        const thumbnail =
+            item.querySelector("img");
+
+        if (!image) {
+            return;
+        }
+
+        lightboxImage.src = image;
+
+        lightboxImage.alt =
+            thumbnail
+                ? thumbnail.alt
+                : "NEWITT Media Photography image";
+
+        lightbox.classList.add(
+            "active"
+        );
+
+        lightbox.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+        document.body.style.overflow =
+            "hidden";
+
+    }
+
+
+    function closeLightbox() {
+
+        lightbox.classList.remove(
+            "active"
+        );
+
+        lightbox.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        lightboxImage.src = "";
+
+        document.body.style.overflow =
+            "";
+
+    }
+
+
+    galleryItems.forEach(function (item) {
+
+        item.addEventListener(
+            "click",
+            function () {
+
+                openLightbox(item);
+
+            }
+        );
+
+    });
+
+
+    closeButton.addEventListener(
+        "click",
+        closeLightbox
+    );
+
+
+    lightbox.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                event.target === lightbox
+            ) {
+                closeLightbox();
+            }
+
+        }
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape" &&
+                lightbox.classList.contains("active")
+            ) {
+                closeLightbox();
+            }
+
+        }
+    );
+
+})();
+
+</script>
 
 
 </body>
