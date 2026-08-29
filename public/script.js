@@ -718,7 +718,7 @@
 
     /* =====================================================
        CINEMATIC INTRO
-       FIRST VISIT ONLY
+       PLAYS ON EVERY VISIT
     ====================================================== */
 
     function initialiseCinematicIntro() {
@@ -740,87 +740,18 @@
             ).matches;
 
 
-        const introKey =
-            "newittMediaCinematicIntroSeen";
-
-
-        let alreadySeen = false;
-
-
-        try {
-
-            alreadySeen =
-                localStorage.getItem(
-                    introKey
-                ) === "true";
-
-        } catch (error) {
-
-            alreadySeen = false;
-
-        }
-
-
         /*
-         * Returning visitors:
-         * remove the intro immediately.
+         * The cinematic intro intentionally
+         * plays on EVERY visit.
+         *
+         * There is NO localStorage check,
+         * cookie check or "already seen"
+         * condition.
          */
 
-        if (alreadySeen) {
-
-            intro.classList.add(
-                "intro-hidden"
-            );
-
-
-            window.setTimeout(
-                function () {
-
-                    if (
-                        intro &&
-                        intro.parentNode
-                    ) {
-
-                        intro.remove();
-
-                    }
-
-                },
-                100
-            );
-
-
-            return;
-
-        }
-
 
         /*
-         * First visit:
-         * remember that the intro has now
-         * been shown.
-         */
-
-        try {
-
-            localStorage.setItem(
-                introKey,
-                "true"
-            );
-
-        } catch (error) {
-
-            /*
-             * If storage is unavailable,
-             * continue normally.
-             */
-
-        }
-
-
-        /*
-         * Explicitly establish the opening
-         * state before beginning the timer.
+         * Establish the opening state.
          */
 
         intro.classList.remove(
@@ -841,17 +772,21 @@
 
 
         /*
-         * Force browser reflow so the
-         * opening state is registered.
+         * Force browser reflow so the opening
+         * animation starts correctly every time.
          */
 
         void intro.offsetWidth;
 
 
         /*
-         * Five-second cinematic opening.
-         * Reduced-motion users receive a
-         * shorter version.
+         * Full cinematic opening.
+         *
+         * Normal:
+         * approximately 5.2 seconds.
+         *
+         * Reduced motion:
+         * approximately 1.2 seconds.
          */
 
         const displayTime =
@@ -868,10 +803,19 @@
                 }
 
 
+                /*
+                 * Begin cinematic fade-out.
+                 */
+
                 intro.classList.add(
                     "intro-hidden"
                 );
 
+
+                /*
+                 * Remove the intro from the page
+                 * after the fade has completed.
+                 */
 
                 window.setTimeout(
                     function () {
