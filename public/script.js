@@ -1,6 +1,7 @@
 /* =========================================================
    NEWITT MEDIA
    MASTER JAVASCRIPT
+   FINAL WEBSITE BUILD
    VERSION: 29 AUGUST 2026
 ========================================================= */
 
@@ -94,6 +95,14 @@
             );
 
         }
+
+
+        /*
+         * Make sure the menu starts in a
+         * predictable closed state.
+         */
+
+        closeMenu();
 
 
         menuToggle.addEventListener(
@@ -602,7 +611,10 @@
 
                 } catch (error) {
 
-                    /* Ignore focus restoration errors. */
+                    /*
+                     * Ignore focus restoration
+                     * errors.
+                     */
 
                 }
 
@@ -814,9 +826,8 @@
 
 
         /*
-         * If this visitor has already seen
-         * the cinematic introduction, remove
-         * it immediately.
+         * Returning visitors do not need to see
+         * the full cinematic opening again.
          */
 
         if (alreadySeen) {
@@ -829,9 +840,9 @@
 
 
         /*
-         * Record the visit immediately so
-         * navigating around the website does
-         * not replay the introduction.
+         * Mark the cinematic introduction as
+         * seen immediately so navigation between
+         * pages does not replay it.
          */
 
         try {
@@ -845,7 +856,7 @@
 
             /*
              * Storage may be unavailable in
-             * some private browsing situations.
+             * private browsing situations.
              * The introduction can still run.
              */
 
@@ -853,11 +864,10 @@
 
 
         /*
-         * Give the first visit a cinematic
-         * five-second sequence.
+         * Full cinematic first-visit sequence.
          *
-         * Reduced-motion users receive a
-         * much shorter presentation.
+         * The existing five-second timing is
+         * deliberately preserved.
          */
 
         const duration =
@@ -868,6 +878,11 @@
 
         window.setTimeout(
             function () {
+
+                if (!intro) {
+                    return;
+                }
+
 
                 intro.classList.add(
                     "intro-hidden"
@@ -943,12 +958,6 @@
         const houseGlow =
             socialHub.querySelector(
                 ".social-house-glow"
-            );
-
-
-        const background =
-            socialHub.querySelector(
-                ".social-hub-art"
             );
 
 
@@ -1035,8 +1044,6 @@
 
             /*
              * Haunted-house glow.
-             * A slower secondary pulse keeps
-             * the right side of the artwork alive.
              */
 
             if (houseGlow) {
@@ -1059,33 +1066,14 @@
 
 
             /*
-             * Very subtle artwork movement.
-             * CSS already provides the main
-             * cinematic movement. This only adds
-             * a tiny live positional shift.
+             * The artwork's movement remains
+             * controlled by CSS.
+             *
+             * We deliberately do not write
+             * transform/translate values here,
+             * preventing JavaScript from
+             * fighting the CSS animation.
              */
-
-            if (background) {
-
-                const x =
-                    Math.sin(
-                        time * 0.18
-                    ) *
-                    0.15;
-
-
-                const y =
-                    Math.cos(
-                        time * 0.15
-                    ) *
-                    0.10;
-
-
-                background.style.translate =
-                    `${x.toFixed(2)}% ${y.toFixed(2)}%`;
-
-            }
-
 
             animationFrame =
                 window.requestAnimationFrame(
@@ -1102,8 +1090,9 @@
 
 
         /*
-         * Stop the animation when the page is
-         * hidden. This saves battery on phones.
+         * Stop the effects when the page is
+         * hidden to reduce unnecessary CPU and
+         * battery usage on mobile devices.
          */
 
         document.addEventListener(
