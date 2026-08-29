@@ -370,10 +370,12 @@
 <!-- =====================================================
      MASTER CINEMATIC SOCIAL ANIMATION
 
-     ONE SECTION ONLY
+     THE SOCIAL BUTTONS ARE PART OF THE ARTWORK.
 
-     The current master animation containing
-     the working banner social buttons.
+     TRANSPARENT CLICK ZONES ARE PLACED OVER THE
+     EXISTING VISIBLE BUTTONS.
+
+     NOTHING VISUAL IS ADDED TO THE ANIMATION.
 ===================================================== -->
 
 <section
@@ -382,7 +384,10 @@
     aria-label="NEWITT Media cinematic social media animation"
 >
 
-    <div class="social-master-frame">
+    <div
+        class="social-master-frame"
+        style="position:relative;"
+    >
 
         <iframe
             class="social-master-animation"
@@ -393,6 +398,154 @@
             frameborder="0"
             allowtransparency="true"
         ></iframe>
+
+
+        <!-- =================================================
+             INVISIBLE SOCIAL CLICK ZONES
+
+             These sit directly over the existing artwork
+             buttons.
+
+             EDIT ONLY THE HREFS BELOW if a social account
+             ever changes.
+        ================================================== -->
+
+        <div
+            aria-label="NEWITT Media social media links"
+            style="
+                position:absolute;
+                inset:0;
+                z-index:20;
+                pointer-events:none;
+            "
+        >
+
+            <!-- SKYLINE TIKTOK -->
+
+            <a
+                href="https://www.tiktok.com/@newittskylinemedia"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="NEWITT Skyline Media TikTok"
+                style="
+                    position:absolute;
+                    left:7.7%;
+                    top:70.3%;
+                    width:14.7%;
+                    height:8%;
+                    display:block;
+                    pointer-events:auto;
+                    background:transparent;
+                    cursor:pointer;
+                "
+            ></a>
+
+
+            <!-- SKYLINE YOUTUBE -->
+
+            <a
+                href="https://www.youtube.com/@Newitt-skyline-media"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="NEWITT Skyline Media YouTube"
+                style="
+                    position:absolute;
+                    left:25.1%;
+                    top:70.3%;
+                    width:16.6%;
+                    height:8%;
+                    display:block;
+                    pointer-events:auto;
+                    background:transparent;
+                    cursor:pointer;
+                "
+            ></a>
+
+
+            <!-- PARANORMAL TIKTOK -->
+
+            <a
+                href="https://www.tiktok.com/@nw13ttt"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="NEWITT's Paranormal Adventures TikTok"
+                style="
+                    position:absolute;
+                    left:47.9%;
+                    top:70.3%;
+                    width:10.4%;
+                    height:8%;
+                    display:block;
+                    pointer-events:auto;
+                    background:transparent;
+                    cursor:pointer;
+                "
+            ></a>
+
+
+            <!-- PARANORMAL YOUTUBE -->
+
+            <a
+                href="https://www.youtube.com/@NewittsParanormalAdventures"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="NEWITT's Paranormal Adventures YouTube"
+                style="
+                    position:absolute;
+                    left:58.9%;
+                    top:70.3%;
+                    width:11.1%;
+                    height:8%;
+                    display:block;
+                    pointer-events:auto;
+                    background:transparent;
+                    cursor:pointer;
+                "
+            ></a>
+
+
+            <!-- PARANORMAL INSTAGRAM -->
+
+            <a
+                href="https://www.instagram.com/nw13ttt/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="NEWITT's Paranormal Adventures Instagram"
+                style="
+                    position:absolute;
+                    left:70.4%;
+                    top:70.3%;
+                    width:11.5%;
+                    height:8%;
+                    display:block;
+                    pointer-events:auto;
+                    background:transparent;
+                    cursor:pointer;
+                "
+            ></a>
+
+
+            <!-- PARANORMAL FACEBOOK -->
+
+            <a
+                href="https://www.facebook.com/share/1AiSkdbyM4/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="NEWITT's Paranormal Adventures Facebook"
+                style="
+                    position:absolute;
+                    left:82.1%;
+                    top:70.3%;
+                    width:12.3%;
+                    height:8%;
+                    display:block;
+                    pointer-events:auto;
+                    background:transparent;
+                    cursor:pointer;
+                "
+            ></a>
+
+        </div>
 
     </div>
 
