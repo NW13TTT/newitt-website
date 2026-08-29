@@ -1,6 +1,6 @@
 /* =========================================================
    NEWITT MEDIA
-   MASTER SITE STYLESHEET
+   MASTER PROFESSIONAL STYLESHEET
 ========================================================= */
 
 *,
@@ -17,15 +17,24 @@ html {
 body {
     margin: 0;
     min-width: 320px;
+    min-height: 100vh;
+    overflow-x: hidden;
+
     background:
         linear-gradient(
             180deg,
-            rgba(2, 3, 5, 0.12),
-            rgba(2, 3, 5, 0.28)
+            rgba(2, 3, 5, 0.08),
+            rgba(2, 3, 5, 0.22)
         ),
-        url("background.png") center top / cover fixed no-repeat;
+        url("background.png")
+        center top /
+        cover fixed
+        no-repeat;
+
     background-color: #020305;
+
     color: #f4f7fa;
+
     font-family:
         Inter,
         -apple-system,
@@ -33,20 +42,24 @@ body {
         "Segoe UI",
         Arial,
         sans-serif;
+
     line-height: 1.6;
-    overflow-x: hidden;
 }
 
 body::before {
     content: "";
+
     position: fixed;
     inset: 0;
+
     z-index: -1;
+
     pointer-events: none;
+
     background:
         radial-gradient(
             circle at 50% 15%,
-            rgba(0, 174, 255, 0.055),
+            rgba(0, 174, 255, 0.045),
             transparent 42%
         );
 }
@@ -61,13 +74,13 @@ a {
     text-decoration: none;
 }
 
+button {
+    font: inherit;
+}
+
 button,
 a {
     -webkit-tap-highlight-color: transparent;
-}
-
-button {
-    font: inherit;
 }
 
 section {
@@ -81,11 +94,11 @@ section {
 
 
 /* =========================================================
-   CONTAINER
+   MASTER CONTAINER
 ========================================================= */
 
 .container {
-    width: min(1180px, calc(100% - 40px));
+    width: min(1120px, calc(100% - 40px));
     margin-inline: auto;
 }
 
@@ -97,61 +110,83 @@ section {
 .site-header {
     position: sticky;
     top: 0;
+
     z-index: 1000;
-    background: rgba(2, 3, 5, 0.76);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    background:
+        rgba(2, 3, 5, 0.78);
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
 }
 
 .nav {
     min-height: 76px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     gap: 24px;
 }
 
 .nav-brand {
     display: inline-flex;
     align-items: center;
-    gap: 11px;
+
+    gap: 10px;
+
     min-width: 0;
 }
 
 .nav-brand img {
     width: 42px;
     height: 42px;
+
     flex: 0 0 42px;
+
     object-fit: contain;
 }
 
 .nav-brand span {
-    font-size: 0.94rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
     white-space: nowrap;
+
+    font-size: 0.9rem;
+    font-weight: 750;
+
+    letter-spacing: 0.12em;
 }
 
 .nav-brand strong {
     color: #c9a45b;
-    font-weight: 800;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 5px;
+
+    gap: 4px;
 }
 
 .nav-links a {
     width: auto;
-    padding: 8px 12px;
-    border-radius: 7px;
-    color: rgba(255, 255, 255, 0.76);
-    font-size: 0.8rem;
-    font-weight: 650;
-    letter-spacing: 0.05em;
+
+    padding: 8px 11px;
+
+    border-radius: 6px;
+
+    color:
+        rgba(255, 255, 255, 0.76);
+
+    font-size: 0.76rem;
+    font-weight: 700;
+
+    letter-spacing: 0.045em;
+
     transition:
         color 180ms ease,
         background 180ms ease;
@@ -160,27 +195,42 @@ section {
 .nav-links a:hover,
 .nav-links a.active {
     color: #ffffff;
-    background: rgba(255, 255, 255, 0.07);
+
+    background:
+        rgba(255, 255, 255, 0.07);
 }
 
 .menu-toggle {
     display: none;
+
     width: 44px;
     height: 44px;
-    padding: 9px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
+
+    padding: 8px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.15);
+
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.04);
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
     cursor: pointer;
 }
 
 .menu-toggle span {
     display: block;
+
     width: 100%;
     height: 2px;
+
     margin: 5px 0;
-    background: #ffffff;
+
     border-radius: 999px;
+
+    background: #ffffff;
 }
 
 
@@ -188,270 +238,134 @@ section {
    TYPOGRAPHY
 ========================================================= */
 
-.eyebrow {
-    margin-bottom: 10px;
-    color: #c9a45b;
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+h1,
+h2,
+h3,
+p {
+    margin-top: 0;
 }
 
 h1,
 h2,
 h3 {
-    margin-top: 0;
     line-height: 1.08;
 }
 
 h1 {
     margin-bottom: 18px;
-    font-size: clamp(2.3rem, 6vw, 5.4rem);
+
+    font-size:
+        clamp(
+            2.25rem,
+            6vw,
+            5rem
+        );
+
     letter-spacing: -0.035em;
 }
 
 h2 {
     margin-bottom: 16px;
-    font-size: clamp(2rem, 4vw, 3.6rem);
+
+    font-size:
+        clamp(
+            2rem,
+            4vw,
+            3.4rem
+        );
+
     letter-spacing: -0.025em;
 }
 
 h3 {
     margin-bottom: 10px;
-    font-size: 1.2rem;
+
+    font-size: 1.15rem;
 }
 
 p {
-    margin-top: 0;
-    color: rgba(244, 247, 250, 0.78);
+    color:
+        rgba(244, 247, 250, 0.76);
 }
 
-.hero-tagline {
+.eyebrow {
+    margin-bottom: 10px;
+
     color: #c9a45b;
-    font-size: clamp(0.8rem, 1.5vw, 0.98rem);
-    font-weight: 800;
+
+    font-size: 0.68rem;
+    font-weight: 850;
+
     letter-spacing: 0.18em;
+
     text-transform: uppercase;
 }
 
-.section-heading span,
 h1 span,
-h2 span {
+h2 span,
+.section-heading span {
     color: #c9a45b;
 }
 
 
 /* =========================================================
-   GLOBAL SECTIONS
+   GLOBAL CENTRING
 ========================================================= */
 
-section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-hero):not(.contact-hero) {
-    padding: 82px 0;
+.hero,
+.skyline-hero,
+.paranormal-hero,
+.photography-hero,
+.contact-hero {
+    text-align: center;
+}
+
+.hero-content,
+.skyline-hero-content,
+.paranormal-hero-content,
+.photography-hero-content,
+.contact-hero-content {
+    width: min(860px, 100%);
+
+    margin-inline: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
 }
 
 .about {
     width: min(900px, 100%);
+
     margin-inline: auto;
-}
 
-.section-heading {
-    margin-bottom: 28px;
-}
-
-
-/* =========================================================
-   BUTTON SYSTEM
-   COMPACT / CONTENT WIDTH
-========================================================= */
-
-.button,
-.buttons a,
-.hero-actions a,
-.social-button {
-    display: inline-flex;
-    width: auto;
-    max-width: max-content;
-    min-width: 0;
-    flex: 0 0 auto;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    min-height: 40px;
-    padding: 8px 14px;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.045);
-    color: #ffffff;
-    font-size: 0.73rem;
-    font-weight: 750;
-    letter-spacing: 0.045em;
-    line-height: 1.1;
-    white-space: nowrap;
-    cursor: pointer;
-    transition:
-        transform 180ms ease,
-        background 180ms ease,
-        border-color 180ms ease,
-        box-shadow 180ms ease;
-}
-
-.button:hover,
-.buttons a:hover,
-.hero-actions a:hover,
-.social-button:hover {
-    transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.09);
-    border-color: rgba(255, 255, 255, 0.28);
-}
-
-.button.primary {
-    background: rgba(201, 164, 91, 0.13);
-    border-color: rgba(201, 164, 91, 0.52);
-    color: #f5d38a;
-}
-
-.button.primary:hover {
-    background: rgba(201, 164, 91, 0.2);
-    box-shadow: 0 8px 25px rgba(201, 164, 91, 0.1);
-}
-
-.buttons,
-.hero-actions {
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 9px;
-    margin-top: 22px;
-}
-
-.buttons a,
-.hero-actions a {
-    flex: 0 0 auto;
-}
-
-
-/* =========================================================
-   CINEMATIC INTRO
-========================================================= */
-
-.site-intro {
-    position: fixed;
-    inset: 0;
-    z-index: 5000;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-    background: #020305;
-}
-
-.intro-atmosphere {
-    position: absolute;
-    inset: -20%;
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(0, 170, 255, 0.14),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 50% 65%,
-            rgba(0, 120, 255, 0.07),
-            transparent 38%
-        );
-    animation:
-        introAtmosphere
-        5s
-        ease-in-out
-        infinite
-        alternate;
-}
-
-.intro-light-sweep {
-    position: absolute;
-    top: -20%;
-    left: -30%;
-    width: 28%;
-    height: 140%;
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(130, 220, 255, 0.18),
-            transparent
-        );
-    transform: rotate(18deg);
-    animation:
-        introSweep
-        4.6s
-        ease-in-out
-        infinite;
-}
-
-.intro-content {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    width: min(760px, calc(100% - 40px));
-    flex-direction: column;
-    align-items: center;
     text-align: center;
 }
 
-.intro-logo {
-    width: min(240px, 52vw);
-    height: auto;
-    object-fit: contain;
-    filter:
-        drop-shadow(
-            0 0 20px
-            rgba(0, 170, 255, 0.18)
-        )
-        drop-shadow(
-            0 0 50px
-            rgba(0, 170, 255, 0.08)
-        );
-    animation:
-        introLogo
-        1.8s
-        ease
-        both;
+.section-heading {
+    width: 100%;
+
+    margin-bottom: 28px;
+
+    text-align: center;
 }
 
-.intro-name {
-    margin-top: 22px;
-    font-size: clamp(1.8rem, 5vw, 3.8rem);
-    font-weight: 900;
-    letter-spacing: 0.14em;
+.section-heading p {
+    width: min(700px, 100%);
+
+    margin-inline: auto;
 }
 
-.intro-name span {
-    color: #c9a45b;
-}
+.about > p {
+    width: min(760px, 100%);
 
-.intro-line {
-    width: 90px;
-    height: 1px;
-    margin: 20px auto;
-    background: rgba(201, 164, 91, 0.7);
-}
-
-.intro-tagline {
-    max-width: 680px;
-    color: rgba(255, 255, 255, 0.76);
-    font-size: clamp(0.68rem, 1.7vw, 0.9rem);
-    font-weight: 700;
-    letter-spacing: 0.17em;
-    line-height: 1.8;
-}
-
-.site-intro.intro-hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition:
-        opacity 700ms ease,
-        visibility 700ms ease;
+    margin-inline: auto;
 }
 
 
@@ -464,99 +378,137 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
 .paranormal-hero,
 .photography-hero,
 .contact-hero {
-    min-height: 78vh;
+    min-height: 76vh;
+
     display: flex;
     align-items: center;
-    padding: 100px 0;
+
+    padding:
+        95px 0;
 }
 
 .hero {
     overflow: hidden;
-    text-align: center;
 }
 
 .hero-atmosphere,
 .paranormal-atmosphere {
     position: absolute;
     inset: 0;
+
     pointer-events: none;
 }
 
 .hero-atmosphere {
     background:
         radial-gradient(
-            circle at 50% 45%,
-            rgba(0, 170, 255, 0.11),
-            transparent 32%
+            circle at 50% 42%,
+            rgba(0, 170, 255, 0.1),
+            transparent 35%
         );
 }
 
 .hero-content {
     position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+    z-index: 2;
 }
 
 .hero-logo-wrap {
-    width: min(210px, 46vw);
-    margin-bottom: 24px;
+    width:
+        min(
+            230px,
+            46vw
+        );
+
+    margin:
+        0 auto 25px;
 }
 
 .hero-logo {
     width: 100%;
     height: auto;
+
     object-fit: contain;
+
+    margin-inline: auto;
+
     filter:
         drop-shadow(
             0 0 28px
-            rgba(0, 170, 255, 0.12)
+            rgba(0, 170, 255, 0.13)
         );
 }
 
 .hero-content h1 {
-    max-width: 950px;
-}
+    width: 100%;
 
-.hero-introduction {
-    width: min(650px, 100%);
+    max-width: 950px;
+
     margin-inline: auto;
-    font-size: 1rem;
 }
 
 .hero-rule {
     width: 90px;
     height: 1px;
-    margin: 20px auto;
-    background: rgba(201, 164, 91, 0.65);
+
+    margin:
+        20px auto;
+
+    background:
+        rgba(201, 164, 91, 0.65);
+}
+
+.hero-tagline {
+    color: #c9a45b;
+
+    font-size:
+        clamp(
+            0.75rem,
+            1.5vw,
+            0.95rem
+        );
+
+    font-weight: 850;
+
+    letter-spacing: 0.17em;
+
+    text-transform: uppercase;
+
+    text-align: center;
+}
+
+.hero-introduction {
+    width: min(650px, 100%);
+
+    margin-inline: auto;
+
+    text-align: center;
+
+    font-size: 1rem;
 }
 
 
 /* =========================================================
-   PAGE HEROES
+   PAGE HERO LOGOS
 ========================================================= */
 
-.skyline-hero,
-.paranormal-hero,
-.photography-hero,
-.contact-hero {
-    min-height: 72vh;
-}
-
-.skyline-hero-content,
-.paranormal-hero-content,
-.photography-hero-content,
-.contact-hero-content {
-    width: min(860px, 100%);
-    margin-inline: auto;
-}
-
 .page-logo {
-    width: min(250px, 52vw);
+    display: block;
+
+    width:
+        min(
+            250px,
+            52vw
+        );
+
     height: auto;
+
     max-height: 220px;
-    margin-bottom: 30px;
+
+    margin:
+        0 auto 28px;
+
     object-fit: contain;
 }
 
@@ -577,12 +529,16 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
 }
 
 .photography-mark {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
+
+    text-align: center;
 }
 
 .photography-symbol {
     color: #78d58a;
-    font-size: 3rem;
+
+    font-size: 2.7rem;
+
     line-height: 1;
 }
 
@@ -590,15 +546,17 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
     background:
         radial-gradient(
             circle at 50% 35%,
-            rgba(155, 20, 30, 0.13),
-            transparent 38%
+            rgba(155, 20, 30, 0.12),
+            transparent 40%
         );
 }
 
 .paranormal-fog {
     position: absolute;
     inset: 0;
+
     pointer-events: none;
+
     background:
         radial-gradient(
             ellipse at 50% 80%,
@@ -609,181 +567,492 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
 
 
 /* =========================================================
-   GALLERY
+   BUTTONS
+   CONTENT WIDTH ONLY
 ========================================================= */
 
-.gallery-grid {
-    display: grid;
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-    gap: 14px;
+.buttons,
+.hero-actions {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin-top: 22px;
 }
 
-.gallery-item {
-    position: relative;
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    padding: 0;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 9px;
-    background: rgba(0, 0, 0, 0.25);
+.button,
+.buttons a,
+.hero-actions a,
+.social-button {
+    display: inline-flex;
+
+    width: auto;
+
+    min-width: 0;
+
+    max-width: max-content;
+
+    flex: 0 0 auto;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    min-height: 39px;
+
+    padding:
+        8px 14px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.16);
+
+    border-radius: 6px;
+
+    background:
+        rgba(255, 255, 255, 0.045);
+
+    color: #ffffff;
+
+    font-size: 0.71rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.04em;
+
+    line-height: 1.1;
+
+    white-space: nowrap;
+
     cursor: pointer;
-}
 
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
     transition:
-        transform 450ms ease;
+        transform 180ms ease,
+        background 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
 }
 
-.gallery-item:hover img {
-    transform: scale(1.035);
+.button:hover,
+.buttons a:hover,
+.hero-actions a:hover,
+.social-button:hover {
+    transform: translateY(-2px);
+
+    background:
+        rgba(255, 255, 255, 0.09);
+
+    border-color:
+        rgba(255, 255, 255, 0.28);
 }
 
-.gallery-note {
-    margin-top: 14px;
-    font-size: 0.76rem;
-    color: rgba(255, 255, 255, 0.55);
+.button.primary {
+    color: #f5d38a;
+
+    border-color:
+        rgba(201, 164, 91, 0.52);
+
+    background:
+        rgba(201, 164, 91, 0.12);
+}
+
+.button.primary:hover {
+    background:
+        rgba(201, 164, 91, 0.2);
+
+    box-shadow:
+        0 8px 25px
+        rgba(201, 164, 91, 0.1);
 }
 
 
 /* =========================================================
-   LIGHTBOX
+   CINEMATIC INTRO
 ========================================================= */
 
-.lightbox,
-#lightbox {
+.site-intro {
     position: fixed;
     inset: 0;
-    z-index: 4000;
-    display: none;
-    place-items: center;
-    padding: 24px;
-    background: rgba(0, 0, 0, 0.9);
-}
 
-.lightbox.active,
-#lightbox.active {
+    z-index: 5000;
+
     display: grid;
+
+    place-items: center;
+
+    overflow: hidden;
+
+    background: #020305;
 }
 
-.lightbox img,
-#lightbox img {
-    max-width: min(1100px, 94vw);
-    max-height: 88vh;
-    width: auto;
-    height: auto;
-    border-radius: 6px;
-}
-
-.lightbox-close,
-#lightbox-close {
+.intro-atmosphere {
     position: absolute;
-    top: 18px;
-    right: 20px;
-    width: 44px;
-    height: 44px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.45);
-    color: #ffffff;
-    font-size: 1.6rem;
-    cursor: pointer;
+
+    inset: -20%;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0, 170, 255, 0.14),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 50% 65%,
+            rgba(0, 120, 255, 0.07),
+            transparent 38%
+        );
+
+    animation:
+        introAtmosphere
+        5s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+.intro-light-sweep {
+    position: absolute;
+
+    top: -20%;
+    left: -30%;
+
+    width: 28%;
+    height: 140%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(130, 220, 255, 0.18),
+            transparent
+        );
+
+    transform: rotate(18deg);
+
+    animation:
+        introSweep
+        4.6s
+        ease-in-out
+        infinite;
+}
+
+.intro-content {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    width:
+        min(
+            760px,
+            calc(100% - 40px)
+        );
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+.intro-logo {
+    width:
+        min(
+            240px,
+            52vw
+        );
+
+    height: auto;
+
+    object-fit: contain;
+
+    animation:
+        introLogo
+        1.8s
+        ease
+        both;
+}
+
+.intro-name {
+    margin-top: 22px;
+
+    font-size:
+        clamp(
+            1.8rem,
+            5vw,
+            3.8rem
+        );
+
+    font-weight: 900;
+
+    letter-spacing: 0.14em;
+}
+
+.intro-name span {
+    color: #c9a45b;
+}
+
+.intro-line {
+    width: 90px;
+    height: 1px;
+
+    margin:
+        20px auto;
+
+    background:
+        rgba(201, 164, 91, 0.7);
+}
+
+.intro-tagline {
+    max-width: 680px;
+
+    color:
+        rgba(255, 255, 255, 0.76);
+
+    font-size:
+        clamp(
+            0.68rem,
+            1.7vw,
+            0.9rem
+        );
+
+    font-weight: 700;
+
+    letter-spacing: 0.17em;
+
+    line-height: 1.8;
+
+    text-align: center;
+}
+
+.site-intro.intro-hidden {
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 700ms ease,
+        visibility 700ms ease;
 }
 
 
 /* =========================================================
    SOCIAL MEDIA HUB
+   PROFESSIONAL COMPACT DESIGN
 ========================================================= */
 
 .social-hub {
     position: relative;
+
     overflow: hidden;
-    padding: 70px 0 48px;
-    background: rgba(2, 3, 5, 0.08);
+
+    padding:
+        72px 0
+        45px;
+
+    text-align: center;
+
+    isolation: isolate;
 }
 
 .social-hub-art {
     position: absolute;
+
     inset: 0;
-    z-index: 0;
+
+    z-index: -3;
+
     background:
         url("newitt-social-hub-background-optimized.jpg")
-        center / cover no-repeat;
-    opacity: 0.72;
+        center /
+        cover
+        no-repeat;
+
+    opacity: 0.78;
 }
 
 .social-hub-shade {
     position: absolute;
+
     inset: 0;
-    z-index: 1;
+
+    z-index: -2;
+
     background:
         linear-gradient(
             180deg,
-            rgba(2, 3, 5, 0.18),
-            rgba(2, 3, 5, 0.34)
+            rgba(2, 3, 5, 0.1),
+            rgba(2, 3, 5, 0.3)
         );
 }
 
-.social-hub-content {
-    position: relative;
-    z-index: 5;
+.social-lightning {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -1;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at 20% 50%,
+            rgba(0, 180, 255, 0.09),
+            transparent 34%
+        );
 }
 
+.social-house-glow {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -1;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at 80% 50%,
+            rgba(220, 30, 40, 0.08),
+            transparent 32%
+        );
+}
+
+.social-paranormal-glow {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(255, 60, 70, 0.04),
+            transparent 25%
+        );
+}
+
+
+/* ---------------------------------------------------------
+   HUB CONTENT
+--------------------------------------------------------- */
+
+.social-hub-content {
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(
+            940px,
+            calc(100% - 40px)
+        );
+
+    margin-inline: auto;
+}
+
+
+/* ---------------------------------------------------------
+   TWO COMPACT CARDS
+--------------------------------------------------------- */
+
 .social-brand-grid {
+    width: 100%;
+
     display: grid;
+
     grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-    align-items: start;
+        repeat(
+            2,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    align-items: stretch;
+
     gap: 14px;
-    width: min(900px, 100%);
+
     margin-inline: auto;
 }
 
 .social-brand {
     position: relative;
+
     min-width: 0;
+
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.13);
+
     border-radius: 9px;
-    background: rgba(4, 7, 12, 0.52);
+
+    background:
+        rgba(3, 6, 11, 0.62);
+
     backdrop-filter: blur(7px);
+
     -webkit-backdrop-filter: blur(7px);
+
+    text-align: left;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0, 0, 0, 0.2);
 }
 
 .social-brand-inner {
     display: grid;
+
     grid-template-columns:
-        62px minmax(0, 1fr);
+        64px
+        minmax(0, 1fr);
+
     align-items: center;
+
     gap: 13px;
-    min-height: 0;
-    padding: 14px;
+
+    padding: 13px;
+
+    min-height: 90px;
 }
 
 .social-logo-wrap {
+    width: 64px;
+    height: 64px;
+
     display: grid;
-    width: 62px;
-    height: 62px;
+
     place-items: center;
+
+    flex-shrink: 0;
 }
 
 .social-logo-wrap img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-}
 
-.paranormal-social-logo img {
-    animation:
-        paranormalFloat
-        6s
-        ease-in-out
-        infinite;
+    object-fit: contain;
 }
 
 .social-brand-content {
@@ -791,10 +1060,13 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
 }
 
 .social-brand-name {
-    margin-bottom: 2px;
-    font-size: 0.61rem;
-    font-weight: 850;
-    letter-spacing: 0.15em;
+    margin-bottom: 1px;
+
+    font-size: 0.59rem;
+
+    font-weight: 900;
+
+    letter-spacing: 0.16em;
 }
 
 .blue-text {
@@ -806,104 +1078,102 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
 }
 
 .social-brand h3 {
-    margin-bottom: 9px;
-    font-size: 0.9rem;
-    line-height: 1.2;
+    margin-bottom: 8px;
+
+    font-size: 0.88rem;
+
+    line-height: 1.15;
+
     letter-spacing: 0.035em;
+
+    white-space: normal;
 }
 
 .social-buttons {
     display: flex;
+
     flex-wrap: wrap;
+
+    align-items: center;
+
     gap: 5px;
 }
 
 .social-button {
-    min-height: 30px;
-    padding: 6px 9px;
-    font-size: 0.61rem;
+    min-height: 29px;
+
+    padding:
+        6px 9px;
+
     border-radius: 5px;
+
+    font-size: 0.59rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.035em;
 }
 
 .skyline-button {
-    border-color: rgba(78, 207, 255, 0.4);
     color: #8ee5ff;
+
+    border-color:
+        rgba(78, 207, 255, 0.42);
 }
 
 .paranormal-button {
-    border-color: rgba(255, 93, 103, 0.35);
     color: #ff9ca2;
+
+    border-color:
+        rgba(255, 93, 103, 0.38);
 }
 
-.social-lightning {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-    background:
-        radial-gradient(
-            ellipse at 20% 40%,
-            rgba(0, 180, 255, 0.08),
-            transparent 32%
-        );
-    animation:
-        skylineAmbient
-        5s
-        ease-in-out
-        infinite
-        alternate;
-}
 
-.social-house-glow {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-    background:
-        radial-gradient(
-            ellipse at 80% 45%,
-            rgba(220, 30, 40, 0.07),
-            transparent 30%
-        );
+/* ---------------------------------------------------------
+   PARANORMAL LOGO MOVEMENT
+--------------------------------------------------------- */
+
+.paranormal-social-logo img {
     animation:
-        paranormalAmbient
+        paranormalFloat
         6s
-        ease-in-out
-        infinite
-        alternate;
-}
-
-.social-paranormal-glow {
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    pointer-events: none;
-    background:
-        radial-gradient(
-            circle at 80% 50%,
-            rgba(255, 60, 70, 0.035),
-            transparent 22%
-        );
-    animation:
-        paranormalPulse
-        4s
         ease-in-out
         infinite;
 }
 
+
+/* ---------------------------------------------------------
+   GOLD SOCIAL TICKER
+--------------------------------------------------------- */
+
 .social-ticker {
     position: relative;
+
     z-index: 8;
+
+    width: 100%;
+
     margin-top: 15px;
+
     overflow: hidden;
-    border-top: 1px solid rgba(201, 164, 91, 0.28);
-    border-bottom: 1px solid rgba(201, 164, 91, 0.28);
-    background: rgba(0, 0, 0, 0.2);
+
+    border-top:
+        1px solid
+        rgba(201, 164, 91, 0.3);
+
+    border-bottom:
+        1px solid
+        rgba(201, 164, 91, 0.3);
+
+    background:
+        rgba(0, 0, 0, 0.18);
 }
 
 .social-ticker-track {
     display: flex;
+
     width: max-content;
+
     animation:
         tickerMove
         24s
@@ -912,50 +1182,225 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
 }
 
 .social-ticker-track span {
-    padding: 8px 28px;
+    padding:
+        8px 28px;
+
     color: #c9a45b;
-    font-size: 0.63rem;
-    font-weight: 800;
+
+    font-size: 0.61rem;
+
+    font-weight: 850;
+
     letter-spacing: 0.15em;
+
     white-space: nowrap;
 }
 
 
 /* =========================================================
-   INVESTIGATION / PHOTOGRAPHY / CONTACT CARDS
+   GALLERY
+========================================================= */
+
+.gallery-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap: 14px;
+
+    margin-inline: auto;
+}
+
+.gallery-item {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 10;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.09);
+
+    border-radius: 9px;
+
+    background:
+        rgba(0, 0, 0, 0.25);
+
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 450ms ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.035);
+}
+
+.gallery-note {
+    margin-top: 14px;
+
+    font-size: 0.75rem;
+
+    color:
+        rgba(255, 255, 255, 0.52);
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+.lightbox,
+#lightbox {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 4000;
+
+    display: none;
+
+    place-items: center;
+
+    padding: 24px;
+
+    background:
+        rgba(0, 0, 0, 0.9);
+}
+
+.lightbox.active,
+#lightbox.active {
+    display: grid;
+}
+
+.lightbox img,
+#lightbox img {
+    max-width:
+        min(
+            1100px,
+            94vw
+        );
+
+    max-height: 88vh;
+
+    width: auto;
+    height: auto;
+
+    border-radius: 6px;
+}
+
+.lightbox-close,
+#lightbox-close {
+    position: absolute;
+
+    top: 18px;
+    right: 20px;
+
+    width: 44px;
+    height: 44px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.18);
+
+    border-radius: 50%;
+
+    background:
+        rgba(0, 0, 0, 0.45);
+
+    color: #ffffff;
+
+    font-size: 1.6rem;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   CONTENT CARDS
 ========================================================= */
 
 .investigation-grid,
 .photography-focus-grid,
 .contact-grid {
+    width: 100%;
+
     display: grid;
+
     grid-template-columns:
-        repeat(3, minmax(0, 1fr));
+        repeat(
+            3,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
     gap: 14px;
+
+    margin-inline: auto;
 }
 
 .investigation-card,
 .photography-focus-card,
 .contact-card {
     min-width: 0;
+
     padding: 22px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.1);
+
     border-radius: 9px;
-    background: rgba(4, 7, 12, 0.5);
+
+    background:
+        rgba(4, 7, 12, 0.5);
+
     backdrop-filter: blur(7px);
+
     -webkit-backdrop-filter: blur(7px);
+
+    text-align: center;
 }
 
 .investigation-card p,
 .photography-focus-card p,
 .contact-card p {
     margin-bottom: 0;
-    font-size: 0.87rem;
+
+    font-size: 0.86rem;
 }
 
 .photography-focus-icon,
 .contact-card-icon {
     margin-bottom: 10px;
+
     font-size: 1.4rem;
 }
 
@@ -976,7 +1421,7 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
 }
 
 .contact-card h2 {
-    font-size: 1.45rem;
+    font-size: 1.4rem;
 }
 
 
@@ -985,18 +1430,35 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
 ========================================================= */
 
 .home-cta {
-    padding: 70px 0;
+    padding:
+        70px 0;
 }
 
 .cta-panel {
-    width: min(780px, 100%);
+    width:
+        min(
+            780px,
+            100%
+        );
+
     margin-inline: auto;
-    padding: 38px;
-    border: 1px solid rgba(201, 164, 91, 0.22);
+
+    padding:
+        38px 30px;
+
+    border:
+        1px solid
+        rgba(201, 164, 91, 0.24);
+
     border-radius: 10px;
-    background: rgba(3, 5, 8, 0.52);
+
+    background:
+        rgba(3, 5, 8, 0.52);
+
     text-align: center;
+
     backdrop-filter: blur(8px);
+
     -webkit-backdrop-filter: blur(8px);
 }
 
@@ -1011,28 +1473,49 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
 
 .back-to-top {
     position: fixed;
+
     right: 18px;
     bottom: 18px;
+
     z-index: 900;
+
     display: flex;
+
     width: 42px;
     height: 42px;
+
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(201, 164, 91, 0.42);
+
+    border:
+        1px solid
+        rgba(201, 164, 91, 0.42);
+
     border-radius: 50%;
-    background: rgba(2, 3, 5, 0.78);
+
+    background:
+        rgba(2, 3, 5, 0.82);
+
     color: #c9a45b;
+
     font-size: 1.15rem;
+
     line-height: 1;
+
     opacity: 0;
+
     visibility: hidden;
-    transform: translateY(10px);
+
+    transform:
+        translateY(10px);
+
     transition:
         opacity 180ms ease,
         visibility 180ms ease,
         transform 180ms ease;
+
     backdrop-filter: blur(10px);
+
     -webkit-backdrop-filter: blur(10px);
 }
 
@@ -1040,12 +1523,16 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
 .back-to-top.show,
 .back-to-top.is-visible {
     opacity: 1;
+
     visibility: visible;
-    transform: translateY(0);
+
+    transform:
+        translateY(0);
 }
 
 .back-to-top:hover {
-    background: rgba(201, 164, 91, 0.12);
+    background:
+        rgba(201, 164, 91, 0.12);
 }
 
 
@@ -1054,49 +1541,72 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
 ========================================================= */
 
 .site-footer {
-    padding: 50px 0 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(2, 3, 5, 0.66);
+    padding:
+        50px 0 30px;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    background:
+        rgba(2, 3, 5, 0.68);
+
     text-align: center;
 }
 
 .footer-logo {
     width: 72px;
     height: 72px;
-    margin: 0 auto 13px;
+
+    margin:
+        0 auto 13px;
+
     object-fit: contain;
 }
 
 .footer-brand {
     margin-bottom: 5px;
+
     color: #ffffff;
-    font-size: 0.86rem;
+
+    font-size: 0.84rem;
+
     font-weight: 850;
+
     letter-spacing: 0.15em;
 }
 
 .footer-tagline {
     margin-bottom: 20px;
+
     color: #c9a45b;
-    font-size: 0.65rem;
+
+    font-size: 0.64rem;
+
     font-weight: 750;
-    letter-spacing: 0.11em;
+
+    letter-spacing: 0.1em;
 }
 
 .copyright,
 .website-address {
     margin-bottom: 0;
-    color: rgba(255, 255, 255, 0.46);
-    font-size: 0.68rem;
+
+    color:
+        rgba(255, 255, 255, 0.45);
+
+    font-size: 0.67rem;
+
     line-height: 1.8;
 }
 
 .website-address {
-    margin-top: 11px;
+    margin-top: 10px;
 }
 
 .website-address a {
-    color: rgba(255, 255, 255, 0.6);
+    color:
+        rgba(255, 255, 255, 0.58);
 }
 
 
@@ -1108,11 +1618,13 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
 
     from {
         transform: scale(1);
+
         opacity: 0.7;
     }
 
     to {
         transform: scale(1.12);
+
         opacity: 1;
     }
 
@@ -1124,6 +1636,7 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
         transform:
             translateX(-120%)
             rotate(18deg);
+
         opacity: 0;
     }
 
@@ -1139,6 +1652,7 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
         transform:
             translateX(520%)
             rotate(18deg);
+
         opacity: 0;
     }
 
@@ -1148,7 +1662,10 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
 
     from {
         opacity: 0;
-        transform: scale(0.88);
+
+        transform:
+            scale(0.88);
+
         filter:
             drop-shadow(
                 0 0 0
@@ -1159,7 +1676,10 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
 
     to {
         opacity: 1;
-        transform: scale(1);
+
+        transform:
+            scale(1);
+
         filter:
             drop-shadow(
                 0 0 20px
@@ -1174,12 +1694,16 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
 
     from {
         opacity: 0.35;
-        transform: translateX(-1%);
+
+        transform:
+            translateX(-1%);
     }
 
     to {
         opacity: 0.85;
-        transform: translateX(1%);
+
+        transform:
+            translateX(1%);
     }
 
 }
@@ -1188,12 +1712,16 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
 
     from {
         opacity: 0.3;
-        transform: translateX(1%);
+
+        transform:
+            translateX(1%);
     }
 
     to {
         opacity: 0.8;
-        transform: translateX(-1%);
+
+        transform:
+            translateX(-1%);
     }
 
 }
@@ -1231,36 +1759,63 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
 @keyframes tickerMove {
 
     from {
-        transform: translateX(0);
+        transform:
+            translateX(0);
     }
 
     to {
-        transform: translateX(-25%);
+        transform:
+            translateX(-25%);
     }
 
 }
 
 
 /* =========================================================
-   RESPONSIVE
+   TABLET
 ========================================================= */
 
 @media (max-width: 900px) {
+
+    .container {
+        width:
+            min(
+                760px,
+                calc(100% - 32px)
+            );
+    }
 
     .nav-links {
         gap: 2px;
     }
 
     .nav-links a {
-        padding-inline: 9px;
-        font-size: 0.73rem;
+        padding:
+            8px 8px;
+
+        font-size:
+            0.7rem;
+    }
+
+    .social-hub-content {
+        width:
+            min(
+                760px,
+                calc(100% - 32px)
+            );
     }
 
     .social-brand-inner {
         grid-template-columns:
-            58px minmax(0, 1fr);
+            58px
+            minmax(
+                0,
+                1fr
+            );
+
         gap: 11px;
-        padding: 12px;
+
+        padding: 11px;
     }
 
     .social-logo-wrap {
@@ -1277,13 +1832,19 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
 }
 
 
+/* =========================================================
+   MOBILE
+========================================================= */
+
 @media (max-width: 700px) {
 
+    body {
+        background-attachment: scroll;
+    }
+
     .container {
-        width: min(
-            calc(100% - 28px),
-            620px
-        );
+        width:
+            calc(100% - 28px);
     }
 
     .nav {
@@ -1293,11 +1854,12 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
     .nav-brand img {
         width: 36px;
         height: 36px;
+
         flex-basis: 36px;
     }
 
     .nav-brand span {
-        font-size: 0.76rem;
+        font-size: 0.74rem;
     }
 
     .menu-toggle {
@@ -1306,17 +1868,31 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
 
     .nav-links {
         position: absolute;
+
         top: 68px;
+
         left: 14px;
         right: 14px;
+
         display: none;
+
         flex-direction: column;
+
         align-items: stretch;
+
         gap: 4px;
+
         padding: 9px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+
+        border:
+            1px solid
+            rgba(255, 255, 255, 0.1);
+
         border-radius: 9px;
-        background: rgba(2, 3, 5, 0.96);
+
+        background:
+            rgba(2, 3, 5, 0.97);
+
         box-shadow:
             0 20px 60px
             rgba(0, 0, 0, 0.45);
@@ -1330,9 +1906,16 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
 
     .nav-links a {
         width: 100%;
+
         padding: 11px;
+
         text-align: center;
     }
+
+
+    /* -----------------------------------------------------
+       MOBILE HERO
+    ----------------------------------------------------- */
 
     .hero,
     .skyline-hero,
@@ -1340,101 +1923,59 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
     .photography-hero,
     .contact-hero {
         min-height: auto;
-        padding: 78px 0;
-    }
 
-    section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-hero):not(.contact-hero) {
-        padding: 62px 0;
+        padding:
+            72px 0;
     }
 
     .hero-logo-wrap {
-        width: min(170px, 44vw);
+        width:
+            min(
+                175px,
+                48vw
+            );
     }
 
     .page-logo {
-        width: min(190px, 48vw);
-        max-height: 170px;
+        width:
+            min(
+                195px,
+                50vw
+            );
+
+        max-height: 175px;
+
+        margin:
+            0 auto 24px;
     }
 
-    .hero-actions,
-    .buttons {
-        justify-content: center;
+    h1 {
+        font-size:
+            clamp(
+                2rem,
+                10vw,
+                3rem
+            );
     }
 
-    .button,
-    .buttons a,
-    .hero-actions a {
-        min-height: 38px;
-        padding: 8px 12px;
-        font-size: 0.68rem;
+    h2 {
+        font-size:
+            clamp(
+                1.8rem,
+                8vw,
+                2.6rem
+            );
     }
 
-    .social-hub {
-        padding: 60px 0 42px;
-    }
 
-    .social-brand-grid {
-        grid-template-columns: 1fr;
-        width: 100%;
-        gap: 10px;
-    }
+    /* -----------------------------------------------------
+       MOBILE BUTTONS
+    ----------------------------------------------------- */
 
-    .social-brand-inner {
-        grid-template-columns:
-            54px minmax(0, 1fr);
-        padding: 11px;
-    }
-
-    .social-logo-wrap {
-        width: 54px;
-        height: 54px;
-    }
-
-    .social-brand h3 {
-        margin-bottom: 8px;
-        font-size: 0.82rem;
-    }
-
-    .social-brand-name {
-        font-size: 0.57rem;
-    }
-
-    .social-button {
-        min-height: 29px;
-        padding: 5px 8px;
-        font-size: 0.58rem;
-    }
-
-    .social-ticker-track span {
-        padding: 8px 22px;
-        font-size: 0.59rem;
-    }
-
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .cta-panel {
-        padding: 28px 18px;
-    }
-
-    .back-to-top {
-        right: 14px;
-        bottom: 14px;
-    }
-
-}
-
-
-@media (max-width: 420px) {
-
-    .nav-brand span {
-        display: none;
-    }
-
-    .hero-actions,
     .buttons,
-    .social-buttons {
+    .hero-actions {
+        justify-content: center;
+
         gap: 7px;
     }
 
@@ -1442,18 +1983,235 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
     .buttons a,
     .hero-actions a {
         min-height: 37px;
-        padding: 7px 11px;
-        font-size: 0.65rem;
+
+        padding:
+            7px 11px;
+
+        font-size:
+            0.64rem;
+    }
+
+
+    /* -----------------------------------------------------
+       SOCIAL HUB
+    ----------------------------------------------------- */
+
+    .social-hub {
+        padding:
+            58px 0
+            40px;
+    }
+
+    .social-hub-content {
+        width:
+            calc(100% - 22px);
+    }
+
+    /*
+     * IMPORTANT:
+     * The two social cards remain together as a
+     * designed pair rather than becoming huge
+     * full-width blocks.
+     */
+
+    .social-brand-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(
+                    0,
+                    1fr
+                )
+            );
+
+        gap: 8px;
+    }
+
+    .social-brand {
+        border-radius: 8px;
     }
 
     .social-brand-inner {
-        grid-template-columns:
-            50px minmax(0, 1fr);
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: flex-start;
+
+        gap: 7px;
+
+        min-height: 0;
+
+        padding:
+            11px 7px
+            12px;
+
+        text-align: center;
+    }
+
+    .social-logo-wrap {
+        width: 58px;
+        height: 58px;
+    }
+
+    .social-brand-content {
+        width: 100%;
+    }
+
+    .social-brand-name {
+        font-size:
+            0.5rem;
+
+        letter-spacing:
+            0.12em;
+    }
+
+    .social-brand h3 {
+        min-height: 32px;
+
+        margin-bottom: 7px;
+
+        font-size:
+            clamp(
+                0.61rem,
+                2.25vw,
+                0.78rem
+            );
+
+        line-height: 1.15;
+
+        text-align: center;
+    }
+
+    .social-buttons {
+        width: 100%;
+
+        justify-content: center;
+
+        gap: 4px;
+    }
+
+    .social-button {
+        min-height: 27px;
+
+        padding:
+            5px 6px;
+
+        font-size:
+            0.53rem;
+
+        letter-spacing:
+            0.02em;
+    }
+
+    .social-ticker {
+        margin-top: 11px;
+    }
+
+    .social-ticker-track span {
+        padding:
+            8px 20px;
+
+        font-size:
+            0.56rem;
+    }
+
+
+    /* -----------------------------------------------------
+       MOBILE GALLERY
+    ----------------------------------------------------- */
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+
+        gap: 11px;
+    }
+
+
+    /* -----------------------------------------------------
+       MOBILE CARDS
+    ----------------------------------------------------- */
+
+    .investigation-card,
+    .photography-focus-card,
+    .contact-card {
+        padding:
+            20px 16px;
+    }
+
+
+    /* -----------------------------------------------------
+       CTA
+    ----------------------------------------------------- */
+
+    .home-cta {
+        padding:
+            55px 0;
+    }
+
+    .cta-panel {
+        padding:
+            28px 16px;
+    }
+
+
+    /* -----------------------------------------------------
+       BACK TO TOP
+    ----------------------------------------------------- */
+
+    .back-to-top {
+        right: 13px;
+        bottom: 13px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .nav-brand span {
+        display: none;
+    }
+
+    .social-hub-content {
+        width:
+            calc(100% - 16px);
+    }
+
+    .social-brand-grid {
+        gap: 6px;
+    }
+
+    .social-brand-inner {
+        padding:
+            9px 5px
+            10px;
     }
 
     .social-logo-wrap {
         width: 50px;
         height: 50px;
+    }
+
+    .social-brand h3 {
+        font-size:
+            0.57rem;
+
+        min-height: 30px;
+    }
+
+    .social-button {
+        padding:
+            5px;
+
+        font-size:
+            0.49rem;
     }
 
 }
@@ -1472,9 +2230,14 @@ section:not(.hero):not(.skyline-hero):not(.paranormal-hero):not(.photography-her
     *,
     *::before,
     *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
     }
 
 }
