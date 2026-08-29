@@ -1,0 +1,38 @@
+NEWITT Media - www.newittmedia.co.uk
+
+========================================
+
+TEAM
+
+Name: NEWITT Media
+Email: ian.newitt@gmail.com
+
+========================================
+
+SOCIAL MEDIA
+
+TikTok:    @newittskylinemedia, @nw13ttt
+YouTube:   @Newitt-skyline-media, @NewittsParanormalAdventures
+Instagram: @nw13ttt
+Facebook:  NEWITT's Paranormal Adventures
+
+========================================
+
+TECHNOLOGY
+
+Design & Development: NEWITT Media
+Built with: HTML5, CSS3, JavaScript
+Framework: Vanilla JavaScript
+Hosting: GitHub Pages
+
+========================================
+
+ACCESSIBILITY
+
+This website is designed to be accessible to all users.
+If you experience any accessibility issues, please contact:
+accessibility@newittmedia.co.uk
+
+========================================
+
+LAST UPDATED: 2026-08-29
