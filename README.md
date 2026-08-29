@@ -9,40 +9,33 @@ Official website for **NEWITT Media**.
 
 ## Repository
 
-GitHub:
-
 https://github.com/NW13TTT/newitt-website
 
-## Project
-
-NEWITT Media brings together three creative brands:
+## Brands
 
 ### NEWITT Skyline Media
+
 Aerial media, drone photography and video.
 
-TikTok: `@newittskylinemedia`
-
-YouTube: `@Newitt-skyline-media`
-
+TikTok: `@newittskylinemedia`  
+YouTube: `@Newitt-skyline-media`  
 Contact: `n.skyline.media@gmail.com`
 
 ### NEWITT's Paranormal Adventures
+
 Paranormal investigations, ghost hunting, haunted locations and unexplained experiences.
 
-TikTok: `@nw13ttt`
-
-YouTube: `@NewittsParanormalAdventures`
-
+TikTok: `@nw13ttt`  
+YouTube: `@NewittsParanormalAdventures`  
 Contact: `nw13ttt@gmail.com`
 
 ### NEWITT Media Photography
+
 General photography covering people, places, landscapes and adventures.
 
----
+## Website Structure
 
-# Website Structure
-
-The website is contained inside the `public` directory.
+The website is contained inside `public/`.
 
 ```text
 public/
