@@ -16,6 +16,7 @@ NEWITT Media Photography
 /* TECHNOLOGY */
 
 Website: HTML5, CSS3, JavaScript
+Framework: Vanilla JavaScript
 Hosting: Cloudflare Workers
 Repository: GitHub
 
@@ -24,41 +25,22 @@ Repository: GitHub
 
 © 2026 NEWITT Media. All Rights Reserved.
 
-NEWITT Media • NEWITT Skyline Media • NEWITT's Paranormal Adventures • NEWITT Media PhotographyNEWITT Media - www.newittmedia.co.uk
+NEWITT Media • NEWITT Skyline Media • NEWITT's Paranormal Adventures • NEWITT Media Photography
 
-========================================
 
-TEAM
+/* SOCIAL MEDIA */
 
-Name: NEWITT Media
-Email: ian.newitt@gmail.com
-
-========================================
-
-SOCIAL MEDIA
-
-TikTok:    @newittskylinemedia, @nw13ttt
-YouTube:   @Newitt-skyline-media, @NewittsParanormalAdventures
+TikTok: @newittskylinemedia, @nw13ttt
+YouTube: @Newitt-skyline-media, @NewittsParanormalAdventures
 Instagram: @nw13ttt
-Facebook:  NEWITT's Paranormal Adventures
+Facebook: NEWITT's Paranormal Adventures
 
-========================================
 
-TECHNOLOGY
-
-Design & Development: NEWITT Media
-Built with: HTML5, CSS3, JavaScript
-Framework: Vanilla JavaScript
-Hosting: GitHub Pages
-
-========================================
-
-ACCESSIBILITY
+/* ACCESSIBILITY */
 
 This website is designed to be accessible to all users.
-If you experience any accessibility issues, please contact:
-accessibility@newittmedia.co.uk
 
-========================================
 
-LAST UPDATED: 2026-08-29
+/* LAST UPDATED */
+
+2026-08-29
