@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 
 <head>
 
@@ -7,12 +7,12 @@
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1"
+        content="width=device-width, initial-scale=1, viewport-fit=cover"
     >
 
     <meta
         name="theme-color"
-        content="#020306"
+        content="#020305"
     >
 
     <meta
@@ -42,8 +42,13 @@
 
     <link
         rel="canonical"
-        href="https://newittmedia.co.uk/paranormal.html"
+        href="https://www.newittmedia.co.uk/paranormal.html"
     >
+
+
+    <!-- =====================================================
+         OPEN GRAPH
+    ====================================================== -->
 
     <meta
         property="og:type"
@@ -52,7 +57,7 @@
 
     <meta
         property="og:url"
-        content="https://newittmedia.co.uk/paranormal.html"
+        content="https://www.newittmedia.co.uk/paranormal.html"
     >
 
     <meta
@@ -67,7 +72,7 @@
 
     <meta
         property="og:image"
-        content="https://newittmedia.co.uk/paranormal-logo.png.png"
+        content="https://www.newittmedia.co.uk/paranormal-logo.png"
     >
 
     <meta
@@ -75,9 +80,75 @@
         content="NEWITT's Paranormal Adventures logo"
     >
 
+    <meta
+        property="og:site_name"
+        content="NEWITT Media"
+    >
+
+
+    <!-- =====================================================
+         TWITTER / X
+    ====================================================== -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="NEWITT's Paranormal Adventures | NEWITT Media"
+    >
+
+    <meta
+        name="twitter:description"
+        content="Paranormal investigations, haunted locations, strange stories and unexplained experiences."
+    >
+
+    <meta
+        name="twitter:image"
+        content="https://www.newittmedia.co.uk/paranormal-logo.png"
+    >
+
+    <meta
+        name="twitter:image:alt"
+        content="NEWITT's Paranormal Adventures logo"
+    >
+
+
     <title>
         NEWITT's Paranormal Adventures | NEWITT Media
     </title>
+
+
+    <!-- =====================================================
+         STRUCTURED DATA
+    ====================================================== -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "NEWITT's Paranormal Adventures",
+        "url": "https://www.newittmedia.co.uk/paranormal.html",
+        "description": "Paranormal investigations, haunted locations, strange stories and unexplained experiences.",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "NEWITT Media",
+            "url": "https://www.newittmedia.co.uk/"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "NEWITT Media",
+            "url": "https://www.newittmedia.co.uk/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.newittmedia.co.uk/newitt-media-logo.png"
+            }
+        }
+    }
+    </script>
+
 
     <link
         rel="stylesheet"
@@ -90,9 +161,14 @@
 <body class="paranormal-page">
 
 
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header class="site-header">
 
     <div class="container nav">
+
 
         <a
             href="index.html"
@@ -101,11 +177,13 @@
         >
 
             <img
-                src="newitt-media-logo.png.png"
+                src="newitt-media-logo.png"
                 alt="NEWITT Media logo"
             >
 
-            NEWITT <span>MEDIA</span>
+            <span>
+                NEWITT <strong>MEDIA</strong>
+            </span>
 
         </a>
 
@@ -115,8 +193,13 @@
             type="button"
             aria-expanded="false"
             aria-controls="main-menu"
+            aria-label="Open navigation menu"
         >
-            MENU
+
+            <span></span>
+            <span></span>
+            <span></span>
+
         </button>
 
 
@@ -157,6 +240,10 @@
 </header>
 
 
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
 <main>
 
 
@@ -166,62 +253,72 @@
 
 <section class="paranormal-hero">
 
-    <div class="skyline-hero-content">
+    <div class="container">
+
+        <div class="skyline-hero-content">
 
 
-        <div>
+            <div>
 
-            <img
-                src="paranormal-logo.png.png"
-                alt="NEWITT's Paranormal Adventures logo"
-                class="page-logo"
-            >
+                <img
+                    src="paranormal-logo.png"
+                    alt="NEWITT's Paranormal Adventures logo"
+                    class="page-logo paranormal-logo"
+                    decoding="async"
+                >
 
-        </div>
-
-
-        <div>
-
-            <div class="eyebrow">
-                NEWITT Media after dark
             </div>
 
-            <h1>
-                NEWITT's
-                <span>Paranormal Adventures</span>
-            </h1>
 
-            <p class="hero-tagline">
-                WHERE THE UNEXPLAINED BECOMES THE INVESTIGATION.
-            </p>
+            <div>
 
-            <p>
-                Exploring haunted locations, strange stories
-                and things that go bump in the night.
-            </p>
-
-            <p>
-                We investigate the locations so you do not
-                have to. Mostly because somebody has to
-                remember where the car is parked.
-            </p>
+                <div class="eyebrow">
+                    NEWITT Media after dark
+                </div>
 
 
-            <div class="buttons">
+                <h1>
+                    NEWITT's
+                    <span>Paranormal Adventures</span>
+                </h1>
 
-                <a
-                    class="button primary"
-                    href="#latest-investigations"
-                >
-                    Latest Investigations
-                </a>
 
-                <a
-                    class="button"
-                    href="#contact-message"
-                >
-                    Get in Touch
-                </a>
+                <p class="hero-tagline">
+                    WHERE THE UNEXPLAINED BECOMES THE INVESTIGATION.
+                </p>
+
+
+                <p>
+                    Exploring haunted locations, strange stories
+                    and things that go bump in the night.
+                </p>
+
+
+                <p>
+                    We investigate the locations so you do not
+                    have to. Mostly because somebody has to
+                    remember where the car is parked.
+                </p>
+
+
+                <div class="buttons">
+
+                    <a
+                        class="button primary"
+                        href="#latest-investigations"
+                    >
+                        Latest Investigations
+                    </a>
+
+
+                    <a
+                        class="button"
+                        href="#contact-message"
+                    >
+                        Get in Touch
+                    </a>
+
+                </div>
 
             </div>
 
@@ -248,10 +345,12 @@
                     Latest investigations
                 </div>
 
+
                 <h2>
                     What is happening in the
                     <span>dark?</span>
                 </h2>
+
 
                 <p>
                     This is where the latest paranormal
@@ -325,11 +424,13 @@
                     The idea
                 </div>
 
+
                 <h2>
                     Find the story.
                     Test the
                     <span>evidence.</span>
                 </h2>
+
 
                 <p>
                     Haunted locations are full of stories.
@@ -369,10 +470,12 @@
                     Got a story?
                 </div>
 
+
                 <h2>
                     Please contact us on
                     <span>how we can help you.</span>
                 </h2>
+
 
                 <p>
                     Whether you have a location, a story,
@@ -405,33 +508,162 @@
 
 
 <!-- =====================================================
+     BACK TO TOP
+===================================================== -->
+
+<a
+    href="#top"
+    class="back-to-top"
+    id="back-to-top"
+    aria-label="Back to top"
+>
+    ↑
+</a>
+
+
+<!-- =====================================================
+     LANGUAGE SELECTOR
+===================================================== -->
+
+<div
+    class="language-selector"
+    aria-label="Language selection"
+>
+
+    <button
+        type="button"
+        class="language-toggle"
+        aria-expanded="false"
+        aria-controls="language-menu"
+        aria-label="Language: English"
+    >
+        EN
+    </button>
+
+
+    <div
+        class="language-menu"
+        id="language-menu"
+        hidden
+    >
+
+        <button
+            type="button"
+            data-lang="en"
+        >
+            English
+        </button>
+
+
+        <button
+            type="button"
+            data-lang="cy"
+        >
+            Cymraeg
+        </button>
+
+
+        <button
+            type="button"
+            data-lang="fr"
+        >
+            Français
+        </button>
+
+
+        <button
+            type="button"
+            data-lang="de"
+        >
+            Deutsch
+        </button>
+
+
+        <button
+            type="button"
+            data-lang="es"
+        >
+            Español
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
      FOOTER
 ===================================================== -->
 
-<footer>
+<footer class="site-footer">
 
     <div class="container">
 
-        © 2026 NEWITT Media. All Rights Reserved.
-        The creative rights, branding, logos, names,
-        designs and original content associated with
-        NEWITT Media, NEWITT Skyline Media,
-        NEWITT’s Paranormal Adventures and
-        NEWITT Media Photography remain the property
-        of NEWITT Media and may not be copied,
-        reproduced, modified or used without prior
-        permission.
+
+        <img
+            src="newitt-media-logo.png"
+            alt="NEWITT Media"
+            class="footer-logo"
+        >
+
+
+        <p class="footer-brand">
+            NEWITT MEDIA
+        </p>
+
+
+        <p class="footer-tagline">
+            FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
+        </p>
+
+
+        <p class="copyright">
+
+            © 2026 NEWITT Media. All Rights Reserved.
+            The creative rights, branding, logos, names,
+            designs and original content associated with
+            NEWITT Media, NEWITT Skyline Media,
+            NEWITT’s Paranormal Adventures and
+            NEWITT Media Photography remain the property
+            of NEWITT Media and may not be copied,
+            reproduced, modified or used without prior
+            permission.
+
+        </p>
+
+
+        <p class="website-address">
+
+            <a href="https://newittmedia.co.uk/">
+                newittmedia.co.uk
+            </a>
+
+            &nbsp; • &nbsp;
+
+            <a href="https://www.newittmedia.co.uk/">
+                www.newittmedia.co.uk
+            </a>
+
+        </p>
 
     </div>
 
 </footer>
 
 
+<!-- =====================================================
+     TIKTOK
+===================================================== -->
+
 <script
     async
     src="https://www.tiktok.com/embed.js"
 ></script>
 
+
+<!-- =====================================================
+     MASTER SCRIPT
+===================================================== -->
 
 <script
     src="script.js"
