@@ -1,17 +1,17 @@
 /* =========================================================
    NEWITT MEDIA
    MASTER JAVASCRIPT
-   FINAL PROFESSIONAL BUILD
-   VERSION: 29 AUGUST 2026
+   STREAMLINED FINAL BUILD
+   29 AUGUST 2026
 
-   FUNCTIONS:
-   1. First-visit cinematic intro
-   2. Mobile navigation
-   3. Back-to-top button
-   4. Smooth anchor scrolling
-   5. Lightbox support
-   6. Safe iframe / embed handling
-   7. Accessibility improvements
+   FUNCTIONS
+   - First-visit cinematic intro
+   - Mobile navigation
+   - Mobile page transition
+   - Back to top
+   - Smooth anchor scrolling
+   - Lightbox
+   - Safe external links
 ========================================================= */
 
 (function () {
@@ -23,129 +23,76 @@
        DOM READY
     ===================================================== */
 
-    document.addEventListener(
-        "DOMContentLoaded",
-        function () {
+    document.addEventListener("DOMContentLoaded", function () {
 
-            initFirstVisitIntro();
+        initFirstVisitIntro();
+        initMobileNavigation();
+        initPageTransition();
+        initBackToTop();
+        initSmoothScrolling();
+        initLightbox();
+        initExternalLinks();
 
-            initMobileNavigation();
-
-            initBackToTop();
-
-            initSmoothScrolling();
-
-            initLightbox();
-
-            initExternalLinks();
-
-        }
-    );
+    });
 
 
     /* =====================================================
        FIRST-VISIT CINEMATIC INTRO
 
-       FINAL STABLE VERSION
-
-       The intro:
-       - Plays only on first visit
-       - Runs for approximately 7.5 seconds
-       - Cannot accidentally be skipped by tapping
-       - Can still be skipped with Escape on desktop
-       - Fades out smoothly
-       - Prevents scrolling while playing
-       - Uses localStorage so it does not replay
+       - First visit only
+       - 7.5 seconds
+       - No accidental mobile tap skip
+       - Escape can skip
+       - Uses localStorage
     ===================================================== */
 
     function initFirstVisitIntro() {
 
         const intro =
-            document.getElementById(
-                "site-intro"
-            );
-
+            document.getElementById("site-intro");
 
         if (!intro) {
             return;
         }
 
-
-        /*
-         * Versioned storage key.
-
-         * V2 deliberately allows the new cinematic
-         * to be tested even if the visitor has already
-         * seen the previous intro.
-         */
-
-        const INTRO_STORAGE_KEY =
+        const STORAGE_KEY =
             "newittMediaIntroSeenV2";
 
-
-        let introAlreadySeen =
-            false;
-
-
-        /* =================================================
-           SAFE LOCAL STORAGE CHECK
-        ================================================= */
+        let alreadySeen = false;
 
         try {
 
-            introAlreadySeen =
-                window.localStorage.getItem(
-                    INTRO_STORAGE_KEY
-                ) === "true";
+            alreadySeen =
+                localStorage.getItem(STORAGE_KEY) === "true";
 
         } catch (error) {
 
-            introAlreadySeen =
-                false;
+            alreadySeen = false;
 
         }
 
 
-        /* =================================================
-           RETURNING VISITOR
+        /* Returning visitor */
 
-           Remove the intro immediately.
-        ================================================= */
+        if (alreadySeen) {
 
-        if (introAlreadySeen) {
-
-            intro.classList.add(
-                "intro-hidden"
-            );
+            intro.classList.add("intro-hidden");
 
             intro.setAttribute(
                 "aria-hidden",
                 "true"
             );
 
-            document.body.classList.remove(
-                "intro-active"
-            );
-
             return;
+
         }
 
 
-        /* =================================================
-           FIRST VISIT
-
-           Keep intro visible.
-        ================================================= */
+        /* First visit */
 
         document.body.classList.add(
             "intro-active"
         );
-
-
-        /*
-         * Stop page scrolling while the cinematic
-         * intro is playing.
-         */
 
         document.documentElement.style.overflow =
             "hidden";
@@ -154,42 +101,21 @@
             "hidden";
 
 
-        /* =================================================
-           MARK INTRO AS SEEN
-
-           This happens immediately so refreshing during
-           the intro does not cause it to restart.
-        ================================================= */
-
         try {
 
-            window.localStorage.setItem(
-                INTRO_STORAGE_KEY,
+            localStorage.setItem(
+                STORAGE_KEY,
                 "true"
             );
 
         } catch (error) {
 
-            /*
-             * Storage may be unavailable because of
-             * privacy settings.
-
-             * The intro can still operate normally.
-             */
+            /* Storage unavailable */
 
         }
 
 
-        /* =================================================
-           CINEMATIC DURATION
-
-           7.5 seconds gives the animation enough time
-           to breathe on both desktop and mobile.
-        ================================================= */
-
-        const INTRO_DURATION =
-            7500;
-
+        const INTRO_DURATION = 7500;
 
         const closeTimer =
             window.setTimeout(
@@ -198,22 +124,10 @@
             );
 
 
-        /* =================================================
-           ESCAPE KEY
+        function handleEscape(event) {
 
-           Desktop users can skip the intro.
-        ================================================= */
-
-        function handleIntroEscape(
-            event
-        ) {
-
-            if (
-                event.key === "Escape"
-            ) {
-
+            if (event.key === "Escape") {
                 closeIntro();
-
             }
 
         }
@@ -221,20 +135,9 @@
 
         document.addEventListener(
             "keydown",
-            handleIntroEscape
+            handleEscape
         );
 
-
-        /* =================================================
-           CLOSE INTRO
-
-           The intro is NOT closed by a normal tap.
-
-           This is intentional.
-
-           On mobile, accidental touches previously made
-           the cinematic disappear almost instantly.
-        ================================================= */
 
         function closeIntro() {
 
@@ -256,28 +159,20 @@
                 "intro-hidden"
             );
 
-
             intro.setAttribute(
                 "aria-hidden",
                 "true"
             );
 
-
             document.body.classList.remove(
                 "intro-active"
             );
 
-
             document.removeEventListener(
                 "keydown",
-                handleIntroEscape
+                handleEscape
             );
 
-
-            /*
-             * Wait until the CSS fade-out has finished
-             * before removing the intro from display.
-             */
 
             window.setTimeout(
                 function () {
@@ -306,67 +201,69 @@
 
     function initMobileNavigation() {
 
-        const menuToggle =
+        const toggle =
             document.querySelector(
                 ".menu-toggle"
             );
 
-
-        const navLinks =
+        const menu =
             document.querySelector(
                 ".nav-links"
             );
 
-
-        if (
-            !menuToggle ||
-            !navLinks
-        ) {
+        if (!toggle || !menu) {
             return;
         }
 
 
-        /* =================================================
-           OPEN / CLOSE MENU
-        ================================================= */
+        function closeMenu() {
 
-        menuToggle.addEventListener(
+            menu.classList.remove(
+                "open",
+                "active",
+                "menu-open"
+            );
+
+            toggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            toggle.setAttribute(
+                "aria-label",
+                "Open navigation menu"
+            );
+
+        }
+
+
+        toggle.addEventListener(
             "click",
             function () {
 
-                const isOpen =
-                    navLinks.classList.contains(
+                const open =
+                    menu.classList.toggle(
                         "open"
                     );
 
-
-                navLinks.classList.toggle(
-                    "open",
-                    !isOpen
-                );
-
-
-                navLinks.classList.toggle(
+                menu.classList.toggle(
                     "active",
-                    !isOpen
+                    open
                 );
 
-
-                navLinks.classList.toggle(
+                menu.classList.toggle(
                     "menu-open",
-                    !isOpen
+                    open
                 );
 
-
-                menuToggle.setAttribute(
+                toggle.setAttribute(
                     "aria-expanded",
-                    String(!isOpen)
+                    String(open)
                 );
 
-
-                menuToggle.setAttribute(
+                toggle.setAttribute(
                     "aria-label",
-                    !isOpen
+                    open
                         ? "Close navigation menu"
                         : "Open navigation menu"
                 );
@@ -375,92 +272,32 @@
         );
 
 
-        /* =================================================
-           CLOSE AFTER SELECTING A PAGE
-        ================================================= */
-
-        const links =
-            navLinks.querySelectorAll(
-                "a"
-            );
-
-
-        links.forEach(
+        menu.querySelectorAll("a").forEach(
             function (link) {
 
                 link.addEventListener(
                     "click",
-                    function () {
-
-                        navLinks.classList.remove(
-                            "open",
-                            "active",
-                            "menu-open"
-                        );
-
-
-                        menuToggle.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
-
-
-                        menuToggle.setAttribute(
-                            "aria-label",
-                            "Open navigation menu"
-                        );
-
-                    }
+                    closeMenu
                 );
 
             }
         );
 
 
-        /* =================================================
-           CLOSE WHEN TAPPING OUTSIDE
-        ================================================= */
-
         document.addEventListener(
             "click",
             function (event) {
 
                 if (
-                    !navLinks.contains(
-                        event.target
-                    ) &&
-                    !menuToggle.contains(
-                        event.target
-                    )
+                    !menu.contains(event.target) &&
+                    !toggle.contains(event.target)
                 ) {
-
-                    navLinks.classList.remove(
-                        "open",
-                        "active",
-                        "menu-open"
-                    );
-
-
-                    menuToggle.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-
-                    menuToggle.setAttribute(
-                        "aria-label",
-                        "Open navigation menu"
-                    );
-
+                    closeMenu();
                 }
 
             }
         );
 
-
-        /* =================================================
-           RESET WHEN RETURNING TO DESKTOP
-        ================================================= */
 
         window.addEventListener(
             "resize",
@@ -469,29 +306,113 @@
                 if (
                     window.innerWidth > 700
                 ) {
-
-                    navLinks.classList.remove(
-                        "open",
-                        "active",
-                        "menu-open"
-                    );
-
-
-                    menuToggle.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-
-                    menuToggle.setAttribute(
-                        "aria-label",
-                        "Open navigation menu"
-                    );
-
+                    closeMenu();
                 }
 
             }
         );
+
+    }
+
+
+    /* =====================================================
+       MOBILE PAGE TRANSITION
+       FINAL MICRO-FLASH FIX
+
+       Only intercepts normal internal page links
+       on mobile devices.
+    ===================================================== */
+
+    function initPageTransition() {
+
+        const transition =
+            document.getElementById(
+                "page-transition"
+            );
+
+        if (!transition) {
+            return;
+        }
+
+
+        const links =
+            document.querySelectorAll(
+                'a[href$=".html"], a[href="index.html"], a[href="/"]'
+            );
+
+
+        links.forEach(function (link) {
+
+            link.addEventListener(
+                "click",
+                function (event) {
+
+                    if (
+                        event.defaultPrevented ||
+                        event.ctrlKey ||
+                        event.metaKey ||
+                        event.shiftKey ||
+                        event.altKey
+                    ) {
+                        return;
+                    }
+
+
+                    if (
+                        window.innerWidth > 700
+                    ) {
+                        return;
+                    }
+
+
+                    const href =
+                        link.getAttribute("href");
+
+
+                    if (!href) {
+                        return;
+                    }
+
+
+                    if (
+                        href.startsWith("#") ||
+                        href.startsWith("mailto:") ||
+                        href.startsWith("tel:") ||
+                        href.startsWith("http://") ||
+                        href.startsWith("https://")
+                    ) {
+                        return;
+                    }
+
+
+                    event.preventDefault();
+
+
+                    transition.classList.add(
+                        "active"
+                    );
+
+
+                    requestAnimationFrame(
+                        function () {
+
+                            requestAnimationFrame(
+                                function () {
+
+                                    window.location.assign(
+                                        href
+                                    );
+
+                                }
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+        });
 
     }
 
@@ -502,65 +423,49 @@
 
     function initBackToTop() {
 
-        const backToTop =
+        const button =
             document.getElementById(
                 "back-to-top"
             );
 
-
-        if (!backToTop) {
+        if (!button) {
             return;
         }
 
 
-        function updateBackToTop() {
+        function update() {
 
-            if (
-                window.scrollY >
-                450
-            ) {
+            const visible =
+                window.scrollY > 450;
 
-                backToTop.classList.add(
-                    "visible"
-                );
+            button.classList.toggle(
+                "visible",
+                visible
+            );
 
-                backToTop.classList.add(
-                    "show"
-                );
+            button.classList.toggle(
+                "show",
+                visible
+            );
 
-                backToTop.classList.add(
-                    "is-visible"
-                );
-
-            } else {
-
-                backToTop.classList.remove(
-                    "visible"
-                );
-
-                backToTop.classList.remove(
-                    "show"
-                );
-
-                backToTop.classList.remove(
-                    "is-visible"
-                );
-
-            }
+            button.classList.toggle(
+                "is-visible",
+                visible
+            );
 
         }
 
 
         window.addEventListener(
             "scroll",
-            updateBackToTop,
+            update,
             {
                 passive: true
             }
         );
 
 
-        updateBackToTop();
+        update();
 
     }
 
@@ -571,28 +476,24 @@
 
     function initSmoothScrolling() {
 
-        const anchors =
-            document.querySelectorAll(
+        document
+            .querySelectorAll(
                 'a[href^="#"]'
-            );
+            )
+            .forEach(function (link) {
 
-
-        anchors.forEach(
-            function (anchor) {
-
-                anchor.addEventListener(
+                link.addEventListener(
                     "click",
                     function (event) {
 
-                        const targetId =
-                            anchor.getAttribute(
+                        const id =
+                            link.getAttribute(
                                 "href"
                             );
 
-
                         if (
-                            !targetId ||
-                            targetId === "#"
+                            !id ||
+                            id === "#"
                         ) {
                             return;
                         }
@@ -600,9 +501,8 @@
 
                         const target =
                             document.querySelector(
-                                targetId
+                                id
                             );
-
 
                         if (!target) {
                             return;
@@ -612,49 +512,39 @@
                         event.preventDefault();
 
 
-                        target.scrollIntoView(
-                            {
-                                behavior:
-                                    "smooth",
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
 
-                                block:
-                                    "start"
-                            }
-                        );
-
-
-                        /*
-                         * Update the URL without
-                         * triggering another jump.
-                         */
 
                         try {
 
-                            window.history.replaceState(
+                            history.replaceState(
                                 null,
                                 "",
-                                targetId
+                                id
                             );
 
                         } catch (error) {
 
-                            /*
-                             * Ignore history errors.
-                             */
+                            /* Ignore */
 
                         }
 
                     }
                 );
 
-            }
-        );
+            });
 
     }
 
 
     /* =====================================================
        LIGHTBOX
+       Supports:
+       - .gallery-item
+       - [data-lightbox]
     ===================================================== */
 
     function initLightbox() {
@@ -664,148 +554,32 @@
                 "lightbox"
             );
 
-
-        const lightboxImage =
-            document.getElementById(
-                "lightbox-image"
-            ) ||
-            (
-                lightbox
-                    ? lightbox.querySelector(
-                        "img"
-                    )
-                    : null
-            );
-
-
-        const closeButton =
-            document.getElementById(
-                "lightbox-close"
-            ) ||
-            (
-                lightbox
-                    ? lightbox.querySelector(
-                        ".lightbox-close"
-                    )
-                    : null
-            );
-
-
-        /*
-         * Pages without a master lightbox are allowed
-         * to continue normally.
-         */
-
         if (!lightbox) {
             return;
         }
 
 
-        /* =================================================
-           GALLERY ITEMS
+        const image =
+            document.getElementById(
+                "lightbox-image"
+            ) ||
+            lightbox.querySelector("img");
 
-           Supports:
-           .gallery-item
-           [data-lightbox]
-        ================================================= */
 
-        const galleryItems =
+        const close =
+            document.getElementById(
+                "lightbox-close"
+            ) ||
+            lightbox.querySelector(
+                ".lightbox-close"
+            );
+
+
+        const items =
             document.querySelectorAll(
                 ".gallery-item, [data-lightbox]"
             );
 
-
-        galleryItems.forEach(
-            function (item) {
-
-                item.addEventListener(
-                    "click",
-                    function (event) {
-
-                        event.preventDefault();
-
-
-                        let source =
-                            item.getAttribute(
-                                "data-lightbox"
-                            );
-
-
-                        /*
-                         * If no data-lightbox source exists,
-                         * use the contained image.
-                         */
-
-                        if (!source) {
-
-                            const image =
-                                item.querySelector(
-                                    "img"
-                                );
-
-
-                            if (image) {
-
-                                source =
-                                    image.getAttribute(
-                                        "src"
-                                    );
-
-                            }
-
-                        }
-
-
-                        if (
-                            !source ||
-                            !lightboxImage
-                        ) {
-                            return;
-                        }
-
-
-                        lightboxImage.src =
-                            source;
-
-
-                        const imageAlt =
-                            item.querySelector(
-                                "img"
-                            );
-
-
-                        if (imageAlt) {
-
-                            lightboxImage.alt =
-                                imageAlt.alt || "";
-
-                        }
-
-
-                        lightbox.classList.add(
-                            "active"
-                        );
-
-
-                        lightbox.setAttribute(
-                            "aria-hidden",
-                            "false"
-                        );
-
-
-                        document.body.style.overflow =
-                            "hidden";
-
-                    }
-                );
-
-            }
-        );
-
-
-        /* =================================================
-           CLOSE LIGHTBOX
-        ================================================= */
 
         function closeLightbox() {
 
@@ -813,31 +587,23 @@
                 "active"
             );
 
-
             lightbox.setAttribute(
                 "aria-hidden",
                 "true"
             );
 
 
-            /*
-             * Do not interfere with the cinematic
-             * intro's scroll lock.
-             */
-
             if (
                 !document.body.classList.contains(
                     "intro-active"
                 )
             ) {
-
                 document.body.style.overflow =
                     "";
-
             }
 
 
-            if (lightboxImage) {
+            if (image) {
 
                 window.setTimeout(
                     function () {
@@ -848,7 +614,7 @@
                             )
                         ) {
 
-                            lightboxImage.removeAttribute(
+                            image.removeAttribute(
                                 "src"
                             );
 
@@ -863,13 +629,82 @@
         }
 
 
-        /* =================================================
-           CLOSE BUTTON
-        ================================================= */
+        items.forEach(function (item) {
 
-        if (closeButton) {
+            item.addEventListener(
+                "click",
+                function (event) {
 
-            closeButton.addEventListener(
+                    event.preventDefault();
+
+
+                    let source =
+                        item.getAttribute(
+                            "data-lightbox"
+                        );
+
+
+                    if (!source) {
+
+                        const thumbnail =
+                            item.querySelector(
+                                "img"
+                            );
+
+                        if (thumbnail) {
+                            source =
+                                thumbnail.getAttribute(
+                                    "src"
+                                );
+                        }
+
+                    }
+
+
+                    if (
+                        !source ||
+                        !image
+                    ) {
+                        return;
+                    }
+
+
+                    image.src =
+                        source;
+
+
+                    const thumbnail =
+                        item.querySelector(
+                            "img"
+                        );
+
+                    image.alt =
+                        thumbnail
+                            ? thumbnail.alt || ""
+                            : "";
+
+
+                    lightbox.classList.add(
+                        "active"
+                    );
+
+                    lightbox.setAttribute(
+                        "aria-hidden",
+                        "false"
+                    );
+
+                    document.body.style.overflow =
+                        "hidden";
+
+                }
+            );
+
+        });
+
+
+        if (close) {
+
+            close.addEventListener(
                 "click",
                 function (event) {
 
@@ -883,30 +718,19 @@
         }
 
 
-        /* =================================================
-           CLICK BACKGROUND TO CLOSE
-        ================================================= */
-
         lightbox.addEventListener(
             "click",
             function (event) {
 
                 if (
-                    event.target ===
-                    lightbox
+                    event.target === lightbox
                 ) {
-
                     closeLightbox();
-
                 }
 
             }
         );
 
-
-        /* =================================================
-           ESCAPE KEY
-        ================================================= */
 
         document.addEventListener(
             "keydown",
@@ -918,9 +742,7 @@
                         "active"
                     )
                 ) {
-
                     closeLightbox();
-
                 }
 
             }
@@ -931,55 +753,44 @@
 
     /* =====================================================
        EXTERNAL LINKS
+       External websites automatically open safely
+       in a new tab.
     ===================================================== */
 
     function initExternalLinks() {
 
-        const links =
-            document.querySelectorAll(
+        document
+            .querySelectorAll(
                 'a[href^="http://"], a[href^="https://"]'
-            );
+            )
+            .forEach(function (link) {
 
-
-        links.forEach(
-            function (link) {
-
-                const url =
+                const href =
                     link.getAttribute(
                         "href"
                     );
 
-
-                if (!url) {
+                if (!href) {
                     return;
                 }
 
 
-                /*
-                 * Internal NEWITT links stay in the
-                 * current window.
-
-                 * External social links safely open
-                 * in a new tab.
-                 */
-
                 try {
 
-                    const linkUrl =
+                    const url =
                         new URL(
-                            url,
+                            href,
                             window.location.href
                         );
 
 
                     if (
-                        linkUrl.hostname !==
+                        url.hostname !==
                         window.location.hostname
                     ) {
 
                         link.target =
                             "_blank";
-
 
                         link.rel =
                             "noopener noreferrer";
@@ -988,14 +799,11 @@
 
                 } catch (error) {
 
-                    /*
-                     * Ignore malformed URLs.
-                     */
+                    /* Ignore malformed URLs */
 
                 }
 
-            }
-        );
+            });
 
     }
 
