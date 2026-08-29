@@ -63,6 +63,7 @@ body {
     line-height: 1.6;
 
     text-rendering: optimizeLegibility;
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -135,7 +136,7 @@ section {
     z-index: 1000;
 
     background:
-        rgba(2, 3, 5, 0.82);
+        rgba(2, 3, 5, 0.84);
 
     border-bottom:
         1px solid
@@ -149,6 +150,7 @@ section {
     min-height: 76px;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
@@ -157,6 +159,7 @@ section {
 
 .nav-brand {
     display: inline-flex;
+
     align-items: center;
 
     gap: 10px;
@@ -176,8 +179,10 @@ section {
 .nav-brand span {
     white-space: nowrap;
 
+    color: #ffffff;
+
     font-size: 0.86rem;
-    font-weight: 700;
+    font-weight: 750;
 
     letter-spacing: 0.14em;
 }
@@ -188,6 +193,7 @@ section {
 
 .nav-links {
     display: flex;
+
     align-items: center;
 
     gap: 4px;
@@ -256,7 +262,7 @@ section {
 
 
 /* =========================================================
-   GLOBAL TYPOGRAPHY
+   TYPOGRAPHY
 ========================================================= */
 
 h1,
@@ -335,7 +341,7 @@ p {
     color: #c9a45b;
 
     font-size: 0.65rem;
-    font-weight: 700;
+    font-weight: 750;
 
     letter-spacing: 0.20em;
 
@@ -375,7 +381,6 @@ h2 span,
     flex-direction: column;
 
     align-items: center;
-
     justify-content: center;
 
     text-align: center;
@@ -422,6 +427,7 @@ h2 span,
     min-height: 76vh;
 
     display: flex;
+
     align-items: center;
 
     padding:
@@ -435,6 +441,7 @@ h2 span,
 .hero-atmosphere,
 .paranormal-atmosphere {
     position: absolute;
+
     inset: 0;
 
     pointer-events: none;
@@ -510,7 +517,7 @@ h2 span,
             0.95rem
         );
 
-    font-weight: 700;
+    font-weight: 750;
 
     letter-spacing: 0.18em;
 
@@ -602,6 +609,7 @@ h2 span,
 
 .paranormal-fog {
     position: absolute;
+
     inset: 0;
 
     pointer-events: none;
@@ -626,7 +634,6 @@ h2 span,
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     flex-wrap: wrap;
@@ -673,7 +680,7 @@ h2 span,
 
     font-size: 0.70rem;
 
-    font-weight: 650;
+    font-weight: 700;
 
     letter-spacing: 0.055em;
 
@@ -724,11 +731,12 @@ h2 span,
 
 
 /* =========================================================
-   CINEMATIC INTRO
+   CINEMATIC FIRST-VISIT INTRO
 ========================================================= */
 
 .site-intro {
     position: fixed;
+
     inset: 0;
 
     z-index: 5000;
@@ -739,7 +747,8 @@ h2 span,
 
     overflow: hidden;
 
-    background: #020305;
+    background:
+        #020305;
 }
 
 .intro-atmosphere {
@@ -788,7 +797,7 @@ h2 span,
 
     animation:
         introSweep
-        4.6s
+        6.5s
         ease-in-out
         infinite;
 }
@@ -826,13 +835,15 @@ h2 span,
 
     animation:
         introLogo
-        1.8s
+        2s
         ease
         both;
 }
 
 .intro-name {
     margin-top: 22px;
+
+    color: #ffffff;
 
     font-size:
         clamp(
@@ -841,7 +852,7 @@ h2 span,
             3.8rem
         );
 
-    font-weight: 800;
+    font-weight: 850;
 
     letter-spacing: 0.14em;
 }
@@ -874,9 +885,9 @@ h2 span,
             0.9rem
         );
 
-    font-weight: 650;
+    font-weight: 700;
 
-    letter-spacing: 0.18em;
+    letter-spacing: 0.17em;
 
     line-height: 1.8;
 
@@ -891,13 +902,14 @@ h2 span,
     pointer-events: none;
 
     transition:
-        opacity 700ms ease,
-        visibility 700ms ease;
+        opacity 900ms ease,
+        visibility 900ms ease;
 }
 
 
 /* =========================================================
    MASTER CINEMATIC SOCIAL ANIMATION
+   ONE SECTION ONLY
 ========================================================= */
 
 .social-hub {
@@ -909,31 +921,30 @@ h2 span,
 
     isolation: isolate;
 
-    padding: 0;
+    padding:
+        0;
 
-    background: #000;
+    background:
+        #020305;
 
     text-align: center;
 }
-
-
-/*
- * The master animation itself must remain
- * exactly 1536:1024.
- */
 
 .social-master-frame {
     position: relative;
 
     width: 100%;
 
-    aspect-ratio: 1536 / 1024;
-
-    overflow: hidden;
+    max-width: 1536px;
 
     margin-inline: auto;
 
-    background: #000;
+    overflow: hidden;
+
+    background:
+        #020305;
+
+    aspect-ratio: 1536 / 1024;
 }
 
 .social-master-animation {
@@ -942,176 +953,228 @@ h2 span,
     width: 100%;
     height: 100%;
 
-    border: 0;
-
     margin: 0;
     padding: 0;
 
+    border: 0;
+
     overflow: hidden;
 
-    background: #000;
+    background:
+        #020305;
 }
 
 
 /*
- * If an older homepage still contains the old
- * card-based social section, hide it.
- *
- * The final index.html will remove it entirely.
+ * Prevent the browser from introducing
+ * unwanted iframe spacing.
  */
 
-body.home-page .social-hub-content {
-    display: none;
+.social-master-frame iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
 }
 
 
 /* =========================================================
-   LEGACY SOCIAL HUB SUPPORT
+   CTA
 ========================================================= */
 
-.social-hub-art {
-    position: absolute;
+.home-cta {
+    padding:
+        70px 0;
+}
 
-    inset: -2%;
+.cta-panel {
+    width:
+        min(
+            780px,
+            100%
+        );
 
-    z-index: -6;
+    margin-inline: auto;
 
-    background-image:
-        url("newitt-social-hub-background-optimized.jpg");
+    padding:
+        38px 30px;
 
-    background-position:
-        center center;
+    border:
+        1px solid
+        rgba(201, 164, 91, 0.24);
 
-    background-size:
-        cover;
+    border-radius: 10px;
 
-    background-repeat:
-        no-repeat;
+    background:
+        rgba(3, 5, 8, 0.60);
 
-    opacity: 1;
+    text-align: center;
+
+    backdrop-filter: blur(8px);
+
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.cta-panel .hero-actions {
+    justify-content: center;
+}
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+.back-to-top {
+    position: fixed;
+
+    right: 18px;
+    bottom: 18px;
+
+    z-index: 900;
+
+    display: flex;
+
+    width: 42px;
+    height: 42px;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(201, 164, 91, 0.42);
+
+    border-radius: 50%;
+
+    background:
+        rgba(2, 3, 5, 0.82);
+
+    color: #c9a45b;
+
+    font-size: 1.15rem;
+
+    line-height: 1;
+
+    opacity: 0;
+
+    visibility: hidden;
 
     transform:
-        scale(1.035);
+        translateY(10px);
 
-    animation:
-        socialBackgroundMove
-        18s
-        ease-in-out
-        infinite
-        alternate;
+    transition:
+        opacity 180ms ease,
+        visibility 180ms ease,
+        transform 180ms ease;
+
+    backdrop-filter: blur(10px);
+
+    -webkit-backdrop-filter: blur(10px);
 }
 
-.social-hub-shade {
-    position: absolute;
+.back-to-top.visible,
+.back-to-top.show,
+.back-to-top.is-visible {
+    opacity: 1;
 
-    inset: 0;
+    visibility: visible;
 
-    z-index: -5;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(0, 15, 30, 0.05),
-            rgba(0, 0, 0, 0.025) 48%,
-            rgba(35, 0, 5, 0.07)
-        );
+    transform:
+        translateY(0);
 }
 
-.social-lightning {
-    position: absolute;
-
-    inset: -12%;
-
-    z-index: -4;
-
-    pointer-events: none;
-
+.back-to-top:hover {
     background:
-        radial-gradient(
-            ellipse at 10% 50%,
-            rgba(0, 175, 255, 0.34),
-            transparent 31%
-        ),
-        radial-gradient(
-            ellipse at 24% 78%,
-            rgba(0, 115, 255, 0.18),
-            transparent 25%
-        );
-
-    mix-blend-mode: screen;
-
-    opacity: 0.58;
-
-    animation:
-        skylineElectricalPulse
-        3.8s
-        ease-in-out
-        infinite;
+        rgba(201, 164, 91, 0.12);
 }
 
-.social-house-glow {
-    position: absolute;
 
-    inset: -12%;
+/* =========================================================
+   FOOTER
+========================================================= */
 
-    z-index: -4;
+.site-footer {
+    padding:
+        50px 0 30px;
 
-    pointer-events: none;
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.08);
 
     background:
-        radial-gradient(
-            ellipse at 90% 47%,
-            rgba(255, 20, 35, 0.30),
-            transparent 31%
-        ),
-        radial-gradient(
-            ellipse at 77% 78%,
-            rgba(175, 10, 20, 0.20),
-            transparent 27%
-        );
+        rgba(2, 3, 5, 0.78);
 
-    mix-blend-mode: screen;
-
-    opacity: 0.54;
-
-    animation:
-        paranormalHousePulse
-        5.2s
-        ease-in-out
-        infinite;
+    text-align: center;
 }
 
-.social-paranormal-glow {
-    position: absolute;
+.footer-logo {
+    width: 72px;
+    height: 72px;
 
-    inset: -12%;
+    margin:
+        0 auto 13px;
 
-    z-index: -3;
+    object-fit: contain;
+}
 
-    pointer-events: none;
+.footer-brand {
+    margin-bottom: 5px;
 
-    background:
-        radial-gradient(
-            circle at 82% 45%,
-            rgba(255, 55, 65, 0.15),
-            transparent 24%
-        );
+    color: #ffffff;
 
-    mix-blend-mode: screen;
+    font-size: 0.84rem;
 
-    animation:
-        paranormalGlowMove
-        7s
-        ease-in-out
-        infinite
-        alternate;
+    font-weight: 800;
+
+    letter-spacing: 0.15em;
+}
+
+.footer-tagline {
+    margin-bottom: 20px;
+
+    color: #c9a45b;
+
+    font-size: 0.64rem;
+
+    font-weight: 750;
+
+    letter-spacing: 0.1em;
+}
+
+.copyright,
+.website-address {
+    margin-bottom: 0;
+
+    color:
+        rgba(255, 255, 255, 0.45);
+
+    font-size: 0.67rem;
+
+    line-height: 1.8;
+}
+
+.website-address {
+    margin-top: 10px;
+}
+
+.website-address a {
+    color:
+        rgba(255, 255, 255, 0.58);
+
+    transition:
+        color 180ms ease;
+}
+
+.website-address a:hover {
+    color: #c9a45b;
 }
 
 
 /* =========================================================
    CONTENT CARDS
+   Used by Skyline / Paranormal / Photography / Contact
 ========================================================= */
 
 .investigation-grid,
@@ -1144,12 +1207,12 @@ body.home-page .social-hub-content {
 
     border:
         1px solid
-        rgba(255, 255, 255, 0.10);
+        rgba(255, 255, 255, 0.1);
 
     border-radius: 9px;
 
     background:
-        rgba(4, 7, 12, 0.50);
+        rgba(4, 7, 12, 0.52);
 
     backdrop-filter: blur(7px);
 
@@ -1288,7 +1351,7 @@ body.home-page .social-hub-content {
     padding: 24px;
 
     background:
-        rgba(0, 0, 0, 0.90);
+        rgba(0, 0, 0, 0.9);
 }
 
 .lightbox.active,
@@ -1340,192 +1403,7 @@ body.home-page .social-hub-content {
 
 
 /* =========================================================
-   ABOUT / CTA
-========================================================= */
-
-.home-cta {
-    padding:
-        70px 0;
-}
-
-.cta-panel {
-    width:
-        min(
-            780px,
-            100%
-        );
-
-    margin-inline: auto;
-
-    padding:
-        38px 30px;
-
-    border:
-        1px solid
-        rgba(201, 164, 91, 0.24);
-
-    border-radius: 10px;
-
-    background:
-        rgba(3, 5, 8, 0.52);
-
-    text-align: center;
-
-    backdrop-filter: blur(8px);
-
-    -webkit-backdrop-filter: blur(8px);
-}
-
-.cta-panel .hero-actions {
-    justify-content: center;
-}
-
-
-/* =========================================================
-   BACK TO TOP
-========================================================= */
-
-.back-to-top {
-    position: fixed;
-
-    right: 18px;
-    bottom: 18px;
-
-    z-index: 900;
-
-    display: flex;
-
-    width: 42px;
-    height: 42px;
-
-    align-items: center;
-    justify-content: center;
-
-    border:
-        1px solid
-        rgba(201, 164, 91, 0.42);
-
-    border-radius: 50%;
-
-    background:
-        rgba(2, 3, 5, 0.82);
-
-    color: #c9a45b;
-
-    font-size: 1.15rem;
-
-    line-height: 1;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transform:
-        translateY(10px);
-
-    transition:
-        opacity 180ms ease,
-        visibility 180ms ease,
-        transform 180ms ease;
-
-    backdrop-filter: blur(10px);
-
-    -webkit-backdrop-filter: blur(10px);
-}
-
-.back-to-top.visible,
-.back-to-top.show,
-.back-to-top.is-visible {
-    opacity: 1;
-
-    visibility: visible;
-
-    transform:
-        translateY(0);
-}
-
-.back-to-top:hover {
-    background:
-        rgba(201, 164, 91, 0.12);
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.site-footer {
-    padding:
-        50px 0 30px;
-
-    border-top:
-        1px solid
-        rgba(255, 255, 255, 0.08);
-
-    background:
-        rgba(2, 3, 5, 0.68);
-
-    text-align: center;
-}
-
-.footer-logo {
-    width: 72px;
-    height: 72px;
-
-    margin:
-        0 auto 13px;
-
-    object-fit: contain;
-}
-
-.footer-brand {
-    margin-bottom: 5px;
-
-    color: #ffffff;
-
-    font-size: 0.82rem;
-
-    font-weight: 700;
-
-    letter-spacing: 0.17em;
-}
-
-.footer-tagline {
-    margin-bottom: 20px;
-
-    color: #c9a45b;
-
-    font-size: 0.62rem;
-
-    font-weight: 650;
-
-    letter-spacing: 0.11em;
-}
-
-.copyright,
-.website-address {
-    margin-bottom: 0;
-
-    color:
-        rgba(255, 255, 255, 0.45);
-
-    font-size: 0.67rem;
-
-    line-height: 1.8;
-}
-
-.website-address {
-    margin-top: 10px;
-}
-
-.website-address a {
-    color:
-        rgba(255, 255, 255, 0.58);
-}
-
-
-/* =========================================================
-   CINEMATIC ANIMATIONS
+   ANIMATIONS
 ========================================================= */
 
 @keyframes introAtmosphere {
@@ -1542,7 +1420,6 @@ body.home-page .social-hub-content {
         opacity: 1;
     }
 }
-
 
 @keyframes introSweep {
 
@@ -1570,7 +1447,6 @@ body.home-page .social-hub-content {
         opacity: 0;
     }
 }
-
 
 @keyframes introLogo {
 
@@ -1605,151 +1481,6 @@ body.home-page .social-hub-content {
 
 
 /* =========================================================
-   LEGACY CINEMATIC EFFECTS
-========================================================= */
-
-@keyframes socialBackgroundMove {
-
-    0% {
-        transform:
-            scale(1.035)
-            translate3d(-0.5%, 0, 0);
-    }
-
-    50% {
-        transform:
-            scale(1.055)
-            translate3d(0, -0.35%, 0);
-    }
-
-    100% {
-        transform:
-            scale(1.035)
-            translate3d(0.5%, 0, 0);
-    }
-}
-
-@keyframes skylineElectricalPulse {
-
-    0%,
-    100% {
-        opacity: 0.38;
-
-        transform:
-            translate3d(-1%, 0, 0)
-            scale(1);
-    }
-
-    35% {
-        opacity: 0.55;
-    }
-
-    45% {
-        opacity: 0.82;
-    }
-
-    51% {
-        opacity: 0.43;
-    }
-
-    60% {
-        opacity: 0.72;
-
-        transform:
-            translate3d(1%, -0.4%, 0)
-            scale(1.015);
-    }
-}
-
-@keyframes paranormalHousePulse {
-
-    0%,
-    100% {
-        opacity: 0.32;
-
-        transform:
-            translate3d(1%, 0, 0)
-            scale(1);
-    }
-
-    35% {
-        opacity: 0.56;
-    }
-
-    42% {
-        opacity: 0.34;
-    }
-
-    52% {
-        opacity: 0.72;
-    }
-
-    100% {
-        transform:
-            translate3d(-1%, 0.3%, 0)
-            scale(1.018);
-    }
-}
-
-@keyframes paranormalGlowMove {
-
-    0% {
-        opacity: 0.18;
-
-        transform:
-            translate3d(2%, 0, 0);
-    }
-
-    50% {
-        opacity: 0.62;
-    }
-
-    100% {
-        opacity: 0.28;
-
-        transform:
-            translate3d(-2%, -1%, 0);
-    }
-}
-
-@keyframes skylineLogoPulse {
-
-    0%,
-    100% {
-        transform:
-            scale(1);
-    }
-
-    50% {
-        transform:
-            scale(1.025);
-    }
-}
-
-@keyframes paranormalLogoFloat {
-
-    0%,
-    100% {
-        transform:
-            translateY(0)
-            rotate(0deg);
-    }
-
-    35% {
-        transform:
-            translateY(-4px)
-            rotate(-0.45deg);
-    }
-
-    65% {
-        transform:
-            translateY(4px)
-            rotate(0.45deg);
-    }
-}
-
-
-/* =========================================================
    TABLET
 ========================================================= */
 
@@ -1772,7 +1503,7 @@ body.home-page .social-hub-content {
             8px 8px;
 
         font-size:
-            0.69rem;
+            0.70rem;
     }
 
     .investigation-grid,
@@ -1781,6 +1512,7 @@ body.home-page .social-hub-content {
         grid-template-columns:
             1fr;
     }
+
 }
 
 
@@ -1791,14 +1523,9 @@ body.home-page .social-hub-content {
 @media (max-width: 700px) {
 
     body {
-        background-attachment:
-            scroll,
-            scroll;
-
-        background-position:
-            center top,
-            center top;
+        background-attachment: scroll;
     }
+
 
     .container {
         width:
@@ -1807,7 +1534,7 @@ body.home-page .social-hub-content {
 
 
     /* -----------------------------------------------------
-       MOBILE HEADER
+       HEADER
     ----------------------------------------------------- */
 
     .nav {
@@ -1823,7 +1550,7 @@ body.home-page .social-hub-content {
 
     .nav-brand span {
         font-size:
-            0.73rem;
+            0.74rem;
     }
 
     .menu-toggle {
@@ -1878,7 +1605,7 @@ body.home-page .social-hub-content {
 
 
     /* -----------------------------------------------------
-       MOBILE HERO
+       HERO
     ----------------------------------------------------- */
 
     .hero,
@@ -1933,7 +1660,7 @@ body.home-page .social-hub-content {
 
 
     /* -----------------------------------------------------
-       MOBILE BUTTONS
+       BUTTONS
     ----------------------------------------------------- */
 
     .buttons,
@@ -1954,13 +1681,15 @@ body.home-page .social-hub-content {
             7px 11px;
 
         font-size:
-            0.63rem;
+            0.64rem;
     }
 
 
     /* -----------------------------------------------------
-       MASTER CINEMATIC ANIMATION
-       ALWAYS RETAINS 1536:1024
+       MASTER CINEMATIC SOCIAL ANIMATION
+       
+       Maintains the original 1536:1024
+       composition on mobile.
     ----------------------------------------------------- */
 
     .social-master-frame {
@@ -1969,31 +1698,19 @@ body.home-page .social-hub-content {
         aspect-ratio:
             1536 / 1024;
 
+        max-width: none;
+
         overflow: hidden;
     }
 
     .social-master-animation {
         width: 100%;
         height: 100%;
-
-        display: block;
     }
 
 
     /* -----------------------------------------------------
-       MOBILE CONTENT CARDS
-    ----------------------------------------------------- */
-
-    .investigation-card,
-    .photography-focus-card,
-    .contact-card {
-        padding:
-            20px 16px;
-    }
-
-
-    /* -----------------------------------------------------
-       MOBILE CTA
+       CTA
     ----------------------------------------------------- */
 
     .home-cta {
@@ -2008,13 +1725,14 @@ body.home-page .social-hub-content {
 
 
     /* -----------------------------------------------------
-       MOBILE BACK TO TOP
+       BACK TO TOP
     ----------------------------------------------------- */
 
     .back-to-top {
         right: 13px;
         bottom: 13px;
     }
+
 }
 
 
@@ -2035,10 +1753,6 @@ body.home-page .social-hub-content {
             1536 / 1024;
     }
 
-    .container {
-        width:
-            calc(100% - 20px);
-    }
 }
 
 
@@ -2065,12 +1779,8 @@ body.home-page .social-hub-content {
             0.01ms !important;
     }
 
-    .social-hub-art,
-    .social-lightning,
-    .social-house-glow,
-    .social-paranormal-glow,
-    .skyline-social .social-logo-wrap img,
-    .paranormal-social-logo img {
+    .social-master-animation {
         animation: none !important;
     }
+
 }
