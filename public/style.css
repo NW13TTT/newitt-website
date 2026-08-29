@@ -1,1 +1,1693 @@
+/* =========================================================
+   NEWITT MEDIA
+   MASTER WEBSITE STYLESHEET
+   ========================================================= */
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: #020305;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(2, 3, 5, 0.18),
+            rgba(2, 3, 5, 0.55)
+        ),
+        url("background.png");
+
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    color: #ffffff;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(0, 150, 255, 0.08),
+            transparent 42%
+        );
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+section {
+    position: relative;
+}
+
+.container {
+    width: min(1120px, calc(100% - 40px));
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(2, 3, 5, 0.88);
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.nav {
+    min-height: 76px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 0;
+}
+
+.nav-brand img {
+    width: 44px;
+    height: 44px;
+
+    object-fit: contain;
+}
+
+.nav-brand span {
+    color: #ffffff;
+
+    font-size: 0.85rem;
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+
+    white-space: nowrap;
+}
+
+.nav-brand strong {
+    color: #c9a45b;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.nav-links a {
+    padding: 9px 12px;
+
+    color: rgba(255, 255, 255, 0.72);
+
+    border-radius: 6px;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+
+    letter-spacing: 0.06em;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #ffffff;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+}
+
+.menu-toggle {
+    display: none;
+
+    width: 44px;
+    height: 44px;
+
+    padding: 8px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 8px;
+
+    background:
+        rgba(255, 255, 255, 0.04);
+
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+
+    width: 100%;
+    height: 2px;
+
+    margin: 5px 0;
+
+    background: #ffffff;
+
+    border-radius: 999px;
+}
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+h1,
+h2,
+h3 {
+    margin-top: 0;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    line-height: 1.08;
+}
+
+h1 {
+    margin-bottom: 18px;
+
+    font-size:
+        clamp(2.2rem, 6vw, 5rem);
+
+    font-weight: 800;
+
+    letter-spacing: -0.03em;
+}
+
+h2 {
+    margin-bottom: 16px;
+
+    font-size:
+        clamp(2rem, 4vw, 3.5rem);
+
+    font-weight: 800;
+}
+
+h3 {
+    margin-bottom: 10px;
+
+    font-size: 1.1rem;
+    font-weight: 750;
+}
+
+p {
+    color:
+        rgba(255, 255, 255, 0.76);
+}
+
+.eyebrow {
+    margin-bottom: 10px;
+
+    color: #c9a45b;
+
+    font-size: 0.65rem;
+    font-weight: 800;
+
+    letter-spacing: 0.2em;
+
+    text-transform: uppercase;
+}
+
+h1 span,
+h2 span {
+    color: #c9a45b;
+}
+
+/* =========================================================
+   GLOBAL CENTRING
+   ========================================================= */
+
+.hero,
+.skyline-hero,
+.paranormal-hero,
+.photography-hero,
+.contact-hero {
+    text-align: center;
+}
+
+.hero-content,
+.skyline-hero-content,
+.paranormal-hero-content,
+.photography-hero-content,
+.contact-hero-content {
+    width: min(860px, 100%);
+
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+.section-heading {
+    width: 100%;
+
+    margin-bottom: 30px;
+
+    text-align: center;
+}
+
+.section-heading p {
+    width: min(700px, 100%);
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about {
+    width: min(900px, 100%);
+
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+}
+
+.about > p {
+    width: min(760px, 100%);
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero,
+.skyline-hero,
+.paranormal-hero,
+.photography-hero,
+.contact-hero {
+    min-height: 76vh;
+
+    display: flex;
+
+    align-items: center;
+
+    padding:
+        95px 0;
+}
+
+.hero {
+    overflow: hidden;
+}
+
+.hero-atmosphere,
+.paranormal-atmosphere {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+}
+
+.hero-atmosphere {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0, 170, 255, 0.12),
+            transparent 38%
+        );
+}
+
+.paranormal-atmosphere {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(160, 20, 30, 0.13),
+            transparent 42%
+        );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-logo-wrap {
+    width: min(250px, 52vw);
+
+    margin:
+        0 auto 28px;
+}
+
+.hero-logo {
+    width: 100%;
+    height: auto;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 0 30px
+            rgba(0, 160, 255, 0.16)
+        );
+}
+
+.hero-rule {
+    width: 90px;
+    height: 1px;
+
+    margin:
+        20px auto;
+
+    background:
+        rgba(201, 164, 91, 0.7);
+}
+
+.hero-tagline {
+    color: #c9a45b;
+
+    font-size:
+        clamp(0.72rem, 1.5vw, 0.95rem);
+
+    font-weight: 800;
+
+    letter-spacing: 0.18em;
+
+    text-align: center;
+}
+
+.hero-introduction {
+    width: min(650px, 100%);
+
+    margin:
+        0 auto;
+
+    text-align: center;
+
+    font-size: 1rem;
+}
+
+/* =========================================================
+   PAGE LOGOS
+   ========================================================= */
+
+.page-logo {
+    width: min(270px, 55vw);
+
+    max-height: 230px;
+
+    height: auto;
+
+    margin:
+        0 auto 28px;
+
+    object-fit: contain;
+}
+
+.skyline-logo {
+    filter:
+        drop-shadow(
+            0 0 28px
+            rgba(0, 174, 255, 0.2)
+        );
+}
+
+.paranormal-logo {
+    filter:
+        drop-shadow(
+            0 0 28px
+            rgba(190, 30, 40, 0.2)
+        );
+}
+
+.photography-logo {
+    filter:
+        drop-shadow(
+            0 0 28px
+            rgba(201, 164, 91, 0.16)
+        );
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.hero-actions,
+.buttons {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 24px;
+}
+
+.button,
+.buttons a,
+.hero-actions a {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 40px;
+
+    padding:
+        9px 15px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.16);
+
+    border-radius: 6px;
+
+    background:
+        rgba(255, 255, 255, 0.045);
+
+    color: #ffffff;
+
+    font-size: 0.7rem;
+
+    font-weight: 750;
+
+    letter-spacing: 0.055em;
+
+    line-height: 1.1;
+
+    white-space: nowrap;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.button:hover,
+.buttons a:hover,
+.hero-actions a:hover {
+    transform: translateY(-2px);
+
+    background:
+        rgba(255, 255, 255, 0.09);
+
+    border-color:
+        rgba(255, 255, 255, 0.28);
+}
+
+.button.primary {
+    color: #f5d38a;
+
+    border-color:
+        rgba(201, 164, 91, 0.55);
+
+    background:
+        rgba(201, 164, 91, 0.12);
+}
+
+.button.primary:hover {
+    background:
+        rgba(201, 164, 91, 0.2);
+}
+
+/* =========================================================
+   NEWITT MEDIA INTRODUCTION
+   ========================================================= */
+
+.newitt-media-intro {
+    position: relative;
+
+    padding:
+        80px 0 75px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(2, 3, 5, 0.18),
+            rgba(2, 3, 5, 0.84)
+        );
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.07);
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.07);
+}
+
+.newitt-media-intro-glow {
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 750px;
+    height: 550px;
+
+    transform:
+        translateX(-50%);
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(0, 160, 255, 0.08),
+            transparent 68%
+        );
+}
+
+.newitt-media-intro .container {
+    position: relative;
+
+    z-index: 2;
+}
+
+.newitt-media-intro-heading {
+    width: min(760px, 100%);
+
+    margin:
+        0 auto 42px;
+
+    text-align: center;
+}
+
+.newitt-media-intro-heading h2 {
+    margin-bottom: 0;
+}
+
+.newitt-media-intro-main {
+    width: min(650px, 100%);
+
+    margin:
+        0 auto;
+
+    color:
+        rgba(255, 255, 255, 0.72);
+
+    font-size:
+        clamp(0.92rem, 2vw, 1.05rem);
+
+    line-height: 1.7;
+}
+
+/* =========================================================
+   THREE WORLD CARDS
+   ========================================================= */
+
+.newitt-media-intro-worlds {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+.newitt-intro-world {
+    position: relative;
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    padding:
+        28px 22px 26px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: 10px;
+
+    background:
+        rgba(4, 7, 12, 0.65);
+
+    text-align: center;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.newitt-intro-world::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 10%;
+    right: 10%;
+
+    height: 2px;
+
+    opacity: 0.75;
+
+    transform:
+        scaleX(0.3);
+
+    transition:
+        transform 0.4s ease;
+}
+
+.newitt-intro-world:hover {
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(8, 11, 18, 0.85);
+
+    border-color:
+        rgba(255, 255, 255, 0.2);
+
+    box-shadow:
+        0 18px 50px
+        rgba(0, 0, 0, 0.3);
+}
+
+.newitt-intro-world:hover::before {
+    transform:
+        scaleX(1);
+}
+
+.newitt-intro-skyline::before {
+    background: #4ecfff;
+}
+
+.newitt-intro-paranormal::before {
+    background: #ff5d67;
+}
+
+.newitt-intro-photography::before {
+    background: #c9a45b;
+}
+
+.newitt-intro-logo-wrap {
+    width: 100%;
+
+    height: 120px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 16px;
+}
+
+.newitt-intro-logo {
+    width: min(190px, 78%);
+
+    max-width: 190px;
+
+    max-height: 110px;
+
+    height: auto;
+
+    margin:
+        0 auto;
+
+    object-fit: contain;
+}
+
+.newitt-intro-skyline .newitt-intro-logo {
+    filter:
+        drop-shadow(
+            0 0 20px
+            rgba(0, 174, 255, 0.18)
+        );
+}
+
+.newitt-intro-paranormal .newitt-intro-logo {
+    filter:
+        drop-shadow(
+            0 0 20px
+            rgba(190, 30, 40, 0.18)
+        );
+}
+
+.newitt-intro-photography .newitt-intro-logo {
+    filter:
+        drop-shadow(
+            0 0 20px
+            rgba(201, 164, 91, 0.14)
+        );
+}
+
+.newitt-intro-text {
+    width: 100%;
+}
+
+.newitt-intro-text h3 {
+    margin-bottom: 9px;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(0.82rem, 1.4vw, 1rem);
+
+    font-weight: 800;
+
+    letter-spacing: 0.06em;
+
+    line-height: 1.35;
+}
+
+.newitt-intro-text p {
+    width: min(300px, 100%);
+
+    margin:
+        0 auto;
+
+    color:
+        rgba(255, 255, 255, 0.66);
+
+    font-size: 0.82rem;
+
+    line-height: 1.65;
+}
+
+.newitt-media-intro-closing {
+    margin:
+        38px auto 0;
+
+    text-align: center;
+}
+
+.newitt-media-intro-closing p {
+    margin-bottom: 7px;
+
+    color:
+        rgba(255, 255, 255, 0.74);
+
+    font-size: 0.92rem;
+}
+
+.newitt-media-intro-closing strong {
+    color: #ffffff;
+}
+
+.newitt-media-intro-closing span {
+    color: #c9a45b;
+
+    font-size: 0.6rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.17em;
+}
+
+/* =========================================================
+   SOCIAL ANIMATION
+   ========================================================= */
+
+.social-hub {
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    padding: 0;
+
+    background: #020305;
+
+    text-align: center;
+}
+
+.social-master-frame {
+    position: relative;
+
+    width: 100%;
+
+    max-width: 1536px;
+
+    margin:
+        0 auto;
+
+    overflow: hidden;
+
+    background: #020305;
+
+    aspect-ratio: 1536 / 1024;
+}
+
+.social-master-animation {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+
+    background: #020305;
+}
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.home-cta {
+    padding:
+        75px 0;
+}
+
+.cta-panel {
+    width: min(780px, 100%);
+
+    margin:
+        0 auto;
+
+    padding:
+        40px 30px;
+
+    border:
+        1px solid rgba(201, 164, 91, 0.25);
+
+    border-radius: 10px;
+
+    background:
+        rgba(3, 5, 8, 0.68);
+
+    text-align: center;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.cta-panel .hero-actions {
+    justify-content: center;
+}
+
+/* =========================================================
+   CONTENT GRIDS
+   ========================================================= */
+
+.investigation-grid,
+.photography-focus-grid,
+.contact-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 15px;
+}
+
+.investigation-card,
+.photography-focus-card,
+.contact-card {
+    min-width: 0;
+
+    padding: 23px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: 9px;
+
+    background:
+        rgba(4, 7, 12, 0.58);
+
+    text-align: center;
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.investigation-card p,
+.photography-focus-card p,
+.contact-card p {
+    margin-bottom: 0;
+
+    font-size: 0.86rem;
+}
+
+.contact-card-icon,
+.photography-focus-icon {
+    margin-bottom: 10px;
+
+    font-size: 1.4rem;
+}
+
+/* =========================================================
+   GALLERY
+   ========================================================= */
+
+.gallery-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+}
+
+.gallery-item {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 10;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.09);
+
+    border-radius: 9px;
+
+    background: #020305;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.45s ease;
+}
+
+.gallery-item:hover img {
+    transform:
+        scale(1.035);
+}
+
+/* =========================================================
+   BACK TO TOP
+   ========================================================= */
+
+.back-to-top {
+    position: fixed;
+
+    right: 18px;
+    bottom: 18px;
+
+    z-index: 900;
+
+    display: flex;
+
+    width: 42px;
+    height: 42px;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(201, 164, 91, 0.42);
+
+    border-radius: 50%;
+
+    background:
+        rgba(2, 3, 5, 0.85);
+
+    color: #c9a45b;
+
+    font-size: 1.1rem;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+        translateY(10px);
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease,
+        transform 0.2s ease;
+}
+
+.back-to-top.visible,
+.back-to-top.show,
+.back-to-top.is-visible {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.site-footer {
+    padding:
+        50px 0 30px;
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    background:
+        rgba(2, 3, 5, 0.88);
+
+    text-align: center;
+}
+
+.footer-logo {
+    width: 75px;
+    height: 75px;
+
+    margin:
+        0 auto 14px;
+
+    object-fit: contain;
+}
+
+.footer-brand {
+    margin-bottom: 5px;
+
+    color: #ffffff;
+
+    font-size: 0.84rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.15em;
+}
+
+.footer-tagline {
+    margin-bottom: 20px;
+
+    color: #c9a45b;
+
+    font-size: 0.63rem;
+
+    font-weight: 750;
+
+    letter-spacing: 0.1em;
+}
+
+.copyright,
+.website-address {
+    margin-bottom: 0;
+
+    color:
+        rgba(255, 255, 255, 0.45);
+
+    font-size: 0.67rem;
+
+    line-height: 1.8;
+}
+
+.website-address {
+    margin-top: 10px;
+}
+
+.website-address a {
+    color:
+        rgba(255, 255, 255, 0.58);
+}
+
+.website-address a:hover {
+    color: #c9a45b;
+}
+
+/* =========================================================
+   CINEMATIC INTRO
+   ========================================================= */
+
+.site-intro {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 5000;
+
+    display: grid;
+
+    place-items: center;
+
+    overflow: hidden;
+
+    background: #020305;
+}
+
+.intro-atmosphere {
+    position: absolute;
+
+    inset: -20%;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0, 170, 255, 0.15),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 65%,
+            rgba(0, 120, 255, 0.08),
+            transparent 40%
+        );
+}
+
+.intro-light-sweep {
+    position: absolute;
+
+    top: -20%;
+    left: -30%;
+
+    width: 28%;
+    height: 140%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(130, 220, 255, 0.2),
+            transparent
+        );
+
+    transform:
+        rotate(18deg);
+
+    animation:
+        introSweep 6s ease-in-out infinite;
+}
+
+.intro-content {
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(760px, calc(100% - 40px));
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+.intro-logo {
+    width:
+        min(250px, 58vw);
+
+    height: auto;
+
+    object-fit: contain;
+
+    animation:
+        introLogo 1.8s ease both;
+}
+
+.intro-name {
+    margin-top: 22px;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(1.8rem, 5vw, 3.8rem);
+
+    font-weight: 850;
+
+    letter-spacing: 0.14em;
+}
+
+.intro-name span {
+    color: #c9a45b;
+}
+
+.intro-line {
+    width: 90px;
+    height: 1px;
+
+    margin:
+        20px auto;
+
+    background:
+        rgba(201, 164, 91, 0.7);
+}
+
+.intro-tagline {
+    max-width: 680px;
+
+    color:
+        rgba(255, 255, 255, 0.76);
+
+    font-size:
+        clamp(0.66rem, 1.7vw, 0.9rem);
+
+    font-weight: 700;
+
+    letter-spacing: 0.17em;
+
+    line-height: 1.8;
+
+    text-align: center;
+}
+
+.site-intro.intro-hidden {
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.9s ease,
+        visibility 0.9s ease;
+}
+
+/* =========================================================
+   INTRO ANIMATION
+   ========================================================= */
+
+@keyframes introSweep {
+
+    0% {
+        transform:
+            translateX(-120%)
+            rotate(18deg);
+
+        opacity: 0;
+    }
+
+    35% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 0.55;
+    }
+
+    100% {
+        transform:
+            translateX(520%)
+            rotate(18deg);
+
+        opacity: 0;
+    }
+}
+
+@keyframes introLogo {
+
+    from {
+        opacity: 0;
+
+        transform:
+            scale(0.88);
+
+        filter:
+            blur(5px)
+            drop-shadow(
+                0 0 0
+                rgba(0, 170, 255, 0)
+            );
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+        filter:
+            blur(0)
+            drop-shadow(
+                0 0 24px
+                rgba(0, 170, 255, 0.18)
+            );
+    }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .container {
+        width:
+            min(760px, calc(100% - 32px));
+    }
+
+    .nav-links a {
+        padding:
+            8px 8px;
+
+        font-size:
+            0.68rem;
+    }
+
+    .newitt-media-intro-worlds {
+        grid-template-columns: 1fr;
+    }
+
+    .newitt-intro-world {
+        width:
+            min(620px, 100%);
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .investigation-grid,
+    .photography-focus-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        background-attachment: scroll;
+    }
+
+    .container {
+        width:
+            calc(100% - 28px);
+    }
+
+    .nav {
+        min-height: 68px;
+    }
+
+    .nav-brand img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .nav-brand span {
+        font-size: 0.72rem;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+
+        top: 68px;
+
+        left: 14px;
+        right: 14px;
+
+        display: none;
+
+        flex-direction: column;
+
+        gap: 4px;
+
+        padding: 9px;
+
+        border:
+            1px solid rgba(255, 255, 255, 0.1);
+
+        border-radius: 9px;
+
+        background:
+            rgba(2, 3, 5, 0.98);
+
+        box-shadow:
+            0 20px 60px
+            rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-links.open,
+    .nav-links.active,
+    .nav-links.menu-open {
+        display: flex;
+    }
+
+    .nav-links a {
+        width: 100%;
+
+        padding: 11px;
+
+        text-align: center;
+    }
+
+    .hero,
+    .skyline-hero,
+    .paranormal-hero,
+    .photography-hero,
+    .contact-hero {
+        min-height: auto;
+
+        padding:
+            72px 0;
+    }
+
+    .hero-logo-wrap {
+        width:
+            min(190px, 50vw);
+    }
+
+    .page-logo {
+        width:
+            min(205px, 52vw);
+
+        max-height: 180px;
+    }
+
+    h1 {
+        font-size:
+            clamp(2rem, 10vw, 3rem);
+    }
+
+    h2 {
+        font-size:
+            clamp(1.8rem, 8vw, 2.6rem);
+    }
+
+    .newitt-media-intro {
+        padding:
+            60px 0 52px;
+    }
+
+    .newitt-media-intro-heading {
+        margin-bottom: 30px;
+    }
+
+    .newitt-media-intro-main {
+        font-size: 0.88rem;
+    }
+
+    .newitt-media-intro-worlds {
+        gap: 13px;
+    }
+
+    .newitt-intro-world {
+        padding:
+            24px 17px 22px;
+    }
+
+    .newitt-intro-logo-wrap {
+        height: 100px;
+    }
+
+    .newitt-intro-logo {
+        width:
+            min(165px, 72%);
+
+        max-height: 90px;
+    }
+
+    .newitt-intro-text h3 {
+        font-size: 0.78rem;
+    }
+
+    .newitt-intro-text p {
+        font-size: 0.76rem;
+    }
+
+    .newitt-media-intro-closing {
+        margin-top: 28px;
+    }
+
+    .newitt-media-intro-closing span {
+        display: block;
+
+        font-size: 0.53rem;
+
+        line-height: 1.6;
+    }
+
+    .hero-actions,
+    .buttons {
+        gap: 7px;
+    }
+
+    .button,
+    .buttons a,
+    .hero-actions a {
+        min-height: 37px;
+
+        padding:
+            8px 11px;
+
+        font-size: 0.63rem;
+    }
+
+    .social-master-frame {
+        width: 100%;
+
+        max-width: none;
+
+        aspect-ratio:
+            1536 / 1024;
+    }
+
+    .home-cta {
+        padding:
+            55px 0;
+    }
+
+    .cta-panel {
+        padding:
+            30px 17px;
+    }
+
+    .back-to-top {
+        right: 13px;
+        bottom: 13px;
+    }
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .nav-brand span {
+        display: none;
+    }
+
+    .social-master-frame {
+        aspect-ratio:
+            1536 / 1024;
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+    }
+}
