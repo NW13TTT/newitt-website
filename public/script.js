@@ -1,7 +1,6 @@
 /* =========================================================
    NEWITT MEDIA
    MASTER JAVASCRIPT
-   PHASE 1 FOUNDATION
 ========================================================= */
 
 (function () {
@@ -31,8 +30,11 @@
 
     function initialiseMobileMenu() {
 
-        const menuToggle = document.querySelector(".menu-toggle");
-        const navLinks = document.querySelector(".nav-links");
+        const menuToggle =
+            document.querySelector(".menu-toggle");
+
+        const navLinks =
+            document.querySelector(".nav-links");
 
         if (!menuToggle || !navLinks) {
             return;
@@ -124,7 +126,9 @@
                     !navLinks.contains(event.target) &&
                     !menuToggle.contains(event.target)
                 ) {
+
                     closeMenu();
+
                 }
 
             }
@@ -168,71 +172,78 @@
                 'a[href^="#"]'
             );
 
-        links.forEach(function (link) {
+        links.forEach(
+            function (link) {
 
-            link.addEventListener(
-                "click",
-                function (event) {
+                link.addEventListener(
+                    "click",
+                    function (event) {
 
-                    const targetId =
-                        link.getAttribute("href");
+                        const targetId =
+                            link.getAttribute(
+                                "href"
+                            );
 
-                    if (
-                        !targetId ||
-                        targetId === "#"
-                    ) {
-                        return;
+                        if (
+                            !targetId ||
+                            targetId === "#"
+                        ) {
+                            return;
+                        }
+
+
+                        const target =
+                            document.querySelector(
+                                targetId
+                            );
+
+                        if (!target) {
+                            return;
+                        }
+
+
+                        event.preventDefault();
+
+
+                        const header =
+                            document.querySelector(
+                                ".site-header"
+                            );
+
+                        const headerHeight =
+                            header
+                                ? header.offsetHeight
+                                : 0;
+
+
+                        const targetTop =
+                            target.getBoundingClientRect().top +
+                            window.scrollY -
+                            headerHeight -
+                            12;
+
+
+                        window.scrollTo({
+
+                            top: Math.max(
+                                0,
+                                targetTop
+                            ),
+
+                            behavior:
+                                window.matchMedia(
+                                    "(prefers-reduced-motion: reduce)"
+                                ).matches
+                                    ? "auto"
+                                    : "smooth"
+
+                        });
+
                     }
+                );
 
-
-                    const target =
-                        document.querySelector(
-                            targetId
-                        );
-
-                    if (!target) {
-                        return;
-                    }
-
-
-                    event.preventDefault();
-
-
-                    const header =
-                        document.querySelector(
-                            ".site-header"
-                        );
-
-                    const headerHeight =
-                        header
-                            ? header.offsetHeight
-                            : 0;
-
-
-                    const targetTop =
-                        target.getBoundingClientRect().top +
-                        window.scrollY -
-                        headerHeight -
-                        12;
-
-
-                    window.scrollTo({
-                        top: Math.max(
-                            0,
-                            targetTop
-                        ),
-                        behavior:
-                            window.matchMedia(
-                                "(prefers-reduced-motion: reduce)"
-                            ).matches
-                                ? "auto"
-                                : "smooth"
-                    });
-
-                }
-            );
-
-        });
+            }
+        );
 
     }
 
@@ -291,13 +302,16 @@
                 event.preventDefault();
 
                 window.scrollTo({
+
                     top: 0,
+
                     behavior:
                         window.matchMedia(
                             "(prefers-reduced-motion: reduce)"
                         ).matches
                             ? "auto"
                             : "smooth"
+
                 });
 
             }
@@ -358,6 +372,7 @@
 
 
             lightbox.innerHTML = `
+
                 <button
                     type="button"
                     class="lightbox-close"
@@ -372,6 +387,7 @@
                     src=""
                     alt=""
                 >
+
             `;
 
 
@@ -520,7 +536,9 @@
                 if (
                     event.target === lightbox
                 ) {
+
                     closeLightbox();
+
                 }
 
             }
@@ -588,9 +606,6 @@
                         "page-logo"
                     ) ||
                     image.classList.contains(
-                        "nav-brand"
-                    ) ||
-                    image.classList.contains(
                         "footer-logo"
                     );
 
@@ -617,6 +632,8 @@
 
     /* =====================================================
        CINEMATIC INTRO
+       
+       FIRST VISIT ONLY
     ====================================================== */
 
     function initialiseCinematicIntro() {
@@ -638,10 +655,93 @@
 
 
         /*
-         * The intro intentionally runs on every page load.
-         * No localStorage/cookie is used to suppress it.
+         * This flag remembers that the visitor has
+         * already experienced the NEWITT Media intro.
+         *
+         * The intro therefore:
+         *
+         * FIRST VISIT:
+         * Plays normally.
+         *
+         * REFRESH:
+         * Does not play again.
+         *
+         * MOVING BETWEEN PAGES:
+         * Does not play again.
+         *
+         * CLOSING AND REOPENING BROWSER:
+         * Does not play again.
+         *
+         * CLEARING WEBSITE DATA:
+         * Allows it to play again.
          */
 
+        const introKey =
+            "newittMediaCinematicIntroSeen";
+
+
+        let alreadySeen = false;
+
+
+        try {
+
+            alreadySeen =
+                localStorage.getItem(
+                    introKey
+                ) === "true";
+
+        } catch (error) {
+
+            alreadySeen = false;
+
+        }
+
+
+        /*
+         * Visitor has already seen the intro.
+         * Remove it immediately.
+         */
+
+        if (alreadySeen) {
+
+            intro.remove();
+
+            return;
+
+        }
+
+
+        /*
+         * Mark the intro as seen immediately.
+         *
+         * This prevents another page load from
+         * triggering the cinematic sequence again.
+         */
+
+        try {
+
+            localStorage.setItem(
+                introKey,
+                "true"
+            );
+
+        } catch (error) {
+
+            /*
+             * Some browsers/private browsing modes
+             * may restrict storage.
+             *
+             * The intro will still complete normally.
+             */
+
+        }
+
+
+        /*
+         * Five seconds gives the cinematic sequence
+         * enough time to breathe without making the
+         * visitor wait unnecessarily.
+         */
 
         const duration =
             reducedMotion
@@ -676,7 +776,7 @@
 
 
     /* =====================================================
-       SOCIAL HUB ATMOSPHERE
+       SOCIAL MEDIA HUB ATMOSPHERE
     ====================================================== */
 
     function initialiseSocialEffects() {
@@ -706,6 +806,7 @@
             socialHub.querySelector(
                 ".social-lightning"
             );
+
 
         const paranormal =
             socialHub.querySelector(
@@ -742,6 +843,10 @@
                 timestamp / 1000;
 
 
+            /*
+             * Skyline electrical atmosphere
+             */
+
             if (skyline) {
 
                 const pulse =
@@ -757,6 +862,10 @@
 
             }
 
+
+            /*
+             * Paranormal atmosphere
+             */
 
             if (paranormal) {
 
@@ -791,7 +900,8 @@
 
     /* =====================================================
        PUBLIC TOGGLE FUNCTION
-       Kept for compatibility with any existing HTML.
+       
+       Kept for compatibility with existing HTML.
     ====================================================== */
 
     window.toggleMenu =
@@ -801,6 +911,7 @@
                 document.querySelector(
                     ".menu-toggle"
                 );
+
 
             if (!menuToggle) {
                 return;
