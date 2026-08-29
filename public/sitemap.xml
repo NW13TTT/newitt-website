@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+    <!-- =====================================================
+         NEWITT MEDIA
+         MASTER SITEMAP
+         UPDATED: 29 AUGUST 2026
+    ====================================================== -->
+
     <url>
         <loc>https://www.newittmedia.co.uk/</loc>
         <lastmod>2026-08-29</lastmod>
@@ -25,7 +31,7 @@
     <url>
         <loc>https://www.newittmedia.co.uk/photography.html</loc>
         <lastmod>2026-08-29</lastmod>
-        <changefreq>weekly</changefreq>
+        <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
