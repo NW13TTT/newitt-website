@@ -2,7 +2,7 @@
    NEWITT MEDIA
    MASTER JAVASCRIPT
    STREAMLINED FINAL BUILD
-   29 AUGUST 2026
+   30 AUGUST 2026
 
    FUNCTIONS
    - First-visit cinematic intro
@@ -12,6 +12,16 @@
    - Smooth anchor scrolling
    - Lightbox
    - Safe external links
+   - Mobile micro-flash protection
+========================================================= */
+
+
+/* =========================================================
+   EARLY MOBILE PAGE TRANSITION
+   Runs immediately, before DOMContentLoaded.
+
+   This is important because the browser can otherwise
+   paint the new document before our normal initialisation.
 ========================================================= */
 
 (function () {
@@ -19,51 +29,300 @@
     "use strict";
 
 
-    /* =====================================================
-       DOM READY
-    ===================================================== */
+    const TRANSITION_KEY =
+        "newittPageTransition";
 
-    document.addEventListener("DOMContentLoaded", function () {
 
-        initFirstVisitIntro();
-        initMobileNavigation();
-        initPageTransition();
-        initBackToTop();
-        initSmoothScrolling();
-        initLightbox();
-        initExternalLinks();
+    const isMobile =
+        window.matchMedia &&
+        window.matchMedia(
+            "(max-width: 700px)"
+        ).matches;
 
-    });
+
+    /*
+     * If we arrived from another NEWITT page,
+     * immediately create the black cover.
+     */
+
+    if (isMobile) {
+
+        let incoming = false;
+
+        try {
+
+            incoming =
+                sessionStorage.getItem(
+                    TRANSITION_KEY
+                ) === "1";
+
+            sessionStorage.removeItem(
+                TRANSITION_KEY
+            );
+
+        } catch (error) {
+
+            incoming = false;
+
+        }
+
+
+        if (incoming) {
+
+            const style =
+                document.createElement(
+                    "style"
+                );
+
+            style.id =
+                "newitt-early-transition-style";
+
+            style.textContent = `
+                html {
+                    background: #020305 !important;
+                    background-color: #020305 !important;
+                }
+
+                body {
+                    background-color: #020305 !important;
+                }
+
+                #newitt-early-transition {
+                    position: fixed;
+                    inset: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 2147483647;
+                    background: #020305;
+                    opacity: 1;
+                    pointer-events: all;
+                    transform: translateZ(0);
+                    -webkit-transform: translateZ(0);
+                    will-change: opacity;
+                }
+            `;
+
+            document.head.appendChild(
+                style
+            );
+
+
+            const createOverlay =
+                function () {
+
+                    if (
+                        document.getElementById(
+                            "newitt-early-transition"
+                        )
+                    ) {
+                        return;
+                    }
+
+
+                    const overlay =
+                        document.createElement(
+                            "div"
+                        );
+
+                    overlay.id =
+                        "newitt-early-transition";
+
+                    overlay.setAttribute(
+                        "aria-hidden",
+                        "true"
+                    );
+
+                    document.documentElement
+                        .appendChild(
+                            overlay
+                        );
+
+                };
+
+
+            /*
+             * Create as early as possible.
+             */
+
+            if (
+                document.documentElement
+            ) {
+
+                createOverlay();
+
+            }
+
+
+            /*
+             * Reveal the new page only after
+             * the browser has painted it.
+             */
+
+            const reveal =
+                function () {
+
+                    const overlay =
+                        document.getElementById(
+                            "newitt-early-transition"
+                        );
+
+                    if (!overlay) {
+                        return;
+                    }
+
+
+                    overlay.style.transition =
+                        "opacity 220ms ease";
+
+                    overlay.style.opacity =
+                        "0";
+
+
+                    window.setTimeout(
+                        function () {
+
+                            if (
+                                overlay.parentNode
+                            ) {
+
+                                overlay.parentNode
+                                    .removeChild(
+                                        overlay
+                                    );
+
+                            }
+
+
+                            const earlyStyle =
+                                document.getElementById(
+                                    "newitt-early-transition-style"
+                                );
+
+                            if (
+                                earlyStyle &&
+                                earlyStyle.parentNode
+                            ) {
+
+                                earlyStyle.parentNode
+                                    .removeChild(
+                                        earlyStyle
+                                    );
+
+                            }
+
+                        },
+                        260
+                    );
+
+                };
+
+
+            if (
+                document.readyState ===
+                "loading"
+            ) {
+
+                document.addEventListener(
+                    "DOMContentLoaded",
+                    function () {
+
+                        requestAnimationFrame(
+                            function () {
+
+                                requestAnimationFrame(
+                                    reveal
+                                );
+
+                            }
+                        );
+
+                    },
+                    {
+                        once: true
+                    }
+                );
+
+            } else {
+
+                requestAnimationFrame(
+                    function () {
+
+                        requestAnimationFrame(
+                            reveal
+                        );
+
+                    }
+                );
+
+            }
+
+        }
+
+    }
+
+})();
+
+
+/* =========================================================
+   MAIN NEWITT MEDIA SCRIPT
+========================================================= */
+
+(function () {
+
+    "use strict";
+
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            initFirstVisitIntro();
+
+            initMobileNavigation();
+
+            initPageTransition();
+
+            initBackToTop();
+
+            initSmoothScrolling();
+
+            initLightbox();
+
+            initExternalLinks();
+
+        }
+    );
 
 
     /* =====================================================
        FIRST-VISIT CINEMATIC INTRO
-
-       - First visit only
-       - 7.5 seconds
-       - No accidental mobile tap skip
-       - Escape can skip
-       - Uses localStorage
     ===================================================== */
 
     function initFirstVisitIntro() {
 
         const intro =
-            document.getElementById("site-intro");
+            document.getElementById(
+                "site-intro"
+            );
 
         if (!intro) {
             return;
         }
 
+
         const STORAGE_KEY =
             "newittMediaIntroSeenV2";
 
+
         let alreadySeen = false;
+
 
         try {
 
             alreadySeen =
-                localStorage.getItem(STORAGE_KEY) === "true";
+                localStorage.getItem(
+                    STORAGE_KEY
+                ) === "true";
 
         } catch (error) {
 
@@ -72,11 +331,11 @@
         }
 
 
-        /* Returning visitor */
-
         if (alreadySeen) {
 
-            intro.classList.add("intro-hidden");
+            intro.classList.add(
+                "intro-hidden"
+            );
 
             intro.setAttribute(
                 "aria-hidden",
@@ -88,11 +347,10 @@
         }
 
 
-        /* First visit */
-
         document.body.classList.add(
             "intro-active"
         );
+
 
         document.documentElement.style.overflow =
             "hidden";
@@ -108,14 +366,15 @@
                 "true"
             );
 
-        } catch (error) {
-
-            /* Storage unavailable */
-
-        }
+        } catch (error) {}
 
 
-        const INTRO_DURATION = 7500;
+        const INTRO_DURATION =
+            7500;
+
+
+        let closed = false;
+
 
         const closeTimer =
             window.setTimeout(
@@ -126,8 +385,13 @@
 
         function handleEscape(event) {
 
-            if (event.key === "Escape") {
+            if (
+                event.key ===
+                "Escape"
+            ) {
+
                 closeIntro();
+
             }
 
         }
@@ -139,15 +403,20 @@
         );
 
 
+        intro.addEventListener(
+            "click",
+            closeIntro
+        );
+
+
         function closeIntro() {
 
-            if (
-                intro.classList.contains(
-                    "intro-hidden"
-                )
-            ) {
+            if (closed) {
                 return;
             }
+
+
+            closed = true;
 
 
             window.clearTimeout(
@@ -159,14 +428,17 @@
                 "intro-hidden"
             );
 
+
             intro.setAttribute(
                 "aria-hidden",
                 "true"
             );
 
+
             document.body.classList.remove(
                 "intro-active"
             );
+
 
             document.removeEventListener(
                 "keydown",
@@ -177,17 +449,19 @@
             window.setTimeout(
                 function () {
 
-                    document.documentElement.style.overflow =
-                        "";
+                    document.documentElement
+                        .style
+                        .overflow = "";
 
-                    document.body.style.overflow =
-                        "";
+                    document.body
+                        .style
+                        .overflow = "";
 
                     intro.style.display =
                         "none";
 
                 },
-                1150
+                950
             );
 
         }
@@ -211,8 +485,14 @@
                 ".nav-links"
             );
 
-        if (!toggle || !menu) {
+
+        if (
+            !toggle ||
+            !menu
+        ) {
+
             return;
+
         }
 
 
@@ -224,10 +504,12 @@
                 "menu-open"
             );
 
+
             toggle.setAttribute(
                 "aria-expanded",
                 "false"
             );
+
 
             toggle.setAttribute(
                 "aria-label",
@@ -242,24 +524,34 @@
             function () {
 
                 const open =
-                    menu.classList.toggle(
+                    !menu.classList.contains(
                         "open"
                     );
+
+
+                menu.classList.toggle(
+                    "open",
+                    open
+                );
+
 
                 menu.classList.toggle(
                     "active",
                     open
                 );
 
+
                 menu.classList.toggle(
                     "menu-open",
                     open
                 );
 
+
                 toggle.setAttribute(
                     "aria-expanded",
                     String(open)
                 );
+
 
                 toggle.setAttribute(
                     "aria-label",
@@ -272,16 +564,17 @@
         );
 
 
-        menu.querySelectorAll("a").forEach(
-            function (link) {
+        menu.querySelectorAll("a")
+            .forEach(
+                function (link) {
 
-                link.addEventListener(
-                    "click",
-                    closeMenu
-                );
+                    link.addEventListener(
+                        "click",
+                        closeMenu
+                    );
 
-            }
-        );
+                }
+            );
 
 
         document.addEventListener(
@@ -289,10 +582,16 @@
             function (event) {
 
                 if (
-                    !menu.contains(event.target) &&
-                    !toggle.contains(event.target)
+                    !menu.contains(
+                        event.target
+                    ) &&
+                    !toggle.contains(
+                        event.target
+                    )
                 ) {
+
                     closeMenu();
+
                 }
 
             }
@@ -304,9 +603,12 @@
             function () {
 
                 if (
-                    window.innerWidth > 700
+                    window.innerWidth >
+                    700
                 ) {
+
                     closeMenu();
+
                 }
 
             }
@@ -317,20 +619,21 @@
 
     /* =====================================================
        MOBILE PAGE TRANSITION
-       FINAL MICRO-FLASH FIX
+       OUTGOING PAGE
 
-       Only intercepts normal internal page links
-       on mobile devices.
+       The early transition handles the incoming page.
+       This section handles the outgoing page.
     ===================================================== */
 
     function initPageTransition() {
 
-        const transition =
-            document.getElementById(
-                "page-transition"
-            );
+        const mobile =
+            window.matchMedia(
+                "(max-width: 700px)"
+            ).matches;
 
-        if (!transition) {
+
+        if (!mobile) {
             return;
         }
 
@@ -341,78 +644,206 @@
             );
 
 
-        links.forEach(function (link) {
+        links.forEach(
+            function (link) {
 
-            link.addEventListener(
-                "click",
-                function (event) {
+                link.addEventListener(
+                    "click",
+                    function (event) {
 
-                    if (
-                        event.defaultPrevented ||
-                        event.ctrlKey ||
-                        event.metaKey ||
-                        event.shiftKey ||
-                        event.altKey
-                    ) {
-                        return;
-                    }
+                        if (
+                            event.defaultPrevented ||
+                            event.ctrlKey ||
+                            event.metaKey ||
+                            event.shiftKey ||
+                            event.altKey
+                        ) {
 
-
-                    if (
-                        window.innerWidth > 700
-                    ) {
-                        return;
-                    }
-
-
-                    const href =
-                        link.getAttribute("href");
-
-
-                    if (!href) {
-                        return;
-                    }
-
-
-                    if (
-                        href.startsWith("#") ||
-                        href.startsWith("mailto:") ||
-                        href.startsWith("tel:") ||
-                        href.startsWith("http://") ||
-                        href.startsWith("https://")
-                    ) {
-                        return;
-                    }
-
-
-                    event.preventDefault();
-
-
-                    transition.classList.add(
-                        "active"
-                    );
-
-
-                    requestAnimationFrame(
-                        function () {
-
-                            requestAnimationFrame(
-                                function () {
-
-                                    window.location.assign(
-                                        href
-                                    );
-
-                                }
-                            );
+                            return;
 
                         }
-                    );
 
-                }
-            );
 
-        });
+                        const href =
+                            link.getAttribute(
+                                "href"
+                            );
+
+
+                        if (!href) {
+                            return;
+                        }
+
+
+                        if (
+                            href.startsWith("#") ||
+                            href.startsWith("mailto:") ||
+                            href.startsWith("tel:") ||
+                            href.startsWith("http://") ||
+                            href.startsWith("https://") ||
+                            href.startsWith("javascript:")
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        const current =
+                            window.location.pathname
+                                .split("/")
+                                .pop() ||
+                            "index.html";
+
+
+                        const target =
+                            href
+                                .split("#")[0]
+                                .split("?")[0]
+                                .split("/")
+                                .pop() ||
+                            "index.html";
+
+
+                        if (
+                            current ===
+                            target
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        if (
+                            document.body.dataset
+                                .newittNavigating ===
+                            "true"
+                        ) {
+
+                            event.preventDefault();
+
+                            return;
+
+                        }
+
+
+                        event.preventDefault();
+
+
+                        document.body.dataset
+                            .newittNavigating =
+                            "true";
+
+
+                        try {
+
+                            sessionStorage.setItem(
+                                "newittPageTransition",
+                                "1"
+                            );
+
+                        } catch (error) {}
+
+
+                        const overlay =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        overlay.id =
+                            "newitt-transition-overlay";
+
+
+                        overlay.setAttribute(
+                            "aria-hidden",
+                            "true"
+                        );
+
+
+                        overlay.style.position =
+                            "fixed";
+
+                        overlay.style.inset =
+                            "0";
+
+                        overlay.style.width =
+                            "100%";
+
+                        overlay.style.height =
+                            "100%";
+
+                        overlay.style.zIndex =
+                            "2147483647";
+
+                        overlay.style.background =
+                            "#020305";
+
+                        overlay.style.opacity =
+                            "0";
+
+                        overlay.style.pointerEvents =
+                            "all";
+
+                        overlay.style.transform =
+                            "translateZ(0)";
+
+                        overlay.style.webkitTransform =
+                            "translateZ(0)";
+
+                        overlay.style.willChange =
+                            "opacity";
+
+                        overlay.style.transition =
+                            "opacity 180ms ease";
+
+
+                        document.body.appendChild(
+                            overlay
+                        );
+
+
+                        document.documentElement
+                            .style
+                            .overflow =
+                            "hidden";
+
+
+                        document.body
+                            .style
+                            .overflow =
+                            "hidden";
+
+
+                        void overlay.offsetWidth;
+
+
+                        requestAnimationFrame(
+                            function () {
+
+                                overlay.style.opacity =
+                                    "1";
+
+
+                                window.setTimeout(
+                                    function () {
+
+                                        window.location.href =
+                                            href;
+
+                                    },
+                                    180
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+            }
+        );
 
     }
 
@@ -428,6 +859,7 @@
                 "back-to-top"
             );
 
+
         if (!button) {
             return;
         }
@@ -436,17 +868,21 @@
         function update() {
 
             const visible =
-                window.scrollY > 450;
+                window.scrollY >
+                450;
+
 
             button.classList.toggle(
                 "visible",
                 visible
             );
 
+
             button.classList.toggle(
                 "show",
                 visible
             );
+
 
             button.classList.toggle(
                 "is-visible",
@@ -471,7 +907,7 @@
 
 
     /* =====================================================
-       SMOOTH INTERNAL SCROLLING
+       SMOOTH ANCHOR SCROLLING
     ===================================================== */
 
     function initSmoothScrolling() {
@@ -480,71 +916,72 @@
             .querySelectorAll(
                 'a[href^="#"]'
             )
-            .forEach(function (link) {
+            .forEach(
+                function (anchor) {
 
-                link.addEventListener(
-                    "click",
-                    function (event) {
+                    anchor.addEventListener(
+                        "click",
+                        function (event) {
 
-                        const id =
-                            link.getAttribute(
-                                "href"
-                            );
+                            const targetId =
+                                anchor.getAttribute(
+                                    "href"
+                                );
 
-                        if (
-                            !id ||
-                            id === "#"
-                        ) {
-                            return;
+
+                            if (
+                                !targetId ||
+                                targetId === "#"
+                            ) {
+
+                                return;
+
+                            }
+
+
+                            const target =
+                                document.querySelector(
+                                    targetId
+                                );
+
+
+                            if (!target) {
+                                return;
+                            }
+
+
+                            event.preventDefault();
+
+
+                            target.scrollIntoView({
+                                behavior:
+                                    "smooth",
+                                block:
+                                    "start"
+                            });
+
+
+                            try {
+
+                                history.replaceState(
+                                    null,
+                                    "",
+                                    targetId
+                                );
+
+                            } catch (error) {}
+
                         }
+                    );
 
-
-                        const target =
-                            document.querySelector(
-                                id
-                            );
-
-                        if (!target) {
-                            return;
-                        }
-
-
-                        event.preventDefault();
-
-
-                        target.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start"
-                        });
-
-
-                        try {
-
-                            history.replaceState(
-                                null,
-                                "",
-                                id
-                            );
-
-                        } catch (error) {
-
-                            /* Ignore */
-
-                        }
-
-                    }
-                );
-
-            });
+                }
+            );
 
     }
 
 
     /* =====================================================
        LIGHTBOX
-       Supports:
-       - .gallery-item
-       - [data-lightbox]
     ===================================================== */
 
     function initLightbox() {
@@ -553,6 +990,7 @@
             document.getElementById(
                 "lightbox"
             );
+
 
         if (!lightbox) {
             return;
@@ -563,7 +1001,9 @@
             document.getElementById(
                 "lightbox-image"
             ) ||
-            lightbox.querySelector("img");
+            lightbox.querySelector(
+                "img"
+            );
 
 
         const close =
@@ -587,20 +1027,15 @@
                 "active"
             );
 
+
             lightbox.setAttribute(
                 "aria-hidden",
                 "true"
             );
 
 
-            if (
-                !document.body.classList.contains(
-                    "intro-active"
-                )
-            ) {
-                document.body.style.overflow =
-                    "";
-            }
+            document.body.style.overflow =
+                "";
 
 
             if (image) {
@@ -629,77 +1064,87 @@
         }
 
 
-        items.forEach(function (item) {
+        items.forEach(
+            function (item) {
 
-            item.addEventListener(
-                "click",
-                function (event) {
+                item.addEventListener(
+                    "click",
+                    function (event) {
 
-                    event.preventDefault();
-
-
-                    let source =
-                        item.getAttribute(
-                            "data-lightbox"
-                        );
+                        event.preventDefault();
 
 
-                    if (!source) {
+                        let source =
+                            item.getAttribute(
+                                "data-lightbox"
+                            );
+
+
+                        if (!source) {
+
+                            const thumbnail =
+                                item.querySelector(
+                                    "img"
+                                );
+
+
+                            if (thumbnail) {
+
+                                source =
+                                    thumbnail.getAttribute(
+                                        "src"
+                                    );
+
+                            }
+
+                        }
+
+
+                        if (
+                            !source ||
+                            !image
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        image.src =
+                            source;
+
 
                         const thumbnail =
                             item.querySelector(
                                 "img"
                             );
 
-                        if (thumbnail) {
-                            source =
-                                thumbnail.getAttribute(
-                                    "src"
-                                );
-                        }
 
-                    }
+                        image.alt =
+                            thumbnail
+                                ? thumbnail.alt || ""
+                                : "";
 
 
-                    if (
-                        !source ||
-                        !image
-                    ) {
-                        return;
-                    }
-
-
-                    image.src =
-                        source;
-
-
-                    const thumbnail =
-                        item.querySelector(
-                            "img"
+                        lightbox.classList.add(
+                            "active"
                         );
 
-                    image.alt =
-                        thumbnail
-                            ? thumbnail.alt || ""
-                            : "";
+
+                        lightbox.setAttribute(
+                            "aria-hidden",
+                            "false"
+                        );
 
 
-                    lightbox.classList.add(
-                        "active"
-                    );
+                        document.body.style.overflow =
+                            "hidden";
 
-                    lightbox.setAttribute(
-                        "aria-hidden",
-                        "false"
-                    );
+                    }
+                );
 
-                    document.body.style.overflow =
-                        "hidden";
-
-                }
-            );
-
-        });
+            }
+        );
 
 
         if (close) {
@@ -723,9 +1168,12 @@
             function (event) {
 
                 if (
-                    event.target === lightbox
+                    event.target ===
+                    lightbox
                 ) {
+
                     closeLightbox();
+
                 }
 
             }
@@ -742,7 +1190,9 @@
                         "active"
                     )
                 ) {
+
                     closeLightbox();
+
                 }
 
             }
@@ -753,8 +1203,6 @@
 
     /* =====================================================
        EXTERNAL LINKS
-       External websites automatically open safely
-       in a new tab.
     ===================================================== */
 
     function initExternalLinks() {
@@ -763,47 +1211,46 @@
             .querySelectorAll(
                 'a[href^="http://"], a[href^="https://"]'
             )
-            .forEach(function (link) {
+            .forEach(
+                function (link) {
 
-                const href =
-                    link.getAttribute(
-                        "href"
-                    );
-
-                if (!href) {
-                    return;
-                }
-
-
-                try {
-
-                    const url =
-                        new URL(
-                            href,
-                            window.location.href
+                    const href =
+                        link.getAttribute(
+                            "href"
                         );
 
 
-                    if (
-                        url.hostname !==
-                        window.location.hostname
-                    ) {
-
-                        link.target =
-                            "_blank";
-
-                        link.rel =
-                            "noopener noreferrer";
-
+                    if (!href) {
+                        return;
                     }
 
-                } catch (error) {
 
-                    /* Ignore malformed URLs */
+                    try {
+
+                        const url =
+                            new URL(
+                                href,
+                                window.location.href
+                            );
+
+
+                        if (
+                            url.hostname !==
+                            window.location.hostname
+                        ) {
+
+                            link.target =
+                                "_blank";
+
+                            link.rel =
+                                "noopener noreferrer";
+
+                        }
+
+                    } catch (error) {}
 
                 }
-
-            });
+            );
 
     }
 
