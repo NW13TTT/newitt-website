@@ -1,0 +1,8 @@
+<Files>
+Security contact information for NEWITT Media
+
+For security issues, please email: security@newittmedia.co.uk
+
+Expires: 2027-08-29T00:00:00Z
+Preferred-Languages: en, cy
+</Files>
