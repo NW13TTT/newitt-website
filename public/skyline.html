@@ -157,10 +157,14 @@
 
 
     <!-- =====================================================
-         RESPONSIVE TIKTOK EMBED FIX
+         SKYLINE PAGE GALLERY / TIKTOK FIXES
     ====================================================== -->
 
     <style>
+
+        /* =================================================
+           TIKTOK PREVIEW
+        ================================================= */
 
         .tiktok-preview {
             width: min(100%, 430px);
@@ -168,15 +172,20 @@
             padding: 0;
             overflow: hidden;
 
-            border: 1px solid rgba(78, 207, 255, 0.28);
+            border:
+                1px solid
+                rgba(78, 207, 255, 0.28);
+
             border-radius: 14px;
 
             background:
                 rgba(3, 7, 13, 0.72);
 
             box-shadow:
-                inset 0 0 38px rgba(0, 135, 255, 0.05),
-                0 18px 45px rgba(0, 0, 0, 0.30);
+                inset 0 0 38px
+                rgba(0, 135, 255, 0.05),
+                0 18px 45px
+                rgba(0, 0, 0, 0.30);
 
             isolation: isolate;
         }
@@ -200,8 +209,239 @@
         .tiktok-preview iframe {
             width: 100% !important;
             max-width: 100% !important;
+
             border: 0 !important;
         }
+
+
+        /* =================================================
+           GLOUCESTER PRISON GALLERY
+        ================================================= */
+
+        .skyline-gallery {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .skyline-gallery-heading {
+            width: 100%;
+            max-width: 760px;
+
+            margin:
+                0 auto 30px;
+
+            text-align: center;
+        }
+
+        .skyline-gallery-heading p {
+            margin-bottom: 0;
+        }
+
+        .skyline-gallery-grid {
+            width: 100%;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+
+            gap: 16px;
+
+            margin: 0 auto;
+        }
+
+        .skyline-gallery-item {
+            position: relative;
+
+            display: block;
+
+            width: 100%;
+
+            aspect-ratio:
+                16 / 10;
+
+            padding: 0;
+
+            overflow: hidden;
+
+            border:
+                1px solid
+                rgba(78, 207, 255, 0.18);
+
+            border-radius: 10px;
+
+            background:
+                rgba(2, 3, 5, 0.75);
+
+            cursor: pointer;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0, 0, 0, 0.24);
+
+            isolation: isolate;
+        }
+
+        .skyline-gallery-item::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            z-index: 2;
+
+            pointer-events: none;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    transparent 60%,
+                    rgba(0, 0, 0, 0.28)
+                );
+
+            opacity: 0.75;
+        }
+
+        .skyline-gallery-item img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition:
+                transform 450ms ease,
+                filter 450ms ease;
+        }
+
+        .skyline-gallery-item:hover img {
+            transform: scale(1.035);
+
+            filter:
+                brightness(1.06);
+        }
+
+        .skyline-gallery-caption {
+            position: absolute;
+
+            left: 15px;
+            right: 15px;
+            bottom: 13px;
+
+            z-index: 3;
+
+            color: #ffffff;
+
+            font-size: 0.68rem;
+
+            font-weight: 700;
+
+            letter-spacing: 0.08em;
+
+            text-transform: uppercase;
+
+            text-align: left;
+
+            pointer-events: none;
+        }
+
+
+        /* =================================================
+           FULLSCREEN IMAGE VIEWER
+        ================================================= */
+
+        .skyline-lightbox {
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 6000;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 24px;
+
+            background:
+                rgba(0, 0, 0, 0.94);
+
+            backdrop-filter:
+                blur(8px);
+
+            -webkit-backdrop-filter:
+                blur(8px);
+        }
+
+        .skyline-lightbox.active {
+            display: flex;
+        }
+
+        .skyline-lightbox img {
+            display: block;
+
+            max-width: 94vw;
+            max-height: 88vh;
+
+            width: auto;
+            height: auto;
+
+            object-fit: contain;
+
+            border-radius: 6px;
+
+            box-shadow:
+                0 25px 90px
+                rgba(0, 0, 0, 0.65);
+        }
+
+        .skyline-lightbox-close {
+            position: absolute;
+
+            top: 18px;
+            right: 20px;
+
+            z-index: 2;
+
+            width: 46px;
+            height: 46px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.22);
+
+            border-radius: 50%;
+
+            background:
+                rgba(2, 3, 5, 0.78);
+
+            color: #ffffff;
+
+            font-size: 1.5rem;
+
+            line-height: 1;
+
+            cursor: pointer;
+        }
+
+        .skyline-lightbox-close:hover {
+            background:
+                rgba(255, 255, 255, 0.10);
+        }
+
+
+        /* =================================================
+           MOBILE
+        ================================================= */
 
         @media (max-width: 600px) {
 
@@ -217,12 +457,28 @@
                 min-width: 0 !important;
             }
 
+
+            .skyline-gallery-grid {
+                grid-template-columns: 1fr;
+
+                gap: 14px;
+            }
+
+            .skyline-gallery-item {
+                aspect-ratio:
+                    16 / 10;
+
+                border-radius: 9px;
+            }
+
         }
+
 
         @media (max-width: 380px) {
 
             .tiktok-preview {
-                width: calc(100vw - 32px);
+                width:
+                    calc(100vw - 32px);
             }
 
         }
@@ -411,6 +667,147 @@
 
 
 <!-- =====================================================
+     GLOUCESTER PRISON GALLERY
+===================================================== -->
+
+<section class="about">
+
+    <div class="container">
+
+        <div class="skyline-gallery">
+
+            <div class="skyline-gallery-heading">
+
+                <div class="eyebrow">
+                    Featured Aerial Work
+                </div>
+
+                <h2>
+                    Gloucester <span>Prison.</span>
+                </h2>
+
+                <p>
+                    Aerial views captured by NEWITT Skyline Media,
+                    showing Gloucester Prison from above.
+                </p>
+
+            </div>
+
+
+            <div class="skyline-gallery-grid">
+
+
+                <!-- =========================================
+                     GLOUCESTER PRISON 01
+                ========================================== -->
+
+                <button
+                    type="button"
+                    class="skyline-gallery-item"
+                    data-full-image="media/skyline/Gloucester-prison-aerial-01.JPG"
+                    aria-label="View Gloucester Prison aerial photograph 1"
+                >
+
+                    <img
+                        src="media/skyline/Gloucester-prison-aerial-01.webp"
+                        alt="Gloucester Prison aerial view 1"
+                        loading="lazy"
+                    >
+
+                    <span class="skyline-gallery-caption">
+                        Gloucester Prison • Aerial View 01
+                    </span>
+
+                </button>
+
+
+                <!-- =========================================
+                     GLOUCESTER PRISON 02
+                ========================================== -->
+
+                <button
+                    type="button"
+                    class="skyline-gallery-item"
+                    data-full-image="media/skyline/Gloucester-prison-aerial-02.JPG"
+                    aria-label="View Gloucester Prison aerial photograph 2"
+                >
+
+                    <img
+                        src="media/skyline/Gloucester-prison-aerial-02.webp"
+                        alt="Gloucester Prison aerial view 2"
+                        loading="lazy"
+                    >
+
+                    <span class="skyline-gallery-caption">
+                        Gloucester Prison • Aerial View 02
+                    </span>
+
+                </button>
+
+
+                <!-- =========================================
+                     GLOUCESTER PRISON 03
+                ========================================== -->
+
+                <button
+                    type="button"
+                    class="skyline-gallery-item"
+                    data-full-image="media/skyline/Gloucester-prison-aerial-03.JPG"
+                    aria-label="View Gloucester Prison aerial photograph 3"
+                >
+
+                    <img
+                        src="media/skyline/Gloucester-prison-aerial-03.webp"
+                        alt="Gloucester Prison aerial view 3"
+                        loading="lazy"
+                    >
+
+                    <span class="skyline-gallery-caption">
+                        Gloucester Prison • Aerial View 03
+                    </span>
+
+                </button>
+
+
+                <!-- =========================================
+                     GLOUCESTER PRISON 04
+                ========================================== -->
+
+                <button
+                    type="button"
+                    class="skyline-gallery-item"
+                    data-full-image="media/skyline/Gloucester-prison-aerial-04.JPG"
+                    aria-label="View Gloucester Prison aerial photograph 4"
+                >
+
+                    <img
+                        src="media/skyline/Gloucester-prison-aerial-04.webp"
+                        alt="Gloucester Prison aerial view 4"
+                        loading="lazy"
+                    >
+
+                    <span class="skyline-gallery-caption">
+                        Gloucester Prison • Aerial View 04
+                    </span>
+
+                </button>
+
+
+            </div>
+
+
+            <p class="gallery-note">
+                Tap or click an image to view the full-resolution photograph.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
      TIKTOK PREVIEW
 ===================================================== -->
 
@@ -436,10 +833,6 @@
 
         </div>
 
-
-        <!-- =================================================
-             RESPONSIVE TIKTOK CREATOR PROFILE
-        ================================================== -->
 
         <div class="tiktok-preview">
 
@@ -745,6 +1138,35 @@
 
 
 <!-- =====================================================
+     GLOUCESTER PRISON LIGHTBOX
+===================================================== -->
+
+<div
+    class="skyline-lightbox"
+    id="skyline-lightbox"
+    aria-hidden="true"
+>
+
+    <button
+        type="button"
+        class="skyline-lightbox-close"
+        id="skyline-lightbox-close"
+        aria-label="Close image"
+    >
+        ×
+    </button>
+
+
+    <img
+        id="skyline-lightbox-image"
+        src=""
+        alt=""
+    >
+
+</div>
+
+
+<!-- =====================================================
      TIKTOK EMBED ENGINE
 ===================================================== -->
 
@@ -762,6 +1184,149 @@
     src="script.js"
     defer
 ></script>
+
+
+<!-- =====================================================
+     SKYLINE GALLERY JAVASCRIPT
+===================================================== -->
+
+<script>
+
+(function () {
+
+    const galleryItems =
+        document.querySelectorAll(
+            ".skyline-gallery-item"
+        );
+
+    const lightbox =
+        document.getElementById(
+            "skyline-lightbox"
+        );
+
+    const lightboxImage =
+        document.getElementById(
+            "skyline-lightbox-image"
+        );
+
+    const closeButton =
+        document.getElementById(
+            "skyline-lightbox-close"
+        );
+
+
+    if (
+        !galleryItems.length ||
+        !lightbox ||
+        !lightboxImage ||
+        !closeButton
+    ) {
+        return;
+    }
+
+
+    function openLightbox(item) {
+
+        const image =
+            item.getAttribute(
+                "data-full-image"
+            );
+
+        const thumbnail =
+            item.querySelector("img");
+
+        if (!image) {
+            return;
+        }
+
+        lightboxImage.src = image;
+
+        lightboxImage.alt =
+            thumbnail
+                ? thumbnail.alt
+                : "NEWITT Skyline Media aerial photograph";
+
+        lightbox.classList.add("active");
+
+        lightbox.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+        document.body.style.overflow =
+            "hidden";
+
+    }
+
+
+    function closeLightbox() {
+
+        lightbox.classList.remove(
+            "active"
+        );
+
+        lightbox.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        lightboxImage.src = "";
+
+        document.body.style.overflow =
+            "";
+
+    }
+
+
+    galleryItems.forEach(function (item) {
+
+        item.addEventListener(
+            "click",
+            function () {
+                openLightbox(item);
+            }
+        );
+
+    });
+
+
+    closeButton.addEventListener(
+        "click",
+        closeLightbox
+    );
+
+
+    lightbox.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                event.target === lightbox
+            ) {
+                closeLightbox();
+            }
+
+        }
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape" &&
+                lightbox.classList.contains("active")
+            ) {
+                closeLightbox();
+            }
+
+        }
+    );
+
+})();
+
+</script>
 
 
 </body>
