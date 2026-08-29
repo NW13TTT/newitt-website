@@ -43,14 +43,11 @@
     function initialiseMobileMenu() {
 
         const menuToggle =
-            document.querySelector(
-                ".menu-toggle"
-            );
+            document.querySelector(".menu-toggle");
 
         const navLinks =
-            document.querySelector(
-                ".nav-links"
-            );
+            document.querySelector(".nav-links");
+
 
         if (!menuToggle || !navLinks) {
             return;
@@ -80,9 +77,7 @@
 
         function openMenu() {
 
-            navLinks.classList.add(
-                "open"
-            );
+            navLinks.classList.add("open");
 
             menuToggle.setAttribute(
                 "aria-expanded",
@@ -110,13 +105,9 @@
 
 
                 if (isOpen) {
-
                     closeMenu();
-
                 } else {
-
                     openMenu();
-
                 }
 
             }
@@ -128,9 +119,7 @@
             function (event) {
 
                 const link =
-                    event.target.closest(
-                        "a"
-                    );
+                    event.target.closest("a");
 
 
                 if (!link) {
@@ -149,15 +138,9 @@
             function (event) {
 
                 if (
-                    navLinks.classList.contains(
-                        "open"
-                    ) &&
-                    !navLinks.contains(
-                        event.target
-                    ) &&
-                    !menuToggle.contains(
-                        event.target
-                    )
+                    navLinks.classList.contains("open") &&
+                    !navLinks.contains(event.target) &&
+                    !menuToggle.contains(event.target)
                 ) {
 
                     closeMenu();
@@ -172,12 +155,8 @@
             "resize",
             function () {
 
-                if (
-                    window.innerWidth > 700
-                ) {
-
+                if (window.innerWidth > 700) {
                     closeMenu();
-
                 }
 
             }
@@ -188,12 +167,8 @@
             "keydown",
             function (event) {
 
-                if (
-                    event.key === "Escape"
-                ) {
-
+                if (event.key === "Escape") {
                     closeMenu();
-
                 }
 
             }
@@ -222,18 +197,14 @@
                     function (event) {
 
                         const targetId =
-                            link.getAttribute(
-                                "href"
-                            );
+                            link.getAttribute("href");
 
 
                         if (
                             !targetId ||
                             targetId === "#"
                         ) {
-
                             return;
-
                         }
 
 
@@ -332,12 +303,7 @@
 
         function updateBackToTop() {
 
-            const shouldShow =
-                window.scrollY >
-                420;
-
-
-            if (shouldShow) {
+            if (window.scrollY > 420) {
 
                 backToTop.classList.add(
                     "visible"
@@ -428,9 +394,7 @@
         if (!lightbox) {
 
             lightbox =
-                document.createElement(
-                    "div"
-                );
+                document.createElement("div");
 
 
             lightbox.id =
@@ -502,18 +466,13 @@
             !lightboxImage ||
             !closeButton
         ) {
-
             return;
-
         }
 
 
-        let previousOverflow =
-            "";
+        let previousOverflow = "";
 
-
-        let previousFocus =
-            null;
+        let previousFocus = null;
 
 
         function openLightbox(
@@ -578,11 +537,9 @@
                         )
                     ) {
 
-                        lightboxImage.src =
-                            "";
+                        lightboxImage.src = "";
 
-                        lightboxImage.alt =
-                            "";
+                        lightboxImage.alt = "";
 
                     }
 
@@ -603,7 +560,7 @@
 
                 } catch (error) {
 
-                    /* Ignore focus restoration errors. */
+                    /* Focus restoration is optional. */
 
                 }
 
@@ -669,8 +626,7 @@
             function (event) {
 
                 if (
-                    event.target ===
-                    lightbox
+                    event.target === lightbox
                 ) {
 
                     closeLightbox();
@@ -709,18 +665,14 @@
     function initialiseImagePerformance() {
 
         const images =
-            document.querySelectorAll(
-                "img"
-            );
+            document.querySelectorAll("img");
 
 
         images.forEach(
             function (image) {
 
                 if (
-                    !image.hasAttribute(
-                        "decoding"
-                    )
+                    !image.hasAttribute("decoding")
                 ) {
 
                     image.setAttribute(
@@ -748,9 +700,7 @@
 
                 if (
                     !isLogo &&
-                    !image.hasAttribute(
-                        "loading"
-                    )
+                    !image.hasAttribute("loading")
                 ) {
 
                     image.setAttribute(
@@ -794,8 +744,7 @@
             "newittMediaCinematicIntroSeen";
 
 
-        let alreadySeen =
-            false;
+        let alreadySeen = false;
 
 
         try {
@@ -807,15 +756,14 @@
 
         } catch (error) {
 
-            alreadySeen =
-                false;
+            alreadySeen = false;
 
         }
 
 
         /*
-         * Returning visitors do not need to watch
-         * the opening sequence again.
+         * Returning visitors:
+         * remove the intro immediately.
          */
 
         if (alreadySeen) {
@@ -838,7 +786,7 @@
                     }
 
                 },
-                50
+                100
             );
 
 
@@ -848,11 +796,9 @@
 
 
         /*
-         * Mark this visit immediately.
-         *
-         * This prevents the intro replaying simply
-         * because the visitor moves between pages
-         * during the same browsing session.
+         * First visit:
+         * remember that the intro has now
+         * been shown.
          */
 
         try {
@@ -865,28 +811,16 @@
         } catch (error) {
 
             /*
-             * If storage is unavailable, the intro
-             * still runs normally.
+             * If storage is unavailable,
+             * continue normally.
              */
 
         }
 
 
         /*
-         * Keep the intro visible long enough for
-         * the NEWITT Media logo and tagline to be
-         * clearly seen.
-         */
-
-        const displayTime =
-            reducedMotion
-                ? 1200
-                : 5200;
-
-
-        /*
-         * Make absolutely certain the intro is
-         * visible before starting the sequence.
+         * Explicitly establish the opening
+         * state before beginning the timer.
          */
 
         intro.classList.remove(
@@ -897,23 +831,42 @@
         intro.style.opacity =
             "1";
 
+
         intro.style.visibility =
             "visible";
+
 
         intro.style.pointerEvents =
             "auto";
 
 
         /*
-         * Force the browser to recognise the
-         * opening state before the fade begins.
+         * Force browser reflow so the
+         * opening state is registered.
          */
 
         void intro.offsetWidth;
 
 
+        /*
+         * Five-second cinematic opening.
+         * Reduced-motion users receive a
+         * shorter version.
+         */
+
+        const displayTime =
+            reducedMotion
+                ? 1200
+                : 5200;
+
+
         window.setTimeout(
             function () {
+
+                if (!intro) {
+                    return;
+                }
+
 
                 intro.classList.add(
                     "intro-hidden"
@@ -935,7 +888,7 @@
                     },
                     reducedMotion
                         ? 100
-                        : 800
+                        : 850
                 );
 
             },
@@ -948,8 +901,13 @@
     /* =====================================================
        SOCIAL EFFECTS
        
-       The master animation itself is deliberately
-       NOT manipulated here.
+       IMPORTANT:
+       The cinematic social artwork is controlled
+       by CSS. JavaScript must NOT continuously
+       alter its opacity, transform or position.
+       
+       This prevents the artwork and animation
+       fighting each other.
     ====================================================== */
 
     function initialiseSocialEffects() {
@@ -966,12 +924,8 @@
 
 
         /*
-         * The master cinematic animation is now
-         * responsible for its own artwork and
-         * timing.
-         *
-         * Do not apply additional transforms to
-         * the master frame here.
+         * Remove any legacy inline transform
+         * from an older version of the website.
          */
 
         const masterFrame =
@@ -982,38 +936,28 @@
 
         if (masterFrame) {
 
-            masterFrame.style.transform =
-                "none";
+            masterFrame.style.removeProperty(
+                "transform"
+            );
+
+            masterFrame.style.removeProperty(
+                "translate"
+            );
+
+            masterFrame.style.removeProperty(
+                "opacity"
+            );
 
         }
 
 
         /*
-         * Legacy atmospheric elements may still
-         * exist on older pages. They are allowed
-         * to run through CSS, but this JavaScript
-         * no longer fights their opacity or
-         * position every animation frame.
-         */
-
-        const reducedMotion =
-            window.matchMedia(
-                "(prefers-reduced-motion: reduce)"
-            ).matches;
-
-
-        if (reducedMotion) {
-            return;
-        }
-
-
-        /*
-         * Keep this deliberately lightweight.
-         * No requestAnimationFrame loop is needed.
+         * The current social artwork uses
+         * CSS animation only.
          *
-         * This is important on iPhone because the
-         * previous live loop could compete with the
-         * CSS animation and create timing drift.
+         * No requestAnimationFrame loop.
+         * No JavaScript opacity pulsing.
+         * No JavaScript movement.
          */
 
     }
@@ -1022,8 +966,8 @@
     /* =====================================================
        PUBLIC MENU FUNCTION
        
-       Kept for compatibility with existing
-       HTML and previous versions of the website.
+       Kept for compatibility with older HTML
+       or previous versions of the website.
     ====================================================== */
 
     window.toggleMenu =
