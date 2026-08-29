@@ -1,31 +1,20 @@
 {
   "name": "NEWITT Media",
-  "short_name": "NEWITT",
-  "description": "NEWITT Media - Aerial media, photography and paranormal adventures. From above. After dark. And everything in between.",
-  "start_url": "/index.html",
+  "short_name": "NEWITT Media",
+  "description": "NEWITT Media. From above. After dark. And everything in between.",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "orientation": "portrait-primary",
-  "theme_color": "#f5b400",
   "background_color": "#020305",
+  "theme_color": "#020305",
+  "orientation": "portrait-primary",
+  "lang": "en-GB",
   "icons": [
     {
-      "src": "newitt-media-logo.png",
-      "sizes": "192x192",
+      "src": "/newitt-media-logo.png",
+      "sizes": "any",
       "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "newitt-media-logo.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "newitt-media-logo.png",
-      "sizes": "540x720",
-      "type": "image/png",
-      "purpose": "any"
+      "purpose": "any maskable"
     }
   ]
 }
