@@ -10,24 +10,22 @@
   "background_color": "#020305",
   "icons": [
     {
-      "src": "newitt-media-logo.png.png",
+      "src": "newitt-media-logo.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "newitt-media-logo.png.png",
+      "src": "newitt-media-logo.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
-    }
-  ],
-  "screenshots": [
+    },
     {
-      "src": "newitt-media-logo.png.png",
+      "src": "newitt-media-logo.png",
       "sizes": "540x720",
       "type": "image/png",
-      "form_factor": "narrow"
+      "purpose": "any"
     }
   ]
 }
