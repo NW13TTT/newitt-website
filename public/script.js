@@ -1,21 +1,17 @@
 /* =========================================================
    NEWITT MEDIA
-   MASTER WEBSITE SCRIPT
-   FINAL WEBSITE SYSTEM
-
-   Handles:
-   - Opening animation
-   - Mobile navigation
-   - Back to top
-   - Language selector
-   - Page translations
-   - Gallery / lightbox
-   - Smooth scrolling
-   - Image error handling
-   - External-link safety
-   - Accessibility
-   - Keyboard controls
-   - Reduced-motion support
+   MASTER SCRIPT
+   ---------------------------------------------------------
+   • Opening animation
+   • Mobile navigation
+   • Back to top
+   • Language selector
+   • Persistent language preference
+   • Gallery / lightbox
+   • Smooth internal scrolling
+   • Image error handling
+   • External-link safety
+   • Accessibility support
 
    Supported languages:
    English
@@ -57,29 +53,6 @@
 
 
         /* =====================================================
-           GENERAL HELPERS
-        ===================================================== */
-
-        const prefersReducedMotion = () => {
-
-            return window.matchMedia(
-                "(prefers-reduced-motion: reduce)"
-            ).matches;
-
-        };
-
-
-        const normalise = (value) => {
-
-            return String(value || "")
-                .replace(/\s+/g, " ")
-                .trim()
-                .toLowerCase();
-
-        };
-
-
-        /* =====================================================
            OPENING ANIMATION
         ===================================================== */
 
@@ -89,34 +62,11 @@
 
         if (intro) {
 
-            const INTRO_SEEN_KEY =
+            const INTRO_KEY =
                 "newittMediaIntroSeen";
 
 
-            const hideIntroImmediately = () => {
-
-                intro.classList.add(
-                    "intro-finished"
-                );
-
-                intro.setAttribute(
-                    "hidden",
-                    ""
-                );
-
-                intro.setAttribute(
-                    "aria-hidden",
-                    "true"
-                );
-
-                document.body.classList.remove(
-                    "no-scroll"
-                );
-
-            };
-
-
-            const revealSite = () => {
+            const finishIntro = () => {
 
                 intro.classList.add(
                     "intro-finished"
@@ -129,41 +79,38 @@
 
                 window.setTimeout(() => {
 
-                    intro.setAttribute(
-                        "hidden",
-                        ""
-                    );
-
-                    intro.setAttribute(
-                        "aria-hidden",
-                        "true"
-                    );
+                    intro.hidden = true;
 
                 }, 900);
 
             };
 
 
-            let alreadySeen = false;
+            let seen = false;
 
 
             try {
 
-                alreadySeen =
+                seen =
                     sessionStorage.getItem(
-                        INTRO_SEEN_KEY
+                        INTRO_KEY
                     ) === "true";
 
             } catch (error) {
 
-                alreadySeen = false;
+                seen = false;
 
             }
 
 
-            if (alreadySeen) {
+            if (seen) {
 
-                hideIntroImmediately();
+                intro.hidden = true;
+
+                intro.setAttribute(
+                    "aria-hidden",
+                    "true"
+                );
 
             } else {
 
@@ -175,7 +122,7 @@
                 try {
 
                     sessionStorage.setItem(
-                        INTRO_SEEN_KEY,
+                        INTRO_KEY,
                         "true"
                     );
 
@@ -187,10 +134,8 @@
 
 
                 window.setTimeout(
-                    revealSite,
-                    prefersReducedMotion()
-                        ? 50
-                        : 3600
+                    finishIntro,
+                    3600
                 );
 
             }
@@ -249,41 +194,11 @@
         };
 
 
-        const openMenu = () => {
-
-            if (
-                !menuToggle ||
-                !navLinks
-            ) {
-
-                return;
-
-            }
-
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "true"
-            );
-
-
-            menuToggle.setAttribute(
-                "aria-label",
-                "Close navigation menu"
-            );
-
-
-            navLinks.classList.add(
-                "open"
-            );
-
-        };
-
-
         if (
             menuToggle &&
             navLinks
         ) {
+
 
             menuToggle.addEventListener(
                 "click",
@@ -292,21 +207,30 @@
                     event.stopPropagation();
 
 
-                    const isOpen =
+                    const open =
                         menuToggle.getAttribute(
                             "aria-expanded"
                         ) === "true";
 
 
-                    if (isOpen) {
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        String(!open)
+                    );
 
-                        closeMenu();
 
-                    } else {
+                    menuToggle.setAttribute(
+                        "aria-label",
+                        open
+                            ? "Open navigation menu"
+                            : "Close navigation menu"
+                    );
 
-                        openMenu();
 
-                    }
+                    navLinks.classList.toggle(
+                        "open",
+                        !open
+                    );
 
                 }
             );
@@ -329,12 +253,8 @@
                 (event) => {
 
                     if (
-                        !navLinks.contains(
-                            event.target
-                        ) &&
-                        !menuToggle.contains(
-                            event.target
-                        )
+                        !navLinks.contains(event.target) &&
+                        !menuToggle.contains(event.target)
                     ) {
 
                         closeMenu();
@@ -377,21 +297,10 @@
 
             const updateTopButton = () => {
 
-                if (
+                topButton.classList.toggle(
+                    "visible",
                     window.scrollY > 420
-                ) {
-
-                    topButton.classList.add(
-                        "visible"
-                    );
-
-                } else {
-
-                    topButton.classList.remove(
-                        "visible"
-                    );
-
-                }
+                );
 
             };
 
@@ -402,9 +311,7 @@
             window.addEventListener(
                 "scroll",
                 updateTopButton,
-                {
-                    passive: true
-                }
+                { passive: true }
             );
 
 
@@ -415,12 +322,18 @@
                     event.preventDefault();
 
 
+                    const reducedMotion =
+                        window.matchMedia(
+                            "(prefers-reduced-motion: reduce)"
+                        ).matches;
+
+
                     window.scrollTo({
 
                         top: 0,
 
                         behavior:
-                            prefersReducedMotion()
+                            reducedMotion
                                 ? "auto"
                                 : "smooth"
 
@@ -440,7 +353,7 @@
             "newittMediaLanguage";
 
 
-        const SUPPORTED_LANGUAGES = [
+        const LANGUAGES = [
             "en",
             "cy",
             "fr",
@@ -465,13 +378,14 @@
 
 
         /*
-         * Translation dictionary.
-         *
-         * The existing page wording remains the English
-         * master wording. JavaScript replaces known interface
-         * strings without damaging links, HTML structure,
-         * images or branding.
-         */
+           Every translatable element uses:
+
+           data-i18n="translation.key"
+
+           This avoids trying to guess which language
+           the current text happens to be in.
+        */
+
 
         const TRANSLATIONS = {
 
@@ -488,21 +402,6 @@
 
                 getInTouch:
                     "Get in Touch",
-
-                oneBrandThreeWorlds:
-                    "One brand. Three worlds.",
-
-                chooseExperience:
-                    "Choose your NEWITT experience.",
-
-                aerialMedia:
-                    "AERIAL MEDIA",
-
-                paranormalInvestigation:
-                    "PARANORMAL INVESTIGATION",
-
-                photography:
-                    "PHOTOGRAPHY",
 
                 visitSkyline:
                     "Visit Skyline",
@@ -533,21 +432,6 @@
                 getInTouch:
                     "Cysylltu â Ni",
 
-                oneBrandThreeWorlds:
-                    "Un brand. Tair byd.",
-
-                chooseExperience:
-                    "Dewiswch eich profiad NEWITT.",
-
-                aerialMedia:
-                    "CYFRYNGAU AWYR",
-
-                paranormalInvestigation:
-                    "YMCHWILIAD PARANORMAL",
-
-                photography:
-                    "FFOTOGRAFFIAETH",
-
                 visitSkyline:
                     "Ewch i Skyline",
 
@@ -576,21 +460,6 @@
 
                 getInTouch:
                     "Nous contacter",
-
-                oneBrandThreeWorlds:
-                    "Une marque. Trois univers.",
-
-                chooseExperience:
-                    "Choisissez votre expérience NEWITT.",
-
-                aerialMedia:
-                    "MÉDIA AÉRIEN",
-
-                paranormalInvestigation:
-                    "ENQUÊTE PARANORMALE",
-
-                photography:
-                    "PHOTOGRAPHIE",
 
                 visitSkyline:
                     "Visiter Skyline",
@@ -621,21 +490,6 @@
                 getInTouch:
                     "Kontakt aufnehmen",
 
-                oneBrandThreeWorlds:
-                    "Eine Marke. Drei Welten.",
-
-                chooseExperience:
-                    "Wählen Sie Ihr NEWITT Erlebnis.",
-
-                aerialMedia:
-                    "LUFTMEDIEN",
-
-                paranormalInvestigation:
-                    "PARANORMALE ERMITTLUNG",
-
-                photography:
-                    "FOTOGRAFIE",
-
                 visitSkyline:
                     "Skyline besuchen",
 
@@ -664,21 +518,6 @@
 
                 getInTouch:
                     "Contactar",
-
-                oneBrandThreeWorlds:
-                    "Una marca. Tres mundos.",
-
-                chooseExperience:
-                    "Elige tu experiencia NEWITT.",
-
-                aerialMedia:
-                    "MEDIOS AÉREOS",
-
-                paranormalInvestigation:
-                    "INVESTIGACIÓN PARANORMAL",
-
-                photography:
-                    "FOTOGRAFÍA",
 
                 visitSkyline:
                     "Visitar Skyline",
@@ -741,38 +580,23 @@
                     hidden
                 >
 
-                    <button
-                        type="button"
-                        data-lang="en"
-                    >
+                    <button type="button" data-lang="en">
                         English
                     </button>
 
-                    <button
-                        type="button"
-                        data-lang="cy"
-                    >
+                    <button type="button" data-lang="cy">
                         Cymraeg
                     </button>
 
-                    <button
-                        type="button"
-                        data-lang="fr"
-                    >
+                    <button type="button" data-lang="fr">
                         Français
                     </button>
 
-                    <button
-                        type="button"
-                        data-lang="de"
-                    >
+                    <button type="button" data-lang="de">
                         Deutsch
                     </button>
 
-                    <button
-                        type="button"
-                        data-lang="es"
-                    >
+                    <button type="button" data-lang="es">
                         Español
                     </button>
 
@@ -800,162 +624,217 @@
             );
 
 
-        if (
-            languageToggle &&
-            languageMenu
-        ) {
+        /* =====================================================
+           LANGUAGE FUNCTIONS
+        ===================================================== */
+
+        const closeLanguageMenu = () => {
+
+            if (
+                !languageToggle ||
+                !languageMenu
+            ) {
+
+                return;
+
+            }
 
 
-            const closeLanguageMenu = () => {
-
-                languageToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-                languageMenu.hidden =
-                    true;
-
-            };
-
-
-            const openLanguageMenu = () => {
-
-                languageToggle.setAttribute(
-                    "aria-expanded",
-                    "true"
-                );
-
-                languageMenu.hidden =
-                    false;
-
-            };
-
-
-            languageToggle.addEventListener(
-                "click",
-                (event) => {
-
-                    event.stopPropagation();
-
-
-                    const isOpen =
-                        languageToggle.getAttribute(
-                            "aria-expanded"
-                        ) === "true";
-
-
-                    if (isOpen) {
-
-                        closeLanguageMenu();
-
-                    } else {
-
-                        openLanguageMenu();
-
-                    }
-
-                }
+            languageToggle.setAttribute(
+                "aria-expanded",
+                "false"
             );
 
 
-            languageMenu
-                .querySelectorAll(
-                    "[data-lang]"
+            languageMenu.hidden = true;
+
+        };
+
+
+        const saveLanguage = (language) => {
+
+            try {
+
+                localStorage.setItem(
+                    LANGUAGE_KEY,
+                    language
+                );
+
+            } catch (error) {
+
+                /* Storage unavailable. */
+
+            }
+
+        };
+
+
+        const getSavedLanguage = () => {
+
+            try {
+
+                const saved =
+                    localStorage.getItem(
+                        LANGUAGE_KEY
+                    );
+
+
+                if (
+                    LANGUAGES.includes(
+                        saved
+                    )
+                ) {
+
+                    return saved;
+
+                }
+
+            } catch (error) {
+
+                /* Storage unavailable. */
+
+            }
+
+
+            return "en";
+
+        };
+
+
+        const applyTranslation = (
+            element,
+            key,
+            dictionary
+        ) => {
+
+            if (
+                !element ||
+                !dictionary
+            ) {
+
+                return;
+
+            }
+
+
+            if (
+                Object.prototype.hasOwnProperty.call(
+                    dictionary,
+                    key
                 )
-                .forEach((button) => {
+            ) {
 
-                    button.addEventListener(
-                        "click",
-                        (event) => {
+                element.textContent =
+                    dictionary[key];
 
-                            event.stopPropagation();
+            }
 
-
-                            const language =
-                                button.getAttribute(
-                                    "data-lang"
-                                );
+        };
 
 
-                            if (
-                                !SUPPORTED_LANGUAGES.includes(
-                                    language
-                                )
-                            ) {
+        const setLanguage = (
+            language
+        ) => {
 
-                                return;
+            if (
+                !LANGUAGES.includes(
+                    language
+                )
+            ) {
 
-                            }
+                language = "en";
+
+            }
 
 
-                            setLanguage(
-                                language
-                            );
+            const dictionary =
+                TRANSLATIONS[
+                    language
+                ];
 
 
-                            closeLanguageMenu();
+            if (!dictionary) {
 
-                        }
+                return;
+
+            }
+
+
+            /* ---------------------------------------------
+               HTML LANGUAGE
+            --------------------------------------------- */
+
+            document.documentElement.lang =
+                language === "en"
+                    ? "en-GB"
+                    : language;
+
+
+            /* ---------------------------------------------
+               SAVE
+            --------------------------------------------- */
+
+            saveLanguage(
+                language
+            );
+
+
+            /* ---------------------------------------------
+               SELECTOR
+            --------------------------------------------- */
+
+            if (languageToggle) {
+
+                languageToggle.textContent =
+                    language.toUpperCase();
+
+
+                languageToggle.setAttribute(
+                    "aria-label",
+                    `Language: ${LANGUAGE_NAMES[language]}`
+                );
+
+            }
+
+
+            /* ---------------------------------------------
+               DATA-I18N ELEMENTS
+            --------------------------------------------- */
+
+            document
+                .querySelectorAll(
+                    "[data-i18n]"
+                )
+                .forEach((element) => {
+
+                    const key =
+                        element.getAttribute(
+                            "data-i18n"
+                        );
+
+
+                    applyTranslation(
+                        element,
+                        key,
+                        dictionary
                     );
 
                 });
 
 
-            document.addEventListener(
-                "click",
-                (event) => {
+            /* ---------------------------------------------
+               NAVIGATION FALLBACK
+               Keeps the current HTML working even before
+               all pages have data-i18n attributes.
+            --------------------------------------------- */
 
-                    if (
-                        !languageSelector.contains(
-                            event.target
-                        )
-                    ) {
-
-                        closeLanguageMenu();
-
-                    }
-
-                }
-            );
+            const nav =
+                document.querySelector(
+                    ".nav-links"
+                );
 
 
-            document.addEventListener(
-                "keydown",
-                (event) => {
-
-                    if (
-                        event.key === "Escape"
-                    ) {
-
-                        closeLanguageMenu();
-
-                    }
-
-                }
-            );
-
-
-            /* =================================================
-               LANGUAGE TRANSLATION HELPERS
-            ================================================= */
-
-            const translateNavigation = (
-                dictionary
-            ) => {
-
-                const nav =
-                    document.querySelector(
-                        ".nav-links"
-                    );
-
-
-                if (!nav) {
-
-                    return;
-
-                }
-
+            if (nav) {
 
                 nav.querySelectorAll("a")
                     .forEach((link) => {
@@ -1024,400 +903,174 @@
 
                     });
 
-            };
+            }
 
 
-            const translateButton = (
-                button,
-                dictionary
-            ) => {
+            /* ---------------------------------------------
+               COMMON BUTTONS
+            --------------------------------------------- */
 
-                const href =
-                    button.getAttribute(
-                        "href"
-                    ) || "";
+            document
+                .querySelectorAll(
+                    ".button"
+                )
+                .forEach((button) => {
 
-
-                const original =
-                    button.dataset.newittOriginalText ||
-                    button.textContent.trim();
-
-
-                if (
-                    !button.dataset.newittOriginalText
-                ) {
-
-                    button.dataset.newittOriginalText =
-                        original;
-
-                }
+                    const key =
+                        button.getAttribute(
+                            "data-i18n"
+                        );
 
 
-                const text =
-                    normalise(
-                        button.dataset.newittOriginalText
+                    if (key) {
+
+                        applyTranslation(
+                            button,
+                            key,
+                            dictionary
+                        );
+
+                    }
+
+                });
+
+
+            /* ---------------------------------------------
+               SOCIAL TICKER
+            --------------------------------------------- */
+
+            document
+                .querySelectorAll(
+                    ".social-ticker-track span"
+                )
+                .forEach((element) => {
+
+                    element.textContent =
+                        dictionary.followSocial;
+
+                });
+
+
+            /* ---------------------------------------------
+               CUSTOM EVENT
+            --------------------------------------------- */
+
+            document.dispatchEvent(
+                new CustomEvent(
+                    "newittLanguageChanged",
+                    {
+                        detail: {
+                            language
+                        }
+                    }
+                )
+            );
+
+        };
+
+
+        if (
+            languageToggle &&
+            languageMenu
+        ) {
+
+            languageToggle.addEventListener(
+                "click",
+                (event) => {
+
+                    event.stopPropagation();
+
+
+                    const isOpen =
+                        languageToggle.getAttribute(
+                            "aria-expanded"
+                        ) === "true";
+
+
+                    languageToggle.setAttribute(
+                        "aria-expanded",
+                        String(!isOpen)
                     );
 
 
-                if (
-                    text ===
-                    "explore newitt media"
-                ) {
-
-                    button.textContent =
-                        dictionary.explore;
-
-                    return;
+                    languageMenu.hidden =
+                        isOpen;
 
                 }
+            );
 
 
-                if (
-                    text ===
-                    "get in touch"
-                ) {
+            languageMenu
+                .querySelectorAll(
+                    "[data-lang]"
+                )
+                .forEach((button) => {
 
-                    button.textContent =
-                        dictionary.getInTouch;
+                    button.addEventListener(
+                        "click",
+                        (event) => {
 
-                    return;
-
-                }
-
-
-                if (
-                    text ===
-                    "visit skyline" &&
-                    href.includes(
-                        "skyline.html"
-                    )
-                ) {
-
-                    button.textContent =
-                        dictionary.visitSkyline;
-
-                    return;
-
-                }
+                            event.stopPropagation();
 
 
-                if (
-                    text ===
-                    "enter the paranormal" &&
-                    href.includes(
-                        "paranormal.html"
-                    )
-                ) {
-
-                    button.textContent =
-                        dictionary.enterParanormal;
-
-                    return;
-
-                }
+                            const language =
+                                button.getAttribute(
+                                    "data-lang"
+                                );
 
 
-                if (
-                    text ===
-                    "visit photography" &&
-                    href.includes(
-                        "photography.html"
-                    )
-                ) {
-
-                    button.textContent =
-                        dictionary.visitPhotography;
-
-                }
-
-            };
+                            setLanguage(
+                                language
+                            );
 
 
-            const translateButtons = (
-                dictionary
-            ) => {
-
-                document
-                    .querySelectorAll(
-                        ".button"
-                    )
-                    .forEach((button) => {
-
-                        translateButton(
-                            button,
-                            dictionary
-                        );
-
-                    });
-
-            };
-
-
-            const translateHome = (
-                dictionary
-            ) => {
-
-                if (
-                    !document.body.classList.contains(
-                        "home-page"
-                    )
-                ) {
-
-                    return;
-
-                }
-
-
-                /*
-                 * One brand. Three worlds.
-                 */
-
-                document
-                    .querySelectorAll(
-                        ".section-heading .eyebrow"
-                    )
-                    .forEach((element) => {
-
-                        const original =
-                            element.dataset
-                                .newittOriginalText ||
-                            element.textContent.trim();
-
-
-                        if (
-                            !element.dataset
-                                .newittOriginalText
-                        ) {
-
-                            element.dataset
-                                .newittOriginalText =
-                                    original;
+                            closeLanguageMenu();
 
                         }
+                    );
+
+                });
 
 
-                        if (
-                            normalise(original) ===
-                            "one brand. three worlds."
-                        ) {
+            document.addEventListener(
+                "click",
+                (event) => {
 
-                            element.textContent =
-                                dictionary
-                                    .oneBrandThreeWorlds;
-
-                        }
-
-                    });
-
-
-                /*
-                 * Choose your NEWITT experience.
-                 *
-                 * The heading is kept as two pieces so
-                 * the existing gold span remains intact.
-                 */
-
-                const experienceHeading =
-                    Array.from(
-                        document.querySelectorAll(
-                            ".section-heading h2"
+                    if (
+                        !languageSelector.contains(
+                            event.target
                         )
-                    ).find((heading) => {
+                    ) {
 
-                        return normalise(
-                            heading.textContent
-                        ).includes(
-                            "choose your newitt experience"
-                        );
-
-                    });
-
-
-                if (experienceHeading) {
-
-                    const span =
-                        experienceHeading.querySelector(
-                            "span"
-                        );
-
-
-                    if (span) {
-
-                        const existingPrefix =
-                            experienceHeading
-                                .childNodes[0];
-
-
-                        if (
-                            existingPrefix &&
-                            existingPrefix.nodeType ===
-                            Node.TEXT_NODE
-                        ) {
-
-                            existingPrefix.textContent =
-                                dictionary
-                                    .chooseExperience
-                                    .replace(
-                                        /newitt experience\.$/i,
-                                        ""
-                                    );
-
-                        }
-
-
-                        span.textContent =
-                            dictionary
-                                .chooseExperience
-                                .match(
-                                    /newitt experience\.$/i
-                                )
-                                ? "NEWITT experience."
-                                : dictionary
-                                    .chooseExperience;
+                        closeLanguageMenu();
 
                     }
 
                 }
+            );
 
 
-                /*
-                 * Social ticker
-                 */
+            document.addEventListener(
+                "keydown",
+                (event) => {
 
-                document
-                    .querySelectorAll(
-                        ".social-ticker-track span"
-                    )
-                    .forEach((element) => {
+                    if (
+                        event.key === "Escape"
+                    ) {
 
-                        element.textContent =
-                            dictionary.followSocial;
+                        closeLanguageMenu();
 
-                    });
-
-            };
-
-
-            function setLanguage(language) {
-
-                if (
-                    !SUPPORTED_LANGUAGES.includes(
-                        language
-                    )
-                ) {
-
-                    language = "en";
+                    }
 
                 }
-
-
-                const dictionary =
-                    TRANSLATIONS[
-                        language
-                    ];
-
-
-                if (!dictionary) {
-
-                    return;
-
-                }
-
-
-                document.documentElement.lang =
-                    language;
-
-
-                try {
-
-                    localStorage.setItem(
-                        LANGUAGE_KEY,
-                        language
-                    );
-
-                } catch (error) {
-
-                    /* Storage unavailable. */
-
-                }
-
-
-                languageToggle.textContent =
-                    language.toUpperCase();
-
-
-                languageToggle.setAttribute(
-                    "aria-label",
-                    `Language: ${LANGUAGE_NAMES[language]}`
-                );
-
-
-                translateNavigation(
-                    dictionary
-                );
-
-
-                translateButtons(
-                    dictionary
-                );
-
-
-                translateHome(
-                    dictionary
-                );
-
-
-                document.dispatchEvent(
-                    new CustomEvent(
-                        "newittLanguageChanged",
-                        {
-                            detail: {
-                                language
-                            }
-                        }
-                    )
-                );
-
-            }
-
-
-            let savedLanguage =
-                "en";
-
-
-            try {
-
-                const storedLanguage =
-                    localStorage.getItem(
-                        LANGUAGE_KEY
-                    );
-
-
-                if (
-                    storedLanguage &&
-                    SUPPORTED_LANGUAGES.includes(
-                        storedLanguage
-                    )
-                ) {
-
-                    savedLanguage =
-                        storedLanguage;
-
-                }
-
-            } catch (error) {
-
-                savedLanguage =
-                    "en";
-
-            }
-
-
-            setLanguage(
-                savedLanguage
             );
 
         }
+
+
+        setLanguage(
+            getSavedLanguage()
+        );
 
 
         /* =====================================================
@@ -1477,74 +1130,6 @@
                         "src"
                     );
 
-                    lightboxImage.removeAttribute(
-                        "alt"
-                    );
-
-                }
-
-            };
-
-
-            const openLightbox = (
-                image
-            ) => {
-
-                if (!lightboxImage) {
-
-                    return;
-
-                }
-
-
-                const parentLink =
-                    image.closest("a");
-
-
-                const fullImage =
-                    parentLink &&
-                    parentLink.href
-                        ? parentLink.href
-                        : image.currentSrc ||
-                          image.src;
-
-
-                if (!fullImage) {
-
-                    return;
-
-                }
-
-
-                lightboxImage.src =
-                    fullImage;
-
-
-                lightboxImage.alt =
-                    image.alt ||
-                    "NEWITT Media image";
-
-
-                lightbox.classList.add(
-                    "active"
-                );
-
-
-                lightbox.setAttribute(
-                    "aria-hidden",
-                    "false"
-                );
-
-
-                document.body.classList.add(
-                    "no-scroll"
-                );
-
-
-                if (closeButton) {
-
-                    closeButton.focus();
-
                 }
 
             };
@@ -1559,8 +1144,52 @@
 
                             event.preventDefault();
 
-                            openLightbox(
-                                image
+
+                            if (
+                                !lightboxImage
+                            ) {
+
+                                return;
+
+                            }
+
+
+                            const parentLink =
+                                image.closest(
+                                    "a"
+                                );
+
+
+                            const fullImage =
+                                parentLink &&
+                                parentLink.href
+                                    ? parentLink.href
+                                    : image.currentSrc ||
+                                      image.src;
+
+
+                            lightboxImage.src =
+                                fullImage;
+
+
+                            lightboxImage.alt =
+                                image.alt ||
+                                "NEWITT Media image";
+
+
+                            lightbox.classList.add(
+                                "active"
+                            );
+
+
+                            lightbox.setAttribute(
+                                "aria-hidden",
+                                "false"
+                            );
+
+
+                            document.body.classList.add(
+                                "no-scroll"
                             );
 
                         }
@@ -1585,8 +1214,7 @@
                 (event) => {
 
                     if (
-                        event.target ===
-                        lightbox
+                        event.target === lightbox
                     ) {
 
                         closeLightbox();
@@ -1648,35 +1276,6 @@
                         }
 
 
-                        /*
-                         * #top should always return to
-                         * the very top of the page.
-                         */
-
-                        if (
-                            targetId === "#top"
-                        ) {
-
-                            event.preventDefault();
-
-
-                            window.scrollTo({
-
-                                top: 0,
-
-                                behavior:
-                                    prefersReducedMotion()
-                                        ? "auto"
-                                        : "smooth"
-
-                            });
-
-
-                            return;
-
-                        }
-
-
                         const target =
                             document.querySelector(
                                 targetId
@@ -1693,10 +1292,16 @@
                         event.preventDefault();
 
 
+                        const reducedMotion =
+                            window.matchMedia(
+                                "(prefers-reduced-motion: reduce)"
+                            ).matches;
+
+
                         target.scrollIntoView({
 
                             behavior:
-                                prefersReducedMotion()
+                                reducedMotion
                                     ? "auto"
                                     : "smooth",
 
@@ -1728,15 +1333,8 @@
                             "image-load-error"
                         );
 
-                        image.setAttribute(
-                            "data-image-error",
-                            "true"
-                        );
-
                     },
-                    {
-                        once: true
-                    }
+                    { once: true }
                 );
 
             });
@@ -1761,114 +1359,7 @@
 
 
         /* =====================================================
-           LANGUAGE MENU KEYBOARD ACCESS
-        ===================================================== */
-
-        if (
-            languageSelector &&
-            languageToggle &&
-            languageMenu
-        ) {
-
-            languageToggle.addEventListener(
-                "keydown",
-                (event) => {
-
-                    if (
-                        event.key === "ArrowDown" ||
-                        event.key === "Enter" ||
-                        event.key === " "
-                    ) {
-
-                        event.preventDefault();
-
-                        languageToggle.click();
-
-                        const firstLanguage =
-                            languageMenu.querySelector(
-                                "[data-lang]"
-                            );
-
-
-                        if (firstLanguage) {
-
-                            firstLanguage.focus();
-
-                        }
-
-                    }
-
-                }
-            );
-
-
-            languageMenu
-                .querySelectorAll(
-                    "[data-lang]"
-                )
-                .forEach((button, index, buttons) => {
-
-                    button.addEventListener(
-                        "keydown",
-                        (event) => {
-
-                            if (
-                                event.key === "ArrowDown"
-                            ) {
-
-                                event.preventDefault();
-
-                                const next =
-                                    buttons[
-                                        (index + 1) %
-                                        buttons.length
-                                    ];
-
-                                next.focus();
-
-                            }
-
-
-                            if (
-                                event.key === "ArrowUp"
-                            ) {
-
-                                event.preventDefault();
-
-                                const previous =
-                                    buttons[
-                                        (index - 1 +
-                                            buttons.length) %
-                                        buttons.length
-                                    ];
-
-                                previous.focus();
-
-                            }
-
-
-                            if (
-                                event.key === "Escape"
-                            ) {
-
-                                event.preventDefault();
-
-                                languageToggle.click();
-
-                                languageToggle.focus();
-
-                            }
-
-                        }
-                    );
-
-                });
-
-        }
-
-
-        /* =====================================================
-           PAGE READY FLAG
+           JAVASCRIPT READY
         ===================================================== */
 
         document.documentElement.classList.add(
