@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 
 <head>
 
@@ -7,12 +7,12 @@
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1"
+        content="width=device-width, initial-scale=1, viewport-fit=cover"
     >
 
     <meta
         name="theme-color"
-        content="#020306"
+        content="#020305"
     >
 
     <meta
@@ -35,10 +35,20 @@
         content="strict-origin-when-cross-origin"
     >
 
+    <meta
+        name="format-detection"
+        content="telephone=no"
+    >
+
     <link
         rel="canonical"
-        href="https://newittmedia.co.uk/skyline.html"
+        href="https://www.newittmedia.co.uk/skyline.html"
     >
+
+
+    <!-- =====================================================
+         OPEN GRAPH
+    ====================================================== -->
 
     <meta
         property="og:type"
@@ -47,7 +57,7 @@
 
     <meta
         property="og:url"
-        content="https://newittmedia.co.uk/skyline.html"
+        content="https://www.newittmedia.co.uk/skyline.html"
     >
 
     <meta
@@ -62,7 +72,7 @@
 
     <meta
         property="og:image"
-        content="https://newittmedia.co.uk/sky-logo.png.png"
+        content="https://www.newittmedia.co.uk/sky-logo.png"
     >
 
     <meta
@@ -70,9 +80,75 @@
         content="NEWITT Skyline Media logo"
     >
 
+    <meta
+        property="og:site_name"
+        content="NEWITT Media"
+    >
+
+
+    <!-- =====================================================
+         TWITTER / X
+    ====================================================== -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="NEWITT Skyline Media | NEWITT Media"
+    >
+
+    <meta
+        name="twitter:description"
+        content="Aerial photography, drone footage and views from above."
+    >
+
+    <meta
+        name="twitter:image"
+        content="https://www.newittmedia.co.uk/sky-logo.png"
+    >
+
+    <meta
+        name="twitter:image:alt"
+        content="NEWITT Skyline Media logo"
+    >
+
+
     <title>
         NEWITT Skyline Media | NEWITT Media
     </title>
+
+
+    <!-- =====================================================
+         STRUCTURED DATA
+    ====================================================== -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "NEWITT Skyline Media",
+        "url": "https://www.newittmedia.co.uk/skyline.html",
+        "description": "Aerial photography, drone footage and views from above.",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "NEWITT Media",
+            "url": "https://www.newittmedia.co.uk/"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "NEWITT Media",
+            "url": "https://www.newittmedia.co.uk/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.newittmedia.co.uk/newitt-media-logo.png"
+            }
+        }
+    }
+    </script>
+
 
     <link
         rel="stylesheet"
@@ -85,9 +161,14 @@
 <body class="skyline-page">
 
 
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header class="site-header">
 
     <div class="container nav">
+
 
         <a
             href="index.html"
@@ -96,11 +177,13 @@
         >
 
             <img
-                src="newitt-media-logo.png.png"
+                src="newitt-media-logo.png"
                 alt="NEWITT Media logo"
             >
 
-            NEWITT <span>MEDIA</span>
+            <span>
+                NEWITT <strong>MEDIA</strong>
+            </span>
 
         </a>
 
@@ -110,8 +193,13 @@
             type="button"
             aria-expanded="false"
             aria-controls="main-menu"
+            aria-label="Open navigation menu"
         >
-            MENU
+
+            <span></span>
+            <span></span>
+            <span></span>
+
         </button>
 
 
@@ -152,6 +240,10 @@
 </header>
 
 
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
 <main>
 
 
@@ -161,57 +253,67 @@
 
 <section class="skyline-hero">
 
-    <div class="skyline-hero-content">
+    <div class="container">
+
+        <div class="skyline-hero-content">
 
 
-        <div>
+            <div>
 
-            <img
-                src="sky-logo.png.png"
-                alt="NEWITT Skyline Media logo"
-                class="page-logo"
-            >
+                <img
+                    src="sky-logo.png"
+                    alt="NEWITT Skyline Media logo"
+                    class="page-logo"
+                    decoding="async"
+                >
 
-        </div>
-
-
-        <div>
-
-            <div class="eyebrow">
-                NEWITT Skyline Media
             </div>
 
-            <h1>
-                See the world from a
-                <span>higher perspective.</span>
-            </h1>
 
-            <p class="hero-tagline">
-                Drone aerial photography,
-                aerial video and views from above.
-            </p>
+            <div>
 
-            <p>
-                Taking your view to a higher level.
-                Because the best views don't come
-                from the pavement.
-            </p>
+                <div class="eyebrow">
+                    NEWITT Skyline Media
+                </div>
 
-            <div class="buttons">
 
-                <a
-                    class="button primary"
-                    href="#skyline-gallery"
-                >
-                    View Skyline Gallery
-                </a>
+                <h1>
+                    See the world from a
+                    <span>higher perspective.</span>
+                </h1>
 
-                <a
-                    class="button"
-                    href="#skyline-tiktok"
-                >
-                    Skyline TikTok
-                </a>
+
+                <p class="hero-tagline">
+                    Drone aerial photography,
+                    aerial video and views from above.
+                </p>
+
+
+                <p>
+                    Taking your view to a higher level.
+                    Because the best views don't come
+                    from the pavement.
+                </p>
+
+
+                <div class="buttons">
+
+                    <a
+                        class="button primary"
+                        href="#skyline-gallery"
+                    >
+                        View Skyline Gallery
+                    </a>
+
+
+                    <a
+                        class="button"
+                        href="#skyline-tiktok"
+                    >
+                        Skyline TikTok
+                    </a>
+
+                </div>
 
             </div>
 
@@ -259,6 +361,7 @@
                 completely change the picture.
             </p>
 
+
             <p>
                 This is where the drone takes centre
                 stage. No magic trick. No helicopter.
@@ -302,6 +405,8 @@
         <div class="gallery">
 
 
+            <!-- IMAGE 01 -->
+
             <article class="gallery-card">
 
                 <a
@@ -319,6 +424,7 @@
 
                 </a>
 
+
                 <div class="gallery-caption">
 
                     <h3>
@@ -334,6 +440,8 @@
 
             </article>
 
+
+            <!-- IMAGE 02 -->
 
             <article class="gallery-card">
 
@@ -352,6 +460,7 @@
 
                 </a>
 
+
                 <div class="gallery-caption">
 
                     <h3>
@@ -367,6 +476,8 @@
 
             </article>
 
+
+            <!-- IMAGE 03 -->
 
             <article class="gallery-card">
 
@@ -385,6 +496,7 @@
 
                 </a>
 
+
                 <div class="gallery-caption">
 
                     <h3>
@@ -400,6 +512,8 @@
 
             </article>
 
+
+            <!-- IMAGE 04 -->
 
             <article class="gallery-card">
 
@@ -417,6 +531,7 @@
                     >
 
                 </a>
+
 
                 <div class="gallery-caption">
 
@@ -450,6 +565,7 @@
     <div class="container">
 
         <div class="about">
+
 
             <div class="section-heading">
 
@@ -508,6 +624,7 @@
                     Visit Skyline TikTok
                 </a>
 
+
                 <a
                     class="button"
                     href="https://www.youtube.com/@Newitt-skyline-media"
@@ -540,10 +657,12 @@
                 More from Skyline
             </div>
 
+
             <h2>
                 More views are
                 <span>on the way.</span>
             </h2>
+
 
             <p>
                 The Skyline collection will continue
@@ -574,6 +693,7 @@
                 >
                     Get in Touch
                 </a>
+
 
                 <a
                     class="button"
@@ -625,33 +745,102 @@
 
 
 <!-- =====================================================
-     FOOTER
+     BACK TO TOP
 ===================================================== -->
 
-<footer>
+<a
+    href="#top"
+    class="back-to-top"
+    id="back-to-top"
+    aria-label="Back to top"
+>
+    ↑
+</a>
 
-    <div class="container">
 
-        © 2026 NEWITT Media. All Rights Reserved.
-        The creative rights, branding, logos, names,
-        designs and original content associated with
-        NEWITT Media, NEWITT Skyline Media,
-        NEWITT’s Paranormal Adventures and
-        NEWITT Media Photography remain the property
-        of NEWITT Media and may not be copied,
-        reproduced, modified or used without prior
-        permission.
+<!-- =====================================================
+     LANGUAGE SELECTOR
+===================================================== -->
+
+<div
+    class="language-selector"
+    aria-label="Language selection"
+>
+
+    <button
+        type="button"
+        class="language-toggle"
+        aria-expanded="false"
+        aria-controls="language-menu"
+        aria-label="Language: English"
+    >
+        EN
+    </button>
+
+
+    <div
+        class="language-menu"
+        id="language-menu"
+        hidden
+    >
+
+        <button
+            type="button"
+            data-lang="en"
+        >
+            English
+        </button>
+
+
+        <button
+            type="button"
+            data-lang="cy"
+        >
+            Cymraeg
+        </button>
+
+
+        <button
+            type="button"
+            data-lang="fr"
+        >
+            Français
+        </button>
+
+
+        <button
+            type="button"
+            data-lang="de"
+        >
+            Deutsch
+        </button>
+
+
+        <button
+            type="button"
+            data-lang="es"
+        >
+            Español
+        </button>
 
     </div>
 
-</footer>
+</div>
 
+
+<!-- =====================================================
+     TIKTOK
+===================================================== -->
 
 <script
     async
     src="https://www.tiktok.com/embed.js"
 ></script>
 
+
+<!-- =====================================================
+     MASTER SCRIPT
+===================================================== -->
 
 <script
     src="script.js"
