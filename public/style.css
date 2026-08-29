@@ -2803,3 +2803,57 @@ h2 span,
     }
 
 }
+/* =========================================================
+   MOBILE PAGE TRANSITION FIX
+   Prevents the brief flash/glitch when moving between
+   NEWITT Media pages on mobile.
+========================================================= */
+
+html {
+    background: #020305;
+}
+
+body {
+    background-color: #020305;
+}
+
+/* Transition overlay */
+#page-transition {
+    position: fixed;
+    inset: 0;
+
+    z-index: 99999;
+
+    background: #020305;
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 180ms ease,
+        visibility 180ms ease;
+}
+
+/* Active while changing page */
+#page-transition.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE ONLY
+--------------------------------------------------------- */
+
+@media (max-width: 700px) {
+
+    #page-transition {
+        transition:
+            opacity 160ms ease,
+            visibility 160ms ease;
+    }
+
+}
