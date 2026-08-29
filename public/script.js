@@ -741,17 +741,14 @@
 
 
         /*
-         * The cinematic intro intentionally
-         * plays on EVERY visit.
+         * Always begin with the cinematic
+         * intro visible.
          *
-         * There is NO localStorage check,
-         * cookie check or "already seen"
-         * condition.
-         */
-
-
-        /*
-         * Establish the opening state.
+         * There is deliberately NO
+         * localStorage check here.
+         *
+         * This means the intro plays
+         * every time the homepage loads.
          */
 
         intro.classList.remove(
@@ -772,15 +769,16 @@
 
 
         /*
-         * Force browser reflow so the opening
-         * animation starts correctly every time.
+         * Force browser reflow so the
+         * opening state is registered
+         * before the closing animation.
          */
 
         void intro.offsetWidth;
 
 
         /*
-         * Full cinematic opening.
+         * Cinematic timing.
          *
          * Normal:
          * approximately 5.2 seconds.
@@ -803,18 +801,15 @@
                 }
 
 
-                /*
-                 * Begin cinematic fade-out.
-                 */
-
                 intro.classList.add(
                     "intro-hidden"
                 );
 
 
                 /*
-                 * Remove the intro from the page
-                 * after the fade has completed.
+                 * Allow the CSS fade-out
+                 * to complete before removing
+                 * the element from the page.
                  */
 
                 window.setTimeout(
@@ -832,7 +827,7 @@
                     },
                     reducedMotion
                         ? 100
-                        : 850
+                        : 950
                 );
 
             },
@@ -847,11 +842,10 @@
        
        IMPORTANT:
        The cinematic social artwork is controlled
-       by CSS. JavaScript must NOT continuously
-       alter its opacity, transform or position.
+       by CSS / the animation itself.
        
-       This prevents the artwork and animation
-       fighting each other.
+       JavaScript does NOT continuously alter
+       opacity, transform or position.
     ====================================================== */
 
     function initialiseSocialEffects() {
@@ -897,7 +891,7 @@
 
         /*
          * The current social artwork uses
-         * CSS animation only.
+         * its own animation.
          *
          * No requestAnimationFrame loop.
          * No JavaScript opacity pulsing.
