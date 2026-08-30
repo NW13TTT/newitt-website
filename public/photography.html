@@ -158,14 +158,11 @@
 
     <style>
 
-        /* =================================================
-           PHOTOGRAPHY INTRO
-        ================================================= */
-
         .photography-page .photography-hero {
             position: relative;
             overflow: hidden;
         }
+
 
         .photography-page .photography-hero::before {
             content: "";
@@ -184,6 +181,7 @@
                 );
         }
 
+
         .photography-page .photography-hero-content {
             position: relative;
             z-index: 2;
@@ -197,44 +195,43 @@
         .photography-statement {
             width: min(780px, 100%);
 
-            margin:
-                0 auto;
+            margin: 0 auto;
 
             text-align: center;
         }
 
+
         .photography-statement p {
             width: min(720px, 100%);
 
-            margin:
-                0 auto;
+            margin: 0 auto;
 
             color:
                 rgba(244, 247, 250, 0.76);
 
-            font-size:
-                1rem;
+            font-size: 1rem;
 
             line-height: 1.8;
         }
 
 
         /* =================================================
-           PORTFOLIO AREA
+           PORTFOLIO
         ================================================= */
 
         .photography-portfolio {
             width: 100%;
         }
 
+
         .photography-portfolio-heading {
             width: min(760px, 100%);
 
-            margin:
-                0 auto 30px;
+            margin: 0 auto 30px;
 
             text-align: center;
         }
+
 
         .photography-portfolio-heading p {
             margin-bottom: 0;
@@ -281,6 +278,7 @@
             text-align: center;
         }
 
+
         .photography-gallery-placeholder::before {
             content: "";
 
@@ -298,6 +296,7 @@
                 );
         }
 
+
         .photography-gallery-placeholder-content {
             position: relative;
 
@@ -307,6 +306,7 @@
 
             margin-inline: auto;
         }
+
 
         .photography-gallery-icon {
             margin-bottom: 16px;
@@ -318,11 +318,13 @@
             line-height: 1;
         }
 
+
         .photography-gallery-placeholder h3 {
             margin-bottom: 10px;
 
             font-size: 1.35rem;
         }
+
 
         .photography-gallery-placeholder p {
             margin-bottom: 0;
@@ -356,6 +358,7 @@
             margin-inline: auto;
         }
 
+
         .photography-gallery-item {
             position: relative;
 
@@ -381,6 +384,7 @@
             cursor: pointer;
         }
 
+
         .photography-gallery-item img {
             width: 100%;
             height: 100%;
@@ -391,6 +395,7 @@
                 transform 450ms ease,
                 filter 450ms ease;
         }
+
 
         .photography-gallery-item:hover img {
             transform: scale(1.035);
@@ -428,9 +433,11 @@
                 blur(8px);
         }
 
+
         .photography-lightbox.active {
             display: flex;
         }
+
 
         .photography-lightbox img {
             display: block;
@@ -449,6 +456,7 @@
                 0 25px 90px
                 rgba(0, 0, 0, 0.65);
         }
+
 
         .photography-lightbox-close {
             position: absolute;
@@ -484,6 +492,7 @@
             cursor: pointer;
         }
 
+
         .photography-lightbox-close:hover {
             background:
                 rgba(255, 255, 255, 0.10);
@@ -502,18 +511,20 @@
                 gap: 14px;
             }
 
+
             .photography-gallery-placeholder {
                 min-height: 230px;
 
-                padding:
-                    32px 18px;
+                padding: 32px 18px;
 
                 border-radius: 10px;
             }
 
+
             .photography-gallery-placeholder h3 {
                 font-size: 1.2rem;
             }
+
 
             .photography-statement p {
                 font-size: 0.92rem;
@@ -527,8 +538,16 @@
             .photography-gallery-placeholder {
                 min-height: 215px;
 
-                padding:
-                    28px 15px;
+                padding: 28px 15px;
+            }
+
+        }
+
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .photography-gallery-item img {
+                transition: none;
             }
 
         }
@@ -556,6 +575,8 @@
             href="index.html"
             class="nav-brand"
             aria-label="NEWITT Media Home"
+            data-aria-en="NEWITT Media Home"
+            data-aria-cy="Cartref NEWITT Media"
         >
 
             <img
@@ -576,6 +597,8 @@
             aria-expanded="false"
             aria-controls="main-menu"
             aria-label="Open navigation menu"
+            data-aria-en="Open navigation menu"
+            data-aria-cy="Agor y ddewislen lywio"
         >
 
             <span></span>
@@ -589,29 +612,53 @@
             class="nav-links"
             id="main-menu"
             aria-label="Main navigation"
+            data-aria-en="Main navigation"
+            data-aria-cy="Prif ddewislen lywio"
         >
 
-            <a href="index.html">
+            <a
+                href="index.html"
+                data-lang-en="Home"
+                data-lang-cy="Cartref"
+            >
                 Home
             </a>
 
-            <a href="skyline.html">
+
+            <a
+                href="skyline.html"
+                data-lang-en="Skyline"
+                data-lang-cy="Skyline"
+            >
                 Skyline
             </a>
 
-            <a href="paranormal.html">
+
+            <a
+                href="paranormal.html"
+                data-lang-en="Paranormal"
+                data-lang-cy="Paranormal"
+            >
                 Paranormal
             </a>
+
 
             <a
                 href="photography.html"
                 class="active"
                 aria-current="page"
+                data-lang-en="Photography"
+                data-lang-cy="Ffotograffiaeth"
             >
                 Photography
             </a>
 
-            <a href="contact.html">
+
+            <a
+                href="contact.html"
+                data-lang-en="Contact"
+                data-lang-cy="Cysylltu"
+            >
                 Contact
             </a>
 
@@ -644,32 +691,55 @@
         >
 
 
-        <div class="eyebrow">
+        <div
+            class="eyebrow"
+            data-lang-en="NEWITT Media Photography"
+            data-lang-cy="Ffotograffiaeth NEWITT Media"
+        >
             NEWITT Media Photography
         </div>
 
 
         <h1>
-            Through the
-            <span>Lens.</span>
+
+            <span
+                data-lang-en="Through the"
+                data-lang-cy="Drwy'r"
+            >
+                Through the
+            </span>
+
+            <span
+                data-lang-en="Lens."
+                data-lang-cy="Lens."
+            >
+                Lens.
+            </span>
+
         </h1>
 
 
         <div class="hero-rule"></div>
 
 
-        <p class="hero-tagline">
+        <p
+            class="hero-tagline"
+            data-lang-en="PEOPLE. PLACES. LANDSCAPES. ADVENTURES."
+            data-lang-cy="POBL. LLEOEDD. TIRWEDDAU. ANTURIAETHAU."
+        >
             PEOPLE. PLACES. LANDSCAPES. ADVENTURES.
         </p>
 
 
         <div class="photography-statement">
 
-            <p>
-                Photography is the still side of the
-                NEWITT Media story, capturing the people,
-                places, landscapes and experiences that
-                make every adventure worth remembering.
+            <p
+                data-lang-en="Photography is the still side of the NEWITT Media story, capturing the people, places, landscapes and experiences that make every adventure worth remembering."
+                data-lang-cy="Ffotograffiaeth yw ochr lonydd stori NEWITT Media, gan ddal y bobl, y lleoedd, y tirweddau a'r profiadau sy'n gwneud pob antur yn werth ei chofio."
+            >
+                Photography is the still side of the NEWITT Media story,
+                capturing the people, places, landscapes and experiences
+                that make every adventure worth remembering.
             </p>
 
         </div>
@@ -680,6 +750,8 @@
             <a
                 href="#portfolio"
                 class="button primary"
+                data-lang-en="Explore Photography"
+                data-lang-cy="Archwilio Ffotograffiaeth"
             >
                 Explore Photography
             </a>
@@ -688,6 +760,8 @@
             <a
                 href="contact.html"
                 class="button secondary"
+                data-lang-en="Get in Touch"
+                data-lang-cy="Cysylltu"
             >
                 Get in Touch
             </a>
@@ -709,16 +783,38 @@
 
         <div class="section-heading">
 
-            <div class="eyebrow">
-                The Photography
+            <div
+                class="eyebrow"
+                data-lang-en="THE PHOTOGRAPHY"
+                data-lang-cy="Y FFOTOGRAFFIAETH"
+            >
+                THE PHOTOGRAPHY
             </div>
 
+
             <h2>
-                More than a
-                <span>picture.</span>
+
+                <span
+                    data-lang-en="More than a"
+                    data-lang-cy="Mwy na"
+                >
+                    More than a
+                </span>
+
+                <span
+                    data-lang-en="picture."
+                    data-lang-cy="llun."
+                >
+                    picture.
+                </span>
+
             </h2>
 
-            <p>
+
+            <p
+                data-lang-en="Every image is part of a wider story. From people and places to landscapes and adventures, photography gives NEWITT Media another way to capture the moment."
+                data-lang-cy="Mae pob delwedd yn rhan o stori ehangach. O bobl a lleoedd i dirweddau ac anturiaethau, mae ffotograffiaeth yn rhoi ffordd arall i NEWITT Media ddal y foment."
+            >
                 Every image is part of a wider story.
                 From people and places to landscapes and
                 adventures, photography gives NEWITT Media
@@ -740,11 +836,19 @@
                     ◎
                 </div>
 
-                <h3>
+
+                <h3
+                    data-lang-en="People"
+                    data-lang-cy="Pobl"
+                >
                     People
                 </h3>
 
-                <p>
+
+                <p
+                    data-lang-en="Portraits, moments and genuine experiences captured naturally."
+                    data-lang-cy="Portreadau, eiliadau a phrofiadau dilys wedi'u dal yn naturiol."
+                >
                     Portraits, moments and genuine experiences
                     captured naturally.
                 </p>
@@ -761,11 +865,19 @@
                     ◇
                 </div>
 
-                <h3>
+
+                <h3
+                    data-lang-en="Places"
+                    data-lang-cy="Lleoedd"
+                >
                     Places
                 </h3>
 
-                <p>
+
+                <p
+                    data-lang-en="Locations, architecture and environments with their own stories to tell."
+                    data-lang-cy="Lleoliadau, pensaernïaeth ac amgylcheddau â'u straeon eu hunain i'w hadrodd."
+                >
                     Locations, architecture and environments
                     with their own stories to tell.
                 </p>
@@ -782,11 +894,19 @@
                     ◈
                 </div>
 
-                <h3>
+
+                <h3
+                    data-lang-en="Landscapes & Adventures"
+                    data-lang-cy="Tirweddau ac Anturiaethau"
+                >
                     Landscapes &amp; Adventures
                 </h3>
 
-                <p>
+
+                <p
+                    data-lang-en="Landscapes, journeys and experiences captured as part of the NEWITT story."
+                    data-lang-cy="Tirweddau, teithiau a phrofiadau wedi'u dal fel rhan o stori NEWITT."
+                >
                     Landscapes, journeys and experiences
                     captured as part of the NEWITT story.
                 </p>
@@ -816,20 +936,41 @@
 
             <div class="photography-portfolio-heading">
 
-                <div class="eyebrow">
-                    Portfolio
+                <div
+                    class="eyebrow"
+                    data-lang-en="PORTFOLIO"
+                    data-lang-cy="PORTFFOLIO"
+                >
+                    PORTFOLIO
                 </div>
 
+
                 <h2>
-                    The gallery is
-                    <span>growing.</span>
+
+                    <span
+                        data-lang-en="The gallery is"
+                        data-lang-cy="Mae'r oriel yn"
+                    >
+                        The gallery is
+                    </span>
+
+                    <span
+                        data-lang-en="growing."
+                        data-lang-cy="tyfu."
+                    >
+                        growing.
+                    </span>
+
                 </h2>
 
-                <p>
-                    Photography is being developed into a
-                    dedicated collection of images from the
-                    people, places and adventures behind
-                    NEWITT Media.
+
+                <p
+                    data-lang-en="Photography is being developed into a dedicated collection of images from the people, places and adventures behind NEWITT Media."
+                    data-lang-cy="Mae ffotograffiaeth yn cael ei datblygu'n gasgliad pwrpasol o ddelweddau o'r bobl, y lleoedd a'r anturiaethau y tu ôl i NEWITT Media."
+                >
+                    Photography is being developed into a dedicated
+                    collection of images from the people, places and
+                    adventures behind NEWITT Media.
                 </p>
 
             </div>
@@ -838,11 +979,8 @@
             <!-- =================================================
                  SAFE EMPTY GALLERY STATE
 
-                 This keeps the page professional until
-                 photographs are added.
-
-                 Future images can be added here without
-                 changing the rest of the page.
+                 JPEG and WEBP source files can be retained
+                 in the repository for future use.
             ================================================== -->
 
             <div class="photography-gallery-placeholder">
@@ -856,14 +994,22 @@
                         ◉
                     </div>
 
-                    <h3>
+
+                    <h3
+                        data-lang-en="NEWITT Media Photography"
+                        data-lang-cy="Ffotograffiaeth NEWITT Media"
+                    >
                         NEWITT Media Photography
                     </h3>
 
-                    <p>
-                        The portfolio is currently being
-                        built. New photographs will appear
-                        here as the collection develops.
+
+                    <p
+                        data-lang-en="The portfolio is currently being built. New photographs will appear here as the collection develops."
+                        data-lang-cy="Mae'r portffolio wrthi'n cael ei adeiladu. Bydd ffotograffau newydd yn ymddangos yma wrth i'r casgliad ddatblygu."
+                    >
+                        The portfolio is currently being built.
+                        New photographs will appear here as the
+                        collection develops.
                     </p>
 
                 </div>
@@ -887,21 +1033,41 @@
 
         <div class="cta-panel">
 
-            <div class="eyebrow">
+            <div
+                class="eyebrow"
+                data-lang-en="NEWITT Media"
+                data-lang-cy="NEWITT Media"
+            >
                 NEWITT Media
             </div>
 
 
             <h2>
-                Three worlds.
-                <span>One identity.</span>
+
+                <span
+                    data-lang-en="Three worlds."
+                    data-lang-cy="Tair byd."
+                >
+                    Three worlds.
+                </span>
+
+                <span
+                    data-lang-en="One identity."
+                    data-lang-cy="Un hunaniaeth."
+                >
+                    One identity.
+                </span>
+
             </h2>
 
 
-            <p>
-                Explore the aerial world of NEWITT Skyline
-                Media or head into the darkness with
-                NEWITT's Paranormal Adventures.
+            <p
+                data-lang-en="Explore the aerial world of NEWITT Skyline Media or head into the darkness with NEWITT's Paranormal Adventures."
+                data-lang-cy="Archwiliwch fyd awyr NEWITT Skyline Media neu ewch i'r tywyllwch gydag Anturiaethau Paranormal NEWITT."
+            >
+                Explore the aerial world of NEWITT Skyline Media
+                or head into the darkness with NEWITT's Paranormal
+                Adventures.
             </p>
 
 
@@ -910,6 +1076,8 @@
                 <a
                     href="skyline.html"
                     class="button primary"
+                    data-lang-en="Skyline"
+                    data-lang-cy="Skyline"
                 >
                     Skyline
                 </a>
@@ -918,6 +1086,8 @@
                 <a
                     href="paranormal.html"
                     class="button secondary"
+                    data-lang-en="Paranormal"
+                    data-lang-cy="Paranormal"
                 >
                     Paranormal
                 </a>
@@ -926,6 +1096,8 @@
                 <a
                     href="contact.html"
                     class="button secondary"
+                    data-lang-en="Contact"
+                    data-lang-cy="Cysylltu"
                 >
                     Contact
                 </a>
@@ -951,6 +1123,8 @@
     class="back-to-top"
     id="back-to-top"
     aria-label="Back to top"
+    data-aria-en="Back to top"
+    data-aria-cy="Nôl i'r brig"
 >
     ↑
 </a>
@@ -971,19 +1145,34 @@
         >
 
 
-        <p class="footer-brand">
+        <p
+            class="footer-brand"
+            data-lang-en="NEWITT MEDIA"
+            data-lang-cy="NEWITT MEDIA"
+        >
             NEWITT MEDIA
         </p>
 
 
-        <p class="footer-tagline">
+        <p
+            class="footer-tagline"
+            data-lang-en="FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN."
+            data-lang-cy="O'R AWYR. AR ÔL TYWYLLWCH. A PHOPETH RHWNG Y DDAU."
+        >
             FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
         </p>
 
 
         <p class="copyright">
 
-            © 2026 NEWITT Media. All Rights Reserved.
+            © 2026 NEWITT Media.
+
+            <span
+                data-lang-en="All Rights Reserved."
+                data-lang-cy="Cedwir pob hawl."
+            >
+                All Rights Reserved.
+            </span>
 
             <br>
 
@@ -997,8 +1186,28 @@
 
         <p class="website-address">
 
-            <a href="https://newittmedia.co.uk/">
-                newittmedia.co.uk
+            <a href="index.html">
+                NEWITT Media
+            </a>
+
+            &nbsp;•&nbsp;
+
+            <a
+                href="privacy.html"
+                data-lang-en="Privacy & Safety"
+                data-lang-cy="Preifatrwydd a Diogelwch"
+            >
+                Privacy &amp; Safety
+            </a>
+
+            &nbsp;•&nbsp;
+
+            <a
+                href="contact.html"
+                data-lang-en="Contact"
+                data-lang-cy="Cysylltu"
+            >
+                Contact
             </a>
 
         </p>
@@ -1010,7 +1219,7 @@
 
 <!-- =====================================================
      PHOTOGRAPHY LIGHTBOX
-     
+
      Ready for future portfolio photographs.
 ===================================================== -->
 
@@ -1025,6 +1234,8 @@
         class="photography-lightbox-close"
         id="photography-lightbox-close"
         aria-label="Close image"
+        data-aria-en="Close image"
+        data-aria-cy="Cau'r ddelwedd"
     >
         ×
     </button>
@@ -1040,6 +1251,16 @@
 
 
 <!-- =====================================================
+     MASTER LANGUAGE SYSTEM
+===================================================== -->
+
+<script
+    src="language.js"
+    defer
+></script>
+
+
+<!-- =====================================================
      MASTER JAVASCRIPT
 ===================================================== -->
 
@@ -1050,27 +1271,33 @@
 
 
 <!-- =====================================================
-     PHOTOGRAPHY LIGHTBOX JAVASCRIPT
+     PHOTOGRAPHY LIGHTBOX ENGINE
 ===================================================== -->
 
 <script>
 
 (function () {
 
+    "use strict";
+
+
     const galleryItems =
         document.querySelectorAll(
             ".photography-gallery-item"
         );
+
 
     const lightbox =
         document.getElementById(
             "photography-lightbox"
         );
 
+
     const lightboxImage =
         document.getElementById(
             "photography-lightbox-image"
         );
+
 
     const closeButton =
         document.getElementById(
@@ -1081,9 +1308,10 @@
     /*
      * The gallery is intentionally empty at present.
      *
-     * This script safely does nothing until photographs
-     * are added to the gallery.
+     * This engine safely remains dormant until
+     * photography items are added.
      */
+
 
     if (
         !galleryItems.length ||
@@ -1091,7 +1319,9 @@
         !lightboxImage ||
         !closeButton
     ) {
+
         return;
+
     }
 
 
@@ -1102,28 +1332,38 @@
                 "data-full-image"
             );
 
+
         const thumbnail =
-            item.querySelector("img");
+            item.querySelector(
+                "img"
+            );
+
 
         if (!image) {
             return;
         }
 
-        lightboxImage.src = image;
+
+        lightboxImage.src =
+            image;
+
 
         lightboxImage.alt =
             thumbnail
                 ? thumbnail.alt
                 : "NEWITT Media Photography image";
 
+
         lightbox.classList.add(
             "active"
         );
+
 
         lightbox.setAttribute(
             "aria-hidden",
             "false"
         );
+
 
         document.body.style.overflow =
             "hidden";
@@ -1137,12 +1377,16 @@
             "active"
         );
 
+
         lightbox.setAttribute(
             "aria-hidden",
             "true"
         );
 
-        lightboxImage.src = "";
+
+        lightboxImage.src =
+            "";
+
 
         document.body.style.overflow =
             "";
@@ -1150,18 +1394,22 @@
     }
 
 
-    galleryItems.forEach(function (item) {
+    galleryItems.forEach(
+        function (item) {
 
-        item.addEventListener(
-            "click",
-            function () {
+            item.addEventListener(
+                "click",
+                function () {
 
-                openLightbox(item);
+                    openLightbox(
+                        item
+                    );
 
-            }
-        );
+                }
+            );
 
-    });
+        }
+    );
 
 
     closeButton.addEventListener(
@@ -1175,9 +1423,12 @@
         function (event) {
 
             if (
-                event.target === lightbox
+                event.target ===
+                lightbox
             ) {
+
                 closeLightbox();
+
             }
 
         }
@@ -1190,13 +1441,18 @@
 
             if (
                 event.key === "Escape" &&
-                lightbox.classList.contains("active")
+                lightbox.classList.contains(
+                    "active"
+                )
             ) {
+
                 closeLightbox();
+
             }
 
         }
     );
+
 
 })();
 
