@@ -155,75 +155,6 @@
         href="style.css"
     >
 
-
-    <!-- =====================================================
-         SKYLINE LANGUAGE CONTROL
-    ====================================================== -->
-
-    <style>
-
-        .language-switcher {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            margin-left: 18px;
-            flex-shrink: 0;
-        }
-
-        .language-switcher button {
-            appearance: none;
-            border: 1px solid rgba(0, 220, 255, 0.30);
-            background: rgba(0, 8, 15, 0.70);
-            color: rgba(255,255,255,0.72);
-            padding: 6px 9px;
-            border-radius: 7px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            cursor: pointer;
-            transition:
-                background 0.25s ease,
-                color 0.25s ease,
-                border-color 0.25s ease,
-                transform 0.25s ease;
-        }
-
-        .language-switcher button:hover {
-            transform: translateY(-1px);
-            border-color: rgba(0, 220, 255, 0.75);
-            color: #ffffff;
-        }
-
-        .language-switcher button.active {
-            background: rgba(0, 180, 255, 0.18);
-            border-color: rgba(0, 220, 255, 0.80);
-            color: #ffffff;
-        }
-
-        [data-lang] {
-            transition: opacity 0.18s ease;
-        }
-
-        @media (max-width: 900px) {
-
-            .language-switcher {
-                margin: 14px 0 4px;
-            }
-
-        }
-
-        @media (max-width: 600px) {
-
-            .language-switcher {
-                width: 100%;
-                justify-content: center;
-            }
-
-        }
-
-    </style>
-
 </head>
 
 
@@ -245,6 +176,8 @@
             href="index.html"
             class="nav-brand"
             aria-label="NEWITT Media Home"
+            data-aria-en="NEWITT Media Home"
+            data-aria-cy="Cartref NEWITT Media"
         >
 
             <img
@@ -265,6 +198,8 @@
             aria-expanded="false"
             aria-controls="main-menu"
             aria-label="Open navigation menu"
+            data-aria-en="Open navigation menu"
+            data-aria-cy="Agor y ddewislen lywio"
         >
 
             <span></span>
@@ -278,69 +213,57 @@
             class="nav-links"
             id="main-menu"
             aria-label="Main navigation"
+            data-aria-en="Main navigation"
+            data-aria-cy="Prif ddewislen lywio"
         >
 
-            <a href="index.html">
-                <span data-lang="en">Home</span>
-                <span data-lang="cy" hidden>Cartref</span>
+            <a
+                href="index.html"
+                data-lang-en="Home"
+                data-lang-cy="Cartref"
+            >
+                Home
             </a>
+
 
             <a
                 href="skyline.html"
                 class="active"
                 aria-current="page"
+                data-lang-en="Skyline"
+                data-lang-cy="Skyline"
             >
-                <span data-lang="en">Skyline</span>
-                <span data-lang="cy" hidden>Skyline</span>
+                Skyline
             </a>
 
-            <a href="paranormal.html">
-                <span data-lang="en">Paranormal</span>
-                <span data-lang="cy" hidden>Paranormal</span>
+
+            <a
+                href="paranormal.html"
+                data-lang-en="Paranormal"
+                data-lang-cy="Paranormal"
+            >
+                Paranormal
             </a>
 
-            <a href="photography.html">
-                <span data-lang="en">Photography</span>
-                <span data-lang="cy" hidden>Ffotograffiaeth</span>
+
+            <a
+                href="photography.html"
+                data-lang-en="Photography"
+                data-lang-cy="Ffotograffiaeth"
+            >
+                Photography
             </a>
 
-            <a href="contact.html">
-                <span data-lang="en">Contact</span>
-                <span data-lang="cy" hidden>Cysylltu</span>
+
+            <a
+                href="contact.html"
+                data-lang-en="Contact"
+                data-lang-cy="Cysylltu"
+            >
+                Contact
             </a>
 
         </nav>
-
-
-        <!-- =================================================
-             LANGUAGE SWITCHER
-        ================================================== -->
-
-        <div
-            class="language-switcher"
-            aria-label="Language selection"
-        >
-
-            <button
-                type="button"
-                id="language-en"
-                class="active"
-                aria-label="English"
-                aria-pressed="true"
-            >
-                EN
-            </button>
-
-            <button
-                type="button"
-                id="language-cy"
-                aria-label="Cymraeg"
-                aria-pressed="false"
-            >
-                CY
-            </button>
-
-        </div>
 
     </div>
 
@@ -375,24 +298,21 @@
         >
 
 
-        <div class="eyebrow">
-
-            <span data-lang="en">NEWITT MEDIA</span>
-
-            <span data-lang="cy" hidden>
-                NEWITT MEDIA
-            </span>
-
+        <div
+            class="eyebrow"
+            data-lang-en="NEWITT MEDIA"
+            data-lang-cy="NEWITT MEDIA"
+        >
+            NEWITT MEDIA
         </div>
 
 
         <h1>
 
-            <span data-lang="en">
-                NEWITT <span>SKYLINE</span> MEDIA
-            </span>
-
-            <span data-lang="cy" hidden>
+            <span
+                data-lang-en="NEWITT SKYLINE MEDIA"
+                data-lang-cy="NEWITT SKYLINE MEDIA"
+            >
                 NEWITT <span>SKYLINE</span> MEDIA
             </span>
 
@@ -402,17 +322,13 @@
         <div class="hero-rule"></div>
 
 
-        <p data-lang="en">
+        <p
+            data-lang-en="Drone &amp; aerial media capturing landscapes, locations, landmarks, events and experiences from a completely different perspective."
+            data-lang-cy="Cyfryngau drôn ac awyr yn dal tirweddau, lleoliadau, tirnodau, digwyddiadau a phrofiadau o safbwynt hollol wahanol."
+        >
             Drone &amp; aerial media capturing landscapes,
             locations, landmarks, events and experiences
             from a completely different perspective.
-        </p>
-
-
-        <p data-lang="cy" hidden>
-            Cyfryngau drôn ac awyr yn dal tirweddau,
-            lleoliadau, tirnodau, digwyddiadau a phrofiadau
-            o safbwynt hollol wahanol.
         </p>
 
 
@@ -421,18 +337,20 @@
             <a
                 href="#landmarks"
                 class="button primary"
+                data-lang-en="Explore Landmarks"
+                data-lang-cy="Archwilio Tirnodau"
             >
-                <span data-lang="en">Explore Landmarks</span>
-                <span data-lang="cy" hidden>Archwilio Tirnodau</span>
+                Explore Landmarks
             </a>
 
 
             <a
                 href="#gallery"
                 class="button"
+                data-lang-en="View Gallery"
+                data-lang-cy="Gweld yr Oriel"
             >
-                <span data-lang="en">View Gallery</span>
-                <span data-lang="cy" hidden>Gweld yr Oriel</span>
+                View Gallery
             </a>
 
 
@@ -441,6 +359,8 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="button"
+                data-lang-en="TikTok Skyline"
+                data-lang-cy="TikTok Skyline"
             >
                 TikTok Skyline
             </a>
@@ -451,6 +371,8 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="button"
+                data-lang-en="YouTube Skyline"
+                data-lang-cy="YouTube Skyline"
             >
                 YouTube Skyline
             </a>
@@ -472,41 +394,34 @@
 
         <div class="section-heading">
 
-            <div class="eyebrow">
-
-                <span data-lang="en">FROM ABOVE</span>
-
-                <span data-lang="cy" hidden>
-                    O'R AWYR
-                </span>
-
+            <div
+                class="eyebrow"
+                data-lang-en="FROM ABOVE"
+                data-lang-cy="O'R AWYR"
+            >
+                FROM ABOVE
             </div>
 
 
             <h2>
 
-                <span data-lang="en">
+                <span
+                    data-lang-en="A different perspective"
+                    data-lang-cy="Safbwynt gwahanol"
+                >
                     A different <span>perspective</span>
-                </span>
-
-                <span data-lang="cy" hidden>
-                    Safbwynt <span>gwahanol</span>
                 </span>
 
             </h2>
 
 
-            <p data-lang="en">
+            <p
+                data-lang-en="NEWITT Skyline Media explores the world from above, creating aerial imagery of landscapes, locations, landmarks, events and experiences."
+                data-lang-cy="Mae NEWITT Skyline Media yn archwilio'r byd o'r awyr, gan greu delweddau awyr o dirweddau, lleoliadau, tirnodau, digwyddiadau a phrofiadau."
+            >
                 NEWITT Skyline Media explores the world from
                 above, creating aerial imagery of landscapes,
                 locations, landmarks, events and experiences.
-            </p>
-
-
-            <p data-lang="cy" hidden>
-                Mae NEWITT Skyline Media yn archwilio'r byd
-                o'r awyr, gan greu delweddau awyr o dirweddau,
-                lleoliadau, tirnodau, digwyddiadau a phrofiadau.
             </p>
 
         </div>
@@ -517,83 +432,63 @@
 
             <article class="investigation-card">
 
-                <h3>
-
-                    <span data-lang="en">
-                        Aerial Media
-                    </span>
-
-                    <span data-lang="cy" hidden>
-                        Cyfryngau Awyr
-                    </span>
-
+                <h3
+                    data-lang-en="Aerial Media"
+                    data-lang-cy="Cyfryngau Awyr"
+                >
+                    Aerial Media
                 </h3>
 
-                <p data-lang="en">
+
+                <p
+                    data-lang-en="Drone imagery designed to capture the scale, shape and character of locations from above."
+                    data-lang-cy="Delweddau drôn wedi'u creu i ddal maint, siâp a chymeriad lleoliadau o'r awyr."
+                >
                     Drone imagery designed to capture the scale,
                     shape and character of locations from above.
                 </p>
 
-                <p data-lang="cy" hidden>
-                    Delweddau drôn wedi'u creu i ddal maint,
-                    siâp a chymeriad lleoliadau o'r awyr.
-                </p>
-
             </article>
 
 
             <article class="investigation-card">
 
-                <h3>
-
-                    <span data-lang="en">
-                        Locations
-                    </span>
-
-                    <span data-lang="cy" hidden>
-                        Lleoliadau
-                    </span>
-
+                <h3
+                    data-lang-en="Locations"
+                    data-lang-cy="Lleoliadau"
+                >
+                    Locations
                 </h3>
 
-                <p data-lang="en">
+
+                <p
+                    data-lang-en="Exploring interesting places and creating visual records of the locations we visit."
+                    data-lang-cy="Archwilio lleoedd diddorol a chreu cofnodion gweledol o'r lleoliadau rydym yn ymweld â nhw."
+                >
                     Exploring interesting places and creating
                     visual records of the locations we visit.
                 </p>
 
-                <p data-lang="cy" hidden>
-                    Archwilio lleoedd diddorol a chreu cofnodion
-                    gweledol o'r lleoliadau rydym yn ymweld â nhw.
-                </p>
-
             </article>
 
 
             <article class="investigation-card">
 
-                <h3>
-
-                    <span data-lang="en">
-                        Future Projects
-                    </span>
-
-                    <span data-lang="cy" hidden>
-                        Prosiectau'r Dyfodol
-                    </span>
-
+                <h3
+                    data-lang-en="Future Projects"
+                    data-lang-cy="Prosiectau'r Dyfodol"
+                >
+                    Future Projects
                 </h3>
 
-                <p data-lang="en">
+
+                <p
+                    data-lang-en="Skyline is designed to grow with NEWITT Media, allowing new locations, landmarks and projects to be added over time."
+                    data-lang-cy="Mae Skyline wedi'i gynllunio i dyfu gyda NEWITT Media, gan ganiatáu ychwanegu lleoliadau, tirnodau a phrosiectau newydd dros amser."
+                >
                     Skyline is designed to grow with NEWITT Media,
                     allowing new locations, landmarks and projects
                     to be added over time.
-                </p>
-
-                <p data-lang="cy" hidden>
-                    Mae Skyline wedi'i gynllunio i dyfu gyda
-                    NEWITT Media, gan ganiatáu ychwanegu
-                    lleoliadau, tirnodau a phrosiectau newydd
-                    dros amser.
                 </p>
 
             </article>
@@ -619,41 +514,33 @@
 
         <div class="section-heading">
 
-            <div class="eyebrow">
-
-                <span data-lang="en">
-                    NEWITT SKYLINE
-                </span>
-
-                <span data-lang="cy" hidden>
-                    NEWITT SKYLINE
-                </span>
-
+            <div
+                class="eyebrow"
+                data-lang-en="NEWITT SKYLINE"
+                data-lang-cy="NEWITT SKYLINE"
+            >
+                NEWITT SKYLINE
             </div>
 
 
             <h2>
 
-                <span data-lang="en">
+                <span
+                    data-lang-en="LANDMARKS"
+                    data-lang-cy="TIRNODAU"
+                >
                     <span>LANDMARKS</span>
-                </span>
-
-                <span data-lang="cy" hidden>
-                    <span>TIRNODAU</span>
                 </span>
 
             </h2>
 
 
-            <p data-lang="en">
+            <p
+                data-lang-en="A growing collection of locations explored through aerial media and factual background."
+                data-lang-cy="Casgliad sy'n tyfu o leoliadau a archwilir drwy gyfryngau awyr a gwybodaeth gefndir ffeithiol."
+            >
                 A growing collection of locations explored
                 through aerial media and factual background.
-            </p>
-
-
-            <p data-lang="cy" hidden>
-                Casgliad sy'n tyfu o leoliadau a archwilir
-                drwy gyfryngau awyr a gwybodaeth gefndir ffeithiol.
             </p>
 
         </div>
@@ -676,50 +563,40 @@
             </h2>
 
 
-            <p data-lang="en">
+            <p
+                data-lang-en="A historic former prison site in Gloucester, explored by NEWITT Skyline Media from an aerial perspective."
+                data-lang-cy="Safle hen garchar hanesyddol yng Ngloucester, wedi'i archwilio gan NEWITT Skyline Media o safbwynt awyr."
+            >
                 A historic former prison site in Gloucester,
                 explored by NEWITT Skyline Media from an
                 aerial perspective.
             </p>
 
 
-            <p data-lang="cy" hidden>
-                Safle hen garchar hanesyddol yng Ngloucester,
-                wedi'i archwilio gan NEWITT Skyline Media
-                o safbwynt awyr.
-            </p>
-
-
             <div class="hero-rule"></div>
 
 
-            <div class="eyebrow">
-
-                <span data-lang="en">
-                    HISTORICAL BACKGROUND
-                </span>
-
-                <span data-lang="cy" hidden>
-                    CEFNDIR HANESYDDOL
-                </span>
-
+            <div
+                class="eyebrow"
+                data-lang-en="HISTORICAL BACKGROUND"
+                data-lang-cy="CEFNDIR HANESYDDOL"
+            >
+                HISTORICAL BACKGROUND
             </div>
 
 
-            <h3>
-
-                <span data-lang="en">
-                    A brief history
-                </span>
-
-                <span data-lang="cy" hidden>
-                    Hanes byr
-                </span>
-
+            <h3
+                data-lang-en="A brief history"
+                data-lang-cy="Hanes byr"
+            >
+                A brief history
             </h3>
 
 
-            <p data-lang="en">
+            <p
+                data-lang-en="The site has a long history associated with Gloucester's former castle and prison buildings. The medieval castle was built during the 12th century."
+                data-lang-cy="Mae gan y safle hanes hir sy'n gysylltiedig â hen adeiladau castell a charchar Gloucester. Adeiladwyd y castell canoloesol yn ystod y 12fed ganrif."
+            >
                 The site has a long history associated with
                 Gloucester's former castle and prison buildings.
                 The medieval castle was built during the
@@ -727,15 +604,10 @@
             </p>
 
 
-            <p data-lang="cy" hidden>
-                Mae gan y safle hanes hir sy'n gysylltiedig
-                â hen adeiladau castell a charchar Gloucester.
-                Adeiladwyd y castell canoloesol yn ystod
-                y 12fed ganrif.
-            </p>
-
-
-            <p data-lang="en">
+            <p
+                data-lang-en="A new gaol was constructed on the site between 1786 and 1791. The prison was subsequently enlarged, including significant works during the 19th century."
+                data-lang-cy="Adeiladwyd carchar newydd ar y safle rhwng 1786 a 1791. Ehangwyd y carchar wedyn, gan gynnwys gwaith sylweddol yn ystod y 19eg ganrif."
+            >
                 A new gaol was constructed on the site between
                 1786 and 1791. The prison was subsequently
                 enlarged, including significant works during
@@ -743,15 +615,10 @@
             </p>
 
 
-            <p data-lang="cy" hidden>
-                Adeiladwyd carchar newydd ar y safle rhwng
-                1786 a 1791. Ehangwyd y carchar wedyn,
-                gan gynnwys gwaith sylweddol yn ystod
-                y 19eg ganrif.
-            </p>
-
-
-            <p data-lang="en">
+            <p
+                data-lang-en="A substantial prison block was constructed between 1844 and 1850. The prison continued operating into the modern era before eventually closing in 2013."
+                data-lang-cy="Adeiladwyd bloc carchar sylweddol rhwng 1844 a 1850. Parhaodd y carchar i weithredu i'r cyfnod modern cyn cau yn 2013."
+            >
                 A substantial prison block was constructed
                 between 1844 and 1850. The prison continued
                 operating into the modern era before eventually
@@ -759,26 +626,14 @@
             </p>
 
 
-            <p data-lang="cy" hidden>
-                Adeiladwyd bloc carchar sylweddol rhwng
-                1844 a 1850. Parhaodd y carchar i weithredu
-                i'r cyfnod modern cyn cau yn 2013.
-            </p>
-
-
-            <p data-lang="en">
+            <p
+                data-lang-en="This section describes the documented history of the location. Any paranormal investigations, experiences or theories associated with the site are separate from the historical record."
+                data-lang-cy="Mae'r adran hon yn disgrifio hanes dogfennol y lleoliad. Mae unrhyw ymchwiliadau paranormal, profiadau neu ddamcaniaethau sy'n gysylltiedig â'r safle ar wahân i'r cofnod hanesyddol."
+            >
                 This section describes the documented history
                 of the location. Any paranormal investigations,
                 experiences or theories associated with the
                 site are separate from the historical record.
-            </p>
-
-
-            <p data-lang="cy" hidden>
-                Mae'r adran hon yn disgrifio hanes dogfennol
-                y lleoliad. Mae unrhyw ymchwiliadau paranormal,
-                profiadau neu ddamcaniaethau sy'n gysylltiedig
-                â'r safle ar wahân i'r cofnod hanesyddol.
             </p>
 
 
@@ -787,14 +642,10 @@
                 <a
                     href="#gallery"
                     class="button primary"
+                    data-lang-en="View Aerial Gallery"
+                    data-lang-cy="Gweld yr Oriel Awyr"
                 >
-                    <span data-lang="en">
-                        View Aerial Gallery
-                    </span>
-
-                    <span data-lang="cy" hidden>
-                        Gweld yr Oriel Awyr
-                    </span>
+                    View Aerial Gallery
                 </a>
 
             </div>
@@ -819,39 +670,32 @@
 
         <div class="section-heading">
 
-            <div class="eyebrow">
-
-                <span data-lang="en">
-                    AERIAL PERSPECTIVE
-                </span>
-
-                <span data-lang="cy" hidden>
-                    SAFBWYNT O'R AWYR
-                </span>
-
+            <div
+                class="eyebrow"
+                data-lang-en="AERIAL PERSPECTIVE"
+                data-lang-cy="SAFBWYNT O'R AWYR"
+            >
+                AERIAL PERSPECTIVE
             </div>
 
 
             <h2>
 
-                <span data-lang="en">
+                <span
+                    data-lang-en="Gloucester Prison"
+                    data-lang-cy="Gloucester Prison"
+                >
                     Gloucester <span>Prison</span>
-                </span>
-
-                <span data-lang="cy" hidden>
-                    <span>Gloucester</span> Prison
                 </span>
 
             </h2>
 
 
-            <p data-lang="en">
+            <p
+                data-lang-en="Aerial imagery from NEWITT Skyline Media."
+                data-lang-cy="Delweddau awyr gan NEWITT Skyline Media."
+            >
                 Aerial imagery from NEWITT Skyline Media.
-            </p>
-
-
-            <p data-lang="cy" hidden>
-                Delweddau awyr gan NEWITT Skyline Media.
             </p>
 
         </div>
@@ -867,6 +711,8 @@
                 type="button"
                 data-lightbox="gloucester-prison-1.webp"
                 aria-label="View Gloucester Prison aerial photograph"
+                data-aria-en="View Gloucester Prison aerial photograph"
+                data-aria-cy="Gweld ffotograff awyr Gloucester Prison"
             >
 
                 <img
@@ -885,6 +731,8 @@
                 type="button"
                 data-lightbox="gloucester-prison-2.webp"
                 aria-label="View Gloucester Prison aerial photograph"
+                data-aria-en="View Gloucester Prison aerial photograph"
+                data-aria-cy="Gweld ffotograff awyr Gloucester Prison"
             >
 
                 <img
@@ -903,6 +751,8 @@
                 type="button"
                 data-lightbox="gloucester-prison-3.webp"
                 aria-label="View Gloucester Prison aerial photograph"
+                data-aria-en="View Gloucester Prison aerial photograph"
+                data-aria-cy="Gweld ffotograff awyr Gloucester Prison"
             >
 
                 <img
@@ -921,6 +771,8 @@
                 type="button"
                 data-lightbox="gloucester-prison-4.webp"
                 aria-label="View Gloucester Prison aerial photograph"
+                data-aria-en="View Gloucester Prison aerial photograph"
+                data-aria-cy="Gweld ffotograff awyr Gloucester Prison"
             >
 
                 <img
@@ -937,19 +789,10 @@
 
         <p
             class="gallery-note"
-            data-lang="en"
+            data-lang-en="Gloucester Prison aerial imagery by NEWITT Skyline Media."
+            data-lang-cy="Delweddau awyr Gloucester Prison gan NEWITT Skyline Media."
         >
             Gloucester Prison aerial imagery by NEWITT
-            Skyline Media.
-        </p>
-
-
-        <p
-            class="gallery-note"
-            data-lang="cy"
-            hidden
-        >
-            Delweddau awyr Gloucester Prison gan NEWITT
             Skyline Media.
         </p>
 
@@ -968,43 +811,34 @@
 
         <div class="section-heading">
 
-            <div class="eyebrow">
-
-                <span data-lang="en">
-                    COMING LATER
-                </span>
-
-                <span data-lang="cy" hidden>
-                    YN DOD YN NES YMLAEN
-                </span>
-
+            <div
+                class="eyebrow"
+                data-lang-en="COMING LATER"
+                data-lang-cy="YN DOD YN NES YMLAEN"
+            >
+                COMING LATER
             </div>
 
 
             <h2>
 
-                <span data-lang="en">
+                <span
+                    data-lang-en="More Landmarks"
+                    data-lang-cy="Mwy o Dirnodau"
+                >
                     More <span>Landmarks</span>
-                </span>
-
-                <span data-lang="cy" hidden>
-                    Mwy o <span>Dirnodau</span>
                 </span>
 
             </h2>
 
 
-            <p data-lang="en">
+            <p
+                data-lang-en="Gloucester Prison is the beginning of a growing collection. Future locations can be added here as NEWITT Skyline Media explores new places."
+                data-lang-cy="Gloucester Prison yw dechrau casgliad sy'n tyfu. Gellir ychwanegu lleoliadau'r dyfodol yma wrth i NEWITT Skyline Media archwilio lleoedd newydd."
+            >
                 Gloucester Prison is the beginning of a growing
                 collection. Future locations can be added here
                 as NEWITT Skyline Media explores new places.
-            </p>
-
-
-            <p data-lang="cy" hidden>
-                Gloucester Prison yw dechrau casgliad sy'n tyfu.
-                Gellir ychwanegu lleoliadau'r dyfodol yma wrth
-                i NEWITT Skyline Media archwilio lleoedd newydd.
             </p>
 
         </div>
@@ -1015,22 +849,19 @@
 
             <article class="investigation-card">
 
-                <h3>
-                    <span data-lang="en">
-                        Landmark 02
-                    </span>
-
-                    <span data-lang="cy" hidden>
-                        Tirnod 02
-                    </span>
+                <h3
+                    data-lang-en="Landmark 02"
+                    data-lang-cy="Tirnod 02"
+                >
+                    Landmark 02
                 </h3>
 
-                <p data-lang="en">
-                    Future NEWITT Skyline location.
-                </p>
 
-                <p data-lang="cy" hidden>
-                    Lleoliad NEWITT Skyline yn y dyfodol.
+                <p
+                    data-lang-en="Future NEWITT Skyline location."
+                    data-lang-cy="Lleoliad NEWITT Skyline yn y dyfodol."
+                >
+                    Future NEWITT Skyline location.
                 </p>
 
             </article>
@@ -1038,22 +869,19 @@
 
             <article class="investigation-card">
 
-                <h3>
-                    <span data-lang="en">
-                        Landmark 03
-                    </span>
-
-                    <span data-lang="cy" hidden>
-                        Tirnod 03
-                    </span>
+                <h3
+                    data-lang-en="Landmark 03"
+                    data-lang-cy="Tirnod 03"
+                >
+                    Landmark 03
                 </h3>
 
-                <p data-lang="en">
-                    Future NEWITT Skyline location.
-                </p>
 
-                <p data-lang="cy" hidden>
-                    Lleoliad NEWITT Skyline yn y dyfodol.
+                <p
+                    data-lang-en="Future NEWITT Skyline location."
+                    data-lang-cy="Lleoliad NEWITT Skyline yn y dyfodol."
+                >
+                    Future NEWITT Skyline location.
                 </p>
 
             </article>
@@ -1061,22 +889,19 @@
 
             <article class="investigation-card">
 
-                <h3>
-                    <span data-lang="en">
-                        Landmark 04
-                    </span>
-
-                    <span data-lang="cy" hidden>
-                        Tirnod 04
-                    </span>
+                <h3
+                    data-lang-en="Landmark 04"
+                    data-lang-cy="Tirnod 04"
+                >
+                    Landmark 04
                 </h3>
 
-                <p data-lang="en">
-                    Future NEWITT Skyline location.
-                </p>
 
-                <p data-lang="cy" hidden>
-                    Lleoliad NEWITT Skyline yn y dyfodol.
+                <p
+                    data-lang-en="Future NEWITT Skyline location."
+                    data-lang-cy="Lleoliad NEWITT Skyline yn y dyfodol."
+                >
+                    Future NEWITT Skyline location.
                 </p>
 
             </article>
@@ -1099,44 +924,35 @@
 
         <div class="section-heading">
 
-            <div class="eyebrow">
-
-                <span data-lang="en">
-                    SAFETY
-                </span>
-
-                <span data-lang="cy" hidden>
-                    DIOGELWCH
-                </span>
-
+            <div
+                class="eyebrow"
+                data-lang-en="SAFETY"
+                data-lang-cy="DIOGELWCH"
+            >
+                SAFETY
             </div>
 
 
             <h2>
 
-                <span data-lang="en">
+                <span
+                    data-lang-en="Responsible flying"
+                    data-lang-cy="Hedfan gyfrifol"
+                >
                     Responsible <span>flying</span>
-                </span>
-
-                <span data-lang="cy" hidden>
-                    Hedfan <span>gyfrifol</span>
                 </span>
 
             </h2>
 
 
-            <p data-lang="en">
+            <p
+                data-lang-en="Drone operations must always take account of applicable aviation requirements, location restrictions, permissions and the safety of people and property."
+                data-lang-cy="Rhaid i weithrediadau drôn ystyried gofynion hedfan perthnasol, cyfyngiadau lleoliad, caniatâd a diogelwch pobl ac eiddo bob amser."
+            >
                 Drone operations must always take account of
                 applicable aviation requirements, location
                 restrictions, permissions and the safety of
                 people and property.
-            </p>
-
-
-            <p data-lang="cy" hidden>
-                Rhaid i weithrediadau drôn ystyried gofynion
-                hedfan perthnasol, cyfyngiadau lleoliad,
-                caniatâd a diogelwch pobl ac eiddo bob amser.
             </p>
 
         </div>
@@ -1147,82 +963,63 @@
 
             <article class="investigation-card">
 
-                <h3>
-
-                    <span data-lang="en">
-                        Aviation Rules
-                    </span>
-
-                    <span data-lang="cy" hidden>
-                        Rheolau Hedfan
-                    </span>
-
+                <h3
+                    data-lang-en="Aviation Rules"
+                    data-lang-cy="Rheolau Hedfan"
+                >
+                    Aviation Rules
                 </h3>
 
-                <p data-lang="en">
+
+                <p
+                    data-lang-en="Operations are planned with applicable aviation requirements and restrictions in mind."
+                    data-lang-cy="Mae gweithrediadau'n cael eu cynllunio gan ystyried gofynion a chyfyngiadau hedfan perthnasol."
+                >
                     Operations are planned with applicable
                     aviation requirements and restrictions
                     in mind.
                 </p>
 
-                <p data-lang="cy" hidden>
-                    Mae gweithrediadau'n cael eu cynllunio
-                    gan ystyried gofynion a chyfyngiadau
-                    hedfan perthnasol.
-                </p>
-
             </article>
 
 
             <article class="investigation-card">
 
-                <h3>
-
-                    <span data-lang="en">
-                        Location Rules
-                    </span>
-
-                    <span data-lang="cy" hidden>
-                        Rheolau Lleoliad
-                    </span>
-
+                <h3
+                    data-lang-en="Location Rules"
+                    data-lang-cy="Rheolau Lleoliad"
+                >
+                    Location Rules
                 </h3>
 
-                <p data-lang="en">
+
+                <p
+                    data-lang-en="Venue, landowner, event organiser and site instructions must always be followed."
+                    data-lang-cy="Rhaid dilyn cyfarwyddiadau'r lleoliad, tirfeddiannwr, trefnydd digwyddiad a'r safle."
+                >
                     Venue, landowner, event organiser and
                     site instructions must always be followed.
                 </p>
 
-                <p data-lang="cy" hidden>
-                    Rhaid dilyn cyfarwyddiadau'r lleoliad,
-                    tirfeddiannwr, trefnydd digwyddiad a'r safle.
-                </p>
-
             </article>
 
 
             <article class="investigation-card">
 
-                <h3>
-
-                    <span data-lang="en">
-                        People &amp; Property
-                    </span>
-
-                    <span data-lang="cy" hidden>
-                        Pobl ac Eiddo
-                    </span>
-
+                <h3
+                    data-lang-en="People &amp; Property"
+                    data-lang-cy="Pobl ac Eiddo"
+                >
+                    People &amp; Property
                 </h3>
 
-                <p data-lang="en">
+
+                <p
+                    data-lang-en="The safety of people, property and the surrounding environment comes first."
+                    data-lang-cy="Daw diogelwch pobl, eiddo a'r amgylchedd cyfagos yn gyntaf."
+                >
                     The safety of people, property and the
                     surrounding environment comes first.
-                </p>
-
-                <p data-lang="cy" hidden>
-                    Daw diogelwch pobl, eiddo a'r amgylchedd
-                    cyfagos yn gyntaf.
                 </p>
 
             </article>
@@ -1245,42 +1042,33 @@
 
         <div class="cta-panel">
 
-            <div class="eyebrow">
-
-                <span data-lang="en">
-                    NEWITT MEDIA
-                </span>
-
-                <span data-lang="cy" hidden>
-                    NEWITT MEDIA
-                </span>
-
+            <div
+                class="eyebrow"
+                data-lang-en="NEWITT MEDIA"
+                data-lang-cy="NEWITT MEDIA"
+            >
+                NEWITT MEDIA
             </div>
 
 
             <h2>
 
-                <span data-lang="en">
+                <span
+                    data-lang-en="Privacy &amp; Safety"
+                    data-lang-cy="Preifatrwydd a Diogelwch"
+                >
                     Privacy &amp; <span>Safety</span>
-                </span>
-
-                <span data-lang="cy" hidden>
-                    Preifatrwydd a <span>Diogelwch</span>
                 </span>
 
             </h2>
 
 
-            <p data-lang="en">
+            <p
+                data-lang-en="NEWITT Media is designed as a privacy-conscious website without unnecessary cookies or tracking."
+                data-lang-cy="Mae NEWITT Media wedi'i gynllunio fel gwefan sy'n ymwybodol o breifatrwydd, heb gwcis na thracio diangen."
+            >
                 NEWITT Media is designed as a privacy-conscious
                 website without unnecessary cookies or tracking.
-            </p>
-
-
-            <p data-lang="cy" hidden>
-                Mae NEWITT Media wedi'i gynllunio fel gwefan
-                sy'n ymwybodol o breifatrwydd, heb gwcis na
-                thracio diangen.
             </p>
 
 
@@ -1289,28 +1077,20 @@
                 <a
                     href="privacy.html"
                     class="button primary"
+                    data-lang-en="Privacy &amp; Safety"
+                    data-lang-cy="Preifatrwydd a Diogelwch"
                 >
-                    <span data-lang="en">
-                        Privacy &amp; Safety
-                    </span>
-
-                    <span data-lang="cy" hidden>
-                        Preifatrwydd a Diogelwch
-                    </span>
+                    Privacy &amp; Safety
                 </a>
 
 
                 <a
                     href="contact.html"
                     class="button"
+                    data-lang-en="Contact NEWITT Media"
+                    data-lang-cy="Cysylltu â NEWITT Media"
                 >
-                    <span data-lang="en">
-                        Contact NEWITT Media
-                    </span>
-
-                    <span data-lang="cy" hidden>
-                        Cysylltu â NEWITT Media
-                    </span>
+                    Contact NEWITT Media
                 </a>
 
             </div>
@@ -1332,41 +1112,33 @@
 
         <div class="cta-panel">
 
-            <div class="eyebrow">
-
-                <span data-lang="en">
-                    NEWITT SKYLINE MEDIA
-                </span>
-
-                <span data-lang="cy" hidden>
-                    NEWITT SKYLINE MEDIA
-                </span>
-
+            <div
+                class="eyebrow"
+                data-lang-en="NEWITT SKYLINE MEDIA"
+                data-lang-cy="NEWITT SKYLINE MEDIA"
+            >
+                NEWITT SKYLINE MEDIA
             </div>
 
 
             <h2>
 
-                <span data-lang="en">
+                <span
+                    data-lang-en="Explore from above"
+                    data-lang-cy="Archwiliwch o'r awyr"
+                >
                     Explore from <span>above</span>
-                </span>
-
-                <span data-lang="cy" hidden>
-                    Archwiliwch o'r <span>awyr</span>
                 </span>
 
             </h2>
 
 
-            <p data-lang="en">
+            <p
+                data-lang-en="Follow NEWITT Skyline Media for future aerial locations, landmarks and projects."
+                data-lang-cy="Dilynwch NEWITT Skyline Media am leoliadau, tirnodau a phrosiectau awyr y dyfodol."
+            >
                 Follow NEWITT Skyline Media for future aerial
                 locations, landmarks and projects.
-            </p>
-
-
-            <p data-lang="cy" hidden>
-                Dilynwch NEWITT Skyline Media am leoliadau,
-                tirnodau a phrosiectau awyr y dyfodol.
             </p>
 
 
@@ -1377,6 +1149,8 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     class="button primary"
+                    data-lang-en="TikTok"
+                    data-lang-cy="TikTok"
                 >
                     TikTok
                 </a>
@@ -1387,6 +1161,8 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     class="button"
+                    data-lang-en="YouTube"
+                    data-lang-cy="YouTube"
                 >
                     YouTube
                 </a>
@@ -1395,14 +1171,10 @@
                 <a
                     href="index.html"
                     class="button"
+                    data-lang-en="Back to NEWITT Media"
+                    data-lang-cy="Yn ôl i NEWITT Media"
                 >
-                    <span data-lang="en">
-                        Back to NEWITT Media
-                    </span>
-
-                    <span data-lang="cy" hidden>
-                        Yn ôl i NEWITT Media
-                    </span>
+                    Back to NEWITT Media
                 </a>
 
             </div>
@@ -1432,6 +1204,8 @@
         class="lightbox-close"
         type="button"
         aria-label="Close image"
+        data-aria-en="Close image"
+        data-aria-cy="Cau'r ddelwedd"
     >
         ×
     </button>
@@ -1455,6 +1229,8 @@
     class="back-to-top"
     id="back-to-top"
     aria-label="Back to top"
+    data-aria-en="Back to top"
+    data-aria-cy="Nôl i'r brig"
 >
     ↑
 </a>
@@ -1481,7 +1257,11 @@
         </p>
 
 
-        <p class="footer-tagline">
+        <p
+            class="footer-tagline"
+            data-lang-en="FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN."
+            data-lang-cy="O'R AWYR. AR ÔL TYWYLLWCH. A PHOPETH RHWNG Y DDAU."
+        >
             FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
         </p>
 
@@ -1500,32 +1280,32 @@
 
         <p class="website-address">
 
-            <a href="index.html">
+            <a
+                href="index.html"
+                data-lang-en="NEWITT Media"
+                data-lang-cy="NEWITT Media"
+            >
                 NEWITT Media
             </a>
 
             &nbsp;•&nbsp;
 
-            <a href="privacy.html">
-                <span data-lang="en">
-                    Privacy &amp; Safety
-                </span>
-
-                <span data-lang="cy" hidden>
-                    Preifatrwydd a Diogelwch
-                </span>
+            <a
+                href="privacy.html"
+                data-lang-en="Privacy &amp; Safety"
+                data-lang-cy="Preifatrwydd a Diogelwch"
+            >
+                Privacy &amp; Safety
             </a>
 
             &nbsp;•&nbsp;
 
-            <a href="contact.html">
-                <span data-lang="en">
-                    Contact
-                </span>
-
-                <span data-lang="cy" hidden>
-                    Cysylltu
-                </span>
+            <a
+                href="contact.html"
+                data-lang-en="Contact"
+                data-lang-cy="Cysylltu"
+            >
+                Contact
             </a>
 
         </p>
@@ -1536,150 +1316,13 @@
 
 
 <!-- =====================================================
-     SKYLINE LANGUAGE ENGINE
+     MASTER LANGUAGE SYSTEM
 ===================================================== -->
 
-<script>
-
-(function () {
-
-    const englishButton =
-        document.getElementById("language-en");
-
-    const welshButton =
-        document.getElementById("language-cy");
-
-    const languageElements =
-        document.querySelectorAll("[data-lang]");
-
-
-    function setLanguage(language) {
-
-        languageElements.forEach(function (element) {
-
-            element.hidden =
-                element.getAttribute("data-lang") !== language;
-
-        });
-
-
-        document.documentElement.lang =
-            language === "cy"
-                ? "cy-GB"
-                : "en-GB";
-
-
-        if (englishButton) {
-
-            englishButton.classList.toggle(
-                "active",
-                language === "en"
-            );
-
-            englishButton.setAttribute(
-                "aria-pressed",
-                language === "en" ? "true" : "false"
-            );
-
-        }
-
-
-        if (welshButton) {
-
-            welshButton.classList.toggle(
-                "active",
-                language === "cy"
-            );
-
-            welshButton.setAttribute(
-                "aria-pressed",
-                language === "cy" ? "true" : "false"
-            );
-
-        }
-
-
-        try {
-
-            localStorage.setItem(
-                "newitt-language",
-                language
-            );
-
-        } catch (error) {
-
-            /* Local storage may be unavailable. */
-
-        }
-
-    }
-
-
-    function getSavedLanguage() {
-
-        try {
-
-            return localStorage.getItem(
-                "newitt-language"
-            );
-
-        } catch (error) {
-
-            return null;
-
-        }
-
-    }
-
-
-    if (englishButton) {
-
-        englishButton.addEventListener(
-            "click",
-            function () {
-
-                setLanguage("en");
-
-            }
-        );
-
-    }
-
-
-    if (welshButton) {
-
-        welshButton.addEventListener(
-            "click",
-            function () {
-
-                setLanguage("cy");
-
-            }
-        );
-
-    }
-
-
-    const savedLanguage =
-        getSavedLanguage();
-
-
-    if (
-        savedLanguage === "cy" ||
-        savedLanguage === "en"
-    ) {
-
-        setLanguage(savedLanguage);
-
-    } else {
-
-        setLanguage("en");
-
-    }
-
-})();
-
-</script>
+<script
+    src="language.js"
+    defer
+></script>
 
 
 <!-- =====================================================
