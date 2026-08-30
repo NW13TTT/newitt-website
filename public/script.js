@@ -1,22 +1,21 @@
 /* =========================================================
    NEWITT MEDIA
    MASTER JAVASCRIPT
-   NEWITT MEDIA 2.0
-   PASS 1B - SHARED FOUNDATION
-   30 AUGUST 2026
+   CLEAN MASTER VERSION
+   UPDATE 1 OF 5
 
-   FUNCTIONS
-   - First-visit cinematic intro
+   Handles:
+   - First-visit intro
    - Mobile navigation
-   - Mobile page transitions
+   - Clean page navigation
    - Back to top
    - Smooth anchor scrolling
-   - Lightbox
-   - Safe external links
-   - Reduced-motion support
+   - Photography lightbox
+   - General lightbox
+   - External links
+   - Reduced motion
    - Keyboard accessibility
-   - Safari / iPhone resilience
-   - NEWITT Media language-system compatibility
+   - Safari / iPhone support
 ========================================================= */
 
 (function () {
@@ -25,12 +24,8 @@
 
 
     /* =====================================================
-       MASTER SETTINGS
+       SETTINGS
     ====================================================== */
-
-    const TRANSITION_KEY =
-        "newittPageTransition";
-
 
     const INTRO_STORAGE_KEY =
         "newittMediaIntroSeenV2";
@@ -40,311 +35,32 @@
         "(max-width: 700px)";
 
 
-    const isMobile =
-        function () {
+    function isMobile() {
 
-            return (
-                window.matchMedia &&
-                window.matchMedia(
-                    MOBILE_QUERY
-                ).matches
-            );
+        return (
+            window.matchMedia &&
+            window.matchMedia(
+                MOBILE_QUERY
+            ).matches
+        );
 
-        };
+    }
 
 
-    const prefersReducedMotion =
-        function () {
+    function prefersReducedMotion() {
 
-            return (
-                window.matchMedia &&
-                window.matchMedia(
-                    "(prefers-reduced-motion: reduce)"
-                ).matches
-            );
+        return (
+            window.matchMedia &&
+            window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches
+        );
 
-        };
+    }
 
 
     /* =====================================================
-       EARLY MOBILE PAGE TRANSITION
-       
-       This runs before the main DOM-ready initialisation.
-       It prevents a bright flash while the next page loads.
-    ====================================================== */
-
-    (function earlyMobileTransition() {
-
-        if (!isMobile()) {
-            return;
-        }
-
-
-        let incoming = false;
-
-
-        try {
-
-            incoming =
-                sessionStorage.getItem(
-                    TRANSITION_KEY
-                ) === "1";
-
-
-            sessionStorage.removeItem(
-                TRANSITION_KEY
-            );
-
-        } catch (error) {
-
-            incoming = false;
-
-        }
-
-
-        if (!incoming) {
-            return;
-        }
-
-
-        const style =
-            document.createElement(
-                "style"
-            );
-
-
-        style.id =
-            "newitt-early-transition-style";
-
-
-        style.textContent = `
-            html {
-                background: #020305 !important;
-                background-color: #020305 !important;
-            }
-
-            body {
-                background-color: #020305 !important;
-            }
-
-            #newitt-early-transition {
-                position: fixed;
-                inset: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 2147483647;
-                background: #020305;
-                opacity: 1;
-                pointer-events: all;
-                transform: translateZ(0);
-                -webkit-transform: translateZ(0);
-                will-change: opacity;
-            }
-        `;
-
-
-        if (document.head) {
-
-            document.head.appendChild(
-                style
-            );
-
-        }
-
-
-        function createOverlay() {
-
-            if (
-                document.getElementById(
-                    "newitt-early-transition"
-                )
-            ) {
-
-                return;
-
-            }
-
-
-            const overlay =
-                document.createElement(
-                    "div"
-                );
-
-
-            overlay.id =
-                "newitt-early-transition";
-
-
-            overlay.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
-
-            if (document.documentElement) {
-
-                document.documentElement.appendChild(
-                    overlay
-                );
-
-            }
-
-        }
-
-
-        function removeOverlay() {
-
-            const overlay =
-                document.getElementById(
-                    "newitt-early-transition"
-                );
-
-
-            if (!overlay) {
-                return;
-            }
-
-
-            if (prefersReducedMotion()) {
-
-                overlay.style.transition =
-                    "none";
-
-                overlay.style.opacity =
-                    "0";
-
-            } else {
-
-                overlay.style.transition =
-                    "opacity 220ms ease";
-
-                overlay.style.opacity =
-                    "0";
-
-            }
-
-
-            window.setTimeout(
-                function () {
-
-                    if (overlay.parentNode) {
-
-                        overlay.parentNode.removeChild(
-                            overlay
-                        );
-
-                    }
-
-
-                    const earlyStyle =
-                        document.getElementById(
-                            "newitt-early-transition-style"
-                        );
-
-
-                    if (
-                        earlyStyle &&
-                        earlyStyle.parentNode
-                    ) {
-
-                        earlyStyle.parentNode.removeChild(
-                            earlyStyle
-                        );
-
-                    }
-
-                },
-                prefersReducedMotion()
-                    ? 0
-                    : 260
-            );
-
-        }
-
-
-        createOverlay();
-
-
-        const reveal =
-            function () {
-
-                if (prefersReducedMotion()) {
-
-                    removeOverlay();
-
-                    return;
-
-                }
-
-
-                requestAnimationFrame(
-                    function () {
-
-                        requestAnimationFrame(
-                            removeOverlay
-                        );
-
-                    }
-                );
-
-            };
-
-
-        if (
-            document.readyState ===
-            "loading"
-        ) {
-
-            document.addEventListener(
-                "DOMContentLoaded",
-                reveal,
-                {
-                    once: true
-                }
-            );
-
-        } else {
-
-            reveal();
-
-        }
-
-    })();
-
-
-    /* =====================================================
-       DOM READY
-    ====================================================== */
-
-    document.addEventListener(
-        "DOMContentLoaded",
-        function () {
-
-            initFirstVisitIntro();
-
-            initMobileNavigation();
-
-            initPageTransition();
-
-            initBackToTop();
-
-            initSmoothScrolling();
-
-            initLightbox();
-
-            initPhotographyLightbox();
-
-            initExternalLinks();
-
-        }
-    );
-
-
-    /* =====================================================
-       FIRST-VISIT CINEMATIC INTRO
-       
-       The intro appears only once on the device/browser.
-       Escape or tapping the intro closes it immediately.
+       FIRST VISIT INTRO
     ====================================================== */
 
     function initFirstVisitIntro() {
@@ -356,7 +72,9 @@
 
 
         if (!intro) {
+
             return;
+
         }
 
 
@@ -383,16 +101,13 @@
                 "intro-hidden"
             );
 
-
             intro.setAttribute(
                 "aria-hidden",
                 "true"
             );
 
-
             intro.style.display =
                 "none";
-
 
             return;
 
@@ -422,21 +137,23 @@
         } catch (error) {}
 
 
-        const INTRO_DURATION =
-            7500;
-
-
         let closed = false;
 
 
-        const closeTimer =
+        const duration =
+            prefersReducedMotion()
+                ? 0
+                : 7500;
+
+
+        const timer =
             window.setTimeout(
                 closeIntro,
-                INTRO_DURATION
+                duration
             );
 
 
-        function handleEscape(event) {
+        function handleKey(event) {
 
             if (
                 event.key === "Escape"
@@ -451,7 +168,7 @@
 
         document.addEventListener(
             "keydown",
-            handleEscape
+            handleKey
         );
 
 
@@ -464,7 +181,9 @@
         function closeIntro() {
 
             if (closed) {
+
                 return;
+
             }
 
 
@@ -472,7 +191,7 @@
 
 
             window.clearTimeout(
-                closeTimer
+                timer
             );
 
 
@@ -494,25 +213,22 @@
 
             document.removeEventListener(
                 "keydown",
-                handleEscape
+                handleKey
             );
 
 
-            if (prefersReducedMotion()) {
+            if (
+                prefersReducedMotion()
+            ) {
 
-                document.documentElement
-                    .style
-                    .overflow = "";
+                document.documentElement.style.overflow =
+                    "";
 
-
-                document.body
-                    .style
-                    .overflow = "";
-
+                document.body.style.overflow =
+                    "";
 
                 intro.style.display =
                     "none";
-
 
                 return;
 
@@ -522,15 +238,11 @@
             window.setTimeout(
                 function () {
 
-                    document.documentElement
-                        .style
-                        .overflow = "";
+                    document.documentElement.style.overflow =
+                        "";
 
-
-                    document.body
-                        .style
-                        .overflow = "";
-
+                    document.body.style.overflow =
+                        "";
 
                     intro.style.display =
                         "none";
@@ -620,15 +332,18 @@
 
         toggle.addEventListener(
             "click",
-            function () {
+            function (event) {
 
-                const open =
+                event.stopPropagation();
+
+
+                const isOpen =
                     menu.classList.contains(
                         "open"
                     );
 
 
-                if (open) {
+                if (isOpen) {
 
                     closeMenu();
 
@@ -716,226 +431,148 @@
 
 
     /* =====================================================
-       MOBILE PAGE TRANSITION
+       PAGE NAVIGATION
+       
+       IMPORTANT:
+       No artificial fade overlay is used.
+       The browser changes page normally.
+       This removes the page-flash problem.
     ====================================================== */
 
-    function initPageTransition() {
+    function initPageNavigation() {
 
-        if (!isMobile()) {
-            return;
-        }
+        document
+            .querySelectorAll(
+                "a[href]"
+            )
+            .forEach(
+                function (link) {
 
+                    link.addEventListener(
+                        "click",
+                        function (event) {
 
-        const links =
-            document.querySelectorAll(
-                'a[href$=".html"], a[href="index.html"], a[href="/"]'
-            );
+                            if (
+                                event.defaultPrevented
+                            ) {
 
+                                return;
 
-        links.forEach(
-            function (link) {
-
-                link.addEventListener(
-                    "click",
-                    function (event) {
-
-                        if (
-                            event.defaultPrevented ||
-                            event.ctrlKey ||
-                            event.metaKey ||
-                            event.shiftKey ||
-                            event.altKey
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        const href =
-                            link.getAttribute(
-                                "href"
-                            );
-
-
-                        if (!href) {
-                            return;
-                        }
-
-
-                        if (
-                            href.startsWith("#") ||
-                            href.startsWith("mailto:") ||
-                            href.startsWith("tel:") ||
-                            href.startsWith("http://") ||
-                            href.startsWith("https://") ||
-                            href.startsWith("javascript:")
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        const current =
-                            window.location.pathname
-                                .split("/")
-                                .pop() ||
-                            "index.html";
-
-
-                        const target =
-                            href
-                                .split("#")[0]
-                                .split("?")[0]
-                                .split("/")
-                                .pop() ||
-                            "index.html";
-
-
-                        if (
-                            current === target
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        if (
-                            document.body.dataset
-                                .newittNavigating ===
-                            "true"
-                        ) {
-
-                            event.preventDefault();
-
-                            return;
-
-                        }
-
-
-                        event.preventDefault();
-
-
-                        document.body.dataset
-                            .newittNavigating =
-                            "true";
-
-
-                        try {
-
-                            sessionStorage.setItem(
-                                TRANSITION_KEY,
-                                "1"
-                            );
-
-                        } catch (error) {}
-
-
-                        const overlay =
-                            document.createElement(
-                                "div"
-                            );
-
-
-                        overlay.id =
-                            "newitt-transition-overlay";
-
-
-                        overlay.setAttribute(
-                            "aria-hidden",
-                            "true"
-                        );
-
-
-                        Object.assign(
-                            overlay.style,
-                            {
-                                position: "fixed",
-                                inset: "0",
-                                width: "100%",
-                                height: "100%",
-                                zIndex: "2147483647",
-                                background: "#020305",
-                                opacity: "0",
-                                pointerEvents: "all",
-                                transform:
-                                    "translateZ(0)",
-                                webkitTransform:
-                                    "translateZ(0)",
-                                willChange:
-                                    "opacity",
-                                transition:
-                                    prefersReducedMotion()
-                                        ? "none"
-                                        : "opacity 180ms ease"
                             }
-                        );
 
 
-                        document.body.appendChild(
-                            overlay
-                        );
+                            if (
+                                event.button !==
+                                undefined &&
+                                event.button !== 0
+                            ) {
+
+                                return;
+
+                            }
 
 
-                        document.documentElement
-                            .style
-                            .overflow =
-                            "hidden";
+                            if (
+                                event.ctrlKey ||
+                                event.metaKey ||
+                                event.shiftKey ||
+                                event.altKey
+                            ) {
+
+                                return;
+
+                            }
 
 
-                        document.body
-                            .style
-                            .overflow =
-                            "hidden";
-
-
-                        if (
-                            prefersReducedMotion()
-                        ) {
-
-                            overlay.style.opacity =
-                                "1";
-
-
-                            window.location.href =
-                                href;
-
-
-                            return;
-
-                        }
-
-
-                        void overlay.offsetWidth;
-
-
-                        requestAnimationFrame(
-                            function () {
-
-                                overlay.style.opacity =
-                                    "1";
-
-
-                                window.setTimeout(
-                                    function () {
-
-                                        window.location.href =
-                                            href;
-
-                                    },
-                                    180
+                            const href =
+                                link.getAttribute(
+                                    "href"
                                 );
 
+
+                            if (!href) {
+
+                                return;
+
                             }
-                        );
 
-                    }
-                );
 
-            }
-        );
+                            /*
+                             * Leave external links,
+                             * email, telephone and
+                             * JavaScript links alone.
+                             */
+
+                            if (
+                                href.startsWith(
+                                    "http://"
+                                ) ||
+                                href.startsWith(
+                                    "https://"
+                                ) ||
+                                href.startsWith(
+                                    "mailto:"
+                                ) ||
+                                href.startsWith(
+                                    "tel:"
+                                ) ||
+                                href.startsWith(
+                                    "javascript:"
+                                )
+                            ) {
+
+                                return;
+
+                            }
+
+
+                            /*
+                             * Anchor links stay on
+                             * the current page.
+                             */
+
+                            if (
+                                href.startsWith(
+                                    "#"
+                                )
+                            ) {
+
+                                return;
+
+                            }
+
+
+                            /*
+                             * Do not interfere with
+                             * downloads.
+                             */
+
+                            if (
+                                link.hasAttribute(
+                                    "download"
+                                )
+                            ) {
+
+                                return;
+
+                            }
+
+
+                            /*
+                             * Let the browser perform
+                             * normal navigation.
+                             *
+                             * This is deliberate.
+                             * It prevents the black/white
+                             * flash caused by the old
+                             * overlay system.
+                             */
+
+                        }
+                    );
+
+                }
+            );
 
     }
 
@@ -953,14 +590,17 @@
 
 
         if (!button) {
+
             return;
+
         }
 
 
         function update() {
 
             const visible =
-                window.scrollY > 450;
+                window.scrollY >
+                450;
 
 
             button.classList.toggle(
@@ -992,6 +632,28 @@
         );
 
 
+        button.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+
+                window.scrollTo({
+
+                    top: 0,
+
+                    behavior:
+                        prefersReducedMotion()
+                            ? "auto"
+                            : "smooth"
+
+                });
+
+            }
+        );
+
+
         update();
 
     }
@@ -1014,15 +676,15 @@
                         "click",
                         function (event) {
 
-                            const targetId =
+                            const href =
                                 anchor.getAttribute(
                                     "href"
                                 );
 
 
                             if (
-                                !targetId ||
-                                targetId === "#"
+                                !href ||
+                                href === "#"
                             ) {
 
                                 return;
@@ -1030,53 +692,56 @@
                             }
 
 
-                            let target = null;
-
-
-                            try {
-
-                                target =
-                                    document.querySelector(
-                                        targetId
-                                    );
-
-                            } catch (error) {
-
-                                return;
-
-                            }
+                            const target =
+                                document.querySelector(
+                                    href
+                                );
 
 
                             if (!target) {
+
                                 return;
+
                             }
 
 
                             event.preventDefault();
 
 
-                            target.scrollIntoView({
+                            const header =
+                                document.querySelector(
+                                    ".site-header"
+                                );
+
+
+                            const headerHeight =
+                                header
+                                    ? header.offsetHeight
+                                    : 0;
+
+
+                            const position =
+                                target.getBoundingClientRect()
+                                    .top +
+                                window.scrollY -
+                                headerHeight -
+                                12;
+
+
+                            window.scrollTo({
+
+                                top:
+                                    Math.max(
+                                        0,
+                                        position
+                                    ),
 
                                 behavior:
                                     prefersReducedMotion()
                                         ? "auto"
-                                        : "smooth",
-
-                                block:
-                                    "start"
+                                        : "smooth"
 
                             });
-
-
-                            try {
-
-                                history.replaceState(
-                                    null,
-                                    "",
-                                    targetId
-                                );
-
-                            } catch (error) {}
 
                         }
                     );
@@ -1088,56 +753,94 @@
 
 
     /* =====================================================
-       MASTER LIGHTBOX
-       
-       Supports:
-       .gallery-item
-       [data-lightbox]
+       GENERAL LIGHTBOX
     ====================================================== */
 
     function initLightbox() {
 
-        const lightbox =
-            document.getElementById(
-                "lightbox"
+        const items =
+            document.querySelectorAll(
+                "[data-lightbox]"
             );
 
 
-        if (!lightbox) {
+        const lightbox =
+            document.querySelector(
+                ".lightbox"
+            );
+
+
+        if (
+            !items.length ||
+            !lightbox
+        ) {
+
             return;
+
         }
 
 
         const image =
-            document.getElementById(
-                "lightbox-image"
-            ) ||
             lightbox.querySelector(
                 "img"
             );
 
 
         const close =
-            document.getElementById(
-                "lightbox-close"
-            ) ||
             lightbox.querySelector(
                 ".lightbox-close"
             );
 
 
-        const items =
-            document.querySelectorAll(
-                ".gallery-item, [data-lightbox]"
-            );
-
-
         if (
             !image ||
-            !items.length
+            !close
         ) {
 
             return;
+
+        }
+
+
+        function open(item) {
+
+            const source =
+                item.getAttribute(
+                    "data-lightbox"
+                );
+
+
+            if (!source) {
+
+                return;
+
+            }
+
+
+            image.src =
+                source;
+
+
+            image.alt =
+                item.getAttribute(
+                    "data-alt"
+                ) ||
+                "NEWITT Media image";
+
+
+            lightbox.classList.add(
+                "active"
+            );
+
+
+            lightbox.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+
+            document.body.style.overflow =
+                "hidden";
 
         }
 
@@ -1155,44 +858,12 @@
             );
 
 
-            document.body.style.overflow =
+            image.src =
                 "";
 
 
-            if (image) {
-
-                if (
-                    prefersReducedMotion()
-                ) {
-
-                    image.removeAttribute(
-                        "src"
-                    );
-
-                } else {
-
-                    window.setTimeout(
-                        function () {
-
-                            if (
-                                !lightbox.classList.contains(
-                                    "active"
-                                )
-                            ) {
-
-                                image.removeAttribute(
-                                    "src"
-                                );
-
-                            }
-
-                        },
-                        250
-                    );
-
-                }
-
-            }
+            document.body.style.overflow =
+                "";
 
         }
 
@@ -1202,81 +873,9 @@
 
                 item.addEventListener(
                     "click",
-                    function (event) {
+                    function () {
 
-                        event.preventDefault();
-
-
-                        let source =
-                            item.getAttribute(
-                                "data-lightbox"
-                            );
-
-
-                        if (!source) {
-
-                            source =
-                                item.getAttribute(
-                                    "data-full-image"
-                                );
-
-                        }
-
-
-                        if (!source) {
-
-                            const thumbnail =
-                                item.querySelector(
-                                    "img"
-                                );
-
-
-                            if (thumbnail) {
-
-                                source =
-                                    thumbnail.getAttribute(
-                                        "src"
-                                    );
-
-                            }
-
-                        }
-
-
-                        if (!source) {
-                            return;
-                        }
-
-
-                        image.src =
-                            source;
-
-
-                        const thumbnail =
-                            item.querySelector(
-                                "img"
-                            );
-
-
-                        image.alt =
-                            thumbnail
-                                ? thumbnail.alt || ""
-                                : "";
-
-
-                        lightbox.classList.add(
-                            "active"
-                        );
-
-
-                        lightbox.setAttribute(
-                            "aria-hidden",
-                            "false"
-                        );
-
-
-                        document.body.style.overflow =
-                            "hidden";
+                        open(item);
 
                     }
                 );
@@ -1285,20 +884,10 @@
         );
 
 
-        if (close) {
-
-            close.addEventListener(
-                "click",
-                function (event) {
-
-                    event.preventDefault();
-
-                    closeLightbox();
-
-                }
-            );
-
-        }
+        close.addEventListener(
+            "click",
+            closeLightbox
+        );
 
 
         lightbox.addEventListener(
@@ -1341,11 +930,6 @@
 
     /* =====================================================
        PHOTOGRAPHY LIGHTBOX
-       
-       Dedicated engine used by photography.html.
-       
-       It remains dormant while the photography gallery
-       contains no .photography-gallery-item elements.
     ====================================================== */
 
     function initPhotographyLightbox() {
@@ -1362,13 +946,13 @@
             );
 
 
-        const lightboxImage =
+        const image =
             document.getElementById(
                 "photography-lightbox-image"
             );
 
 
-        const closeButton =
+        const close =
             document.getElementById(
                 "photography-lightbox-close"
             );
@@ -1377,8 +961,8 @@
         if (
             !galleryItems.length ||
             !lightbox ||
-            !lightboxImage ||
-            !closeButton
+            !image ||
+            !close
         ) {
 
             return;
@@ -1386,9 +970,9 @@
         }
 
 
-        function openLightbox(item) {
+        function open(item) {
 
-            const image =
+            const fullImage =
                 item.getAttribute(
                     "data-full-image"
                 );
@@ -1400,16 +984,18 @@
                 );
 
 
-            if (!image) {
+            if (!fullImage) {
+
                 return;
+
             }
 
 
-            lightboxImage.src =
-                image;
+            image.src =
+                fullImage;
 
 
-            lightboxImage.alt =
+            image.alt =
                 thumbnail
                     ? thumbnail.alt
                     : "NEWITT Media Photography image";
@@ -1445,38 +1031,12 @@
             );
 
 
-            document.body.style.overflow =
+            image.src =
                 "";
 
 
-            if (
-                prefersReducedMotion()
-            ) {
-
-                lightboxImage.src =
-                    "";
-
-            } else {
-
-                window.setTimeout(
-                    function () {
-
-                        if (
-                            !lightbox.classList.contains(
-                                "active"
-                            )
-                        ) {
-
-                            lightboxImage.src =
-                                "";
-
-                        }
-
-                    },
-                    250
-                );
-
-            }
+            document.body.style.overflow =
+                "";
 
         }
 
@@ -1488,9 +1048,7 @@
                     "click",
                     function () {
 
-                        openLightbox(
-                            item
-                        );
+                        open(item);
 
                     }
                 );
@@ -1499,7 +1057,7 @@
         );
 
 
-        closeButton.addEventListener(
+        close.addEventListener(
             "click",
             closeLightbox
         );
@@ -1545,55 +1103,49 @@
 
     /* =====================================================
        EXTERNAL LINKS
-       
-       External websites open safely in a new tab.
-       Internal NEWITT Media pages remain same-tab.
     ====================================================== */
 
     function initExternalLinks() {
 
         document
             .querySelectorAll(
-                'a[href^="http://"], a[href^="https://"]'
+                'a[target="_blank"]'
             )
             .forEach(
                 function (link) {
 
-                    const href =
+                    const rel =
                         link.getAttribute(
-                            "href"
+                            "rel"
+                        ) || "";
+
+
+                    const values =
+                        new Set(
+                            rel
+                                .split(
+                                    /\s+/
+                                )
+                                .filter(Boolean)
                         );
 
 
-                    if (!href) {
-                        return;
-                    }
+                    values.add(
+                        "noopener"
+                    );
 
 
-                    try {
-
-                        const url =
-                            new URL(
-                                href,
-                                window.location.href
-                            );
+                    values.add(
+                        "noreferrer"
+                    );
 
 
-                        if (
-                            url.hostname !==
-                            window.location.hostname
-                        ) {
-
-                            link.target =
-                                "_blank";
-
-
-                            link.rel =
-                                "noopener noreferrer";
-
-                        }
-
-                    } catch (error) {}
+                    link.setAttribute(
+                        "rel",
+                        Array.from(
+                            values
+                        ).join(" ")
+                    );
 
                 }
             );
@@ -1602,183 +1154,185 @@
 
 
     /* =====================================================
-       BROWSER BACK / FORWARD RESILIENCE
+       SAFARI / IOS VIEWPORT
     ====================================================== */
 
-    window.addEventListener(
-        "pageshow",
-        function (event) {
+    function initViewportSupport() {
 
-            if (event.persisted) {
-
-                document.body.dataset
-                    .newittNavigating =
-                    "false";
+        const root =
+            document.documentElement;
 
 
-                document.documentElement
-                    .style
-                    .overflow = "";
-
-
-                document.body
-                    .style
-                    .overflow = "";
-
-
-                const overlay =
-                    document.getElementById(
-                        "newitt-transition-overlay"
-                    );
-
-
-                if (overlay) {
-
-                    overlay.remove();
-
-                }
-
-
-                const earlyOverlay =
-                    document.getElementById(
-                        "newitt-early-transition"
-                    );
-
-
-                if (earlyOverlay) {
-
-                    earlyOverlay.remove();
-
-                }
-
-            }
-
-        }
-    );
-
-
-    /* =====================================================
-       SAFARI / IOS VISIBILITY RESILIENCE
-       
-       If the page returns from the background, remove
-       accidental navigation locks.
-    ====================================================== */
-
-    document.addEventListener(
-        "visibilitychange",
-        function () {
+        function updateViewportHeight() {
 
             if (
-                document.visibilityState ===
-                "visible"
+                window.visualViewport
             ) {
 
+                root.style.setProperty(
+                    "--newitt-vh",
+                    (
+                        window.visualViewport
+                            .height *
+                        0.01
+                    ) + "px"
+                );
+
+            } else {
+
+                root.style.setProperty(
+                    "--newitt-vh",
+                    (
+                        window.innerHeight *
+                        0.01
+                    ) + "px"
+                );
+
+            }
+
+        }
+
+
+        updateViewportHeight();
+
+
+        window.addEventListener(
+            "resize",
+            updateViewportHeight,
+            {
+                passive: true
+            }
+        );
+
+
+        if (
+            window.visualViewport
+        ) {
+
+            window.visualViewport.addEventListener(
+                "resize",
+                updateViewportHeight,
+                {
+                    passive: true
+                }
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       PAGE VISIBILITY
+    ====================================================== */
+
+    function initPageVisibility() {
+
+        document.addEventListener(
+            "visibilitychange",
+            function () {
+
                 if (
-                    document.body.dataset
-                        .newittNavigating ===
-                    "true"
+                    document.hidden
                 ) {
 
-                    /*
-                     * Do not remove the flag during an
-                     * active transition unless the page
-                     * has actually returned to visibility.
-                     */
+                    document.body.classList.add(
+                        "page-hidden"
+                    );
 
-                    window.setTimeout(
-                        function () {
+                } else {
 
-                            if (
-                                document.visibilityState ===
-                                "visible"
-                            ) {
-
-                                document.body.dataset
-                                    .newittNavigating =
-                                    "false";
-
-                            }
-
-                        },
-                        500
+                    document.body.classList.remove(
+                        "page-hidden"
                     );
 
                 }
 
             }
+        );
 
-        }
-    );
+    }
 
 
     /* =====================================================
-       LANGUAGE SYSTEM COMPATIBILITY
-       
-       language.js owns the actual language switching.
-       
-       This script deliberately does NOT modify:
-       - data-lang-en
-       - data-lang-cy
-       - data-lang
-       - localStorage language values
-       
-       This prevents two master systems from fighting.
+       IMAGE SAFETY
     ====================================================== */
 
-    window.addEventListener(
-        "newittLanguageChanged",
-        function () {
+    function initImageSafety() {
 
-            /*
-             * Recalculate accessibility-sensitive
-             * navigation labels if the language system
-             * has changed them.
-             */
+        document
+            .querySelectorAll(
+                "img"
+            )
+            .forEach(
+                function (image) {
 
-            const toggle =
-                document.querySelector(
-                    ".menu-toggle"
-                );
+                    image.addEventListener(
+                        "error",
+                        function () {
+
+                            image.classList.add(
+                                "image-load-error"
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+    }
 
 
-            if (!toggle) {
-                return;
+    /* =====================================================
+       DOM READY
+    ====================================================== */
+
+    function init() {
+
+        initFirstVisitIntro();
+
+        initMobileNavigation();
+
+        initPageNavigation();
+
+        initBackToTop();
+
+        initSmoothScrolling();
+
+        initLightbox();
+
+        initPhotographyLightbox();
+
+        initExternalLinks();
+
+        initViewportSupport();
+
+        initPageVisibility();
+
+        initImageSafety();
+
+    }
+
+
+    if (
+        document.readyState ===
+        "loading"
+    ) {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            init,
+            {
+                once: true
             }
+        );
 
+    } else {
 
-            const menu =
-                document.querySelector(
-                    ".nav-links"
-                );
+        init();
 
-
-            if (!menu) {
-                return;
-            }
-
-
-            const expanded =
-                menu.classList.contains(
-                    "open"
-                );
-
-
-            if (expanded) {
-
-                /*
-                 * language.js remains the owner of the
-                 * translated aria labels.
-                 *
-                 * No hard-coded language replacement
-                 * is performed here.
-                 */
-
-                return;
-
-            }
-
-        }
-    );
+    }
 
 
 })();
