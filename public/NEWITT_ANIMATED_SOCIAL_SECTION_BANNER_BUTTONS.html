@@ -1,279 +1,961 @@
 <!doctype html>
 <html lang="en-GB">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>NEWITT Media Socials</title>
+<head>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+>
+
+<meta
+    name="theme-color"
+    content="#020305"
+>
+
+<title>
+    NEWITT Media | Follow the Adventure
+</title>
+
 
 <style>
-*{box-sizing:border-box}
 
-html,body{
-    margin:0;
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    background:#020305;
+/* =========================================================
+   NEWITT MEDIA
+   FOLLOW THE ADVENTURE
+   SOCIAL MEDIA BANNER
+   MASTER VERSION
+========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+
+    overflow: hidden;
+
+    background: #020305;
+
     font-family:
         Inter,
         "Avenir Next",
         Avenir,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
         Arial,
         sans-serif;
+
+    -webkit-font-smoothing: antialiased;
 }
 
-.social{
-    width:100%;
-    height:100%;
-    min-height:420px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:40px 20px;
-    position:relative;
-    overflow:hidden;
-    text-align:center;
+
+body {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   MAIN BANNER
+========================================================= */
+
+.social {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
     background:
         radial-gradient(
-            circle at 50% 35%,
-            rgba(0,174,255,.10),
-            transparent 35%
+            circle at 50% 30%,
+            rgba(0,174,255,0.10),
+            transparent 34%
         ),
         radial-gradient(
             circle at 50% 75%,
-            rgba(201,164,91,.06),
-            transparent 40%
+            rgba(201,164,91,0.055),
+            transparent 42%
         ),
         #020305;
+
+    text-align: center;
 }
 
-.social::before{
-    content:"";
-    position:absolute;
-    inset:-50%;
+
+/* =========================================================
+   CINEMATIC ATMOSPHERE
+========================================================= */
+
+.social::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -60%;
+
+    z-index: -2;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(0,174,255,0.045),
+            transparent 42%
+        );
+
+    animation:
+        atmosphere
+        8s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+
+.social::after {
+    content: "";
+
+    position: absolute;
+
+    top: -30%;
+    left: -35%;
+
+    width: 25%;
+    height: 160%;
+
+    z-index: -1;
+
+    pointer-events: none;
+
     background:
         linear-gradient(
-            115deg,
-            transparent 45%,
-            rgba(120,220,255,.08) 50%,
-            transparent 55%
+            90deg,
+            transparent,
+            rgba(120,220,255,0.10),
+            transparent
         );
-    animation:sweep 7s linear infinite;
+
+    transform:
+        rotate(18deg)
+        translateX(-120%);
+
+    animation:
+        sweep
+        7s
+        ease-in-out
+        infinite;
 }
 
-.content{
-    position:relative;
-    z-index:2;
-    width:min(1050px,100%);
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.content {
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(
+            1120px,
+            100%
+        );
+
+    margin-inline: auto;
+
+    text-align: center;
 }
 
-.eyebrow{
-    color:#c9a45b;
-    font-size:.68rem;
-    font-weight:800;
-    letter-spacing:.22em;
-    text-transform:uppercase;
-    margin-bottom:12px;
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.eyebrow {
+    margin-bottom: 12px;
+
+    color: #c9a45b;
+
+    font-size:
+        clamp(
+            0.58rem,
+            1vw,
+            0.68rem
+        );
+
+    font-weight: 800;
+
+    letter-spacing: 0.22em;
+
+    line-height: 1.4;
+
+    text-transform: uppercase;
 }
 
-h1{
-    margin:0;
-    color:#fff;
-    font-size:clamp(2rem,5vw,4rem);
-    line-height:1;
-    letter-spacing:-.03em;
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(
+            2rem,
+            5vw,
+            4rem
+        );
+
+    font-weight: 800;
+
+    letter-spacing: -0.035em;
+
+    line-height: 1;
 }
 
-h1 span{
-    color:#c9a45b;
+
+h1 span {
+    color: #c9a45b;
 }
 
-.line{
-    width:80px;
-    height:1px;
-    margin:20px auto;
-    background:rgba(201,164,91,.7);
+
+/* =========================================================
+   GOLD RULE
+========================================================= */
+
+.line {
+    width: 80px;
+    height: 1px;
+
+    margin:
+        20px auto;
+
+    background:
+        rgba(201,164,91,0.72);
 }
 
-.intro{
-    margin:0 auto 30px;
-    max-width:620px;
-    color:rgba(255,255,255,.68);
-    font-size:.9rem;
-    line-height:1.7;
+
+/* =========================================================
+   INTRODUCTION
+========================================================= */
+
+.intro {
+    width:
+        min(
+            650px,
+            100%
+        );
+
+    margin:
+        0 auto 30px;
+
+    color:
+        rgba(255,255,255,0.68);
+
+    font-size:
+        clamp(
+            0.78rem,
+            1.5vw,
+            0.92rem
+        );
+
+    line-height: 1.7;
+
+    text-align: center;
 }
 
-.buttons{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:10px;
+
+/* =========================================================
+   SOCIAL BUTTON GRID
+========================================================= */
+
+.buttons {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            6,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap: 10px;
+
+    margin-inline: auto;
 }
 
-.button{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    min-width:120px;
-    min-height:42px;
-    padding:10px 16px;
-    border:1px solid rgba(255,255,255,.16);
-    border-radius:7px;
-    color:#fff;
-    background:rgba(255,255,255,.045);
-    font-size:.7rem;
-    font-weight:750;
-    letter-spacing:.06em;
-    text-decoration:none;
-    transition:.2s ease;
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.button {
+    position: relative;
+
+    display: flex;
+
+    min-width: 0;
+    min-height: 46px;
+
+    align-items: center;
+    justify-content: center;
+
+    padding:
+        10px 9px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.16);
+
+    border-radius: 7px;
+
+    background:
+        rgba(255,255,255,0.045);
+
+    color: #ffffff;
+
+    font-size:
+        clamp(
+            0.54rem,
+            0.85vw,
+            0.68rem
+        );
+
+    font-weight: 750;
+
+    letter-spacing:
+        0.045em;
+
+    line-height: 1.2;
+
+    text-decoration: none;
+
+    white-space: normal;
+
+    cursor: pointer;
+
+    touch-action: manipulation;
+
+    transition:
+        transform 220ms ease,
+        background 220ms ease,
+        border-color 220ms ease,
+        box-shadow 220ms ease;
 }
 
-.button:hover{
-    transform:translateY(-3px);
-    background:rgba(255,255,255,.10);
+
+.button:hover {
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(255,255,255,0.09);
 }
 
-.skyline{
-    border-color:rgba(78,207,255,.35);
+
+.button:active {
+    transform:
+        translateY(-1px);
 }
 
-.skyline:hover{
-    border-color:#4ecfff;
-    box-shadow:0 10px 35px rgba(0,174,255,.12);
+
+.button:focus-visible {
+    outline:
+        2px solid
+        #ffffff;
+
+    outline-offset: 3px;
 }
 
-.paranormal{
-    border-color:rgba(255,72,82,.30);
+
+/* =========================================================
+   SKYLINE
+========================================================= */
+
+.button.skyline {
+    border-color:
+        rgba(78,207,255,0.34);
 }
 
-.paranormal:hover{
-    border-color:#ff5d67;
-    box-shadow:0 10px 35px rgba(220,45,55,.12);
+
+.button.skyline:hover {
+    border-color:
+        #4ecfff;
+
+    box-shadow:
+        0 10px 35px
+        rgba(0,174,255,0.13);
 }
 
-.gold{
-    border-color:rgba(201,164,91,.35);
+
+/* =========================================================
+   PARANORMAL
+========================================================= */
+
+.button.paranormal {
+    border-color:
+        rgba(255,72,82,0.30);
 }
 
-.gold:hover{
-    border-color:#c9a45b;
-    box-shadow:0 10px 35px rgba(201,164,91,.12);
+
+.button.paranormal:hover {
+    border-color:
+        #ff5d67;
+
+    box-shadow:
+        0 10px 35px
+        rgba(220,45,55,0.13);
 }
 
-.footer{
-    margin-top:28px;
-    color:rgba(255,255,255,.38);
-    font-size:.58rem;
-    font-weight:700;
-    letter-spacing:.14em;
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.button-icon {
+    margin-right: 5px;
+
+    font-size:
+        0.85rem;
+
+    line-height: 1;
 }
 
-@keyframes sweep{
-    from{transform:translateX(-20%) rotate(0deg)}
-    to{transform:translateX(20%) rotate(0deg)}
+
+/* =========================================================
+   FOOTER TAGLINE
+========================================================= */
+
+.footer {
+    margin-top: 28px;
+
+    color:
+        rgba(255,255,255,0.38);
+
+    font-size:
+        clamp(
+            0.48rem,
+            0.8vw,
+            0.58rem
+        );
+
+    font-weight: 700;
+
+    letter-spacing:
+        0.14em;
+
+    line-height: 1.6;
 }
 
-@media(max-width:600px){
-    .social{
-        min-height:500px;
-        padding:35px 14px;
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes atmosphere {
+
+    from {
+        transform:
+            scale(1);
+
+        opacity:
+            0.65;
     }
 
-    .buttons{
-        gap:8px;
+    to {
+        transform:
+            scale(1.12);
+
+        opacity:
+            1;
     }
 
-    .button{
-        min-width:105px;
-        padding:9px 11px;
-        font-size:.62rem;
-    }
 }
 
-@media(prefers-reduced-motion:reduce){
-    *{
-        animation:none!important;
-        transition:none!important;
+
+@keyframes sweep {
+
+    0% {
+        transform:
+            translateX(-120%)
+            rotate(18deg);
+
+        opacity: 0;
     }
+
+    35% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 0.45;
+    }
+
+    100% {
+        transform:
+            translateX(560%)
+            rotate(18deg);
+
+        opacity: 0;
+    }
+
 }
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .buttons {
+
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(
+                    0,
+                    1fr
+                )
+            );
+
+        width:
+            min(
+                720px,
+                100%
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .social {
+
+        min-height:
+            500px;
+
+        padding:
+            30px 14px;
+
+    }
+
+
+    .content {
+
+        width:
+            100%;
+
+    }
+
+
+    h1 {
+
+        font-size:
+            clamp(
+                1.9rem,
+                10vw,
+                2.65rem
+            );
+
+    }
+
+
+    .intro {
+
+        margin-bottom:
+            24px;
+
+        font-size:
+            0.78rem;
+
+        line-height:
+            1.65;
+
+    }
+
+
+    .buttons {
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(
+                    0,
+                    1fr
+                )
+            );
+
+        gap:
+            8px;
+
+        width:
+            100%;
+
+    }
+
+
+    .button {
+
+        min-height:
+            44px;
+
+        padding:
+            9px 7px;
+
+        font-size:
+            0.58rem;
+
+    }
+
+
+    .footer {
+
+        margin-top:
+            22px;
+
+        font-size:
+            0.48rem;
+
+        letter-spacing:
+            0.10em;
+
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .social {
+
+        min-height:
+            500px;
+
+        padding:
+            25px 11px;
+
+    }
+
+
+    .eyebrow {
+
+        margin-bottom:
+            9px;
+
+    }
+
+
+    .line {
+
+        margin:
+            15px auto;
+
+    }
+
+
+    .intro {
+
+        font-size:
+            0.73rem;
+
+    }
+
+
+    .buttons {
+
+        gap:
+            7px;
+
+    }
+
+
+    .button {
+
+        min-height:
+            42px;
+
+        font-size:
+            0.54rem;
+
+    }
+
+
+    .footer {
+
+        margin-top:
+            18px;
+
+        font-size:
+            0.43rem;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation:
+            none !important;
+
+        transition:
+            none !important;
+
+    }
+
+}
+
+
+/* =========================================================
+   LANDSCAPE MOBILE
+========================================================= */
+
+@media (
+    max-height: 520px
+) and (
+    orientation: landscape
+) {
+
+    .social {
+
+        min-height:
+            420px;
+
+        padding:
+            20px 15px;
+
+    }
+
+
+    .eyebrow {
+
+        margin-bottom:
+            7px;
+
+    }
+
+
+    h1 {
+
+        font-size:
+            2rem;
+
+    }
+
+
+    .line {
+
+        margin:
+            12px auto;
+
+    }
+
+
+    .intro {
+
+        margin-bottom:
+            16px;
+
+        font-size:
+            0.70rem;
+
+    }
+
+
+    .button {
+
+        min-height:
+            38px;
+
+        padding:
+            7px;
+
+    }
+
+
+    .footer {
+
+        margin-top:
+            14px;
+
+    }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
-<section class="social">
+
+<section
+    class="social"
+    aria-labelledby="social-title"
+>
+
 
 <div class="content">
 
+
 <div class="eyebrow">
-NEWITT MEDIA
+    NEWITT MEDIA
 </div>
 
-<h1>
-Follow the <span>Adventure.</span>
+
+<h1 id="social-title">
+    Follow the <span>Adventure.</span>
 </h1>
+
 
 <div class="line"></div>
 
+
 <p class="intro">
-Follow NEWITT Media across the three worlds:
-from above, after dark, and everything in between.
+    Follow NEWITT Media across the three worlds:
+    from above, after dark, and everything in between.
 </p>
+
 
 <div class="buttons">
 
-<a class="button skyline"
-href="https://www.tiktok.com/@newittskylinemedia"
-target="_blank"
-rel="noopener noreferrer">
-♪ Skyline TikTok
+
+<a
+    class="button skyline"
+    href="https://www.tiktok.com/@newittskylinemedia"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Follow NEWITT Skyline Media on TikTok"
+>
+    <span class="button-icon" aria-hidden="true">♪</span>
+    Skyline TikTok
 </a>
 
-<a class="button skyline"
-href="https://www.youtube.com/@Newitt-skyline-media"
-target="_blank"
-rel="noopener noreferrer">
-▶ Skyline YouTube
+
+<a
+    class="button skyline"
+    href="https://www.youtube.com/@Newitt-skyline-media"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Follow NEWITT Skyline Media on YouTube"
+>
+    <span class="button-icon" aria-hidden="true">▶</span>
+    Skyline YouTube
 </a>
 
-<a class="button paranormal"
-href="https://www.tiktok.com/@nw13ttt"
-target="_blank"
-rel="noopener noreferrer">
-♪ Paranormal TikTok
+
+<a
+    class="button paranormal"
+    href="https://www.tiktok.com/@nw13ttt"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Follow NEWITT's Paranormal Adventures on TikTok"
+>
+    <span class="button-icon" aria-hidden="true">♪</span>
+    Paranormal TikTok
 </a>
 
-<a class="button paranormal"
-href="https://www.youtube.com/@NewittsParanormalAdventures"
-target="_blank"
-rel="noopener noreferrer">
-▶ Paranormal YouTube
+
+<a
+    class="button paranormal"
+    href="https://www.youtube.com/@NewittsParanormalAdventures"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Follow NEWITT's Paranormal Adventures on YouTube"
+>
+    <span class="button-icon" aria-hidden="true">▶</span>
+    Paranormal YouTube
 </a>
 
-<a class="button paranormal"
-href="https://www.instagram.com/nw13ttt/"
-target="_blank"
-rel="noopener noreferrer">
-◎ Instagram
+
+<a
+    class="button paranormal"
+    href="https://www.instagram.com/nw13ttt/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Follow NEWITT's Paranormal Adventures on Instagram"
+>
+    <span class="button-icon" aria-hidden="true">◎</span>
+    Instagram
 </a>
 
-<a class="button paranormal"
-href="https://www.facebook.com/share/1AiSkdbyM4/"
-target="_blank"
-rel="noopener noreferrer">
-f Facebook
+
+<a
+    class="button paranormal"
+    href="https://www.facebook.com/share/1AiSkdbyM4/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Follow NEWITT's Paranormal Adventures on Facebook"
+>
+    <span class="button-icon" aria-hidden="true">f</span>
+    Facebook
 </a>
+
 
 </div>
+
 
 <div class="footer">
-FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
+    FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
 </div>
+
 
 </div>
 
 </section>
 
+
 </body>
+
 </html>
