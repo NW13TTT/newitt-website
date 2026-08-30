@@ -110,6 +110,11 @@
         content="https://www.newittmedia.co.uk/newitt-media-logo.png"
     >
 
+    <meta
+        name="twitter:image:alt"
+        content="NEWITT Media logo"
+    >
+
 
     <title>
         Contact NEWITT Media
@@ -328,94 +333,13 @@
 
 
         /* =================================================
-           LANGUAGE SWITCHER
+           MOBILE
         ================================================== */
-
-        .language-switcher {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            gap: 6px;
-            margin-left: 18px;
-
-            flex-shrink: 0;
-        }
-
-
-        .language-switcher button {
-            appearance: none;
-
-            border:
-                1px solid
-                rgba(0,220,255,0.30);
-
-            background:
-                rgba(0,8,15,0.70);
-
-            color:
-                rgba(255,255,255,0.72);
-
-            padding: 6px 9px;
-
-            border-radius: 7px;
-
-            font-size: 0.72rem;
-            font-weight: 700;
-
-            letter-spacing: 0.08em;
-
-            cursor: pointer;
-
-            transition:
-                background 0.25s ease,
-                color 0.25s ease,
-                border-color 0.25s ease,
-                transform 0.25s ease;
-        }
-
-
-        .language-switcher button:hover {
-            transform: translateY(-1px);
-
-            border-color:
-                rgba(0,220,255,0.75);
-
-            color: #ffffff;
-        }
-
-
-        .language-switcher button.active {
-            background:
-                rgba(0,180,255,0.18);
-
-            border-color:
-                rgba(0,220,255,0.80);
-
-            color: #ffffff;
-        }
-
 
         @media (max-width: 900px) {
 
             .contact-options {
                 grid-template-columns: 1fr;
-            }
-
-
-            .language-switcher {
-                margin:
-                    14px 0 4px;
-            }
-
-        }
-
-
-        @media (max-width: 600px) {
-
-            .language-switcher {
-                width: 100%;
-                justify-content: center;
             }
 
         }
@@ -443,6 +367,8 @@
             href="index.html"
             class="nav-brand"
             aria-label="NEWITT Media Home"
+            data-aria-en="NEWITT Media Home"
+            data-aria-cy="Cartref NEWITT Media"
         >
 
             <img
@@ -463,6 +389,8 @@
             aria-expanded="false"
             aria-controls="main-menu"
             aria-label="Open navigation menu"
+            data-aria-en="Open navigation menu"
+            data-aria-cy="Agor y ddewislen lywio"
         >
 
             <span></span>
@@ -476,57 +404,43 @@
             class="nav-links"
             id="main-menu"
             aria-label="Main navigation"
+            data-aria-en="Main navigation"
+            data-aria-cy="Prif ddewislen lywio"
         >
 
-            <a href="index.html">
-
-                <span data-lang="en">
-                    Home
-                </span>
-
-                <span data-lang="cy" hidden>
-                    Cartref
-                </span>
-
+            <a
+                href="index.html"
+                data-lang-en="Home"
+                data-lang-cy="Cartref"
+            >
+                Home
             </a>
 
 
-            <a href="skyline.html">
-
-                <span data-lang="en">
-                    Skyline
-                </span>
-
-                <span data-lang="cy" hidden>
-                    Skyline
-                </span>
-
+            <a
+                href="skyline.html"
+                data-lang-en="Skyline"
+                data-lang-cy="Skyline"
+            >
+                Skyline
             </a>
 
 
-            <a href="paranormal.html">
-
-                <span data-lang="en">
-                    Paranormal
-                </span>
-
-                <span data-lang="cy" hidden>
-                    Paranormal
-                </span>
-
+            <a
+                href="paranormal.html"
+                data-lang-en="Paranormal"
+                data-lang-cy="Paranormal"
+            >
+                Paranormal
             </a>
 
 
-            <a href="photography.html">
-
-                <span data-lang="en">
-                    Photography
-                </span>
-
-                <span data-lang="cy" hidden>
-                    Ffotograffiaeth
-                </span>
-
+            <a
+                href="photography.html"
+                data-lang-en="Photography"
+                data-lang-cy="Ffotograffiaeth"
+            >
+                Photography
             </a>
 
 
@@ -534,51 +448,13 @@
                 href="contact.html"
                 class="active"
                 aria-current="page"
+                data-lang-en="Contact"
+                data-lang-cy="Cysylltu"
             >
-
-                <span data-lang="en">
-                    Contact
-                </span>
-
-                <span data-lang="cy" hidden>
-                    Cysylltu
-                </span>
-
+                Contact
             </a>
 
         </nav>
-
-
-        <!-- =================================================
-             LANGUAGE SWITCHER
-        ================================================== -->
-
-        <div
-            class="language-switcher"
-            aria-label="Language selection"
-        >
-
-            <button
-                type="button"
-                id="language-en"
-                class="active"
-                aria-label="English"
-                aria-pressed="true"
-            >
-                EN
-            </button>
-
-
-            <button
-                type="button"
-                id="language-cy"
-                aria-label="Cymraeg"
-                aria-pressed="false"
-            >
-                CY
-            </button>
-
-        </div>
 
     </div>
 
@@ -610,12 +486,11 @@
 
         <div class="eyebrow">
 
-            <span data-lang="en">
+            <span
+                data-lang-en="DIRECT CONTACT"
+                data-lang-cy="CYSYLLTIAD UNIONGYRCHOL"
+            >
                 DIRECT CONTACT
-            </span>
-
-            <span data-lang="cy" hidden>
-                CYSYLLTIAD UNIONGYRCHOL
             </span>
 
         </div>
@@ -623,14 +498,18 @@
 
         <h1>
 
-            <span data-lang="en">
+            <span
+                data-lang-en="Get in"
+                data-lang-cy="Cysylltwch â"
+            >
                 Get in
-                <span>Touch.</span>
             </span>
 
-            <span data-lang="cy" hidden>
-                Cysylltwch â
-                <span>ni.</span>
+            <span
+                data-lang-en="Touch."
+                data-lang-cy="ni."
+            >
+                Touch.
             </span>
 
         </h1>
@@ -641,14 +520,12 @@
 
         <div class="contact-introduction">
 
-            <p data-lang="en">
+            <p
+                data-lang-en="Choose the NEWITT Media world you want to contact."
+                data-lang-cy="Dewiswch y rhan o NEWITT Media yr hoffech gysylltu â hi."
+            >
                 Choose the NEWITT Media world
                 you want to contact.
-            </p>
-
-            <p data-lang="cy" hidden>
-                Dewiswch y rhan o NEWITT Media
-                yr hoffech gysylltu â hi.
             </p>
 
         </div>
@@ -687,12 +564,11 @@
 
                 <div class="eyebrow">
 
-                    <span data-lang="en">
+                    <span
+                        data-lang-en="AERIAL MEDIA"
+                        data-lang-cy="CYFRYNGAU AWYR"
+                    >
                         AERIAL MEDIA
-                    </span>
-
-                    <span data-lang="cy" hidden>
-                        CYFRYNGAU AWYR
                     </span>
 
                 </div>
@@ -704,15 +580,12 @@
                 </h2>
 
 
-                <p data-lang="en">
+                <p
+                    data-lang-en="Aerial photography, drone cinematography, locations, landscapes and media from above."
+                    data-lang-cy="Ffotograffiaeth awyr, sinematograffi drôn, lleoliadau, tirweddau a chyfryngau o'r awyr."
+                >
                     Aerial photography, drone cinematography,
                     locations, landscapes and media from above.
-                </p>
-
-
-                <p data-lang="cy" hidden>
-                    Ffotograffiaeth awyr, sinematograffi drôn,
-                    lleoliadau, tirweddau a chyfryngau o'r awyr.
                 </p>
 
 
@@ -720,14 +593,15 @@
                     class="button primary"
                     href="mailto:n.skyline.media@gmail.com"
                     aria-label="Email NEWITT Skyline Media"
+                    data-aria-en="Email NEWITT Skyline Media"
+                    data-aria-cy="E-bostiwch NEWITT Skyline Media"
                 >
 
-                    <span data-lang="en">
+                    <span
+                        data-lang-en="Contact Skyline"
+                        data-lang-cy="Cysylltu â Skyline"
+                    >
                         Contact Skyline
-                    </span>
-
-                    <span data-lang="cy" hidden>
-                        Cysylltu â Skyline
                     </span>
 
                 </a>
@@ -753,11 +627,10 @@
 
                 <div class="eyebrow">
 
-                    <span data-lang="en">
-                        PARANORMAL
-                    </span>
-
-                    <span data-lang="cy" hidden>
+                    <span
+                        data-lang-en="PARANORMAL"
+                        data-lang-cy="PARANORMAL"
+                    >
                         PARANORMAL
                     </span>
 
@@ -770,15 +643,12 @@
                 </h2>
 
 
-                <p data-lang="en">
+                <p
+                    data-lang-en="Paranormal investigations, haunted locations, collaborations and unexplained experiences."
+                    data-lang-cy="Ymchwiliadau paranormal, lleoliadau ysbrydion, cydweithrediadau a phrofiadau anesboniadwy."
+                >
                     Paranormal investigations, haunted locations,
                     collaborations and unexplained experiences.
-                </p>
-
-
-                <p data-lang="cy" hidden>
-                    Ymchwiliadau paranormal, lleoliadau ysbrydion,
-                    cydweithrediadau a phrofiadau anesboniadwy.
                 </p>
 
 
@@ -786,14 +656,15 @@
                     class="button primary"
                     href="mailto:nw13ttt@gmail.com"
                     aria-label="Email NEWITT's Paranormal Adventures"
+                    data-aria-en="Email NEWITT's Paranormal Adventures"
+                    data-aria-cy="E-bostiwch Anturiaethau Paranormal NEWITT"
                 >
 
-                    <span data-lang="en">
+                    <span
+                        data-lang-en="Contact Paranormal"
+                        data-lang-cy="Cysylltu â Paranormal"
+                    >
                         Contact Paranormal
-                    </span>
-
-                    <span data-lang="cy" hidden>
-                        Cysylltu â Paranormal
                     </span>
 
                 </a>
@@ -819,11 +690,10 @@
 
                 <div class="eyebrow">
 
-                    <span data-lang="en">
-                        NEWITT MEDIA
-                    </span>
-
-                    <span data-lang="cy" hidden>
+                    <span
+                        data-lang-en="NEWITT MEDIA"
+                        data-lang-cy="NEWITT MEDIA"
+                    >
                         NEWITT MEDIA
                     </span>
 
@@ -836,17 +706,13 @@
                 </h2>
 
 
-                <p data-lang="en">
+                <p
+                    data-lang-en="General enquiries, collaborations, business opportunities and anything relating to NEWITT Media."
+                    data-lang-cy="Ymholiadau cyffredinol, cydweithrediadau, cyfleoedd busnes ac unrhyw beth sy'n ymwneud â NEWITT Media."
+                >
                     General enquiries, collaborations,
                     business opportunities and anything
                     relating to NEWITT Media.
-                </p>
-
-
-                <p data-lang="cy" hidden>
-                    Ymholiadau cyffredinol, cydweithrediadau,
-                    cyfleoedd busnes ac unrhyw beth sy'n
-                    ymwneud â NEWITT Media.
                 </p>
 
 
@@ -854,20 +720,98 @@
                     class="button primary"
                     href="mailto:Ian.newitt@gmail.com"
                     aria-label="Email NEWITT Media"
+                    data-aria-en="Email NEWITT Media"
+                    data-aria-cy="E-bostiwch NEWITT Media"
                 >
 
-                    <span data-lang="en">
+                    <span
+                        data-lang-en="Contact NEWITT Media"
+                        data-lang-cy="Cysylltu â NEWITT Media"
+                    >
                         Contact NEWITT Media
-                    </span>
-
-                    <span data-lang="cy" hidden>
-                        Cysylltu â NEWITT Media
                     </span>
 
                 </a>
 
             </article>
 
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL CONTACT CTA
+===================================================== -->
+
+<section class="home-cta">
+
+    <div class="container">
+
+        <div class="cta-panel">
+
+            <div
+                class="eyebrow"
+                data-lang-en="NEWITT MEDIA"
+                data-lang-cy="NEWITT MEDIA"
+            >
+                NEWITT MEDIA
+            </div>
+
+
+            <h2>
+
+                <span
+                    data-lang-en="One identity."
+                    data-lang-cy="Un hunaniaeth."
+                >
+                    One identity.
+                </span>
+
+                <span
+                    data-lang-en="Three worlds."
+                    data-lang-cy="Tair byd."
+                >
+                    Three worlds.
+                </span>
+
+            </h2>
+
+
+            <p
+                data-lang-en="From above. After dark. And everything in between."
+                data-lang-cy="O'r awyr. Ar ôl tywyllwch. A phopeth rhwng y ddau."
+            >
+                From above. After dark.
+                And everything in between.
+            </p>
+
+
+            <div class="hero-actions">
+
+                <a
+                    href="index.html"
+                    class="button primary"
+                    data-lang-en="Back to NEWITT Media"
+                    data-lang-cy="Yn ôl i NEWITT Media"
+                >
+                    Back to NEWITT Media
+                </a>
+
+
+                <a
+                    href="privacy.html"
+                    class="button secondary"
+                    data-lang-en="Privacy & Safety"
+                    data-lang-cy="Preifatrwydd a Diogelwch"
+                >
+                    Privacy &amp; Safety
+                </a>
+
+            </div>
 
         </div>
 
@@ -888,6 +832,8 @@
     class="back-to-top"
     id="back-to-top"
     aria-label="Back to top"
+    data-aria-en="Back to top"
+    data-aria-cy="Nôl i'r brig"
 >
     ↑
 </a>
@@ -913,14 +859,25 @@
         </p>
 
 
-        <p class="footer-tagline">
+        <p
+            class="footer-tagline"
+            data-lang-en="FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN."
+            data-lang-cy="O'R AWYR. AR ÔL TYWYLLWCH. A PHOPETH RHWNG Y DDAU."
+        >
             FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
         </p>
 
 
         <p class="copyright">
 
-            © 2026 NEWITT Media. All Rights Reserved.
+            © 2026 NEWITT Media.
+
+            <span
+                data-lang-en="All Rights Reserved."
+                data-lang-cy="Cedwir pob hawl."
+            >
+                All Rights Reserved.
+            </span>
 
             <br>
 
@@ -934,8 +891,22 @@
 
         <p class="website-address">
 
-            <a href="https://newittmedia.co.uk/">
-                newittmedia.co.uk
+            <a
+                href="index.html"
+                data-lang-en="NEWITT Media"
+                data-lang-cy="NEWITT Media"
+            >
+                NEWITT Media
+            </a>
+
+            &nbsp;•&nbsp;
+
+            <a
+                href="privacy.html"
+                data-lang-en="Privacy & Safety"
+                data-lang-cy="Preifatrwydd a Diogelwch"
+            >
+                Privacy &amp; Safety
             </a>
 
         </p>
@@ -946,154 +917,13 @@
 
 
 <!-- =====================================================
-     CONTACT LANGUAGE ENGINE
+     MASTER LANGUAGE SYSTEM
 ===================================================== -->
 
-<script>
-
-(function () {
-
-    const englishButton =
-        document.getElementById("language-en");
-
-    const welshButton =
-        document.getElementById("language-cy");
-
-    const languageElements =
-        document.querySelectorAll("[data-lang]");
-
-
-    function setLanguage(language) {
-
-        languageElements.forEach(function (element) {
-
-            element.hidden =
-                element.getAttribute("data-lang") !== language;
-
-        });
-
-
-        document.documentElement.lang =
-            language === "cy"
-                ? "cy-GB"
-                : "en-GB";
-
-
-        if (englishButton) {
-
-            englishButton.classList.toggle(
-                "active",
-                language === "en"
-            );
-
-            englishButton.setAttribute(
-                "aria-pressed",
-                language === "en"
-                    ? "true"
-                    : "false"
-            );
-
-        }
-
-
-        if (welshButton) {
-
-            welshButton.classList.toggle(
-                "active",
-                language === "cy"
-            );
-
-            welshButton.setAttribute(
-                "aria-pressed",
-                language === "cy"
-                    ? "true"
-                    : "false"
-            );
-
-        }
-
-
-        try {
-
-            localStorage.setItem(
-                "newitt-language",
-                language
-            );
-
-        } catch (error) {
-
-            /* Local storage may be unavailable. */
-
-        }
-
-    }
-
-
-    function getSavedLanguage() {
-
-        try {
-
-            return localStorage.getItem(
-                "newitt-language"
-            );
-
-        } catch (error) {
-
-            return null;
-
-        }
-
-    }
-
-
-    if (englishButton) {
-
-        englishButton.addEventListener(
-            "click",
-            function () {
-
-                setLanguage("en");
-
-            }
-        );
-
-    }
-
-
-    if (welshButton) {
-
-        welshButton.addEventListener(
-            "click",
-            function () {
-
-                setLanguage("cy");
-
-            }
-        );
-
-    }
-
-
-    const savedLanguage =
-        getSavedLanguage();
-
-
-    if (
-        savedLanguage === "cy" ||
-        savedLanguage === "en"
-    ) {
-
-        setLanguage(savedLanguage);
-
-    } else {
-
-        setLanguage("en");
-
-    }
-
-})();
-
-</script>
+<script
+    src="language.js"
+    defer
+></script>
 
 
 <!-- =====================================================
