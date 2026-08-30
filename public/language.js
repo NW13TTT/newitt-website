@@ -10,6 +10,7 @@
    - legacy data-lang="en" / data-lang="cy"
    - data-aria-en / data-aria-cy
    - shared language preference across pages
+   - accessible language selector
 ========================================================= */
 
 (function () {
@@ -93,12 +94,6 @@
             );
 
 
-            /*
-             * Keep the legacy key synchronised so that
-             * older code cannot accidentally overwrite
-             * the user's selected language.
-             */
-
             localStorage.setItem(
                 LEGACY_LANGUAGE_KEY,
                 language
@@ -115,8 +110,9 @@
 
     /* =====================================================
        UPDATE MASTER LANGUAGE ELEMENTS
-       
+
        New system:
+
        data-lang-en="English"
        data-lang-cy="Welsh"
     ====================================================== */
@@ -155,8 +151,9 @@
 
     /* =====================================================
        UPDATE LEGACY LANGUAGE ELEMENTS
-       
+
        Older system:
+
        data-lang="en"
        data-lang="cy"
     ====================================================== */
@@ -171,9 +168,8 @@
                 function (element) {
 
                     /*
-                     * Ignore elements belonging to the
-                     * newer data-lang-en/data-lang-cy
-                     * system.
+                     * Ignore elements belonging to
+                     * the newer language system.
                      */
 
                     if (
@@ -259,9 +255,6 @@
 
     /* =====================================================
        UPDATE LANGUAGE SELECTOR
-       
-       Works with the master selector created below
-       and also existing page selectors.
     ====================================================== */
 
     function updateSelector(language) {
@@ -287,6 +280,12 @@
                         "active"
                     );
 
+
+                    button.setAttribute(
+                        "aria-pressed",
+                        "false"
+                    );
+
                 }
             );
 
@@ -303,15 +302,20 @@
                     "active"
                 );
 
+
+                active.setAttribute(
+                    "aria-pressed",
+                    "true"
+                );
+
             }
 
         }
 
 
-        /*
-         * Support the older manually-created selectors
-         * while the remaining pages are being migrated.
-         */
+        /* =================================================
+           LEGACY SELECTORS
+        ================================================== */
 
         const englishButton =
             document.getElementById(
@@ -412,14 +416,13 @@
 
 
     /* =====================================================
-       CREATE MASTER SELECTOR
+       CREATE MASTER LANGUAGE SELECTOR
     ====================================================== */
 
     function createSelector() {
 
         /*
-         * Do not create a duplicate selector if one already
-         * exists on a page.
+         * Do not create a duplicate.
          */
 
         if (
@@ -434,8 +437,8 @@
 
 
         /*
-         * Older pages currently have their own selector.
-         * Leave those alone while they are being migrated.
+         * Do not interfere with older manually
+         * created language selectors.
          */
 
         if (
@@ -516,6 +519,12 @@
         );
 
 
+        english.setAttribute(
+            "aria-pressed",
+            "false"
+        );
+
+
         /* =================================================
            DIVIDER
         ================================================== */
@@ -563,6 +572,12 @@
         welsh.setAttribute(
             "title",
             "Cymraeg"
+        );
+
+
+        welsh.setAttribute(
+            "aria-pressed",
+            "false"
         );
 
 
