@@ -166,7 +166,7 @@
 
 
     <!-- =====================================================
-         LANGUAGE SELECTOR
+         MASTER LANGUAGE SELECTOR
     ====================================================== -->
 
     <style>
@@ -183,6 +183,8 @@
 
             padding: 4px 6px;
 
+            flex-shrink: 0;
+
             border:
                 1px solid
                 rgba(255, 255, 255, 0.12);
@@ -196,6 +198,8 @@
 
         #newitt-language-selector button {
             min-width: 30px;
+
+            min-height: 30px;
 
             padding: 4px 5px;
 
@@ -216,9 +220,13 @@
 
             cursor: pointer;
 
+            appearance: none;
+            -webkit-appearance: none;
+
             transition:
                 color 180ms ease,
-                background 180ms ease;
+                background 180ms ease,
+                transform 180ms ease;
         }
 
 
@@ -231,32 +239,84 @@
         }
 
 
+        #newitt-language-selector button:active {
+            transform:
+                scale(0.96);
+        }
+
+
         #newitt-language-selector span {
             color:
                 rgba(255, 255, 255, 0.20);
 
             font-size: 0.62rem;
+
+            user-select: none;
+        }
+
+
+        #newitt-language-selector button:focus-visible {
+            outline:
+                2px solid
+                #c9a45b;
+
+            outline-offset: 2px;
         }
 
 
         @media (max-width: 700px) {
 
+            /*
+             * The selector remains inside the master .nav
+             * but occupies its own full-width row.
+             */
+
+            .nav {
+                flex-wrap: wrap;
+            }
+
+
             #newitt-language-selector {
                 width: 100%;
 
+                flex-basis: 100%;
+
+                justify-content: center;
+
                 margin:
-                    5px 0 2px;
+                    4px 0 8px;
 
                 padding: 5px;
 
-                order: 20;
+                order: 30;
             }
 
 
             #newitt-language-selector button {
                 flex: 1;
 
+                min-height: 40px;
+
                 padding: 8px;
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            #newitt-language-selector {
+                margin-bottom:
+                    6px;
+            }
+
+        }
+
+
+        @media (prefers-reduced-motion: reduce) {
+
+            #newitt-language-selector button {
+                transition: none;
             }
 
         }
@@ -827,12 +887,6 @@
 
 <!-- =====================================================
      FOLLOW THE ADVENTURE
-     
-     SOCIAL MEDIA BANNER
-     
-     IMPORTANT:
-     The social links are contained inside the banner.
-     No invisible overlay click zones are used here.
 ===================================================== -->
 
 <section
@@ -841,9 +895,7 @@
     aria-labelledby="social-title"
 >
 
-    <div
-        class="social-master-frame"
-    >
+    <div class="social-master-frame">
 
         <iframe
             class="social-master-animation"
@@ -982,7 +1034,6 @@
 <footer class="site-footer">
 
     <div class="container">
-
 
         <img
             src="newitt-media-logo.png"
