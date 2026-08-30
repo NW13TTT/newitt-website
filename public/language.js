@@ -4,6 +4,12 @@
    ENGLISH / CYMRAEG
    NEWITT MEDIA 2.0
    NO COOKIES
+
+   Supports:
+   - data-lang-en / data-lang-cy
+   - legacy data-lang="en" / data-lang="cy"
+   - data-aria-en / data-aria-cy
+   - shared language preference across pages
 ========================================================= */
 
 (function () {
@@ -11,9 +17,20 @@
     "use strict";
 
 
+    /* =====================================================
+       LANGUAGE STORAGE
+    ====================================================== */
+
     const LANGUAGE_KEY =
         "newittLanguage";
 
+    const LEGACY_LANGUAGE_KEY =
+        "newitt-language";
+
+
+    /* =====================================================
+       GET STORED LANGUAGE
+    ====================================================== */
 
     function getStoredLanguage() {
 
@@ -34,13 +51,37 @@
 
             }
 
-        } catch (error) {}
+
+            const legacyStored =
+                localStorage.getItem(
+                    LEGACY_LANGUAGE_KEY
+                );
+
+
+            if (
+                legacyStored === "cy" ||
+                legacyStored === "en"
+            ) {
+
+                return legacyStored;
+
+            }
+
+        } catch (error) {
+
+            /* Local storage may be unavailable. */
+
+        }
 
 
         return "en";
 
     }
 
+
+    /* =====================================================
+       SAVE LANGUAGE
+    ====================================================== */
 
     function saveLanguage(language) {
 
@@ -51,12 +92,36 @@
                 language
             );
 
-        } catch (error) {}
+
+            /*
+             * Keep the legacy key synchronised so that
+             * older code cannot accidentally overwrite
+             * the user's selected language.
+             */
+
+            localStorage.setItem(
+                LEGACY_LANGUAGE_KEY,
+                language
+            );
+
+        } catch (error) {
+
+            /* Local storage may be unavailable. */
+
+        }
 
     }
 
 
-    function updateText(language) {
+    /* =====================================================
+       UPDATE MASTER LANGUAGE ELEMENTS
+       
+       New system:
+       data-lang-en="English"
+       data-lang-cy="Welsh"
+    ====================================================== */
+
+    function updateMasterText(language) {
 
         document
             .querySelectorAll(
@@ -87,6 +152,62 @@
 
     }
 
+
+    /* =====================================================
+       UPDATE LEGACY LANGUAGE ELEMENTS
+       
+       Older system:
+       data-lang="en"
+       data-lang="cy"
+    ====================================================== */
+
+    function updateLegacyText(language) {
+
+        document
+            .querySelectorAll(
+                "[data-lang]"
+            )
+            .forEach(
+                function (element) {
+
+                    /*
+                     * Ignore elements belonging to the
+                     * newer data-lang-en/data-lang-cy
+                     * system.
+                     */
+
+                    if (
+                        element.hasAttribute(
+                            "data-lang-en"
+                        ) ||
+                        element.hasAttribute(
+                            "data-lang-cy"
+                        )
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    const elementLanguage =
+                        element.getAttribute(
+                            "data-lang"
+                        );
+
+
+                    element.hidden =
+                        elementLanguage !== language;
+
+                }
+            );
+
+    }
+
+
+    /* =====================================================
+       UPDATE ARIA LABELS
+    ====================================================== */
 
     function updateAria(language) {
 
@@ -122,15 +243,26 @@
     }
 
 
+    /* =====================================================
+       UPDATE HTML LANGUAGE
+    ====================================================== */
+
     function updateHtmlLanguage(language) {
 
         document.documentElement.lang =
             language === "cy"
-                ? "cy"
+                ? "cy-GB"
                 : "en-GB";
 
     }
 
+
+    /* =====================================================
+       UPDATE LANGUAGE SELECTOR
+       
+       Works with the master selector created below
+       and also existing page selectors.
+    ====================================================== */
 
     function updateSelector(language) {
 
@@ -140,44 +272,100 @@
             );
 
 
-        if (!selector) {
-            return;
-        }
+        if (selector) {
+
+            const buttons =
+                selector.querySelectorAll(
+                    "button"
+                );
 
 
-        const buttons =
-            selector.querySelectorAll(
-                "button"
+            buttons.forEach(
+                function (button) {
+
+                    button.classList.remove(
+                        "active"
+                    );
+
+                }
             );
 
 
-        buttons.forEach(
-            function (button) {
+            const active =
+                language === "cy"
+                    ? buttons[1]
+                    : buttons[0];
 
-                button.classList.remove(
+
+            if (active) {
+
+                active.classList.add(
                     "active"
                 );
 
             }
-        );
+
+        }
 
 
-        const active =
-            language === "cy"
-                ? buttons[1]
-                : buttons[0];
+        /*
+         * Support the older manually-created selectors
+         * while the remaining pages are being migrated.
+         */
+
+        const englishButton =
+            document.getElementById(
+                "language-en"
+            );
 
 
-        if (active) {
+        const welshButton =
+            document.getElementById(
+                "language-cy"
+            );
 
-            active.classList.add(
-                "active"
+
+        if (englishButton) {
+
+            englishButton.classList.toggle(
+                "active",
+                language === "en"
+            );
+
+
+            englishButton.setAttribute(
+                "aria-pressed",
+                language === "en"
+                    ? "true"
+                    : "false"
+            );
+
+        }
+
+
+        if (welshButton) {
+
+            welshButton.classList.toggle(
+                "active",
+                language === "cy"
+            );
+
+
+            welshButton.setAttribute(
+                "aria-pressed",
+                language === "cy"
+                    ? "true"
+                    : "false"
             );
 
         }
 
     }
 
+
+    /* =====================================================
+       SET LANGUAGE
+    ====================================================== */
 
     function setLanguage(language) {
 
@@ -196,7 +384,12 @@
         );
 
 
-        updateText(
+        updateMasterText(
+            language
+        );
+
+
+        updateLegacyText(
             language
         );
 
@@ -218,11 +411,39 @@
     }
 
 
+    /* =====================================================
+       CREATE MASTER SELECTOR
+    ====================================================== */
+
     function createSelector() {
+
+        /*
+         * Do not create a duplicate selector if one already
+         * exists on a page.
+         */
 
         if (
             document.getElementById(
                 "newitt-language-selector"
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+         * Older pages currently have their own selector.
+         * Leave those alone while they are being migrated.
+         */
+
+        if (
+            document.getElementById(
+                "language-en"
+            ) ||
+            document.getElementById(
+                "language-cy"
             )
         ) {
 
@@ -253,6 +474,22 @@
         );
 
 
+        selector.setAttribute(
+            "data-aria-en",
+            "Language"
+        );
+
+
+        selector.setAttribute(
+            "data-aria-cy",
+            "Iaith"
+        );
+
+
+        /* =================================================
+           ENGLISH BUTTON
+        ================================================== */
+
         const english =
             document.createElement(
                 "button"
@@ -279,6 +516,10 @@
         );
 
 
+        /* =================================================
+           DIVIDER
+        ================================================== */
+
         const divider =
             document.createElement(
                 "span"
@@ -294,6 +535,10 @@
             "true"
         );
 
+
+        /* =================================================
+           WELSH BUTTON
+        ================================================== */
 
         const welsh =
             document.createElement(
@@ -321,6 +566,10 @@
         );
 
 
+        /* =================================================
+           BUTTON EVENTS
+        ================================================== */
+
         english.addEventListener(
             "click",
             function () {
@@ -345,6 +594,10 @@
         );
 
 
+        /* =================================================
+           BUILD SELECTOR
+        ================================================== */
+
         selector.appendChild(
             english
         );
@@ -359,6 +612,10 @@
             welsh
         );
 
+
+        /* =================================================
+           INSERT INTO NAVIGATION
+        ================================================== */
 
         const nav =
             document.querySelector(
@@ -377,6 +634,10 @@
     }
 
 
+    /* =====================================================
+       INITIALISE
+    ====================================================== */
+
     function initialise() {
 
         createSelector();
@@ -388,6 +649,10 @@
 
     }
 
+
+    /* =====================================================
+       DOM READY
+    ====================================================== */
 
     if (
         document.readyState ===
