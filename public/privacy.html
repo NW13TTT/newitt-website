@@ -44,11 +44,108 @@
         href="style.css"
     >
 
+
+    <!-- =====================================================
+         PRIVACY PAGE LANGUAGE STYLES
+    ====================================================== -->
+
+    <style>
+
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 6px;
+            margin-left: 18px;
+
+            flex-shrink: 0;
+        }
+
+
+        .language-switcher button {
+            appearance: none;
+
+            border:
+                1px solid
+                rgba(0,220,255,0.30);
+
+            background:
+                rgba(0,8,15,0.70);
+
+            color:
+                rgba(255,255,255,0.72);
+
+            padding: 6px 9px;
+
+            border-radius: 7px;
+
+            font-size: 0.72rem;
+            font-weight: 700;
+
+            letter-spacing: 0.08em;
+
+            cursor: pointer;
+
+            transition:
+                background 0.25s ease,
+                color 0.25s ease,
+                border-color 0.25s ease,
+                transform 0.25s ease;
+        }
+
+
+        .language-switcher button:hover {
+            transform: translateY(-1px);
+
+            border-color:
+                rgba(0,220,255,0.75);
+
+            color: #ffffff;
+        }
+
+
+        .language-switcher button.active {
+            background:
+                rgba(0,180,255,0.18);
+
+            border-color:
+                rgba(0,220,255,0.80);
+
+            color: #ffffff;
+        }
+
+
+        @media (max-width: 900px) {
+
+            .language-switcher {
+                margin:
+                    14px 0 4px;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .language-switcher {
+                width: 100%;
+                justify-content: center;
+            }
+
+        }
+
+    </style>
+
 </head>
 
 
 <body id="top">
 
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <header class="site-header">
 
@@ -94,52 +191,161 @@
         >
 
             <a href="index.html">
-                Home
+
+                <span data-lang="en">
+                    Home
+                </span>
+
+                <span data-lang="cy" hidden>
+                    Cartref
+                </span>
+
             </a>
+
 
             <a href="skyline.html">
-                Skyline
+
+                <span data-lang="en">
+                    Skyline
+                </span>
+
+                <span data-lang="cy" hidden>
+                    Skyline
+                </span>
+
             </a>
+
 
             <a href="paranormal.html">
-                Paranormal
+
+                <span data-lang="en">
+                    Paranormal
+                </span>
+
+                <span data-lang="cy" hidden>
+                    Paranormal
+                </span>
+
             </a>
+
 
             <a href="photography.html">
-                Photography
+
+                <span data-lang="en">
+                    Photography
+                </span>
+
+                <span data-lang="cy" hidden>
+                    Ffotograffiaeth
+                </span>
+
             </a>
 
+
             <a href="contact.html">
-                Contact
+
+                <span data-lang="en">
+                    Contact
+                </span>
+
+                <span data-lang="cy" hidden>
+                    Cysylltu
+                </span>
+
             </a>
 
         </nav>
+
+
+        <!-- =================================================
+             LANGUAGE SWITCHER
+        ================================================== -->
+
+        <div
+            class="language-switcher"
+            aria-label="Language selection"
+        >
+
+            <button
+                type="button"
+                id="language-en"
+                class="active"
+                aria-label="English"
+                aria-pressed="true"
+            >
+                EN
+            </button>
+
+
+            <button
+                type="button"
+                id="language-cy"
+                aria-label="Cymraeg"
+                aria-pressed="false"
+            >
+                CY
+            </button>
+
+        </div>
 
     </div>
 
 </header>
 
 
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
 <main>
 
+
+<!-- =====================================================
+     PRIVACY HERO
+===================================================== -->
 
 <section class="contact-hero">
 
     <div class="container contact-hero-content">
 
         <div class="eyebrow">
-            NEWITT MEDIA
+
+            <span data-lang="en">
+                NEWITT MEDIA
+            </span>
+
+            <span data-lang="cy" hidden>
+                NEWITT MEDIA
+            </span>
+
         </div>
 
+
         <h1>
-            PRIVACY <span>&amp; SAFETY</span>
+
+            <span data-lang="en">
+                PRIVACY <span>&amp; SAFETY</span>
+            </span>
+
+            <span data-lang="cy" hidden>
+                PREIFATRWYDD <span>AC DIOGELWCH</span>
+            </span>
+
         </h1>
+
 
         <div class="hero-rule"></div>
 
-        <p>
+
+        <p data-lang="en">
             Clear information about how NEWITT Media approaches
             privacy, external services and safety.
+        </p>
+
+
+        <p data-lang="cy" hidden>
+            Gwybodaeth glir am sut mae NEWITT Media yn ymdrin
+            â phreifatrwydd, gwasanaethau allanol a diogelwch.
         </p>
 
     </div>
@@ -147,6 +353,10 @@
 </section>
 
 
+<!-- =====================================================
+     PRIVACY
+===================================================== -->
+
 <section class="about">
 
     <div class="container">
@@ -154,11 +364,29 @@
         <div class="section-heading">
 
             <div class="eyebrow">
-                PRIVACY
+
+                <span data-lang="en">
+                    PRIVACY
+                </span>
+
+                <span data-lang="cy" hidden>
+                    PREIFATRWYDD
+                </span>
+
             </div>
 
+
             <h2>
-                A <span>privacy-conscious</span> website
+
+                <span data-lang="en">
+                    A <span>privacy-conscious</span> website
+                </span>
+
+                <span data-lang="cy" hidden>
+                    Gwefan sy'n ymwybodol o
+                    <span>breifatrwydd</span>
+                </span>
+
             </h2>
 
         </div>
@@ -166,6 +394,8 @@
 
         <div class="contact-grid">
 
+
+            <!-- NO COOKIES -->
 
             <article class="contact-card">
 
@@ -173,17 +403,35 @@
                     🔒
                 </div>
 
+
                 <h2>
-                    No Cookies
+
+                    <span data-lang="en">
+                        No Cookies
+                    </span>
+
+                    <span data-lang="cy" hidden>
+                        Dim Cwcis
+                    </span>
+
                 </h2>
 
-                <p>
+
+                <p data-lang="en">
                     NEWITT Media does not intentionally use
                     unnecessary cookies on this website.
                 </p>
 
+
+                <p data-lang="cy" hidden>
+                    Nid yw NEWITT Media yn defnyddio cwcis
+                    diangen ar y wefan hon yn fwriadol.
+                </p>
+
             </article>
 
+
+            <!-- TRACKING -->
 
             <article class="contact-card">
 
@@ -191,18 +439,37 @@
                     🛡️
                 </div>
 
+
                 <h2>
-                    No Unnecessary Tracking
+
+                    <span data-lang="en">
+                        No Unnecessary Tracking
+                    </span>
+
+                    <span data-lang="cy" hidden>
+                        Dim Tracio Diangen
+                    </span>
+
                 </h2>
 
-                <p>
+
+                <p data-lang="en">
                     The website is designed without unnecessary
                     advertising trackers, tracking pixels or
                     other non-essential visitor tracking.
                 </p>
 
+
+                <p data-lang="cy" hidden>
+                    Mae'r wefan wedi'i chynllunio heb dracwyr
+                    hysbysebu diangen, picseli tracio neu
+                    dracio ymwelwyr nad yw'n hanfodol.
+                </p>
+
             </article>
 
+
+            <!-- EXTERNAL SERVICES -->
 
             <article class="contact-card">
 
@@ -210,15 +477,33 @@
                     🌐
                 </div>
 
+
                 <h2>
-                    External Services
+
+                    <span data-lang="en">
+                        External Services
+                    </span>
+
+                    <span data-lang="cy" hidden>
+                        Gwasanaethau Allanol
+                    </span>
+
                 </h2>
 
-                <p>
+
+                <p data-lang="en">
                     Links to services such as YouTube, TikTok,
                     Instagram and Facebook take you away from
                     the NEWITT Media website. Those platforms
                     operate under their own policies.
+                </p>
+
+
+                <p data-lang="cy" hidden>
+                    Mae dolenni i wasanaethau fel YouTube,
+                    TikTok, Instagram a Facebook yn mynd â chi
+                    oddi ar wefan NEWITT Media. Mae'r llwyfannau
+                    hynny'n gweithredu o dan eu polisïau eu hunain.
                 </p>
 
             </article>
@@ -230,6 +515,10 @@
 
 </section>
 
+
+<!-- =====================================================
+     SAFETY
+===================================================== -->
 
 <section class="about">
 
@@ -238,11 +527,29 @@
         <div class="section-heading">
 
             <div class="eyebrow">
-                SAFETY
+
+                <span data-lang="en">
+                    SAFETY
+                </span>
+
+                <span data-lang="cy" hidden>
+                    DIOGELWCH
+                </span>
+
             </div>
 
+
             <h2>
-                Safety comes <span>first</span>
+
+                <span data-lang="en">
+                    Safety comes <span>first</span>
+                </span>
+
+                <span data-lang="cy" hidden>
+                    Diogelwch sy'n dod
+                    <span>gyntaf</span>
+                </span>
+
             </h2>
 
         </div>
@@ -251,25 +558,47 @@
         <div class="contact-grid">
 
 
+            <!-- DRONES -->
+
             <article class="contact-card">
 
                 <div class="contact-card-icon">
                     🚁
                 </div>
 
+
                 <h2>
-                    Drone Operations
+
+                    <span data-lang="en">
+                        Drone Operations
+                    </span>
+
+                    <span data-lang="cy" hidden>
+                        Gweithrediadau Drôn
+                    </span>
+
                 </h2>
 
-                <p>
+
+                <p data-lang="en">
                     NEWITT Media aims to carry out aerial work
                     responsibly and in accordance with applicable
                     aviation requirements, site restrictions and
                     safety instructions.
                 </p>
 
+
+                <p data-lang="cy" hidden>
+                    Mae NEWITT Media yn ceisio gwneud gwaith awyr
+                    yn gyfrifol ac yn unol â gofynion hedfan
+                    perthnasol, cyfyngiadau safleoedd a
+                    chyfarwyddiadau diogelwch.
+                </p>
+
             </article>
 
+
+            <!-- PARANORMAL -->
 
             <article class="contact-card">
 
@@ -277,19 +606,39 @@
                     👻
                 </div>
 
+
                 <h2>
-                    Paranormal Investigations
+
+                    <span data-lang="en">
+                        Paranormal Investigations
+                    </span>
+
+                    <span data-lang="cy" hidden>
+                        Ymchwiliadau Paranormal
+                    </span>
+
                 </h2>
 
-                <p>
+
+                <p data-lang="en">
                     Investigations should only take place with
                     appropriate permission. Restricted areas,
                     unsafe structures and venue instructions
                     must always be respected.
                 </p>
 
+
+                <p data-lang="cy" hidden>
+                    Dim ond gyda chaniatâd priodol y dylid cynnal
+                    ymchwiliadau. Rhaid parchu ardaloedd
+                    cyfyngedig, strwythurau anniogel a
+                    chyfarwyddiadau'r lleoliad bob amser.
+                </p>
+
             </article>
 
+
+            <!-- HISTORIC LOCATIONS -->
 
             <article class="contact-card">
 
@@ -297,14 +646,32 @@
                     🏛️
                 </div>
 
+
                 <h2>
-                    Historic Locations
+
+                    <span data-lang="en">
+                        Historic Locations
+                    </span>
+
+                    <span data-lang="cy" hidden>
+                        Lleoliadau Hanesyddol
+                    </span>
+
                 </h2>
 
-                <p>
+
+                <p data-lang="en">
                     Historical information presented by NEWITT
                     Media will be treated separately from
                     paranormal experiences, theories or claims.
+                </p>
+
+
+                <p data-lang="cy" hidden>
+                    Bydd gwybodaeth hanesyddol a gyflwynir gan
+                    NEWITT Media yn cael ei thrin ar wahân i
+                    brofiadau, damcaniaethau neu honiadau
+                    paranormal.
                 </p>
 
             </article>
@@ -316,6 +683,10 @@
 
 </section>
 
+
+<!-- =====================================================
+     FINAL SAFETY CTA
+===================================================== -->
 
 <section class="home-cta">
 
@@ -324,19 +695,46 @@
         <div class="cta-panel">
 
             <div class="eyebrow">
-                NEWITT MEDIA
+
+                <span data-lang="en">
+                    NEWITT MEDIA
+                </span>
+
+                <span data-lang="cy" hidden>
+                    NEWITT MEDIA
+                </span>
+
             </div>
 
+
             <h2>
-                Respect the <span>location</span>
+
+                <span data-lang="en">
+                    Respect the <span>location</span>
+                </span>
+
+                <span data-lang="cy" hidden>
+                    Parchwch y <span>lleoliad</span>
+                </span>
+
             </h2>
 
-            <p>
+
+            <p data-lang="en">
                 Always follow the instructions of the venue,
                 landowner, event organiser and relevant
                 authorities. Never enter restricted or unsafe
                 areas.
             </p>
+
+
+            <p data-lang="cy" hidden>
+                Dilynwch gyfarwyddiadau'r lleoliad,
+                tirfeddiannwr, trefnydd digwyddiad a'r
+                awdurdodau perthnasol bob amser. Peidiwch
+                byth â mynd i ardaloedd cyfyngedig neu anniogel.
+            </p>
+
 
             <div class="hero-actions">
 
@@ -344,14 +742,31 @@
                     href="index.html"
                     class="button primary"
                 >
-                    Back to Home
+
+                    <span data-lang="en">
+                        Back to Home
+                    </span>
+
+                    <span data-lang="cy" hidden>
+                        Yn ôl i'r Hafan
+                    </span>
+
                 </a>
+
 
                 <a
                     href="contact.html"
                     class="button secondary"
                 >
-                    Contact NEWITT Media
+
+                    <span data-lang="en">
+                        Contact NEWITT Media
+                    </span>
+
+                    <span data-lang="cy" hidden>
+                        Cysylltu â NEWITT Media
+                    </span>
+
                 </a>
 
             </div>
@@ -366,6 +781,10 @@
 </main>
 
 
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer class="site-footer">
 
     <div class="container">
@@ -376,28 +795,60 @@
             class="footer-logo"
         >
 
+
         <p class="footer-brand">
             NEWITT MEDIA
         </p>
+
 
         <p class="footer-tagline">
             FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
         </p>
 
+
         <p class="copyright">
             © 2026 NEWITT Media. All Rights Reserved.
         </p>
 
+
         <p class="website-address">
 
             <a href="index.html">
-                NEWITT Media
+                <span data-lang="en">
+                    NEWITT Media
+                </span>
+
+                <span data-lang="cy" hidden>
+                    NEWITT Media
+                </span>
             </a>
 
             &nbsp;•&nbsp;
 
             <a href="privacy.html">
-                Privacy &amp; Safety
+
+                <span data-lang="en">
+                    Privacy &amp; Safety
+                </span>
+
+                <span data-lang="cy" hidden>
+                    Preifatrwydd a Diogelwch
+                </span>
+
+            </a>
+
+            &nbsp;•&nbsp;
+
+            <a href="contact.html">
+
+                <span data-lang="en">
+                    Contact
+                </span>
+
+                <span data-lang="cy" hidden>
+                    Cysylltu
+                </span>
+
             </a>
 
         </p>
@@ -406,6 +857,161 @@
 
 </footer>
 
+
+<!-- =====================================================
+     PRIVACY LANGUAGE ENGINE
+===================================================== -->
+
+<script>
+
+(function () {
+
+    const englishButton =
+        document.getElementById("language-en");
+
+    const welshButton =
+        document.getElementById("language-cy");
+
+    const languageElements =
+        document.querySelectorAll("[data-lang]");
+
+
+    function setLanguage(language) {
+
+        languageElements.forEach(function (element) {
+
+            element.hidden =
+                element.getAttribute("data-lang") !== language;
+
+        });
+
+
+        document.documentElement.lang =
+            language === "cy"
+                ? "cy-GB"
+                : "en-GB";
+
+
+        if (englishButton) {
+
+            englishButton.classList.toggle(
+                "active",
+                language === "en"
+            );
+
+            englishButton.setAttribute(
+                "aria-pressed",
+                language === "en"
+                    ? "true"
+                    : "false"
+            );
+
+        }
+
+
+        if (welshButton) {
+
+            welshButton.classList.toggle(
+                "active",
+                language === "cy"
+            );
+
+            welshButton.setAttribute(
+                "aria-pressed",
+                language === "cy"
+                    ? "true"
+                    : "false"
+            );
+
+        }
+
+
+        try {
+
+            localStorage.setItem(
+                "newitt-language",
+                language
+            );
+
+        } catch (error) {
+
+            /* Local storage may be unavailable. */
+
+        }
+
+    }
+
+
+    function getSavedLanguage() {
+
+        try {
+
+            return localStorage.getItem(
+                "newitt-language"
+            );
+
+        } catch (error) {
+
+            return null;
+
+        }
+
+    }
+
+
+    if (englishButton) {
+
+        englishButton.addEventListener(
+            "click",
+            function () {
+
+                setLanguage("en");
+
+            }
+        );
+
+    }
+
+
+    if (welshButton) {
+
+        welshButton.addEventListener(
+            "click",
+            function () {
+
+                setLanguage("cy");
+
+            }
+        );
+
+    }
+
+
+    const savedLanguage =
+        getSavedLanguage();
+
+
+    if (
+        savedLanguage === "cy" ||
+        savedLanguage === "en"
+    ) {
+
+        setLanguage(savedLanguage);
+
+    } else {
+
+        setLanguage("en");
+
+    }
+
+})();
+
+</script>
+
+
+<!-- =====================================================
+     MASTER JAVASCRIPT
+===================================================== -->
 
 <script
     src="script.js"
