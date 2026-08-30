@@ -1,21 +1,23 @@
 /* =========================================================
    NEWITT MEDIA
    MASTER LANGUAGE SYSTEM
-   ENGLISH / CYMRAEG
-   NEWITT MEDIA 2.0
-   PASS 2 - STABLE MASTER LANGUAGE ENGINE
-   30 AUGUST 2026
+   UPDATE 2 OF 5
 
-   Supports:
-   - data-lang-en / data-lang-cy
-   - legacy data-lang="en" / data-lang="cy"
-   - data-aria-en / data-aria-cy
-   - shared language preference across pages
-   - dynamically-created EN / CY selector
-   - keyboard accessibility
-   - mobile navigation compatibility
-   - Safari / iOS resilience
-   - NO COOKIES
+   Languages:
+   🇬🇧 English
+   🏴 Welsh
+
+   Features:
+   - English / Welsh switching
+   - Flag-only selector
+   - Remembers language choice
+   - Updates visible text
+   - Updates aria labels
+   - Updates document language
+   - Updates page title where supported
+   - Works across every page
+   - Mobile friendly
+   - Safari / iPhone friendly
 ========================================================= */
 
 (function () {
@@ -24,31 +26,51 @@
 
 
     /* =====================================================
-       LANGUAGE STORAGE
+       SETTINGS
     ====================================================== */
 
     const LANGUAGE_KEY =
-        "newittLanguage";
+        "newittMediaLanguage";
 
-    const LEGACY_LANGUAGE_KEY =
-        "newitt-language";
+
+    const DEFAULT_LANGUAGE =
+        "en";
+
+
+    const SUPPORTED_LANGUAGES =
+        ["en", "cy"];
 
 
     /* =====================================================
-       VALID LANGUAGES
+       LANGUAGE NAMES
     ====================================================== */
 
-    const LANGUAGES = {
-        ENGLISH: "en",
-        WELSH: "cy"
+    const LANGUAGE_DATA = {
+
+        en: {
+            flag: "🇬🇧",
+            name: "English",
+            documentLanguage: "en-GB"
+        },
+
+        cy: {
+            flag: "🏴",
+            name: "Cymraeg",
+            documentLanguage: "cy"
+        }
+
     };
 
 
     /* =====================================================
-       GET STORED LANGUAGE
+       GET SAVED LANGUAGE
     ====================================================== */
 
-    function getStoredLanguage() {
+    function getSavedLanguage() {
+
+        let saved =
+            DEFAULT_LANGUAGE;
+
 
         try {
 
@@ -59,52 +81,26 @@
 
 
             if (
-                stored === LANGUAGES.ENGLISH ||
-                stored === LANGUAGES.WELSH
+                stored &&
+                SUPPORTED_LANGUAGES.includes(
+                    stored
+                )
             ) {
 
-                return stored;
-
-            }
-
-
-            const legacyStored =
-                localStorage.getItem(
-                    LEGACY_LANGUAGE_KEY
-                );
-
-
-            if (
-                legacyStored === LANGUAGES.ENGLISH ||
-                legacyStored === LANGUAGES.WELSH
-            ) {
-
-                /*
-                 * Migrate the older preference into
-                 * the master storage key.
-                 */
-
-                localStorage.setItem(
-                    LANGUAGE_KEY,
-                    legacyStored
-                );
-
-
-                return legacyStored;
+                saved =
+                    stored;
 
             }
 
         } catch (error) {
 
-            /*
-             * Local storage may be unavailable,
-             * restricted or blocked by the browser.
-             */
+            saved =
+                DEFAULT_LANGUAGE;
 
         }
 
 
-        return LANGUAGES.ENGLISH;
+        return saved;
 
     }
 
@@ -113,7 +109,9 @@
        SAVE LANGUAGE
     ====================================================== */
 
-    function saveLanguage(language) {
+    function saveLanguage(
+        language
+    ) {
 
         try {
 
@@ -122,435 +120,16 @@
                 language
             );
 
-
-            /*
-             * Keep the legacy key synchronised so
-             * older pages cannot accidentally restore
-             * a different language.
-             */
-
-            localStorage.setItem(
-                LEGACY_LANGUAGE_KEY,
-                language
-            );
-
-        } catch (error) {
-
-            /*
-             * The site continues working normally even
-             * when localStorage is unavailable.
-             */
-
-        }
+        } catch (error) {}
 
     }
 
 
     /* =====================================================
-       UPDATE MASTER TEXT
-       
-       New system:
-       
-       data-lang-en="English"
-       data-lang-cy="Welsh"
+       CREATE LANGUAGE SELECTOR
     ====================================================== */
 
-    function updateMasterText(language) {
-
-        document
-            .querySelectorAll(
-                "[data-lang-en][data-lang-cy]"
-            )
-            .forEach(
-                function (element) {
-
-                    const english =
-                        element.getAttribute(
-                            "data-lang-en"
-                        );
-
-
-                    const welsh =
-                        element.getAttribute(
-                            "data-lang-cy"
-                        );
-
-
-                    const translated =
-                        language ===
-                        LANGUAGES.WELSH
-                            ? welsh
-                            : english;
-
-
-                    if (
-                        translated !== null
-                    ) {
-
-                        element.textContent =
-                            translated;
-
-                    }
-
-                }
-            );
-
-    }
-
-
-    /* =====================================================
-       UPDATE LEGACY TEXT
-       
-       Older system:
-       
-       data-lang="en"
-       data-lang="cy"
-       
-       These elements are hidden/shown rather than having
-       their text replaced.
-    ====================================================== */
-
-    function updateLegacyText(language) {
-
-        document
-            .querySelectorAll(
-                "[data-lang]"
-            )
-            .forEach(
-                function (element) {
-
-                    /*
-                     * Ignore elements belonging to the
-                     * newer master translation system.
-                     */
-
-                    if (
-                        element.hasAttribute(
-                            "data-lang-en"
-                        ) ||
-                        element.hasAttribute(
-                            "data-lang-cy"
-                        )
-                    ) {
-
-                        return;
-
-                    }
-
-
-                    const elementLanguage =
-                        element.getAttribute(
-                            "data-lang"
-                        );
-
-
-                    element.hidden =
-                        elementLanguage !==
-                        language;
-
-                }
-            );
-
-    }
-
-
-    /* =====================================================
-       UPDATE ARIA LABELS
-       
-       Supports:
-       
-       data-aria-en
-       data-aria-cy
-    ====================================================== */
-
-    function updateAria(language) {
-
-        document
-            .querySelectorAll(
-                "[data-aria-en][data-aria-cy]"
-            )
-            .forEach(
-                function (element) {
-
-                    const english =
-                        element.getAttribute(
-                            "data-aria-en"
-                        );
-
-
-                    const welsh =
-                        element.getAttribute(
-                            "data-aria-cy"
-                        );
-
-
-                    const translated =
-                        language ===
-                        LANGUAGES.WELSH
-                            ? welsh
-                            : english;
-
-
-                    if (
-                        translated !== null
-                    ) {
-
-                        element.setAttribute(
-                            "aria-label",
-                            translated
-                        );
-
-                    }
-
-                }
-            );
-
-    }
-
-
-    /* =====================================================
-       UPDATE HTML LANGUAGE
-    ====================================================== */
-
-    function updateHtmlLanguage(language) {
-
-        document.documentElement.lang =
-            language ===
-            LANGUAGES.WELSH
-                ? "cy-GB"
-                : "en-GB";
-
-    }
-
-
-    /* =====================================================
-       UPDATE LANGUAGE SELECTOR
-    ====================================================== */
-
-    function updateSelector(language) {
-
-        const selector =
-            document.getElementById(
-                "newitt-language-selector"
-            );
-
-
-        if (!selector) {
-
-            return;
-
-        }
-
-
-        const buttons =
-            selector.querySelectorAll(
-                "button"
-            );
-
-
-        buttons.forEach(
-            function (button) {
-
-                const buttonLanguage =
-                    button.getAttribute(
-                        "data-language"
-                    );
-
-
-                const active =
-                    buttonLanguage ===
-                    language;
-
-
-                button.classList.toggle(
-                    "active",
-                    active
-                );
-
-
-                button.setAttribute(
-                    "aria-pressed",
-                    active
-                        ? "true"
-                        : "false"
-                );
-
-            }
-        );
-
-
-        selector.setAttribute(
-            "aria-label",
-            language ===
-            LANGUAGES.WELSH
-                ? "Iaith"
-                : "Language"
-        );
-
-    }
-
-
-    /* =====================================================
-       UPDATE OLD LANGUAGE SELECTORS
-       
-       Kept for compatibility with pages which have not
-       yet been migrated completely.
-    ====================================================== */
-
-    function updateLegacySelector(language) {
-
-        const englishButton =
-            document.getElementById(
-                "language-en"
-            );
-
-
-        const welshButton =
-            document.getElementById(
-                "language-cy"
-            );
-
-
-        if (englishButton) {
-
-            const active =
-                language ===
-                LANGUAGES.ENGLISH;
-
-
-            englishButton.classList.toggle(
-                "active",
-                active
-            );
-
-
-            englishButton.setAttribute(
-                "aria-pressed",
-                active
-                    ? "true"
-                    : "false"
-            );
-
-        }
-
-
-        if (welshButton) {
-
-            const active =
-                language ===
-                LANGUAGES.WELSH;
-
-
-            welshButton.classList.toggle(
-                "active",
-                active
-            );
-
-
-            welshButton.setAttribute(
-                "aria-pressed",
-                active
-                    ? "true"
-                    : "false"
-            );
-
-        }
-
-    }
-
-
-    /* =====================================================
-       SET LANGUAGE
-    ====================================================== */
-
-    function setLanguage(language) {
-
-        if (
-            language !== LANGUAGES.ENGLISH &&
-            language !== LANGUAGES.WELSH
-        ) {
-
-            language =
-                LANGUAGES.ENGLISH;
-
-        }
-
-
-        saveLanguage(
-            language
-        );
-
-
-        updateMasterText(
-            language
-        );
-
-
-        updateLegacyText(
-            language
-        );
-
-
-        updateAria(
-            language
-        );
-
-
-        updateHtmlLanguage(
-            language
-        );
-
-
-        updateSelector(
-            language
-        );
-
-
-        updateLegacySelector(
-            language
-        );
-
-
-        /*
-         * Notify any other NEWITT Media scripts that
-         * the language has changed.
-         */
-
-        try {
-
-            window.dispatchEvent(
-                new CustomEvent(
-                    "newittLanguageChanged",
-                    {
-                        detail: {
-                            language:
-                                language
-                        }
-                    }
-                )
-            );
-
-        } catch (error) {
-
-            /*
-             * Older Safari versions may not support
-             * CustomEvent construction in every context.
-             */
-
-        }
-
-    }
-
-
-    /* =====================================================
-       CREATE MASTER SELECTOR
-    ====================================================== */
-
-    function createSelector() {
-
-        /*
-         * Never create a duplicate.
-         */
+    function createLanguageSelector() {
 
         if (
             document.getElementById(
@@ -563,19 +142,13 @@
         }
 
 
-        /*
-         * If an older selector already exists,
-         * leave it alone.
-         */
+        const nav =
+            document.querySelector(
+                ".nav"
+            );
 
-        if (
-            document.getElementById(
-                "language-en"
-            ) ||
-            document.getElementById(
-                "language-cy"
-            )
-        ) {
+
+        if (!nav) {
 
             return;
 
@@ -600,261 +173,671 @@
 
         selector.setAttribute(
             "aria-label",
-            "Language"
+            "Language selection"
         );
 
 
-        selector.setAttribute(
-            "data-aria-en",
-            "Language"
-        );
+        selector.innerHTML = `
 
+            <button
+                type="button"
+                data-language="en"
+                aria-label="English"
+                title="English"
+            >
+                🇬🇧
+            </button>
 
-        selector.setAttribute(
-            "data-aria-cy",
-            "Iaith"
-        );
+            <span
+                aria-hidden="true"
+            >
+                |
+            </span>
 
+            <button
+                type="button"
+                data-language="cy"
+                aria-label="Cymraeg"
+                title="Cymraeg"
+            >
+                🏴
+            </button>
 
-        /* =================================================
-           ENGLISH BUTTON
-        ================================================== */
-
-        const english =
-            document.createElement(
-                "button"
-            );
-
-
-        english.type =
-            "button";
-
-
-        english.textContent =
-            "EN";
-
-
-        english.setAttribute(
-            "data-language",
-            LANGUAGES.ENGLISH
-        );
-
-
-        english.setAttribute(
-            "aria-label",
-            "English"
-        );
-
-
-        english.setAttribute(
-            "title",
-            "English"
-        );
-
-
-        english.setAttribute(
-            "aria-pressed",
-            "false"
-        );
-
-
-        /* =================================================
-           DIVIDER
-        ================================================== */
-
-        const divider =
-            document.createElement(
-                "span"
-            );
-
-
-        divider.textContent =
-            "|";
-
-
-        divider.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-
-
-        /* =================================================
-           WELSH BUTTON
-        ================================================== */
-
-        const welsh =
-            document.createElement(
-                "button"
-            );
-
-
-        welsh.type =
-            "button";
-
-
-        welsh.textContent =
-            "CY";
-
-
-        welsh.setAttribute(
-            "data-language",
-            LANGUAGES.WELSH
-        );
-
-
-        welsh.setAttribute(
-            "aria-label",
-            "Cymraeg"
-        );
-
-
-        welsh.setAttribute(
-            "title",
-            "Cymraeg"
-        );
-
-
-        welsh.setAttribute(
-            "aria-pressed",
-            "false"
-        );
-
-
-        /* =================================================
-           BUTTON EVENTS
-        ================================================== */
-
-        english.addEventListener(
-            "click",
-            function () {
-
-                setLanguage(
-                    LANGUAGES.ENGLISH
-                );
-
-            }
-        );
-
-
-        welsh.addEventListener(
-            "click",
-            function () {
-
-                setLanguage(
-                    LANGUAGES.WELSH
-                );
-
-            }
-        );
-
-
-        /* =================================================
-           BUILD SELECTOR
-        ================================================== */
-
-        selector.appendChild(
-            english
-        );
-
-
-        selector.appendChild(
-            divider
-        );
-
-
-        selector.appendChild(
-            welsh
-        );
-
-
-        /* =================================================
-           INSERT INTO MASTER NAV
-        ================================================= */
-
-        const nav =
-            document.querySelector(
-                ".nav"
-            );
-
-
-        if (!nav) {
-
-            return;
-
-        }
+        `;
 
 
         /*
-         * The selector is deliberately placed inside
-         * the master navigation container.
-         *
-         * CSS controls its desktop/mobile presentation.
-         * JavaScript does not move it based on screen size.
+         * Place selector at the end of
+         * the navigation container.
          */
 
         nav.appendChild(
             selector
         );
 
+
+        selector
+            .querySelectorAll(
+                "button[data-language]"
+            )
+            .forEach(
+                function (button) {
+
+                    button.addEventListener(
+                        "click",
+                        function () {
+
+                            const language =
+                                button.getAttribute(
+                                    "data-language"
+                                );
+
+
+                            if (
+                                !SUPPORTED_LANGUAGES.includes(
+                                    language
+                                )
+                            ) {
+
+                                return;
+
+                            }
+
+
+                            setLanguage(
+                                language
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
     }
 
 
     /* =====================================================
-       HANDLE DYNAMIC CONTENT
-       
-       Allows language translation to be refreshed if
-       another script inserts translated elements.
+       APPLY LANGUAGE
     ====================================================== */
 
-    function refreshLanguage() {
+    function setLanguage(
+        language
+    ) {
 
-        setLanguage(
-            getStoredLanguage()
+        if (
+            !SUPPORTED_LANGUAGES.includes(
+                language
+            )
+        ) {
+
+            language =
+                DEFAULT_LANGUAGE;
+
+        }
+
+
+        saveLanguage(
+            language
+        );
+
+
+        document.documentElement.lang =
+            LANGUAGE_DATA[
+                language
+            ].documentLanguage;
+
+
+        document.documentElement
+            .setAttribute(
+                "data-language",
+                language
+            );
+
+
+        updateText(
+            language
+        );
+
+
+        updateAriaLabels(
+            language
+        );
+
+
+        updateSelectorState(
+            language
+        );
+
+
+        updatePageTitle(
+            language
         );
 
     }
 
 
     /* =====================================================
-       PUBLIC API
-       
-       Allows other NEWITT Media scripts to change or
-       retrieve the current language without touching
-       internal functions.
+       UPDATE NORMAL TEXT
     ====================================================== */
 
-    window.NEWITTLanguage = {
+    function updateText(
+        language
+    ) {
 
-        set:
-            setLanguage,
+        document
+            .querySelectorAll(
+                "[data-lang-en][data-lang-cy]"
+            )
+            .forEach(
+                function (element) {
 
-        get:
-            getStoredLanguage,
+                    const value =
+                        element.getAttribute(
+                            "data-lang-" +
+                            language
+                        );
 
-        refresh:
-            refreshLanguage
 
-    };
+                    if (
+                        value === null
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * Preserve HTML entities
+                     * and intentionally supplied
+                     * inline markup.
+                     */
+
+                    element.innerHTML =
+                        value;
+
+                }
+            );
+
+    }
+
+
+    /* =====================================================
+       UPDATE ARIA LABELS
+    ====================================================== */
+
+    function updateAriaLabels(
+        language
+    ) {
+
+        document
+            .querySelectorAll(
+                "[data-aria-en][data-aria-cy]"
+            )
+            .forEach(
+                function (element) {
+
+                    const value =
+                        element.getAttribute(
+                            "data-aria-" +
+                            language
+                        );
+
+
+                    if (
+                        value === null
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    element.setAttribute(
+                        "aria-label",
+                        value
+                    );
+
+                }
+            );
+
+    }
+
+
+    /* =====================================================
+       UPDATE SELECTOR STATE
+    ====================================================== */
+
+    function updateSelectorState(
+        language
+    ) {
+
+        const selector =
+            document.getElementById(
+                "newitt-language-selector"
+            );
+
+
+        if (!selector) {
+
+            return;
+
+        }
+
+
+        selector
+            .querySelectorAll(
+                "button[data-language]"
+            )
+            .forEach(
+                function (button) {
+
+                    const active =
+                        button.getAttribute(
+                            "data-language"
+                        ) === language;
+
+
+                    button.classList.toggle(
+                        "active",
+                        active
+                    );
+
+
+                    button.setAttribute(
+                        "aria-pressed",
+                        active
+                            ? "true"
+                            : "false"
+                    );
+
+                }
+            );
+
+    }
+
+
+    /* =====================================================
+       PAGE TITLES
+    ====================================================== */
+
+    function updatePageTitle(
+        language
+    ) {
+
+        const title =
+            document.querySelector(
+                "title"
+            );
+
+
+        if (!title) {
+
+            return;
+
+        }
+
+
+        const page =
+            document.body
+                ? document.body.className
+                : "";
+
+
+        const titles = {
+
+            "home-page": {
+
+                en:
+                    "NEWITT Media | From Above. After Dark. And Everything In Between.",
+
+                cy:
+                    "NEWITT Media | O'r Awyr. Ar ôl Tywyllwch. A Phopeth Rhwng y Ddau."
+
+            },
+
+            "skyline-page": {
+
+                en:
+                    "NEWITT Skyline Media | From Above.",
+
+                cy:
+                    "NEWITT Skyline Media | O'r Awyr."
+
+            },
+
+            "paranormal-page": {
+
+                en:
+                    "NEWITT's Paranormal Adventures | After Dark.",
+
+                cy:
+                    "Anturiaethau Paranormal NEWITT | Ar ôl Tywyllwch."
+
+            },
+
+            "photography-page": {
+
+                en:
+                    "NEWITT Media Photography | People. Places. Adventures.",
+
+                cy:
+                    "Ffotograffiaeth NEWITT Media | Pobl. Lleoedd. Anturiaethau."
+
+            },
+
+            "contact-page": {
+
+                en:
+                    "Contact NEWITT Media",
+
+                cy:
+                    "Cysylltu â NEWITT Media"
+
+            },
+
+            "privacy-page": {
+
+                en:
+                    "Privacy & Safety | NEWITT Media",
+
+                cy:
+                    "Preifatrwydd a Diogelwch | NEWITT Media"
+
+            }
+
+        };
+
+
+        let pageTitles =
+            null;
+
+
+        Object.keys(
+            titles
+        ).some(
+            function (pageClass) {
+
+                if (
+                    document.body.classList.contains(
+                        pageClass
+                    )
+                ) {
+
+                    pageTitles =
+                        titles[
+                            pageClass
+                        ];
+
+                    return true;
+
+                }
+
+
+                return false;
+
+            }
+        );
+
+
+        if (
+            pageTitles &&
+            pageTitles[language]
+        ) {
+
+            title.textContent =
+                pageTitles[
+                    language
+                ];
+
+        }
+
+    }
+
+
+    /* =====================================================
+       LANGUAGE SELECTOR CSS
+    ====================================================== */
+
+    function injectSelectorStyles() {
+
+        if (
+            document.getElementById(
+                "newitt-language-styles"
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        const style =
+            document.createElement(
+                "style"
+            );
+
+
+        style.id =
+            "newitt-language-styles";
+
+
+        style.textContent = `
+
+            #newitt-language-selector {
+
+                display: inline-flex;
+
+                align-items: center;
+                justify-content: center;
+
+                gap: 3px;
+
+                flex-shrink: 0;
+
+                margin-left: 8px;
+
+                padding: 3px 4px;
+
+                border:
+                    1px solid
+                    rgba(255,255,255,0.12);
+
+                border-radius: 7px;
+
+                background:
+                    rgba(255,255,255,0.035);
+
+                backdrop-filter:
+                    blur(8px);
+
+                -webkit-backdrop-filter:
+                    blur(8px);
+
+            }
+
+
+            #newitt-language-selector button {
+
+                width: 34px;
+                height: 30px;
+
+                display: inline-flex;
+
+                align-items: center;
+                justify-content: center;
+
+                padding: 0;
+
+                border: 0;
+
+                border-radius: 5px;
+
+                background:
+                    transparent;
+
+                font-size: 1.05rem;
+
+                line-height: 1;
+
+                cursor: pointer;
+
+                appearance: none;
+
+                -webkit-appearance: none;
+
+                transition:
+                    transform 180ms ease,
+                    background 180ms ease,
+                    opacity 180ms ease;
+
+            }
+
+
+            #newitt-language-selector button:hover {
+
+                background:
+                    rgba(255,255,255,0.08);
+
+                transform:
+                    translateY(-1px);
+
+            }
+
+
+            #newitt-language-selector button.active {
+
+                background:
+                    rgba(201,164,91,0.16);
+
+                box-shadow:
+                    0 0 0 1px
+                    rgba(201,164,91,0.24);
+
+            }
+
+
+            #newitt-language-selector button:focus-visible {
+
+                outline:
+                    2px solid
+                    #c9a45b;
+
+                outline-offset:
+                    2px;
+
+            }
+
+
+            #newitt-language-selector span {
+
+                color:
+                    rgba(255,255,255,0.20);
+
+                font-size:
+                    0.55rem;
+
+                user-select:
+                    none;
+
+            }
+
+
+            @media (max-width: 700px) {
+
+                .nav {
+
+                    flex-wrap:
+                        wrap;
+
+                }
+
+
+                #newitt-language-selector {
+
+                    width:
+                        100%;
+
+                    flex-basis:
+                        100%;
+
+                    justify-content:
+                        center;
+
+                    margin:
+                        5px 0 8px;
+
+                    padding:
+                        4px;
+
+                    order:
+                        30;
+
+                }
+
+
+                #newitt-language-selector button {
+
+                    width:
+                        48px;
+
+                    height:
+                        38px;
+
+                    font-size:
+                        1.15rem;
+
+                }
+
+            }
+
+
+            @media (prefers-reduced-motion: reduce) {
+
+                #newitt-language-selector button {
+
+                    transition:
+                        none;
+
+                }
+
+            }
+
+        `;
+
+
+        document.head.appendChild(
+            style
+        );
+
+    }
 
 
     /* =====================================================
        INITIALISE
     ====================================================== */
 
-    function initialise() {
+    function initLanguageSystem() {
 
-        createSelector();
+        injectSelectorStyles();
+
+        createLanguageSelector();
+
+
+        const language =
+            getSavedLanguage();
 
 
         setLanguage(
-            getStoredLanguage()
+            language
         );
 
     }
 
 
     /* =====================================================
-       DOM READY
+       START
     ====================================================== */
 
     if (
@@ -864,7 +847,7 @@
 
         document.addEventListener(
             "DOMContentLoaded",
-            initialise,
+            initLanguageSystem,
             {
                 once: true
             }
@@ -872,7 +855,7 @@
 
     } else {
 
-        initialise();
+        initLanguageSystem();
 
     }
 
