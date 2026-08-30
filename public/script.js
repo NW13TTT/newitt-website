@@ -1,386 +1,127 @@
 /* =========================================================
    NEWITT MEDIA
-   MASTER JAVASCRIPT
+   MASTER LANGUAGE SYSTEM
+   ENGLISH / CYMRAEG
    NEWITT MEDIA 2.0
-   PASS 1A - SHARED FOUNDATION
+   NO COOKIES
+
+   VERSION:
    30 AUGUST 2026
 
-   FUNCTIONS
-   - First-visit cinematic intro
-   - Mobile navigation
-   - Mobile page transitions
-   - Back to top
-   - Smooth anchor scrolling
-   - Lightbox
-   - Safe external links
-   - Reduced-motion support
-   - Keyboard accessibility
-   - Safari / iPhone resilience
+   Supports:
+   - data-lang-en / data-lang-cy
+   - legacy data-lang="en" / data-lang="cy"
+   - data-aria-en / data-aria-cy
+   - shared language preference across pages
+   - nested HTML preservation
+   - navigation language selector
+   - accessibility labels
+
+   IMPORTANT:
+   The master system preserves nested HTML elements.
+   This prevents highlighted <span> elements from being
+   destroyed when the language changes.
 ========================================================= */
 
 (function () {
 
     "use strict";
 
-    const TRANSITION_KEY = "newittPageTransition";
-    const INTRO_STORAGE_KEY = "newittMediaIntroSeenV2";
-    const MOBILE_QUERY = "(max-width: 700px)";
 
-    const isMobile = () =>
-        window.matchMedia &&
-        window.matchMedia(MOBILE_QUERY).matches;
+    /* =====================================================
+       LANGUAGE STORAGE
+    ====================================================== */
+
+    const LANGUAGE_KEY =
+        "newittLanguage";
+
+    const LEGACY_LANGUAGE_KEY =
+        "newitt-language";
 
 
     /* =====================================================
-       EARLY MOBILE PAGE TRANSITION
-    ===================================================== */
+       GET STORED LANGUAGE
+    ====================================================== */
 
-    (function earlyMobileTransition() {
-
-        if (!isMobile()) {
-            return;
-        }
-
-        let incoming = false;
+    function getStoredLanguage() {
 
         try {
 
-            incoming =
-                sessionStorage.getItem(
-                    TRANSITION_KEY
-                ) === "1";
+            const stored =
+                localStorage.getItem(
+                    LANGUAGE_KEY
+                );
 
-            sessionStorage.removeItem(
-                TRANSITION_KEY
-            );
-
-        } catch (error) {
-
-            incoming = false;
-
-        }
-
-        if (!incoming) {
-            return;
-        }
-
-        const style =
-            document.createElement("style");
-
-        style.id =
-            "newitt-early-transition-style";
-
-        style.textContent = `
-            html {
-                background: #020305 !important;
-                background-color: #020305 !important;
-            }
-
-            body {
-                background-color: #020305 !important;
-            }
-
-            #newitt-early-transition {
-                position: fixed;
-                inset: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 2147483647;
-                background: #020305;
-                opacity: 1;
-                pointer-events: all;
-                transform: translateZ(0);
-                -webkit-transform: translateZ(0);
-                will-change: opacity;
-            }
-        `;
-
-        if (document.head) {
-            document.head.appendChild(style);
-        }
-
-        function createOverlay() {
 
             if (
-                document.getElementById(
-                    "newitt-early-transition"
-                )
+                stored === "cy" ||
+                stored === "en"
             ) {
-                return;
+
+                return stored;
+
             }
 
-            const overlay =
-                document.createElement("div");
 
-            overlay.id =
-                "newitt-early-transition";
-
-            overlay.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
-            if (document.documentElement) {
-                document.documentElement.appendChild(
-                    overlay
-                );
-            }
-
-        }
-
-        function removeOverlay() {
-
-            const overlay =
-                document.getElementById(
-                    "newitt-early-transition"
-                );
-
-            if (!overlay) {
-                return;
-            }
-
-            overlay.style.transition =
-                "opacity 220ms ease";
-
-            overlay.style.opacity = "0";
-
-            window.setTimeout(
-                function () {
-
-                    if (overlay.parentNode) {
-                        overlay.parentNode.removeChild(
-                            overlay
-                        );
-                    }
-
-                    const earlyStyle =
-                        document.getElementById(
-                            "newitt-early-transition-style"
-                        );
-
-                    if (
-                        earlyStyle &&
-                        earlyStyle.parentNode
-                    ) {
-                        earlyStyle.parentNode.removeChild(
-                            earlyStyle
-                        );
-                    }
-
-                },
-                260
-            );
-
-        }
-
-        createOverlay();
-
-        const reveal =
-            function () {
-
-                requestAnimationFrame(
-                    function () {
-
-                        requestAnimationFrame(
-                            removeOverlay
-                        );
-
-                    }
-                );
-
-            };
-
-        if (
-            document.readyState ===
-            "loading"
-        ) {
-
-            document.addEventListener(
-                "DOMContentLoaded",
-                reveal,
-                {
-                    once: true
-                }
-            );
-
-        } else {
-
-            reveal();
-
-        }
-
-    })();
-
-
-    /* =====================================================
-       DOM READY
-    ===================================================== */
-
-    document.addEventListener(
-        "DOMContentLoaded",
-        function () {
-
-            initFirstVisitIntro();
-
-            initMobileNavigation();
-
-            initPageTransition();
-
-            initBackToTop();
-
-            initSmoothScrolling();
-
-            initLightbox();
-
-            initExternalLinks();
-
-        }
-    );
-
-
-    /* =====================================================
-       FIRST-VISIT CINEMATIC INTRO
-    ===================================================== */
-
-    function initFirstVisitIntro() {
-
-        const intro =
-            document.getElementById(
-                "site-intro"
-            );
-
-        if (!intro) {
-            return;
-        }
-
-        let alreadySeen = false;
-
-        try {
-
-            alreadySeen =
+            const legacyStored =
                 localStorage.getItem(
-                    INTRO_STORAGE_KEY
-                ) === "true";
+                    LEGACY_LANGUAGE_KEY
+                );
+
+
+            if (
+                legacyStored === "cy" ||
+                legacyStored === "en"
+            ) {
+
+                return legacyStored;
+
+            }
 
         } catch (error) {
 
-            alreadySeen = false;
+            /*
+             * Local storage may be unavailable.
+             */
 
         }
 
-        if (alreadySeen) {
 
-            intro.classList.add(
-                "intro-hidden"
-            );
+        return "en";
 
-            intro.setAttribute(
-                "aria-hidden",
-                "true"
-            );
+    }
 
-            return;
 
-        }
+    /* =====================================================
+       SAVE LANGUAGE
+    ====================================================== */
 
-        document.body.classList.add(
-            "intro-active"
-        );
-
-        document.documentElement.style.overflow =
-            "hidden";
-
-        document.body.style.overflow =
-            "hidden";
+    function saveLanguage(language) {
 
         try {
 
             localStorage.setItem(
-                INTRO_STORAGE_KEY,
-                "true"
+                LANGUAGE_KEY,
+                language
             );
 
-        } catch (error) {}
 
-        const INTRO_DURATION = 7500;
+            /*
+             * Keep the legacy key synchronised so older
+             * NEWITT Media code cannot overwrite the
+             * selected language accidentally.
+             */
 
-        let closed = false;
-
-        const closeTimer =
-            window.setTimeout(
-                closeIntro,
-                INTRO_DURATION
+            localStorage.setItem(
+                LEGACY_LANGUAGE_KEY,
+                language
             );
 
-        function handleEscape(event) {
+        } catch (error) {
 
-            if (
-                event.key === "Escape"
-            ) {
-
-                closeIntro();
-
-            }
-
-        }
-
-        document.addEventListener(
-            "keydown",
-            handleEscape
-        );
-
-        intro.addEventListener(
-            "click",
-            closeIntro
-        );
-
-        function closeIntro() {
-
-            if (closed) {
-                return;
-            }
-
-            closed = true;
-
-            window.clearTimeout(
-                closeTimer
-            );
-
-            intro.classList.add(
-                "intro-hidden"
-            );
-
-            intro.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
-            document.body.classList.remove(
-                "intro-active"
-            );
-
-            document.removeEventListener(
-                "keydown",
-                handleEscape
-            );
-
-            window.setTimeout(
-                function () {
-
-                    document.documentElement
-                        .style
-                        .overflow = "";
-
-                    document.body
-                        .style
-                        .overflow = "";
-
-                    intro.style.display =
-                        "none";
-
-                },
-                950
-            );
+            /*
+             * Local storage may be unavailable.
+             */
 
         }
 
@@ -388,460 +129,360 @@
 
 
     /* =====================================================
-       MOBILE NAVIGATION
-    ===================================================== */
-
-    function initMobileNavigation() {
-
-        const toggle =
-            document.querySelector(
-                ".menu-toggle"
-            );
-
-        const menu =
-            document.querySelector(
-                ".nav-links"
-            );
-
-        if (
-            !toggle ||
-            !menu
-        ) {
-            return;
-        }
-
-        function closeMenu() {
-
-            menu.classList.remove(
-                "open",
-                "active",
-                "menu-open"
-            );
-
-            toggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-            toggle.setAttribute(
-                "aria-label",
-                "Open navigation menu"
-            );
-
-        }
-
-        function openMenu() {
-
-            menu.classList.add(
-                "open",
-                "active",
-                "menu-open"
-            );
-
-            toggle.setAttribute(
-                "aria-expanded",
-                "true"
-            );
-
-            toggle.setAttribute(
-                "aria-label",
-                "Close navigation menu"
-            );
-
-        }
-
-        toggle.addEventListener(
-            "click",
-            function () {
-
-                const open =
-                    menu.classList.contains(
-                        "open"
-                    );
-
-                if (open) {
-                    closeMenu();
-                } else {
-                    openMenu();
-                }
-
-            }
-        );
-
-        menu.querySelectorAll("a")
-            .forEach(
-                function (link) {
-
-                    link.addEventListener(
-                        "click",
-                        closeMenu
-                    );
-
-                }
-            );
-
-        document.addEventListener(
-            "click",
-            function (event) {
-
-                if (
-                    !menu.contains(
-                        event.target
-                    ) &&
-                    !toggle.contains(
-                        event.target
-                    )
-                ) {
-
-                    closeMenu();
-
-                }
-
-            }
-        );
-
-        document.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (
-                    event.key === "Escape"
-                ) {
-
-                    closeMenu();
-
-                    toggle.focus();
-
-                }
-
-            }
-        );
-
-        window.addEventListener(
-            "resize",
-            function () {
-
-                if (
-                    window.innerWidth >
-                    700
-                ) {
-
-                    closeMenu();
-
-                }
-
-            },
-            {
-                passive: true
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       MOBILE PAGE TRANSITION
-    ===================================================== */
-
-    function initPageTransition() {
-
-        if (!isMobile()) {
-            return;
-        }
-
-        const links =
-            document.querySelectorAll(
-                'a[href$=".html"], a[href="index.html"], a[href="/"]'
-            );
-
-        links.forEach(
-            function (link) {
-
-                link.addEventListener(
-                    "click",
-                    function (event) {
-
-                        if (
-                            event.defaultPrevented ||
-                            event.ctrlKey ||
-                            event.metaKey ||
-                            event.shiftKey ||
-                            event.altKey
-                        ) {
-                            return;
-                        }
-
-                        const href =
-                            link.getAttribute(
-                                "href"
-                            );
-
-                        if (!href) {
-                            return;
-                        }
-
-                        if (
-                            href.startsWith("#") ||
-                            href.startsWith("mailto:") ||
-                            href.startsWith("tel:") ||
-                            href.startsWith("http://") ||
-                            href.startsWith("https://") ||
-                            href.startsWith("javascript:")
-                        ) {
-                            return;
-                        }
-
-                        const current =
-                            window.location.pathname
-                                .split("/")
-                                .pop() ||
-                            "index.html";
-
-                        const target =
-                            href
-                                .split("#")[0]
-                                .split("?")[0]
-                                .split("/")
-                                .pop() ||
-                            "index.html";
-
-                        if (
-                            current === target
-                        ) {
-                            return;
-                        }
-
-                        if (
-                            document.body.dataset
-                                .newittNavigating ===
-                            "true"
-                        ) {
-
-                            event.preventDefault();
-
-                            return;
-
-                        }
-
-                        event.preventDefault();
-
-                        document.body.dataset
-                            .newittNavigating =
-                            "true";
-
-                        try {
-
-                            sessionStorage.setItem(
-                                TRANSITION_KEY,
-                                "1"
-                            );
-
-                        } catch (error) {}
-
-                        const overlay =
-                            document.createElement(
-                                "div"
-                            );
-
-                        overlay.id =
-                            "newitt-transition-overlay";
-
-                        overlay.setAttribute(
-                            "aria-hidden",
-                            "true"
-                        );
-
-                        Object.assign(
-                            overlay.style,
-                            {
-                                position: "fixed",
-                                inset: "0",
-                                width: "100%",
-                                height: "100%",
-                                zIndex: "2147483647",
-                                background: "#020305",
-                                opacity: "0",
-                                pointerEvents: "all",
-                                transform:
-                                    "translateZ(0)",
-                                webkitTransform:
-                                    "translateZ(0)",
-                                willChange:
-                                    "opacity",
-                                transition:
-                                    "opacity 180ms ease"
-                            }
-                        );
-
-                        document.body.appendChild(
-                            overlay
-                        );
-
-                        document.documentElement
-                            .style
-                            .overflow =
-                            "hidden";
-
-                        document.body
-                            .style
-                            .overflow =
-                            "hidden";
-
-                        void overlay.offsetWidth;
-
-                        requestAnimationFrame(
-                            function () {
-
-                                overlay.style.opacity =
-                                    "1";
-
-                                window.setTimeout(
-                                    function () {
-
-                                        window.location.href =
-                                            href;
-
-                                    },
-                                    180
-                                );
-
-                            }
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       BACK TO TOP
-    ===================================================== */
-
-    function initBackToTop() {
-
-        const button =
-            document.getElementById(
-                "back-to-top"
-            );
-
-        if (!button) {
-            return;
-        }
-
-        function update() {
-
-            const visible =
-                window.scrollY > 450;
-
-            button.classList.toggle(
-                "visible",
-                visible
-            );
-
-            button.classList.toggle(
-                "show",
-                visible
-            );
-
-            button.classList.toggle(
-                "is-visible",
-                visible
-            );
-
-        }
-
-        window.addEventListener(
-            "scroll",
-            update,
-            {
-                passive: true
-            }
-        );
-
-        update();
-
-    }
-
-
-    /* =====================================================
-       SMOOTH ANCHOR SCROLLING
-    ===================================================== */
-
-    function initSmoothScrolling() {
+       UPDATE MASTER LANGUAGE ELEMENTS
+       
+       NEW SYSTEM:
+       
+       data-lang-en="English"
+       data-lang-cy="Welsh"
+
+       IMPORTANT:
+       We preserve nested HTML inside the element.
+
+       This means structures such as:
+
+       <span>
+           Into the
+           <span>unknown.</span>
+       </span>
+
+       are not flattened when the language changes.
+    ====================================================== */
+
+    function updateMasterText(language) {
 
         document
             .querySelectorAll(
-                'a[href^="#"]'
+                "[data-lang-en][data-lang-cy]"
             )
             .forEach(
-                function (anchor) {
+                function (element) {
 
-                    anchor.addEventListener(
-                        "click",
-                        function (event) {
+                    const english =
+                        element.getAttribute(
+                            "data-lang-en"
+                        );
 
-                            const targetId =
-                                anchor.getAttribute(
-                                    "href"
-                                );
 
-                            if (
-                                !targetId ||
-                                targetId === "#"
-                            ) {
-                                return;
-                            }
+                    const welsh =
+                        element.getAttribute(
+                            "data-lang-cy"
+                        );
 
-                            let target = null;
 
-                            try {
+                    const translatedText =
+                        language === "cy"
+                            ? welsh
+                            : english;
 
-                                target =
-                                    document.querySelector(
-                                        targetId
+
+                    /*
+                     * If the element contains child
+                     * elements, preserve their structure
+                     * while updating the visible language.
+                     *
+                     * The supplied data-lang text remains the
+                     * source of truth for the element itself.
+                     */
+
+
+                    if (
+                        element.children.length === 0
+                    ) {
+
+                        element.textContent =
+                            translatedText;
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * Special handling for nested spans.
+                     *
+                     * We preserve the existing child HTML
+                     * structure and replace only the direct
+                     * text content around those children.
+                     */
+
+                    const children =
+                        Array.from(
+                            element.children
+                        );
+
+
+                    if (
+                        children.length === 1 &&
+                        children[0].tagName === "SPAN"
+                    ) {
+
+                        const child =
+                            children[0];
+
+
+                        /*
+                         * If the supplied translation contains
+                         * a phrase followed by a highlighted
+                         * child, keep the highlighted child.
+                         *
+                         * The existing HTML is deliberately
+                         * preserved.
+                         */
+
+                        const childText =
+                            child.textContent.trim();
+
+
+                        if (
+                            childText &&
+                            translatedText
+                                .toLowerCase()
+                                .includes(
+                                    childText.toLowerCase()
+                                )
+                        ) {
+
+                            const index =
+                                translatedText
+                                    .toLowerCase()
+                                    .indexOf(
+                                        childText.toLowerCase()
                                     );
 
-                            } catch (error) {
 
-                                return;
+                            const before =
+                                translatedText
+                                    .slice(
+                                        0,
+                                        index
+                                    )
+                                    .trim();
 
-                            }
 
-                            if (!target) {
-                                return;
-                            }
+                            const after =
+                                translatedText
+                                    .slice(
+                                        index +
+                                        childText.length
+                                    )
+                                    .trim();
 
-                            event.preventDefault();
 
-                            const reduceMotion =
-                                window.matchMedia &&
-                                window.matchMedia(
-                                    "(prefers-reduced-motion: reduce)"
-                                ).matches;
+                            element.innerHTML =
+                                "";
 
-                            target.scrollIntoView({
-                                behavior:
-                                    reduceMotion
-                                        ? "auto"
-                                        : "smooth",
-                                block: "start"
-                            });
 
-                            try {
+                            if (before) {
 
-                                history.replaceState(
-                                    null,
-                                    "",
-                                    targetId
+                                element.appendChild(
+                                    document.createTextNode(
+                                        before + " "
+                                    )
                                 );
 
-                            } catch (error) {}
+                            }
+
+
+                            element.appendChild(
+                                child
+                            );
+
+
+                            if (after) {
+
+                                element.appendChild(
+                                    document.createTextNode(
+                                        " " + after
+                                    )
+                                );
+
+                            }
+
+
+                            return;
 
                         }
+
+                    }
+
+
+                    /*
+                     * For complex nested structures, preserve
+                     * the HTML structure rather than destroying
+                     * it with textContent.
+                     */
+
+                    const originalHTML =
+                        element.innerHTML;
+
+
+                    /*
+                     * If the translation differs from the
+                     * current visible text, update only direct
+                     * text nodes where possible.
+                     */
+
+                    const directTextNodes = [];
+
+
+                    Array.from(
+                        element.childNodes
+                    ).forEach(
+                        function (node) {
+
+                            if (
+                                node.nodeType ===
+                                Node.TEXT_NODE
+                            ) {
+
+                                directTextNodes.push(
+                                    node
+                                );
+
+                            }
+
+                        }
+                    );
+
+
+                    if (
+                        directTextNodes.length
+                    ) {
+
+                        /*
+                         * Preserve child elements and update
+                         * the surrounding direct text.
+                         */
+
+                        const firstText =
+                            directTextNodes[0];
+
+
+                        firstText.nodeValue =
+                            translatedText;
+
+                        directTextNodes
+                            .slice(1)
+                            .forEach(
+                                function (node) {
+
+                                    node.nodeValue =
+                                        "";
+
+                                }
+                            );
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * Final safe fallback.
+                     *
+                     * This is only reached when there is no
+                     * useful nested structure to preserve.
+                     */
+
+                    if (
+                        originalHTML !==
+                        translatedText
+                    ) {
+
+                        element.textContent =
+                            translatedText;
+
+                    }
+
+                }
+            );
+
+    }
+
+
+    /* =====================================================
+       UPDATE LEGACY LANGUAGE ELEMENTS
+       
+       OLDER SYSTEM:
+       
+       data-lang="en"
+       data-lang="cy"
+    ====================================================== */
+
+    function updateLegacyText(language) {
+
+        document
+            .querySelectorAll(
+                "[data-lang]"
+            )
+            .forEach(
+                function (element) {
+
+                    /*
+                     * Ignore elements belonging to the
+                     * newer master language system.
+                     */
+
+                    if (
+                        element.hasAttribute(
+                            "data-lang-en"
+                        ) ||
+                        element.hasAttribute(
+                            "data-lang-cy"
+                        )
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    const elementLanguage =
+                        element.getAttribute(
+                            "data-lang"
+                        );
+
+
+                    element.hidden =
+                        elementLanguage !== language;
+
+                }
+            );
+
+    }
+
+
+    /* =====================================================
+       UPDATE ARIA LABELS
+    ====================================================== */
+
+    function updateAria(language) {
+
+        document
+            .querySelectorAll(
+                "[data-aria-en][data-aria-cy]"
+            )
+            .forEach(
+                function (element) {
+
+                    const english =
+                        element.getAttribute(
+                            "data-aria-en"
+                        );
+
+
+                    const welsh =
+                        element.getAttribute(
+                            "data-aria-cy"
+                        );
+
+
+                    element.setAttribute(
+                        "aria-label",
+                        language === "cy"
+                            ? welsh
+                            : english
                     );
 
                 }
@@ -851,289 +492,465 @@
 
 
     /* =====================================================
-       LIGHTBOX
-    ===================================================== */
+       UPDATE HTML LANGUAGE
+    ====================================================== */
 
-    function initLightbox() {
+    function updateHtmlLanguage(language) {
 
-        const lightbox =
+        document.documentElement.lang =
+            language === "cy"
+                ? "cy-GB"
+                : "en-GB";
+
+    }
+
+
+    /* =====================================================
+       UPDATE LANGUAGE SELECTOR
+    ====================================================== */
+
+    function updateSelector(language) {
+
+        const selector =
             document.getElementById(
-                "lightbox"
+                "newitt-language-selector"
             );
 
-        if (!lightbox) {
-            return;
-        }
 
-        const image =
-            document.getElementById(
-                "lightbox-image"
-            ) ||
-            lightbox.querySelector(
-                "img"
+        if (selector) {
+
+            const buttons =
+                selector.querySelectorAll(
+                    "button"
+                );
+
+
+            buttons.forEach(
+                function (button) {
+
+                    button.classList.remove(
+                        "active"
+                    );
+
+                }
             );
 
-        const close =
-            document.getElementById(
-                "lightbox-close"
-            ) ||
-            lightbox.querySelector(
-                ".lightbox-close"
-            );
 
-        const items =
-            document.querySelectorAll(
-                ".gallery-item, [data-lightbox]"
-            );
+            const active =
+                language === "cy"
+                    ? buttons[1]
+                    : buttons[0];
 
-        if (!image || !items.length) {
-            return;
-        }
 
-        function closeLightbox() {
+            if (active) {
 
-            lightbox.classList.remove(
-                "active"
-            );
+                active.classList.add(
+                    "active"
+                );
 
-            lightbox.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
-            document.body.style.overflow =
-                "";
-
-            if (image) {
-
-                window.setTimeout(
-                    function () {
-
-                        if (
-                            !lightbox.classList.contains(
-                                "active"
-                            )
-                        ) {
-
-                            image.removeAttribute(
-                                "src"
-                            );
-
-                        }
-
-                    },
-                    250
+                active.setAttribute(
+                    "aria-pressed",
+                    "true"
                 );
 
             }
 
-        }
 
-        items.forEach(
-            function (item) {
+            buttons.forEach(
+                function (button) {
 
-                item.addEventListener(
-                    "click",
-                    function (event) {
+                    if (
+                        button !== active
+                    ) {
 
-                        event.preventDefault();
-
-                        let source =
-                            item.getAttribute(
-                                "data-lightbox"
-                            );
-
-                        if (!source) {
-
-                            const thumbnail =
-                                item.querySelector(
-                                    "img"
-                                );
-
-                            if (thumbnail) {
-
-                                source =
-                                    thumbnail.getAttribute(
-                                        "src"
-                                    );
-
-                            }
-
-                        }
-
-                        if (!source) {
-                            return;
-                        }
-
-                        image.src =
-                            source;
-
-                        const thumbnail =
-                            item.querySelector(
-                                "img"
-                            );
-
-                        image.alt =
-                            thumbnail
-                                ? thumbnail.alt || ""
-                                : "";
-
-                        lightbox.classList.add(
-                            "active"
-                        );
-
-                        lightbox.setAttribute(
-                            "aria-hidden",
+                        button.setAttribute(
+                            "aria-pressed",
                             "false"
                         );
 
-                        document.body.style.overflow =
-                            "hidden";
-
                     }
+
+                }
+            );
+
+        }
+
+
+        /*
+         * Support older manually-created selectors.
+         */
+
+        const englishButton =
+            document.getElementById(
+                "language-en"
+            );
+
+
+        const welshButton =
+            document.getElementById(
+                "language-cy"
+            );
+
+
+        if (englishButton) {
+
+            englishButton.classList.toggle(
+                "active",
+                language === "en"
+            );
+
+
+            englishButton.setAttribute(
+                "aria-pressed",
+                language === "en"
+                    ? "true"
+                    : "false"
+            );
+
+        }
+
+
+        if (welshButton) {
+
+            welshButton.classList.toggle(
+                "active",
+                language === "cy"
+            );
+
+
+            welshButton.setAttribute(
+                "aria-pressed",
+                language === "cy"
+                    ? "true"
+                    : "false"
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       SET LANGUAGE
+    ====================================================== */
+
+    function setLanguage(language) {
+
+        if (
+            language !== "en" &&
+            language !== "cy"
+        ) {
+
+            language = "en";
+
+        }
+
+
+        saveLanguage(
+            language
+        );
+
+
+        updateMasterText(
+            language
+        );
+
+
+        updateLegacyText(
+            language
+        );
+
+
+        updateAria(
+            language
+        );
+
+
+        updateHtmlLanguage(
+            language
+        );
+
+
+        updateSelector(
+            language
+        );
+
+    }
+
+
+    /* =====================================================
+       CREATE MASTER SELECTOR
+    ====================================================== */
+
+    function createSelector() {
+
+        /*
+         * Do not create a duplicate selector.
+         */
+
+        if (
+            document.getElementById(
+                "newitt-language-selector"
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+         * Older pages currently have their own selector.
+         * Leave those selectors alone while migration
+         * continues.
+         */
+
+        if (
+            document.getElementById(
+                "language-en"
+            ) ||
+            document.getElementById(
+                "language-cy"
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        const selector =
+            document.createElement(
+                "div"
+            );
+
+
+        selector.id =
+            "newitt-language-selector";
+
+
+        selector.setAttribute(
+            "role",
+            "group"
+        );
+
+
+        selector.setAttribute(
+            "aria-label",
+            "Language"
+        );
+
+
+        selector.setAttribute(
+            "data-aria-en",
+            "Language"
+        );
+
+
+        selector.setAttribute(
+            "data-aria-cy",
+            "Iaith"
+        );
+
+
+        /* =================================================
+           ENGLISH BUTTON
+        ================================================== */
+
+        const english =
+            document.createElement(
+                "button"
+            );
+
+
+        english.type =
+            "button";
+
+
+        english.textContent =
+            "EN";
+
+
+        english.setAttribute(
+            "aria-label",
+            "English"
+        );
+
+
+        english.setAttribute(
+            "title",
+            "English"
+        );
+
+
+        english.setAttribute(
+            "aria-pressed",
+            "false"
+        );
+
+
+        /* =================================================
+           DIVIDER
+        ================================================== */
+
+        const divider =
+            document.createElement(
+                "span"
+            );
+
+
+        divider.textContent =
+            "|";
+
+
+        divider.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+
+        /* =================================================
+           WELSH BUTTON
+        ================================================== */
+
+        const welsh =
+            document.createElement(
+                "button"
+            );
+
+
+        welsh.type =
+            "button";
+
+
+        welsh.textContent =
+            "CY";
+
+
+        welsh.setAttribute(
+            "aria-label",
+            "Cymraeg"
+        );
+
+
+        welsh.setAttribute(
+            "title",
+            "Cymraeg"
+        );
+
+
+        welsh.setAttribute(
+            "aria-pressed",
+            "false"
+        );
+
+
+        /* =================================================
+           BUTTON EVENTS
+        ================================================== */
+
+        english.addEventListener(
+            "click",
+            function () {
+
+                setLanguage(
+                    "en"
                 );
 
             }
         );
 
-        if (close) {
 
-            close.addEventListener(
-                "click",
-                function (event) {
+        welsh.addEventListener(
+            "click",
+            function () {
 
-                    event.preventDefault();
+                setLanguage(
+                    "cy"
+                );
 
-                    closeLightbox();
+            }
+        );
 
-                }
+
+        /* =================================================
+           BUILD SELECTOR
+        ================================================== */
+
+        selector.appendChild(
+            english
+        );
+
+
+        selector.appendChild(
+            divider
+        );
+
+
+        selector.appendChild(
+            welsh
+        );
+
+
+        /* =================================================
+           INSERT INTO NAVIGATION
+        ================================================== */
+
+        const nav =
+            document.querySelector(
+                ".nav"
+            );
+
+
+        if (nav) {
+
+            nav.appendChild(
+                selector
             );
 
         }
 
-        lightbox.addEventListener(
-            "click",
-            function (event) {
+    }
 
-                if (
-                    event.target ===
-                    lightbox
-                ) {
 
-                    closeLightbox();
+    /* =====================================================
+       INITIALISE
+    ====================================================== */
 
-                }
+    function initialise() {
 
-            }
+        createSelector();
+
+
+        setLanguage(
+            getStoredLanguage()
         );
+
+    }
+
+
+    /* =====================================================
+       DOM READY
+    ====================================================== */
+
+    if (
+        document.readyState ===
+        "loading"
+    ) {
 
         document.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (
-                    event.key === "Escape" &&
-                    lightbox.classList.contains(
-                        "active"
-                    )
-                ) {
-
-                    closeLightbox();
-
-                }
-
+            "DOMContentLoaded",
+            initialise,
+            {
+                once: true
             }
         );
 
-    }
+    } else {
 
-
-    /* =====================================================
-       EXTERNAL LINKS
-    ===================================================== */
-
-    function initExternalLinks() {
-
-        document
-            .querySelectorAll(
-                'a[href^="http://"], a[href^="https://"]'
-            )
-            .forEach(
-                function (link) {
-
-                    const href =
-                        link.getAttribute(
-                            "href"
-                        );
-
-                    if (!href) {
-                        return;
-                    }
-
-                    try {
-
-                        const url =
-                            new URL(
-                                href,
-                                window.location.href
-                            );
-
-                        if (
-                            url.hostname !==
-                            window.location.hostname
-                        ) {
-
-                            link.target =
-                                "_blank";
-
-                            link.rel =
-                                "noopener noreferrer";
-
-                        }
-
-                    } catch (error) {}
-
-                }
-            );
+        initialise();
 
     }
-
-
-    /* =====================================================
-       BROWSER BACK / FORWARD RESILIENCE
-    ===================================================== */
-
-    window.addEventListener(
-        "pageshow",
-        function (event) {
-
-            if (event.persisted) {
-
-                document.body.dataset
-                    .newittNavigating =
-                    "false";
-
-                document.documentElement
-                    .style
-                    .overflow = "";
-
-                document.body
-                    .style
-                    .overflow = "";
-
-                const overlay =
-                    document.getElementById(
-                        "newitt-transition-overlay"
-                    );
-
-                if (overlay) {
-                    overlay.remove();
-                }
-
-            }
-
-        }
-    );
 
 
 })();
