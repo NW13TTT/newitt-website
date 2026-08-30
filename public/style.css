@@ -1,13 +1,15 @@
 /* =========================================================
    NEWITT MEDIA
    MASTER PROFESSIONAL STYLESHEET
-   STREAMLINED FINAL BUILD
+   NEWITT MEDIA 2.0
+   PASS 1B - SHARED CSS FOUNDATION
    30 AUGUST 2026
 
    Premium dark / blue / cyan / gold
    Responsive desktop / tablet / mobile
    Cinematic first-visit intro
    Mobile page-transition protection
+   Accessibility and Safari improvements
 ========================================================= */
 
 
@@ -24,6 +26,8 @@
 html {
     background: #020305;
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 body {
@@ -81,6 +85,11 @@ body::before {
 img {
     display: block;
     max-width: 100%;
+    height: auto;
+}
+
+svg {
+    max-width: 100%;
 }
 
 a {
@@ -88,13 +97,20 @@ a {
     text-decoration: none;
 }
 
-button {
+button,
+input,
+textarea,
+select {
     font: inherit;
 }
 
 button,
 a {
     -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    color: inherit;
 }
 
 section {
@@ -104,6 +120,38 @@ section {
 ::selection {
     background: rgba(0, 190, 255, 0.25);
     color: #ffffff;
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+:focus {
+    outline: none;
+}
+
+:focus-visible {
+    outline:
+        2px solid
+        #4ecfff;
+
+    outline-offset: 4px;
+
+    border-radius: 4px;
+}
+
+.button:focus-visible,
+.nav-links a:focus-visible,
+.menu-toggle:focus-visible,
+.back-to-top:focus-visible,
+.gallery-item:focus-visible,
+.social-button:focus-visible {
+    outline:
+        2px solid
+        #c9a45b;
+
+    outline-offset: 3px;
 }
 
 
@@ -126,7 +174,8 @@ section {
     top: 0;
     z-index: 1000;
 
-    background: rgba(2, 3, 5, 0.84);
+    background:
+        rgba(2, 3, 5, 0.84);
 
     border-bottom:
         1px solid
@@ -137,6 +186,8 @@ section {
 }
 
 .nav {
+    position: relative;
+
     min-height: 76px;
 
     display: flex;
@@ -187,6 +238,12 @@ section {
 }
 
 .nav-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 40px;
+
     padding: 8px 11px;
 
     border-radius: 6px;
@@ -201,7 +258,8 @@ section {
 
     transition:
         color 180ms ease,
-        background 180ms ease;
+        background 180ms ease,
+        transform 180ms ease;
 }
 
 .nav-links a:hover,
@@ -210,6 +268,10 @@ section {
 
     background:
         rgba(255, 255, 255, 0.07);
+}
+
+.nav-links a:hover {
+    transform: translateY(-1px);
 }
 
 .menu-toggle {
@@ -230,6 +292,9 @@ section {
         rgba(255, 255, 255, 0.035);
 
     cursor: pointer;
+
+    appearance: none;
+    -webkit-appearance: none;
 }
 
 .menu-toggle span {
@@ -243,6 +308,10 @@ section {
     border-radius: 999px;
 
     background: #ffffff;
+
+    transition:
+        transform 180ms ease,
+        opacity 180ms ease;
 }
 
 
@@ -599,18 +668,18 @@ h2 span,
 
     width: auto;
 
-    max-width: max-content;
+    max-width: 100%;
 
     flex: 0 0 auto;
 
-    min-height: 39px;
+    min-height: 42px;
 
     align-items: center;
     justify-content: center;
 
     gap: 7px;
 
-    padding: 8px 14px;
+    padding: 9px 14px;
 
     border:
         1px solid
@@ -634,6 +703,8 @@ h2 span,
     white-space: nowrap;
 
     cursor: pointer;
+
+    touch-action: manipulation;
 
     transition:
         transform 180ms ease,
@@ -697,6 +768,8 @@ h2 span,
     transform: translateZ(0);
 
     -webkit-transform: translateZ(0);
+
+    overscroll-behavior: none;
 }
 
 .intro-atmosphere {
@@ -875,20 +948,21 @@ h2 span,
 
 
 /* =========================================================
-   MOBILE PAGE TRANSITION
-   JAVASCRIPT CREATES THIS ELEMENT
-
-   This is deliberately extremely simple.
-
-   The overlay is:
-   - fixed
-   - full screen
-   - above everything
-   - GPU composited
-   - pointer protected
+   INTRO ACTIVE SCROLL LOCK
 ========================================================= */
 
-#newitt-transition-overlay {
+body.intro-active {
+    overflow: hidden;
+    overscroll-behavior: none;
+}
+
+
+/* =========================================================
+   MOBILE PAGE TRANSITION
+========================================================= */
+
+#newitt-transition-overlay,
+#newitt-early-transition {
     position: fixed;
 
     inset: 0;
@@ -913,6 +987,8 @@ h2 span,
     will-change: opacity;
 
     contain: strict;
+
+    overscroll-behavior: none;
 }
 
 
@@ -1093,6 +1169,11 @@ h2 span,
     box-shadow:
         0 24px 65px
         rgba(0, 0, 0, 0.28);
+}
+
+.newitt-intro-world:focus-visible {
+    transform:
+        translateY(-3px);
 }
 
 
@@ -1563,6 +1644,11 @@ h2 span,
         rgba(0, 0, 0, 0.25);
 
     cursor: pointer;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    touch-action: manipulation;
 }
 
 .gallery-item img {
@@ -1612,6 +1698,8 @@ h2 span,
 
     background:
         rgba(0, 0, 0, 0.90);
+
+    overscroll-behavior: contain;
 }
 
 .lightbox.active,
@@ -1633,6 +1721,8 @@ h2 span,
     max-height: 88vh;
 
     border-radius: 6px;
+
+    object-fit: contain;
 }
 
 .lightbox-close,
@@ -1644,6 +1734,12 @@ h2 span,
 
     width: 44px;
     height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
 
     border:
         1px solid
@@ -1658,7 +1754,14 @@ h2 span,
 
     font-size: 1.6rem;
 
+    line-height: 1;
+
     cursor: pointer;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    touch-action: manipulation;
 }
 
 
@@ -1676,8 +1779,8 @@ h2 span,
 
     display: flex;
 
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
 
     align-items: center;
     justify-content: center;
@@ -1711,6 +1814,8 @@ h2 span,
     backdrop-filter: blur(10px);
 
     -webkit-backdrop-filter: blur(10px);
+
+    touch-action: manipulation;
 }
 
 .back-to-top.visible,
@@ -1975,6 +2080,9 @@ h2 span,
 
         background-attachment:
             scroll;
+
+        overscroll-behavior-x:
+            none;
     }
 
 
@@ -1991,6 +2099,11 @@ h2 span,
     /* -----------------------------------------------------
        HEADER
     ----------------------------------------------------- */
+
+    .site-header {
+        padding-top:
+            env(safe-area-inset-top);
+    }
 
     .nav {
         min-height:
@@ -2023,13 +2136,13 @@ h2 span,
             absolute;
 
         top:
-            68px;
+            calc(68px + env(safe-area-inset-top));
 
         left:
-            14px;
+            0;
 
         right:
-            14px;
+            0;
 
         display:
             none;
@@ -2077,6 +2190,9 @@ h2 span,
     .nav-links a {
         width:
             100%;
+
+        min-height:
+            44px;
 
         padding:
             11px;
@@ -2150,6 +2266,11 @@ h2 span,
     .intro-content {
         width:
             calc(100% - 30px);
+
+        padding:
+            env(safe-area-inset-top)
+            0
+            env(safe-area-inset-bottom);
     }
 
     .intro-logo {
@@ -2328,10 +2449,10 @@ h2 span,
     .buttons a,
     .hero-actions a {
         min-height:
-            37px;
+            42px;
 
         padding:
-            7px 11px;
+            8px 11px;
 
         font-size:
             0.64rem;
@@ -2390,7 +2511,10 @@ h2 span,
             13px;
 
         bottom:
-            13px;
+            calc(
+                13px +
+                env(safe-area-inset-bottom)
+            );
     }
 
 
@@ -2398,7 +2522,8 @@ h2 span,
        TRANSITION PERFORMANCE
     ----------------------------------------------------- */
 
-    #newitt-transition-overlay {
+    #newitt-transition-overlay,
+    #newitt-early-transition {
         transition:
             opacity 180ms ease;
 
@@ -2473,6 +2598,9 @@ h2 span,
 
         transition-duration:
             0.01ms !important;
+
+        scroll-behavior:
+            auto !important;
     }
 
     .social-master-animation {
@@ -2480,7 +2608,8 @@ h2 span,
             none !important;
     }
 
-    .newitt-intro-world:hover {
+    .newitt-intro-world:hover,
+    .newitt-intro-world:focus-visible {
         transform:
             none;
     }
@@ -2489,6 +2618,35 @@ h2 span,
     .newitt-intro-logo {
         transform:
             none;
+    }
+
+}
+
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print {
+
+    .site-header,
+    .site-intro,
+    .back-to-top,
+    .menu-toggle,
+    .social-hub {
+        display: none !important;
+    }
+
+    body {
+        background: #ffffff !important;
+        color: #000000 !important;
+    }
+
+    p,
+    h1,
+    h2,
+    h3 {
+        color: #000000 !important;
     }
 
 }
