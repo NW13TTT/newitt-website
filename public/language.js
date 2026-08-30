@@ -3,14 +3,19 @@
    MASTER LANGUAGE SYSTEM
    ENGLISH / CYMRAEG
    NEWITT MEDIA 2.0
-   NO COOKIES
+   PASS 2 - STABLE MASTER LANGUAGE ENGINE
+   30 AUGUST 2026
 
    Supports:
    - data-lang-en / data-lang-cy
    - legacy data-lang="en" / data-lang="cy"
    - data-aria-en / data-aria-cy
    - shared language preference across pages
-   - accessible language selector
+   - dynamically-created EN / CY selector
+   - keyboard accessibility
+   - mobile navigation compatibility
+   - Safari / iOS resilience
+   - NO COOKIES
 ========================================================= */
 
 (function () {
@@ -30,6 +35,16 @@
 
 
     /* =====================================================
+       VALID LANGUAGES
+    ====================================================== */
+
+    const LANGUAGES = {
+        ENGLISH: "en",
+        WELSH: "cy"
+    };
+
+
+    /* =====================================================
        GET STORED LANGUAGE
     ====================================================== */
 
@@ -44,8 +59,8 @@
 
 
             if (
-                stored === "cy" ||
-                stored === "en"
+                stored === LANGUAGES.ENGLISH ||
+                stored === LANGUAGES.WELSH
             ) {
 
                 return stored;
@@ -60,9 +75,20 @@
 
 
             if (
-                legacyStored === "cy" ||
-                legacyStored === "en"
+                legacyStored === LANGUAGES.ENGLISH ||
+                legacyStored === LANGUAGES.WELSH
             ) {
+
+                /*
+                 * Migrate the older preference into
+                 * the master storage key.
+                 */
+
+                localStorage.setItem(
+                    LANGUAGE_KEY,
+                    legacyStored
+                );
+
 
                 return legacyStored;
 
@@ -70,12 +96,15 @@
 
         } catch (error) {
 
-            /* Local storage may be unavailable. */
+            /*
+             * Local storage may be unavailable,
+             * restricted or blocked by the browser.
+             */
 
         }
 
 
-        return "en";
+        return LANGUAGES.ENGLISH;
 
     }
 
@@ -94,6 +123,12 @@
             );
 
 
+            /*
+             * Keep the legacy key synchronised so
+             * older pages cannot accidentally restore
+             * a different language.
+             */
+
             localStorage.setItem(
                 LEGACY_LANGUAGE_KEY,
                 language
@@ -101,7 +136,10 @@
 
         } catch (error) {
 
-            /* Local storage may be unavailable. */
+            /*
+             * The site continues working normally even
+             * when localStorage is unavailable.
+             */
 
         }
 
@@ -109,10 +147,10 @@
 
 
     /* =====================================================
-       UPDATE MASTER LANGUAGE ELEMENTS
-
+       UPDATE MASTER TEXT
+       
        New system:
-
+       
        data-lang-en="English"
        data-lang-cy="Welsh"
     ====================================================== */
@@ -138,10 +176,21 @@
                         );
 
 
-                    element.textContent =
-                        language === "cy"
+                    const translated =
+                        language ===
+                        LANGUAGES.WELSH
                             ? welsh
                             : english;
+
+
+                    if (
+                        translated !== null
+                    ) {
+
+                        element.textContent =
+                            translated;
+
+                    }
 
                 }
             );
@@ -150,12 +199,15 @@
 
 
     /* =====================================================
-       UPDATE LEGACY LANGUAGE ELEMENTS
-
+       UPDATE LEGACY TEXT
+       
        Older system:
-
+       
        data-lang="en"
        data-lang="cy"
+       
+       These elements are hidden/shown rather than having
+       their text replaced.
     ====================================================== */
 
     function updateLegacyText(language) {
@@ -168,8 +220,8 @@
                 function (element) {
 
                     /*
-                     * Ignore elements belonging to
-                     * the newer language system.
+                     * Ignore elements belonging to the
+                     * newer master translation system.
                      */
 
                     if (
@@ -193,7 +245,8 @@
 
 
                     element.hidden =
-                        elementLanguage !== language;
+                        elementLanguage !==
+                        language;
 
                 }
             );
@@ -203,6 +256,11 @@
 
     /* =====================================================
        UPDATE ARIA LABELS
+       
+       Supports:
+       
+       data-aria-en
+       data-aria-cy
     ====================================================== */
 
     function updateAria(language) {
@@ -226,12 +284,23 @@
                         );
 
 
-                    element.setAttribute(
-                        "aria-label",
-                        language === "cy"
+                    const translated =
+                        language ===
+                        LANGUAGES.WELSH
                             ? welsh
-                            : english
-                    );
+                            : english;
+
+
+                    if (
+                        translated !== null
+                    ) {
+
+                        element.setAttribute(
+                            "aria-label",
+                            translated
+                        );
+
+                    }
 
                 }
             );
@@ -246,7 +315,8 @@
     function updateHtmlLanguage(language) {
 
         document.documentElement.lang =
-            language === "cy"
+            language ===
+            LANGUAGES.WELSH
                 ? "cy-GB"
                 : "en-GB";
 
@@ -265,57 +335,69 @@
             );
 
 
-        if (selector) {
+        if (!selector) {
 
-            const buttons =
-                selector.querySelectorAll(
-                    "button"
-                );
-
-
-            buttons.forEach(
-                function (button) {
-
-                    button.classList.remove(
-                        "active"
-                    );
-
-
-                    button.setAttribute(
-                        "aria-pressed",
-                        "false"
-                    );
-
-                }
-            );
-
-
-            const active =
-                language === "cy"
-                    ? buttons[1]
-                    : buttons[0];
-
-
-            if (active) {
-
-                active.classList.add(
-                    "active"
-                );
-
-
-                active.setAttribute(
-                    "aria-pressed",
-                    "true"
-                );
-
-            }
+            return;
 
         }
 
 
-        /* =================================================
-           LEGACY SELECTORS
-        ================================================== */
+        const buttons =
+            selector.querySelectorAll(
+                "button"
+            );
+
+
+        buttons.forEach(
+            function (button) {
+
+                const buttonLanguage =
+                    button.getAttribute(
+                        "data-language"
+                    );
+
+
+                const active =
+                    buttonLanguage ===
+                    language;
+
+
+                button.classList.toggle(
+                    "active",
+                    active
+                );
+
+
+                button.setAttribute(
+                    "aria-pressed",
+                    active
+                        ? "true"
+                        : "false"
+                );
+
+            }
+        );
+
+
+        selector.setAttribute(
+            "aria-label",
+            language ===
+            LANGUAGES.WELSH
+                ? "Iaith"
+                : "Language"
+        );
+
+    }
+
+
+    /* =====================================================
+       UPDATE OLD LANGUAGE SELECTORS
+       
+       Kept for compatibility with pages which have not
+       yet been migrated completely.
+    ====================================================== */
+
+    function updateLegacySelector(language) {
 
         const englishButton =
             document.getElementById(
@@ -331,15 +413,20 @@
 
         if (englishButton) {
 
+            const active =
+                language ===
+                LANGUAGES.ENGLISH;
+
+
             englishButton.classList.toggle(
                 "active",
-                language === "en"
+                active
             );
 
 
             englishButton.setAttribute(
                 "aria-pressed",
-                language === "en"
+                active
                     ? "true"
                     : "false"
             );
@@ -349,15 +436,20 @@
 
         if (welshButton) {
 
+            const active =
+                language ===
+                LANGUAGES.WELSH;
+
+
             welshButton.classList.toggle(
                 "active",
-                language === "cy"
+                active
             );
 
 
             welshButton.setAttribute(
                 "aria-pressed",
-                language === "cy"
+                active
                     ? "true"
                     : "false"
             );
@@ -374,11 +466,12 @@
     function setLanguage(language) {
 
         if (
-            language !== "en" &&
-            language !== "cy"
+            language !== LANGUAGES.ENGLISH &&
+            language !== LANGUAGES.WELSH
         ) {
 
-            language = "en";
+            language =
+                LANGUAGES.ENGLISH;
 
         }
 
@@ -412,17 +505,51 @@
             language
         );
 
+
+        updateLegacySelector(
+            language
+        );
+
+
+        /*
+         * Notify any other NEWITT Media scripts that
+         * the language has changed.
+         */
+
+        try {
+
+            window.dispatchEvent(
+                new CustomEvent(
+                    "newittLanguageChanged",
+                    {
+                        detail: {
+                            language:
+                                language
+                        }
+                    }
+                )
+            );
+
+        } catch (error) {
+
+            /*
+             * Older Safari versions may not support
+             * CustomEvent construction in every context.
+             */
+
+        }
+
     }
 
 
     /* =====================================================
-       CREATE MASTER LANGUAGE SELECTOR
+       CREATE MASTER SELECTOR
     ====================================================== */
 
     function createSelector() {
 
         /*
-         * Do not create a duplicate.
+         * Never create a duplicate.
          */
 
         if (
@@ -437,8 +564,8 @@
 
 
         /*
-         * Do not interfere with older manually
-         * created language selectors.
+         * If an older selector already exists,
+         * leave it alone.
          */
 
         if (
@@ -508,6 +635,12 @@
 
 
         english.setAttribute(
+            "data-language",
+            LANGUAGES.ENGLISH
+        );
+
+
+        english.setAttribute(
             "aria-label",
             "English"
         );
@@ -564,6 +697,12 @@
 
 
         welsh.setAttribute(
+            "data-language",
+            LANGUAGES.WELSH
+        );
+
+
+        welsh.setAttribute(
             "aria-label",
             "Cymraeg"
         );
@@ -590,7 +729,7 @@
             function () {
 
                 setLanguage(
-                    "en"
+                    LANGUAGES.ENGLISH
                 );
 
             }
@@ -602,7 +741,7 @@
             function () {
 
                 setLanguage(
-                    "cy"
+                    LANGUAGES.WELSH
                 );
 
             }
@@ -629,8 +768,8 @@
 
 
         /* =================================================
-           INSERT INTO NAVIGATION
-        ================================================== */
+           INSERT INTO MASTER NAV
+        ================================================= */
 
         const nav =
             document.querySelector(
@@ -638,15 +777,64 @@
             );
 
 
-        if (nav) {
+        if (!nav) {
 
-            nav.appendChild(
-                selector
-            );
+            return;
 
         }
 
+
+        /*
+         * The selector is deliberately placed inside
+         * the master navigation container.
+         *
+         * CSS controls its desktop/mobile presentation.
+         * JavaScript does not move it based on screen size.
+         */
+
+        nav.appendChild(
+            selector
+        );
+
     }
+
+
+    /* =====================================================
+       HANDLE DYNAMIC CONTENT
+       
+       Allows language translation to be refreshed if
+       another script inserts translated elements.
+    ====================================================== */
+
+    function refreshLanguage() {
+
+        setLanguage(
+            getStoredLanguage()
+        );
+
+    }
+
+
+    /* =====================================================
+       PUBLIC API
+       
+       Allows other NEWITT Media scripts to change or
+       retrieve the current language without touching
+       internal functions.
+    ====================================================== */
+
+    window.NEWITTLanguage = {
+
+        set:
+            setLanguage,
+
+        get:
+            getStoredLanguage,
+
+        refresh:
+            refreshLanguage
+
+    };
 
 
     /* =====================================================
