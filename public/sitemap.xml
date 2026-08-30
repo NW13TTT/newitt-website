@@ -4,40 +4,40 @@
     <!-- =====================================================
          NEWITT MEDIA
          MASTER SITEMAP
-         UPDATED: 29 AUGUST 2026
+         UPDATED: 30 AUGUST 2026
     ====================================================== -->
 
     <url>
         <loc>https://www.newittmedia.co.uk/</loc>
-        <lastmod>2026-08-29</lastmod>
+        <lastmod>2026-08-30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
 
     <url>
         <loc>https://www.newittmedia.co.uk/skyline.html</loc>
-        <lastmod>2026-08-29</lastmod>
+        <lastmod>2026-08-30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://www.newittmedia.co.uk/paranormal.html</loc>
-        <lastmod>2026-08-29</lastmod>
+        <lastmod>2026-08-30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://www.newittmedia.co.uk/photography.html</loc>
-        <lastmod>2026-08-29</lastmod>
+        <lastmod>2026-08-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://www.newittmedia.co.uk/contact.html</loc>
-        <lastmod>2026-08-29</lastmod>
+        <lastmod>2026-08-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
