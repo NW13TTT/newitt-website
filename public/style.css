@@ -1,3 +1,4 @@
+```css
 /* =========================================================
    NEWITT MEDIA
    MASTER PROFESSIONAL STYLESHEET
@@ -791,17 +792,9 @@ h2 span,
         );
 }
 
+/* RED MIST REMOVED FROM PARANORMAL LOGO */
 .paranormal-logo {
-    filter:
-        drop-shadow(
-            0 0 28px
-            rgba(
-                190,
-                30,
-                40,
-                0.22
-            )
-        );
+    filter: none;
 }
 
 .photography-logo {
@@ -2761,7 +2754,6 @@ body.intro-active {
 ========================================================= */
 
 @keyframes introAtmosphere {
-
     from {
         transform:
             scale(1);
@@ -2777,11 +2769,9 @@ body.intro-active {
         opacity:
             1;
     }
-
 }
 
 @keyframes introSweep {
-
     0% {
         transform:
             translateX(-120%)
@@ -2809,11 +2799,9 @@ body.intro-active {
         opacity:
             0;
     }
-
 }
 
 @keyframes introLogoSafe {
-
     0% {
         opacity:
             0;
@@ -2831,7 +2819,6 @@ body.intro-active {
             scale(1)
             translateZ(0);
     }
-
 }
 
 
@@ -2890,7 +2877,6 @@ body.intro-active {
                 calc(100% - 32px)
             );
     }
-
 }
 
 
@@ -3501,7 +3487,6 @@ body.intro-active {
         will-change:
             opacity;
     }
-
 }
 
 
@@ -3548,7 +3533,6 @@ body.intro-active {
         padding:
             48px 0;
     }
-
 }
 
 
@@ -3601,7 +3585,6 @@ body.intro-active {
         transition:
             none !important;
     }
-
 }
 
 
@@ -3621,7 +3604,6 @@ body.intro-active {
                 62px
             );
     }
-
 }
 
 
@@ -3657,5 +3639,5 @@ body.intro-active {
         color:
             #000000 !important;
     }
-
 }
+```
