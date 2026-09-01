@@ -5,7 +5,7 @@
 
    Languages:
    🇬🇧 English
-   🏴 Welsh
+   🐉 Welsh
 
    Features:
    - English / Welsh switching
@@ -54,7 +54,6 @@
         },
 
         cy: {
-            flag: "🏴",
             name: "Cymraeg",
             documentLanguage: "cy"
         }
@@ -199,8 +198,88 @@
                 data-language="cy"
                 aria-label="Cymraeg"
                 title="Cymraeg"
+                class="welsh-language-button"
             >
-                🏴
+                <svg
+                    class="welsh-flag"
+                    viewBox="0 0 900 600"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Welsh flag"
+                >
+                    <rect
+                        width="900"
+                        height="600"
+                        fill="#fff"
+                    />
+
+                    <path
+                        d="M0 0h900v300H0z"
+                        fill="#fff"
+                    />
+
+                    <path
+                        d="M0 300h900v300H0z"
+                        fill="#00853f"
+                    />
+
+                    <g
+                        transform="translate(450 310)"
+                    >
+                        <path
+                            d="
+                                M0-205
+                                C-24-185-31-160-20-137
+                                C-12-120 8-113 18-97
+                                C28-81 22-60 8-43
+                                C-4-28-22-18-31-2
+                                C-42 17-39 37-24 49
+                                C-11 60 6 62 17 74
+                                C29 88 27 109 16 126
+                                C6 141-11 153-15 170
+                                C-19 185-9 198 7 205
+                                C23 212 42 206 50 193
+                                C60 176 55 157 44 141
+                                C34 126 18 115 20 96
+                                C22 78 39 65 54 54
+                                C73 40 85 23 83 4
+                                C81-17 66-31 51-45
+                                C34-61 28-78 35-97
+                                C42-116 60-130 63-150
+                                C66-170 52-191 34-200
+                                C23-206 11-208 0-205
+                                Z
+                            "
+                            fill="#c8102e"
+                        />
+
+                        <path
+                            d="
+                                M-63 187
+                                C-39 176-28 158-28 139
+                                C-28 119-41 106-52 92
+                                C-66 74-70 55-60 38
+                                C-50 20-31 11-21-4
+                                C-10-21-14-42-28-56
+                                C-42-70-61-79-66-97
+                                C-71-116-59-135-41-145
+                                C-22-156 0-151 16-139
+                                C32-127 41-108 38-88
+                                C35-68 20-54 6-40
+                                C-9-25-10-10 1 4
+                                C12 18 30 27 42 42
+                                C56 59 58 80 47 98
+                                C37 115 18 126 17 146
+                                C16 166 31 181 50 187
+                                C28 203-7 208-35 199
+                                C-47 196-57 192-63 187
+                                Z
+                            "
+                            fill="#c8102e"
+                            opacity="0.95"
+                        />
+                    </g>
+                </svg>
             </button>
 
         `;
@@ -497,6 +576,7 @@
 
             },
 
+
             "skyline-page": {
 
                 en:
@@ -506,6 +586,7 @@
                     "NEWITT Skyline Media | O'r Awyr."
 
             },
+
 
             "paranormal-page": {
 
@@ -517,6 +598,7 @@
 
             },
 
+
             "photography-page": {
 
                 en:
@@ -527,6 +609,7 @@
 
             },
 
+
             "contact-page": {
 
                 en:
@@ -536,6 +619,7 @@
                     "Cysylltu â NEWITT Media"
 
             },
+
 
             "privacy-page": {
 
@@ -695,6 +779,32 @@
             }
 
 
+            #newitt-language-selector
+            .welsh-language-button {
+
+                overflow: hidden;
+
+            }
+
+
+            #newitt-language-selector
+            .welsh-flag {
+
+                display: block;
+
+                width: 27px;
+
+                height: 18px;
+
+                object-fit: cover;
+
+                border-radius: 2px;
+
+                flex-shrink: 0;
+
+            }
+
+
             #newitt-language-selector button:hover {
 
                 background:
@@ -787,6 +897,18 @@
 
                     font-size:
                         1.15rem;
+
+                }
+
+
+                #newitt-language-selector
+                .welsh-flag {
+
+                    width:
+                        34px;
+
+                    height:
+                        23px;
 
                 }
 
