@@ -3606,6 +3606,26 @@ body.intro-active {
 
 
 /* =========================================================
+   INTERNAL HERO FRAMING
+   Keep the background composition consistent with the home page
+   on larger screens without changing the mobile layout.
+========================================================= */
+
+@media (min-width: 701px) {
+
+    .paranormal-hero,
+    .photography-hero {
+        min-height:
+            calc(
+                (var(--newitt-vh, 1vh) * 100) -
+                62px
+            );
+    }
+
+}
+
+
+/* =========================================================
    PRINT
 ========================================================= */
 
