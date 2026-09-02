@@ -116,9 +116,7 @@
     >
 
 
-    <title>
-        Contact | NEWITT Media
-    </title>
+    <title>Contact | NEWITT Media</title>
 
 
     <!-- =====================================================
@@ -145,199 +143,6 @@
         rel="stylesheet"
         href="style.css"
     >
-
-
-    <!-- =====================================================
-         CONTACT PAGE ENHANCEMENTS
-    ====================================================== -->
-
-    <style>
-
-        html,
-        body {
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-
-
-        .contact-hero {
-            position: relative;
-            overflow: hidden;
-            isolation: isolate;
-            min-height: 58vh;
-
-            display: flex;
-            align-items: center;
-            text-align: center;
-        }
-
-
-        .contact-hero::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: -2;
-            pointer-events: none;
-
-            background:
-                radial-gradient(
-                    circle at 50% 45%,
-                    rgba(0, 126, 255, 0.12),
-                    transparent 42%
-                ),
-                linear-gradient(
-                    180deg,
-                    rgba(0, 0, 0, 0.08),
-                    rgba(0, 0, 0, 0.58)
-                );
-        }
-
-
-        .contact-hero-content {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-        }
-
-
-        .contact-logo {
-            display: block;
-            width: min(380px, 78vw);
-            height: auto;
-            margin: 0 auto 24px;
-
-            filter:
-                drop-shadow(0 12px 30px rgba(0, 0, 0, 0.50))
-                drop-shadow(0 0 18px rgba(0, 126, 255, 0.08));
-        }
-
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns:
-                repeat(2, minmax(0, 1fr));
-
-            gap: 24px;
-            max-width: 980px;
-            margin: 0 auto;
-        }
-
-
-        .contact-card {
-            position: relative;
-            padding: 32px;
-            text-align: center;
-        }
-
-
-        .contact-card h3 {
-            margin-bottom: 12px;
-        }
-
-
-        .contact-card p {
-            margin-bottom: 20px;
-        }
-
-
-        .contact-icon {
-            font-size: 2rem;
-            line-height: 1;
-            margin-bottom: 18px;
-            opacity: 0.9;
-        }
-
-
-        .contact-actions {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-        }
-
-
-        /*
-         * Privacy information belongs ONLY on the contact page.
-         */
-
-        .privacy-section {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-
-        .privacy-panel {
-            padding: 30px;
-        }
-
-
-        .privacy-panel h3 {
-            margin-top: 26px;
-            margin-bottom: 10px;
-        }
-
-
-        .privacy-panel h3:first-child {
-            margin-top: 0;
-        }
-
-
-        .privacy-panel p {
-            margin-bottom: 14px;
-        }
-
-
-        .privacy-panel ul {
-            margin: 0 0 18px 20px;
-            padding: 0;
-        }
-
-
-        .privacy-panel li {
-            margin-bottom: 8px;
-        }
-
-
-        @media (max-width: 700px) {
-
-            .contact-hero {
-                min-height: 52vh;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-card {
-                padding: 26px 20px;
-            }
-
-            .contact-actions {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .contact-actions .button {
-                width: 100%;
-            }
-
-            .privacy-panel {
-                padding: 24px 20px;
-            }
-
-        }
-
-
-        @media (prefers-reduced-motion: reduce) {
-
-            .contact-logo {
-                filter:
-                    drop-shadow(0 12px 30px rgba(0, 0, 0, 0.50));
-            }
-
-        }
-
-    </style>
 
 </head>
 
@@ -437,20 +242,20 @@
      CONTACT HERO
 ===================================================== -->
 
-<section class="contact-hero">
+<section class="hero contact-hero">
 
-    <div class="container contact-hero-content">
+    <div class="container hero-content contact-hero-content">
+
+        <div class="eyebrow">
+            Get In Touch
+        </div>
+
 
         <img
             src="newitt-media-logo.png"
             alt="NEWITT Media"
             class="contact-logo"
         >
-
-
-        <div class="eyebrow">
-            Get In Touch
-        </div>
 
 
         <h1>
@@ -474,7 +279,7 @@
      CONTACT OPTIONS
 ===================================================== -->
 
-<section class="about">
+<section class="section about">
 
     <div class="container">
 
@@ -501,14 +306,12 @@
         <div class="contact-grid">
 
 
-            <!-- =================================================
-                 GENERAL
-            ================================================== -->
+            <!-- GENERAL -->
 
             <article class="contact-card">
 
                 <div
-                    class="contact-icon"
+                    class="contact-card-icon"
                     aria-hidden="true"
                 >
                     ✉
@@ -541,14 +344,12 @@
             </article>
 
 
-            <!-- =================================================
-                 SKYLINE
-            ================================================== -->
+            <!-- SKYLINE -->
 
             <article class="contact-card">
 
                 <div
-                    class="contact-icon"
+                    class="contact-card-icon"
                     aria-hidden="true"
                 >
                     ◈
@@ -580,14 +381,12 @@
             </article>
 
 
-            <!-- =================================================
-                 PARANORMAL
-            ================================================== -->
+            <!-- PARANORMAL -->
 
             <article class="contact-card">
 
                 <div
-                    class="contact-icon"
+                    class="contact-card-icon"
                     aria-hidden="true"
                 >
                     ◉
@@ -619,14 +418,12 @@
             </article>
 
 
-            <!-- =================================================
-                 PHOTOGRAPHY
-            ================================================== -->
+            <!-- PHOTOGRAPHY -->
 
             <article class="contact-card">
 
                 <div
-                    class="contact-icon"
+                    class="contact-card-icon"
                     aria-hidden="true"
                 >
                     ◎
@@ -668,7 +465,7 @@
      SOCIAL MEDIA
 ===================================================== -->
 
-<section class="about">
+<section class="section social-section">
 
     <div class="container">
 
@@ -693,66 +490,90 @@
         </div>
 
 
-        <div class="contact-actions">
+        <div class="social-panel">
 
-            <a
-                href="https://www.tiktok.com/@newittskylinemedia"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button primary"
-            >
-                Skyline TikTok
-            </a>
+            <div class="social-panel-heading">
+
+                <div class="eyebrow">
+                    Follow NEWITT Media
+                </div>
 
 
-            <a
-                href="https://www.youtube.com/@Newitt-skyline-media"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button secondary"
-            >
-                Skyline YouTube
-            </a>
+                <h3>
+                    Stay connected
+                </h3>
 
 
-            <a
-                href="https://www.tiktok.com/@nw13ttt"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button primary"
-            >
-                Paranormal TikTok
-            </a>
+                <p class="social-panel-copy">
+                    Keep up with aerial media, paranormal
+                    adventures, photography and new projects.
+                </p>
+
+            </div>
 
 
-            <a
-                href="https://www.youtube.com/@NewittsParanormalAdventures"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button secondary"
-            >
-                Paranormal YouTube
-            </a>
+            <div class="social-links">
+
+                <a
+                    href="https://www.tiktok.com/@newittskylinemedia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="social-link"
+                >
+                    Skyline TikTok
+                </a>
 
 
-            <a
-                href="https://www.instagram.com/nw13ttt/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button secondary"
-            >
-                Instagram
-            </a>
+                <a
+                    href="https://www.youtube.com/@Newitt-skyline-media"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="social-link"
+                >
+                    Skyline YouTube
+                </a>
 
 
-            <a
-                href="https://www.facebook.com/share/1AiSkdbyM4/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button secondary"
-            >
-                Facebook
-            </a>
+                <a
+                    href="https://www.tiktok.com/@nw13ttt"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="social-link"
+                >
+                    Paranormal TikTok
+                </a>
+
+
+                <a
+                    href="https://www.youtube.com/@NewittsParanormalAdventures"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="social-link"
+                >
+                    Paranormal YouTube
+                </a>
+
+
+                <a
+                    href="https://www.instagram.com/nw13ttt/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="social-link"
+                >
+                    Instagram
+                </a>
+
+
+                <a
+                    href="https://www.facebook.com/share/1AiSkdbyM4/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="social-link"
+                >
+                    Facebook
+                </a>
+
+            </div>
 
         </div>
 
@@ -762,11 +583,11 @@
 
 
 <!-- =====================================================
-     PRIVACY
-     PRIVACY INFORMATION IS KEPT ON CONTACT PAGE ONLY
+     PRIVACY SUMMARY
+     FULL PRIVACY DOCUMENT WILL BE CREATED SEPARATELY
 ===================================================== -->
 
-<section class="about">
+<section class="section about">
 
     <div class="container privacy-section">
 
@@ -778,84 +599,63 @@
 
 
             <h2>
-                Your
-                <span>privacy.</span>
+                Your privacy
+                <span>matters.</span>
             </h2>
+
+
+            <p>
+                A short overview of how NEWITT Media handles
+                information supplied through this website.
+            </p>
 
         </div>
 
 
-        <div class="privacy-panel">
+        <div class="privacy-summary">
 
-            <h3>
-                Information We Collect
-            </h3>
+            <div class="privacy-summary-heading">
+                <h3>
+                    Privacy at NEWITT Media
+                </h3>
+            </div>
+
 
             <p>
-                NEWITT Media only uses information you choose
-                to provide when contacting us or interacting
-                with our website and services.
+                NEWITT Media only uses personal information
+                where it is needed to respond to enquiries,
+                provide requested services or communicate
+                with you about something you have contacted
+                us about.
             </p>
 
 
-            <h3>
-                How Information Is Used
-            </h3>
-
             <p>
-                Information supplied to NEWITT Media is used
-                only where reasonably necessary to respond to
-                enquiries, provide requested services, or
-                communicate with you about your enquiry.
+                We aim to keep the information we hold to a
+                minimum and do not use your information for
+                unrelated purposes.
             </p>
 
 
-            <h3>
-                Cookies &amp; Website Data
-            </h3>
-
             <p>
-                This website is designed to minimise unnecessary
-                collection of personal information. Some embedded
-                third-party services, such as social media content,
-                may have their own cookies, tracking technologies
-                and privacy policies.
+                Some pages may contain links or embedded
+                content from third-party services such as
+                TikTok, YouTube, Instagram or Facebook.
+                Those services have their own privacy policies
+                and terms.
             </p>
 
 
-            <h3>
-                Third-Party Services
-            </h3>
+            <div class="hero-actions">
 
-            <p>
-                Links and embedded content from services such as
-                TikTok, YouTube, Instagram and Facebook are operated
-                by those third parties. Their own terms and privacy
-                policies apply when you use their services.
-            </p>
+                <a
+                    href="privacy.html"
+                    class="button primary"
+                >
+                    View Privacy Policy
+                </a>
 
-
-            <h3>
-                Your Choices
-            </h3>
-
-            <p>
-                You can choose whether to contact NEWITT Media
-                or interact with our social media links. If you
-                have a privacy question concerning information
-                you have provided directly to NEWITT Media,
-                please contact us.
-            </p>
-
-
-            <h3>
-                Contact
-            </h3>
-
-            <p>
-                For privacy enquiries, please contact NEWITT Media
-                using the contact options on this page.
-            </p>
+            </div>
 
         </div>
 
@@ -865,10 +665,10 @@
 
 
 <!-- =====================================================
-     HOME CTA
+     FINAL CTA
 ===================================================== -->
 
-<section class="home-cta">
+<section class="section home-cta">
 
     <div class="container">
 
