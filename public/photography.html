@@ -116,9 +116,7 @@
     >
 
 
-    <title>
-        NEWITT Media Photography
-    </title>
+    <title>NEWITT Media Photography</title>
 
 
     <!-- =====================================================
@@ -153,244 +151,13 @@
 
 
     <!-- =====================================================
-         PHOTOGRAPHY PAGE ENHANCEMENTS
+         TIKTOK EMBED
     ====================================================== -->
 
-    <style>
-
-        html,
-        body {
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-
-
-        /*
-         * Photography hero.
-         * Uses the existing NEWITT visual language and
-         * keeps the page cinematic rather than turning it
-         * into a generic gallery template.
-         */
-
-        .photography-hero {
-            position: relative;
-            isolation: isolate;
-            overflow: hidden;
-
-            min-height: 72vh;
-
-            display: flex;
-            align-items: center;
-            text-align: center;
-        }
-
-
-        .photography-hero::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: -2;
-            pointer-events: none;
-
-            background:
-                radial-gradient(
-                    circle at 50% 42%,
-                    rgba(0, 126, 255, 0.13),
-                    transparent 42%
-                ),
-                linear-gradient(
-                    180deg,
-                    rgba(0, 0, 0, 0.05),
-                    rgba(0, 0, 0, 0.62)
-                );
-        }
-
-
-        .photography-hero-content {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-        }
-
-
-        .photography-logo {
-            display: block;
-            width: min(420px, 82vw);
-            height: auto;
-
-            margin:
-                0 auto 24px;
-
-            filter:
-                drop-shadow(
-                    0 12px 30px rgba(0, 0, 0, 0.50)
-                )
-                drop-shadow(
-                    0 0 18px rgba(0, 126, 255, 0.08)
-                );
-        }
-
-
-        /*
-         * Photography focus cards.
-         */
-
-        .photography-focus-card {
-            position: relative;
-            overflow: hidden;
-        }
-
-
-        .photography-focus-card::after {
-            content: "";
-            position: absolute;
-
-            left: 10%;
-            right: 10%;
-            bottom: 0;
-
-            height: 1px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    rgba(0, 140, 255, 0.42),
-                    transparent
-                );
-
-            opacity: 0.65;
-        }
-
-
-        /*
-         * Portfolio-style visual blocks.
-         * These do not invent photographs that aren't present.
-         * They provide a strong route into future imagery.
-         */
-
-        .photography-showcase {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, minmax(0, 1fr));
-
-            gap: 18px;
-
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-
-        .photography-showcase-item {
-            position: relative;
-
-            min-height: 210px;
-
-            display: flex;
-            align-items: flex-end;
-
-            padding: 24px;
-
-            overflow: hidden;
-
-            border:
-                1px solid rgba(255, 255, 255, 0.08);
-
-            border-radius: 16px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(7, 16, 28, 0.95),
-                    rgba(2, 5, 10, 0.98)
-                );
-
-            box-shadow:
-                0 18px 42px rgba(0, 0, 0, 0.30);
-        }
-
-
-        .photography-showcase-item::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-
-            background:
-                radial-gradient(
-                    circle at 50% 25%,
-                    rgba(0, 126, 255, 0.09),
-                    transparent 48%
-                );
-
-            pointer-events: none;
-        }
-
-
-        .photography-showcase-content {
-            position: relative;
-            z-index: 2;
-        }
-
-
-        .photography-showcase-content h3 {
-            margin-bottom: 7px;
-        }
-
-
-        .photography-showcase-content p {
-            margin: 0;
-        }
-
-
-        /*
-         * Call-to-action.
-         */
-
-        .photography-contact-panel {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-
-        @media (max-width: 800px) {
-
-            .photography-showcase {
-                grid-template-columns: 1fr;
-            }
-
-            .photography-showcase-item {
-                min-height: 180px;
-            }
-
-        }
-
-
-        @media (max-width: 700px) {
-
-            .photography-hero {
-                min-height: 62vh;
-            }
-
-            .photography-logo {
-                width: min(360px, 84vw);
-            }
-
-        }
-
-
-        @media (prefers-reduced-motion: reduce) {
-
-            .photography-logo {
-                filter:
-                    drop-shadow(
-                        0 12px 30px rgba(0, 0, 0, 0.50)
-                    );
-            }
-
-        }
-
-    </style>
+    <script
+        async
+        src="https://www.tiktok.com/embed.js"
+    ></script>
 
 </head>
 
@@ -490,20 +257,20 @@
      PHOTOGRAPHY HERO
 ===================================================== -->
 
-<section class="photography-hero">
+<section class="hero photography-hero">
 
-    <div class="container photography-hero-content">
+    <div class="container hero-content">
+
+        <div class="eyebrow">
+            NEWITT Media Photography
+        </div>
+
 
         <img
             src="newitt-media-logo.png"
             alt="NEWITT Media"
             class="photography-logo"
         >
-
-
-        <div class="eyebrow">
-            NEWITT Media Photography
-        </div>
 
 
         <h1>
@@ -532,7 +299,7 @@
                 href="#photography-focus"
                 class="button secondary"
             >
-                Explore
+                Explore Photography
             </a>
 
         </div>
@@ -546,7 +313,7 @@
      INTRODUCTION
 ===================================================== -->
 
-<section class="about">
+<section class="section about">
 
     <div class="container">
 
@@ -566,7 +333,7 @@
             <p>
                 NEWITT Media Photography focuses on capturing
                 places, people, moments and stories in a way
-                that feels authentic and memorable.
+                that feels authentic, atmospheric and memorable.
             </p>
 
         </div>
@@ -581,7 +348,7 @@
 ===================================================== -->
 
 <section
-    class="about"
+    class="section about"
     id="photography-focus"
 >
 
@@ -599,15 +366,21 @@
                 <span>moment.</span>
             </h2>
 
+
+            <p>
+                A flexible photography service built around
+                the subject, location and story.
+            </p>
+
         </div>
 
 
         <div class="investigation-grid">
 
 
-            <article class="investigation-card photography-focus-card">
+            <article class="investigation-card">
 
-                <div class="photography-focus-icon">
+                <div class="card-icon" aria-hidden="true">
                     ◎
                 </div>
 
@@ -625,9 +398,9 @@
             </article>
 
 
-            <article class="investigation-card photography-focus-card">
+            <article class="investigation-card">
 
-                <div class="photography-focus-icon">
+                <div class="card-icon" aria-hidden="true">
                     ◈
                 </div>
 
@@ -645,9 +418,9 @@
             </article>
 
 
-            <article class="investigation-card photography-focus-card">
+            <article class="investigation-card">
 
-                <div class="photography-focus-icon">
+                <div class="card-icon" aria-hidden="true">
                     ◉
                 </div>
 
@@ -672,10 +445,10 @@
 
 
 <!-- =====================================================
-     VISUAL SHOWCASE
+     NEWITT APPROACH
 ===================================================== -->
 
-<section class="about">
+<section class="section about">
 
     <div class="container">
 
@@ -701,61 +474,176 @@
         </div>
 
 
-        <div class="photography-showcase">
+        <div class="feature-grid">
 
 
-            <article class="photography-showcase-item">
+            <article class="feature-card">
 
-                <div class="photography-showcase-content">
-
-                    <h3>
-                        From Above
-                    </h3>
-
-                    <p>
-                        Aerial perspectives through
-                        NEWITT Skyline Media.
-                    </p>
-
-                </div>
-
-            </article>
+                <h3>
+                    From Above
+                </h3>
 
 
-            <article class="photography-showcase-item">
+                <p>
+                    Aerial perspectives through
+                    NEWITT Skyline Media.
+                </p>
 
-                <div class="photography-showcase-content">
 
-                    <h3>
-                        From Ground Level
-                    </h3>
-
-                    <p>
-                        Detail, atmosphere and
-                        everyday moments.
-                    </p>
-
-                </div>
+                <a
+                    href="skyline.html"
+                    class="text-link"
+                >
+                    Explore Skyline →
+                </a>
 
             </article>
 
 
-            <article class="photography-showcase-item">
+            <article class="feature-card">
 
-                <div class="photography-showcase-content">
+                <h3>
+                    From Ground Level
+                </h3>
 
-                    <h3>
-                        After Dark
-                    </h3>
 
-                    <p>
-                        The darker side of visual
-                        storytelling through paranormal adventures.
-                    </p>
+                <p>
+                    Detail, atmosphere and everyday
+                    moments captured through photography.
+                </p>
+
+            </article>
+
+
+            <article class="feature-card">
+
+                <h3>
+                    After Dark
+                </h3>
+
+
+                <p>
+                    The darker side of visual storytelling
+                    through NEWITT's Paranormal Adventures.
+                </p>
+
+
+                <a
+                    href="paranormal.html"
+                    class="text-link"
+                >
+                    Explore Paranormal →
+                </a>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SOCIAL MEDIA
+===================================================== -->
+
+<section
+    class="section social-section"
+    aria-labelledby="photography-social-heading"
+>
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="eyebrow">
+                Follow NEWITT Media
+            </div>
+
+
+            <h2 id="photography-social-heading">
+                Photography,
+                <span>behind the scenes.</span>
+            </h2>
+
+
+            <p>
+                Follow NEWITT Media for photography,
+                creative work, locations and new projects.
+            </p>
+
+        </div>
+
+
+        <div class="social-panel photography-social-panel">
+
+            <div class="social-panel-heading">
+
+                <div class="eyebrow">
+                    Social Media
+                </div>
+
+
+                <h3>
+                    Stay connected with NEWITT Media
+                </h3>
+
+
+                <p class="social-panel-copy">
+                    Follow the wider NEWITT Media journey across
+                    photography, aerial media and paranormal adventures.
+                </p>
+
+            </div>
+
+
+            <div class="social-panel-actions">
+
+                <div class="social-links">
+
+                    <a
+                        href="https://www.tiktok.com/@newittskylinemedia"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-link"
+                    >
+                        TikTok
+                    </a>
+
+
+                    <a
+                        href="https://www.youtube.com/@Newitt-skyline-media"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-link"
+                    >
+                        YouTube
+                    </a>
+
+
+                    <a
+                        href="https://www.instagram.com/newittskylinemedia/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-link"
+                    >
+                        Instagram
+                    </a>
+
+
+                    <a
+                        href="https://www.facebook.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-link"
+                    >
+                        Facebook
+                    </a>
 
                 </div>
 
-            </article>
+            </div>
 
         </div>
 
@@ -768,7 +656,7 @@
      CROSS-LINKS
 ===================================================== -->
 
-<section class="about">
+<section class="section about">
 
     <div class="container">
 
@@ -784,11 +672,15 @@
                 <span>One brand.</span>
             </h2>
 
+
+            <p>
+                Explore the three sides of NEWITT Media.
+            </p>
+
         </div>
 
 
         <div class="hero-actions">
-
 
             <a
                 href="skyline.html"
@@ -824,11 +716,11 @@
      CONTACT CTA
 ===================================================== -->
 
-<section class="home-cta">
+<section class="section home-cta">
 
     <div class="container">
 
-        <div class="cta-panel photography-contact-panel">
+        <div class="cta-panel">
 
             <div class="eyebrow">
                 NEWITT Media Photography
