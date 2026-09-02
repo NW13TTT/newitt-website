@@ -1,865 +1,1258 @@
-<!doctype html>
-<html lang="en-GB">
+/* =========================================================
+   NEWITT MEDIA
+   MASTER JAVASCRIPT
+   STREAMLINED FINAL BUILD
+   30 AUGUST 2026
 
-<head>
-
-    <meta charset="utf-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, viewport-fit=cover"
-    >
-
-    <meta
-        name="theme-color"
-        content="#020305"
-    >
-
-    <meta
-        name="description"
-        content="NEWITT Media. Aerial media, photography and paranormal adventures. From above. After dark. And everything in between."
-    >
-
-    <meta
-        name="author"
-        content="NEWITT Media"
-    >
-
-    <meta
-        name="robots"
-        content="index, follow, max-image-preview:large"
-    >
-
-    <meta
-        name="referrer"
-        content="strict-origin-when-cross-origin"
-    >
-
-    <meta
-        name="format-detection"
-        content="telephone=no"
-    >
-
-    <link
-        rel="canonical"
-        href="https://www.newittmedia.co.uk/"
-    >
+   FUNCTIONS
+   - First-visit cinematic intro
+   - Mobile navigation
+   - Mobile page transition
+   - Back to top
+   - Smooth anchor scrolling
+   - Lightbox
+   - Safe external links
+   - Mobile micro-flash protection
+========================================================= */
 
 
-    <!-- =====================================================
-         OPEN GRAPH
-    ====================================================== -->
+/* =========================================================
+   EARLY MOBILE PAGE TRANSITION
+   Runs immediately, before DOMContentLoaded.
 
-    <meta
-        property="og:type"
-        content="website"
-    >
+   This is important because the browser can otherwise
+   paint the new document before our normal initialisation.
+========================================================= */
 
-    <meta
-        property="og:url"
-        content="https://www.newittmedia.co.uk/"
-    >
+(function () {
 
-    <meta
-        property="og:title"
-        content="NEWITT Media | From Above. After Dark. And Everything In Between."
-    >
-
-    <meta
-        property="og:description"
-        content="Aerial media, photography and paranormal adventures from NEWITT Media."
-    >
-
-    <meta
-        property="og:image"
-        content="https://www.newittmedia.co.uk/newitt-media-logo.png"
-    >
-
-    <meta
-        property="og:image:alt"
-        content="NEWITT Media logo"
-    >
-
-    <meta
-        property="og:site_name"
-        content="NEWITT Media"
-    >
+    "use strict";
 
 
-    <!-- =====================================================
-         TWITTER / X
-    ====================================================== -->
-
-    <meta
-        name="twitter:card"
-        content="summary_large_image"
-    >
-
-    <meta
-        name="twitter:title"
-        content="NEWITT Media | From Above. After Dark. And Everything In Between."
-    >
-
-    <meta
-        name="twitter:description"
-        content="Aerial media, photography and paranormal adventures from NEWITT Media."
-    >
-
-    <meta
-        name="twitter:image"
-        content="https://www.newittmedia.co.uk/newitt-media-logo.png"
-    >
-
-    <meta
-        name="twitter:image:alt"
-        content="NEWITT Media logo"
-    >
+    const TRANSITION_KEY =
+        "newittPageTransition";
 
 
-    <title>
-        NEWITT Media | From Above. After Dark. And Everything In Between.
-    </title>
+    const isMobile =
+        window.matchMedia &&
+        window.matchMedia(
+            "(max-width: 700px)"
+        ).matches;
 
 
-    <!-- =====================================================
-         STRUCTURED DATA
-    ====================================================== -->
+    /*
+     * If we arrived from another NEWITT page,
+     * immediately create the black cover.
+     */
 
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "NEWITT Media",
-        "url": "https://www.newittmedia.co.uk/",
-        "logo": "https://www.newittmedia.co.uk/newitt-media-logo.png",
-        "description": "NEWITT Media brings together aerial drone media, photography and paranormal adventures.",
-        "sameAs": [
-            "https://www.tiktok.com/@newittskylinemedia",
-            "https://www.youtube.com/@Newitt-skyline-media",
-            "https://www.tiktok.com/@nw13ttt",
-            "https://www.instagram.com/nw13ttt/",
-            "https://www.youtube.com/@NewittsParanormalAdventures",
-            "https://www.facebook.com/share/1AiSkdbyM4/"
-        ]
+    if (isMobile) {
+
+        let incoming = false;
+
+        try {
+
+            incoming =
+                sessionStorage.getItem(
+                    TRANSITION_KEY
+                ) === "1";
+
+            sessionStorage.removeItem(
+                TRANSITION_KEY
+            );
+
+        } catch (error) {
+
+            incoming = false;
+
+        }
+
+
+        if (incoming) {
+
+            const style =
+                document.createElement(
+                    "style"
+                );
+
+            style.id =
+                "newitt-early-transition-style";
+
+            style.textContent = `
+                html {
+                    background: #020305 !important;
+                    background-color: #020305 !important;
+                }
+
+                body {
+                    background-color: #020305 !important;
+                }
+
+                #newitt-early-transition {
+                    position: fixed;
+                    inset: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 2147483647;
+                    background: #020305;
+                    opacity: 1;
+                    pointer-events: all;
+                    transform: translateZ(0);
+                    -webkit-transform: translateZ(0);
+                    will-change: opacity;
+                }
+            `;
+
+            document.head.appendChild(
+                style
+            );
+
+
+            const createOverlay =
+                function () {
+
+                    if (
+                        document.getElementById(
+                            "newitt-early-transition"
+                        )
+                    ) {
+                        return;
+                    }
+
+
+                    const overlay =
+                        document.createElement(
+                            "div"
+                        );
+
+                    overlay.id =
+                        "newitt-early-transition";
+
+                    overlay.setAttribute(
+                        "aria-hidden",
+                        "true"
+                    );
+
+                    document.documentElement
+                        .appendChild(
+                            overlay
+                        );
+
+                };
+
+
+            /*
+             * Create as early as possible.
+             */
+
+            if (
+                document.documentElement
+            ) {
+
+                createOverlay();
+
+            }
+
+
+            /*
+             * Reveal the new page only after
+             * the browser has painted it.
+             */
+
+            const reveal =
+                function () {
+
+                    const overlay =
+                        document.getElementById(
+                            "newitt-early-transition"
+                        );
+
+                    if (!overlay) {
+                        return;
+                    }
+
+
+                    overlay.style.transition =
+                        "opacity 220ms ease";
+
+                    overlay.style.opacity =
+                        "0";
+
+
+                    window.setTimeout(
+                        function () {
+
+                            if (
+                                overlay.parentNode
+                            ) {
+
+                                overlay.parentNode
+                                    .removeChild(
+                                        overlay
+                                    );
+
+                            }
+
+
+                            const earlyStyle =
+                                document.getElementById(
+                                    "newitt-early-transition-style"
+                                );
+
+                            if (
+                                earlyStyle &&
+                                earlyStyle.parentNode
+                            ) {
+
+                                earlyStyle.parentNode
+                                    .removeChild(
+                                        earlyStyle
+                                    );
+
+                            }
+
+                        },
+                        260
+                    );
+
+                };
+
+
+            if (
+                document.readyState ===
+                "loading"
+            ) {
+
+                document.addEventListener(
+                    "DOMContentLoaded",
+                    function () {
+
+                        requestAnimationFrame(
+                            function () {
+
+                                requestAnimationFrame(
+                                    reveal
+                                );
+
+                            }
+                        );
+
+                    },
+                    {
+                        once: true
+                    }
+                );
+
+            } else {
+
+                requestAnimationFrame(
+                    function () {
+
+                        requestAnimationFrame(
+                            reveal
+                        );
+
+                    }
+                );
+
+            }
+
+        }
+
     }
-    </script>
 
+})();
 
-    <!-- =====================================================
-         MASTER STYLESHEET
-    ====================================================== -->
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+/* =========================================================
+   MAIN NEWITT MEDIA SCRIPT
+========================================================= */
 
-</head>
+(function () {
 
+    "use strict";
 
-<body
-    id="top"
-    class="home-page"
->
 
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
 
-<!-- =====================================================
-     CINEMATIC INTRO
-===================================================== -->
+            initFirstVisitIntro();
 
-<div
-    class="site-intro"
-    id="site-intro"
-    aria-hidden="true"
->
+            initMobileNavigation();
 
-    <div
-        class="intro-atmosphere"
-        aria-hidden="true"
-    ></div>
+            initPageTransition();
 
-    <div
-        class="intro-light-sweep"
-        aria-hidden="true"
-    ></div>
+            initBackToTop();
 
-    <div class="intro-content">
+            initSmoothScrolling();
 
-        <img
-            src="newitt-media-logo.png"
-            alt=""
-            class="intro-logo"
-        >
+            initLightbox();
 
-        <div class="intro-name">
-            NEWITT <span>MEDIA</span>
-        </div>
+            initExternalLinks();
 
-        <div class="intro-line"></div>
+        }
+    );
 
-        <div class="intro-tagline">
-            FROM ABOVE.
-            AFTER DARK.
-            AND EVERYTHING IN BETWEEN.
-        </div>
 
-    </div>
+    /* =====================================================
+       FIRST-VISIT CINEMATIC INTRO
+    ===================================================== */
 
-</div>
+    function initFirstVisitIntro() {
 
+        const intro =
+            document.getElementById(
+                "site-intro"
+            );
 
-<!-- =====================================================
-     SITE HEADER
-===================================================== -->
+        if (!intro) {
+            return;
+        }
 
-<header class="site-header">
 
-    <div class="container nav">
+        const STORAGE_KEY =
+            "newittMediaIntroSeenV2";
 
-        <a
-            href="index.html"
-            class="nav-brand"
-            aria-label="NEWITT Media Home"
-        >
 
-            <img
-                src="newitt-media-logo.png"
-                alt="NEWITT Media logo"
-            >
+        let alreadySeen = false;
 
-            <span>
-                NEWITT <strong>MEDIA</strong>
-            </span>
 
-        </a>
+        try {
 
+            alreadySeen =
+                localStorage.getItem(
+                    STORAGE_KEY
+                ) === "true";
 
-        <button
-            class="menu-toggle"
-            type="button"
-            aria-expanded="false"
-            aria-controls="main-menu"
-            aria-label="Open navigation menu"
-        >
+        } catch (error) {
 
-            <span></span>
-            <span></span>
-            <span></span>
+            alreadySeen = false;
 
-        </button>
+        }
 
 
-        <nav
-            class="nav-links"
-            id="main-menu"
-            aria-label="Main navigation"
-        >
+        if (alreadySeen) {
 
-            <a
-                href="index.html"
-                class="active"
-                aria-current="page"
-            >
-                Home
-            </a>
+            intro.classList.add(
+                "intro-hidden"
+            );
 
-            <a href="skyline.html">
-                Skyline
-            </a>
+            intro.setAttribute(
+                "aria-hidden",
+                "true"
+            );
 
-            <a href="paranormal.html">
-                Paranormal
-            </a>
+            return;
 
-            <a href="photography.html">
-                Photography
-            </a>
+        }
 
-            <a href="contact.html">
-                Contact
-            </a>
 
-        </nav>
+        document.body.classList.add(
+            "intro-active"
+        );
 
-    </div>
 
-</header>
+        document.documentElement.style.overflow =
+            "hidden";
 
+        document.body.style.overflow =
+            "hidden";
 
-<!-- =====================================================
-     MAIN CONTENT
-===================================================== -->
 
-<main>
+        try {
 
+            localStorage.setItem(
+                STORAGE_KEY,
+                "true"
+            );
 
-<!-- =====================================================
-     HERO
-===================================================== -->
+        } catch (error) {}
 
-<section class="hero home-hero">
 
-    <div
-        class="hero-atmosphere"
-        aria-hidden="true"
-    ></div>
+        const INTRO_DURATION =
+            7500;
 
-    <div class="container hero-content">
 
-        <div class="hero-logo-wrap">
+        let closed = false;
 
-            <img
-                src="newitt-media-logo.png"
-                alt="NEWITT Media"
-                class="hero-logo"
-            >
 
-        </div>
+        const closeTimer =
+            window.setTimeout(
+                closeIntro,
+                INTRO_DURATION
+            );
 
 
-        <div class="eyebrow">
-            NEWITT Media
-        </div>
+        function handleEscape(event) {
 
+            if (
+                event.key ===
+                "Escape"
+            ) {
 
-        <h1>
-            FROM ABOVE.
-            <span>AFTER DARK.</span>
-        </h1>
+                closeIntro();
 
+            }
 
-        <div class="hero-rule"></div>
+        }
 
 
-        <p class="hero-tagline">
-            AND EVERYTHING IN BETWEEN.
-        </p>
+        document.addEventListener(
+            "keydown",
+            handleEscape
+        );
 
 
-        <p class="hero-introduction">
-            Aerial media.
-            Photography.
-            Paranormal adventures.
-            One NEWITT identity.
-        </p>
+        intro.addEventListener(
+            "click",
+            closeIntro
+        );
 
 
-        <div class="hero-actions">
+        function closeIntro() {
 
-            <a
-                href="#social"
-                class="button primary"
-            >
-                Explore NEWITT Media
-            </a>
+            if (closed) {
+                return;
+            }
 
-            <a
-                href="contact.html"
-                class="button secondary"
-            >
-                Get in Touch
-            </a>
 
-        </div>
+            closed = true;
 
-    </div>
 
-</section>
+            window.clearTimeout(
+                closeTimer
+            );
 
 
-<!-- =====================================================
-     NEWITT MEDIA INTRODUCTION
-     THREE CREATIVE WORLDS. ONE IDENTITY.
-===================================================== -->
+            intro.classList.add(
+                "intro-hidden"
+            );
 
-<section
-    class="newitt-media-intro"
-    aria-labelledby="newitt-media-intro-title"
->
 
-    <div
-        class="newitt-media-intro-glow"
-        aria-hidden="true"
-    ></div>
+            intro.setAttribute(
+                "aria-hidden",
+                "true"
+            );
 
-    <div class="container">
 
-        <div class="newitt-media-intro-heading">
+            document.body.classList.remove(
+                "intro-active"
+            );
 
-            <div class="eyebrow">
-                WELCOME TO
-            </div>
 
-            <h2 id="newitt-media-intro-title">
-                NEWITT <span>MEDIA</span>
-            </h2>
+            document.removeEventListener(
+                "keydown",
+                handleEscape
+            );
 
-            <div class="hero-rule"></div>
 
-            <p class="newitt-media-intro-main">
-                Three creative worlds brought together
-                under one NEWITT Media identity.
-            </p>
+            window.setTimeout(
+                function () {
 
-        </div>
+                    document.documentElement
+                        .style
+                        .overflow = "";
 
+                    document.body
+                        .style
+                        .overflow = "";
 
-        <div class="newitt-media-intro-worlds">
+                    intro.style.display =
+                        "none";
 
+                },
+                950
+            );
 
-            <!-- =================================================
-                 SKYLINE
-            ================================================== -->
+        }
 
-            <a
-                href="skyline.html"
-                class="newitt-intro-world newitt-intro-skyline"
-                aria-label="Explore NEWITT Skyline Media"
-            >
+    }
 
-                <div class="newitt-intro-logo-wrap">
 
-                    <img
-                        src="sky-logo.png"
-                        alt="NEWITT Skyline Media"
-                        class="newitt-intro-logo"
-                    >
+    /* =====================================================
+       MOBILE NAVIGATION
+    ===================================================== */
 
-                </div>
+    function initMobileNavigation() {
 
-                <div class="newitt-intro-text">
+        const toggle =
+            document.querySelector(
+                ".menu-toggle"
+            );
 
-                    <h3>
-                        NEWITT SKYLINE MEDIA
-                    </h3>
+        const menu =
+            document.querySelector(
+                ".nav-links"
+            );
 
-                    <p>
-                        Drone &amp; aerial media capturing
-                        landscapes, locations, events and
-                        experiences from a completely
-                        different perspective. Exploring
-                        the world from above and bringing
-                        those views to life.
-                    </p>
 
-                </div>
+        if (
+            !toggle ||
+            !menu
+        ) {
 
-            </a>
+            return;
 
+        }
 
-            <!-- =================================================
-                 PARANORMAL
-            ================================================== -->
 
-            <a
-                href="paranormal.html"
-                class="newitt-intro-world newitt-intro-paranormal"
-                aria-label="Explore NEWITT's Paranormal Adventures"
-            >
+        function closeMenu() {
 
-                <div class="newitt-intro-logo-wrap">
+            menu.classList.remove(
+                "open",
+                "active",
+                "menu-open"
+            );
 
-                    <img
-                        src="paranormal-logo.png"
-                        alt="NEWITT's Paranormal Adventures"
-                        class="newitt-intro-logo"
-                    >
 
-                </div>
+            toggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
 
-                <div class="newitt-intro-text">
 
-                    <h3>
-                        NEWITT'S PARANORMAL ADVENTURES
-                    </h3>
+            toggle.setAttribute(
+                "aria-label",
+                "Open navigation menu"
+            );
 
-                    <p>
-                        Paranormal investigations exploring
-                        historic locations, haunted places
-                        and unexplained encounters.
-                        Documenting the journey and the
-                        experiences found along the way.
-                    </p>
+        }
 
-                </div>
 
-            </a>
+        toggle.addEventListener(
+            "click",
+            function () {
 
+                const open =
+                    !menu.classList.contains(
+                        "open"
+                    );
 
-            <!-- =================================================
-                 PHOTOGRAPHY
-            ================================================== -->
 
-            <a
-                href="photography.html"
-                class="newitt-intro-world newitt-intro-photography"
-                aria-label="Explore NEWITT Media Photography"
-            >
+                menu.classList.toggle(
+                    "open",
+                    open
+                );
 
-                <div class="newitt-intro-logo-wrap">
 
-                    <img
-                        src="newitt-media-logo.png"
-                        alt="NEWITT Media Photography"
-                        class="newitt-intro-logo"
-                    >
+                menu.classList.toggle(
+                    "active",
+                    open
+                );
 
-                </div>
 
-                <div class="newitt-intro-text">
+                menu.classList.toggle(
+                    "menu-open",
+                    open
+                );
 
-                    <h3>
-                        NEWITT MEDIA PHOTOGRAPHY
-                    </h3>
 
-                    <p>
-                        Photography capturing people,
-                        places, landscapes and adventures.
-                        Creating a visual record of the
-                        moments and experiences that make
-                        up the wider NEWITT Media story.
-                    </p>
+                toggle.setAttribute(
+                    "aria-expanded",
+                    String(open)
+                );
 
-                </div>
 
-            </a>
+                toggle.setAttribute(
+                    "aria-label",
+                    open
+                        ? "Close navigation menu"
+                        : "Open navigation menu"
+                );
 
+            }
+        );
 
-        </div>
 
+        menu.querySelectorAll("a")
+            .forEach(
+                function (link) {
 
-        <div class="newitt-media-intro-closing">
+                    link.addEventListener(
+                        "click",
+                        closeMenu
+                    );
 
-            <p>
-                Different perspectives.
-                <strong>One NEWITT Media.</strong>
-            </p>
+                }
+            );
 
-            <span>
-                FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
-            </span>
 
-        </div>
+        document.addEventListener(
+            "click",
+            function (event) {
 
-    </div>
+                if (
+                    !menu.contains(
+                        event.target
+                    ) &&
+                    !toggle.contains(
+                        event.target
+                    )
+                ) {
 
-</section>
+                    closeMenu();
 
+                }
 
-<!-- =====================================================
-     MASTER CINEMATIC SOCIAL ANIMATION
+            }
+        );
 
-     THE SOCIAL BUTTONS ARE PART OF THE ARTWORK.
 
-     TRANSPARENT CLICK ZONES ARE PLACED OVER THE
-     EXISTING VISIBLE BUTTONS.
+        window.addEventListener(
+            "resize",
+            function () {
 
-     NOTHING VISUAL IS ADDED TO THE ANIMATION.
-===================================================== -->
+                if (
+                    window.innerWidth >
+                    700
+                ) {
 
-<section
-    class="social-hub"
-    id="social"
-    aria-label="NEWITT Media cinematic social media animation"
->
+                    closeMenu();
 
-    <div
-        class="social-master-frame"
-        style="position:relative;"
-    >
+                }
 
-        <iframe
-            class="social-master-animation"
-            src="NEWITT_ANIMATED_SOCIAL_SECTION_BANNER_BUTTONS.html"
-            title="NEWITT Media cinematic social media animation"
-            loading="eager"
-            scrolling="no"
-            frameborder="0"
-            allowtransparency="true"
-        ></iframe>
+            }
+        );
 
+    }
 
-        <!-- =================================================
-             INVISIBLE SOCIAL CLICK ZONES
 
-             EDIT ONLY THE HREFS BELOW IF A SOCIAL ACCOUNT
-             EVER CHANGES.
-        ================================================== -->
+    /* =====================================================
+       MOBILE PAGE TRANSITION
+       OUTGOING PAGE
 
-        <div
-            aria-label="NEWITT Media social media links"
-            style="
-                position:absolute;
-                inset:0;
-                z-index:20;
-                pointer-events:none;
-            "
-        >
+       The early transition handles the incoming page.
+       This section handles the outgoing page.
+    ===================================================== */
 
-            <!-- SKYLINE TIKTOK -->
+    function initPageTransition() {
 
-            <a
-                href="https://www.tiktok.com/@newittskylinemedia"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="NEWITT Skyline Media TikTok"
-                style="
-                    position:absolute;
-                    left:7.7%;
-                    top:70.3%;
-                    width:14.7%;
-                    height:8%;
-                    display:block;
-                    pointer-events:auto;
-                    background:transparent;
-                    cursor:pointer;
-                "
-            ></a>
+        const mobile =
+            window.matchMedia(
+                "(max-width: 700px)"
+            ).matches;
 
 
-            <!-- SKYLINE YOUTUBE -->
+        if (!mobile) {
+            return;
+        }
 
-            <a
-                href="https://www.youtube.com/@Newitt-skyline-media"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="NEWITT Skyline Media YouTube"
-                style="
-                    position:absolute;
-                    left:25.1%;
-                    top:70.3%;
-                    width:16.6%;
-                    height:8%;
-                    display:block;
-                    pointer-events:auto;
-                    background:transparent;
-                    cursor:pointer;
-                "
-            ></a>
 
+        const links =
+            document.querySelectorAll(
+                'a[href$=".html"], a[href="index.html"], a[href="/"]'
+            );
 
-            <!-- PARANORMAL TIKTOK -->
 
-            <a
-                href="https://www.tiktok.com/@nw13ttt"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="NEWITT's Paranormal Adventures TikTok"
-                style="
-                    position:absolute;
-                    left:47.9%;
-                    top:70.3%;
-                    width:10.4%;
-                    height:8%;
-                    display:block;
-                    pointer-events:auto;
-                    background:transparent;
-                    cursor:pointer;
-                "
-            ></a>
+        links.forEach(
+            function (link) {
 
+                link.addEventListener(
+                    "click",
+                    function (event) {
 
-            <!-- PARANORMAL YOUTUBE -->
+                        if (
+                            event.defaultPrevented ||
+                            event.ctrlKey ||
+                            event.metaKey ||
+                            event.shiftKey ||
+                            event.altKey
+                        ) {
 
-            <a
-                href="https://www.youtube.com/@NewittsParanormalAdventures"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="NEWITT's Paranormal Adventures YouTube"
-                style="
-                    position:absolute;
-                    left:58.9%;
-                    top:70.3%;
-                    width:11.1%;
-                    height:8%;
-                    display:block;
-                    pointer-events:auto;
-                    background:transparent;
-                    cursor:pointer;
-                "
-            ></a>
+                            return;
 
+                        }
 
-            <!-- PARANORMAL INSTAGRAM -->
 
-            <a
-                href="https://www.instagram.com/nw13ttt/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="NEWITT's Paranormal Adventures Instagram"
-                style="
-                    position:absolute;
-                    left:70.4%;
-                    top:70.3%;
-                    width:11.5%;
-                    height:8%;
-                    display:block;
-                    pointer-events:auto;
-                    background:transparent;
-                    cursor:pointer;
-                "
-            ></a>
+                        const href =
+                            link.getAttribute(
+                                "href"
+                            );
 
 
-            <!-- PARANORMAL FACEBOOK -->
+                        if (!href) {
+                            return;
+                        }
 
-            <a
-                href="https://www.facebook.com/share/1AiSkdbyM4/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="NEWITT's Paranormal Adventures Facebook"
-                style="
-                    position:absolute;
-                    left:82.1%;
-                    top:70.3%;
-                    width:12.3%;
-                    height:8%;
-                    display:block;
-                    pointer-events:auto;
-                    background:transparent;
-                    cursor:pointer;
-                "
-            ></a>
 
-        </div>
+                        if (
+                            href.startsWith("#") ||
+                            href.startsWith("mailto:") ||
+                            href.startsWith("tel:") ||
+                            href.startsWith("http://") ||
+                            href.startsWith("https://") ||
+                            href.startsWith("javascript:")
+                        ) {
 
-    </div>
+                            return;
 
-</section>
+                        }
 
 
-<!-- =====================================================
-     FINAL CALL TO ACTION
-===================================================== -->
+                        const current =
+                            window.location.pathname
+                                .split("/")
+                                .pop() ||
+                            "index.html";
 
-<section class="home-cta">
 
-    <div class="container">
+                        const target =
+                            href
+                                .split("#")[0]
+                                .split("?")[0]
+                                .split("/")
+                                .pop() ||
+                            "index.html";
 
-        <div class="cta-panel">
 
-            <div class="eyebrow">
-                NEWITT Media
-            </div>
+                        if (
+                            current ===
+                            target
+                        ) {
 
+                            return;
 
-            <h2>
-                Ready to
-                <span>explore?</span>
-            </h2>
+                        }
 
 
-            <p>
-                Choose your world or get in touch with NEWITT Media.
-            </p>
+                        if (
+                            document.body.dataset
+                                .newittNavigating ===
+                            "true"
+                        ) {
 
+                            event.preventDefault();
 
-            <div class="hero-actions">
+                            return;
 
-                <a
-                    href="contact.html"
-                    class="button primary"
-                >
-                    Get in Touch
-                </a>
+                        }
 
 
-                <a
-                    href="skyline.html"
-                    class="button secondary"
-                >
-                    Explore Skyline
-                </a>
+                        event.preventDefault();
 
-            </div>
 
-        </div>
+                        document.body.dataset
+                            .newittNavigating =
+                            "true";
 
-    </div>
 
-</section>
+                        try {
 
+                            sessionStorage.setItem(
+                                "newittPageTransition",
+                                "1"
+                            );
 
-</main>
+                        } catch (error) {}
 
 
-<!-- =====================================================
-     BACK TO TOP
-===================================================== -->
+                        const overlay =
+                            document.createElement(
+                                "div"
+                            );
 
-<a
-    href="#top"
-    class="back-to-top"
-    id="back-to-top"
-    aria-label="Back to top"
->
-    ↑
-</a>
 
+                        overlay.id =
+                            "newitt-transition-overlay";
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
 
-<footer class="site-footer">
+                        overlay.setAttribute(
+                            "aria-hidden",
+                            "true"
+                        );
 
-    <div class="container">
 
+                        overlay.style.position =
+                            "fixed";
 
-        <img
-            src="newitt-media-logo.png"
-            alt="NEWITT Media"
-            class="footer-logo"
-        >
+                        overlay.style.inset =
+                            "0";
 
+                        overlay.style.width =
+                            "100%";
 
-        <p class="footer-brand">
-            NEWITT MEDIA
-        </p>
+                        overlay.style.height =
+                            "100%";
 
+                        overlay.style.zIndex =
+                            "2147483647";
 
-        <p class="footer-tagline">
-            FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
-        </p>
+                        overlay.style.background =
+                            "#020305";
 
+                        overlay.style.opacity =
+                            "0";
 
-        <p class="copyright">
+                        overlay.style.pointerEvents =
+                            "all";
 
-            © 2026 NEWITT Media. All Rights Reserved.
+                        overlay.style.transform =
+                            "translateZ(0)";
 
-            <br>
+                        overlay.style.webkitTransform =
+                            "translateZ(0)";
 
-            NEWITT Media •
-            NEWITT Skyline Media •
-            NEWITT's Paranormal Adventures •
-            NEWITT Media Photography
+                        overlay.style.willChange =
+                            "opacity";
 
-        </p>
+                        overlay.style.transition =
+                            "opacity 180ms ease";
 
 
-        <p class="website-address">
+                        document.body.appendChild(
+                            overlay
+                        );
 
-            <a href="https://newittmedia.co.uk/">
-                newittmedia.co.uk
-            </a>
 
-        </p>
+                        document.documentElement
+                            .style
+                            .overflow =
+                            "hidden";
 
-    </div>
 
-</footer>
+                        document.body
+                            .style
+                            .overflow =
+                            "hidden";
 
 
-<!-- =====================================================
-     MASTER JAVASCRIPT
-===================================================== -->
+                        void overlay.offsetWidth;
 
-<script
-    src="script.js"
-    defer
-></script>
 
+                        requestAnimationFrame(
+                            function () {
 
-</body>
+                                overlay.style.opacity =
+                                    "1";
 
-</html>
+
+                                window.setTimeout(
+                                    function () {
+
+                                        window.location.href =
+                                            href;
+
+                                    },
+                                    180
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       BACK TO TOP
+    ===================================================== */
+
+    function initBackToTop() {
+
+        const button =
+            document.getElementById(
+                "back-to-top"
+            );
+
+
+        if (!button) {
+            return;
+        }
+
+
+        function update() {
+
+            const visible =
+                window.scrollY >
+                450;
+
+
+            button.classList.toggle(
+                "visible",
+                visible
+            );
+
+
+            button.classList.toggle(
+                "show",
+                visible
+            );
+
+
+            button.classList.toggle(
+                "is-visible",
+                visible
+            );
+
+        }
+
+
+        window.addEventListener(
+            "scroll",
+            update,
+            {
+                passive: true
+            }
+        );
+
+
+        update();
+
+    }
+
+
+    /* =====================================================
+       SMOOTH ANCHOR SCROLLING
+    ===================================================== */
+
+    function initSmoothScrolling() {
+
+        document
+            .querySelectorAll(
+                'a[href^="#"]'
+            )
+            .forEach(
+                function (anchor) {
+
+                    anchor.addEventListener(
+                        "click",
+                        function (event) {
+
+                            const targetId =
+                                anchor.getAttribute(
+                                    "href"
+                                );
+
+
+                            if (
+                                !targetId ||
+                                targetId === "#"
+                            ) {
+
+                                return;
+
+                            }
+
+
+                            const target =
+                                document.querySelector(
+                                    targetId
+                                );
+
+
+                            if (!target) {
+                                return;
+                            }
+
+
+                            event.preventDefault();
+
+
+                            target.scrollIntoView({
+                                behavior:
+                                    "smooth",
+                                block:
+                                    "start"
+                            });
+
+
+                            try {
+
+                                history.replaceState(
+                                    null,
+                                    "",
+                                    targetId
+                                );
+
+                            } catch (error) {}
+
+                        }
+                    );
+
+                }
+            );
+
+    }
+
+
+    /* =====================================================
+       LIGHTBOX
+    ===================================================== */
+
+    function initLightbox() {
+
+        const lightbox =
+            document.getElementById(
+                "lightbox"
+            );
+
+
+        if (!lightbox) {
+            return;
+        }
+
+
+        const image =
+            document.getElementById(
+                "lightbox-image"
+            ) ||
+            lightbox.querySelector(
+                "img"
+            );
+
+
+        const close =
+            document.getElementById(
+                "lightbox-close"
+            ) ||
+            lightbox.querySelector(
+                ".lightbox-close"
+            );
+
+
+        const items =
+            document.querySelectorAll(
+                ".gallery-item, [data-lightbox]"
+            );
+
+
+        function closeLightbox() {
+
+            lightbox.classList.remove(
+                "active"
+            );
+
+
+            lightbox.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            document.body.style.overflow =
+                "";
+
+
+            if (image) {
+
+                window.setTimeout(
+                    function () {
+
+                        if (
+                            !lightbox.classList.contains(
+                                "active"
+                            )
+                        ) {
+
+                            image.removeAttribute(
+                                "src"
+                            );
+
+                        }
+
+                    },
+                    250
+                );
+
+            }
+
+        }
+
+
+        items.forEach(
+            function (item) {
+
+                item.addEventListener(
+                    "click",
+                    function (event) {
+
+                        event.preventDefault();
+
+
+                        let source =
+                            item.getAttribute(
+                                "data-lightbox"
+                            );
+
+
+                        if (!source) {
+
+                            const thumbnail =
+                                item.querySelector(
+                                    "img"
+                                );
+
+
+                            if (thumbnail) {
+
+                                source =
+                                    thumbnail.getAttribute(
+                                        "src"
+                                    );
+
+                            }
+
+                        }
+
+
+                        if (
+                            !source ||
+                            !image
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        image.src =
+                            source;
+
+
+                        const thumbnail =
+                            item.querySelector(
+                                "img"
+                            );
+
+
+                        image.alt =
+                            thumbnail
+                                ? thumbnail.alt || ""
+                                : "";
+
+
+                        lightbox.classList.add(
+                            "active"
+                        );
+
+
+                        lightbox.setAttribute(
+                            "aria-hidden",
+                            "false"
+                        );
+
+
+                        document.body.style.overflow =
+                            "hidden";
+
+                    }
+                );
+
+            }
+        );
+
+
+        if (close) {
+
+            close.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+                    closeLightbox();
+
+                }
+            );
+
+        }
+
+
+        lightbox.addEventListener(
+            "click",
+            function (event) {
+
+                if (
+                    event.target ===
+                    lightbox
+                ) {
+
+                    closeLightbox();
+
+                }
+
+            }
+        );
+
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key === "Escape" &&
+                    lightbox.classList.contains(
+                        "active"
+                    )
+                ) {
+
+                    closeLightbox();
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       EXTERNAL LINKS
+    ===================================================== */
+
+    function initExternalLinks() {
+
+        document
+            .querySelectorAll(
+                'a[href^="http://"], a[href^="https://"]'
+            )
+            .forEach(
+                function (link) {
+
+                    const href =
+                        link.getAttribute(
+                            "href"
+                        );
+
+
+                    if (!href) {
+                        return;
+                    }
+
+
+                    try {
+
+                        const url =
+                            new URL(
+                                href,
+                                window.location.href
+                            );
+
+
+                        if (
+                            url.hostname !==
+                            window.location.hostname
+                        ) {
+
+                            link.target =
+                                "_blank";
+
+                            link.rel =
+                                "noopener noreferrer";
+
+                        }
+
+                    } catch (error) {}
+
+                }
+            );
+
+    }
+
+
+})();
