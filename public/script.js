@@ -1,663 +1,865 @@
-/* =========================================================
-   NEWITT MEDIA
-   MASTER SCRIPT
-========================================================= */
+<!doctype html>
+<html lang="en-GB">
 
-(function () {
-    "use strict";
+<head>
 
-    /* =====================================================
-       FIRST-VISIT INTRO
-    ===================================================== */
+    <meta charset="utf-8">
 
-    const intro = document.getElementById("site-intro");
-    const introStorageKey = "newittMediaIntroSeen";
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, viewport-fit=cover"
+    >
 
-    function hideIntro() {
-        if (!intro) return;
+    <meta
+        name="theme-color"
+        content="#020305"
+    >
 
-        intro.classList.add("is-hidden");
+    <meta
+        name="description"
+        content="NEWITT Media. Aerial media, photography and paranormal adventures. From above. After dark. And everything in between."
+    >
 
-        window.setTimeout(function () {
-            intro.setAttribute("aria-hidden", "true");
-        }, 900);
+    <meta
+        name="author"
+        content="NEWITT Media"
+    >
+
+    <meta
+        name="robots"
+        content="index, follow, max-image-preview:large"
+    >
+
+    <meta
+        name="referrer"
+        content="strict-origin-when-cross-origin"
+    >
+
+    <meta
+        name="format-detection"
+        content="telephone=no"
+    >
+
+    <link
+        rel="canonical"
+        href="https://www.newittmedia.co.uk/"
+    >
+
+
+    <!-- =====================================================
+         OPEN GRAPH
+    ====================================================== -->
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:url"
+        content="https://www.newittmedia.co.uk/"
+    >
+
+    <meta
+        property="og:title"
+        content="NEWITT Media | From Above. After Dark. And Everything In Between."
+    >
+
+    <meta
+        property="og:description"
+        content="Aerial media, photography and paranormal adventures from NEWITT Media."
+    >
+
+    <meta
+        property="og:image"
+        content="https://www.newittmedia.co.uk/newitt-media-logo.png"
+    >
+
+    <meta
+        property="og:image:alt"
+        content="NEWITT Media logo"
+    >
+
+    <meta
+        property="og:site_name"
+        content="NEWITT Media"
+    >
+
+
+    <!-- =====================================================
+         TWITTER / X
+    ====================================================== -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="NEWITT Media | From Above. After Dark. And Everything In Between."
+    >
+
+    <meta
+        name="twitter:description"
+        content="Aerial media, photography and paranormal adventures from NEWITT Media."
+    >
+
+    <meta
+        name="twitter:image"
+        content="https://www.newittmedia.co.uk/newitt-media-logo.png"
+    >
+
+    <meta
+        name="twitter:image:alt"
+        content="NEWITT Media logo"
+    >
+
+
+    <title>
+        NEWITT Media | From Above. After Dark. And Everything In Between.
+    </title>
+
+
+    <!-- =====================================================
+         STRUCTURED DATA
+    ====================================================== -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "NEWITT Media",
+        "url": "https://www.newittmedia.co.uk/",
+        "logo": "https://www.newittmedia.co.uk/newitt-media-logo.png",
+        "description": "NEWITT Media brings together aerial drone media, photography and paranormal adventures.",
+        "sameAs": [
+            "https://www.tiktok.com/@newittskylinemedia",
+            "https://www.youtube.com/@Newitt-skyline-media",
+            "https://www.tiktok.com/@nw13ttt",
+            "https://www.instagram.com/nw13ttt/",
+            "https://www.youtube.com/@NewittsParanormalAdventures",
+            "https://www.facebook.com/share/1AiSkdbyM4/"
+        ]
     }
+    </script>
 
-    if (intro) {
-        let introSeen = false;
-
-        try {
-            introSeen = sessionStorage.getItem(introStorageKey) === "1";
-        } catch (error) {
-            introSeen = false;
-        }
-
-        if (introSeen) {
-            hideIntro();
-        } else {
-            try {
-                sessionStorage.setItem(introStorageKey, "1");
-            } catch (error) {
-                /* Storage may be unavailable. */
-            }
-
-            window.setTimeout(hideIntro, 3600);
-
-            intro.addEventListener("click", hideIntro);
-        }
-    }
-
-
-    /* =====================================================
-       MOBILE MENU
-    ===================================================== */
-
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navLinks = document.querySelector(".nav-links");
-
-    function closeMenu() {
-        if (!navLinks) return;
-
-        navLinks.classList.remove("open");
-
-        if (menuToggle) {
-            menuToggle.setAttribute("aria-expanded", "false");
-        }
-    }
-
-    function toggleMenu() {
-        if (!navLinks) return;
-
-        const isOpen = navLinks.classList.toggle("open");
-
-        if (menuToggle) {
-            menuToggle.setAttribute(
-                "aria-expanded",
-                isOpen ? "true" : "false"
-            );
-        }
-    }
 
-    if (menuToggle) {
-        menuToggle.addEventListener("click", function (event) {
-            event.preventDefault();
-            event.stopPropagation();
+    <!-- =====================================================
+         MASTER STYLESHEET
+    ====================================================== -->
 
-            toggleMenu();
-        });
-    }
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
-    if (navLinks) {
-        navLinks.querySelectorAll("a").forEach(function (link) {
-            link.addEventListener("click", function () {
-                closeMenu();
-            });
-        });
-    }
+</head>
 
-    document.addEventListener("click", function (event) {
-        if (!navLinks || !menuToggle) return;
 
-        if (
-            !navLinks.contains(event.target) &&
-            !menuToggle.contains(event.target)
-        ) {
-            closeMenu();
-        }
-    });
+<body
+    id="top"
+    class="home-page"
+>
 
-    window.addEventListener("resize", function () {
-        if (window.innerWidth > 800) {
-            closeMenu();
-        }
-    });
 
+<!-- =====================================================
+     CINEMATIC INTRO
+===================================================== -->
 
-    /* =====================================================
-       ESCAPE KEY
-    ===================================================== */
+<div
+    class="site-intro"
+    id="site-intro"
+    aria-hidden="true"
+>
 
-    document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape") {
-            closeMenu();
+    <div
+        class="intro-atmosphere"
+        aria-hidden="true"
+    ></div>
 
-            if (intro) {
-                hideIntro();
-            }
-        }
-    });
+    <div
+        class="intro-light-sweep"
+        aria-hidden="true"
+    ></div>
 
+    <div class="intro-content">
 
-    /* =====================================================
-       BACK TO TOP
-    ===================================================== */
+        <img
+            src="newitt-media-logo.png"
+            alt=""
+            class="intro-logo"
+        >
 
-    const backToTop =
-        document.getElementById("back-to-top") ||
-        document.getElementById("backTop");
+        <div class="intro-name">
+            NEWITT <span>MEDIA</span>
+        </div>
 
-    function updateBackToTop() {
-        if (!backToTop) return;
+        <div class="intro-line"></div>
 
-        if (window.scrollY > 500) {
-            backToTop.classList.add("show");
-        } else {
-            backToTop.classList.remove("show");
-        }
-    }
+        <div class="intro-tagline">
+            FROM ABOVE.
+            AFTER DARK.
+            AND EVERYTHING IN BETWEEN.
+        </div>
 
-    if (backToTop) {
-        backToTop.addEventListener("click", function (event) {
-            event.preventDefault();
+    </div>
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        });
+</div>
 
-        window.addEventListener(
-            "scroll",
-            updateBackToTop,
-            { passive: true }
-        );
 
-        updateBackToTop();
-    }
+<!-- =====================================================
+     SITE HEADER
+===================================================== -->
 
+<header class="site-header">
 
-    /* =====================================================
-       INTERNAL ANCHOR LINKS
-    ===================================================== */
+    <div class="container nav">
 
-    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+        <a
+            href="index.html"
+            class="nav-brand"
+            aria-label="NEWITT Media Home"
+        >
 
-        link.addEventListener("click", function (event) {
+            <img
+                src="newitt-media-logo.png"
+                alt="NEWITT Media logo"
+            >
 
-            const targetId =
-                link.getAttribute("href");
+            <span>
+                NEWITT <strong>MEDIA</strong>
+            </span>
 
-            if (!targetId || targetId === "#") {
-                return;
-            }
+        </a>
 
-            const target =
-                document.querySelector(targetId);
 
-            if (!target) {
-                return;
-            }
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="main-menu"
+            aria-label="Open navigation menu"
+        >
 
-            event.preventDefault();
+            <span></span>
+            <span></span>
+            <span></span>
 
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+        </button>
 
-        });
 
-    });
+        <nav
+            class="nav-links"
+            id="main-menu"
+            aria-label="Main navigation"
+        >
 
+            <a
+                href="index.html"
+                class="active"
+                aria-current="page"
+            >
+                Home
+            </a>
 
-    /* =====================================================
-       EXTERNAL LINKS
-    ===================================================== */
+            <a href="skyline.html">
+                Skyline
+            </a>
 
-    document.querySelectorAll("a[href]").forEach(function (link) {
+            <a href="paranormal.html">
+                Paranormal
+            </a>
 
-        const href = link.getAttribute("href");
+            <a href="photography.html">
+                Photography
+            </a>
 
-        if (!href) return;
+            <a href="contact.html">
+                Contact
+            </a>
 
-        const isExternal =
-            /^https?:\/\//i.test(href);
+        </nav>
 
-        if (isExternal) {
-            link.setAttribute("target", "_blank");
-            link.setAttribute("rel", "noopener noreferrer");
-        }
+    </div>
 
-    });
+</header>
 
-})();
-/* =========================================================
-   LIGHTBOX
-========================================================= */
 
-(function () {
-    "use strict";
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
 
-    const lightbox =
-        document.getElementById("lightbox");
+<main>
 
-    if (!lightbox) return;
 
-    const lightboxImage =
-        lightbox.querySelector("img");
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-    const lightboxClose =
-        lightbox.querySelector(".lightbox-close");
+<section class="hero home-hero">
 
-    const lightboxCaption =
-        lightbox.querySelector(".lightbox-caption");
+    <div
+        class="hero-atmosphere"
+        aria-hidden="true"
+    ></div>
 
+    <div class="container hero-content">
 
-    function openLightbox(image) {
+        <div class="hero-logo-wrap">
 
-        if (!lightboxImage) return;
+            <img
+                src="newitt-media-logo.png"
+                alt="NEWITT Media"
+                class="hero-logo"
+            >
 
-        const source =
-            image.getAttribute("data-lightbox") ||
-            image.getAttribute("src");
+        </div>
 
-        if (!source) return;
 
-        lightboxImage.src = source;
+        <div class="eyebrow">
+            NEWITT Media
+        </div>
 
-        const alt =
-            image.getAttribute("alt") || "";
 
-        lightboxImage.alt = alt;
+        <h1>
+            FROM ABOVE.
+            <span>AFTER DARK.</span>
+        </h1>
 
-        if (lightboxCaption) {
-            lightboxCaption.textContent = alt;
-        }
 
-        lightbox.classList.add("open");
+        <div class="hero-rule"></div>
 
-        lightbox.setAttribute(
-            "aria-hidden",
-            "false"
-        );
 
-        document.body.classList.add(
-            "lightbox-open"
-        );
-    }
+        <p class="hero-tagline">
+            AND EVERYTHING IN BETWEEN.
+        </p>
 
 
-    function closeLightbox() {
+        <p class="hero-introduction">
+            Aerial media.
+            Photography.
+            Paranormal adventures.
+            One NEWITT identity.
+        </p>
 
-        lightbox.classList.remove("open");
 
-        lightbox.setAttribute(
-            "aria-hidden",
-            "true"
-        );
+        <div class="hero-actions">
 
-        document.body.classList.remove(
-            "lightbox-open"
-        );
+            <a
+                href="#social"
+                class="button primary"
+            >
+                Explore NEWITT Media
+            </a>
 
-        if (lightboxImage) {
-            lightboxImage.src = "";
-        }
-    }
+            <a
+                href="contact.html"
+                class="button secondary"
+            >
+                Get in Touch
+            </a>
 
+        </div>
 
-    document
-        .querySelectorAll("[data-lightbox]")
-        .forEach(function (image) {
+    </div>
 
-            image.addEventListener(
-                "click",
-                function (event) {
+</section>
 
-                    event.preventDefault();
 
-                    openLightbox(image);
-                }
-            );
+<!-- =====================================================
+     NEWITT MEDIA INTRODUCTION
+     THREE CREATIVE WORLDS. ONE IDENTITY.
+===================================================== -->
 
-            image.setAttribute(
-                "tabindex",
-                "0"
-            );
+<section
+    class="newitt-media-intro"
+    aria-labelledby="newitt-media-intro-title"
+>
 
-            image.addEventListener(
-                "keydown",
-                function (event) {
+    <div
+        class="newitt-media-intro-glow"
+        aria-hidden="true"
+    ></div>
 
-                    if (
-                        event.key === "Enter" ||
-                        event.key === " "
-                    ) {
+    <div class="container">
 
-                        event.preventDefault();
+        <div class="newitt-media-intro-heading">
 
-                        openLightbox(image);
-                    }
-                }
-            );
-        });
+            <div class="eyebrow">
+                WELCOME TO
+            </div>
 
+            <h2 id="newitt-media-intro-title">
+                NEWITT <span>MEDIA</span>
+            </h2>
 
-    if (lightboxClose) {
+            <div class="hero-rule"></div>
 
-        lightboxClose.addEventListener(
-            "click",
-            function (event) {
+            <p class="newitt-media-intro-main">
+                Three creative worlds brought together
+                under one NEWITT Media identity.
+            </p>
 
-                event.preventDefault();
+        </div>
 
-                closeLightbox();
-            }
-        );
-    }
 
+        <div class="newitt-media-intro-worlds">
 
-    lightbox.addEventListener(
-        "click",
-        function (event) {
 
-            if (
-                event.target === lightbox
-            ) {
-                closeLightbox();
-            }
-        }
-    );
+            <!-- =================================================
+                 SKYLINE
+            ================================================== -->
 
+            <a
+                href="skyline.html"
+                class="newitt-intro-world newitt-intro-skyline"
+                aria-label="Explore NEWITT Skyline Media"
+            >
 
-    document.addEventListener(
-        "keydown",
-        function (event) {
+                <div class="newitt-intro-logo-wrap">
 
-            if (
-                event.key === "Escape" &&
-                lightbox.classList.contains("open")
-            ) {
-                closeLightbox();
-            }
-        }
-    );
+                    <img
+                        src="sky-logo.png"
+                        alt="NEWITT Skyline Media"
+                        class="newitt-intro-logo"
+                    >
 
-})();
+                </div>
 
+                <div class="newitt-intro-text">
 
-/* =========================================================
-   IMAGE ERROR HANDLING
-========================================================= */
+                    <h3>
+                        NEWITT SKYLINE MEDIA
+                    </h3>
 
-(function () {
-    "use strict";
+                    <p>
+                        Drone &amp; aerial media capturing
+                        landscapes, locations, events and
+                        experiences from a completely
+                        different perspective. Exploring
+                        the world from above and bringing
+                        those views to life.
+                    </p>
 
-    document
-        .querySelectorAll("img")
-        .forEach(function (image) {
+                </div>
 
-            image.addEventListener(
-                "error",
-                function () {
+            </a>
 
-                    image.classList.add(
-                        "image-error"
-                    );
 
-                }
-            );
+            <!-- =================================================
+                 PARANORMAL
+            ================================================== -->
 
-        });
+            <a
+                href="paranormal.html"
+                class="newitt-intro-world newitt-intro-paranormal"
+                aria-label="Explore NEWITT's Paranormal Adventures"
+            >
 
-})();
+                <div class="newitt-intro-logo-wrap">
 
+                    <img
+                        src="paranormal-logo.png"
+                        alt="NEWITT's Paranormal Adventures"
+                        class="newitt-intro-logo"
+                    >
 
-/* =========================================================
-   CURRENT PAGE NAVIGATION
-========================================================= */
+                </div>
 
-(function () {
-    "use strict";
+                <div class="newitt-intro-text">
 
-    const currentPath =
-        window.location.pathname
-            .split("/")
-            .pop()
-            .toLowerCase();
+                    <h3>
+                        NEWITT'S PARANORMAL ADVENTURES
+                    </h3>
 
-    const links =
-        document.querySelectorAll(
-            ".nav-links a"
-        );
+                    <p>
+                        Paranormal investigations exploring
+                        historic locations, haunted places
+                        and unexplained encounters.
+                        Documenting the journey and the
+                        experiences found along the way.
+                    </p>
 
-    links.forEach(function (link) {
+                </div>
 
-        const href =
-            link.getAttribute("href");
+            </a>
 
-        if (!href) return;
 
-        const linkPath =
-            href
-                .split("/")
-                .pop()
-                .split("#")[0]
-                .toLowerCase();
+            <!-- =================================================
+                 PHOTOGRAPHY
+            ================================================== -->
 
-        if (
-            linkPath &&
-            linkPath === currentPath
-        ) {
+            <a
+                href="photography.html"
+                class="newitt-intro-world newitt-intro-photography"
+                aria-label="Explore NEWITT Media Photography"
+            >
 
-            link.classList.add("active");
+                <div class="newitt-intro-logo-wrap">
 
-        }
+                    <img
+                        src="newitt-media-logo.png"
+                        alt="NEWITT Media Photography"
+                        class="newitt-intro-logo"
+                    >
 
-    });
+                </div>
 
-})();
+                <div class="newitt-intro-text">
 
+                    <h3>
+                        NEWITT MEDIA PHOTOGRAPHY
+                    </h3>
 
-/* =========================================================
-   PAGE VISIBILITY
-========================================================= */
+                    <p>
+                        Photography capturing people,
+                        places, landscapes and adventures.
+                        Creating a visual record of the
+                        moments and experiences that make
+                        up the wider NEWITT Media story.
+                    </p>
 
-(function () {
-    "use strict";
+                </div>
 
-    document.addEventListener(
-        "visibilitychange",
-        function () {
+            </a>
 
-            if (
-                document.visibilityState ===
-                "hidden"
-            ) {
-                return;
-            }
 
-        }
-    );
+        </div>
 
-})();
 
+        <div class="newitt-media-intro-closing">
 
-/* =========================================================
-   PREVENT ACCIDENTAL DRAGGING OF LOGOS
-========================================================= */
+            <p>
+                Different perspectives.
+                <strong>One NEWITT Media.</strong>
+            </p>
 
-(function () {
-    "use strict";
+            <span>
+                FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
+            </span>
 
-    document
-        .querySelectorAll(
-            ".nav-brand img, .intro-logo, .hero-logo"
-        )
-        .forEach(function (image) {
+        </div>
 
-            image.addEventListener(
-                "dragstart",
-                function (event) {
-                    event.preventDefault();
-                }
-            );
+    </div>
 
-        });
+</section>
 
-})();
-/* =========================================================
-   FINAL INITIALISATION
-========================================================= */
 
-(function () {
-    "use strict";
+<!-- =====================================================
+     MASTER CINEMATIC SOCIAL ANIMATION
 
-    /*
-     * Keep the page stable while assets load.
-     * No page-to-page interception or animated transitions.
-     */
+     THE SOCIAL BUTTONS ARE PART OF THE ARTWORK.
 
-    if (document.readyState === "loading") {
+     TRANSPARENT CLICK ZONES ARE PLACED OVER THE
+     EXISTING VISIBLE BUTTONS.
 
-        document.addEventListener(
-            "DOMContentLoaded",
-            function () {
-                document.documentElement.classList.add(
-                    "newitt-ready"
-                );
-            },
-            { once: true }
-        );
+     NOTHING VISUAL IS ADDED TO THE ANIMATION.
+===================================================== -->
 
-    } else {
+<section
+    class="social-hub"
+    id="social"
+    aria-label="NEWITT Media cinematic social media animation"
+>
 
-        document.documentElement.classList.add(
-            "newitt-ready"
-        );
+    <div
+        class="social-master-frame"
+        style="position:relative;"
+    >
 
-    }
+        <iframe
+            class="social-master-animation"
+            src="NEWITT_ANIMATED_SOCIAL_SECTION_BANNER_BUTTONS.html"
+            title="NEWITT Media cinematic social media animation"
+            loading="eager"
+            scrolling="no"
+            frameborder="0"
+            allowtransparency="true"
+        ></iframe>
 
-})();
 
+        <!-- =================================================
+             INVISIBLE SOCIAL CLICK ZONES
 
-/* =========================================================
-   SOCIAL LINKS
-========================================================= */
+             EDIT ONLY THE HREFS BELOW IF A SOCIAL ACCOUNT
+             EVER CHANGES.
+        ================================================== -->
 
-(function () {
-    "use strict";
+        <div
+            aria-label="NEWITT Media social media links"
+            style="
+                position:absolute;
+                inset:0;
+                z-index:20;
+                pointer-events:none;
+            "
+        >
 
-    document
-        .querySelectorAll(
-            ".social-button, .social-link"
-        )
-        .forEach(function (link) {
+            <!-- SKYLINE TIKTOK -->
 
-            link.addEventListener(
-                "click",
-                function () {
+            <a
+                href="https://www.tiktok.com/@newittskylinemedia"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="NEWITT Skyline Media TikTok"
+                style="
+                    position:absolute;
+                    left:7.7%;
+                    top:70.3%;
+                    width:14.7%;
+                    height:8%;
+                    display:block;
+                    pointer-events:auto;
+                    background:transparent;
+                    cursor:pointer;
+                "
+            ></a>
 
-                    const href =
-                        link.getAttribute("href");
 
-                    if (!href) {
-                        return;
-                    }
+            <!-- SKYLINE YOUTUBE -->
 
-                    /*
-                     * Social links remain normal links.
-                     * No iframe loading and no page interception.
-                     */
+            <a
+                href="https://www.youtube.com/@Newitt-skyline-media"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="NEWITT Skyline Media YouTube"
+                style="
+                    position:absolute;
+                    left:25.1%;
+                    top:70.3%;
+                    width:16.6%;
+                    height:8%;
+                    display:block;
+                    pointer-events:auto;
+                    background:transparent;
+                    cursor:pointer;
+                "
+            ></a>
 
-                }
-            );
 
-        });
+            <!-- PARANORMAL TIKTOK -->
 
-})();
+            <a
+                href="https://www.tiktok.com/@nw13ttt"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="NEWITT's Paranormal Adventures TikTok"
+                style="
+                    position:absolute;
+                    left:47.9%;
+                    top:70.3%;
+                    width:10.4%;
+                    height:8%;
+                    display:block;
+                    pointer-events:auto;
+                    background:transparent;
+                    cursor:pointer;
+                "
+            ></a>
 
 
-/* =========================================================
-   MOBILE MENU ACCESSIBILITY
-========================================================= */
+            <!-- PARANORMAL YOUTUBE -->
 
-(function () {
-    "use strict";
+            <a
+                href="https://www.youtube.com/@NewittsParanormalAdventures"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="NEWITT's Paranormal Adventures YouTube"
+                style="
+                    position:absolute;
+                    left:58.9%;
+                    top:70.3%;
+                    width:11.1%;
+                    height:8%;
+                    display:block;
+                    pointer-events:auto;
+                    background:transparent;
+                    cursor:pointer;
+                "
+            ></a>
 
-    const button =
-        document.querySelector(".menu-toggle");
 
-    const menu =
-        document.querySelector(".nav-links");
+            <!-- PARANORMAL INSTAGRAM -->
 
-    if (!button || !menu) {
-        return;
-    }
+            <a
+                href="https://www.instagram.com/nw13ttt/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="NEWITT's Paranormal Adventures Instagram"
+                style="
+                    position:absolute;
+                    left:70.4%;
+                    top:70.3%;
+                    width:11.5%;
+                    height:8%;
+                    display:block;
+                    pointer-events:auto;
+                    background:transparent;
+                    cursor:pointer;
+                "
+            ></a>
 
-    if (!button.hasAttribute("aria-expanded")) {
-        button.setAttribute(
-            "aria-expanded",
-            "false"
-        );
-    }
 
-    if (!button.hasAttribute("aria-controls")) {
-        const menuId =
-            menu.id || "main-navigation";
+            <!-- PARANORMAL FACEBOOK -->
 
-        menu.id = menuId;
+            <a
+                href="https://www.facebook.com/share/1AiSkdbyM4/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="NEWITT's Paranormal Adventures Facebook"
+                style="
+                    position:absolute;
+                    left:82.1%;
+                    top:70.3%;
+                    width:12.3%;
+                    height:8%;
+                    display:block;
+                    pointer-events:auto;
+                    background:transparent;
+                    cursor:pointer;
+                "
+            ></a>
 
-        button.setAttribute(
-            "aria-controls",
-            menuId
-        );
-    }
+        </div>
 
-})();
+    </div>
 
+</section>
 
-/* =========================================================
-   INTRO ACCESSIBILITY
-========================================================= */
 
-(function () {
-    "use strict";
+<!-- =====================================================
+     FINAL CALL TO ACTION
+===================================================== -->
 
-    const intro =
-        document.getElementById("site-intro");
+<section class="home-cta">
 
-    if (!intro) {
-        return;
-    }
+    <div class="container">
 
-    intro.setAttribute(
-        "role",
-        "dialog"
-    );
+        <div class="cta-panel">
 
-    intro.setAttribute(
-        "aria-label",
-        "NEWITT Media introduction"
-    );
+            <div class="eyebrow">
+                NEWITT Media
+            </div>
 
-})();
 
+            <h2>
+                Ready to
+                <span>explore?</span>
+            </h2>
 
-/* =========================================================
-   LIGHTBOX ACCESSIBILITY
-========================================================= */
 
-(function () {
-    "use strict";
+            <p>
+                Choose your world or get in touch with NEWITT Media.
+            </p>
 
-    const lightbox =
-        document.getElementById("lightbox");
 
-    if (!lightbox) {
-        return;
-    }
+            <div class="hero-actions">
 
-    if (!lightbox.hasAttribute("aria-hidden")) {
-        lightbox.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-    }
+                <a
+                    href="contact.html"
+                    class="button primary"
+                >
+                    Get in Touch
+                </a>
 
-})();
 
+                <a
+                    href="skyline.html"
+                    class="button secondary"
+                >
+                    Explore Skyline
+                </a>
 
-/* =========================================================
-   END OF MASTER SCRIPT
-========================================================= */
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =====================================================
+     BACK TO TOP
+===================================================== -->
+
+<a
+    href="#top"
+    class="back-to-top"
+    id="back-to-top"
+    aria-label="Back to top"
+>
+    ↑
+</a>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="site-footer">
+
+    <div class="container">
+
+
+        <img
+            src="newitt-media-logo.png"
+            alt="NEWITT Media"
+            class="footer-logo"
+        >
+
+
+        <p class="footer-brand">
+            NEWITT MEDIA
+        </p>
+
+
+        <p class="footer-tagline">
+            FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
+        </p>
+
+
+        <p class="copyright">
+
+            © 2026 NEWITT Media. All Rights Reserved.
+
+            <br>
+
+            NEWITT Media •
+            NEWITT Skyline Media •
+            NEWITT's Paranormal Adventures •
+            NEWITT Media Photography
+
+        </p>
+
+
+        <p class="website-address">
+
+            <a href="https://newittmedia.co.uk/">
+                newittmedia.co.uk
+            </a>
+
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================================
+     MASTER JAVASCRIPT
+===================================================== -->
+
+<script
+    src="script.js"
+    defer
+></script>
+
+
+</body>
+
+</html>
