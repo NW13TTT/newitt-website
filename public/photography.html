@@ -258,7 +258,8 @@
             justify-content: center;
 
             padding: 40px 24px;
-                        border:
+
+            border:
                 1px solid
                 rgba(120, 213, 138, 0.18);
 
@@ -517,7 +518,20 @@
             .photography-statement p {
                 font-size: 0.92rem;
             }
-                    }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .photography-gallery-placeholder {
+                min-height: 215px;
+
+                padding:
+                    28px 15px;
+            }
+
+        }
 
     </style>
 
@@ -764,7 +778,7 @@
                 <div
                     class="photography-focus-icon"
                     aria-hidden="true"
-                                    >
+                >
                     ◈
                 </div>
 
@@ -996,7 +1010,7 @@
 
 <!-- =====================================================
      PHOTOGRAPHY LIGHTBOX
-     
+
      Ready for future portfolio photographs.
 ===================================================== -->
 
@@ -1023,3 +1037,172 @@
     >
 
 </div>
+
+
+<!-- =====================================================
+     MASTER JAVASCRIPT
+===================================================== -->
+
+<script
+    src="script.js"
+    defer
+></script>
+
+
+<!-- =====================================================
+     PHOTOGRAPHY LIGHTBOX JAVASCRIPT
+===================================================== -->
+
+<script>
+
+(function () {
+
+    const galleryItems =
+        document.querySelectorAll(
+            ".photography-gallery-item"
+        );
+
+    const lightbox =
+        document.getElementById(
+            "photography-lightbox"
+        );
+
+    const lightboxImage =
+        document.getElementById(
+            "photography-lightbox-image"
+        );
+
+    const closeButton =
+        document.getElementById(
+            "photography-lightbox-close"
+        );
+
+
+    /*
+     * The gallery is intentionally empty at present.
+     *
+     * This script safely does nothing until photographs
+     * are added to the gallery.
+     */
+
+    if (
+        !galleryItems.length ||
+        !lightbox ||
+        !lightboxImage ||
+        !closeButton
+    ) {
+        return;
+    }
+
+
+    function openLightbox(item) {
+
+        const image =
+            item.getAttribute(
+                "data-full-image"
+            );
+
+        const thumbnail =
+            item.querySelector("img");
+
+        if (!image) {
+            return;
+        }
+
+        lightboxImage.src = image;
+
+        lightboxImage.alt =
+            thumbnail
+                ? thumbnail.alt
+                : "NEWITT Media Photography image";
+
+        lightbox.classList.add(
+            "active"
+        );
+
+        lightbox.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+        document.body.style.overflow =
+            "hidden";
+
+    }
+
+
+    function closeLightbox() {
+
+        lightbox.classList.remove(
+            "active"
+        );
+
+        lightbox.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        lightboxImage.src = "";
+
+        document.body.style.overflow =
+            "";
+
+    }
+
+
+    galleryItems.forEach(function (item) {
+
+        item.addEventListener(
+            "click",
+            function () {
+
+                openLightbox(item);
+
+            }
+        );
+
+    });
+
+
+    closeButton.addEventListener(
+        "click",
+        closeLightbox
+    );
+
+
+    lightbox.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                event.target === lightbox
+            ) {
+                closeLightbox();
+            }
+
+        }
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape" &&
+                lightbox.classList.contains("active")
+            ) {
+                closeLightbox();
+            }
+
+        }
+    );
+
+})();
+
+</script>
+
+
+</body>
+
+</html>
