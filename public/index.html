@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="en-GB">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
 
@@ -7,17 +7,17 @@
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1, viewport-fit=cover"
+        content="width=device-width, initial-scale=1"
     >
 
     <meta
         name="theme-color"
-        content="#020305"
+        content="#030508"
     >
 
     <meta
         name="description"
-        content="NEWITT Media. Aerial media, photography and paranormal adventures. From above. After dark. And everything in between."
+        content="NEWITT Media - aerial media, photography and paranormal adventures."
     >
 
     <meta
@@ -35,10 +35,17 @@
         content="strict-origin-when-cross-origin"
     >
 
+    <meta
+        name="format-detection"
+        content="telephone=no"
+    >
+
     <link
         rel="canonical"
-        href="https://www.newittmedia.co.uk/"
+        href="https://newittmedia.co.uk/"
     >
+
+    <!-- OPEN GRAPH -->
 
     <meta
         property="og:type"
@@ -47,7 +54,7 @@
 
     <meta
         property="og:url"
-        content="https://www.newittmedia.co.uk/"
+        content="https://newittmedia.co.uk/"
     >
 
     <meta
@@ -62,7 +69,7 @@
 
     <meta
         property="og:image"
-        content="https://www.newittmedia.co.uk/newitt-media-logo.png"
+        content="https://newittmedia.co.uk/newitt-media-logo.png"
     >
 
     <meta
@@ -74,6 +81,8 @@
         property="og:site_name"
         content="NEWITT Media"
     >
+
+    <!-- TWITTER / X -->
 
     <meta
         name="twitter:card"
@@ -92,25 +101,27 @@
 
     <meta
         name="twitter:image"
-        content="https://www.newittmedia.co.uk/newitt-media-logo.png"
+        content="https://newittmedia.co.uk/newitt-media-logo.png"
+    >
+
+    <meta
+        name="twitter:image:alt"
+        content="NEWITT Media logo"
     >
 
     <title>
         NEWITT Media | From Above. After Dark. And Everything In Between.
     </title>
 
-
-    <!-- =====================================================
-         STRUCTURED DATA
-    ====================================================== -->
+    <!-- STRUCTURED DATA -->
 
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "NEWITT Media",
-        "url": "https://www.newittmedia.co.uk/",
-        "logo": "https://www.newittmedia.co.uk/newitt-media-logo.png",
+        "url": "https://newittmedia.co.uk/",
+        "logo": "https://newittmedia.co.uk/newitt-media-logo.png",
         "description": "NEWITT Media brings together aerial drone media, photography and paranormal adventures.",
         "sameAs": [
             "https://www.tiktok.com/@newittskylinemedia",
@@ -123,33 +134,81 @@
     }
     </script>
 
-
-    <!-- =====================================================
-         MASTER STYLESHEET
-    ====================================================== -->
+    <link
+        rel="preload"
+        href="style.css"
+        as="style"
+    >
 
     <link
         rel="stylesheet"
         href="style.css"
     >
 
+    <style>
+
+        .hero-card {
+            width: min(1000px, 100%);
+            margin: 0 auto;
+            padding: 54px 36px;
+            border: none;
+            border-radius: 0;
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            box-shadow: none;
+        }
+
+        .hero-logo {
+            filter:
+                drop-shadow(0 0 18px rgba(89,185,255,.22))
+                drop-shadow(0 12px 28px rgba(0,0,0,.55));
+        }
+
+        .hero-card h1,
+        .hero-card p,
+        .hero-card .eyebrow {
+            text-shadow:
+                0 2px 10px rgba(0,0,0,.75);
+        }
+
+        .hero {
+            position: relative;
+            background: transparent;
+        }
+
+        @media (max-width: 800px) {
+
+            .hero-card {
+                padding: 50px 20px 45px;
+            }
+
+        }
+
+        @media (max-width: 480px) {
+
+            .hero-card {
+                padding: 45px 15px 40px;
+            }
+
+        }
+
+    </style>
+
 </head>
 
 
-<body
-    id="top"
-    class="home-page"
->
+<body id="top">
 
 
-<!-- =====================================================
-     CINEMATIC INTRO
-===================================================== -->
+<!-- =========================================================
+     CINEMATIC FIRST-VISIT INTRO
+========================================================= -->
 
 <div
     class="site-intro"
     id="site-intro"
-    aria-hidden="true"
+    aria-hidden="false"
 >
 
     <div
@@ -177,13 +236,7 @@
         <div class="intro-line"></div>
 
         <div class="intro-tagline">
-            FROM ABOVE.
-            AFTER DARK.
-            AND EVERYTHING IN BETWEEN.
-        </div>
-
-        <div class="intro-skip">
-            ENTER NEWITT MEDIA
+            FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
         </div>
 
     </div>
@@ -191,9 +244,9 @@
 </div>
 
 
-<!-- =====================================================
+<!-- =========================================================
      HEADER
-===================================================== -->
+========================================================= -->
 
 <header class="site-header">
 
@@ -207,12 +260,12 @@
 
             <img
                 src="newitt-media-logo.png"
-                alt="NEWITT Media"
+                alt="NEWITT Media logo"
             >
 
-            <span>
-                NEWITT <strong>MEDIA</strong>
-            </span>
+            <strong>
+                NEWITT <span>MEDIA</span>
+            </strong>
 
         </a>
 
@@ -222,13 +275,8 @@
             type="button"
             aria-expanded="false"
             aria-controls="main-menu"
-            aria-label="Open navigation menu"
         >
-
-            <span></span>
-            <span></span>
-            <span></span>
-
+            MENU
         </button>
 
 
@@ -241,7 +289,6 @@
             <a
                 href="index.html"
                 class="active"
-                aria-current="page"
             >
                 Home
             </a>
@@ -269,268 +316,195 @@
 </header>
 
 
-<!-- =====================================================
-     MAIN
-===================================================== -->
-
 <main>
 
 
-<!-- =====================================================
-     HERO
-===================================================== -->
+<!-- =========================================================
+     ACCESSIBLE / SEMANTIC HOME CONTENT
+========================================================= -->
 
-<section class="hero home-hero">
+<div
+    class="container"
+    aria-hidden="true"
+>
 
-    <div
-        class="hero-atmosphere"
-        aria-hidden="true"
-    ></div>
+    <span
+        style="
+            position:absolute;
+            width:1px;
+            height:1px;
+            padding:0;
+            margin:-1px;
+            overflow:hidden;
+            clip:rect(0,0,0,0);
+            white-space:nowrap;
+            border:0;
+        "
+    >
+        NEWITT Media provides aerial drone media through
+        NEWITT Skyline Media, paranormal investigations through
+        NEWITT's Paranormal Adventures, and photography through
+        NEWITT Media Photography.
+    </span>
 
-    <div class="container hero-content">
+</div>
 
-        <div class="hero-logo-wrap">
 
-            <img
-                src="newitt-media-logo.png"
-                alt="NEWITT Media"
-                class="hero-logo"
-            >
+<!-- =========================================================
+     MAIN HERO
+========================================================= -->
 
-        </div>
+<section class="hero">
+
+    <div class="hero-card">
+
+        <img
+            src="newitt-media-logo.png"
+            alt="NEWITT Media logo"
+            class="hero-logo"
+        >
 
         <div class="eyebrow">
-            NEWITT MEDIA
+            NEWITT Media
         </div>
 
         <h1>
-            FROM ABOVE.
-            <span>AFTER DARK.</span>
+            NEWITT
+            <span>MEDIA</span>
         </h1>
 
-        <div class="hero-rule"></div>
-
         <p class="hero-tagline">
-            AND EVERYTHING IN BETWEEN.
+            FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
         </p>
 
-        <p class="hero-introduction">
-            Aerial media.
-            Photography.
-            Paranormal adventures.
-            One NEWITT identity.
+        <p>
+            One name. Three different worlds.
+            Aerial views from above, photography from wherever
+            the camera happens to be, and paranormal investigations
+            when sensible people have already gone home.
         </p>
-
-        <div class="hero-actions">
-
-            <a
-                href="#worlds"
-                class="button primary"
-            >
-                Explore NEWITT Media
-            </a>
-
-            <a
-                href="contact.html"
-                class="button secondary"
-            >
-                Get in Touch
-            </a>
-
-        </div>
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
+<!-- =========================================================
      THREE WORLDS
-===================================================== -->
+========================================================= -->
 
-<section
-    class="newitt-media-intro"
-    id="worlds"
-    aria-labelledby="worlds-title"
->
-
-    <div
-        class="newitt-media-intro-glow"
-        aria-hidden="true"
-    ></div>
+<section>
 
     <div class="container">
 
-        <div class="newitt-media-intro-heading">
+        <div class="section-heading">
 
             <div class="eyebrow">
-                WELCOME TO
+                Three sides of the same brand
             </div>
 
-            <h2 id="worlds-title">
-                NEWITT <span>MEDIA</span>
+            <h2>
+                Pick your
+                <span>adventure.</span>
             </h2>
 
-            <div class="hero-rule"></div>
-
-            <p class="newitt-media-intro-main">
-                Three creative worlds brought together
-                under one NEWITT Media identity.
-            </p>
-
-        </div>
-
-
-        <div class="newitt-media-intro-worlds">
-
-
-            <!-- =================================================
-                 SKYLINE
-            ================================================== -->
-
-            <a
-                href="skyline.html"
-                class="newitt-intro-world newitt-intro-skyline"
-            >
-
-                <div class="newitt-intro-logo-wrap">
-
-                    <img
-                        src="sky-logo.png"
-                        alt="NEWITT Skyline Media"
-                        class="newitt-intro-logo"
-                    >
-
-                </div>
-
-                <div class="newitt-intro-text">
-
-                    <div class="eyebrow">
-                        FROM ABOVE
-                    </div>
-
-                    <h3>
-                        NEWITT SKYLINE MEDIA
-                    </h3>
-
-                    <p>
-                        Drone and aerial media capturing
-                        landscapes, locations, events and
-                        experiences from a completely
-                        different perspective.
-                    </p>
-
-                    <span class="world-link">
-                        EXPLORE SKYLINE
-                    </span>
-
-                </div>
-
-            </a>
-
-
-            <!-- =================================================
-                 PARANORMAL
-            ================================================== -->
-
-            <a
-                href="paranormal.html"
-                class="newitt-intro-world newitt-intro-paranormal"
-            >
-
-                <div class="newitt-intro-logo-wrap">
-
-                    <img
-                        src="paranormal-logo.png"
-                        alt="NEWITT's Paranormal Adventures"
-                        class="newitt-intro-logo"
-                    >
-
-                </div>
-
-                <div class="newitt-intro-text">
-
-                    <div class="eyebrow">
-                        AFTER DARK
-                    </div>
-
-                    <h3>
-                        NEWITT'S PARANORMAL ADVENTURES
-                    </h3>
-
-                    <p>
-                        Paranormal investigations exploring
-                        historic locations, haunted places
-                        and unexplained encounters.
-                    </p>
-
-                    <span class="world-link">
-                        ENTER THE UNKNOWN
-                    </span>
-
-                </div>
-
-            </a>
-
-
-            <!-- =================================================
-                 PHOTOGRAPHY
-            ================================================== -->
-
-            <a
-                href="photography.html"
-                class="newitt-intro-world newitt-intro-photography"
-            >
-
-                <div class="newitt-intro-logo-wrap">
-
-                    <img
-                        src="newitt-media-logo.png"
-                        alt="NEWITT Media Photography"
-                        class="newitt-intro-logo"
-                    >
-
-                </div>
-
-                <div class="newitt-intro-text">
-
-                    <div class="eyebrow">
-                        EVERYTHING IN BETWEEN
-                    </div>
-
-                    <h3>
-                        NEWITT MEDIA PHOTOGRAPHY
-                    </h3>
-
-                    <p>
-                        Photography capturing people,
-                        places, landscapes and adventures,
-                        creating a visual record of the
-                        wider NEWITT Media story.
-                    </p>
-
-                    <span class="world-link">
-                        VIEW PHOTOGRAPHY
-                    </span>
-
-                </div>
-
-            </a>
-
-
-        </div>
-
-
-        <div class="newitt-media-intro-closing">
-
             <p>
-                Different perspectives.
-                <strong>One NEWITT Media.</strong>
+                Professional aerial media, paranormal investigation
+                and photography under one distinctive NEWITT identity.
             </p>
 
-            <span>
-                FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
-            </span>
+        </div>
+
+
+        <div class="brand-grid">
+
+
+            <!-- SKYLINE -->
+
+            <article class="brand-card">
+
+                <img
+                    class="brand-logo"
+                    src="sky-logo.png"
+                    alt="NEWITT Skyline Media logo"
+                >
+
+                <h3>
+                    NEWITT Skyline Media
+                </h3>
+
+                <p>
+                    Drone video, aerial photography and cinematic
+                    views from above.
+                </p>
+
+                <a
+                    class="button primary"
+                    href="skyline.html"
+                >
+                    Visit Skyline
+                </a>
+
+            </article>
+
+
+            <!-- PARANORMAL -->
+
+            <article class="brand-card">
+
+                <img
+                    class="brand-logo"
+                    src="paranormal-logo.png"
+                    alt="NEWITT's Paranormal Adventures logo"
+                >
+
+                <h3>
+                    NEWITT's Paranormal Adventures
+                </h3>
+
+                <p>
+                    Paranormal investigations, haunted locations
+                    and unexplained experiences.
+                </p>
+
+                <a
+                    class="button primary"
+                    href="paranormal.html"
+                >
+                    Visit Paranormal
+                </a>
+
+            </article>
+
+
+            <!-- PHOTOGRAPHY -->
+
+            <article class="brand-card">
+
+                <img
+                    class="brand-logo"
+                    src="newitt-media-logo.png"
+                    alt="NEWITT Media Photography"
+                >
+
+                <h3>
+                    NEWITT Media Photography
+                </h3>
+
+                <p>
+                    People, places and moments captured properly,
+                    wherever the camera takes us.
+                </p>
+
+                <a
+                    class="button primary"
+                    href="photography.html"
+                >
+                    Visit Photography
+                </a>
+
+            </article>
+
 
         </div>
 
@@ -539,41 +513,326 @@
 </section>
 
 
-<!-- =====================================================
-     CINEMATIC SOCIAL MEDIA MASTER
-===================================================== -->
+<!-- =========================================================
+     SOCIAL HUB
+     
+     IMPORTANT:
+     This is a normal Home section.
+     It does NOT load the old giant cinematic
+     social HTML file or an iframe.
+========================================================= -->
 
 <section
     class="social-hub"
     id="social"
-    aria-label="NEWITT Media social media"
 >
 
-    <div class="container">
+    <div
+        class="social-hub-art"
+        aria-hidden="true"
+    ></div>
 
-        <div class="social-heading">
+    <div
+        class="social-hub-shade"
+        aria-hidden="true"
+    ></div>
 
-            <div class="eyebrow">
-                CONNECT WITH NEWITT MEDIA
-            </div>
 
-            <h2>
-                FOLLOW US <span>ON SOCIAL MEDIA</span>
-            </h2>
+    <div class="container social-hub-content">
+
+
+        <div class="social-brand-grid">
+
+
+            <!-- =================================================
+                 SKYLINE SOCIAL
+            ================================================== -->
+
+            <article class="social-brand skyline-social">
+
+                <div class="social-brand-inner">
+
+
+                    <div class="social-logo-wrap">
+
+                        <img
+                            src="sky-logo.png"
+                            alt="NEWITT Skyline Media logo"
+                        >
+
+                    </div>
+
+
+                    <div class="social-brand-content">
+
+                        <div class="social-brand-name blue-text">
+                            NEWITT
+                        </div>
+
+                        <h3>
+                            SKYLINE MEDIA
+                        </h3>
+
+                        <p>
+                            DRONE VIDEO
+                            <span>•</span>
+                            AERIAL CONTENT
+                            <span>•</span>
+                            EPIC VIEWS
+                        </p>
+
+
+                        <div class="social-buttons">
+
+
+                            <a
+                                href="https://www.tiktok.com/@newittskylinemedia"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="social-button skyline-button"
+                            >
+
+                                <span class="social-icon tiktok-icon">
+                                    ♪
+                                </span>
+
+                                TikTok
+
+                            </a>
+
+
+                            <a
+                                href="https://www.youtube.com/@Newitt-skyline-media"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="social-button skyline-button"
+                            >
+
+                                <span class="social-icon youtube-icon">
+                                    ▶
+                                </span>
+
+                                YouTube
+
+                            </a>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 PARANORMAL SOCIAL
+            ================================================== -->
+
+            <article class="social-brand paranormal-social">
+
+                <div class="social-brand-inner">
+
+
+                    <div class="social-logo-wrap">
+
+                        <img
+                            src="paranormal-logo.png"
+                            alt="NEWITT's Paranormal Adventures logo"
+                        >
+
+                    </div>
+
+
+                    <div class="social-brand-content">
+
+                        <div class="social-brand-name red-text">
+                            NEWITT'S
+                        </div>
+
+                        <h3>
+                            PARANORMAL ADVENTURES
+                        </h3>
+
+                        <p>
+                            INVESTIGATIONS
+                            <span>•</span>
+                            HAUNTINGS
+                            <span>•</span>
+                            REAL EXPERIENCES
+                        </p>
+
+
+                        <div class="social-buttons">
+
+
+                            <a
+                                href="https://www.tiktok.com/@nw13ttt"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="social-button paranormal-button"
+                            >
+
+                                <span class="social-icon tiktok-icon">
+                                    ♪
+                                </span>
+
+                                TikTok
+
+                            </a>
+
+
+                            <a
+                                href="https://www.instagram.com/nw13ttt/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="social-button paranormal-button"
+                            >
+
+                                <span class="social-icon instagram-icon">
+                                    ◎
+                                </span>
+
+                                Instagram
+
+                            </a>
+
+
+                            <a
+                                href="https://www.youtube.com/@NewittsParanormalAdventures"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="social-button paranormal-button"
+                            >
+
+                                <span class="social-icon youtube-icon">
+                                    ▶
+                                </span>
+
+                                YouTube
+
+                            </a>
+
+
+                            <a
+                                href="https://www.facebook.com/share/1AiSkdbyM4/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="social-button paranormal-button"
+                            >
+
+                                <span class="social-icon facebook-icon">
+                                    f
+                                </span>
+
+                                Facebook
+
+                            </a>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
 
         </div>
 
+    </div>
 
-        <div class="social-master-frame">
 
-            <iframe
-                class="social-master-animation"
-                src="NEWITT_ANIMATED_SOCIAL_SECTION_BANNER_BUTTONS.html"
-                title="NEWITT Media cinematic social media animation"
-                loading="eager"
-                scrolling="no"
-                frameborder="0"
-            ></iframe>
+    <!-- =====================================================
+         GOLD SOCIAL TICKER
+    ====================================================== -->
+
+    <div
+        class="social-ticker"
+        aria-label="Follow us on social media"
+    >
+
+        <div class="social-ticker-track">
+
+
+            <div class="social-ticker-group">
+
+                <span>
+                    FOLLOW US
+                </span>
+
+                <strong>
+                    ON SOCIAL MEDIA
+                </strong>
+
+                <b>
+                    ✦
+                </b>
+
+            </div>
+
+
+            <div
+                class="social-ticker-group"
+                aria-hidden="true"
+            >
+
+                <span>
+                    FOLLOW US
+                </span>
+
+                <strong>
+                    ON SOCIAL MEDIA
+                </strong>
+
+                <b>
+                    ✦
+                </b>
+
+            </div>
+
+
+            <div
+                class="social-ticker-group"
+                aria-hidden="true"
+            >
+
+                <span>
+                    FOLLOW US
+                </span>
+
+                <strong>
+                    ON SOCIAL MEDIA
+                </strong>
+
+                <b>
+                    ✦
+                </b>
+
+            </div>
+
+
+            <div
+                class="social-ticker-group"
+                aria-hidden="true"
+            >
+
+                <span>
+                    FOLLOW US
+                </span>
+
+                <strong>
+                    ON SOCIAL MEDIA
+                </strong>
+
+                <b>
+                    ✦
+                </b>
+
+            </div>
+
 
         </div>
 
@@ -582,47 +841,34 @@
 </section>
 
 
-<!-- =====================================================
-     FINAL CTA
-===================================================== -->
+<!-- =========================================================
+     MORE TO COME
+========================================================= -->
 
-<section class="final-cta">
+<section>
 
     <div class="container">
 
-        <div class="final-cta-content">
+        <div class="about">
 
             <div class="eyebrow">
-                NEWITT MEDIA
+                More to come
             </div>
 
             <h2>
-                READY TO <span>CONNECT?</span>
+                NEWITT Media is
+                <span>arriving soon.</span>
             </h2>
 
             <p>
-                From aerial media and photography
-                to paranormal adventures,
-                follow the journey and get in touch.
+                There's more down here...
+                we promise it's not haunted.
             </p>
 
-            <div class="hero-actions">
-
-                <a
-                    href="contact.html"
-                    class="button primary"
-                >
-                    Contact NEWITT Media
-                </a>
-
-                <a
-                    href="#top"
-                    class="button secondary"
-                >
-                    Back to Top
-                </a>
-
-            </div>
+            <p>
+                NEWITT Media is growing, and the next chapter is already
+                taking shape. Keep an eye on the site because there's more coming.
+            </p>
 
         </div>
 
@@ -634,90 +880,89 @@
 </main>
 
 
-<!-- =====================================================
+<!-- =========================================================
+     BACK TO TOP
+========================================================= -->
+
+<button
+    id="back-to-top"
+    class="back-top"
+    type="button"
+    aria-label="Back to top"
+>
+    Top
+</button>
+
+
+<!-- =========================================================
      FOOTER
-===================================================== -->
+========================================================= -->
 
 <footer class="site-footer">
 
     <div class="container">
 
-        <div class="footer-brand">
+        <div class="footer-inner">
 
-            <img
-                src="newitt-media-logo.png"
-                alt="NEWITT Media"
+            <a
+                href="index.html"
+                class="footer-brand"
+                aria-label="NEWITT Media Home"
             >
 
-            <div>
+                <img
+                    src="newitt-media-logo.png"
+                    alt="NEWITT Media logo"
+                >
 
-                <strong>
-                    NEWITT MEDIA
-                </strong>
+            </a>
 
-                <span>
-                    FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
-                </span>
 
-            </div>
+            <nav
+                class="footer-nav"
+                aria-label="Footer navigation"
+            >
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="skyline.html">
+                    Skyline
+                </a>
+
+                <a href="paranormal.html">
+                    Paranormal
+                </a>
+
+                <a href="photography.html">
+                    Photography
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </nav>
+
+
+            <p class="footer-copy">
+                © 2026 NEWITT Media.
+                NEWITT Skyline Media.
+                NEWITT's Paranormal Adventures.
+                NEWITT Media Photography.
+            </p>
 
         </div>
-
-
-        <nav
-            class="footer-nav"
-            aria-label="Footer navigation"
-        >
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="skyline.html">
-                Skyline
-            </a>
-
-            <a href="paranormal.html">
-                Paranormal
-            </a>
-
-            <a href="photography.html">
-                Photography
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
-
-        </nav>
-
-
-        <p class="footer-copy">
-            © 2026 NEWITT Media. All rights reserved.
-        </p>
 
     </div>
 
 </footer>
 
 
-<!-- =====================================================
-     BACK TO TOP
-===================================================== -->
-
-<button
-    id="back-to-top"
-    class="back-to-top"
-    type="button"
-    aria-label="Back to top"
->
-    ↑
-</button>
-
-
-<!-- =====================================================
+<!-- =========================================================
      JAVASCRIPT
-===================================================== -->
+========================================================= -->
 
 <script
     src="script.js"
@@ -726,4 +971,5 @@
 
 
 </body>
+
 </html>
