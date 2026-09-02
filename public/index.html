@@ -146,16 +146,6 @@
 
 
     <!-- =====================================================
-         WEB APP MANIFEST
-    ====================================================== -->
-
-    <link
-        rel="manifest"
-        href="manifest.json"
-    >
-
-
-    <!-- =====================================================
          MASTER STYLESHEET
     ====================================================== -->
 
@@ -163,165 +153,6 @@
         rel="stylesheet"
         href="style.css"
     >
-
-
-    <!-- =====================================================
-         MASTER LANGUAGE SELECTOR
-    ====================================================== -->
-
-    <style>
-
-        #newitt-language-selector {
-            display: inline-flex;
-
-            align-items: center;
-            justify-content: center;
-
-            gap: 5px;
-
-            margin-left: 8px;
-
-            padding: 4px 6px;
-
-            flex-shrink: 0;
-
-            border:
-                1px solid
-                rgba(255, 255, 255, 0.12);
-
-            border-radius: 6px;
-
-            background:
-                rgba(255, 255, 255, 0.035);
-        }
-
-
-        #newitt-language-selector button {
-            min-width: 30px;
-
-            min-height: 30px;
-
-            padding: 4px 5px;
-
-            border: 0;
-
-            border-radius: 4px;
-
-            background: transparent;
-
-            color:
-                rgba(255, 255, 255, 0.50);
-
-            font-size: 0.62rem;
-
-            font-weight: 800;
-
-            letter-spacing: 0.06em;
-
-            cursor: pointer;
-
-            appearance: none;
-            -webkit-appearance: none;
-
-            transition:
-                color 180ms ease,
-                background 180ms ease,
-                transform 180ms ease;
-        }
-
-
-        #newitt-language-selector button:hover,
-        #newitt-language-selector button.active {
-            color: #ffffff;
-
-            background:
-                rgba(201, 164, 91, 0.16);
-        }
-
-
-        #newitt-language-selector button:active {
-            transform:
-                scale(0.96);
-        }
-
-
-        #newitt-language-selector span {
-            color:
-                rgba(255, 255, 255, 0.20);
-
-            font-size: 0.62rem;
-
-            user-select: none;
-        }
-
-
-        #newitt-language-selector button:focus-visible {
-            outline:
-                2px solid
-                #c9a45b;
-
-            outline-offset: 2px;
-        }
-
-
-        @media (max-width: 700px) {
-
-            /*
-             * The selector remains inside the master .nav
-             * but occupies its own full-width row.
-             */
-
-            .nav {
-                flex-wrap: wrap;
-            }
-
-
-            #newitt-language-selector {
-                width: 100%;
-
-                flex-basis: 100%;
-
-                justify-content: center;
-
-                margin:
-                    4px 0 8px;
-
-                padding: 5px;
-
-                order: 30;
-            }
-
-
-            #newitt-language-selector button {
-                flex: 1;
-
-                min-height: 40px;
-
-                padding: 8px;
-            }
-
-        }
-
-
-        @media (max-width: 380px) {
-
-            #newitt-language-selector {
-                margin-bottom:
-                    6px;
-            }
-
-        }
-
-
-        @media (prefers-reduced-motion: reduce) {
-
-            #newitt-language-selector button {
-                transition: none;
-            }
-
-        }
-
-    </style>
 
 </head>
 
@@ -333,7 +164,7 @@
 
 
 <!-- =====================================================
-     CINEMATIC FIRST-VISIT INTRO
+     CINEMATIC INTRO
 ===================================================== -->
 
 <div
@@ -347,12 +178,10 @@
         aria-hidden="true"
     ></div>
 
-
     <div
         class="intro-light-sweep"
         aria-hidden="true"
     ></div>
-
 
     <div class="intro-content">
 
@@ -362,24 +191,16 @@
             class="intro-logo"
         >
 
-
         <div class="intro-name">
             NEWITT <span>MEDIA</span>
         </div>
 
-
         <div class="intro-line"></div>
 
-
         <div class="intro-tagline">
-
-            <span
-                data-lang-en="FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN."
-                data-lang-cy="O'R AWYR. AR ÔL TYWYLLWCH. A PHOPETH RHWNG Y DDAU."
-            >
-                FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
-            </span>
-
+            FROM ABOVE.
+            AFTER DARK.
+            AND EVERYTHING IN BETWEEN.
         </div>
 
     </div>
@@ -399,15 +220,12 @@
             href="index.html"
             class="nav-brand"
             aria-label="NEWITT Media Home"
-            data-aria-en="NEWITT Media Home"
-            data-aria-cy="Cartref NEWITT Media"
         >
 
             <img
                 src="newitt-media-logo.png"
                 alt="NEWITT Media logo"
             >
-
 
             <span>
                 NEWITT <strong>MEDIA</strong>
@@ -422,8 +240,6 @@
             aria-expanded="false"
             aria-controls="main-menu"
             aria-label="Open navigation menu"
-            data-aria-en="Open navigation menu"
-            data-aria-cy="Agor y ddewislen lywio"
         >
 
             <span></span>
@@ -437,53 +253,29 @@
             class="nav-links"
             id="main-menu"
             aria-label="Main navigation"
-            data-aria-en="Main navigation"
-            data-aria-cy="Prif ddewislen lywio"
         >
 
             <a
                 href="index.html"
                 class="active"
                 aria-current="page"
-                data-lang-en="Home"
-                data-lang-cy="Cartref"
             >
                 Home
             </a>
 
-
-            <a
-                href="skyline.html"
-                data-lang-en="Skyline"
-                data-lang-cy="Skyline"
-            >
+            <a href="skyline.html">
                 Skyline
             </a>
 
-
-            <a
-                href="paranormal.html"
-                data-lang-en="Paranormal"
-                data-lang-cy="Paranormal"
-            >
+            <a href="paranormal.html">
                 Paranormal
             </a>
 
-
-            <a
-                href="photography.html"
-                data-lang-en="Photography"
-                data-lang-cy="Ffotograffiaeth"
-            >
+            <a href="photography.html">
                 Photography
             </a>
 
-
-            <a
-                href="contact.html"
-                data-lang-en="Contact"
-                data-lang-cy="Cysylltu"
-            >
+            <a href="contact.html">
                 Contact
             </a>
 
@@ -495,7 +287,7 @@
 
 
 <!-- =====================================================
-     MAIN
+     MAIN CONTENT
 ===================================================== -->
 
 <main>
@@ -512,7 +304,6 @@
         aria-hidden="true"
     ></div>
 
-
     <div class="container hero-content">
 
         <div class="hero-logo-wrap">
@@ -526,82 +317,30 @@
         </div>
 
 
-        <div
-            class="eyebrow"
-            data-lang-en="NEWITT Media"
-            data-lang-cy="NEWITT Media"
-        >
+        <div class="eyebrow">
             NEWITT Media
         </div>
 
 
         <h1>
-
-            <span
-                data-lang-en="FROM ABOVE."
-                data-lang-cy="O'R AWYR."
-            >
-                FROM ABOVE.
-            </span>
-
-            <span
-                data-lang-en="AFTER DARK."
-                data-lang-cy="AR ÔL TYWYLLWCH."
-            >
-                AFTER DARK.
-            </span>
-
+            FROM ABOVE.
+            <span>AFTER DARK.</span>
         </h1>
 
 
         <div class="hero-rule"></div>
 
 
-        <p
-            class="hero-tagline"
-            data-lang-en="AND EVERYTHING IN BETWEEN."
-            data-lang-cy="A PHOPETH RHWNG Y DDAU."
-        >
+        <p class="hero-tagline">
             AND EVERYTHING IN BETWEEN.
         </p>
 
 
         <p class="hero-introduction">
-
-            <span
-                data-lang-en="Aerial media."
-                data-lang-cy="Cyfryngau o'r awyr."
-            >
-                Aerial media.
-            </span>
-
-            <br>
-
-            <span
-                data-lang-en="Photography."
-                data-lang-cy="Ffotograffiaeth."
-            >
-                Photography.
-            </span>
-
-            <br>
-
-            <span
-                data-lang-en="Paranormal adventures."
-                data-lang-cy="Anturiaethau paranormal."
-            >
-                Paranormal adventures.
-            </span>
-
-            <br>
-
-            <span
-                data-lang-en="One NEWITT identity."
-                data-lang-cy="Un hunaniaeth NEWITT."
-            >
-                One NEWITT identity.
-            </span>
-
+            Aerial media.
+            Photography.
+            Paranormal adventures.
+            One NEWITT identity.
         </p>
 
 
@@ -610,18 +349,13 @@
             <a
                 href="#social"
                 class="button primary"
-                data-lang-en="Explore NEWITT Media"
-                data-lang-cy="Archwilio NEWITT Media"
             >
                 Explore NEWITT Media
             </a>
 
-
             <a
                 href="contact.html"
                 class="button secondary"
-                data-lang-en="Get in Touch"
-                data-lang-cy="Cysylltu"
             >
                 Get in Touch
             </a>
@@ -635,6 +369,7 @@
 
 <!-- =====================================================
      NEWITT MEDIA INTRODUCTION
+     THREE CREATIVE WORLDS. ONE IDENTITY.
 ===================================================== -->
 
 <section
@@ -647,38 +382,23 @@
         aria-hidden="true"
     ></div>
 
-
     <div class="container">
 
         <div class="newitt-media-intro-heading">
 
-            <div
-                class="eyebrow"
-                data-lang-en="WELCOME TO"
-                data-lang-cy="CROESO I"
-            >
+            <div class="eyebrow">
                 WELCOME TO
             </div>
-
 
             <h2 id="newitt-media-intro-title">
                 NEWITT <span>MEDIA</span>
             </h2>
 
-
             <div class="hero-rule"></div>
 
-
             <p class="newitt-media-intro-main">
-
-                <span
-                    data-lang-en="Three creative worlds brought together under one NEWITT Media identity."
-                    data-lang-cy="Tair byd creadigol wedi'u dwyn ynghyd o dan un hunaniaeth NEWITT Media."
-                >
-                    Three creative worlds brought together
-                    under one NEWITT Media identity.
-                </span>
-
+                Three creative worlds brought together
+                under one NEWITT Media identity.
             </p>
 
         </div>
@@ -695,8 +415,6 @@
                 href="skyline.html"
                 class="newitt-intro-world newitt-intro-skyline"
                 aria-label="Explore NEWITT Skyline Media"
-                data-aria-en="Explore NEWITT Skyline Media"
-                data-aria-cy="Archwilio NEWITT Skyline Media"
             >
 
                 <div class="newitt-intro-logo-wrap">
@@ -709,31 +427,19 @@
 
                 </div>
 
-
                 <div class="newitt-intro-text">
 
-                    <h3
-                        data-lang-en="NEWITT SKYLINE MEDIA"
-                        data-lang-cy="NEWITT SKYLINE MEDIA"
-                    >
+                    <h3>
                         NEWITT SKYLINE MEDIA
                     </h3>
 
-
                     <p>
-
-                        <span
-                            data-lang-en="Drone & aerial media capturing landscapes, locations, events and experiences from a completely different perspective. Exploring the world from above and bringing those views to life."
-                            data-lang-cy="Cyfryngau drôn ac o'r awyr yn dal tirweddau, lleoliadau, digwyddiadau a phrofiadau o safbwynt hollol wahanol. Archwilio'r byd o'r awyr a dod â'r golygfeydd hynny'n fyw."
-                        >
-                            Drone &amp; aerial media capturing
-                            landscapes, locations, events and
-                            experiences from a completely
-                            different perspective. Exploring
-                            the world from above and bringing
-                            those views to life.
-                        </span>
-
+                        Drone &amp; aerial media capturing
+                        landscapes, locations, events and
+                        experiences from a completely
+                        different perspective. Exploring
+                        the world from above and bringing
+                        those views to life.
                     </p>
 
                 </div>
@@ -749,8 +455,6 @@
                 href="paranormal.html"
                 class="newitt-intro-world newitt-intro-paranormal"
                 aria-label="Explore NEWITT's Paranormal Adventures"
-                data-aria-en="Explore NEWITT's Paranormal Adventures"
-                data-aria-cy="Archwilio Anturiaethau Paranormal NEWITT"
             >
 
                 <div class="newitt-intro-logo-wrap">
@@ -763,30 +467,18 @@
 
                 </div>
 
-
                 <div class="newitt-intro-text">
 
-                    <h3
-                        data-lang-en="NEWITT'S PARANORMAL ADVENTURES"
-                        data-lang-cy="ANTURIAETHAU PARANORMAL NEWITT"
-                    >
+                    <h3>
                         NEWITT'S PARANORMAL ADVENTURES
                     </h3>
 
-
                     <p>
-
-                        <span
-                            data-lang-en="Paranormal investigations exploring historic locations, haunted places and unexplained encounters. Documenting the journey and the experiences found along the way."
-                            data-lang-cy="Ymchwiliadau paranormal yn archwilio lleoliadau hanesyddol, mannau y dywedir eu bod yn aflonyddu arnynt a chyfarfyddiadau anesboniadwy. Dogfennu'r daith a'r profiadau a geir ar hyd y ffordd."
-                        >
-                            Paranormal investigations exploring
-                            historic locations, haunted places
-                            and unexplained encounters.
-                            Documenting the journey and the
-                            experiences found along the way.
-                        </span>
-
+                        Paranormal investigations exploring
+                        historic locations, haunted places
+                        and unexplained encounters.
+                        Documenting the journey and the
+                        experiences found along the way.
                     </p>
 
                 </div>
@@ -802,8 +494,6 @@
                 href="photography.html"
                 class="newitt-intro-world newitt-intro-photography"
                 aria-label="Explore NEWITT Media Photography"
-                data-aria-en="Explore NEWITT Media Photography"
-                data-aria-cy="Archwilio Ffotograffiaeth NEWITT Media"
             >
 
                 <div class="newitt-intro-logo-wrap">
@@ -816,30 +506,18 @@
 
                 </div>
 
-
                 <div class="newitt-intro-text">
 
-                    <h3
-                        data-lang-en="NEWITT MEDIA PHOTOGRAPHY"
-                        data-lang-cy="FFOTOGRAFFIAETH NEWITT MEDIA"
-                    >
+                    <h3>
                         NEWITT MEDIA PHOTOGRAPHY
                     </h3>
 
-
                     <p>
-
-                        <span
-                            data-lang-en="Photography capturing people, places, landscapes and adventures. Creating a visual record of the moments and experiences that make up the wider NEWITT Media story."
-                            data-lang-cy="Ffotograffiaeth yn dal pobl, lleoedd, tirweddau ac anturiaethau. Creu cofnod gweledol o'r eiliadau a'r profiadau sy'n rhan o stori ehangach NEWITT Media."
-                        >
-                            Photography capturing people,
-                            places, landscapes and adventures.
-                            Creating a visual record of the
-                            moments and experiences that make
-                            up the wider NEWITT Media story.
-                        </span>
-
+                        Photography capturing people,
+                        places, landscapes and adventures.
+                        Creating a visual record of the
+                        moments and experiences that make
+                        up the wider NEWITT Media story.
                     </p>
 
                 </div>
@@ -853,28 +531,11 @@
         <div class="newitt-media-intro-closing">
 
             <p>
-
-                <span
-                    data-lang-en="Different perspectives."
-                    data-lang-cy="Safbwyntiau gwahanol."
-                >
-                    Different perspectives.
-                </span>
-
-                <strong
-                    data-lang-en="One NEWITT Media."
-                    data-lang-cy="Un NEWITT Media."
-                >
-                    One NEWITT Media.
-                </strong>
-
+                Different perspectives.
+                <strong>One NEWITT Media.</strong>
             </p>
 
-
-            <span
-                data-lang-en="FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN."
-                data-lang-cy="O'R AWYR. AR ÔL TYWYLLWCH. A PHOPETH RHWNG Y DDAU."
-            >
+            <span>
                 FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
             </span>
 
@@ -886,26 +547,171 @@
 
 
 <!-- =====================================================
-     FOLLOW THE ADVENTURE
+     MASTER CINEMATIC SOCIAL ANIMATION
 ===================================================== -->
 
 <section
     class="social-hub"
     id="social"
-    aria-labelledby="social-title"
+    aria-label="NEWITT Media cinematic social media animation"
 >
 
-    <div class="social-master-frame">
+    <div
+        class="social-master-frame"
+        style="position:relative;"
+    >
 
         <iframe
             class="social-master-animation"
             src="NEWITT_ANIMATED_SOCIAL_SECTION_BANNER_BUTTONS.html"
-            title="NEWITT Media Follow the Adventure social media banner"
+            title="NEWITT Media cinematic social media animation"
             loading="eager"
             scrolling="no"
             frameborder="0"
             allowtransparency="true"
         ></iframe>
+
+
+        <!-- =================================================
+             INVISIBLE SOCIAL CLICK ZONES
+        ================================================== -->
+
+        <div
+            aria-label="NEWITT Media social media links"
+            style="
+                position:absolute;
+                inset:0;
+                z-index:20;
+                pointer-events:none;
+            "
+        >
+
+            <!-- SKYLINE TIKTOK -->
+
+            <a
+                href="https://www.tiktok.com/@newittskylinemedia"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="NEWITT Skyline Media TikTok"
+                style="
+                    position:absolute;
+                    left:7.7%;
+                    top:70.3%;
+                    width:14.7%;
+                    height:8%;
+                    display:block;
+                    pointer-events:auto;
+                    background:transparent;
+                    cursor:pointer;
+                "
+            ></a>
+
+
+            <!-- SKYLINE YOUTUBE -->
+
+            <a
+                href="https://www.youtube.com/@Newitt-skyline-media"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="NEWITT Skyline Media YouTube"
+                style="
+                    position:absolute;
+                    left:25.1%;
+                    top:70.3%;
+                    width:16.6%;
+                    height:8%;
+                    display:block;
+                    pointer-events:auto;
+                    background:transparent;
+                    cursor:pointer;
+                "
+            ></a>
+
+
+            <!-- PARANORMAL TIKTOK -->
+
+            <a
+                href="https://www.tiktok.com/@nw13ttt"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="NEWITT's Paranormal Adventures TikTok"
+                style="
+                    position:absolute;
+                    left:47.9%;
+                    top:70.3%;
+                    width:10.4%;
+                    height:8%;
+                    display:block;
+                    pointer-events:auto;
+                    background:transparent;
+                    cursor:pointer;
+                "
+            ></a>
+
+
+            <!-- PARANORMAL YOUTUBE -->
+
+            <a
+                href="https://www.youtube.com/@NewittsParanormalAdventures"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="NEWITT's Paranormal Adventures YouTube"
+                style="
+                    position:absolute;
+                    left:58.9%;
+                    top:70.3%;
+                    width:11.1%;
+                    height:8%;
+                    display:block;
+                    pointer-events:auto;
+                    background:transparent;
+                    cursor:pointer;
+                "
+            ></a>
+
+
+            <!-- PARANORMAL INSTAGRAM -->
+
+            <a
+                href="https://www.instagram.com/nw13ttt/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="NEWITT's Paranormal Adventures Instagram"
+                style="
+                    position:absolute;
+                    left:70.4%;
+                    top:70.3%;
+                    width:11.5%;
+                    height:8%;
+                    display:block;
+                    pointer-events:auto;
+                    background:transparent;
+                    cursor:pointer;
+                "
+            ></a>
+
+
+            <!-- PARANORMAL FACEBOOK -->
+
+            <a
+                href="https://www.facebook.com/share/1AiSkdbyM4/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="NEWITT's Paranormal Adventures Facebook"
+                style="
+                    position:absolute;
+                    left:82.1%;
+                    top:70.3%;
+                    width:12.3%;
+                    height:8%;
+                    display:block;
+                    pointer-events:auto;
+                    background:transparent;
+                    cursor:pointer;
+                "
+            ></a>
+
+        </div>
 
     </div>
 
@@ -922,38 +728,18 @@
 
         <div class="cta-panel">
 
-            <div
-                class="eyebrow"
-                data-lang-en="NEWITT Media"
-                data-lang-cy="NEWITT Media"
-            >
+            <div class="eyebrow">
                 NEWITT Media
             </div>
 
 
             <h2>
-
-                <span
-                    data-lang-en="Ready to"
-                    data-lang-cy="Barod i"
-                >
-                    Ready to
-                </span>
-
-                <span
-                    data-lang-en="explore?"
-                    data-lang-cy="archwilio?"
-                >
-                    explore?
-                </span>
-
+                Ready to
+                <span>explore?</span>
             </h2>
 
 
-            <p
-                data-lang-en="Choose your world or get in touch with NEWITT Media."
-                data-lang-cy="Dewiswch eich byd neu cysylltwch â NEWITT Media."
-            >
+            <p>
                 Choose your world or get in touch with NEWITT Media.
             </p>
 
@@ -963,8 +749,6 @@
                 <a
                     href="contact.html"
                     class="button primary"
-                    data-lang-en="Get in Touch"
-                    data-lang-cy="Cysylltu"
                 >
                     Get in Touch
                 </a>
@@ -973,30 +757,8 @@
                 <a
                     href="skyline.html"
                     class="button secondary"
-                    data-lang-en="Explore Skyline"
-                    data-lang-cy="Archwilio Skyline"
                 >
                     Explore Skyline
-                </a>
-
-
-                <a
-                    href="paranormal.html"
-                    class="button secondary"
-                    data-lang-en="Explore Paranormal"
-                    data-lang-cy="Archwilio Paranormal"
-                >
-                    Explore Paranormal
-                </a>
-
-
-                <a
-                    href="photography.html"
-                    class="button secondary"
-                    data-lang-en="Explore Photography"
-                    data-lang-cy="Archwilio Ffotograffiaeth"
-                >
-                    Explore Photography
                 </a>
 
             </div>
@@ -1020,8 +782,6 @@
     class="back-to-top"
     id="back-to-top"
     aria-label="Back to top"
-    data-aria-en="Back to top"
-    data-aria-cy="Nôl i'r brig"
 >
     ↑
 </a>
@@ -1035,6 +795,7 @@
 
     <div class="container">
 
+
         <img
             src="newitt-media-logo.png"
             alt="NEWITT Media"
@@ -1047,25 +808,14 @@
         </p>
 
 
-        <p
-            class="footer-tagline"
-            data-lang-en="FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN."
-            data-lang-cy="O'R AWYR. AR ÔL TYWYLLWCH. A PHOPETH RHWNG Y DDAU."
-        >
+        <p class="footer-tagline">
             FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
         </p>
 
 
         <p class="copyright">
 
-            © 2026 NEWITT Media.
-
-            <span
-                data-lang-en="All Rights Reserved."
-                data-lang-cy="Cedwir pob hawl."
-            >
-                All Rights Reserved.
-            </span>
+            © 2026 NEWITT Media. All Rights Reserved.
 
             <br>
 
@@ -1083,33 +833,11 @@
                 newittmedia.co.uk
             </a>
 
-
-            &nbsp;•&nbsp;
-
-
-            <a
-                href="privacy.html"
-                data-lang-en="Privacy & Safety"
-                data-lang-cy="Preifatrwydd a Diogelwch"
-            >
-                Privacy &amp; Safety
-            </a>
-
         </p>
 
     </div>
 
 </footer>
-
-
-<!-- =====================================================
-     LANGUAGE SYSTEM
-===================================================== -->
-
-<script
-    src="language.js"
-    defer
-></script>
 
 
 <!-- =====================================================
