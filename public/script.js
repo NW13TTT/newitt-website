@@ -1,951 +1,722 @@
 /* =========================================================
    NEWITT MEDIA
    MASTER JAVASCRIPT
-   CORRECTED CINEMATIC BUILD
-   SEPTEMBER 2026
+   CLEAN REBUILD
+   ========================================================= */
 
-   FUNCTIONS
-   - First-visit cinematic intro
-   - Mobile navigation
-   - Normal page-to-page navigation
-   - Back to top
-   - Smooth anchor scrolling
-   - Lightbox
-   - Safe external links
-
-   IMPORTANT
-   - Intro ID matches index.html: cinematic-intro
-   - Normal page links are NOT intercepted
-   - Original cinematic entry animation retained
-   - No sweeping shine animation
-   - No red paranormal mist
-========================================================= */
-
-(function () {
-
-    "use strict";
+"use strict";
 
 
-    /* =========================================================
-       DOM READY
-    ========================================================= */
+/* =========================================================
+   DOM READY
+   ========================================================= */
 
-    document.addEventListener(
-        "DOMContentLoaded",
-        function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-            initFirstVisitIntro();
+    initialiseCinematicIntro();
+    initialiseMobileNavigation();
+    initialiseBackToTop();
+    initialiseSmoothAnchors();
+    initialiseLightboxes();
+    initialiseExternalLinks();
 
-            initMobileNavigation();
+});
 
-            initBackToTop();
 
-            initSmoothScrolling();
+/* =========================================================
+   CINEMATIC INTRO
+   ========================================================= */
 
-            initLightbox();
+function initialiseCinematicIntro() {
 
-            initExternalLinks();
+    const intro = document.getElementById("site-intro");
+
+    if (!intro) {
+        return;
+    }
+
+
+    /*
+       The intro is shown only on the first visit
+       during the current browser session.
+
+       sessionStorage means:
+       - first visit = intro appears
+       - refreshing the page = no repeated intro
+       - closing the browser/session = intro can appear again
+    */
+
+    const introSeenKey = "newittMediaIntroSeen";
+
+
+    if (sessionStorage.getItem(introSeenKey) === "true") {
+
+        intro.classList.add("is-hidden");
+
+        return;
+    }
+
+
+    sessionStorage.setItem(
+        introSeenKey,
+        "true"
+    );
+
+
+    /*
+       Give the cinematic opening enough time to play,
+       then remove it completely from interaction.
+    */
+
+    const introDuration = 4200;
+
+
+    window.setTimeout(() => {
+
+        intro.classList.add("is-hidden");
+
+        window.setTimeout(() => {
+
+            intro.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+        }, 1000);
+
+    }, introDuration);
+
+
+    /*
+       The intro text itself can also be tapped/clicked
+       to enter the website immediately.
+    */
+
+    intro.addEventListener("click", () => {
+
+        intro.classList.add("is-hidden");
+
+    });
+
+
+    /*
+       Allow keyboard users to enter immediately.
+    */
+
+    intro.addEventListener("keydown", (event) => {
+
+        if (
+            event.key === "Enter" ||
+            event.key === " "
+        ) {
+
+            event.preventDefault();
+
+            intro.classList.add("is-hidden");
+
+        }
+
+    });
+
+}
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+   ========================================================= */
+
+function initialiseMobileNavigation() {
+
+    const menuToggle =
+        document.querySelector(".menu-toggle");
+
+    const menu =
+        document.querySelector(".nav-links");
+
+
+    if (!menuToggle || !menu) {
+        return;
+    }
+
+
+    menuToggle.addEventListener(
+        "click",
+        () => {
+
+            const isOpen =
+                menuToggle.classList.toggle("active");
+
+            menu.classList.toggle(
+                "open",
+                isOpen
+            );
+
+            document.body.classList.toggle(
+                "menu-open",
+                isOpen
+            );
+
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen
+                    ? "Close navigation menu"
+                    : "Open navigation menu"
+            );
 
         }
     );
 
 
-    /* =========================================================
-       FIRST-VISIT CINEMATIC INTRO
+    /*
+       Close the mobile menu when a navigation link
+       is selected.
+    */
 
-       IMPORTANT:
-       index.html uses:
+    menu.querySelectorAll("a").forEach((link) => {
 
-       id="cinematic-intro"
+        link.addEventListener("click", () => {
 
-       This MUST match exactly.
-    ========================================================= */
-
-    function initFirstVisitIntro() {
-
-        const intro =
-            document.getElementById(
-                "cinematic-intro"
+            closeMobileMenu(
+                menuToggle,
+                menu
             );
 
+        });
 
-        if (!intro) {
-            return;
-        }
-
-
-        const STORAGE_KEY =
-            "newittMediaIntroSeenV2";
+    });
 
 
-        let alreadySeen = false;
+    /*
+       Close when clicking outside the navigation.
+    */
 
-
-        try {
-
-            alreadySeen =
-                localStorage.getItem(
-                    STORAGE_KEY
-                ) === "true";
-
-        } catch (error) {
-
-            alreadySeen = false;
-
-        }
-
-
-        /* -----------------------------------------------------
-           INTRO HAS ALREADY BEEN SEEN
-        ----------------------------------------------------- */
-
-        if (alreadySeen) {
-
-            intro.classList.add(
-                "intro-hidden"
-            );
-
-
-            intro.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
-
-            intro.style.display =
-                "none";
-
-
-            return;
-
-        }
-
-
-        /* -----------------------------------------------------
-           FIRST VISIT
-        ----------------------------------------------------- */
-
-        document.body.classList.add(
-            "intro-active"
-        );
-
-
-        document.documentElement.style.overflow =
-            "hidden";
-
-
-        document.body.style.overflow =
-            "hidden";
-
-
-        try {
-
-            localStorage.setItem(
-                STORAGE_KEY,
-                "true"
-            );
-
-        } catch (error) {}
-
-
-        /*
-           Keep the cinematic entrance visible
-           long enough for the animation to play.
-        */
-
-        const INTRO_DURATION =
-            7500;
-
-
-        let closed = false;
-
-
-        const closeTimer =
-            window.setTimeout(
-                closeIntro,
-                INTRO_DURATION
-            );
-
-
-        /* -----------------------------------------------------
-           ESCAPE KEY
-        ----------------------------------------------------- */
-
-        function handleEscape(event) {
+    document.addEventListener(
+        "click",
+        (event) => {
 
             if (
-                event.key ===
-                "Escape"
+                !menu.classList.contains("open")
             ) {
-
-                closeIntro();
-
-            }
-
-        }
-
-
-        document.addEventListener(
-            "keydown",
-            handleEscape
-        );
-
-
-        /* -----------------------------------------------------
-           TAP / CLICK TO SKIP
-        ----------------------------------------------------- */
-
-        intro.addEventListener(
-            "click",
-            closeIntro
-        );
-
-
-        /* -----------------------------------------------------
-           CLOSE INTRO
-        ----------------------------------------------------- */
-
-        function closeIntro() {
-
-            if (closed) {
                 return;
             }
 
 
-            closed = true;
+            const clickedInsideMenu =
+                menu.contains(event.target);
 
+            const clickedToggle =
+                menuToggle.contains(event.target);
 
-            window.clearTimeout(
-                closeTimer
-            );
 
+            if (
+                !clickedInsideMenu &&
+                !clickedToggle
+            ) {
 
-            intro.classList.add(
-                "intro-hidden"
-            );
-
-
-            intro.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
-
-            document.body.classList.remove(
-                "intro-active"
-            );
-
-
-            document.removeEventListener(
-                "keydown",
-                handleEscape
-            );
-
-
-            /*
-               Give the CSS fade-out time to complete
-               before removing the intro completely.
-            */
-
-            window.setTimeout(
-                function () {
-
-                    document.documentElement
-                        .style
-                        .overflow = "";
-
-
-                    document.body
-                        .style
-                        .overflow = "";
-
-
-                    intro.style.display =
-                        "none";
-
-                },
-                950
-            );
-
-        }
-
-    }
-
-
-    /* =========================================================
-       MOBILE NAVIGATION
-    ========================================================= */
-
-    function initMobileNavigation() {
-
-        const toggle =
-            document.querySelector(
-                ".menu-toggle"
-            );
-
-
-        const menu =
-            document.querySelector(
-                ".nav-links"
-            );
-
-
-        if (
-            !toggle ||
-            !menu
-        ) {
-
-            return;
-
-        }
-
-
-        /* -----------------------------------------------------
-           CLOSE MENU
-        ----------------------------------------------------- */
-
-        function closeMenu() {
-
-            menu.classList.remove(
-                "open",
-                "active",
-                "menu-open",
-                "is-open"
-            );
-
-
-            toggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-
-            toggle.setAttribute(
-                "aria-label",
-                "Open navigation menu"
-            );
-
-        }
-
-
-        /* -----------------------------------------------------
-           OPEN MENU
-        ----------------------------------------------------- */
-
-        function openMenu() {
-
-            menu.classList.add(
-                "open",
-                "active",
-                "menu-open",
-                "is-open"
-            );
-
-
-            toggle.setAttribute(
-                "aria-expanded",
-                "true"
-            );
-
-
-            toggle.setAttribute(
-                "aria-label",
-                "Close navigation menu"
-            );
-
-        }
-
-
-        /* -----------------------------------------------------
-           HAMBURGER BUTTON
-        ----------------------------------------------------- */
-
-        toggle.addEventListener(
-            "click",
-            function (event) {
-
-                event.preventDefault();
-
-                event.stopPropagation();
-
-
-                const isOpen =
-                    menu.classList.contains(
-                        "open"
-                    );
-
-
-                if (isOpen) {
-
-                    closeMenu();
-
-                } else {
-
-                    openMenu();
-
-                }
-
-            }
-        );
-
-
-        /* -----------------------------------------------------
-           NORMAL NAVIGATION
-
-           IMPORTANT:
-           We do NOT preventDefault() here.
-
-           Links such as:
-
-           skyline.html
-           paranormal.html
-           photography.html
-           contact.html
-
-           must navigate normally.
-        ----------------------------------------------------- */
-
-        menu.querySelectorAll("a")
-            .forEach(
-                function (link) {
-
-                    link.addEventListener(
-                        "click",
-                        function () {
-
-                            closeMenu();
-
-                        }
-                    );
-
-                }
-            );
-
-
-        /* -----------------------------------------------------
-           CLICK OUTSIDE MENU
-        ----------------------------------------------------- */
-
-        document.addEventListener(
-            "click",
-            function (event) {
-
-                if (
-                    !menu.contains(
-                        event.target
-                    ) &&
-                    !toggle.contains(
-                        event.target
-                    )
-                ) {
-
-                    closeMenu();
-
-                }
-
-            }
-        );
-
-
-        /* -----------------------------------------------------
-           ESCAPE
-        ----------------------------------------------------- */
-
-        document.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (
-                    event.key ===
-                    "Escape"
-                ) {
-
-                    closeMenu();
-
-                }
-
-            }
-        );
-
-
-        /* -----------------------------------------------------
-           DESKTOP RESIZE
-        ----------------------------------------------------- */
-
-        window.addEventListener(
-            "resize",
-            function () {
-
-                if (
-                    window.innerWidth >
-                    700
-                ) {
-
-                    closeMenu();
-
-                }
-
-            }
-        );
-
-    }
-
-
-    /* =========================================================
-       BACK TO TOP
-    ========================================================= */
-
-    function initBackToTop() {
-
-        const button =
-            document.getElementById(
-                "back-to-top"
-            );
-
-
-        if (!button) {
-            return;
-        }
-
-
-        function update() {
-
-            const visible =
-                window.scrollY >
-                450;
-
-
-            button.classList.toggle(
-                "visible",
-                visible
-            );
-
-
-            button.classList.toggle(
-                "show",
-                visible
-            );
-
-
-            button.classList.toggle(
-                "is-visible",
-                visible
-            );
-
-        }
-
-
-        window.addEventListener(
-            "scroll",
-            update,
-            {
-                passive: true
-            }
-        );
-
-
-        button.addEventListener(
-            "click",
-            function () {
-
-                window.scrollTo({
-                    top: 0,
-                    behavior: "smooth"
-                });
-
-            }
-        );
-
-
-        update();
-
-    }
-
-
-    /* =========================================================
-       SMOOTH ANCHOR SCROLLING
-
-       ONLY links beginning with # are handled.
-
-       Normal page links remain completely untouched.
-    ========================================================= */
-
-    function initSmoothScrolling() {
-
-        document
-            .querySelectorAll(
-                'a[href^="#"]'
-            )
-            .forEach(
-                function (anchor) {
-
-                    anchor.addEventListener(
-                        "click",
-                        function (event) {
-
-                            const targetId =
-                                anchor.getAttribute(
-                                    "href"
-                                );
-
-
-                            if (
-                                !targetId ||
-                                targetId === "#"
-                            ) {
-
-                                return;
-
-                            }
-
-
-                            let target = null;
-
-
-                            try {
-
-                                target =
-                                    document.querySelector(
-                                        targetId
-                                    );
-
-                            } catch (error) {
-
-                                return;
-
-                            }
-
-
-                            if (!target) {
-                                return;
-                            }
-
-
-                            event.preventDefault();
-
-
-                            target.scrollIntoView({
-                                behavior: "smooth",
-                                block: "start"
-                            });
-
-
-                            try {
-
-                                history.replaceState(
-                                    null,
-                                    "",
-                                    targetId
-                                );
-
-                            } catch (error) {}
-
-                        }
-                    );
-
-                }
-            );
-
-    }
-
-
-    /* =========================================================
-       LIGHTBOX
-    ========================================================= */
-
-    function initLightbox() {
-
-        const lightbox =
-            document.getElementById(
-                "lightbox"
-            );
-
-
-        if (!lightbox) {
-            return;
-        }
-
-
-        const image =
-            document.getElementById(
-                "lightbox-image"
-            ) ||
-            lightbox.querySelector(
-                "img"
-            );
-
-
-        const close =
-            document.getElementById(
-                "lightbox-close"
-            ) ||
-            lightbox.querySelector(
-                ".lightbox-close"
-            );
-
-
-        const items =
-            document.querySelectorAll(
-                ".gallery-item, [data-lightbox]"
-            );
-
-
-        function closeLightbox() {
-
-            lightbox.classList.remove(
-                "active"
-            );
-
-
-            lightbox.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
-
-            document.body.style.overflow =
-                "";
-
-
-            if (image) {
-
-                window.setTimeout(
-                    function () {
-
-                        if (
-                            !lightbox.classList.contains(
-                                "active"
-                            )
-                        ) {
-
-                            image.removeAttribute(
-                                "src"
-                            );
-
-                        }
-
-                    },
-                    250
+                closeMobileMenu(
+                    menuToggle,
+                    menu
                 );
 
             }
 
         }
+    );
 
 
-        function openLightbox(
-            source,
-            altText
-        ) {
+    /*
+       Close the menu when Escape is pressed.
+    */
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
 
             if (
-                !source ||
-                !image
+                event.key === "Escape" &&
+                menu.classList.contains("open")
             ) {
 
-                return;
+                closeMobileMenu(
+                    menuToggle,
+                    menu
+                );
+
+                menuToggle.focus();
 
             }
 
+        }
+    );
 
-            image.src =
-                source;
-
-
-            image.alt =
-                altText || "";
+}
 
 
-            lightbox.classList.add(
-                "active"
-            );
+function closeMobileMenu(
+    menuToggle,
+    menu
+) {
+
+    menuToggle.classList.remove("active");
+
+    menu.classList.remove("open");
+
+    document.body.classList.remove(
+        "menu-open"
+    );
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+    menuToggle.setAttribute(
+        "aria-label",
+        "Open navigation menu"
+    );
+
+}
 
 
-            lightbox.setAttribute(
-                "aria-hidden",
-                "false"
-            );
+/* =========================================================
+   BACK TO TOP
+   ========================================================= */
+
+function initialiseBackToTop() {
+
+    const button =
+        document.getElementById("back-to-top");
 
 
-            document.body.style.overflow =
-                "hidden";
+    if (!button) {
+        return;
+    }
+
+
+    const updateBackToTop = () => {
+
+        if (window.scrollY > 500) {
+
+            button.classList.add("visible");
+
+        } else {
+
+            button.classList.remove("visible");
 
         }
 
-
-        items.forEach(
-            function (item) {
-
-                item.addEventListener(
-                    "click",
-                    function (event) {
-
-                        event.preventDefault();
+    };
 
 
-                        let source =
-                            item.getAttribute(
-                                "data-lightbox"
-                            );
+    window.addEventListener(
+        "scroll",
+        updateBackToTop,
+        {
+            passive: true
+        }
+    );
 
 
-                        let altText = "";
+    updateBackToTop();
 
 
-                        const thumbnail =
-                            item.querySelector(
-                                "img"
-                            );
+    button.addEventListener(
+        "click",
+        () => {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+    );
+
+}
 
 
-                        if (!source) {
+/* =========================================================
+   SMOOTH INTERNAL ANCHORS
+   ========================================================= */
 
-                            if (thumbnail) {
+function initialiseSmoothAnchors() {
 
-                                source =
-                                    thumbnail.getAttribute(
-                                        "src"
-                                    );
+    document
+        .querySelectorAll('a[href^="#"]')
+        .forEach((link) => {
 
-
-                                altText =
-                                    thumbnail.alt ||
-                                    "";
-
-                            }
-
-                        } else {
-
-                            if (thumbnail) {
-
-                                altText =
-                                    thumbnail.alt ||
-                                    "";
-
-                            }
-
-                        }
-
-
-                        openLightbox(
-                            source,
-                            altText
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-
-        if (close) {
-
-            close.addEventListener(
+            link.addEventListener(
                 "click",
-                function (event) {
+                (event) => {
 
-                    event.preventDefault();
-
-                    closeLightbox();
-
-                }
-            );
-
-        }
+                    const targetId =
+                        link.getAttribute("href");
 
 
-        lightbox.addEventListener(
-            "click",
-            function (event) {
-
-                if (
-                    event.target ===
-                    lightbox
-                ) {
-
-                    closeLightbox();
-
-                }
-
-            }
-        );
-
-
-        document.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (
-                    event.key === "Escape" &&
-                    lightbox.classList.contains(
-                        "active"
-                    )
-                ) {
-
-                    closeLightbox();
-
-                }
-
-            }
-        );
-
-    }
-
-
-    /* =========================================================
-       EXTERNAL LINKS
-    ========================================================= */
-
-    function initExternalLinks() {
-
-        document
-            .querySelectorAll(
-                'a[href^="http://"], a[href^="https://"]'
-            )
-            .forEach(
-                function (link) {
-
-                    const href =
-                        link.getAttribute(
-                            "href"
-                        );
-
-
-                    if (!href) {
+                    if (
+                        !targetId ||
+                        targetId === "#"
+                    ) {
                         return;
                     }
 
 
-                    try {
-
-                        const url =
-                            new URL(
-                                href,
-                                window.location.href
-                            );
+                    const target =
+                        document.querySelector(
+                            targetId
+                        );
 
 
-                        if (
-                            url.hostname !==
-                            window.location.hostname
-                        ) {
-
-                            link.target =
-                                "_blank";
+                    if (!target) {
+                        return;
+                    }
 
 
-                            link.rel =
-                                "noopener noreferrer";
+                    event.preventDefault();
 
-                        }
 
-                    } catch (error) {}
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+
+                    /*
+                       Update the URL without forcing
+                       the browser to jump.
+                    */
+
+                    if (
+                        window.history &&
+                        window.history.replaceState
+                    ) {
+
+                        window.history.replaceState(
+                            null,
+                            "",
+                            targetId
+                        );
+
+                    }
 
                 }
             );
 
+        });
+
+}
+
+
+/* =========================================================
+   LIGHTBOX SUPPORT
+   ========================================================= */
+
+function initialiseLightboxes() {
+
+    const lightboxLinks =
+        document.querySelectorAll(
+            "[data-lightbox]"
+        );
+
+
+    if (!lightboxLinks.length) {
+        return;
     }
 
 
-})();
+    const lightbox =
+        createLightbox();
+
+
+    lightboxLinks.forEach((link) => {
+
+        link.addEventListener(
+            "click",
+            (event) => {
+
+                const href =
+                    link.getAttribute("href");
+
+
+                if (!href) {
+                    return;
+                }
+
+
+                event.preventDefault();
+
+
+                const image =
+                    lightbox.querySelector(
+                        ".newitt-lightbox-image"
+                    );
+
+
+                const caption =
+                    lightbox.querySelector(
+                        ".newitt-lightbox-caption"
+                    );
+
+
+                image.src = href;
+
+                image.alt =
+                    link.dataset.caption ||
+                    link.querySelector("img")?.alt ||
+                    "NEWITT Media image";
+
+
+                caption.textContent =
+                    link.dataset.caption || "";
+
+
+                lightbox.classList.add(
+                    "open"
+                );
+
+
+                document.body.classList.add(
+                    "menu-open"
+                );
+
+            }
+        );
+
+    });
+
+}
+
+
+function createLightbox() {
+
+    const existing =
+        document.getElementById(
+            "newitt-lightbox"
+        );
+
+
+    if (existing) {
+        return existing;
+    }
+
+
+    const lightbox =
+        document.createElement("div");
+
+
+    lightbox.id =
+        "newitt-lightbox";
+
+
+    lightbox.className =
+        "newitt-lightbox";
+
+
+    lightbox.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    lightbox.innerHTML = `
+        <button
+            class="newitt-lightbox-close"
+            type="button"
+            aria-label="Close image"
+        >
+            ×
+        </button>
+
+        <div class="newitt-lightbox-inner">
+
+            <img
+                class="newitt-lightbox-image"
+                src=""
+                alt=""
+            >
+
+            <div
+                class="newitt-lightbox-caption"
+            ></div>
+
+        </div>
+    `;
+
+
+    document.body.appendChild(
+        lightbox
+    );
+
+
+    const closeButton =
+        lightbox.querySelector(
+            ".newitt-lightbox-close"
+        );
+
+
+    const closeLightbox = () => {
+
+        lightbox.classList.remove(
+            "open"
+        );
+
+        lightbox.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        document.body.classList.remove(
+            "menu-open"
+        );
+
+    };
+
+
+    closeButton.addEventListener(
+        "click",
+        closeLightbox
+    );
+
+
+    lightbox.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                event.target === lightbox
+            ) {
+
+                closeLightbox();
+
+            }
+
+        }
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (
+                event.key === "Escape" &&
+                lightbox.classList.contains("open")
+            ) {
+
+                closeLightbox();
+
+            }
+
+        }
+    );
+
+
+    return lightbox;
+
+}
+
+
+/* =========================================================
+   EXTERNAL LINKS
+   ========================================================= */
+
+function initialiseExternalLinks() {
+
+    document
+        .querySelectorAll(
+            'a[href^="http://"], a[href^="https://"]'
+        )
+        .forEach((link) => {
+
+            const currentHost =
+                window.location.hostname;
+
+            let linkHost = "";
+
+            try {
+
+                linkHost =
+                    new URL(
+                        link.href
+                    ).hostname;
+
+            } catch {
+
+                return;
+
+            }
+
+
+            /*
+               Keep links to NEWITT Media itself
+               behaving normally.
+            */
+
+            if (
+                linkHost === currentHost ||
+                linkHost === ""
+            ) {
+                return;
+            }
+
+
+            /*
+               Social/external links open separately.
+            */
+
+            link.target = "_blank";
+
+            link.rel =
+                "noopener noreferrer";
+
+        });
+
+}
+
+
+/* =========================================================
+   PAGE LOAD SAFETY
+   ========================================================= */
+
+window.addEventListener(
+    "pageshow",
+    () => {
+
+        document.body.classList.remove(
+            "menu-open"
+        );
+
+        const menu =
+            document.querySelector(".nav-links");
+
+        const menuToggle =
+            document.querySelector(".menu-toggle");
+
+
+        if (menu) {
+            menu.classList.remove("open");
+        }
+
+
+        if (menuToggle) {
+
+            menuToggle.classList.remove(
+                "active"
+            );
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
+
+    }
+);
