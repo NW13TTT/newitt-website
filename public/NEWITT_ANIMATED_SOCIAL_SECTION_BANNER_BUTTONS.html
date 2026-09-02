@@ -7,7 +7,7 @@
 
 <meta
     name="viewport"
-    content="width=device-width, initial-scale=1"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
 >
 
 <meta
@@ -22,8 +22,8 @@
 
 /* =========================================================
    NEWITT MEDIA
-   CINEMATIC SOCIAL MEDIA SECTION
-   MASTER RESTORATION
+   CINEMATIC SOCIAL MEDIA HUB
+   CLEAN MASTER BUILD
 ========================================================= */
 
 *,
@@ -78,8 +78,7 @@ body {
 
     isolation: isolate;
 
-    background:
-        #020305;
+    background: #020305;
 
     text-align: center;
 }
@@ -100,8 +99,7 @@ body {
         url("newitt-social-hub-background.PNG")
         center center / cover no-repeat;
 
-    transform:
-        scale(1.06);
+    transform: scale(1.06);
 
     animation:
         background-drift
@@ -130,7 +128,7 @@ body {
 
 
 /* =========================================================
-   DARK CINEMATIC GRADING
+   CINEMATIC GRADING
 ========================================================= */
 
 .background-shade {
@@ -144,16 +142,16 @@ body {
 
         linear-gradient(
             180deg,
-            rgba(0,0,0,0.72) 0%,
-            rgba(0,0,0,0.42) 28%,
-            rgba(0,0,0,0.50) 58%,
+            rgba(0,0,0,0.68) 0%,
+            rgba(0,0,0,0.38) 28%,
+            rgba(0,0,0,0.46) 58%,
             rgba(0,0,0,0.82) 100%
         ),
 
         radial-gradient(
             ellipse at 50% 48%,
-            rgba(0,0,0,0.04),
-            rgba(0,0,0,0.72) 78%
+            rgba(0,0,0,0.03),
+            rgba(0,0,0,0.70) 78%
         );
 }
 
@@ -183,8 +181,7 @@ body {
             transparent 72%
         );
 
-    filter:
-        blur(25px);
+    filter: blur(25px);
 
     opacity: 0.75;
 
@@ -243,8 +240,7 @@ body {
             transparent
         );
 
-    filter:
-        blur(12px);
+    filter: blur(12px);
 
     transform:
         rotate(16deg)
@@ -260,9 +256,7 @@ body {
 
 .blue-ray.one {
     left: 25%;
-
-    animation-delay:
-        0s;
+    animation-delay: 0s;
 }
 
 
@@ -273,8 +267,7 @@ body {
 
     opacity: 0.55;
 
-    animation-delay:
-        5s;
+    animation-delay: 5s;
 }
 
 
@@ -312,9 +305,7 @@ body {
 
 
 /* =========================================================
-   PARANORMAL RED ATMOSPHERE
-   IMPORTANT:
-   THIS DOES NOT APPLY A FILTER TO THE LOGO.
+   PARANORMAL BLUE / NEUTRAL ATMOSPHERE
 ========================================================= */
 
 .paranormal-atmosphere {
@@ -333,13 +324,12 @@ body {
     background:
         radial-gradient(
             ellipse at center,
-            rgba(205,25,45,0.26),
-            rgba(150,15,30,0.12) 30%,
+            rgba(35,120,190,0.22),
+            rgba(20,75,135,0.10) 30%,
             transparent 70%
         );
 
-    filter:
-        blur(35px);
+    filter: blur(35px);
 
     opacity: 0.72;
 
@@ -367,17 +357,17 @@ body {
             scale(1.16)
             translate3d(-4%, -3%, 0);
 
-        opacity: 0.82;
+        opacity: 0.78;
     }
 
 }
 
 
 /* =========================================================
-   MOVING RED MIST
+   SOFT BLUE MIST
 ========================================================= */
 
-.red-mist {
+.blue-mist {
     position: absolute;
 
     left: -20%;
@@ -391,26 +381,26 @@ body {
     pointer-events: none;
 
     background:
+
         radial-gradient(
             ellipse at 25% 50%,
-            rgba(230,35,55,0.14),
+            rgba(50,150,220,0.10),
             transparent 38%
         ),
 
         radial-gradient(
             ellipse at 65% 40%,
-            rgba(210,30,48,0.16),
+            rgba(40,120,210,0.12),
             transparent 42%
         ),
 
         radial-gradient(
             ellipse at 85% 65%,
-            rgba(180,20,40,0.12),
+            rgba(60,140,220,0.08),
             transparent 35%
         );
 
-    filter:
-        blur(18px);
+    filter: blur(18px);
 
     animation:
         mist-drift
@@ -453,21 +443,19 @@ body {
 
     z-index: -8;
 
-    transform:
-        translateX(-50%);
+    transform: translateX(-50%);
 
     pointer-events: none;
 
     background:
         radial-gradient(
             ellipse at center,
-            rgba(255,45,55,0.19),
-            rgba(180,20,35,0.08) 35%,
+            rgba(65,155,220,0.16),
+            rgba(30,90,150,0.07) 35%,
             transparent 72%
         );
 
-    filter:
-        blur(20px);
+    filter: blur(20px);
 
     opacity: 0.55;
 
@@ -526,7 +514,7 @@ body {
     filter:
         drop-shadow(
             0 0 16px
-            rgba(255,35,45,0.28)
+            rgba(40,150,220,0.22)
         );
 }
 
@@ -572,8 +560,7 @@ body {
     width: 34%;
     height: 52%;
 
-    background:
-        #030305;
+    background: #030305;
 
     clip-path:
         polygon(
@@ -597,8 +584,7 @@ body {
     width: 34%;
     height: 52%;
 
-    background:
-        #030305;
+    background: #030305;
 
     clip-path:
         polygon(
@@ -622,8 +608,7 @@ body {
     width: 14%;
     height: 60%;
 
-    background:
-        #030305;
+    background: #030305;
 }
 
 
@@ -640,8 +625,7 @@ body {
     width: 170%;
     height: 35%;
 
-    background:
-        #010102;
+    background: #010102;
 
     clip-path:
         polygon(
@@ -652,7 +636,9 @@ body {
 }
 
 
-/* Windows */
+/* =========================================================
+   WINDOWS
+========================================================= */
 
 .house-window {
     position: absolute;
@@ -661,11 +647,11 @@ body {
     height: 14px;
 
     background:
-        rgba(255,50,55,0.82);
+        rgba(110,205,255,0.78);
 
     box-shadow:
         0 0 12px
-        rgba(255,35,45,0.85);
+        rgba(70,180,255,0.70);
 
     animation:
         window-flicker
@@ -685,8 +671,7 @@ body {
     left: 55%;
     top: 42%;
 
-    animation-delay:
-        1.4s;
+    animation-delay: 1.4s;
 }
 
 
@@ -697,8 +682,7 @@ body {
     width: 8px;
     height: 11px;
 
-    animation-delay:
-        2.2s;
+    animation-delay: 2.2s;
 }
 
 
@@ -706,8 +690,7 @@ body {
     left: 67%;
     top: 57%;
 
-    animation-delay:
-        0.8s;
+    animation-delay: 0.8s;
 }
 
 
@@ -731,7 +714,7 @@ body {
 
 
 /* =========================================================
-   LIGHTNING
+   BLUE LIGHTNING
 ========================================================= */
 
 .lightning {
@@ -764,8 +747,7 @@ body {
     width: 3px;
     height: 55%;
 
-    background:
-        #8bdcff;
+    background: #8bdcff;
 
     box-shadow:
         0 0 7px #42cfff,
@@ -786,8 +768,7 @@ body {
             44% 30%
         );
 
-    transform:
-        rotate(-5deg);
+    transform: rotate(-5deg);
 }
 
 
@@ -837,16 +818,12 @@ body {
     57.8% {
         opacity: 0.72;
     }
+
 }
 
 
-/* =========================================================
-   SECOND LIGHTNING STRIKE
-========================================================= */
-
 .lightning-two {
-    animation-delay:
-        4.5s;
+    animation-delay: 4.5s;
 }
 
 
@@ -863,7 +840,7 @@ body {
 
 
 /* =========================================================
-   CINEMATIC VIGNETTE
+   VIGNETTE
 ========================================================= */
 
 .vignette {
@@ -924,8 +901,7 @@ body {
 .eyebrow {
     margin-bottom: 10px;
 
-    color:
-        #ffd84d;
+    color: #ffd84d;
 
     font-size:
         clamp(
@@ -934,14 +910,11 @@ body {
             0.70rem
         );
 
-    font-weight:
-        800;
+    font-weight: 800;
 
-    letter-spacing:
-        0.28em;
+    letter-spacing: 0.28em;
 
-    text-transform:
-        uppercase;
+    text-transform: uppercase;
 
     text-shadow:
         0 0 14px
@@ -950,14 +923,13 @@ body {
 
 
 /* =========================================================
-   MAIN TITLE
+   TITLE
 ========================================================= */
 
 h1 {
     margin: 0;
 
-    color:
-        #ffffff;
+    color: #ffffff;
 
     font-size:
         clamp(
@@ -966,14 +938,11 @@ h1 {
             4.2rem
         );
 
-    font-weight:
-        850;
+    font-weight: 850;
 
-    letter-spacing:
-        -0.045em;
+    letter-spacing: -0.045em;
 
-    line-height:
-        0.95;
+    line-height: 0.95;
 
     text-shadow:
         0 5px 30px
@@ -982,8 +951,7 @@ h1 {
 
 
 h1 span {
-    color:
-        #d9a92e;
+    color: #d9a92e;
 
     text-shadow:
         0 0 22px
@@ -992,7 +960,7 @@ h1 span {
 
 
 /* =========================================================
-   GOLD DIVIDER
+   DIVIDER
 ========================================================= */
 
 .divider {
@@ -1040,8 +1008,7 @@ h1 span {
             0.90rem
         );
 
-    line-height:
-        1.65;
+    line-height: 1.65;
 
     text-shadow:
         0 2px 15px
@@ -1050,14 +1017,13 @@ h1 span {
 
 
 /* =========================================================
-   SOCIAL BRAND CARDS
+   BRAND GRID
 ========================================================= */
 
 .brand-grid {
     width: 100%;
 
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
         repeat(
@@ -1068,19 +1034,21 @@ h1 span {
             )
         );
 
-    gap:
-        18px;
+    gap: 18px;
 
     margin:
         0 auto;
 }
 
 
+/* =========================================================
+   BRAND CARD
+========================================================= */
+
 .brand-card {
     position: relative;
 
-    min-height:
-        190px;
+    min-height: 190px;
 
     padding:
         22px 24px;
@@ -1089,11 +1057,9 @@ h1 span {
         1px solid
         rgba(255,255,255,0.13);
 
-    border-radius:
-        12px;
+    border-radius: 12px;
 
-    overflow:
-        hidden;
+    overflow: hidden;
 
     background:
         linear-gradient(
@@ -1102,8 +1068,7 @@ h1 span {
             rgba(0,0,0,0.60)
         );
 
-    backdrop-filter:
-        blur(5px);
+    backdrop-filter: blur(5px);
 
     box-shadow:
         0 22px 60px
@@ -1166,11 +1131,11 @@ h1 span {
 
 .paranormal-card {
     border-color:
-        rgba(235,45,60,0.27);
+        rgba(70,175,230,0.26);
 
     box-shadow:
         inset 0 0 50px
-        rgba(220,30,45,0.045),
+        rgba(20,100,170,0.045),
         0 22px 60px
         rgba(0,0,0,0.45);
 }
@@ -1188,7 +1153,7 @@ h1 span {
     background:
         radial-gradient(
             circle at 80% 50%,
-            rgba(220,30,45,0.13),
+            rgba(40,135,210,0.12),
             transparent 55%
         );
 }
@@ -1205,14 +1170,11 @@ h1 span {
 
     height: 100%;
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
 
-    gap:
-        22px;
+    gap: 22px;
 }
 
 
@@ -1220,77 +1182,65 @@ h1 span {
     flex:
         0 0 125px;
 
-    width:
-        125px;
+    width: 125px;
 
-    height:
-        125px;
+    height: 125px;
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
 
-    justify-content:
-        center;
+    justify-content: center;
 }
 
 
 .logo-wrap img {
-    display:
-        block;
+    display: block;
 
-    width:
-        100%;
+    width: 100%;
 
-    max-width:
-        125px;
+    max-width: 125px;
 
-    height:
-        auto;
+    height: auto;
 
-    object-fit:
-        contain;
+    object-fit: contain;
 
-    /* IMPORTANT:
-       No red filter is applied to the paranormal logo. */
+    filter:
+        drop-shadow(
+            0 10px 22px
+            rgba(0,0,0,0.50)
+        );
 }
 
 
+/* =========================================================
+   CARD COPY
+========================================================= */
+
 .card-copy {
-    flex:
-        1;
+    flex: 1;
 
-    min-width:
-        0;
+    min-width: 0;
 
-    text-align:
-        left;
+    text-align: left;
 }
 
 
 .brand-label {
-    margin-bottom:
-        3px;
+    margin-bottom: 3px;
 
-    font-size:
-        0.62rem;
+    font-size: 0.62rem;
 
-    font-weight:
-        850;
+    font-weight: 850;
 
-    letter-spacing:
-        0.24em;
+    letter-spacing: 0.24em;
 
-    text-transform:
-        uppercase;
+    text-transform: uppercase;
 }
 
 
 .brand-label.blue {
-    color:
-        #4ecfff;
+    color: #4ecfff;
 
     text-shadow:
         0 0 15px
@@ -1298,13 +1248,12 @@ h1 span {
 }
 
 
-.brand-label.red {
-    color:
-        #ff5865;
+.brand-label.paranormal {
+    color: #8fdcff;
 
     text-shadow:
         0 0 15px
-        rgba(230,30,50,0.30);
+        rgba(50,170,240,0.28);
 }
 
 
@@ -1312,8 +1261,7 @@ h2 {
     margin:
         0 0 13px;
 
-    color:
-        #ffffff;
+    color: #ffffff;
 
     font-size:
         clamp(
@@ -1322,44 +1270,37 @@ h2 {
             1.55rem
         );
 
-    font-weight:
-        850;
+    font-weight: 850;
 
-    letter-spacing:
-        -0.025em;
+    letter-spacing: -0.025em;
 
-    line-height:
-        1;
+    line-height: 1;
 }
 
 
+/* =========================================================
+   SOCIAL BUTTONS
+========================================================= */
+
 .social-buttons {
-    display:
-        flex;
+    display: flex;
 
-    flex-wrap:
-        wrap;
+    flex-wrap: wrap;
 
-    gap:
-        8px;
+    gap: 8px;
 }
 
 
 .social-button {
-    position:
-        relative;
+    position: relative;
 
-    display:
-        inline-flex;
+    display: inline-flex;
 
-    align-items:
-        center;
+    align-items: center;
 
-    justify-content:
-        center;
+    justify-content: center;
 
-    min-height:
-        34px;
+    min-height: 34px;
 
     padding:
         7px 12px;
@@ -1368,26 +1309,20 @@ h2 {
         1px solid
         rgba(255,255,255,0.16);
 
-    border-radius:
-        6px;
+    border-radius: 6px;
 
-    color:
-        #ffffff;
+    color: #ffffff;
 
     background:
         rgba(0,0,0,0.38);
 
-    font-size:
-        0.61rem;
+    font-size: 0.61rem;
 
-    font-weight:
-        800;
+    font-weight: 800;
 
-    letter-spacing:
-        0.035em;
+    letter-spacing: 0.035em;
 
-    text-decoration:
-        none;
+    text-decoration: none;
 
     transition:
         transform 200ms ease,
@@ -1403,13 +1338,15 @@ h2 {
 }
 
 
-.social-button.skyline-button {
+.social-button.skyline-button,
+.social-button.paranormal-button {
     border-color:
         rgba(70,200,255,0.34);
 }
 
 
-.social-button.skyline-button:hover {
+.social-button.skyline-button:hover,
+.social-button.paranormal-button:hover {
     border-color:
         #4ecfff;
 
@@ -1422,59 +1359,29 @@ h2 {
 }
 
 
-.social-button.paranormal-button {
-    border-color:
-        rgba(255,70,80,0.30);
-}
-
-
-.social-button.paranormal-button:hover {
-    border-color:
-        #ff5865;
-
-    background:
-        rgba(200,25,45,0.12);
-
-    box-shadow:
-        0 8px 25px
-        rgba(220,30,50,0.16);
-}
-
-
 .social-icon {
-    margin-right:
-        5px;
+    margin-right: 5px;
 
-    font-size:
-        0.78rem;
+    font-size: 0.78rem;
 }
 
 
 /* =========================================================
-   GOLD MOVING TICKER
+   MOVING GOLD TICKER
 ========================================================= */
 
 .ticker {
-    position:
-        absolute;
+    position: absolute;
 
-    left:
-        0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
-    right:
-        0;
+    height: 48px;
 
-    bottom:
-        0;
+    z-index: 10;
 
-    height:
-        48px;
-
-    z-index:
-        10;
-
-    overflow:
-        hidden;
+    overflow: hidden;
 
     border-top:
         1px solid
@@ -1498,17 +1405,13 @@ h2 {
 
 
 .ticker-track {
-    width:
-        max-content;
+    width: max-content;
 
-    height:
-        100%;
+    height: 100%;
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
 
     animation:
         ticker-scroll
@@ -1522,20 +1425,16 @@ h2 {
     flex:
         0 0 auto;
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
 
-    gap:
-        26px;
+    gap: 26px;
 
     padding:
         0 30px;
 
-    color:
-        #f5b400;
+    color: #f5b400;
 
     font-size:
         clamp(
@@ -1544,14 +1443,11 @@ h2 {
             0.76rem
         );
 
-    font-weight:
-        850;
+    font-weight: 850;
 
-    letter-spacing:
-        0.23em;
+    letter-spacing: 0.23em;
 
-    white-space:
-        nowrap;
+    white-space: nowrap;
 
     text-shadow:
         0 0 15px
@@ -1560,11 +1456,9 @@ h2 {
 
 
 .ticker-star {
-    font-size:
-        0.8rem;
+    font-size: 0.8rem;
 
-    color:
-        #ffd84d;
+    color: #ffd84d;
 
     animation:
         star-pulse
@@ -1593,55 +1487,40 @@ h2 {
 @keyframes star-pulse {
 
     from {
-        opacity:
-            0.45;
-
-        transform:
-            scale(0.85);
+        opacity: 0.45;
+        transform: scale(0.85);
     }
 
     to {
-        opacity:
-            1;
-
-        transform:
-            scale(1.15);
+        opacity: 1;
+        transform: scale(1.15);
     }
 
 }
 
 
 /* =========================================================
-   SMALL FLOATING PARTICLES
+   PARTICLES
 ========================================================= */
 
 .particles {
-    position:
-        absolute;
+    position: absolute;
 
-    inset:
-        0;
+    inset: 0;
 
-    z-index:
-        -1;
+    z-index: -1;
 
-    pointer-events:
-        none;
+    pointer-events: none;
 }
 
 
 .particle {
-    position:
-        absolute;
+    position: absolute;
 
-    width:
-        2px;
+    width: 2px;
+    height: 2px;
 
-    height:
-        2px;
-
-    border-radius:
-        50%;
+    border-radius: 50%;
 
     background:
         rgba(130,205,255,0.75);
@@ -1706,26 +1585,22 @@ h2 {
         transform:
             translate3d(0,15px,0);
 
-        opacity:
-            0;
+        opacity: 0;
     }
 
     25% {
-        opacity:
-            0.8;
+        opacity: 0.8;
     }
 
     70% {
-        opacity:
-            0.35;
+        opacity: 0.35;
     }
 
     100% {
         transform:
             translate3d(15px,-35px,0);
 
-        opacity:
-            0;
+        opacity: 0;
     }
 
 }
@@ -1738,8 +1613,7 @@ h2 {
 @media (max-width: 800px) {
 
     .social {
-        min-height:
-            650px;
+        min-height: 650px;
     }
 
 
@@ -1756,47 +1630,37 @@ h2 {
         grid-template-columns:
             1fr;
 
-        gap:
-            10px;
+        gap: 10px;
     }
 
 
     .brand-card {
-        min-height:
-            175px;
+        min-height: 175px;
 
-        padding:
-            17px;
+        padding: 17px;
     }
 
 
     .logo-wrap {
-        flex-basis:
-            90px;
+        flex-basis: 90px;
 
-        width:
-            90px;
-
-        height:
-            90px;
+        width: 90px;
+        height: 90px;
     }
 
 
     .logo-wrap img {
-        max-width:
-            90px;
+        max-width: 90px;
     }
 
 
     .card-inner {
-        gap:
-            15px;
+        gap: 15px;
     }
 
 
     .intro {
-        margin-bottom:
-            18px;
+        margin-bottom: 18px;
     }
 
 
@@ -1805,23 +1669,19 @@ h2 {
             translateX(-50%)
             scale(0.75);
 
-        bottom:
-            17%;
+        bottom: 17%;
     }
 
 
     .house-glow {
-        bottom:
-            17%;
+        bottom: 17%;
 
-        width:
-            55%;
+        width: 55%;
     }
 
 
     .ticker {
-        height:
-            43px;
+        height: 43px;
     }
 
 }
@@ -1834,8 +1694,13 @@ h2 {
 @media (max-width: 520px) {
 
     .social {
-        min-height:
-            700px;
+        min-height: 700px;
+    }
+
+
+    .content {
+        padding:
+            20px 0 58px;
     }
 
 
@@ -1850,102 +1715,82 @@ h2 {
 
 
     .intro {
-        font-size:
-            0.72rem;
+        font-size: 0.72rem;
 
-        line-height:
-            1.55;
+        line-height: 1.55;
     }
 
 
     .brand-card {
-        min-height:
-            185px;
+        min-height: 185px;
     }
 
 
     .card-inner {
-        align-items:
-            flex-start;
+        align-items: flex-start;
     }
 
 
     .logo-wrap {
-        flex-basis:
-            76px;
+        flex-basis: 76px;
 
-        width:
-            76px;
-
-        height:
-            76px;
+        width: 76px;
+        height: 76px;
     }
 
 
     .logo-wrap img {
-        max-width:
-            76px;
+        max-width: 76px;
     }
 
 
     .brand-label {
-        font-size:
-            0.52rem;
+        font-size: 0.52rem;
     }
 
 
     h2 {
-        font-size:
-            1rem;
+        font-size: 1rem;
 
-        margin-bottom:
-            10px;
+        margin-bottom: 10px;
     }
 
 
     .social-button {
-        min-height:
-            32px;
+        min-height: 32px;
 
         padding:
             6px 9px;
 
-        font-size:
-            0.55rem;
+        font-size: 0.55rem;
     }
 
 
     .haunted-house {
-        bottom:
-            14%;
+        bottom: 14%;
 
         transform:
             translateX(-50%)
             scale(0.58);
 
-        opacity:
-            0.42;
+        opacity: 0.42;
     }
 
 
     .house-glow {
-        bottom:
-            13%;
+        bottom: 13%;
 
-        opacity:
-            0.45;
+        opacity: 0.45;
     }
 
 
     .ticker-group {
-        gap:
-            17px;
+        gap: 17px;
 
         padding:
             0 20px;
 
-        letter-spacing:
-            0.16em;
+        letter-spacing: 0.16em;
     }
 
 }
@@ -1961,38 +1806,30 @@ h2 {
         width:
             calc(100% - 20px);
 
-        padding-top:
-            18px;
+        padding-top: 18px;
     }
 
 
     .brand-card {
-        padding:
-            14px;
+        padding: 14px;
     }
 
 
     .logo-wrap {
-        flex-basis:
-            65px;
+        flex-basis: 65px;
 
-        width:
-            65px;
-
-        height:
-            65px;
+        width: 65px;
+        height: 65px;
     }
 
 
     .logo-wrap img {
-        max-width:
-            65px;
+        max-width: 65px;
     }
 
 
     .social-buttons {
-        gap:
-            5px;
+        gap: 5px;
     }
 
 
@@ -2000,14 +1837,12 @@ h2 {
         padding:
             5px 7px;
 
-        font-size:
-            0.50rem;
+        font-size: 0.50rem;
     }
 
 
     .ticker-group {
-        font-size:
-            0.55rem;
+        font-size: 0.55rem;
     }
 
 }
@@ -2022,11 +1857,9 @@ h2 {
     *,
     *::before,
     *::after {
-        animation:
-            none !important;
+        animation: none !important;
 
-        transition:
-            none !important;
+        transition: none !important;
     }
 
 }
@@ -2059,7 +1892,7 @@ h2 {
 
 
     <!-- =====================================================
-         SKYLINE ATMOSPHERE
+         BLUE ATMOSPHERE
     ====================================================== -->
 
     <div
@@ -2080,11 +1913,6 @@ h2 {
     ></div>
 
 
-    <!-- =====================================================
-         PARANORMAL ATMOSPHERE
-         This is deliberately separate from the logo.
-    ====================================================== -->
-
     <div
         class="paranormal-atmosphere"
         aria-hidden="true"
@@ -2092,7 +1920,7 @@ h2 {
 
 
     <div
-        class="red-mist"
+        class="blue-mist"
         aria-hidden="true"
     ></div>
 
@@ -2132,7 +1960,7 @@ h2 {
 
 
     <!-- =====================================================
-         LIGHTNING
+         BLUE LIGHTNING
     ====================================================== -->
 
     <div
@@ -2207,7 +2035,7 @@ h2 {
 
 
         <!-- =================================================
-             TWO WORLDS
+             SOCIAL WORLDS
         ================================================== -->
 
         <div class="brand-grid">
@@ -2227,7 +2055,7 @@ h2 {
                     <div class="logo-wrap">
 
                         <img
-                            src="sky-logo.png.png"
+                            src="sky-logo.png"
                             alt="NEWITT Skyline Media logo"
                         >
 
@@ -2237,9 +2065,7 @@ h2 {
                     <div class="card-copy">
 
 
-                        <div
-                            class="brand-label blue"
-                        >
+                        <div class="brand-label blue">
                             NEWITT
                         </div>
 
@@ -2262,6 +2088,7 @@ h2 {
 
                                 <span
                                     class="social-icon"
+                                    aria-hidden="true"
                                 >
                                     ♪
                                 </span>
@@ -2281,6 +2108,7 @@ h2 {
 
                                 <span
                                     class="social-icon"
+                                    aria-hidden="true"
                                 >
                                     ▶
                                 </span>
@@ -2314,7 +2142,7 @@ h2 {
                     <div class="logo-wrap">
 
                         <img
-                            src="paranormal-logo.png.png"
+                            src="paranormal-logo.png"
                             alt="NEWITT's Paranormal Adventures logo"
                         >
 
@@ -2324,9 +2152,7 @@ h2 {
                     <div class="card-copy">
 
 
-                        <div
-                            class="brand-label red"
-                        >
+                        <div class="brand-label paranormal">
                             NEWITT'S
                         </div>
 
@@ -2349,6 +2175,7 @@ h2 {
 
                                 <span
                                     class="social-icon"
+                                    aria-hidden="true"
                                 >
                                     ♪
                                 </span>
@@ -2368,6 +2195,7 @@ h2 {
 
                                 <span
                                     class="social-icon"
+                                    aria-hidden="true"
                                 >
                                     ◎
                                 </span>
@@ -2387,6 +2215,7 @@ h2 {
 
                                 <span
                                     class="social-icon"
+                                    aria-hidden="true"
                                 >
                                     ▶
                                 </span>
@@ -2406,6 +2235,7 @@ h2 {
 
                                 <span
                                     class="social-icon"
+                                    aria-hidden="true"
                                 >
                                     f
                                 </span>
@@ -2445,7 +2275,10 @@ h2 {
 
             <div class="ticker-group">
 
-                <span class="ticker-star">
+                <span
+                    class="ticker-star"
+                    aria-hidden="true"
+                >
                     ✦
                 </span>
 
@@ -2453,7 +2286,10 @@ h2 {
                     FOLLOW US ON SOCIAL MEDIA
                 </strong>
 
-                <span class="ticker-star">
+                <span
+                    class="ticker-star"
+                    aria-hidden="true"
+                >
                     ✦
                 </span>
 
@@ -2465,7 +2301,10 @@ h2 {
                 aria-hidden="true"
             >
 
-                <span class="ticker-star">
+                <span
+                    class="ticker-star"
+                    aria-hidden="true"
+                >
                     ✦
                 </span>
 
@@ -2473,47 +2312,10 @@ h2 {
                     FOLLOW US ON SOCIAL MEDIA
                 </strong>
 
-                <span class="ticker-star">
-                    ✦
-                </span>
-
-            </div>
-
-
-            <div
-                class="ticker-group"
-                aria-hidden="true"
-            >
-
-                <span class="ticker-star">
-                    ✦
-                </span>
-
-                <strong>
-                    FOLLOW US ON SOCIAL MEDIA
-                </strong>
-
-                <span class="ticker-star">
-                    ✦
-                </span>
-
-            </div>
-
-
-            <div
-                class="ticker-group"
-                aria-hidden="true"
-            >
-
-                <span class="ticker-star">
-                    ✦
-                </span>
-
-                <strong>
-                    FOLLOW US ON SOCIAL MEDIA
-                </strong>
-
-                <span class="ticker-star">
+                <span
+                    class="ticker-star"
+                    aria-hidden="true"
+                >
                     ✦
                 </span>
 
