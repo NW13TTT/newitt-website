@@ -2,17 +2,16 @@
    NEWITT MEDIA
    MASTER JAVASCRIPT
    CLEAN FINAL BUILD
-   30 AUGUST 2026
+   SEPTEMBER 2026
 
    FUNCTIONS
    - First-visit cinematic intro
    - Mobile navigation
-   - Mobile page transition
+   - Normal page-to-page navigation
    - Back to top
    - Smooth anchor scrolling
    - Lightbox
    - Safe external links
-   - Mobile micro-flash protection
 
    DESIGN NOTES
    - Keep original cinematic entry animation
@@ -20,228 +19,6 @@
    - No red paranormal mist
    - Preserve existing page structure
 ========================================================= */
-
-
-/* =========================================================
-   EARLY MOBILE PAGE TRANSITION
-   ---------------------------------------------------------
-   Runs before DOMContentLoaded so the incoming page is
-   covered before the browser can visibly flash it.
-========================================================= */
-
-(function () {
-
-    "use strict";
-
-
-    const TRANSITION_KEY = "newittPageTransition";
-
-    const isMobile =
-        window.matchMedia &&
-        window.matchMedia("(max-width: 700px)").matches;
-
-
-    if (!isMobile) {
-        return;
-    }
-
-
-    let incoming = false;
-
-
-    try {
-
-        incoming =
-            sessionStorage.getItem(TRANSITION_KEY) === "1";
-
-        sessionStorage.removeItem(TRANSITION_KEY);
-
-    } catch (error) {
-
-        incoming = false;
-
-    }
-
-
-    if (!incoming) {
-        return;
-    }
-
-
-    const transitionStyle =
-        document.createElement("style");
-
-
-    transitionStyle.id =
-        "newitt-early-transition-style";
-
-
-    transitionStyle.textContent = `
-        html {
-            background: #020305 !important;
-            background-color: #020305 !important;
-        }
-
-        body {
-            background: #020305 !important;
-        }
-
-        #newitt-early-transition {
-            position: fixed;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2147483647;
-            background: #020305;
-            opacity: 1;
-            pointer-events: all;
-            transform: translateZ(0);
-            -webkit-transform: translateZ(0);
-            will-change: opacity;
-        }
-    `;
-
-
-    if (document.head) {
-
-        document.head.appendChild(
-            transitionStyle
-        );
-
-    }
-
-
-    function createOverlay() {
-
-        if (
-            document.getElementById(
-                "newitt-early-transition"
-            )
-        ) {
-            return;
-        }
-
-
-        const overlay =
-            document.createElement("div");
-
-
-        overlay.id =
-            "newitt-early-transition";
-
-
-        overlay.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-
-
-        if (document.documentElement) {
-
-            document.documentElement.appendChild(
-                overlay
-            );
-
-        }
-
-    }
-
-
-    createOverlay();
-
-
-    function reveal() {
-
-        const overlay =
-            document.getElementById(
-                "newitt-early-transition"
-            );
-
-
-        if (!overlay) {
-            return;
-        }
-
-
-        overlay.style.transition =
-            "opacity 220ms ease";
-
-
-        overlay.style.opacity =
-            "0";
-
-
-        window.setTimeout(
-            function () {
-
-                if (overlay.parentNode) {
-
-                    overlay.parentNode.removeChild(
-                        overlay
-                    );
-
-                }
-
-
-                const earlyStyle =
-                    document.getElementById(
-                        "newitt-early-transition-style"
-                    );
-
-
-                if (
-                    earlyStyle &&
-                    earlyStyle.parentNode
-                ) {
-
-                    earlyStyle.parentNode.removeChild(
-                        earlyStyle
-                    );
-
-                }
-
-            },
-            260
-        );
-
-    }
-
-
-    function revealAfterPaint() {
-
-        window.requestAnimationFrame(
-            function () {
-
-                window.requestAnimationFrame(
-                    reveal
-                );
-
-            }
-        );
-
-    }
-
-
-    if (
-        document.readyState ===
-        "loading"
-    ) {
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            revealAfterPaint,
-            {
-                once: true
-            }
-        );
-
-    } else {
-
-        revealAfterPaint();
-
-    }
-
-})();
 
 
 /* =========================================================
@@ -260,8 +37,6 @@
             initFirstVisitIntro();
 
             initMobileNavigation();
-
-            initPageTransition();
 
             initBackToTop();
 
@@ -466,6 +241,9 @@
 
     /* =====================================================
        MOBILE NAVIGATION
+       -----------------------------------------------------
+       Uses the existing .menu-toggle and .nav-links
+       structure used throughout the NEWITT pages.
     ===================================================== */
 
     function initMobileNavigation() {
@@ -497,7 +275,8 @@
             menu.classList.remove(
                 "open",
                 "active",
-                "menu-open"
+                "menu-open",
+                "is-open"
             );
 
 
@@ -520,7 +299,8 @@
             menu.classList.add(
                 "open",
                 "active",
-                "menu-open"
+                "menu-open",
+                "is-open"
             );
 
 
@@ -543,6 +323,8 @@
             function (event) {
 
                 event.preventDefault();
+
+                event.stopPropagation();
 
 
                 const isOpen =
@@ -571,7 +353,11 @@
 
                     link.addEventListener(
                         "click",
-                        closeMenu
+                        function () {
+
+                            closeMenu();
+
+                        }
                     );
 
                 }
@@ -628,256 +414,6 @@
                     closeMenu();
 
                 }
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       MOBILE PAGE TRANSITION
-       -----------------------------------------------------
-       Handles the outgoing page.
-
-       The early transition at the top of this file handles
-       the incoming page before the browser can flash it.
-    ===================================================== */
-
-    function initPageTransition() {
-
-        const mobile =
-            window.matchMedia(
-                "(max-width: 700px)"
-            ).matches;
-
-
-        if (!mobile) {
-            return;
-        }
-
-
-        const links =
-            document.querySelectorAll(
-                "a[href]"
-            );
-
-
-        links.forEach(
-            function (link) {
-
-                link.addEventListener(
-                    "click",
-                    function (event) {
-
-                        if (
-                            event.defaultPrevented ||
-                            event.ctrlKey ||
-                            event.metaKey ||
-                            event.shiftKey ||
-                            event.altKey
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        if (
-                            event.button !== 0
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        const href =
-                            link.getAttribute(
-                                "href"
-                            );
-
-
-                        if (!href) {
-                            return;
-                        }
-
-
-                        /*
-                         * Leave anchors, email, telephone
-                         * and genuine external links alone.
-                         */
-
-                        if (
-                            href.startsWith("#") ||
-                            href.startsWith("mailto:") ||
-                            href.startsWith("tel:") ||
-                            href.startsWith("http://") ||
-                            href.startsWith("https://") ||
-                            href.startsWith("javascript:")
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        /*
-                         * Do not interfere with downloads.
-                         */
-
-                        if (
-                            link.hasAttribute(
-                                "download"
-                            )
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        const current =
-                            window.location.pathname
-                                .split("/")
-                                .pop() ||
-                            "index.html";
-
-
-                        const target =
-                            href
-                                .split("#")[0]
-                                .split("?")[0]
-                                .split("/")
-                                .pop() ||
-                            "index.html";
-
-
-                        if (
-                            current ===
-                            target
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        if (
-                            document.body.dataset
-                                .newittNavigating ===
-                            "true"
-                        ) {
-
-                            event.preventDefault();
-
-                            return;
-
-                        }
-
-
-                        event.preventDefault();
-
-
-                        document.body.dataset
-                            .newittNavigating =
-                            "true";
-
-
-                        try {
-
-                            sessionStorage.setItem(
-                                "newittPageTransition",
-                                "1"
-                            );
-
-                        } catch (error) {}
-
-
-                        const overlay =
-                            document.createElement(
-                                "div"
-                            );
-
-
-                        overlay.id =
-                            "newitt-transition-overlay";
-
-
-                        overlay.setAttribute(
-                            "aria-hidden",
-                            "true"
-                        );
-
-
-                        Object.assign(
-                            overlay.style,
-                            {
-                                position: "fixed",
-                                inset: "0",
-                                width: "100%",
-                                height: "100%",
-                                zIndex: "2147483647",
-                                background: "#020305",
-                                opacity: "0",
-                                pointerEvents: "all",
-                                transform: "translateZ(0)",
-                                webkitTransform:
-                                    "translateZ(0)",
-                                willChange: "opacity",
-                                transition:
-                                    "opacity 180ms ease"
-                            }
-                        );
-
-
-                        document.body.appendChild(
-                            overlay
-                        );
-
-
-                        document.documentElement
-                            .style
-                            .overflow =
-                            "hidden";
-
-
-                        document.body
-                            .style
-                            .overflow =
-                            "hidden";
-
-
-                        /*
-                         * Force the browser to register the
-                         * initial opacity before starting fade.
-                         */
-
-                        void overlay.offsetWidth;
-
-
-                        window.requestAnimationFrame(
-                            function () {
-
-                                overlay.style.opacity =
-                                    "1";
-
-
-                                window.setTimeout(
-                                    function () {
-
-                                        window.location.href =
-                                            href;
-
-                                    },
-                                    180
-                                );
-
-                            }
-                        );
-
-                    }
-                );
 
             }
         );
@@ -958,6 +494,15 @@
 
     /* =====================================================
        SMOOTH ANCHOR SCROLLING
+       -----------------------------------------------------
+       Only handles links beginning with #.
+       Normal page links such as:
+       skyline.html
+       paranormal.html
+       photography.html
+       contact.html
+
+       are NOT intercepted.
     ===================================================== */
 
     function initSmoothScrolling() {
@@ -1042,7 +587,7 @@
     /* =====================================================
        LIGHTBOX
        -----------------------------------------------------
-       Supports both:
+       Supports:
        .gallery-item
        [data-lightbox]
     ===================================================== */
@@ -1186,13 +731,13 @@
                         let altText = "";
 
 
+                        const thumbnail =
+                            item.querySelector(
+                                "img"
+                            );
+
+
                         if (!source) {
-
-                            const thumbnail =
-                                item.querySelector(
-                                    "img"
-                                );
-
 
                             if (thumbnail) {
 
@@ -1209,12 +754,6 @@
                             }
 
                         } else {
-
-                            const thumbnail =
-                                item.querySelector(
-                                    "img"
-                                );
-
 
                             if (thumbnail) {
 
