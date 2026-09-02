@@ -159,35 +159,148 @@
 
 
     <!-- =====================================================
-         PARANORMAL PAGE STYLES
+         PARANORMAL PAGE ENHANCEMENTS
+         No red mist / no sweeping shine animation
     ====================================================== -->
 
     <style>
 
+        /*
+         * Prevent horizontal overflow on smaller devices.
+         */
+
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+
+        /*
+         * Paranormal hero.
+         * The existing master stylesheet controls the main
+         * NEWITT visual language. These additions provide
+         * atmosphere without changing the overall design.
+         */
+
+        .paranormal-hero {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            min-height: 78vh;
+            display: flex;
+            align-items: center;
+        }
+
+
+        /*
+         * Subtle atmospheric layer.
+         * Blue/black only. No red haze around the logo.
+         */
+
+        .paranormal-atmosphere {
+            position: absolute;
+            inset: 0;
+            z-index: -3;
+            pointer-events: none;
+
+            background:
+                radial-gradient(
+                    circle at 50% 42%,
+                    rgba(28, 101, 170, 0.14),
+                    transparent 38%
+                ),
+                radial-gradient(
+                    circle at 20% 75%,
+                    rgba(0, 122, 255, 0.07),
+                    transparent 32%
+                ),
+                linear-gradient(
+                    180deg,
+                    rgba(0, 0, 0, 0.12),
+                    rgba(0, 0, 0, 0.62)
+                );
+        }
+
+
+        /*
+         * Very restrained fog layer.
+         * This is atmospheric rather than a coloured mist
+         * surrounding the logo.
+         */
+
+        .paranormal-fog {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+
+            background:
+                radial-gradient(
+                    ellipse at 50% 70%,
+                    rgba(170, 190, 205, 0.055),
+                    transparent 52%
+                ),
+                radial-gradient(
+                    ellipse at 15% 45%,
+                    rgba(120, 145, 165, 0.035),
+                    transparent 45%
+                );
+
+            opacity: 0.8;
+        }
+
+
+        /*
+         * Keep the paranormal logo clean.
+         */
+
+        .paranormal-logo {
+            position: relative;
+            z-index: 2;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: min(520px, 86vw);
+            height: auto;
+
+            filter:
+                drop-shadow(0 10px 28px rgba(0, 0, 0, 0.55))
+                drop-shadow(0 0 16px rgba(0, 126, 255, 0.10));
+        }
+
+
+        /*
+         * Hero content remains above the atmospheric layers.
+         */
+
+        .paranormal-hero-content {
+            position: relative;
+            z-index: 3;
+        }
+
+
+        /*
+         * TikTok container.
+         * Neutral dark treatment rather than the previous
+         * red glow.
+         */
+
         .tiktok-preview {
             width: min(100%, 430px);
-
             margin: 0 auto;
-
             padding: 0;
-
             overflow: hidden;
 
-            border:
-                1px solid
-                rgba(255, 72, 82, 0.30);
-
+            border: 1px solid rgba(255, 255, 255, 0.10);
             border-radius: 14px;
 
             background:
-                rgba(3, 7, 13, 0.72);
+                rgba(3, 7, 13, 0.82);
 
             box-shadow:
-                inset 0 0 38px
-                rgba(255, 25, 40, 0.05),
-
-                0 18px 45px
-                rgba(0, 0, 0, 0.30);
+                inset 0 0 38px rgba(0, 126, 255, 0.035),
+                0 18px 45px rgba(0, 0, 0, 0.36);
 
             isolation: isolate;
         }
@@ -195,9 +308,7 @@
 
         .tiktok-preview .tiktok-embed {
             width: 100% !important;
-
             max-width: 430px !important;
-
             min-width: 0 !important;
 
             margin: 0 auto !important;
@@ -206,9 +317,7 @@
 
         .tiktok-preview blockquote {
             width: 100% !important;
-
             max-width: 430px !important;
-
             min-width: 0 !important;
 
             margin: 0 auto !important;
@@ -217,10 +326,79 @@
 
         .tiktok-preview iframe {
             width: 100% !important;
-
             max-width: 100% !important;
-
             border: 0 !important;
+        }
+
+
+        /*
+         * Investigation cards.
+         * Let the master stylesheet provide the core look,
+         * while adding a little more depth to this page.
+         */
+
+        .investigation-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .investigation-card::after {
+            content: "";
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            bottom: 0;
+
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(0, 140, 255, 0.42),
+                    transparent
+                );
+
+            opacity: 0.65;
+        }
+
+
+        /*
+         * Keep social buttons usable on phones.
+         */
+
+        .paranormal-social-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+
+        /*
+         * Mobile adjustments.
+         */
+
+        @media (max-width: 700px) {
+
+            .paranormal-hero {
+                min-height: 72vh;
+            }
+
+            .paranormal-logo {
+                max-width: min(430px, 88vw);
+            }
+
+            .paranormal-social-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .paranormal-social-actions .button {
+                width: 100%;
+            }
+
         }
 
 
@@ -228,17 +406,13 @@
 
             .tiktok-preview {
                 width: min(100%, 390px);
-
                 border-radius: 12px;
             }
-
 
             .tiktok-preview .tiktok-embed,
             .tiktok-preview blockquote {
                 width: 100% !important;
-
                 max-width: 390px !important;
-
                 min-width: 0 !important;
             }
 
@@ -248,17 +422,22 @@
         @media (max-width: 380px) {
 
             .tiktok-preview {
-                width:
-                    calc(100vw - 32px);
+                width: calc(100vw - 32px);
             }
 
         }
 
 
+        /*
+         * Accessibility.
+         * Respect users who request reduced motion.
+         */
+
         @media (prefers-reduced-motion: reduce) {
 
-            .tiktok-preview {
-                scroll-behavior: auto;
+            .paranormal-atmosphere,
+            .paranormal-fog {
+                opacity: 0.65;
             }
 
         }
@@ -286,8 +465,6 @@
             href="index.html"
             class="nav-brand"
             aria-label="NEWITT Media Home"
-            data-aria-en="NEWITT Media Home"
-            data-aria-cy="Cartref NEWITT Media"
         >
 
             <img
@@ -308,8 +485,6 @@
             aria-expanded="false"
             aria-controls="main-menu"
             aria-label="Open navigation menu"
-            data-aria-en="Open navigation menu"
-            data-aria-cy="Agor y ddewislen lywio"
         >
 
             <span></span>
@@ -323,53 +498,29 @@
             class="nav-links"
             id="main-menu"
             aria-label="Main navigation"
-            data-aria-en="Main navigation"
-            data-aria-cy="Prif ddewislen lywio"
         >
 
-            <a
-                href="index.html"
-                data-lang-en="Home"
-                data-lang-cy="Cartref"
-            >
+            <a href="index.html">
                 Home
             </a>
 
-
-            <a
-                href="skyline.html"
-                data-lang-en="Skyline"
-                data-lang-cy="Skyline"
-            >
+            <a href="skyline.html">
                 Skyline
             </a>
-
 
             <a
                 href="paranormal.html"
                 class="active"
                 aria-current="page"
-                data-lang-en="Paranormal"
-                data-lang-cy="Paranormal"
             >
                 Paranormal
             </a>
 
-
-            <a
-                href="photography.html"
-                data-lang-en="Photography"
-                data-lang-cy="Ffotograffiaeth"
-            >
+            <a href="photography.html">
                 Photography
             </a>
 
-
-            <a
-                href="contact.html"
-                data-lang-en="Contact"
-                data-lang-cy="Cysylltu"
-            >
+            <a href="contact.html">
                 Contact
             </a>
 
@@ -398,7 +549,6 @@
         aria-hidden="true"
     ></div>
 
-
     <div
         class="paranormal-fog"
         aria-hidden="true"
@@ -414,35 +564,18 @@
         >
 
 
-        <div
-            class="eyebrow"
-            data-lang-en="NEWITT's Paranormal Adventures"
-            data-lang-cy="Anturiaethau Paranormal NEWITT"
-        >
+        <div class="eyebrow">
             NEWITT's Paranormal Adventures
         </div>
 
 
         <h1>
-
-            <span
-                data-lang-en="After Dark."
-                data-lang-cy="Ar ôl Tywyllwch."
-            >
-                After Dark.
-            </span>
-
+            <span>After Dark.</span>
         </h1>
 
 
-        <div class="hero-rule"></div>
-
-
-        <p
-            data-lang-en="Paranormal investigations, unusual locations, unexplained experiences and adventures after dark."
-            data-lang-cy="Ymchwiliadau paranormal, lleoliadau anarferol, profiadau anesboniadwy ac anturiaethau ar ôl tywyllwch."
-        >
-            Paranormal investigations, unusual locations,
+        <p>
+            Paranormal investigations, haunted locations,
             unexplained experiences and adventures after dark.
         </p>
 
@@ -450,22 +583,10 @@
         <div class="hero-actions">
 
             <a
-                href="#investigations"
-                class="button primary"
-                data-lang-en="Explore"
-                data-lang-cy="Archwilio"
-            >
-                Explore
-            </a>
-
-
-            <a
                 href="https://www.tiktok.com/@nw13ttt"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="button"
-                data-lang-en="Follow on TikTok"
-                data-lang-cy="Dilynwch ar TikTok"
+                class="button primary"
             >
                 Follow on TikTok
             </a>
@@ -475,9 +596,7 @@
                 href="https://www.youtube.com/@NewittsParanormalAdventures"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="button"
-                data-lang-en="YouTube"
-                data-lang-cy="YouTube"
+                class="button secondary"
             >
                 YouTube
             </a>
@@ -490,57 +609,30 @@
 
 
 <!-- =====================================================
-     INTRODUCTION
+     ABOUT THE ADVENTURE
 ===================================================== -->
 
-<section
-    class="about"
-    id="investigations"
->
+<section class="about">
 
     <div class="container">
 
         <div class="section-heading">
 
-            <div
-                class="eyebrow"
-                data-lang-en="THE ADVENTURE"
-                data-lang-cy="YR ANTUR"
-            >
-                THE ADVENTURE
+            <div class="eyebrow">
+                The Adventure
             </div>
 
 
             <h2>
-
-                <span
-                    data-lang-en="Into the unknown."
-                    data-lang-cy="I mewn i'r anhysbys."
-                >
-                    Into the
-                    <span>unknown.</span>
-                </span>
-
+                Into the
+                <span>unknown.</span>
             </h2>
 
 
-            <p
-                data-lang-en="NEWITT's Paranormal Adventures explores unusual locations and investigates the stories, history and experiences connected to them."
-                data-lang-cy="Mae Anturiaethau Paranormal NEWITT yn archwilio lleoliadau anarferol ac yn ymchwilio i'r straeon, hanes a phrofiadau sy'n gysylltiedig â nhw."
-            >
-                NEWITT's Paranormal Adventures explores unusual
-                locations and investigates the stories, history
-                and experiences connected to them.
-            </p>
-
-
-            <p
-                data-lang-en="The aim is to document the journey, investigate what can be experienced and share the adventure with the people following along."
-                data-lang-cy="Y nod yw dogfennu'r daith, ymchwilio i'r hyn y gellir ei brofi a rhannu'r antur gyda'r bobl sy'n dilyn."
-            >
-                The aim is to document the journey, investigate
-                what can be experienced and share the adventure
-                with the people following along.
+            <p>
+                NEWITT's Paranormal Adventures explores
+                unusual locations and investigates the stories,
+                history and experiences connected to them.
             </p>
 
         </div>
@@ -556,18 +648,12 @@
                 </div>
 
 
-                <h3
-                    data-lang-en="Paranormal Investigations"
-                    data-lang-cy="Ymchwiliadau Paranormal"
-                >
+                <h3>
                     Paranormal Investigations
                 </h3>
 
 
-                <p
-                    data-lang-en="Investigating locations associated with reported paranormal activity and unexplained experiences."
-                    data-lang-cy="Ymchwilio i leoliadau sy'n gysylltiedig â gweithgarwch paranormal a phrofiadau anesboniadwy yr adroddwyd amdanynt."
-                >
+                <p>
                     Investigating locations associated with
                     reported paranormal activity and unexplained
                     experiences.
@@ -583,21 +669,14 @@
                 </div>
 
 
-                <h3
-                    data-lang-en="Haunted Locations"
-                    data-lang-cy="Lleoliadau Aflonydd"
-                >
+                <h3>
                     Haunted Locations
                 </h3>
 
 
-                <p
-                    data-lang-en="Exploring historic and unusual locations with fascinating stories, legends and reported experiences."
-                    data-lang-cy="Archwilio lleoliadau hanesyddol ac anarferol gyda straeon, chwedlau a phrofiadau yr adroddwyd amdanynt."
-                >
+                <p>
                     Exploring historic and unusual locations
-                    with fascinating stories, legends and
-                    reported experiences.
+                    with fascinating stories waiting to be uncovered.
                 </p>
 
             </article>
@@ -610,395 +689,14 @@
                 </div>
 
 
-                <h3
-                    data-lang-en="After Dark"
-                    data-lang-cy="Ar ôl Tywyllwch"
-                >
+                <h3>
                     After Dark
                 </h3>
 
 
-                <p
-                    data-lang-en="Real locations, real investigations and the atmosphere that comes when the lights go out."
-                    data-lang-cy="Lleoliadau go iawn, ymchwiliadau go iawn a'r awyrgylch sy'n dod pan fydd y goleuadau'n diffodd."
-                >
+                <p>
                     Real locations, real investigations and
-                    the atmosphere that comes when the lights
-                    go out.
-                </p>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     CURRENT ADVENTURES
-===================================================== -->
-
-<section class="about">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div
-                class="eyebrow"
-                data-lang-en="CURRENT ADVENTURES"
-                data-lang-cy="ANTURIAETHAU PRESENNOL"
-            >
-                CURRENT ADVENTURES
-            </div>
-
-
-            <h2>
-
-                <span
-                    data-lang-en="Where we're going."
-                    data-lang-cy="Ble rydym yn mynd."
-                >
-                    Where we're
-                    <span>going.</span>
-                </span>
-
-            </h2>
-
-
-            <p
-                data-lang-en="NEWITT's Paranormal Adventures is growing one investigation at a time."
-                data-lang-cy="Mae Anturiaethau Paranormal NEWITT yn tyfu un ymchwiliad ar y tro."
-            >
-                NEWITT's Paranormal Adventures is growing one
-                investigation at a time.
-            </p>
-
-        </div>
-
-
-        <div class="investigation-grid">
-
-
-            <article class="investigation-card">
-
-                <div class="photography-focus-icon">
-                    📍
-                </div>
-
-
-                <h3
-                    data-lang-en="Locations"
-                    data-lang-cy="Lleoliadau"
-                >
-                    Locations
-                </h3>
-
-
-                <p
-                    data-lang-en="Historic buildings, unusual places and locations with stories worth investigating."
-                    data-lang-cy="Adeiladau hanesyddol, lleoedd anarferol a lleoliadau gyda straeon sy'n werth ymchwilio iddynt."
-                >
-                    Historic buildings, unusual places and
-                    locations with stories worth investigating.
-                </p>
-
-            </article>
-
-
-            <article class="investigation-card">
-
-                <div class="photography-focus-icon">
-                    🎥
-                </div>
-
-
-                <h3
-                    data-lang-en="On Camera"
-                    data-lang-cy="Ar y Camera"
-                >
-                    On Camera
-                </h3>
-
-
-                <p
-                    data-lang-en="Investigations, clips and experiences are shared through the NEWITT Paranormal social channels."
-                    data-lang-cy="Mae ymchwiliadau, clipiau a phrofiadau yn cael eu rhannu drwy sianeli cymdeithasol NEWITT Paranormal."
-                >
-                    Investigations, clips and experiences are
-                    shared through the NEWITT Paranormal
-                    social channels.
-                </p>
-
-            </article>
-
-
-            <article class="investigation-card">
-
-                <div class="photography-focus-icon">
-                    📸
-                </div>
-
-
-                <h3
-                    data-lang-en="Photography Coming"
-                    data-lang-cy="Ffotograffiaeth yn Dod"
-                >
-                    Photography Coming
-                </h3>
-
-
-                <p
-                    data-lang-en="As the project grows, original location photography will become part of the NEWITT Paranormal archive."
-                    data-lang-cy="Wrth i'r prosiect dyfu, bydd ffotograffiaeth wreiddiol o leoliadau yn dod yn rhan o archif NEWITT Paranormal."
-                >
-                    As the project grows, original location
-                    photography will become part of the
-                    NEWITT Paranormal archive.
-                </p>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     INVESTIGATION APPROACH
-===================================================== -->
-
-<section class="about">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div
-                class="eyebrow"
-                data-lang-en="OUR APPROACH"
-                data-lang-cy="EIN DULL"
-            >
-                OUR APPROACH
-            </div>
-
-
-            <h2>
-
-                <span
-                    data-lang-en="Explore. Investigate. Document."
-                    data-lang-cy="Archwilio. Ymchwilio. Dogfennu."
-                >
-                    Explore.
-                    <span>Investigate.</span>
-                    Document.
-                </span>
-
-            </h2>
-
-
-            <p
-                data-lang-en="Paranormal investigations can involve stories, reports, personal experiences and unexplained events. NEWITT Media keeps those categories clear."
-                data-lang-cy="Gall ymchwiliadau paranormal gynnwys straeon, adroddiadau, profiadau personol a digwyddiadau anesboniadwy. Mae NEWITT Media yn cadw'r categorïau hynny'n glir."
-            >
-                Paranormal investigations can involve stories,
-                reports, personal experiences and unexplained
-                events. NEWITT Media keeps those categories
-                clear.
-            </p>
-
-        </div>
-
-
-        <div class="investigation-grid">
-
-
-            <article class="investigation-card">
-
-                <h3
-                    data-lang-en="History"
-                    data-lang-cy="Hanes"
-                >
-                    History
-                </h3>
-
-
-                <p
-                    data-lang-en="Where historical information is available, it should be treated as historical information and kept separate from paranormal claims."
-                    data-lang-cy="Lle mae gwybodaeth hanesyddol ar gael, dylid ei thrin fel gwybodaeth hanesyddol a'i chadw ar wahân i honiadau paranormal."
-                >
-                    Where historical information is available,
-                    it should be treated as historical information
-                    and kept separate from paranormal claims.
-                </p>
-
-            </article>
-
-
-            <article class="investigation-card">
-
-                <h3
-                    data-lang-en="Reports"
-                    data-lang-cy="Adroddiadau"
-                >
-                    Reports
-                </h3>
-
-
-                <p
-                    data-lang-en="Claims and reported experiences are presented as reports rather than automatically treating them as proven facts."
-                    data-lang-cy="Cyflwynir honiadau a phrofiadau yr adroddwyd amdanynt fel adroddiadau yn hytrach na'u trin yn awtomatig fel ffeithiau profedig."
-                >
-                    Claims and reported experiences are presented
-                    as reports rather than automatically treating
-                    them as proven facts.
-                </p>
-
-            </article>
-
-
-            <article class="investigation-card">
-
-                <h3
-                    data-lang-en="Experience"
-                    data-lang-cy="Profiad"
-                >
-                    Experience
-                </h3>
-
-
-                <p
-                    data-lang-en="Personal experiences from an investigation are documented as experiences and remain open to interpretation."
-                    data-lang-cy="Mae profiadau personol o ymchwiliad yn cael eu dogfennu fel profiadau ac yn parhau'n agored i ddehongliad."
-                >
-                    Personal experiences from an investigation
-                    are documented as experiences and remain
-                    open to interpretation.
-                </p>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     INVESTIGATION EQUIPMENT
-===================================================== -->
-
-<section class="about">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div
-                class="eyebrow"
-                data-lang-en="THE KIT"
-                data-lang-cy="Y PECYN"
-            >
-                THE KIT
-            </div>
-
-
-            <h2>
-
-                <span
-                    data-lang-en="What comes with us."
-                    data-lang-cy="Beth sy'n dod gyda ni."
-                >
-                    What comes
-                    <span>with us.</span>
-                </span>
-
-            </h2>
-
-
-            <p
-                data-lang-en="The investigation kit will continue to develop as NEWITT's Paranormal Adventures grows."
-                data-lang-cy="Bydd y pecyn ymchwilio yn parhau i ddatblygu wrth i Anturiaethau Paranormal NEWITT dyfu."
-            >
-                The investigation kit will continue to develop
-                as NEWITT's Paranormal Adventures grows.
-            </p>
-
-        </div>
-
-
-        <div class="investigation-grid">
-
-
-            <article class="investigation-card">
-
-                <h3
-                    data-lang-en="Cameras"
-                    data-lang-cy="Camerâu"
-                >
-                    Cameras
-                </h3>
-
-
-                <p
-                    data-lang-en="Video equipment for documenting locations, investigations and experiences."
-                    data-lang-cy="Offer fideo ar gyfer dogfennu lleoliadau, ymchwiliadau a phrofiadau."
-                >
-                    Video equipment for documenting locations,
-                    investigations and experiences.
-                </p>
-
-            </article>
-
-
-            <article class="investigation-card">
-
-                <h3
-                    data-lang-en="Investigation Equipment"
-                    data-lang-cy="Offer Ymchwilio"
-                >
-                    Investigation Equipment
-                </h3>
-
-
-                <p
-                    data-lang-en="Equipment can be introduced and documented as the NEWITT Paranormal setup develops."
-                    data-lang-cy="Gellir cyflwyno a dogfennu offer wrth i osodiad NEWITT Paranormal ddatblygu."
-                >
-                    Equipment can be introduced and documented
-                    as the NEWITT Paranormal setup develops.
-                </p>
-
-            </article>
-
-
-            <article class="investigation-card">
-
-                <h3
-                    data-lang-en="Future Camera System"
-                    data-lang-cy="System Camera y Dyfodol"
-                >
-                    Future Camera System
-                </h3>
-
-
-                <p
-                    data-lang-en="Dedicated photography will eventually allow us to create our own detailed visual record of the locations we investigate, using a camera system designed to grow with NEWITT Media."
-                    data-lang-cy="Bydd ffotograffiaeth bwrpasol yn ein galluogi yn y pen draw i greu cofnod gweledol manwl ein hunain o'r lleoliadau rydym yn ymchwilio iddynt, gan ddefnyddio system gamera sydd wedi'i dylunio i dyfu gyda NEWITT Media."
-                >
-                    Dedicated photography will eventually allow
-                    us to create our own detailed visual record
-                    of the locations we investigate, using a
-                    camera system designed to grow with
-                    NEWITT Media.
+                    the atmosphere that comes when the lights go out.
                 </p>
 
             </article>
@@ -1021,32 +719,18 @@
 
         <div class="section-heading">
 
-            <div
-                class="eyebrow"
-                data-lang-en="TIKTOK"
-                data-lang-cy="TIKTOK"
-            >
-                TIKTOK
+            <div class="eyebrow">
+                TikTok
             </div>
 
 
             <h2>
-
-                <span
-                    data-lang-en="Follow the adventure."
-                    data-lang-cy="Dilynwch yr antur."
-                >
-                    Follow the
-                    <span>adventure.</span>
-                </span>
-
+                Follow the
+                <span>adventure.</span>
             </h2>
 
 
-            <p
-                data-lang-en="See the latest paranormal adventures, investigations and clips on TikTok."
-                data-lang-cy="Gweld yr anturiaethau paranormal, ymchwiliadau a chlipiau diweddaraf ar TikTok."
-            >
+            <p>
                 See the latest paranormal adventures,
                 investigations and clips on TikTok.
             </p>
@@ -1087,10 +771,8 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="button primary"
-                data-lang-en="Open TikTok"
-                data-lang-cy="Agor TikTok"
             >
-                Open TikTok
+                Open NEWITT's Paranormal Adventures on TikTok
             </a>
 
         </div>
@@ -1110,31 +792,26 @@
 
         <div class="section-heading">
 
-            <div
-                class="eyebrow"
-                data-lang-en="SOCIAL MEDIA"
-                data-lang-cy="CYFRYNGAU CYMDEITHASOL"
-            >
-                SOCIAL MEDIA
+            <div class="eyebrow">
+                Social Media
             </div>
 
 
             <h2>
-
-                <span
-                    data-lang-en="Follow the investigation."
-                    data-lang-cy="Dilynwch yr ymchwiliad."
-                >
-                    Follow the
-                    <span>investigation.</span>
-                </span>
-
+                Follow the
+                <span>investigation.</span>
             </h2>
+
+
+            <p>
+                Follow NEWITT's Paranormal Adventures across
+                social media and keep up with the latest investigations.
+            </p>
 
         </div>
 
 
-        <div class="hero-actions">
+        <div class="hero-actions paranormal-social-actions">
 
 
             <a
@@ -1142,8 +819,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="button primary"
-                data-lang-en="♪ TikTok"
-                data-lang-cy="♪ TikTok"
+                aria-label="Follow NEWITT's Paranormal Adventures on TikTok"
             >
                 ♪ TikTok
             </a>
@@ -1154,8 +830,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="button secondary"
-                data-lang-en="▶ YouTube"
-                data-lang-cy="YouTube"
+                aria-label="Visit NEWITT's Paranormal Adventures on YouTube"
             >
                 ▶ YouTube
             </a>
@@ -1166,8 +841,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="button secondary"
-                data-lang-en="◎ Instagram"
-                data-lang-cy="◎ Instagram"
+                aria-label="Visit NEWITT's Paranormal Adventures on Instagram"
             >
                 ◎ Instagram
             </a>
@@ -1178,13 +852,11 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="button secondary"
-                data-lang-en="f Facebook"
-                data-lang-cy="f Facebook"
+                aria-label="Visit NEWITT's Paranormal Adventures on Facebook"
             >
                 f Facebook
             </a>
 
-
         </div>
 
     </div>
@@ -1193,125 +865,7 @@
 
 
 <!-- =====================================================
-     SAFETY & RESPECT
-===================================================== -->
-
-<section class="about">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div
-                class="eyebrow"
-                data-lang-en="SAFETY"
-                data-lang-cy="DIOGELWCH"
-            >
-                SAFETY
-            </div>
-
-
-            <h2>
-
-                <span
-                    data-lang-en="Investigate with respect."
-                    data-lang-cy="Ymchwiliwch gyda pharch."
-                >
-                    Investigate with
-                    <span>respect.</span>
-                </span>
-
-            </h2>
-
-
-            <p
-                data-lang-en="Paranormal exploration should never come at the expense of personal safety, property or the places being investigated."
-                data-lang-cy="Ni ddylai archwilio paranormal fyth ddod ar draul diogelwch personol, eiddo na'r lleoedd sy'n cael eu hymchwilio."
-            >
-                Paranormal exploration should never come at
-                the expense of personal safety, property or
-                the places being investigated.
-            </p>
-
-        </div>
-
-
-        <div class="investigation-grid">
-
-
-            <article class="investigation-card">
-
-                <h3
-                    data-lang-en="Permission"
-                    data-lang-cy="Caniatâd"
-                >
-                    Permission
-                </h3>
-
-
-                <p
-                    data-lang-en="Only investigate locations where appropriate permission or access has been obtained."
-                    data-lang-cy="Ymchwiliwch i leoliadau lle mae caniatâd neu fynediad priodol wedi'i gael yn unig."
-                >
-                    Only investigate locations where appropriate
-                    permission or access has been obtained.
-                </p>
-
-            </article>
-
-
-            <article class="investigation-card">
-
-                <h3
-                    data-lang-en="Personal Safety"
-                    data-lang-cy="Diogelwch Personol"
-                >
-                    Personal Safety
-                </h3>
-
-
-                <p
-                    data-lang-en="Stay aware of surroundings, hazards, other people and changing conditions."
-                    data-lang-cy="Byddwch yn ymwybodol o'r amgylchedd, peryglon, pobl eraill a newidiadau mewn amodau."
-                >
-                    Stay aware of surroundings, hazards,
-                    other people and changing conditions.
-                </p>
-
-            </article>
-
-
-            <article class="investigation-card">
-
-                <h3
-                    data-lang-en="Respect the Location"
-                    data-lang-cy="Parchu'r Lleoliad"
-                >
-                    Respect the Location
-                </h3>
-
-
-                <p
-                    data-lang-en="Leave locations as they were found and respect historic buildings, owners, staff and other visitors."
-                    data-lang-cy="Gadewch leoliadau fel y daethoch o hyd iddynt a pharchwch adeiladau hanesyddol, perchnogion, staff ac ymwelwyr eraill."
-                >
-                    Leave locations as they were found and
-                    respect historic buildings, owners,
-                    staff and other visitors.
-                </p>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     PRIVACY & SAFETY
+     NEWITT MEDIA CROSS-LINK
 ===================================================== -->
 
 <section class="home-cta">
@@ -1320,150 +874,49 @@
 
         <div class="cta-panel">
 
-            <div
-                class="eyebrow"
-                data-lang-en="NEWITT MEDIA"
-                data-lang-cy="NEWITT MEDIA"
-            >
-                NEWITT MEDIA
+            <div class="eyebrow">
+                NEWITT Media
             </div>
 
 
             <h2>
-
-                <span
-                    data-lang-en="Privacy & Safety"
-                    data-lang-cy="Preifatrwydd a Diogelwch"
-                >
-                    Privacy &amp;
-                    <span>Safety</span>
-                </span>
-
+                The adventure
+                <span>continues.</span>
             </h2>
 
 
-            <p
-                data-lang-en="NEWITT Media is designed with privacy in mind, including a no-unnecessary-cookies approach."
-                data-lang-cy="Mae NEWITT Media wedi'i gynllunio gyda phreifatrwydd mewn golwg, gan gynnwys dull heb gwcis diangen."
-            >
-                NEWITT Media is designed with privacy in mind,
-                including a no-unnecessary-cookies approach.
+            <p>
+                Explore NEWITT Skyline Media from above,
+                or discover NEWITT Media Photography.
             </p>
 
 
             <div class="hero-actions">
 
                 <a
-                    href="privacy.html"
+                    href="skyline.html"
                     class="button primary"
-                    data-lang-en="Privacy & Safety"
-                    data-lang-cy="Preifatrwydd a Diogelwch"
                 >
-                    Privacy &amp; Safety
+                    Skyline
+                </a>
+
+
+                <a
+                    href="photography.html"
+                    class="button secondary"
+                >
+                    Photography
                 </a>
 
 
                 <a
                     href="contact.html"
                     class="button secondary"
-                    data-lang-en="Contact"
-                    data-lang-cy="Cysylltu"
                 >
                     Contact
                 </a>
 
             </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     FUTURE
-===================================================== -->
-
-<section class="about">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div
-                class="eyebrow"
-                data-lang-en="THE JOURNEY CONTINUES"
-                data-lang-cy="MAE'R DAITH YN PARHAU"
-            >
-                THE JOURNEY CONTINUES
-            </div>
-
-
-            <h2>
-
-                <span
-                    data-lang-en="More locations. More adventures."
-                    data-lang-cy="Mwy o leoliadau. Mwy o anturiaethau."
-                >
-                    More locations.
-                    More <span>adventures.</span>
-                </span>
-
-            </h2>
-
-
-            <p
-                data-lang-en="As NEWITT's Paranormal Adventures grows, the website will grow with it."
-                data-lang-cy="Wrth i Anturiaethau Paranormal NEWITT dyfu, bydd y wefan yn tyfu gydag ef."
-            >
-                As NEWITT's Paranormal Adventures grows, the
-                website will grow with it.
-            </p>
-
-
-            <p
-                data-lang-en="Future investigations can bring new locations, original photography, video, stories and experiences to the NEWITT Media archive."
-                data-lang-cy="Gall ymchwiliadau'r dyfodol ddod â lleoliadau newydd, ffotograffiaeth wreiddiol, fideo, straeon a phrofiadau i archif NEWITT Media."
-            >
-                Future investigations can bring new locations,
-                original photography, video, stories and
-                experiences to the NEWITT Media archive.
-            </p>
-
-        </div>
-
-
-        <div class="hero-actions">
-
-            <a
-                href="skyline.html"
-                class="button primary"
-                data-lang-en="Explore Skyline"
-                data-lang-cy="Archwilio Skyline"
-            >
-                Explore Skyline
-            </a>
-
-
-            <a
-                href="photography.html"
-                class="button secondary"
-                data-lang-en="Photography"
-                data-lang-cy="Ffotograffiaeth"
-            >
-                Photography
-            </a>
-
-
-            <a
-                href="index.html"
-                class="button secondary"
-                data-lang-en="NEWITT Media Home"
-                data-lang-cy="Cartref NEWITT Media"
-            >
-                NEWITT Media Home
-            </a>
 
         </div>
 
@@ -1484,8 +937,6 @@
     class="back-to-top"
     id="back-to-top"
     aria-label="Back to top"
-    data-aria-en="Back to top"
-    data-aria-cy="Nôl i'r brig"
 >
     ↑
 </a>
@@ -1499,7 +950,6 @@
 
     <div class="container">
 
-
         <img
             src="newitt-media-logo.png"
             alt="NEWITT Media"
@@ -1512,25 +962,14 @@
         </p>
 
 
-        <p
-            class="footer-tagline"
-            data-lang-en="FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN."
-            data-lang-cy="O'R AWYR. AR ÔL TYWYLLWCH. A PHOPETH RHWNG Y DDAU."
-        >
+        <p class="footer-tagline">
             FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
         </p>
 
 
         <p class="copyright">
 
-            © 2026 NEWITT Media.
-
-            <span
-                data-lang-en="All Rights Reserved."
-                data-lang-cy="Cedwir pob hawl."
-            >
-                All Rights Reserved.
-            </span>
+            © 2026 NEWITT Media. All Rights Reserved.
 
             <br>
 
@@ -1545,31 +984,11 @@
         <p class="website-address">
 
             <a
-                href="index.html"
-                data-lang-en="NEWITT Media"
-                data-lang-cy="NEWITT Media"
+                href="https://newittmedia.co.uk/"
+                target="_blank"
+                rel="noopener noreferrer"
             >
-                NEWITT Media
-            </a>
-
-            &nbsp;•&nbsp;
-
-            <a
-                href="privacy.html"
-                data-lang-en="Privacy & Safety"
-                data-lang-cy="Preifatrwydd a Diogelwch"
-            >
-                Privacy &amp; Safety
-            </a>
-
-            &nbsp;•&nbsp;
-
-            <a
-                href="contact.html"
-                data-lang-en="Contact"
-                data-lang-cy="Cysylltu"
-            >
-                Contact
+                newittmedia.co.uk
             </a>
 
         </p>
@@ -1586,16 +1005,6 @@
 <script
     async
     src="https://www.tiktok.com/embed.js"
-></script>
-
-
-<!-- =====================================================
-     MASTER LANGUAGE SYSTEM
-===================================================== -->
-
-<script
-    src="language.js"
-    defer
 ></script>
 
 
