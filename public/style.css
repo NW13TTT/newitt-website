@@ -1444,3 +1444,209 @@ p {
         scroll-behavior: auto !important;
     }
 }
+/* =========================================================
+   NEWITT MEDIA FINAL COMPATIBILITY FIX
+   Navigation + cinematic social animation
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   NAVIGATION
+   The current HTML uses:
+   .nav
+   .nav-brand
+   .nav-links
+
+   The master stylesheet uses different names, so these
+   compatibility rules make the existing pages work without
+   rebuilding their HTML.
+--------------------------------------------------------- */
+
+.site-header .nav {
+    position: relative;
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.site-header .nav-brand {
+    display: inline-flex;
+    align-items: center;
+    min-width: 0;
+}
+
+.site-header .nav-brand img {
+    width: auto;
+    max-width: 190px;
+    max-height: 56px;
+    object-fit: contain;
+}
+
+.site-header .nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.35rem;
+}
+
+.site-header .nav-links a {
+    position: relative;
+    padding: 0.65rem 0.75rem;
+    color: rgba(255,255,255,0.78);
+    font-size: 0.9rem;
+    font-weight: 650;
+    border-radius: 7px;
+    transition:
+        color 0.25s ease,
+        background 0.25s ease;
+}
+
+.site-header .nav-links a:hover,
+.site-header .nav-links a[aria-current="page"] {
+    color: #fff;
+    background: rgba(255,255,255,0.035);
+}
+
+.site-header .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 5px;
+    height: 1px;
+    background: #d4af37;
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+}
+
+.site-header .nav-links a:hover::after,
+.site-header .nav-links a[aria-current="page"]::after {
+    transform: scaleX(1);
+}
+
+
+/* ---------------------------------------------------------
+   CINEMATIC SOCIAL MEDIA BAR
+   Give the iframe an actual height.
+   This stops the animation collapsing down to the tiny
+   gold ticker seen in the recording.
+--------------------------------------------------------- */
+
+.social-hub .social-master-frame {
+    position: relative;
+    width: 100%;
+    max-width: 1536px;
+    height: 1024px;
+    min-height: 1024px;
+    margin-inline: auto;
+    overflow: hidden;
+    background: #020305;
+    aspect-ratio: auto;
+}
+
+.social-hub .social-master-animation,
+.social-hub .social-master-frame iframe {
+    display: block;
+    width: 100%;
+    height: 1024px;
+    min-height: 1024px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #020305;
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 700px) {
+
+    .site-header .nav {
+        min-height: 64px;
+    }
+
+    .site-header .nav-brand img {
+        max-width: 145px;
+        max-height: 48px;
+    }
+
+    .site-header .menu-toggle {
+        display: block;
+    }
+
+    .site-header .nav-links {
+        position: absolute;
+        left: 14px;
+        right: 14px;
+        top: calc(100% + 8px);
+
+        display: none;
+
+        flex-direction: column;
+        align-items: stretch;
+
+        padding: 0.55rem;
+
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 12px;
+
+        background: rgba(2,3,5,0.97);
+
+        box-shadow:
+            0 20px 50px rgba(0,0,0,0.45);
+
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+
+        z-index: 1000;
+    }
+
+    /* JavaScript uses all three of these states */
+    .site-header .nav-links.open,
+    .site-header .nav-links.active,
+    .site-header .nav-links.menu-open {
+        display: flex;
+    }
+
+    .site-header .nav-links a {
+        width: 100%;
+        padding: 0.8rem;
+        text-align: center;
+    }
+
+    .site-header .nav-links a::after {
+        display: none;
+    }
+
+
+    /* Full cinematic social composition */
+    .social-hub .social-master-frame {
+        width: 100%;
+        height: 760px;
+        min-height: 760px;
+        aspect-ratio: auto;
+    }
+
+    .social-hub .social-master-animation,
+    .social-hub .social-master-frame iframe {
+        width: 100%;
+        height: 760px;
+        min-height: 760px;
+    }
+
+}
+
+
+@media (max-width: 430px) {
+
+    .social-hub .social-master-frame,
+    .social-hub .social-master-animation,
+    .social-hub .social-master-frame iframe {
+        height: 760px;
+        min-height: 760px;
+    }
+
+}
