@@ -876,6 +876,16 @@ h2 span,
 
 /* =========================================================
    MOBILE PAGE TRANSITION
+   JAVASCRIPT CREATES THIS ELEMENT
+
+   This is deliberately extremely simple.
+
+   The overlay is:
+   - fixed
+   - full screen
+   - above everything
+   - GPU composited
+   - pointer protected
 ========================================================= */
 
 #newitt-transition-overlay {
@@ -1931,8 +1941,6 @@ h2 span,
     }
 
 }
-
-
 /* =========================================================
    MOBILE
 ========================================================= */
