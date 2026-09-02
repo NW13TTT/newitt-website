@@ -2,24 +2,12 @@
    NEWITT MEDIA
    MASTER PROFESSIONAL STYLESHEET
    CLEAN CINEMATIC BUILD
-   2026
-
-   Premium dark / blue / cyan / gold
-   Responsive desktop / tablet / mobile
-   Cinematic first-visit intro
-   Mobile page-transition protection
-
-   IMPORTANT:
-   - Preserve original NEWITT visual identity
-   - No red paranormal mist
-   - No sweeping shine animation
-   - No generic redesign
-========================================================= */
-
+   SEPTEMBER 2026
+   ========================================================= */
 
 /* =========================================================
    RESET
-========================================================= */
+   ========================================================= */
 
 *,
 *::before,
@@ -28,65 +16,44 @@
 }
 
 html {
-    background: #020305;
     scroll-behavior: smooth;
+    background: #020305;
 }
 
 body {
     margin: 0;
-    min-width: 320px;
+    padding: 0;
     min-height: 100vh;
-    overflow-x: hidden;
-
     background:
-        linear-gradient(
-            180deg,
-            rgba(2, 3, 5, 0.08),
-            rgba(2, 3, 5, 0.22)
-        ),
-        url("background.png") center top / cover no-repeat fixed;
-
-    color: #f4f7fa;
-
+        radial-gradient(circle at 50% 0%, rgba(20, 90, 130, 0.12), transparent 42%),
+        #020305;
+    color: #f5f7fa;
     font-family:
         Inter,
-        "Avenir Next",
-        Avenir,
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
+        Roboto,
+        Helvetica,
         Arial,
         sans-serif;
-
-    line-height: 1.6;
-
-    text-rendering: optimizeLegibility;
-
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.65;
+    overflow-x: hidden;
 }
 
-body::before {
-    content: "";
-
-    position: fixed;
-    inset: 0;
-
-    z-index: -1;
-
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            circle at 50% 15%,
-            rgba(0, 174, 255, 0.045),
-            transparent 42%
-        );
+img,
+video,
+iframe {
+    max-width: 100%;
 }
 
 img {
     display: block;
-    max-width: 100%;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
 }
 
 a {
@@ -98,2382 +65,1382 @@ button {
     font: inherit;
 }
 
-button,
-a {
-    -webkit-tap-highlight-color: transparent;
-}
-
-section {
-    position: relative;
-}
-
 ::selection {
-    background: rgba(0, 190, 255, 0.25);
-    color: #ffffff;
+    background: rgba(212, 175, 55, 0.35);
+    color: #fff;
 }
-
 
 /* =========================================================
    ACCESSIBILITY
-========================================================= */
+   ========================================================= */
+
+.skip-link {
+    position: fixed;
+    left: 1rem;
+    top: -100px;
+    z-index: 10000;
+    padding: 0.8rem 1rem;
+    background: #d4af37;
+    color: #050505;
+    font-weight: 800;
+    border-radius: 8px;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 1rem;
+}
 
 :focus-visible {
     outline: 2px solid #4ecfff;
-    outline-offset: 3px;
+    outline-offset: 4px;
 }
 
-
 /* =========================================================
-   MASTER CONTAINER
-========================================================= */
+   GLOBAL CONTAINER
+   ========================================================= */
 
 .container {
-    width: min(1120px, calc(100% - 40px));
+    width: min(1180px, calc(100% - 40px));
     margin-inline: auto;
 }
 
-
 /* =========================================================
-   HEADER
-========================================================= */
+   HEADER / NAVIGATION
+   ========================================================= */
 
 .site-header {
     position: sticky;
     top: 0;
-    z-index: 1000;
-
-    background: rgba(2, 3, 5, 0.84);
-
-    border-bottom:
-        1px solid
-        rgba(255, 255, 255, 0.08);
-
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    z-index: 900;
+    width: 100%;
+    background: rgba(2, 3, 5, 0.92);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
 
-.nav {
-    position: relative;
-
+.header-inner {
     min-height: 76px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    gap: 24px;
+    gap: 1.5rem;
 }
 
-.nav-brand {
+.brand {
     display: inline-flex;
     align-items: center;
-
-    gap: 10px;
-
     min-width: 0;
 }
 
-.nav-brand img {
-    width: 42px;
-    height: 42px;
-
-    flex: 0 0 42px;
-
+.brand img {
+    width: auto;
+    max-width: 190px;
+    max-height: 56px;
     object-fit: contain;
 }
 
-.nav-brand span {
-    white-space: nowrap;
-
-    color: #ffffff;
-
-    font-size: 0.86rem;
-    font-weight: 750;
-
-    letter-spacing: 0.14em;
-}
-
-.nav-brand strong {
-    color: #c9a45b;
-}
-
-.nav-links {
+.main-nav {
     display: flex;
     align-items: center;
-
-    gap: 4px;
+    justify-content: flex-end;
+    gap: 0.35rem;
 }
 
-.nav-links a {
-    padding: 8px 11px;
-
-    border-radius: 6px;
-
-    color:
-        rgba(255, 255, 255, 0.76);
-
-    font-size: 0.73rem;
+.main-nav a {
+    position: relative;
+    padding: 0.65rem 0.75rem;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.9rem;
     font-weight: 650;
-
-    letter-spacing: 0.065em;
-
+    letter-spacing: 0.02em;
     transition:
-        color 180ms ease,
-        background 180ms ease;
+        color 0.25s ease,
+        background 0.25s ease;
+    border-radius: 7px;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
-    color: #ffffff;
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 5px;
+    height: 1px;
+    background: #d4af37;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.25s ease;
+}
 
-    background:
-        rgba(255, 255, 255, 0.07);
+.main-nav a:hover,
+.main-nav a[aria-current="page"] {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.main-nav a:hover::after,
+.main-nav a[aria-current="page"]::after {
+    transform: scaleX(1);
 }
 
 .menu-toggle {
     display: none;
-
-    width: 44px;
-    height: 44px;
-
-    padding: 8px;
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.15);
-
+    width: 46px;
+    height: 42px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 8px;
-
-    background:
-        rgba(255, 255, 255, 0.035);
-
-    color: #ffffff;
-
+    background: rgba(255, 255, 255, 0.04);
+    color: #fff;
     cursor: pointer;
 }
 
 .menu-toggle span {
     display: block;
-
-    width: 100%;
+    width: 21px;
     height: 2px;
-
-    margin: 5px 0;
-
-    border-radius: 999px;
-
-    background: #ffffff;
+    margin: 4px auto;
+    background: currentColor;
+    border-radius: 2px;
 }
-
 
 /* =========================================================
-   TYPOGRAPHY
-========================================================= */
+   PAGE TRANSITION
+   ========================================================= */
 
-h1,
-h2,
-h3 {
-    margin-top: 0;
-
-    line-height: 1.08;
-
-    font-family:
-        "Avenir Next",
-        Avenir,
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    text-rendering: optimizeLegibility;
+.page-transition {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+    opacity: 0;
+    background:
+        radial-gradient(circle at center, rgba(24, 120, 170, 0.14), transparent 45%),
+        #020305;
+    transition: opacity 0.28s ease;
 }
 
-h1 {
-    margin-bottom: 18px;
-
-    font-size:
-        clamp(2.25rem, 6vw, 5rem);
-
-    font-weight: 750;
-
-    letter-spacing: -0.028em;
+.page-transition.is-active {
+    opacity: 1;
 }
 
-h2 {
-    margin-bottom: 16px;
+/* =========================================================
+   CINEMATIC FIRST-VISIT INTRO
+   ========================================================= */
 
-    font-size:
-        clamp(2rem, 4vw, 3.4rem);
-
-    font-weight: 750;
-
-    letter-spacing: -0.022em;
+.site-intro {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: #020305;
+    transition:
+        opacity 0.9s ease,
+        visibility 0.9s ease;
 }
 
-h3 {
-    margin-bottom: 10px;
-
-    font-size: 1.15rem;
-
-    font-weight: 700;
+.site-intro.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
-p {
-    margin-top: 0;
-
-    color:
-        rgba(244, 247, 250, 0.76);
+.intro-atmosphere {
+    position: absolute;
+    inset: -20%;
+    background:
+        radial-gradient(circle at 50% 48%, rgba(45, 180, 235, 0.13), transparent 25%),
+        radial-gradient(circle at 20% 70%, rgba(20, 80, 120, 0.1), transparent 30%),
+        radial-gradient(circle at 80% 25%, rgba(212, 175, 55, 0.07), transparent 25%);
+    animation: introAtmosphere 8s ease-in-out infinite alternate;
 }
 
-.eyebrow {
-    margin-bottom: 10px;
+.intro-content {
+    position: relative;
+    z-index: 2;
+    width: min(900px, 90%);
+    text-align: center;
+}
 
-    color: #c9a45b;
+.intro-logo {
+    width: min(340px, 72vw);
+    margin: 0 auto 1.8rem;
+    filter:
+        drop-shadow(0 0 20px rgba(255, 255, 255, 0.08))
+        drop-shadow(0 0 35px rgba(30, 150, 210, 0.16));
+    animation:
+        introLogoIn 1.4s ease forwards,
+        introLogoFloat 5s ease-in-out 1.5s infinite;
+}
 
-    font-size: 0.65rem;
-    font-weight: 750;
-
-    letter-spacing: 0.20em;
-
+.intro-title {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
 }
 
-h1 span,
-h2 span,
-.section-heading span {
-    color: #c9a45b;
+.intro-subtitle {
+    margin: 0.8rem 0 0;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: clamp(0.8rem, 1.8vw, 1.05rem);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
 }
 
-
-/* =========================================================
-   GLOBAL CENTRING
-========================================================= */
-
-.hero,
-.skyline-hero,
-.paranormal-hero,
-.photography-hero,
-.contact-hero {
-    text-align: center;
+.intro-light-sweep {
+    display: none !important;
 }
 
-.hero-content,
-.skyline-hero-content,
-.paranormal-hero-content,
-.photography-hero-content,
-.contact-hero-content {
-    width: min(860px, 100%);
+@keyframes introAtmosphere {
+    from {
+        transform: scale(1) rotate(0deg);
+    }
 
-    margin-inline: auto;
-
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
+    to {
+        transform: scale(1.06) rotate(1deg);
+    }
 }
 
-.about {
-    width: min(900px, 100%);
+@keyframes introLogoIn {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
 
-    margin-inline: auto;
-
-    text-align: center;
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
-.section-heading {
-    width: 100%;
+@keyframes introLogoFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
 
-    margin-bottom: 28px;
-
-    text-align: center;
+    50% {
+        transform: translateY(-7px);
+    }
 }
-
-.section-heading p {
-    width: min(700px, 100%);
-
-    margin-inline: auto;
-}
-
-.about > p {
-    width: min(760px, 100%);
-
-    margin-inline: auto;
-}
-
 
 /* =========================================================
    HERO
-========================================================= */
-
-.hero,
-.skyline-hero,
-.paranormal-hero,
-.photography-hero,
-.contact-hero {
-    min-height: 76vh;
-
-    display: flex;
-    align-items: center;
-
-    padding: 95px 0;
-}
+   ========================================================= */
 
 .hero {
+    position: relative;
+    min-height: min(760px, 82vh);
+    display: grid;
+    place-items: center;
     overflow: hidden;
-}
-
-.hero-atmosphere,
-.paranormal-atmosphere {
-    position: absolute;
-    inset: 0;
-
-    pointer-events: none;
-}
-
-.hero-atmosphere {
+    isolation: isolate;
     background:
-        radial-gradient(
-            circle at 50% 42%,
-            rgba(0, 170, 255, 0.10),
-            transparent 35%
-        );
-}
-
-
-/*
- * Paranormal atmosphere intentionally remains blue/neutral.
- * There is no red haze around the paranormal branding.
- */
-
-.paranormal-atmosphere {
-    background:
-        radial-gradient(
-            circle at 50% 38%,
-            rgba(0, 126, 255, 0.075),
-            transparent 40%
+        linear-gradient(
+            180deg,
+            rgba(2, 3, 5, 0.28),
+            rgba(2, 3, 5, 0.72)
         ),
         radial-gradient(
-            ellipse at 50% 75%,
-            rgba(150, 165, 180, 0.035),
-            transparent 48%
+            circle at center,
+            rgba(35, 130, 180, 0.12),
+            transparent 55%
         );
 }
 
-.paranormal-fog {
+.hero::before {
+    content: "";
     position: absolute;
     inset: 0;
+    z-index: -2;
+    background:
+        linear-gradient(
+            180deg,
+            transparent 45%,
+            rgba(2, 3, 5, 0.7)
+        );
+}
 
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
     pointer-events: none;
-
     background:
         radial-gradient(
-            ellipse at 50% 80%,
-            rgba(180, 190, 200, 0.045),
-            transparent 45%
+            circle at 50% 45%,
+            transparent 0,
+            rgba(0, 0, 0, 0.2) 55%,
+            rgba(0, 0, 0, 0.55) 100%
         );
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
-}
-
-.hero-logo-wrap {
-    width: min(230px, 46vw);
-
-    margin: 0 auto 25px;
+    width: min(950px, calc(100% - 40px));
+    margin-inline: auto;
+    padding: 7rem 0;
+    text-align: center;
 }
 
 .hero-logo {
-    width: 100%;
-    height: auto;
-
+    width: min(390px, 78vw);
+    margin: 0 auto 2rem;
     object-fit: contain;
-
-    margin-inline: auto;
-
-    filter:
-        drop-shadow(
-            0 0 28px
-            rgba(0, 170, 255, 0.13)
-        );
+    filter: drop-shadow(0 0 28px rgba(255, 255, 255, 0.1));
 }
 
-.hero-content h1 {
-    width: 100%;
-    max-width: 950px;
-
-    margin-inline: auto;
+.hero h1 {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(2.4rem, 7vw, 6.4rem);
+    line-height: 0.98;
+    font-weight: 850;
+    letter-spacing: -0.04em;
 }
 
-.hero-rule {
-    width: 90px;
-    height: 1px;
-
-    margin: 20px auto;
-
-    background:
-        rgba(201, 164, 91, 0.65);
+.hero p {
+    max-width: 760px;
+    margin: 1.4rem auto 0;
+    color: rgba(255, 255, 255, 0.74);
+    font-size: clamp(1rem, 2vw, 1.25rem);
 }
-
-.hero-tagline {
-    color: #c9a45b;
-
-    font-size:
-        clamp(0.75rem, 1.5vw, 0.95rem);
-
-    font-weight: 750;
-
-    letter-spacing: 0.18em;
-
-    text-transform: uppercase;
-
-    text-align: center;
-}
-
-.hero-introduction {
-    width: min(650px, 100%);
-
-    margin-inline: auto;
-
-    text-align: center;
-}
-
 
 /* =========================================================
-   PAGE LOGOS
-========================================================= */
+   SECTION BASE
+   ========================================================= */
 
-.page-logo {
-    display: block;
-
-    width: min(250px, 52vw);
-
-    max-height: 220px;
-
-    height: auto;
-
-    margin: 0 auto 28px;
-
-    object-fit: contain;
+section {
+    position: relative;
 }
 
-.skyline-logo {
-    filter:
-        drop-shadow(
-            0 0 28px
-            rgba(0, 174, 255, 0.18)
-        );
+.section {
+    padding: 90px 0;
 }
 
-
-/*
- * Neutral blue treatment for paranormal logo.
- * No red glow or mist.
- */
-
-.paranormal-logo {
-    filter:
-        drop-shadow(
-            0 0 28px
-            rgba(0, 126, 255, 0.10)
-        );
-}
-
-.photography-logo {
-    filter:
-        drop-shadow(
-            0 0 28px
-            rgba(201, 164, 91, 0.14)
-        );
-}
-
-.photography-mark {
-    margin-bottom: 18px;
-
+.section-heading {
+    max-width: 800px;
+    margin: 0 auto 3rem;
     text-align: center;
 }
 
-.photography-symbol {
-    color: #78d58a;
-
-    font-size: 2.7rem;
-
-    line-height: 1;
+.section-heading h2 {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    font-weight: 800;
 }
 
+.section-heading p {
+    margin: 1rem auto 0;
+    color: rgba(255, 255, 255, 0.64);
+    max-width: 680px;
+}
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+.eyebrow {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    color: #d4af37;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    text-wrap: balance;
+}
+
+p {
+    text-wrap: pretty;
+}
 
 /* =========================================================
    BUTTONS
-========================================================= */
-
-.buttons,
-.hero-actions {
-    width: 100%;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    flex-wrap: wrap;
-
-    gap: 9px;
-
-    margin-top: 22px;
-}
+   ========================================================= */
 
 .button,
-.buttons a,
-.hero-actions a,
-.social-button {
+.btn {
     display: inline-flex;
-
-    width: auto;
-
-    max-width: max-content;
-
-    flex: 0 0 auto;
-
-    min-height: 39px;
-
     align-items: center;
     justify-content: center;
-
-    gap: 7px;
-
-    padding: 8px 14px;
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.16);
-
-    border-radius: 6px;
-
-    background:
-        rgba(255, 255, 255, 0.045);
-
-    color: #ffffff;
-
-    font-size: 0.70rem;
-
-    font-weight: 700;
-
-    letter-spacing: 0.055em;
-
-    line-height: 1.1;
-
-    white-space: nowrap;
-
+    min-height: 46px;
+    padding: 0.72rem 1.15rem;
+    border: 1px solid rgba(212, 175, 55, 0.58);
+    border-radius: 7px;
+    background: rgba(212, 175, 55, 0.08);
+    color: #f5e7b1;
+    font-weight: 750;
+    font-size: 0.88rem;
+    letter-spacing: 0.02em;
     cursor: pointer;
-
     transition:
-        transform 180ms ease,
-        background 180ms ease,
-        border-color 180ms ease,
-        box-shadow 180ms ease;
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
 }
 
 .button:hover,
-.buttons a:hover,
-.hero-actions a:hover,
-.social-button:hover {
+.btn:hover {
     transform: translateY(-2px);
-
-    background:
-        rgba(255, 255, 255, 0.09);
-
-    border-color:
-        rgba(255, 255, 255, 0.28);
+    background: rgba(212, 175, 55, 0.16);
+    border-color: #d4af37;
+    color: #fff;
 }
 
-.button.primary {
-    color: #f5d38a;
-
-    border-color:
-        rgba(201, 164, 91, 0.52);
-
-    background:
-        rgba(201, 164, 91, 0.12);
+.button-primary {
+    background: #d4af37;
+    color: #050505;
+    border-color: #d4af37;
 }
 
-.button.primary:hover {
-    background:
-        rgba(201, 164, 91, 0.20);
-
-    box-shadow:
-        0 8px 25px
-        rgba(201, 164, 91, 0.10);
+.button-primary:hover {
+    background: #e2c45c;
+    color: #050505;
 }
 
+.button-blue {
+    border-color: rgba(78, 207, 255, 0.55);
+    background: rgba(78, 207, 255, 0.08);
+    color: #ccefff;
+}
+
+.button-blue:hover {
+    background: rgba(78, 207, 255, 0.16);
+    border-color: #4ecfff;
+}
 
 /* =========================================================
-   CINEMATIC FIRST-VISIT INTRO
-========================================================= */
+   THREE-WORLD / BRAND CARDS
+   ========================================================= */
 
-.site-intro {
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 5000;
-
+.world-grid {
     display: grid;
-
-    place-items: center;
-
-    overflow: hidden;
-
-    background: #020305;
-
-    transform: translateZ(0);
-
-    -webkit-transform: translateZ(0);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
 }
 
-.intro-atmosphere {
-    position: absolute;
-
-    inset: -20%;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(0, 170, 255, 0.14),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 50% 65%,
-            rgba(0, 120, 255, 0.07),
-            transparent 38%
-        );
-
-    animation:
-        introAtmosphere
-        5s
-        ease-in-out
-        infinite
-        alternate;
-}
-
-
-/*
- * No light-sweep element is animated here.
- * The cinematic intro is retained without the sweeping
- * shine effect.
- */
-
-.intro-light-sweep {
-    display: none;
-}
-
-.intro-content {
+.world-card,
+.feature-card,
+.info-card,
+.contact-card {
     position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.018)
+        );
+    box-shadow:
+        0 18px 55px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
 
-    z-index: 2;
-
+.world-card {
+    min-height: 340px;
     display: flex;
-
-    width:
-        min(
-            760px,
-            calc(100% - 40px)
-        );
-
     flex-direction: column;
-
-    align-items: center;
-
-    text-align: center;
+    justify-content: flex-end;
+    padding: 2rem;
 }
 
-.intro-logo {
-    display: block;
-
-    width:
-        min(
-            240px,
-            52vw
-        );
-
-    max-height: 280px;
-
-    height: auto;
-
-    margin: 0 auto;
-
-    object-fit: contain;
-
-    opacity: 1;
-
-    filter: none;
-
-    transform:
-        translateZ(0);
-
-    -webkit-transform:
-        translateZ(0);
-
-    backface-visibility: hidden;
-
-    -webkit-backface-visibility: hidden;
-
-    animation:
-        introLogoSafe
-        1.2s
-        ease-out
-        both;
-}
-
-.intro-name {
-    margin-top: 22px;
-
-    color: #ffffff;
-
-    font-size:
-        clamp(
-            1.8rem,
-            5vw,
-            3.8rem
-        );
-
-    font-weight: 850;
-
-    letter-spacing: 0.14em;
-}
-
-.intro-name span {
-    color: #c9a45b;
-}
-
-.intro-line {
-    width: 90px;
-    height: 1px;
-
-    margin: 20px auto;
-
-    background:
-        rgba(201, 164, 91, 0.7);
-}
-
-.intro-tagline {
-    max-width: 680px;
-
-    color:
-        rgba(255, 255, 255, 0.76);
-
-    font-size:
-        clamp(
-            0.68rem,
-            1.7vw,
-            0.9rem
-        );
-
-    font-weight: 700;
-
-    letter-spacing: 0.17em;
-
-    line-height: 1.8;
-
-    text-align: center;
-}
-
-.site-intro.intro-hidden {
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    transition:
-        opacity 900ms ease,
-        visibility 0s linear 900ms;
-}
-
-
-/* =========================================================
-   MOBILE PAGE TRANSITION
-========================================================= */
-
-#newitt-transition-overlay {
-    position: fixed;
-
+.world-card::before {
+    content: "";
+    position: absolute;
     inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    z-index: 2147483647;
-
-    background: #020305;
-
-    opacity: 0;
-
-    visibility: visible;
-
-    pointer-events: all;
-
-    transform: translateZ(0);
-
-    -webkit-transform: translateZ(0);
-
-    will-change: opacity;
-
-    contain: strict;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(78, 207, 255, 0.08),
+            transparent 45%
+        );
 }
 
+.world-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.world-card h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 1.55rem;
+}
+
+.world-card p {
+    margin: 0.7rem 0 1.3rem;
+    color: rgba(255, 255, 255, 0.67);
+}
+
+.card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+}
 
 /* =========================================================
-   NEWITT MEDIA INTRODUCTION
-========================================================= */
+   GENERAL GRID / CARDS
+   ========================================================= */
 
-.newitt-media-intro {
-    position: relative;
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
 
-    width: 100%;
+.feature-card,
+.info-card {
+    padding: 1.7rem;
+}
 
-    overflow: hidden;
+.feature-card h3,
+.info-card h3 {
+    margin: 0 0 0.7rem;
+    color: #fff;
+}
 
-    padding:
-        85px 0 78px;
+.feature-card p,
+.info-card p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.65);
+}
 
+/* =========================================================
+   SKYLINE ATMOSPHERE
+   ========================================================= */
+
+.skyline-page .hero,
+.skyline-hero {
     background:
         linear-gradient(
             180deg,
-            rgba(2, 3, 5, 0.30),
-            rgba(2, 3, 5, 0.72)
-        );
-
-    text-align: center;
-}
-
-.newitt-media-intro-glow {
-    position: absolute;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            circle at 50% 18%,
-            rgba(0, 174, 255, 0.075),
-            transparent 34%
+            rgba(2, 3, 5, 0.1),
+            rgba(2, 3, 5, 0.78)
         ),
         radial-gradient(
-            circle at 50% 75%,
-            rgba(201, 164, 91, 0.045),
-            transparent 40%
+            circle at 50% 45%,
+            rgba(34, 154, 218, 0.17),
+            transparent 55%
         );
 }
 
-.newitt-media-intro .container {
-    position: relative;
-
-    z-index: 2;
-}
-
-.newitt-media-intro-heading {
-    width:
-        min(
-            760px,
-            100%
-        );
-
-    margin:
-        0 auto 42px;
-
-    text-align: center;
-}
-
-.newitt-media-intro-heading h2 {
-    margin-bottom: 0;
-
-    font-size:
-        clamp(
-            2rem,
-            6vw,
-            3.5rem
-        );
-}
-
-.newitt-media-intro-main {
-    width:
-        min(
-            650px,
-            100%
-        );
-
-    margin:
-        0 auto;
-
-    color:
-        rgba(244, 247, 250, 0.70);
-
-    font-size:
-        clamp(
-            0.9rem,
-            2vw,
-            1.05rem
-        );
-
-    line-height: 1.7;
-
-    text-align: center;
-}
-
-
-/* =========================================================
-   THREE WORLD CARDS
-========================================================= */
-
-.newitt-media-intro-worlds {
-    width: 100%;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            3,
-            minmax(
-                0,
-                1fr
-            )
-        );
-
-    gap: 18px;
-
-    align-items: stretch;
-}
-
-.newitt-intro-world {
-    position: relative;
-
-    min-width: 0;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: flex-start;
-
-    padding:
-        30px 22px 27px;
-
-    overflow: hidden;
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.10);
-
-    border-radius: 10px;
-
+.skyline-page .section {
     background:
-        rgba(4, 7, 12, 0.58);
-
-    box-shadow:
-        0 18px 55px
-        rgba(0, 0, 0, 0.18);
-
-    backdrop-filter: blur(8px);
-
-    -webkit-backdrop-filter: blur(8px);
-
-    text-align: center;
-
-    transition:
-        transform 350ms ease,
-        border-color 350ms ease,
-        background 350ms ease,
-        box-shadow 350ms ease;
-}
-
-.newitt-intro-world:hover {
-    transform:
-        translateY(-7px);
-
-    background:
-        rgba(7, 10, 16, 0.70);
-
-    box-shadow:
-        0 24px 65px
-        rgba(0, 0, 0, 0.28);
-}
-
-
-/* =========================================================
-   WORLD ACCENTS
-========================================================= */
-
-.newitt-intro-skyline {
-    border-color:
-        rgba(0, 174, 255, 0.20);
-}
-
-.newitt-intro-skyline:hover {
-    border-color:
-        rgba(0, 174, 255, 0.52);
-
-    box-shadow:
-        0 24px 65px
-        rgba(0, 140, 255, 0.10);
-}
-
-
-/*
- * Paranormal world remains dark blue/neutral.
- * Red is intentionally not used here.
- */
-
-.newitt-intro-paranormal {
-    border-color:
-        rgba(0, 126, 255, 0.18);
-}
-
-.newitt-intro-paranormal:hover {
-    border-color:
-        rgba(0, 150, 255, 0.42);
-
-    box-shadow:
-        0 24px 65px
-        rgba(0, 110, 220, 0.09);
-}
-
-.newitt-intro-photography {
-    border-color:
-        rgba(201, 164, 91, 0.20);
-}
-
-.newitt-intro-photography:hover {
-    border-color:
-        rgba(201, 164, 91, 0.48);
-
-    box-shadow:
-        0 24px 65px
-        rgba(201, 164, 91, 0.09);
-}
-
-
-/* =========================================================
-   WORLD LOGOS
-========================================================= */
-
-.newitt-intro-logo-wrap {
-    width: 100%;
-
-    height: 135px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    margin-bottom: 18px;
-
-    overflow: hidden;
-}
-
-.newitt-intro-logo {
-    display: block;
-
-    width:
-        min(
-            175px,
-            70%
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(30, 120, 170, 0.055),
+            transparent 42%
         );
-
-    height: 125px;
-
-    object-fit: contain;
-
-    margin-inline: auto;
-
-    transition:
-        transform 450ms ease;
 }
 
-.newitt-intro-world:hover
-.newitt-intro-logo {
-    transform:
-        scale(1.035);
+/* =========================================================
+   PARANORMAL ATMOSPHERE
+   BLUE / NEUTRAL ONLY
+   ========================================================= */
+
+.paranormal-page {
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(20, 100, 150, 0.13),
+            transparent 42%
+        ),
+        #020305;
 }
 
-.newitt-intro-skyline
-.newitt-intro-logo {
+.paranormal-page .hero,
+.paranormal-hero {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(2, 3, 5, 0.2),
+            rgba(2, 3, 5, 0.82)
+        ),
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(30, 125, 180, 0.16),
+            transparent 55%
+        );
+}
+
+.paranormal-page .hero::after {
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(45, 160, 210, 0.055),
+            transparent 45%
+        ),
+        radial-gradient(
+            circle at center,
+            transparent 25%,
+            rgba(0, 0, 0, 0.55) 100%
+        );
+}
+
+.paranormal-logo {
     filter:
-        drop-shadow(
-            0 0 18px
-            rgba(0, 174, 255, 0.14)
-        );
+        drop-shadow(0 0 14px rgba(78, 207, 255, 0.14))
+        drop-shadow(0 0 35px rgba(20, 110, 160, 0.12));
+    animation: paranormalLogoFloat 7s ease-in-out infinite;
 }
 
-.newitt-intro-paranormal
-.newitt-intro-logo {
-    filter:
-        drop-shadow(
-            0 0 18px
-            rgba(0, 126, 255, 0.10)
-        );
+@keyframes paranormalLogoFloat {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-7px) rotate(0.4deg);
+    }
 }
 
-.newitt-intro-photography
-.newitt-intro-logo {
-    filter:
-        drop-shadow(
-            0 0 18px
-            rgba(201, 164, 91, 0.12)
-        );
-}
-
-
-/* =========================================================
-   WORLD TEXT
-========================================================= */
-
-.newitt-intro-text {
-    width: 100%;
-
-    text-align: center;
-}
-
-.newitt-intro-text h3 {
-    margin-bottom: 10px;
-
-    color: #ffffff;
-
-    font-size:
-        clamp(
-            0.82rem,
-            1.3vw,
-            1rem
-        );
-
-    font-weight: 800;
-
-    letter-spacing: 0.10em;
-
-    line-height: 1.35;
-}
-
-.newitt-intro-text p {
-    width: 100%;
-
-    margin:
-        0 auto;
-
-    color:
-        rgba(244, 247, 250, 0.67);
-
-    font-size:
-        clamp(
-            0.76rem,
-            1.2vw,
-            0.88rem
-        );
-
-    line-height: 1.7;
-
-    text-align: center;
-}
-
-
-/* =========================================================
-   INTRO CLOSING
-========================================================= */
-
-.newitt-media-intro-closing {
-    width:
-        min(
-            760px,
-            100%
-        );
-
-    margin:
-        38px auto 0;
-
-    padding-top: 26px;
-
-    border-top:
-        1px solid
-        rgba(201, 164, 91, 0.18);
-
-    text-align: center;
-}
-
-.newitt-media-intro-closing p {
-    margin-bottom: 9px;
-
-    color:
-        rgba(255, 255, 255, 0.72);
-
-    font-size:
-        clamp(
-            0.9rem,
-            2vw,
-            1.05rem
-        );
-
-    letter-spacing: 0.03em;
-}
-
-.newitt-media-intro-closing strong {
-    color: #c9a45b;
-
-    font-weight: 750;
-}
-
-.newitt-media-intro-closing span {
-    display: block;
-
-    color:
-        rgba(255, 255, 255, 0.43);
-
-    font-size:
-        clamp(
-            0.58rem,
-            1.2vw,
-            0.68rem
-        );
-
-    font-weight: 700;
-
-    letter-spacing: 0.16em;
-
-    line-height: 1.6;
-}
-
-
-/* =========================================================
-   MASTER CINEMATIC SOCIAL ANIMATION
-========================================================= */
-
-.social-hub {
-    position: relative;
-
-    width: 100%;
-
-    overflow: hidden;
-
-    isolation: isolate;
-
-    padding: 0;
-
-    background: #020305;
-
-    text-align: center;
-}
-
-.social-master-frame {
-    position: relative;
-
-    width: 100%;
-
-    max-width: 1536px;
-
-    margin-inline: auto;
-
-    overflow: hidden;
-
-    background: #020305;
-
-    aspect-ratio:
-        1536 / 1024;
-
-    transform: translateZ(0);
-
-    -webkit-transform: translateZ(0);
-}
-
-.social-master-animation,
-.social-master-frame iframe {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    margin: 0;
-    padding: 0;
-
-    border: 0;
-
-    overflow: hidden;
-
-    background: #020305;
-}
-
-
-/* =========================================================
-   CTA
-========================================================= */
-
-.home-cta {
-    padding:
-        70px 0;
-}
-
-.cta-panel {
-    width:
-        min(
-            780px,
-            100%
-        );
-
-    margin-inline: auto;
-
-    padding:
-        38px 30px;
-
-    border:
-        1px solid
-        rgba(201, 164, 91, 0.24);
-
-    border-radius: 10px;
-
-    background:
-        rgba(3, 5, 8, 0.60);
-
-    text-align: center;
-
-    backdrop-filter: blur(8px);
-
-    -webkit-backdrop-filter: blur(8px);
-}
-
-.cta-panel .hero-actions {
-    justify-content: center;
-}
-
-
-/* =========================================================
-   CONTENT CARDS
-========================================================= */
-
-.investigation-grid,
-.photography-focus-grid,
-.contact-grid {
-    width: 100%;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            3,
-            minmax(
-                0,
-                1fr
-            )
-        );
-
-    gap: 14px;
-}
-
-.investigation-card,
-.photography-focus-card,
-.contact-card {
-    min-width: 0;
-
-    padding: 22px;
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.10);
-
-    border-radius: 9px;
-
-    background:
-        rgba(4, 7, 12, 0.52);
-
-    backdrop-filter: blur(7px);
-
-    -webkit-backdrop-filter: blur(7px);
-
-    text-align: center;
-}
-
-.investigation-card p,
-.photography-focus-card p,
-.contact-card p {
-    margin-bottom: 0;
-
-    font-size: 0.86rem;
-}
-
-.photography-focus-icon,
-.contact-card-icon {
-    margin-bottom: 10px;
-
-    font-size: 1.4rem;
-}
-
-.photography-focus-icon {
-    color: #78d58a;
-}
-
-.skyline-contact
-.contact-card-icon {
+.paranormal-contact .contact-card-icon {
     color: #4ecfff;
 }
 
-.paranormal-contact
-.contact-card-icon {
-    color: #4ecfff;
-}
+/* =========================================================
+   PHOTOGRAPHY
+   ========================================================= */
 
-.photography-contact
-.contact-card-icon {
-    color: #78d58a;
+.photography-page .hero,
+.photography-hero {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(2, 3, 5, 0.16),
+            rgba(2, 3, 5, 0.8)
+        ),
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(212, 175, 55, 0.1),
+            transparent 52%
+        );
 }
-
-.contact-card h2 {
-    font-size: 1.4rem;
-}
-
 
 /* =========================================================
    GALLERY
-========================================================= */
+   ========================================================= */
 
 .gallery-grid {
-    width: 100%;
-
     display: grid;
-
-    grid-template-columns:
-        repeat(
-            2,
-            minmax(
-                0,
-                1fr
-            )
-        );
-
-    gap: 14px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
 }
 
 .gallery-item {
     position: relative;
-
-    display: block;
-
-    width: 100%;
-
-    aspect-ratio:
-        16 / 10;
-
-    padding: 0;
-
     overflow: hidden;
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.09);
-
-    border-radius: 9px;
-
-    background:
-        rgba(0, 0, 0, 0.25);
-
+    min-height: 280px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background: #050607;
     cursor: pointer;
 }
 
 .gallery-item img {
     width: 100%;
     height: 100%;
-
+    min-height: 280px;
     object-fit: cover;
-
     transition:
-        transform 450ms ease;
+        transform 0.5s ease,
+        filter 0.5s ease;
 }
 
 .gallery-item:hover img {
-    transform:
-        scale(1.035);
+    transform: scale(1.035);
+    filter: brightness(1.06);
 }
 
-.gallery-note {
-    margin-top: 14px;
-
-    color:
-        rgba(255, 255, 255, 0.52);
-
-    font-size: 0.75rem;
-
-    text-align: center;
+.gallery-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1.1rem;
+    color: #fff;
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(0, 0, 0, 0.82)
+        );
 }
-
 
 /* =========================================================
    LIGHTBOX
-========================================================= */
+   ========================================================= */
 
-.lightbox,
-#lightbox {
+.lightbox {
     position: fixed;
-
     inset: 0;
-
-    z-index: 4000;
-
+    z-index: 9997;
     display: none;
-
-    place-items: center;
-
-    padding: 24px;
-
-    background:
-        rgba(0, 0, 0, 0.90);
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.93);
 }
 
-.lightbox.active,
-#lightbox.active {
-    display: grid;
+.lightbox.is-open {
+    display: flex;
 }
 
-.lightbox img,
-#lightbox img {
+.lightbox img {
+    max-width: min(1400px, 94vw);
+    max-height: 88vh;
     width: auto;
     height: auto;
-
-    max-width:
-        min(
-            1100px,
-            94vw
-        );
-
-    max-height: 88vh;
-
-    border-radius: 6px;
+    object-fit: contain;
+    border-radius: 5px;
+    box-shadow: 0 30px 100px rgba(0, 0, 0, 0.65);
 }
 
-.lightbox-close,
-#lightbox-close {
+.lightbox-close {
     position: absolute;
-
-    top: 18px;
-    right: 20px;
-
-    width: 44px;
-    height: 44px;
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.18);
-
+    top: 20px;
+    right: 22px;
+    width: 46px;
+    height: 46px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 50%;
-
-    background:
-        rgba(0, 0, 0, 0.45);
-
-    color: #ffffff;
-
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
     font-size: 1.6rem;
-
     cursor: pointer;
 }
 
+/* =========================================================
+   SOCIAL HUB
+   ORIGINAL CINEMATIC ANIMATION CONTAINER
+   ========================================================= */
+
+.social-hub {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #020305;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.social-master-frame {
+    position: relative;
+    width: 100%;
+    max-width: 1536px;
+    min-height: 620px;
+    margin-inline: auto;
+    overflow: hidden;
+    background: #020305;
+    aspect-ratio: 1536 / 1024;
+}
+
+.social-master-animation,
+.social-master-frame iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 620px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background: #020305;
+}
+
+/* Invisible navigation zones used by the cinematic social artwork */
+.social-click-zone {
+    position: absolute;
+    z-index: 5;
+    display: block;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.social-click-zone:hover {
+    background: rgba(255, 255, 255, 0.015);
+}
 
 /* =========================================================
-   BACK TO TOP
-========================================================= */
+   SOCIAL PANELS
+   Used by individual Skyline / Paranormal / Photography
+   pages instead of pasted-looking generic blocks.
+   ========================================================= */
 
-.back-to-top {
-    position: fixed;
-
-    right: 18px;
-    bottom: 18px;
-
-    z-index: 900;
-
-    display: flex;
-
-    width: 42px;
-    height: 42px;
-
-    align-items: center;
-    justify-content: center;
-
-    border:
-        1px solid
-        rgba(201, 164, 91, 0.42);
-
-    border-radius: 50%;
-
+.social-panel {
+    position: relative;
+    margin: 3rem auto 0;
+    padding: 2rem;
+    width: min(980px, 100%);
+    overflow: hidden;
+    border: 1px solid rgba(78, 207, 255, 0.16);
+    border-radius: 14px;
     background:
-        rgba(2, 3, 5, 0.82);
-
-    color: #c9a45b;
-
-    font-size: 1.15rem;
-
-    line-height: 1;
-
-    opacity: 0;
-    visibility: hidden;
-
-    transform:
-        translateY(10px);
-
-    transition:
-        opacity 180ms ease,
-        visibility 180ms ease,
-        transform 180ms ease;
-
-    backdrop-filter: blur(10px);
-
-    -webkit-backdrop-filter: blur(10px);
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(40, 150, 205, 0.09),
+            transparent 55%
+        ),
+        rgba(5, 9, 13, 0.88);
+    box-shadow:
+        0 18px 60px rgba(0, 0, 0, 0.32),
+        inset 0 1px 0 rgba(255, 255, 255, 0.035);
 }
 
-.back-to-top.visible,
-.back-to-top.show,
-.back-to-top.is-visible {
-    opacity: 1;
-
-    visibility: visible;
-
-    transform:
-        translateY(0);
+.social-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.025);
+    border-radius: inherit;
 }
 
-.back-to-top:hover {
-    background:
-        rgba(201, 164, 91, 0.12);
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.site-footer {
-    padding:
-        50px 0 30px;
-
-    border-top:
-        1px solid
-        rgba(255, 255, 255, 0.08);
-
-    background:
-        rgba(2, 3, 5, 0.78);
-
+.social-panel-heading {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    color: #fff;
+    font-size: clamp(1.45rem, 3vw, 2.1rem);
+    line-height: 1.15;
     text-align: center;
 }
 
-.footer-logo {
-    width: 72px;
-    height: 72px;
+.social-panel-copy {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0.75rem auto 0;
+    color: rgba(255, 255, 255, 0.63);
+    text-align: center;
+}
 
-    margin:
-        0 auto 13px;
+.social-panel-actions {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.7rem;
+    margin-top: 1.4rem;
+}
 
-    object-fit: contain;
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.7rem;
+}
+
+/* =========================================================
+   TIKTOK EMBEDS
+   ========================================================= */
+
+.tiktok-preview,
+.skyline-tiktok-preview,
+.paranormal-tiktok-preview {
+    position: relative;
+    width: min(760px, 100%);
+    margin: 2rem auto 0;
+    padding: 1rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(78, 207, 255, 0.055),
+            transparent 60%
+        ),
+        rgba(0, 0, 0, 0.32);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+.tiktok-preview .tiktok-embed,
+.skyline-tiktok-preview .tiktok-embed,
+.paranormal-tiktok-preview .tiktok-embed {
+    margin: 0 auto !important;
+    max-width: 100% !important;
+    min-width: 280px !important;
+}
+
+.tiktok-preview section,
+.skyline-tiktok-preview section,
+.paranormal-tiktok-preview section {
+    margin: 0;
+}
+
+.tiktok-follow-note {
+    margin: 1rem 0 0;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.contact-card {
+    padding: 1.7rem;
+}
+
+.contact-card-icon {
+    margin-bottom: 1rem;
+    color: #d4af37;
+    font-size: 1.65rem;
+}
+
+.contact-card h3 {
+    margin: 0;
+    color: #fff;
+}
+
+.contact-card p {
+    margin: 0.55rem 0 0;
+    color: rgba(255, 255, 255, 0.62);
+    overflow-wrap: anywhere;
+}
+
+.contact-card .button {
+    margin-top: 1.2rem;
+}
+
+/* =========================================================
+   PRIVACY SUMMARY
+   Privacy information remains readable and contained on
+   Contact rather than becoming a site-wide visual element.
+   ========================================================= */
+
+.privacy-summary {
+    width: min(900px, 100%);
+    margin: 4rem auto 0;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.045),
+            rgba(255, 255, 255, 0.018)
+        );
+}
+
+.privacy-summary-heading {
+    margin: 0;
+    color: #fff;
+    font-size: 1.55rem;
+    line-height: 1.2;
+}
+
+.privacy-summary p {
+    margin: 0.8rem 0 0;
+    color: rgba(255, 255, 255, 0.64);
+}
+
+.privacy-summary .button {
+    margin-top: 1.2rem;
+}
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.final-cta {
+    padding: 100px 0;
+    text-align: center;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(35, 130, 180, 0.08),
+            transparent 48%
+        );
+}
+
+.final-cta h2 {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.05;
+}
+
+.final-cta p {
+    max-width: 650px;
+    margin: 1rem auto 1.5rem;
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.final-cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.7rem;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.site-footer {
+    padding: 45px 0 55px;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    background: #010203;
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
 }
 
 .footer-brand {
-    margin-bottom: 5px;
+    max-width: 260px;
+}
 
-    color: #ffffff;
+.footer-brand img {
+    width: auto;
+    max-width: 180px;
+    max-height: 55px;
+}
 
+.footer-copy {
+    margin: 0.75rem 0 0;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.82rem;
+}
+
+.footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.8rem 1.2rem;
+}
+
+.footer-nav a {
+    color: rgba(255, 255, 255, 0.56);
     font-size: 0.84rem;
-
-    font-weight: 800;
-
-    letter-spacing: 0.15em;
+    transition: color 0.2s ease;
 }
 
-.footer-tagline {
-    margin-bottom: 20px;
-
-    color: #c9a45b;
-
-    font-size: 0.64rem;
-
-    font-weight: 750;
-
-    letter-spacing: 0.10em;
+.footer-nav a:hover {
+    color: #fff;
 }
 
-.copyright,
-.website-address {
-    margin-bottom: 0;
+/* =========================================================
+   BACK TO TOP
+   ========================================================= */
 
-    color:
-        rgba(255, 255, 255, 0.45);
-
-    font-size: 0.67rem;
-
-    line-height: 1.8;
-}
-
-.website-address {
-    margin-top: 10px;
-}
-
-.website-address a {
-    color:
-        rgba(255, 255, 255, 0.58);
-
+.back-to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 800;
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 50%;
+    background: rgba(2, 3, 5, 0.88);
+    color: #fff;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
     transition:
-        color 180ms ease;
+        opacity 0.25s ease,
+        visibility 0.25s ease,
+        transform 0.25s ease,
+        border-color 0.25s ease;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
 }
 
-.website-address a:hover {
-    color: #c9a45b;
+.back-to-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
+.back-to-top:hover {
+    border-color: #d4af37;
+    color: #d4af37;
+}
 
 /* =========================================================
-   ANIMATIONS
-========================================================= */
+   UTILITY
+   ========================================================= */
 
-@keyframes introAtmosphere {
-
-    from {
-        transform:
-            scale(1);
-
-        opacity:
-            0.7;
-    }
-
-    to {
-        transform:
-            scale(1.12);
-
-        opacity:
-            1;
-    }
-
+.text-center {
+    text-align: center;
 }
 
-
-@keyframes introLogoSafe {
-
-    0% {
-        opacity:
-            0;
-
-        transform:
-            scale(0.94)
-            translateZ(0);
-    }
-
-    100% {
-        opacity:
-            1;
-
-        transform:
-            scale(1)
-            translateZ(0);
-    }
-
+.muted {
+    color: rgba(255, 255, 255, 0.58);
 }
 
+.gold {
+    color: #d4af37;
+}
+
+.blue {
+    color: #4ecfff;
+}
+
+.hidden {
+    display: none !important;
+}
 
 /* =========================================================
-   TABLET
-========================================================= */
+   RESPONSIVE
+   ========================================================= */
 
-@media (max-width: 900px) {
-
-    .container {
-        width:
-            min(
-                760px,
-                calc(100% - 32px)
-            );
+@media (max-width: 980px) {
+    .world-grid,
+    .card-grid,
+    .contact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .nav-links {
-        gap: 2px;
+    .header-inner {
+        min-height: 70px;
     }
 
-    .nav-links a {
-        padding:
-            8px;
-
-        font-size:
-            0.70rem;
+    .main-nav {
+        gap: 0.1rem;
     }
 
-    .investigation-grid,
-    .photography-focus-grid,
-    .contact-grid,
-    .newitt-media-intro-worlds {
-        grid-template-columns:
-            1fr;
+    .main-nav a {
+        padding-inline: 0.55rem;
     }
 
-    .newitt-intro-world {
-        width: 100%;
+    .social-master-frame {
+        aspect-ratio: 1536 / 1024;
     }
-
-    .newitt-intro-logo-wrap {
-        height:
-            130px;
-    }
-
-    .newitt-intro-logo {
-        height:
-            120px;
-    }
-
 }
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
 
 @media (max-width: 700px) {
-
-    html,
-    body {
-        background-color:
-            #020305;
-    }
-
-    body {
-        background-image:
-            linear-gradient(
-                180deg,
-                rgba(2, 3, 5, 0.08),
-                rgba(2, 3, 5, 0.22)
-            ),
-            url("background.png");
-
-        background-position:
-            center top;
-
-        background-size:
-            cover;
-
-        background-repeat:
-            no-repeat;
-
-        background-attachment:
-            scroll;
-    }
-
-
-    /* -----------------------------------------------------
-       CONTAINER
-    ----------------------------------------------------- */
-
     .container {
-        width:
-            calc(100% - 28px);
+        width: min(100% - 28px, 1180px);
     }
 
-
-    /* -----------------------------------------------------
-       HEADER
-    ----------------------------------------------------- */
-
-    .nav {
-        min-height:
-            68px;
+    .site-header {
+        position: sticky;
     }
 
-    .nav-brand img {
-        width:
-            36px;
-
-        height:
-            36px;
-
-        flex-basis:
-            36px;
+    .header-inner {
+        min-height: 64px;
     }
 
-    .nav-brand span {
-        font-size:
-            0.74rem;
+    .brand img {
+        max-width: 145px;
+        max-height: 48px;
     }
 
     .menu-toggle {
-        display:
-            block;
+        display: block;
     }
 
-    .nav-links {
-        position:
-            absolute;
-
-        top:
-            68px;
-
-        left:
-            14px;
-
-        right:
-            14px;
-
-        display:
-            none;
-
-        flex-direction:
-            column;
-
-        align-items:
-            stretch;
-
-        gap:
-            4px;
-
-        padding:
-            9px;
-
-        border:
-            1px solid
-            rgba(255, 255, 255, 0.10);
-
-        border-radius:
-            9px;
-
-        background:
-            rgba(2, 3, 5, 0.97);
-
-        box-shadow:
-            0 20px 60px
-            rgba(0, 0, 0, 0.45);
-
-        backdrop-filter:
-            blur(14px);
-
-        -webkit-backdrop-filter:
-            blur(14px);
+    .main-nav {
+        position: absolute;
+        left: 14px;
+        right: 14px;
+        top: calc(100% + 8px);
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.55rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        background: rgba(2, 3, 5, 0.97);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
     }
 
-    .nav-links.open,
-    .nav-links.active,
-    .nav-links.menu-open {
-        display:
-            flex;
+    .main-nav.is-open {
+        display: flex;
     }
 
-    .nav-links a {
-        width:
-            100%;
-
-        padding:
-            11px;
-
-        text-align:
-            center;
+    .main-nav a {
+        width: 100%;
+        padding: 0.8rem;
+        text-align: center;
     }
 
-
-    /* -----------------------------------------------------
-       HERO
-    ----------------------------------------------------- */
-
-    .hero,
-    .skyline-hero,
-    .paranormal-hero,
-    .photography-hero,
-    .contact-hero {
-        min-height:
-            auto;
-
-        padding:
-            72px 0;
+    .main-nav a::after {
+        display: none;
     }
 
-    .hero-logo-wrap {
-        width:
-            min(
-                175px,
-                48vw
-            );
+    .hero {
+        min-height: 680px;
     }
 
-    .page-logo {
-        width:
-            min(
-                195px,
-                50vw
-            );
-
-        max-height:
-            175px;
-
-        margin-bottom:
-            24px;
+    .hero-content {
+        padding: 5rem 0;
     }
 
-    h1 {
-        font-size:
-            clamp(
-                2rem,
-                10vw,
-                3rem
-            );
+    .section {
+        padding: 65px 0;
     }
 
-    h2 {
-        font-size:
-            clamp(
-                1.8rem,
-                8vw,
-                2.6rem
-            );
+    .world-grid,
+    .card-grid,
+    .contact-grid,
+    .gallery-grid {
+        grid-template-columns: 1fr;
     }
 
-
-    /* -----------------------------------------------------
-       FIRST-VISIT INTRO
-    ----------------------------------------------------- */
-
-    .intro-content {
-        width:
-            calc(100% - 30px);
+    .world-card {
+        min-height: 300px;
     }
 
-    .intro-logo {
-        width:
-            min(
-                210px,
-                58vw
-            );
-
-        max-height:
-            230px;
-    }
-
-    .intro-name {
-        margin-top:
-            18px;
-
-        font-size:
-            clamp(
-                1.55rem,
-                8vw,
-                2.5rem
-            );
-
-        letter-spacing:
-            0.11em;
-    }
-
-    .intro-line {
-        margin:
-            17px auto;
-    }
-
-    .intro-tagline {
-        width:
-            min(
-                340px,
-                100%
-            );
-
-        font-size:
-            0.62rem;
-
-        letter-spacing:
-            0.12em;
-
-        line-height:
-            1.8;
-    }
-
-
-    /* -----------------------------------------------------
-       NEWITT MEDIA INTRO
-    ----------------------------------------------------- */
-
-    .newitt-media-intro {
-        padding:
-            65px 0 58px;
-    }
-
-    .newitt-media-intro-heading {
-        margin-bottom:
-            32px;
-    }
-
-    .newitt-media-intro-heading h2 {
-        font-size:
-            clamp(
-                1.9rem,
-                9vw,
-                2.6rem
-            );
-    }
-
-    .newitt-media-intro-main {
-        padding-inline:
-            8px;
-
-        font-size:
-            0.88rem;
-
-        line-height:
-            1.65;
-    }
-
-    .newitt-media-intro-worlds {
-        display:
-            flex;
-
-        flex-direction:
-            column;
-
-        gap:
-            14px;
-    }
-
-    .newitt-intro-world {
-        padding:
-            25px 18px 23px;
-
-        border-radius:
-            9px;
-    }
-
-    .newitt-intro-logo-wrap {
-        height:
-            118px;
-
-        margin-bottom:
-            14px;
-    }
-
-    .newitt-intro-logo {
-        width:
-            min(
-                165px,
-                62%
-            );
-
-        height:
-            112px;
-    }
-
-    .newitt-intro-text h3 {
-        font-size:
-            0.78rem;
-
-        letter-spacing:
-            0.075em;
-    }
-
-    .newitt-intro-text p {
-        font-size:
-            0.78rem;
-
-        line-height:
-            1.65;
-    }
-
-    .newitt-media-intro-closing {
-        margin-top:
-            30px;
-
-        padding-top:
-            22px;
-    }
-
-    .newitt-media-intro-closing p {
-        font-size:
-            0.84rem;
-    }
-
-    .newitt-media-intro-closing span {
-        font-size:
-            0.54rem;
-
-        letter-spacing:
-            0.11em;
-    }
-
-
-    /* -----------------------------------------------------
-       BUTTONS
-    ----------------------------------------------------- */
-
-    .buttons,
-    .hero-actions {
-        justify-content:
-            center;
-
-        gap:
-            7px;
-    }
-
-    .button,
-    .buttons a,
-    .hero-actions a {
-        min-height:
-            37px;
-
-        padding:
-            7px 11px;
-
-        font-size:
-            0.64rem;
-    }
-
-
-    /* -----------------------------------------------------
-       SOCIAL ANIMATION
-    ----------------------------------------------------- */
+    /*
+       IMPORTANT:
+       The social animation is a fixed cinematic composition.
+       On mobile the iframe must have enough vertical space.
+       Do not use the desktop aspect ratio here.
+    */
 
     .social-master-frame {
-        width:
-            100%;
-
-        max-width:
-            none;
-
-        aspect-ratio:
-            1536 / 1024;
-
-        overflow:
-            hidden;
+        width: 100%;
+        height: 760px;
+        min-height: 760px;
+        aspect-ratio: auto;
     }
 
     .social-master-animation,
     .social-master-frame iframe {
-        width:
-            100%;
-
-        height:
-            100%;
+        width: 100%;
+        height: 760px;
+        min-height: 760px;
     }
 
-
-    /* -----------------------------------------------------
-       CTA
-    ----------------------------------------------------- */
-
-    .home-cta {
-        padding:
-            55px 0;
+    .social-panel {
+        margin-top: 2rem;
+        padding: 1.35rem;
+        border-radius: 12px;
     }
 
-    .cta-panel {
-        padding:
-            28px 16px;
+    .tiktok-preview,
+    .skyline-tiktok-preview,
+    .paranormal-tiktok-preview {
+        padding: 0.5rem;
+        border-radius: 11px;
     }
 
+    .privacy-summary {
+        margin-top: 3rem;
+        padding: 1.35rem;
+    }
 
-    /* -----------------------------------------------------
-       BACK TO TOP
-    ----------------------------------------------------- */
+    .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-nav {
+        justify-content: flex-start;
+    }
 
     .back-to-top {
-        right:
-            13px;
-
-        bottom:
-            13px;
+        right: 14px;
+        bottom: 14px;
     }
-
-
-    /* -----------------------------------------------------
-       TRANSITION PERFORMANCE
-    ----------------------------------------------------- */
-
-    #newitt-transition-overlay {
-        transition:
-            opacity 180ms ease;
-
-        will-change:
-            opacity;
-    }
-
 }
 
-
-/* =========================================================
-   VERY SMALL PHONES
-========================================================= */
-
-@media (max-width: 380px) {
-
-    .nav-brand span {
-        display:
-            none;
+@media (max-width: 430px) {
+    .hero {
+        min-height: 610px;
     }
+
+    .hero-content {
+        width: min(100% - 24px, 950px);
+    }
+
+    .hero-logo {
+        width: min(300px, 76vw);
+    }
+
+    .button,
+    .btn {
+        width: 100%;
+    }
+
+    .card-actions,
+    .social-panel-actions,
+    .final-cta-actions {
+        flex-direction: column;
+    }
+
+    .social-links {
+        flex-direction: column;
+    }
+
+    /*
+       Keep the cinematic social composition tall enough
+       on smaller phones. This prevents the artwork,
+       ticker and lightning area being chopped off.
+    */
 
     .social-master-frame {
-        width:
-            100%;
-
-        aspect-ratio:
-            1536 / 1024;
+        height: 760px;
+        min-height: 760px;
     }
 
-    .newitt-media-intro {
-        padding-top:
-            55px;
+    .social-master-animation,
+    .social-master-frame iframe {
+        height: 760px;
+        min-height: 760px;
     }
-
-    .newitt-intro-world {
-        padding:
-            22px 15px;
-    }
-
-    .newitt-intro-logo-wrap {
-        height:
-            105px;
-    }
-
-    .newitt-intro-logo {
-        height:
-            100px;
-    }
-
 }
-
 
 /* =========================================================
    REDUCED MOTION
-========================================================= */
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
     html {
-        scroll-behavior:
-            auto;
+        scroll-behavior: auto;
     }
 
     *,
     *::before,
     *::after {
-        animation-duration:
-            0.01ms !important;
-
-        animation-iteration-count:
-            1 !important;
-
-        transition-duration:
-            0.01ms !important;
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
     }
-
-    .social-master-animation {
-        animation:
-            none !important;
-    }
-
-    .newitt-intro-world:hover {
-        transform:
-            none;
-    }
-
-    .newitt-intro-world:hover
-    .newitt-intro-logo {
-        transform:
-            none;
-    }
-
 }
