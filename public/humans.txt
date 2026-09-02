@@ -1,42 +1,27 @@
-/* TEAM */
-
-Site:
+TEAM
 NEWITT Media
 
-Owner:
-Ian Newitt
+SITE
+https://newitt-website.ian-newitt.workers.dev/
 
-Brand:
+BRAND
 NEWITT Media
-
-Projects:
 NEWITT Skyline Media
 NEWITT's Paranormal Adventures
 NEWITT Media Photography
 
-Website:
-https://www.newittmedia.co.uk/
+DESCRIPTION
+From above. After dark. And everything in between.
 
-
-/* SITE */
-
-Standards:
+TECHNOLOGY
 HTML5
 CSS3
 JavaScript
-Schema.org
+Cloudflare
+GitHub
 
-Language:
-English (United Kingdom)
+LANGUAGE
+English (UK)
 
-Copyright:
-© 2026 NEWITT Media. All Rights Reserved.
-
-
-/* CONTACT */
-
-Website:
-https://www.newittmedia.co.uk/
-
-Email:
-Ian.newitt@hmail.com
+CONTACT
+Ian Newitt
