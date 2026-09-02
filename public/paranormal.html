@@ -159,49 +159,46 @@
 
 
     <!-- =====================================================
-         PARANORMAL PAGE ENHANCEMENTS
-         No red mist / no sweeping shine animation
+         PARANORMAL PAGE STYLES
+         Blue / neutral atmospheric treatment.
+         No red mist. No sweeping shine.
     ====================================================== -->
 
     <style>
 
-        /*
-         * Prevent horizontal overflow on smaller devices.
-         */
-
-        html,
-        body {
-            max-width: 100%;
+        .paranormal-page {
             overflow-x: hidden;
         }
 
 
-        /*
-         * Paranormal hero.
-         * The existing master stylesheet controls the main
-         * NEWITT visual language. These additions provide
-         * atmosphere without changing the overall design.
-         */
+        /* =================================================
+           HERO
+        ================================================= */
 
         .paranormal-hero {
             position: relative;
             isolation: isolate;
             overflow: hidden;
+
             min-height: 78vh;
+            min-height: 78svh;
+
             display: flex;
             align-items: center;
+            justify-content: center;
+
+            padding: 110px 20px 80px;
+
+            text-align: center;
         }
 
-
-        /*
-         * Subtle atmospheric layer.
-         * Blue/black only. No red haze around the logo.
-         */
 
         .paranormal-atmosphere {
             position: absolute;
             inset: 0;
+
             z-index: -3;
+
             pointer-events: none;
 
             background:
@@ -223,16 +220,12 @@
         }
 
 
-        /*
-         * Very restrained fog layer.
-         * This is atmospheric rather than a coloured mist
-         * surrounding the logo.
-         */
-
         .paranormal-fog {
             position: absolute;
             inset: 0;
+
             z-index: -2;
+
             pointer-events: none;
 
             background:
@@ -251,101 +244,136 @@
         }
 
 
-        /*
-         * Keep the paranormal logo clean.
-         */
+        .paranormal-hero-content {
+            position: relative;
+            z-index: 3;
+
+            width: min(900px, 100%);
+            margin-inline: auto;
+        }
+
 
         .paranormal-logo {
             position: relative;
             z-index: 2;
+
             display: block;
-            margin-left: auto;
-            margin-right: auto;
-            max-width: min(520px, 86vw);
+
+            width: min(520px, 86vw);
             height: auto;
+
+            margin: 0 auto 28px;
 
             filter:
                 drop-shadow(0 10px 28px rgba(0, 0, 0, 0.55))
                 drop-shadow(0 0 16px rgba(0, 126, 255, 0.10));
+
+            animation:
+                paranormalLogoFloat 7s ease-in-out infinite;
         }
 
 
-        /*
-         * Hero content remains above the atmospheric layers.
-         */
+        @keyframes paranormalLogoFloat {
 
-        .paranormal-hero-content {
-            position: relative;
-            z-index: 3;
+            0%,
+            100% {
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+            }
+
+            50% {
+                transform:
+                    translateY(-7px)
+                    rotate(0.4deg);
+            }
+
         }
 
 
-        /*
-         * TikTok container.
-         * Neutral dark treatment rather than the previous
-         * red glow.
-         */
+        .paranormal-hero h1 {
+            margin: 8px 0 20px;
 
-        .tiktok-preview {
-            width: min(100%, 430px);
-            margin: 0 auto;
-            padding: 0;
-            overflow: hidden;
+            font-size:
+                clamp(3rem, 8vw, 6.5rem);
 
-            border: 1px solid rgba(255, 255, 255, 0.10);
-            border-radius: 14px;
+            line-height: 0.95;
 
-            background:
-                rgba(3, 7, 13, 0.82);
-
-            box-shadow:
-                inset 0 0 38px rgba(0, 126, 255, 0.035),
-                0 18px 45px rgba(0, 0, 0, 0.36);
-
-            isolation: isolate;
+            letter-spacing: -0.04em;
         }
 
 
-        .tiktok-preview .tiktok-embed {
-            width: 100% !important;
-            max-width: 430px !important;
-            min-width: 0 !important;
-
-            margin: 0 auto !important;
+        .paranormal-hero h1 span {
+            color: #4ecfff;
         }
 
 
-        .tiktok-preview blockquote {
-            width: 100% !important;
-            max-width: 430px !important;
-            min-width: 0 !important;
+        .paranormal-hero p {
+            max-width: 700px;
 
-            margin: 0 auto !important;
+            margin:
+                0 auto 32px;
+
+            color:
+                rgba(255,255,255,0.76);
+
+            font-size:
+                clamp(1rem, 2vw, 1.2rem);
+
+            line-height: 1.7;
         }
 
 
-        .tiktok-preview iframe {
-            width: 100% !important;
-            max-width: 100% !important;
-            border: 0 !important;
+        /* =================================================
+           INVESTIGATION AREA
+        ================================================= */
+
+        .investigation-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 22px;
+
+            max-width: 1080px;
+
+            margin:
+                0 auto;
         }
 
-
-        /*
-         * Investigation cards.
-         * Let the master stylesheet provide the core look,
-         * while adding a little more depth to this page.
-         */
 
         .investigation-card {
             position: relative;
+
+            padding: 1.8rem;
+
             overflow: hidden;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.10);
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.05),
+                    rgba(255,255,255,0.015)
+                );
+
+            box-shadow:
+                0 18px 55px
+                rgba(0,0,0,0.28);
         }
 
 
         .investigation-card::after {
             content: "";
+
             position: absolute;
+
             left: 10%;
             right: 10%;
             bottom: 0;
@@ -356,7 +384,7 @@
                 linear-gradient(
                     90deg,
                     transparent,
-                    rgba(0, 140, 255, 0.42),
+                    rgba(0,140,255,0.42),
                     transparent
                 );
 
@@ -364,56 +392,211 @@
         }
 
 
-        /*
-         * Keep social buttons usable on phones.
-         */
+        .investigation-card h3 {
+            margin:
+                0 0 0.7rem;
 
-        .paranormal-social-actions {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
+            color: #fff;
+
+            font-size: 1.25rem;
         }
 
 
-        /*
-         * Mobile adjustments.
-         */
+        .investigation-card p {
+            margin: 0;
+
+            color:
+                rgba(255,255,255,0.64);
+
+            line-height: 1.65;
+        }
+
+
+        .investigation-icon {
+            width: 58px;
+            height: 58px;
+
+            margin:
+                0 0 18px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border:
+                1px solid
+                rgba(78,207,255,0.28);
+
+            border-radius: 50%;
+
+            background:
+                rgba(0,100,180,0.07);
+
+            color: #4ecfff;
+
+            font-size: 1.35rem;
+        }
+
+
+        /* =================================================
+           TIKTOK
+        ================================================= */
+
+        .paranormal-tiktok-preview {
+            width:
+                min(760px, 100%);
+
+            margin:
+                0 auto;
+
+            padding:
+                0.75rem;
+
+            overflow: hidden;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.10);
+
+            border-radius: 14px;
+
+            background:
+                rgba(3,7,13,0.82);
+
+            box-shadow:
+                inset 0 0 38px
+                rgba(0,126,255,0.035),
+
+                0 18px 45px
+                rgba(0,0,0,0.36);
+        }
+
+
+        .paranormal-tiktok-preview .tiktok-embed {
+            width: 100% !important;
+
+            max-width: 100% !important;
+
+            min-width: 280px !important;
+
+            margin:
+                0 auto !important;
+        }
+
+
+        .paranormal-tiktok-preview iframe {
+            max-width: 100% !important;
+
+            border: 0 !important;
+        }
+
+
+        .tiktok-follow-note {
+            max-width: 600px;
+
+            margin:
+                1rem auto 0;
+
+            color:
+                rgba(255,255,255,0.55);
+
+            font-size:
+                0.86rem;
+
+            text-align: center;
+        }
+
+
+        /* =================================================
+           SOCIAL PANEL
+        ================================================= */
+
+        .paranormal-social-panel {
+            max-width: 900px;
+
+            margin:
+                2.5rem auto 0;
+        }
+
+
+        .paranormal-social-actions {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            margin-top: 1.4rem;
+        }
+
+
+        /* =================================================
+           FINAL CTA
+        ================================================= */
+
+        .paranormal-final-actions {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            margin-top: 1.5rem;
+        }
+
+
+        /* =================================================
+           MOBILE
+        ================================================= */
+
+        @media (max-width: 800px) {
+
+            .investigation-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
 
         @media (max-width: 700px) {
 
             .paranormal-hero {
-                min-height: 72vh;
+                min-height: 72svh;
+
+                padding:
+                    100px 18px 65px;
             }
+
 
             .paranormal-logo {
-                max-width: min(430px, 88vw);
+                width:
+                    min(430px, 88vw);
             }
 
-            .paranormal-social-actions {
+
+            .paranormal-social-actions,
+            .paranormal-final-actions {
                 flex-direction: column;
+
                 align-items: stretch;
             }
 
-            .paranormal-social-actions .button {
+
+            .paranormal-social-actions .button,
+            .paranormal-final-actions .button {
                 width: 100%;
             }
 
-        }
 
+            .paranormal-tiktok-preview {
+                padding: 0.5rem;
 
-        @media (max-width: 600px) {
-
-            .tiktok-preview {
-                width: min(100%, 390px);
                 border-radius: 12px;
-            }
-
-            .tiktok-preview .tiktok-embed,
-            .tiktok-preview blockquote {
-                width: 100% !important;
-                max-width: 390px !important;
-                min-width: 0 !important;
             }
 
         }
@@ -421,19 +604,23 @@
 
         @media (max-width: 380px) {
 
-            .tiktok-preview {
-                width: calc(100vw - 32px);
+            .paranormal-tiktok-preview {
+                width:
+                    calc(100vw - 28px);
             }
 
         }
 
 
-        /*
-         * Accessibility.
-         * Respect users who request reduced motion.
-         */
+        /* =================================================
+           REDUCED MOTION
+        ================================================= */
 
         @media (prefers-reduced-motion: reduce) {
+
+            .paranormal-logo {
+                animation: none;
+            }
 
             .paranormal-atmosphere,
             .paranormal-fog {
@@ -454,16 +641,16 @@
 
 
 <!-- =====================================================
-     SITE HEADER
-===================================================== -->
+     HEADER
+====================================================== -->
 
 <header class="site-header">
 
-    <div class="container nav">
+    <div class="container header-inner">
 
         <a
             href="index.html"
-            class="nav-brand"
+            class="brand"
             aria-label="NEWITT Media Home"
         >
 
@@ -471,10 +658,6 @@
                 src="newitt-media-logo.png"
                 alt="NEWITT Media logo"
             >
-
-            <span>
-                NEWITT <strong>MEDIA</strong>
-            </span>
 
         </a>
 
@@ -495,7 +678,7 @@
 
 
         <nav
-            class="nav-links"
+            class="main-nav"
             id="main-menu"
             aria-label="Main navigation"
         >
@@ -510,7 +693,6 @@
 
             <a
                 href="paranormal.html"
-                class="active"
                 aria-current="page"
             >
                 Paranormal
@@ -531,16 +713,12 @@
 </header>
 
 
-<!-- =====================================================
-     MAIN
-===================================================== -->
-
 <main>
 
 
 <!-- =====================================================
-     PARANORMAL HERO
-===================================================== -->
+     HERO
+====================================================== -->
 
 <section class="paranormal-hero">
 
@@ -548,6 +726,7 @@
         class="paranormal-atmosphere"
         aria-hidden="true"
     ></div>
+
 
     <div
         class="paranormal-fog"
@@ -560,7 +739,7 @@
         <img
             src="paranormal-logo.png"
             alt="NEWITT's Paranormal Adventures"
-            class="page-logo paranormal-logo"
+            class="paranormal-logo"
         >
 
 
@@ -586,7 +765,7 @@
                 href="https://www.tiktok.com/@nw13ttt"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="button primary"
+                class="button button-blue"
             >
                 Follow on TikTok
             </a>
@@ -596,7 +775,7 @@
                 href="https://www.youtube.com/@NewittsParanormalAdventures"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="button secondary"
+                class="button button-primary"
             >
                 YouTube
             </a>
@@ -609,23 +788,23 @@
 
 
 <!-- =====================================================
-     ABOUT THE ADVENTURE
-===================================================== -->
+     THE ADVENTURE
+====================================================== -->
 
-<section class="about">
+<section class="section">
 
     <div class="container">
 
         <div class="section-heading">
 
             <div class="eyebrow">
-                The Adventure
+                THE ADVENTURE
             </div>
 
 
             <h2>
                 Into the
-                <span>unknown.</span>
+                <span class="blue">unknown.</span>
             </h2>
 
 
@@ -643,7 +822,10 @@
 
             <article class="investigation-card">
 
-                <div class="photography-focus-icon">
+                <div
+                    class="investigation-icon"
+                    aria-hidden="true"
+                >
                     ◉
                 </div>
 
@@ -664,7 +846,10 @@
 
             <article class="investigation-card">
 
-                <div class="photography-focus-icon">
+                <div
+                    class="investigation-icon"
+                    aria-hidden="true"
+                >
                     ◇
                 </div>
 
@@ -684,7 +869,10 @@
 
             <article class="investigation-card">
 
-                <div class="photography-focus-icon">
+                <div
+                    class="investigation-icon"
+                    aria-hidden="true"
+                >
                     ◎
                 </div>
 
@@ -711,22 +899,22 @@
 
 <!-- =====================================================
      TIKTOK
-===================================================== -->
+====================================================== -->
 
-<section class="about">
+<section class="section">
 
     <div class="container">
 
         <div class="section-heading">
 
             <div class="eyebrow">
-                TikTok
+                TIKTOK
             </div>
 
 
             <h2>
                 Follow the
-                <span>adventure.</span>
+                <span class="blue">adventure.</span>
             </h2>
 
 
@@ -738,7 +926,7 @@
         </div>
 
 
-        <div class="tiktok-preview">
+        <div class="paranormal-tiktok-preview">
 
             <blockquote
                 class="tiktok-embed"
@@ -764,16 +952,89 @@
         </div>
 
 
-        <div class="hero-actions">
+        <p class="tiktok-follow-note">
+            Follow NEWITT's Paranormal Adventures on TikTok
+            for the latest investigations and clips.
+        </p>
 
-            <a
-                href="https://www.tiktok.com/@nw13ttt"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button primary"
-            >
-                Open NEWITT's Paranormal Adventures on TikTok
-            </a>
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SOCIAL PANEL
+====================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="social-panel paranormal-social-panel">
+
+            <div class="eyebrow">
+                FOLLOW THE INVESTIGATION
+            </div>
+
+
+            <h2 class="social-panel-heading">
+                NEWITT's Paranormal Adventures
+            </h2>
+
+
+            <p class="social-panel-copy">
+                Follow the investigations, locations and
+                unexplained experiences across social media.
+            </p>
+
+
+            <div class="social-panel-actions">
+
+
+                <a
+                    href="https://www.tiktok.com/@nw13ttt"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="button button-blue"
+                    aria-label="Follow NEWITT's Paranormal Adventures on TikTok"
+                >
+                    TikTok
+                </a>
+
+
+                <a
+                    href="https://www.youtube.com/@NewittsParanormalAdventures"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="button button-primary"
+                    aria-label="Visit NEWITT's Paranormal Adventures on YouTube"
+                >
+                    YouTube
+                </a>
+
+
+                <a
+                    href="https://www.instagram.com/nw13ttt/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="button"
+                    aria-label="Visit NEWITT's Paranormal Adventures on Instagram"
+                >
+                    Instagram
+                </a>
+
+
+                <a
+                    href="https://www.facebook.com/share/1AiSkdbyM4/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="button"
+                    aria-label="Visit NEWITT's Paranormal Adventures on Facebook"
+                >
+                    Facebook
+                </a>
+
+            </div>
 
         </div>
 
@@ -783,140 +1044,55 @@
 
 
 <!-- =====================================================
-     SOCIAL MEDIA
-===================================================== -->
+     FINAL CTA
+====================================================== -->
 
-<section class="about">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div class="eyebrow">
-                Social Media
-            </div>
-
-
-            <h2>
-                Follow the
-                <span>investigation.</span>
-            </h2>
-
-
-            <p>
-                Follow NEWITT's Paranormal Adventures across
-                social media and keep up with the latest investigations.
-            </p>
-
-        </div>
-
-
-        <div class="hero-actions paranormal-social-actions">
-
-
-            <a
-                href="https://www.tiktok.com/@nw13ttt"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button primary"
-                aria-label="Follow NEWITT's Paranormal Adventures on TikTok"
-            >
-                ♪ TikTok
-            </a>
-
-
-            <a
-                href="https://www.youtube.com/@NewittsParanormalAdventures"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button secondary"
-                aria-label="Visit NEWITT's Paranormal Adventures on YouTube"
-            >
-                ▶ YouTube
-            </a>
-
-
-            <a
-                href="https://www.instagram.com/nw13ttt/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button secondary"
-                aria-label="Visit NEWITT's Paranormal Adventures on Instagram"
-            >
-                ◎ Instagram
-            </a>
-
-
-            <a
-                href="https://www.facebook.com/share/1AiSkdbyM4/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button secondary"
-                aria-label="Visit NEWITT's Paranormal Adventures on Facebook"
-            >
-                f Facebook
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     NEWITT MEDIA CROSS-LINK
-===================================================== -->
-
-<section class="home-cta">
+<section class="final-cta">
 
     <div class="container">
 
-        <div class="cta-panel">
-
-            <div class="eyebrow">
-                NEWITT Media
-            </div>
+        <div class="eyebrow">
+            NEWITT MEDIA
+        </div>
 
 
-            <h2>
-                The adventure
-                <span>continues.</span>
-            </h2>
+        <h2>
+            The adventure
+            <span class="blue">continues.</span>
+        </h2>
 
 
-            <p>
-                Explore NEWITT Skyline Media from above,
-                or discover NEWITT Media Photography.
-            </p>
+        <p>
+            Explore NEWITT Skyline Media from above,
+            discover NEWITT Media Photography,
+            or get in touch.
+        </p>
 
 
-            <div class="hero-actions">
+        <div class="paranormal-final-actions">
 
-                <a
-                    href="skyline.html"
-                    class="button primary"
-                >
-                    Skyline
-                </a>
-
-
-                <a
-                    href="photography.html"
-                    class="button secondary"
-                >
-                    Photography
-                </a>
+            <a
+                href="skyline.html"
+                class="button button-blue"
+            >
+                Skyline
+            </a>
 
 
-                <a
-                    href="contact.html"
-                    class="button secondary"
-                >
-                    Contact
-                </a>
+            <a
+                href="photography.html"
+                class="button button-primary"
+            >
+                Photography
+            </a>
 
-            </div>
+
+            <a
+                href="contact.html"
+                class="button"
+            >
+                Contact
+            </a>
 
         </div>
 
@@ -930,7 +1106,7 @@
 
 <!-- =====================================================
      BACK TO TOP
-===================================================== -->
+====================================================== -->
 
 <a
     href="#top"
@@ -944,53 +1120,71 @@
 
 <!-- =====================================================
      FOOTER
-===================================================== -->
+====================================================== -->
 
 <footer class="site-footer">
 
-    <div class="container">
+    <div class="container footer-inner">
 
-        <img
-            src="newitt-media-logo.png"
-            alt="NEWITT Media"
-            class="footer-logo"
+        <div class="footer-brand">
+
+            <img
+                src="newitt-media-logo.png"
+                alt="NEWITT Media"
+            >
+
+            <p class="footer-copy">
+                NEWITT's Paranormal Adventures
+            </p>
+
+            <p class="footer-copy">
+                From above. After dark. And everything in between.
+            </p>
+
+        </div>
+
+
+        <nav
+            class="footer-nav"
+            aria-label="Footer navigation"
         >
 
+            <a href="index.html">
+                Home
+            </a>
 
-        <p class="footer-brand">
-            NEWITT MEDIA
-        </p>
+            <a href="skyline.html">
+                Skyline
+            </a>
+
+            <a href="paranormal.html">
+                Paranormal
+            </a>
+
+            <a href="photography.html">
+                Photography
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </nav>
+
+    </div>
 
 
-        <p class="footer-tagline">
-            FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
-        </p>
+    <div class="container">
 
-
-        <p class="copyright">
-
+        <p class="footer-copy">
             © 2026 NEWITT Media. All Rights Reserved.
+        </p>
 
-            <br>
-
+        <p class="footer-copy">
             NEWITT Media •
             NEWITT Skyline Media •
             NEWITT's Paranormal Adventures •
             NEWITT Media Photography
-
-        </p>
-
-
-        <p class="website-address">
-
-            <a
-                href="https://newittmedia.co.uk/"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                newittmedia.co.uk
-            </a>
-
         </p>
 
     </div>
@@ -1000,7 +1194,7 @@
 
 <!-- =====================================================
      TIKTOK EMBED ENGINE
-===================================================== -->
+====================================================== -->
 
 <script
     async
@@ -1010,7 +1204,7 @@
 
 <!-- =====================================================
      MASTER JAVASCRIPT
-===================================================== -->
+====================================================== -->
 
 <script
     src="script.js"
@@ -1019,5 +1213,4 @@
 
 
 </body>
-
 </html>
