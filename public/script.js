@@ -1,7 +1,7 @@
 /* =========================================================
    NEWITT MEDIA
    MASTER JAVASCRIPT
-   CLEAN FINAL BUILD
+   CORRECTED CINEMATIC BUILD
    SEPTEMBER 2026
 
    FUNCTIONS
@@ -13,22 +13,22 @@
    - Lightbox
    - Safe external links
 
-   DESIGN NOTES
-   - Keep original cinematic entry animation
+   IMPORTANT
+   - Intro ID matches index.html: cinematic-intro
+   - Normal page links are NOT intercepted
+   - Original cinematic entry animation retained
    - No sweeping shine animation
    - No red paranormal mist
-   - Preserve existing page structure
-========================================================= */
-
-
-/* =========================================================
-   MAIN NEWITT MEDIA SCRIPT
 ========================================================= */
 
 (function () {
 
     "use strict";
 
+
+    /* =========================================================
+       DOM READY
+    ========================================================= */
 
     document.addEventListener(
         "DOMContentLoaded",
@@ -50,19 +50,22 @@
     );
 
 
-    /* =====================================================
+    /* =========================================================
        FIRST-VISIT CINEMATIC INTRO
-       -----------------------------------------------------
-       The original NEWITT cinematic entrance is retained.
-       It appears once per browser/device storage and can
-       still be skipped with Escape or a tap.
-    ===================================================== */
+
+       IMPORTANT:
+       index.html uses:
+
+       id="cinematic-intro"
+
+       This MUST match exactly.
+    ========================================================= */
 
     function initFirstVisitIntro() {
 
         const intro =
             document.getElementById(
-                "site-intro"
+                "cinematic-intro"
             );
 
 
@@ -92,6 +95,10 @@
         }
 
 
+        /* -----------------------------------------------------
+           INTRO HAS ALREADY BEEN SEEN
+        ----------------------------------------------------- */
+
         if (alreadySeen) {
 
             intro.classList.add(
@@ -113,6 +120,10 @@
 
         }
 
+
+        /* -----------------------------------------------------
+           FIRST VISIT
+        ----------------------------------------------------- */
 
         document.body.classList.add(
             "intro-active"
@@ -137,6 +148,11 @@
         } catch (error) {}
 
 
+        /*
+           Keep the cinematic entrance visible
+           long enough for the animation to play.
+        */
+
         const INTRO_DURATION =
             7500;
 
@@ -150,6 +166,10 @@
                 INTRO_DURATION
             );
 
+
+        /* -----------------------------------------------------
+           ESCAPE KEY
+        ----------------------------------------------------- */
 
         function handleEscape(event) {
 
@@ -171,11 +191,19 @@
         );
 
 
+        /* -----------------------------------------------------
+           TAP / CLICK TO SKIP
+        ----------------------------------------------------- */
+
         intro.addEventListener(
             "click",
             closeIntro
         );
 
+
+        /* -----------------------------------------------------
+           CLOSE INTRO
+        ----------------------------------------------------- */
 
         function closeIntro() {
 
@@ -214,6 +242,11 @@
             );
 
 
+            /*
+               Give the CSS fade-out time to complete
+               before removing the intro completely.
+            */
+
             window.setTimeout(
                 function () {
 
@@ -239,12 +272,9 @@
     }
 
 
-    /* =====================================================
+    /* =========================================================
        MOBILE NAVIGATION
-       -----------------------------------------------------
-       Uses the existing .menu-toggle and .nav-links
-       structure used throughout the NEWITT pages.
-    ===================================================== */
+    ========================================================= */
 
     function initMobileNavigation() {
 
@@ -270,6 +300,10 @@
         }
 
 
+        /* -----------------------------------------------------
+           CLOSE MENU
+        ----------------------------------------------------- */
+
         function closeMenu() {
 
             menu.classList.remove(
@@ -294,6 +328,10 @@
         }
 
 
+        /* -----------------------------------------------------
+           OPEN MENU
+        ----------------------------------------------------- */
+
         function openMenu() {
 
             menu.classList.add(
@@ -317,6 +355,10 @@
 
         }
 
+
+        /* -----------------------------------------------------
+           HAMBURGER BUTTON
+        ----------------------------------------------------- */
 
         toggle.addEventListener(
             "click",
@@ -347,6 +389,22 @@
         );
 
 
+        /* -----------------------------------------------------
+           NORMAL NAVIGATION
+
+           IMPORTANT:
+           We do NOT preventDefault() here.
+
+           Links such as:
+
+           skyline.html
+           paranormal.html
+           photography.html
+           contact.html
+
+           must navigate normally.
+        ----------------------------------------------------- */
+
         menu.querySelectorAll("a")
             .forEach(
                 function (link) {
@@ -363,6 +421,10 @@
                 }
             );
 
+
+        /* -----------------------------------------------------
+           CLICK OUTSIDE MENU
+        ----------------------------------------------------- */
 
         document.addEventListener(
             "click",
@@ -385,6 +447,10 @@
         );
 
 
+        /* -----------------------------------------------------
+           ESCAPE
+        ----------------------------------------------------- */
+
         document.addEventListener(
             "keydown",
             function (event) {
@@ -401,6 +467,10 @@
             }
         );
 
+
+        /* -----------------------------------------------------
+           DESKTOP RESIZE
+        ----------------------------------------------------- */
 
         window.addEventListener(
             "resize",
@@ -421,9 +491,9 @@
     }
 
 
-    /* =====================================================
+    /* =========================================================
        BACK TO TOP
-    ===================================================== */
+    ========================================================= */
 
     function initBackToTop() {
 
@@ -492,18 +562,13 @@
     }
 
 
-    /* =====================================================
+    /* =========================================================
        SMOOTH ANCHOR SCROLLING
-       -----------------------------------------------------
-       Only handles links beginning with #.
-       Normal page links such as:
-       skyline.html
-       paranormal.html
-       photography.html
-       contact.html
 
-       are NOT intercepted.
-    ===================================================== */
+       ONLY links beginning with # are handled.
+
+       Normal page links remain completely untouched.
+    ========================================================= */
 
     function initSmoothScrolling() {
 
@@ -584,13 +649,9 @@
     }
 
 
-    /* =====================================================
+    /* =========================================================
        LIGHTBOX
-       -----------------------------------------------------
-       Supports:
-       .gallery-item
-       [data-lightbox]
-    ===================================================== */
+    ========================================================= */
 
     function initLightbox() {
 
@@ -832,12 +893,9 @@
     }
 
 
-    /* =====================================================
+    /* =========================================================
        EXTERNAL LINKS
-       -----------------------------------------------------
-       External social links open safely in a new tab.
-       Internal NEWITT pages remain in the same tab.
-    ===================================================== */
+    ========================================================= */
 
     function initExternalLinks() {
 
