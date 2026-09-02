@@ -17,7 +17,7 @@
 
     <meta
         name="description"
-        content="Contact NEWITT Media, NEWITT Skyline Media, NEWITT's Paranormal Adventures and NEWITT Media Photography."
+        content="Contact NEWITT Media for aerial media, photography and paranormal enquiries."
     >
 
     <meta
@@ -27,18 +27,23 @@
 
     <meta
         name="robots"
-        content="index, follow"
+        content="index, follow, max-image-preview:large"
+    >
+
+    <meta
+        name="referrer"
+        content="strict-origin-when-cross-origin"
+    >
+
+    <meta
+        name="format-detection"
+        content="telephone=no"
     >
 
     <link
         rel="canonical"
         href="https://www.newittmedia.co.uk/contact.html"
     >
-
-
-    <!-- =====================================================
-         OPEN GRAPH
-    ====================================================== -->
 
     <meta
         property="og:type"
@@ -52,12 +57,12 @@
 
     <meta
         property="og:title"
-        content="Contact | NEWITT Media"
+        content="Contact NEWITT Media"
     >
 
     <meta
         property="og:description"
-        content="Get in touch with NEWITT Media."
+        content="Contact NEWITT Skyline Media, NEWITT's Paranormal Adventures or NEWITT Media."
     >
 
     <meta
@@ -66,14 +71,14 @@
     >
 
     <meta
+        property="og:image:alt"
+        content="NEWITT Media logo"
+    >
+
+    <meta
         property="og:site_name"
         content="NEWITT Media"
     >
-
-
-    <!-- =====================================================
-         TWITTER / X
-    ====================================================== -->
 
     <meta
         name="twitter:card"
@@ -82,12 +87,12 @@
 
     <meta
         name="twitter:title"
-        content="Contact | NEWITT Media"
+        content="Contact NEWITT Media"
     >
 
     <meta
         name="twitter:description"
-        content="Get in touch with NEWITT Media."
+        content="Contact NEWITT Skyline Media, NEWITT's Paranormal Adventures or NEWITT Media."
     >
 
     <meta
@@ -95,9 +100,8 @@
         content="https://www.newittmedia.co.uk/newitt-media-logo.png"
     >
 
-
     <title>
-        Contact | NEWITT Media
+        Contact NEWITT Media
     </title>
 
 
@@ -111,6 +115,7 @@
         "@type": "ContactPage",
         "name": "Contact NEWITT Media",
         "url": "https://www.newittmedia.co.uk/contact.html",
+        "description": "Contact NEWITT Skyline Media, NEWITT's Paranormal Adventures or NEWITT Media.",
         "isPartOf": {
             "@type": "WebSite",
             "name": "NEWITT Media",
@@ -132,193 +137,176 @@
 
     <style>
 
-        .contact-page-section {
-            padding:
-                90px 0 80px;
+        .contact-introduction {
+            width: min(720px, 100%);
+            margin: 0 auto;
+            text-align: center;
         }
 
-        .contact-intro {
-            width:
-                min(760px, 100%);
+        .contact-options {
+            width: min(1100px, 100%);
+            margin: 0 auto;
 
-            margin:
-                0 auto 45px;
-
-            text-align:
-                center;
-        }
-
-        .contact-intro p {
-            margin-bottom:
-                0;
-        }
-
-        .contact-grid {
-            width:
-                min(1000px, 100%);
-
-            margin:
-                0 auto;
-
-            display:
-                grid;
+            display: grid;
 
             grid-template-columns:
-                repeat(
-                    3,
-                    minmax(0, 1fr)
-                );
+                repeat(3, minmax(0, 1fr));
 
-            gap:
-                18px;
+            gap: 18px;
         }
 
-        .contact-card {
-            min-width:
-                0;
+        .contact-option {
+            min-width: 0;
 
-            padding:
-                30px 22px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            padding: 32px 22px;
 
             border:
                 1px solid
                 rgba(255,255,255,0.10);
 
-            border-radius:
-                10px;
+            border-radius: 10px;
 
             background:
-                rgba(4,7,12,0.58);
+                rgba(4,7,12,0.55);
 
-            text-align:
-                center;
+            text-align: center;
 
-            backdrop-filter:
-                blur(8px);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
 
-            -webkit-backdrop-filter:
-                blur(8px);
+            transition:
+                transform 250ms ease,
+                border-color 250ms ease,
+                background 250ms ease,
+                box-shadow 250ms ease;
         }
 
-        .contact-card h2 {
-            margin-bottom:
-                10px;
+        .contact-option:hover {
+            transform: translateY(-5px);
 
-            color:
-                #ffffff;
+            background:
+                rgba(7,10,16,0.72);
+        }
+
+
+        /* SKYLINE */
+
+        .contact-option.skyline-contact {
+            border-color:
+                rgba(0,174,255,0.24);
+        }
+
+        .contact-option.skyline-contact:hover {
+            border-color:
+                rgba(0,174,255,0.55);
+
+            box-shadow:
+                0 20px 55px
+                rgba(0,140,255,0.10);
+        }
+
+
+        /* PARANORMAL */
+
+        .contact-option.paranormal-contact {
+            border-color:
+                rgba(190,30,40,0.22);
+        }
+
+        .contact-option.paranormal-contact:hover {
+            border-color:
+                rgba(220,45,55,0.55);
+
+            box-shadow:
+                0 20px 55px
+                rgba(180,25,35,0.10);
+        }
+
+
+        /* GENERAL MEDIA */
+
+        .contact-option.media-contact {
+            border-color:
+                rgba(201,164,91,0.24);
+        }
+
+        .contact-option.media-contact:hover {
+            border-color:
+                rgba(201,164,91,0.55);
+
+            box-shadow:
+                0 20px 55px
+                rgba(201,164,91,0.10);
+        }
+
+
+        .contact-option-icon {
+            margin-bottom: 14px;
+
+            font-size: 2rem;
+
+            line-height: 1;
+        }
+
+        .skyline-contact
+        .contact-option-icon {
+            color: #4ecfff;
+        }
+
+        .paranormal-contact
+        .contact-option-icon {
+            color: #ff5d67;
+        }
+
+        .media-contact
+        .contact-option-icon {
+            color: #c9a45b;
+        }
+
+
+        .contact-option h2 {
+            margin-bottom: 12px;
 
             font-size:
-                1.15rem;
+                clamp(1.15rem, 2.5vw, 1.55rem);
         }
 
-        .contact-card p {
-            min-height:
-                76px;
+        .contact-option h2 span {
+            display: block;
 
-            margin-bottom:
-                18px;
+            margin-top: 4px;
+        }
+
+        .contact-option p {
+            width: 100%;
+
+            margin:
+                0 auto 24px;
 
             color:
                 rgba(244,247,250,0.68);
 
-            font-size:
-                0.82rem;
+            font-size: 0.86rem;
 
-            line-height:
-                1.65;
+            line-height: 1.7;
         }
 
-        .contact-card a {
-            display:
-                inline-flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            min-height:
-                40px;
-
-            padding:
-                9px 14px;
-
-            border:
-                1px solid
-                rgba(201,164,91,0.40);
-
-            border-radius:
-                6px;
-
-            background:
-                rgba(201,164,91,0.08);
-
-            color:
-                #f0ce87;
-
-            font-size:
-                0.68rem;
-
-            font-weight:
-                700;
-
-            letter-spacing:
-                0.04em;
-
-            transition:
-                background 180ms ease,
-                border-color 180ms ease,
-                transform 180ms ease;
-        }
-
-        .contact-card a:hover {
-            transform:
-                translateY(-2px);
-
-            background:
-                rgba(201,164,91,0.16);
-
-            border-color:
-                rgba(201,164,91,0.65);
-        }
-
-        .contact-card.skyline {
-            border-color:
-                rgba(0,174,255,0.18);
-        }
-
-        .contact-card.paranormal {
-            border-color:
-                rgba(190,30,40,0.18);
-        }
-
-        .contact-card.general {
-            border-color:
-                rgba(201,164,91,0.20);
+        .contact-option .button {
+            margin-top: auto;
         }
 
 
-        @media (max-width: 800px) {
+        /* MOBILE */
 
-            .contact-grid {
+        @media (max-width: 900px) {
+
+            .contact-options {
                 grid-template-columns:
                     1fr;
-            }
-
-            .contact-card p {
-                min-height:
-                    0;
-            }
-
-        }
-
-
-        @media (max-width: 700px) {
-
-            .contact-page-section {
-                padding:
-                    65px 0 60px;
             }
 
         }
@@ -330,6 +318,7 @@
 
 <body
     id="top"
+    class="contact-page"
 >
 
 
@@ -418,148 +407,37 @@
 <main>
 
 
-<section class="contact-page-section">
+<!-- =====================================================
+     CONTACT HERO
+===================================================== -->
 
-    <div class="container">
+<section class="contact-hero">
 
+    <div class="container contact-hero-content">
 
-        <div class="contact-intro">
-
-            <div class="eyebrow">
-                GET IN TOUCH
-            </div>
-
-            <h1>
-                Contact <span>NEWITT Media</span>
-            </h1>
-
-            <div class="hero-rule"></div>
-
-            <p>
-                Whether you're interested in aerial media,
-                paranormal adventures or photography,
-                choose the most relevant NEWITT Media contact below.
-            </p>
-
-        </div>
-
-
-        <div class="contact-grid">
-
-
-            <!-- =================================================
-                 SKYLINE
-            ================================================== -->
-
-            <article class="contact-card skyline">
-
-                <div class="contact-card-icon">
-                    ✦
-                </div>
-
-                <h2>
-                    NEWITT Skyline Media
-                </h2>
-
-                <p>
-                    For drone, aerial media,
-                    filming and Skyline enquiries.
-                </p>
-
-                <a
-                    href="mailto:n.skyline.media@gmail.com"
-                >
-                    Email Skyline Media
-                </a>
-
-            </article>
-
-
-            <!-- =================================================
-                 PARANORMAL
-            ================================================== -->
-
-            <article class="contact-card paranormal">
-
-                <div class="contact-card-icon">
-                    ◉
-                </div>
-
-                <h2>
-                    NEWITT's Paranormal Adventures
-                </h2>
-
-                <p>
-                    For paranormal investigations,
-                    locations, collaborations and
-                    adventure enquiries.
-                </p>
-
-                <a
-                    href="mailto:nw13ttt@gmail.com"
-                >
-                    Email Paranormal
-                </a>
-
-            </article>
-
-
-            <!-- =================================================
-                 GENERAL NEWITT MEDIA
-            ================================================== -->
-
-            <article class="contact-card general">
-
-                <div class="contact-card-icon">
-                    ◆
-                </div>
-
-                <h2>
-                    NEWITT Media
-                </h2>
-
-                <p>
-                    For general enquiries,
-                    photography and anything
-                    relating to NEWITT Media.
-                </p>
-
-                <a
-                    href="mailto:Ian.newitt@gmail.com"
-                >
-                    Email NEWITT Media
-                </a>
-
-            </article>
-
-
-        </div>
-
-
-        <!-- =====================================================
-             PRIVACY SUMMARY
-        ====================================================== -->
-
-        <div
-            class="contact-intro"
-            style="margin-top:45px;margin-bottom:0;"
+        <img
+            src="newitt-media-logo.png"
+            alt="NEWITT Media"
+            class="page-logo"
+            decoding="async"
         >
 
-            <p
-                style="
-                    font-size:0.72rem;
-                    color:rgba(255,255,255,0.48);
-                "
-            >
-                Your contact information is only used
-                to respond to your enquiry. For further
-                information, please see our
-                <a
-                    href="privacy.html"
-                    style="color:#c9a45b;"
-                >
-                    Privacy Policy
-                </a>.
+        <div class="eyebrow">
+            DIRECT CONTACT
+        </div>
+
+        <h1>
+            Get in
+            <span>Touch.</span>
+        </h1>
+
+        <div class="hero-rule"></div>
+
+        <div class="contact-introduction">
+
+            <p>
+                Choose the NEWITT Media world
+                you want to contact.
             </p>
 
         </div>
@@ -570,27 +448,136 @@
 
 
 <!-- =====================================================
-     FINAL CTA
+     THREE CONTACT OPTIONS
 ===================================================== -->
 
-<section class="home-cta">
+<section>
 
     <div class="container">
 
-        <div class="cta-panel">
+        <div class="contact-options">
 
-            <div class="eyebrow">
-                NEWITT MEDIA
-            </div>
 
-            <h2>
-                FROM ABOVE.
-                <span>AFTER DARK.</span>
-            </h2>
+            <!-- =================================================
+                 SKYLINE
+            ================================================== -->
 
-            <p>
-                And everything in between.
-            </p>
+            <article
+                class="contact-option skyline-contact"
+            >
+
+                <div
+                    class="contact-option-icon"
+                    aria-hidden="true"
+                >
+                    ◈
+                </div>
+
+                <div class="eyebrow">
+                    AERIAL MEDIA
+                </div>
+
+                <h2>
+                    NEWITT
+                    <span>Skyline Media</span>
+                </h2>
+
+                <p>
+                    Aerial photography, drone cinematography,
+                    locations, landscapes and media from above.
+                </p>
+
+                <a
+                    class="button primary"
+                    href="mailto:n.skyline.media@gmail.com"
+                    aria-label="Email NEWITT Skyline Media"
+                >
+                    Contact Skyline
+                </a>
+
+            </article>
+
+
+            <!-- =================================================
+                 PARANORMAL
+            ================================================== -->
+
+            <article
+                class="contact-option paranormal-contact"
+            >
+
+                <div
+                    class="contact-option-icon"
+                    aria-hidden="true"
+                >
+                    ◉
+                </div>
+
+                <div class="eyebrow">
+                    PARANORMAL
+                </div>
+
+                <h2>
+                    NEWITT's
+                    <span>Paranormal Adventures</span>
+                </h2>
+
+                <p>
+                    Paranormal investigations, haunted locations,
+                    collaborations and unexplained experiences.
+                </p>
+
+                <a
+                    class="button primary"
+                    href="mailto:nw13ttt@gmail.com"
+                    aria-label="Email NEWITT's Paranormal Adventures"
+                >
+                    Contact Paranormal
+                </a>
+
+            </article>
+
+
+            <!-- =================================================
+                 GENERAL NEWITT MEDIA
+            ================================================== -->
+
+            <article
+                class="contact-option media-contact"
+            >
+
+                <div
+                    class="contact-option-icon"
+                    aria-hidden="true"
+                >
+                    ◆
+                </div>
+
+                <div class="eyebrow">
+                    NEWITT MEDIA
+                </div>
+
+                <h2>
+                    NEWITT
+                    <span>Media</span>
+                </h2>
+
+                <p>
+                    General enquiries, collaborations,
+                    business opportunities and anything
+                    relating to NEWITT Media.
+                </p>
+
+                <a
+                    class="button primary"
+                    href="mailto:Ian.newitt@gmail.com"
+                    aria-label="Email NEWITT Media"
+                >
+                    Contact NEWITT Media
+                </a>
+
+            </article>
+
 
         </div>
 
@@ -600,6 +587,20 @@
 
 
 </main>
+
+
+<!-- =====================================================
+     BACK TO TOP
+===================================================== -->
+
+<a
+    href="#top"
+    class="back-to-top"
+    id="back-to-top"
+    aria-label="Back to top"
+>
+    ↑
+</a>
 
 
 <!-- =====================================================
@@ -626,12 +627,29 @@
 
         <p class="copyright">
             © 2026 NEWITT Media. All Rights Reserved.
+            <br>
+            NEWITT Media •
+            NEWITT Skyline Media •
+            NEWITT's Paranormal Adventures •
+            NEWITT Media Photography
+        </p>
+
+        <p class="website-address">
+
+            <a href="https://newittmedia.co.uk/">
+                newittmedia.co.uk
+            </a>
+
         </p>
 
     </div>
 
 </footer>
 
+
+<!-- =====================================================
+     MASTER JAVASCRIPT
+===================================================== -->
 
 <script
     src="script.js"
