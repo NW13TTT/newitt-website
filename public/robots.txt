@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.newittmedia.co.uk/sitemap.xml
+Sitemap: https://newitt-website.ian-newitt.workers.dev/sitemap.xml
