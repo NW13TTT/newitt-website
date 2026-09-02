@@ -33,10 +33,7 @@
         href="https://www.newittmedia.co.uk/skyline.html"
     >
 
-    <meta
-        property="og:type"
-        content="website"
-    >
+    <meta property="og:type" content="website">
 
     <meta
         property="og:url"
@@ -111,7 +108,7 @@
 
     <style>
         /* =====================================================
-           SKYLINE PAGE ENHANCEMENTS
+           SKYLINE PAGE
         ===================================================== */
 
         .skyline-page {
@@ -167,7 +164,8 @@
         }
 
         .skyline-hero h1 span,
-        .skyline-gallery-heading h2 span {
+        .skyline-gallery-heading h2 span,
+        .skyline-social h2 span {
             color: #4ecfff;
         }
 
@@ -192,7 +190,7 @@
         }
 
         /* =====================================================
-           SKYLINE INTRO
+           INTRO
         ===================================================== */
 
         .skyline-intro {
@@ -208,7 +206,7 @@
         }
 
         /* =====================================================
-           FEATURED GALLERY
+           GALLERY
         ===================================================== */
 
         .skyline-gallery {
@@ -342,13 +340,17 @@
         }
 
         /* =====================================================
-           SOCIAL
+           SOCIAL / TIKTOK
         ===================================================== */
 
         .skyline-social {
-            text-align: center;
-            max-width: 760px;
+            max-width: 900px;
             margin: 0 auto;
+            text-align: center;
+        }
+
+        .skyline-social .social-panel {
+            margin-top: 2rem;
         }
 
         .skyline-social-buttons {
@@ -444,6 +446,15 @@
             .hero-actions .button {
                 width: min(100%, 300px);
             }
+
+            .skyline-social-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .skyline-social-buttons .button {
+                width: min(100%, 300px);
+            }
         }
 
         @media (max-width: 380px) {
@@ -460,26 +471,29 @@
     </style>
 </head>
 
+
 <body id="top" class="skyline-page">
+
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
 
 <header class="site-header">
 
-    <div class="container nav">
+    <div class="container header-inner">
 
         <a
             href="index.html"
-            class="nav-brand"
+            class="brand"
             aria-label="NEWITT Media Home"
         >
             <img
                 src="newitt-media-logo.png"
                 alt="NEWITT Media logo"
             >
-
-            <span>
-                NEWITT <strong>MEDIA</strong>
-            </span>
         </a>
+
 
         <button
             class="menu-toggle"
@@ -493,357 +507,432 @@
             <span></span>
         </button>
 
+
         <nav
-            class="nav-links"
+            class="main-nav"
             id="main-menu"
             aria-label="Main navigation"
         >
-            <a href="index.html">Home</a>
+
+            <a href="index.html">
+                Home
+            </a>
 
             <a
                 href="skyline.html"
-                class="active"
                 aria-current="page"
             >
                 Skyline
             </a>
 
-            <a href="paranormal.html">Paranormal</a>
+            <a href="paranormal.html">
+                Paranormal
+            </a>
 
-            <a href="photography.html">Photography</a>
+            <a href="photography.html">
+                Photography
+            </a>
 
-            <a href="contact.html">Contact</a>
+            <a href="contact.html">
+                Contact
+            </a>
+
         </nav>
 
     </div>
 
 </header>
 
+
 <main>
 
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
 
-    <section class="skyline-hero">
+<!-- =====================================================
+     HERO
+====================================================== -->
 
-        <div class="container skyline-hero-content">
+<section class="skyline-hero">
 
-            <img
-                src="sky-logo.png"
-                alt="NEWITT Skyline Media"
-                class="page-logo skyline-logo"
+    <div class="container skyline-hero-content">
+
+        <img
+            src="sky-logo.png"
+            alt="NEWITT Skyline Media"
+            class="skyline-logo"
+        >
+
+        <div class="eyebrow">
+            NEWITT SKYLINE MEDIA
+        </div>
+
+        <h1>
+            From <span>Above.</span>
+        </h1>
+
+        <p>
+            Aerial drone media, photography and cinematic
+            views captured from a different perspective.
+        </p>
+
+        <div class="hero-actions">
+
+            <a
+                href="https://www.tiktok.com/@newittskylinemedia"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button button-blue"
             >
+                Follow on TikTok
+            </a>
+
+            <a
+                href="https://www.youtube.com/@Newitt-skyline-media"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button button-primary"
+            >
+                Watch on YouTube
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     INTRO
+====================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-heading skyline-intro">
 
             <div class="eyebrow">
-                NEWITT SKYLINE MEDIA
+                THE SKYLINE
             </div>
 
-            <h1>
-                From <span>Above.</span>
-            </h1>
+            <h2>
+                A different <span>angle.</span>
+            </h2>
 
             <p>
-                Aerial drone media, photography and cinematic
-                views captured from a different perspective.
+                NEWITT Skyline Media brings landscapes,
+                locations, architecture and cinematic
+                moments into view from above.
             </p>
 
-            <div class="hero-actions">
-
-                <a
-                    href="https://www.tiktok.com/@newittskylinemedia"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="button primary"
-                >
-                    Follow on TikTok
-                </a>
-
-                <a
-                    href="https://www.youtube.com/@Newitt-skyline-media"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="button secondary"
-                >
-                    Watch on YouTube
-                </a>
-
-            </div>
+            <p>
+                From atmospheric locations to sweeping
+                aerial perspectives, the aim is simple:
+                capture places in a way you cannot see
+                from the ground.
+            </p>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- =====================================================
-         ABOUT
-    ====================================================== -->
+<!-- =====================================================
+     FEATURED AERIAL WORK
+====================================================== -->
 
-    <section class="about">
+<section class="section">
 
-        <div class="container">
+    <div class="container">
 
-            <div class="section-heading skyline-intro">
+        <div class="skyline-gallery">
+
+            <div class="skyline-gallery-heading">
 
                 <div class="eyebrow">
-                    THE SKYLINE
+                    FEATURED AERIAL WORK
                 </div>
 
                 <h2>
-                    A different <span>angle.</span>
+                    Gloucester <span>Prison.</span>
                 </h2>
 
                 <p>
-                    NEWITT Skyline Media brings landscapes,
-                    locations, architecture and cinematic
-                    moments into view from above.
+                    Aerial views captured by NEWITT Skyline
+                    Media, showing Gloucester Prison from
+                    above.
                 </p>
 
-                <p>
-                    From atmospheric locations to sweeping
-                    aerial perspectives, the aim is simple:
-                    capture places in a way you cannot see
-                    from the ground.
-                </p>
+            </div>
+
+
+            <div class="skyline-gallery-grid">
+
+
+                <button
+                    type="button"
+                    class="skyline-gallery-item"
+                    data-full-image="media/skyline/Gloucester-prison-aerial-01.JPG"
+                    aria-label="View Gloucester Prison aerial photograph 1"
+                >
+
+                    <img
+                        src="media/skyline/Gloucester-prison-aerial-01.webp"
+                        alt="Gloucester Prison aerial view 1"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
+                    <span class="skyline-gallery-caption">
+                        Gloucester Prison • Aerial View 01
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="skyline-gallery-item"
+                    data-full-image="media/skyline/Gloucester-prison-aerial-02.JPG"
+                    aria-label="View Gloucester Prison aerial photograph 2"
+                >
+
+                    <img
+                        src="media/skyline/Gloucester-prison-aerial-02.webp"
+                        alt="Gloucester Prison aerial view 2"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
+                    <span class="skyline-gallery-caption">
+                        Gloucester Prison • Aerial View 02
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="skyline-gallery-item"
+                    data-full-image="media/skyline/Gloucester-prison-aerial-03.JPG"
+                    aria-label="View Gloucester Prison aerial photograph 3"
+                >
+
+                    <img
+                        src="media/skyline/Gloucester-prison-aerial-03.webp"
+                        alt="Gloucester Prison aerial view 3"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
+                    <span class="skyline-gallery-caption">
+                        Gloucester Prison • Aerial View 03
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="skyline-gallery-item"
+                    data-full-image="media/skyline/Gloucester-prison-aerial-04.JPG"
+                    aria-label="View Gloucester Prison aerial photograph 4"
+                >
+
+                    <img
+                        src="media/skyline/Gloucester-prison-aerial-04.webp"
+                        alt="Gloucester Prison aerial view 4"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
+                    <span class="skyline-gallery-caption">
+                        Gloucester Prison • Aerial View 04
+                    </span>
+
+                </button>
+
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- =====================================================
-         FEATURED AERIAL WORK
-    ====================================================== -->
+<!-- =====================================================
+     WHAT SKYLINE DOES
+====================================================== -->
 
-    <section class="about">
+<section class="section">
 
-        <div class="container">
+    <div class="container">
 
-            <div class="skyline-gallery">
+        <div class="section-heading">
 
-                <div class="skyline-gallery-heading">
+            <div class="eyebrow">
+                WHAT WE CAPTURE
+            </div>
 
-                    <div class="eyebrow">
-                        FEATURED AERIAL WORK
+            <h2>
+                Built for the <span>view.</span>
+            </h2>
+
+        </div>
+
+
+        <div class="skyline-focus">
+
+            <div class="skyline-focus-grid">
+
+
+                <article class="skyline-focus-item">
+
+                    <div class="skyline-focus-icon">
+                        ↑
                     </div>
 
-                    <h2>
-                        Gloucester <span>Prison.</span>
-                    </h2>
+                    <h3>
+                        Aerial Photography
+                    </h3>
 
                     <p>
-                        Aerial views captured by NEWITT Skyline
-                        Media, showing Gloucester Prison from
-                        above.
+                        High-level perspectives of buildings,
+                        landscapes, locations and environments.
                     </p>
 
-                </div>
+                </article>
 
 
-                <div class="skyline-gallery-grid">
+                <article class="skyline-focus-item">
 
-                    <button
-                        type="button"
-                        class="skyline-gallery-item"
-                        data-full-image="media/skyline/Gloucester-prison-aerial-01.JPG"
-                        aria-label="View Gloucester Prison aerial photograph 1"
-                    >
-                        <img
-                            src="media/skyline/Gloucester-prison-aerial-01.webp"
-                            alt="Gloucester Prison aerial view 1"
-                            loading="lazy"
-                        >
+                    <div class="skyline-focus-icon">
+                        ▶
+                    </div>
 
-                        <span class="skyline-gallery-caption">
-                            Gloucester Prison • Aerial View 01
-                        </span>
-                    </button>
+                    <h3>
+                        Aerial Cinematography
+                    </h3>
 
+                    <p>
+                        Smooth cinematic drone footage designed
+                        to give locations scale, atmosphere and
+                        movement.
+                    </p>
 
-                    <button
-                        type="button"
-                        class="skyline-gallery-item"
-                        data-full-image="media/skyline/Gloucester-prison-aerial-02.JPG"
-                        aria-label="View Gloucester Prison aerial photograph 2"
-                    >
-                        <img
-                            src="media/skyline/Gloucester-prison-aerial-02.webp"
-                            alt="Gloucester Prison aerial view 2"
-                            loading="lazy"
-                        >
-
-                        <span class="skyline-gallery-caption">
-                            Gloucester Prison • Aerial View 02
-                        </span>
-                    </button>
+                </article>
 
 
-                    <button
-                        type="button"
-                        class="skyline-gallery-item"
-                        data-full-image="media/skyline/Gloucester-prison-aerial-03.JPG"
-                        aria-label="View Gloucester Prison aerial photograph 3"
-                    >
-                        <img
-                            src="media/skyline/Gloucester-prison-aerial-03.webp"
-                            alt="Gloucester Prison aerial view 3"
-                            loading="lazy"
-                        >
+                <article class="skyline-focus-item">
 
-                        <span class="skyline-gallery-caption">
-                            Gloucester Prison • Aerial View 03
-                        </span>
-                    </button>
+                    <div class="skyline-focus-icon">
+                        ◉
+                    </div>
 
+                    <h3>
+                        Locations &amp; Landscapes
+                    </h3>
 
-                    <button
-                        type="button"
-                        class="skyline-gallery-item"
-                        data-full-image="media/skyline/Gloucester-prison-aerial-04.JPG"
-                        aria-label="View Gloucester Prison aerial photograph 4"
-                    >
-                        <img
-                            src="media/skyline/Gloucester-prison-aerial-04.webp"
-                            alt="Gloucester Prison aerial view 4"
-                            loading="lazy"
-                        >
+                    <p>
+                        From recognisable landmarks to unusual
+                        locations, every flight offers another
+                        perspective.
+                    </p>
 
-                        <span class="skyline-gallery-caption">
-                            Gloucester Prison • Aerial View 04
-                        </span>
-                    </button>
+                </article>
 
-                </div>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- =====================================================
-         WHAT SKYLINE DOES
-    ====================================================== -->
+<!-- =====================================================
+     SKYLINE SOCIAL HUB
+====================================================== -->
 
-    <section class="about">
+<section class="section">
 
-        <div class="container">
+    <div class="container">
 
-            <div class="section-heading">
+        <div class="skyline-social">
 
-                <div class="eyebrow">
-                    WHAT WE CAPTURE
-                </div>
+            <div class="eyebrow">
+                FOLLOW THE FLIGHTS
+            </div>
 
-                <h2>
-                    Built for the <span>view.</span>
-                </h2>
+            <h2>
+                NEWITT Skyline <span>Media.</span>
+            </h2>
+
+            <p>
+                Follow the latest aerial footage, locations
+                and drone projects.
+            </p>
+
+
+            <!-- TikTok creator embed -->
+
+            <div class="skyline-tiktok-preview">
+
+                <blockquote
+                    class="tiktok-embed"
+                    cite="https://www.tiktok.com/@newittskylinemedia"
+                    data-unique-id="newittskylinemedia"
+                    data-embed-type="creator"
+                >
+
+                    <section>
+
+                        <a
+                            target="_blank"
+                            href="https://www.tiktok.com/@newittskylinemedia"
+                            rel="noopener noreferrer"
+                        >
+                            @newittskylinemedia
+                        </a>
+
+                    </section>
+
+                </blockquote>
 
             </div>
 
 
-            <div class="skyline-focus">
-
-                <div class="skyline-focus-grid">
-
-                    <article class="skyline-focus-item">
-
-                        <div class="skyline-focus-icon">
-                            ↑
-                        </div>
-
-                        <h3>
-                            Aerial Photography
-                        </h3>
-
-                        <p>
-                            High-level perspectives of
-                            buildings, landscapes, locations
-                            and environments.
-                        </p>
-
-                    </article>
+            <p class="tiktok-follow-note">
+                Follow NEWITT Skyline Media on TikTok for
+                the latest aerial footage.
+            </p>
 
 
-                    <article class="skyline-focus-item">
+            <!-- Professional social panel -->
 
-                        <div class="skyline-focus-icon">
-                            ▶
-                        </div>
+            <div class="social-panel">
 
-                        <h3>
-                            Aerial Cinematography
-                        </h3>
+                <h3 class="social-panel-heading">
+                    Follow NEWITT Skyline Media
+                </h3>
 
-                        <p>
-                            Smooth cinematic drone footage
-                            designed to give locations scale,
-                            atmosphere and movement.
-                        </p>
-
-                    </article>
-
-
-                    <article class="skyline-focus-item">
-
-                        <div class="skyline-focus-icon">
-                            ◉
-                        </div>
-
-                        <h3>
-                            Locations & Landscapes
-                        </h3>
-
-                        <p>
-                            From recognisable landmarks to
-                            unusual locations, every flight
-                            offers another perspective.
-                        </p>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         SOCIAL
-    ====================================================== -->
-
-    <section class="about">
-
-        <div class="container">
-
-            <div class="skyline-social">
-
-                <div class="eyebrow">
-                    FOLLOW THE FLIGHTS
-                </div>
-
-                <h2>
-                    NEWITT Skyline <span>Media.</span>
-                </h2>
-
-                <p>
-                    Follow the latest aerial footage,
-                    locations and drone projects.
+                <p class="social-panel-copy">
+                    Keep up with new flights, aerial locations,
+                    cinematic drone footage and future projects.
                 </p>
 
-                <div class="skyline-social-buttons">
+                <div class="social-panel-actions">
 
                     <a
                         href="https://www.tiktok.com/@newittskylinemedia"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="button primary"
+                        class="button button-blue"
                     >
                         TikTok
                     </a>
@@ -852,7 +941,7 @@
                         href="https://www.youtube.com/@Newitt-skyline-media"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="button secondary"
+                        class="button button-primary"
                     >
                         YouTube
                     </a>
@@ -863,62 +952,57 @@
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- =====================================================
-         FINAL CTA
-    ====================================================== -->
+<!-- =====================================================
+     FINAL CTA
+====================================================== -->
 
-    <section class="cta">
+<section class="final-cta">
 
-        <div class="container">
+    <div class="container">
 
-            <div class="section-heading">
+        <h2>
+            There is more to <span class="blue">discover.</span>
+        </h2>
 
-                <div class="eyebrow">
-                    EXPLORE NEWITT MEDIA
-                </div>
+        <p>
+            Explore the paranormal side of NEWITT Media,
+            view the photography work, or get in touch.
+        </p>
 
-                <h2>
-                    There is more to <span>discover.</span>
-                </h2>
+        <div class="final-cta-actions">
 
-                <p>
-                    Explore the paranormal side of NEWITT Media,
-                    view the photography work, or get in touch.
-                </p>
+            <a
+                href="paranormal.html"
+                class="button button-blue"
+            >
+                Paranormal
+            </a>
 
-                <div class="hero-actions">
+            <a
+                href="photography.html"
+                class="button button-primary"
+            >
+                Photography
+            </a>
 
-                    <a
-                        href="paranormal.html"
-                        class="button primary"
-                    >
-                        Paranormal
-                    </a>
-
-                    <a
-                        href="photography.html"
-                        class="button secondary"
-                    >
-                        Photography
-                    </a>
-
-                    <a
-                        href="contact.html"
-                        class="button secondary"
-                    >
-                        Contact
-                    </a>
-
-                </div>
-
-            </div>
+            <a
+                href="contact.html"
+                class="button"
+            >
+                Contact
+            </a>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
+
 
 </main>
 
@@ -929,32 +1013,49 @@
 
 <footer class="site-footer">
 
-    <div class="container">
+    <div class="container footer-inner">
 
         <div class="footer-brand">
-            NEWITT <strong>MEDIA</strong>
+
+            <div>
+                NEWITT <strong>MEDIA</strong>
+            </div>
+
+            <p class="footer-copy">
+                NEWITT Skyline Media
+            </p>
+
+            <p class="footer-copy">
+                From above. After dark. And everything in between.
+            </p>
+
         </div>
 
-        <p>
-            NEWITT Skyline Media
-        </p>
 
-        <p>
-            From above. After dark. And everything in between.
-        </p>
-
-        <div class="footer-links">
+        <nav
+            class="footer-nav"
+            aria-label="Footer navigation"
+        >
 
             <a href="index.html">Home</a>
+
             <a href="skyline.html">Skyline</a>
+
             <a href="paranormal.html">Paranormal</a>
+
             <a href="photography.html">Photography</a>
+
             <a href="contact.html">Contact</a>
 
-        </div>
+        </nav>
 
-        <p class="copyright">
-            © NEWITT Media. All rights reserved.
+    </div>
+
+
+    <div class="container">
+
+        <p class="footer-copy">
+            © 2026 NEWITT Media. All Rights Reserved.
         </p>
 
     </div>
@@ -990,12 +1091,23 @@
 </div>
 
 
-<!-- MASTER JAVASCRIPT -->
+<!-- =====================================================
+     TIKTOK EMBED
+====================================================== -->
 
-<script src="script.js"></script>
+<script async src="https://www.tiktok.com/embed.js"></script>
 
 
-<!-- SKYLINE LIGHTBOX -->
+<!-- =====================================================
+     MASTER JAVASCRIPT
+====================================================== -->
+
+<script src="script.js" defer></script>
+
+
+<!-- =====================================================
+     SKYLINE LIGHTBOX
+====================================================== -->
 
 <script>
 (function () {
@@ -1013,7 +1125,11 @@
         document.getElementById("skyline-lightbox-close");
 
 
-    if (!galleryItems.length || !lightbox || !lightboxImage) {
+    if (
+        !galleryItems.length ||
+        !lightbox ||
+        !lightboxImage
+    ) {
         return;
     }
 
@@ -1045,7 +1161,6 @@
         );
 
         document.body.style.overflow = "hidden";
-
     }
 
 
@@ -1061,7 +1176,6 @@
         lightboxImage.src = "";
 
         document.body.style.overflow = "";
-
     }
 
 
@@ -1115,6 +1229,7 @@
 
 })();
 </script>
+
 
 </body>
 </html>
