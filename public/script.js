@@ -1,21 +1,32 @@
 /* =========================================================
    NEWITT MEDIA
    MASTER JAVASCRIPT
-   CLEAN MASTER VERSION
-   UPDATE 1 OF 5
+   CLEAN FINAL BUILD
+   30 AUGUST 2026
 
-   Handles:
-   - First-visit intro
+   FUNCTIONS
+   - First-visit cinematic intro
    - Mobile navigation
-   - Clean page navigation
+   - Mobile page transition
    - Back to top
    - Smooth anchor scrolling
-   - Photography lightbox
-   - General lightbox
-   - External links
-   - Reduced motion
-   - Keyboard accessibility
-   - Safari / iPhone support
+   - Lightbox
+   - Safe external links
+   - Mobile micro-flash protection
+
+   DESIGN NOTES
+   - Keep original cinematic entry animation
+   - No sweeping shine animation
+   - No red paranormal mist
+   - Preserve existing page structure
+========================================================= */
+
+
+/* =========================================================
+   EARLY MOBILE PAGE TRANSITION
+   ---------------------------------------------------------
+   Runs before DOMContentLoaded so the incoming page is
+   covered before the browser can visibly flash it.
 ========================================================= */
 
 (function () {
@@ -23,45 +34,254 @@
     "use strict";
 
 
-    /* =====================================================
-       SETTINGS
-    ====================================================== */
+    const TRANSITION_KEY = "newittPageTransition";
 
-    const INTRO_STORAGE_KEY =
-        "newittMediaIntroSeenV2";
-
-
-    const MOBILE_QUERY =
-        "(max-width: 700px)";
+    const isMobile =
+        window.matchMedia &&
+        window.matchMedia("(max-width: 700px)").matches;
 
 
-    function isMobile() {
+    if (!isMobile) {
+        return;
+    }
 
-        return (
-            window.matchMedia &&
-            window.matchMedia(
-                MOBILE_QUERY
-            ).matches
+
+    let incoming = false;
+
+
+    try {
+
+        incoming =
+            sessionStorage.getItem(TRANSITION_KEY) === "1";
+
+        sessionStorage.removeItem(TRANSITION_KEY);
+
+    } catch (error) {
+
+        incoming = false;
+
+    }
+
+
+    if (!incoming) {
+        return;
+    }
+
+
+    const transitionStyle =
+        document.createElement("style");
+
+
+    transitionStyle.id =
+        "newitt-early-transition-style";
+
+
+    transitionStyle.textContent = `
+        html {
+            background: #020305 !important;
+            background-color: #020305 !important;
+        }
+
+        body {
+            background: #020305 !important;
+        }
+
+        #newitt-early-transition {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2147483647;
+            background: #020305;
+            opacity: 1;
+            pointer-events: all;
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+            will-change: opacity;
+        }
+    `;
+
+
+    if (document.head) {
+
+        document.head.appendChild(
+            transitionStyle
         );
 
     }
 
 
-    function prefersReducedMotion() {
+    function createOverlay() {
 
-        return (
-            window.matchMedia &&
-            window.matchMedia(
-                "(prefers-reduced-motion: reduce)"
-            ).matches
+        if (
+            document.getElementById(
+                "newitt-early-transition"
+            )
+        ) {
+            return;
+        }
+
+
+        const overlay =
+            document.createElement("div");
+
+
+        overlay.id =
+            "newitt-early-transition";
+
+
+        overlay.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+
+        if (document.documentElement) {
+
+            document.documentElement.appendChild(
+                overlay
+            );
+
+        }
+
+    }
+
+
+    createOverlay();
+
+
+    function reveal() {
+
+        const overlay =
+            document.getElementById(
+                "newitt-early-transition"
+            );
+
+
+        if (!overlay) {
+            return;
+        }
+
+
+        overlay.style.transition =
+            "opacity 220ms ease";
+
+
+        overlay.style.opacity =
+            "0";
+
+
+        window.setTimeout(
+            function () {
+
+                if (overlay.parentNode) {
+
+                    overlay.parentNode.removeChild(
+                        overlay
+                    );
+
+                }
+
+
+                const earlyStyle =
+                    document.getElementById(
+                        "newitt-early-transition-style"
+                    );
+
+
+                if (
+                    earlyStyle &&
+                    earlyStyle.parentNode
+                ) {
+
+                    earlyStyle.parentNode.removeChild(
+                        earlyStyle
+                    );
+
+                }
+
+            },
+            260
         );
 
     }
 
 
+    function revealAfterPaint() {
+
+        window.requestAnimationFrame(
+            function () {
+
+                window.requestAnimationFrame(
+                    reveal
+                );
+
+            }
+        );
+
+    }
+
+
+    if (
+        document.readyState ===
+        "loading"
+    ) {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            revealAfterPaint,
+            {
+                once: true
+            }
+        );
+
+    } else {
+
+        revealAfterPaint();
+
+    }
+
+})();
+
+
+/* =========================================================
+   MAIN NEWITT MEDIA SCRIPT
+========================================================= */
+
+(function () {
+
+    "use strict";
+
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            initFirstVisitIntro();
+
+            initMobileNavigation();
+
+            initPageTransition();
+
+            initBackToTop();
+
+            initSmoothScrolling();
+
+            initLightbox();
+
+            initExternalLinks();
+
+        }
+    );
+
+
     /* =====================================================
-       FIRST VISIT INTRO
-    ====================================================== */
+       FIRST-VISIT CINEMATIC INTRO
+       -----------------------------------------------------
+       The original NEWITT cinematic entrance is retained.
+       It appears once per browser/device storage and can
+       still be skipped with Escape or a tap.
+    ===================================================== */
 
     function initFirstVisitIntro() {
 
@@ -72,10 +292,12 @@
 
 
         if (!intro) {
-
             return;
-
         }
+
+
+        const STORAGE_KEY =
+            "newittMediaIntroSeenV2";
 
 
         let alreadySeen = false;
@@ -85,7 +307,7 @@
 
             alreadySeen =
                 localStorage.getItem(
-                    INTRO_STORAGE_KEY
+                    STORAGE_KEY
                 ) === "true";
 
         } catch (error) {
@@ -101,13 +323,16 @@
                 "intro-hidden"
             );
 
+
             intro.setAttribute(
                 "aria-hidden",
                 "true"
             );
 
+
             intro.style.display =
                 "none";
+
 
             return;
 
@@ -130,33 +355,32 @@
         try {
 
             localStorage.setItem(
-                INTRO_STORAGE_KEY,
+                STORAGE_KEY,
                 "true"
             );
 
         } catch (error) {}
 
 
+        const INTRO_DURATION =
+            7500;
+
+
         let closed = false;
 
 
-        const duration =
-            prefersReducedMotion()
-                ? 0
-                : 7500;
-
-
-        const timer =
+        const closeTimer =
             window.setTimeout(
                 closeIntro,
-                duration
+                INTRO_DURATION
             );
 
 
-        function handleKey(event) {
+        function handleEscape(event) {
 
             if (
-                event.key === "Escape"
+                event.key ===
+                "Escape"
             ) {
 
                 closeIntro();
@@ -168,7 +392,7 @@
 
         document.addEventListener(
             "keydown",
-            handleKey
+            handleEscape
         );
 
 
@@ -181,9 +405,7 @@
         function closeIntro() {
 
             if (closed) {
-
                 return;
-
             }
 
 
@@ -191,7 +413,7 @@
 
 
             window.clearTimeout(
-                timer
+                closeTimer
             );
 
 
@@ -213,36 +435,22 @@
 
             document.removeEventListener(
                 "keydown",
-                handleKey
+                handleEscape
             );
-
-
-            if (
-                prefersReducedMotion()
-            ) {
-
-                document.documentElement.style.overflow =
-                    "";
-
-                document.body.style.overflow =
-                    "";
-
-                intro.style.display =
-                    "none";
-
-                return;
-
-            }
 
 
             window.setTimeout(
                 function () {
 
-                    document.documentElement.style.overflow =
-                        "";
+                    document.documentElement
+                        .style
+                        .overflow = "";
 
-                    document.body.style.overflow =
-                        "";
+
+                    document.body
+                        .style
+                        .overflow = "";
+
 
                     intro.style.display =
                         "none";
@@ -258,7 +466,7 @@
 
     /* =====================================================
        MOBILE NAVIGATION
-    ====================================================== */
+    ===================================================== */
 
     function initMobileNavigation() {
 
@@ -334,7 +542,7 @@
             "click",
             function (event) {
 
-                event.stopPropagation();
+                event.preventDefault();
 
 
                 const isOpen =
@@ -357,18 +565,17 @@
         );
 
 
-        menu.querySelectorAll(
-            "a"
-        ).forEach(
-            function (link) {
+        menu.querySelectorAll("a")
+            .forEach(
+                function (link) {
 
-                link.addEventListener(
-                    "click",
-                    closeMenu
-                );
+                    link.addEventListener(
+                        "click",
+                        closeMenu
+                    );
 
-            }
-        );
+                }
+            );
 
 
         document.addEventListener(
@@ -397,7 +604,8 @@
             function (event) {
 
                 if (
-                    event.key === "Escape"
+                    event.key ===
+                    "Escape"
                 ) {
 
                     closeMenu();
@@ -421,9 +629,6 @@
 
                 }
 
-            },
-            {
-                passive: true
             }
         );
 
@@ -431,155 +636,258 @@
 
 
     /* =====================================================
-       PAGE NAVIGATION
-       
-       IMPORTANT:
-       No artificial fade overlay is used.
-       The browser changes page normally.
-       This removes the page-flash problem.
-    ====================================================== */
+       MOBILE PAGE TRANSITION
+       -----------------------------------------------------
+       Handles the outgoing page.
 
-    function initPageNavigation() {
+       The early transition at the top of this file handles
+       the incoming page before the browser can flash it.
+    ===================================================== */
 
-        document
-            .querySelectorAll(
+    function initPageTransition() {
+
+        const mobile =
+            window.matchMedia(
+                "(max-width: 700px)"
+            ).matches;
+
+
+        if (!mobile) {
+            return;
+        }
+
+
+        const links =
+            document.querySelectorAll(
                 "a[href]"
-            )
-            .forEach(
-                function (link) {
-
-                    link.addEventListener(
-                        "click",
-                        function (event) {
-
-                            if (
-                                event.defaultPrevented
-                            ) {
-
-                                return;
-
-                            }
+            );
 
 
-                            if (
-                                event.button !==
-                                undefined &&
-                                event.button !== 0
-                            ) {
+        links.forEach(
+            function (link) {
 
-                                return;
+                link.addEventListener(
+                    "click",
+                    function (event) {
 
-                            }
+                        if (
+                            event.defaultPrevented ||
+                            event.ctrlKey ||
+                            event.metaKey ||
+                            event.shiftKey ||
+                            event.altKey
+                        ) {
 
-
-                            if (
-                                event.ctrlKey ||
-                                event.metaKey ||
-                                event.shiftKey ||
-                                event.altKey
-                            ) {
-
-                                return;
-
-                            }
-
-
-                            const href =
-                                link.getAttribute(
-                                    "href"
-                                );
-
-
-                            if (!href) {
-
-                                return;
-
-                            }
-
-
-                            /*
-                             * Leave external links,
-                             * email, telephone and
-                             * JavaScript links alone.
-                             */
-
-                            if (
-                                href.startsWith(
-                                    "http://"
-                                ) ||
-                                href.startsWith(
-                                    "https://"
-                                ) ||
-                                href.startsWith(
-                                    "mailto:"
-                                ) ||
-                                href.startsWith(
-                                    "tel:"
-                                ) ||
-                                href.startsWith(
-                                    "javascript:"
-                                )
-                            ) {
-
-                                return;
-
-                            }
-
-
-                            /*
-                             * Anchor links stay on
-                             * the current page.
-                             */
-
-                            if (
-                                href.startsWith(
-                                    "#"
-                                )
-                            ) {
-
-                                return;
-
-                            }
-
-
-                            /*
-                             * Do not interfere with
-                             * downloads.
-                             */
-
-                            if (
-                                link.hasAttribute(
-                                    "download"
-                                )
-                            ) {
-
-                                return;
-
-                            }
-
-
-                            /*
-                             * Let the browser perform
-                             * normal navigation.
-                             *
-                             * This is deliberate.
-                             * It prevents the black/white
-                             * flash caused by the old
-                             * overlay system.
-                             */
+                            return;
 
                         }
-                    );
 
-                }
-            );
+
+                        if (
+                            event.button !== 0
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        const href =
+                            link.getAttribute(
+                                "href"
+                            );
+
+
+                        if (!href) {
+                            return;
+                        }
+
+
+                        /*
+                         * Leave anchors, email, telephone
+                         * and genuine external links alone.
+                         */
+
+                        if (
+                            href.startsWith("#") ||
+                            href.startsWith("mailto:") ||
+                            href.startsWith("tel:") ||
+                            href.startsWith("http://") ||
+                            href.startsWith("https://") ||
+                            href.startsWith("javascript:")
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        /*
+                         * Do not interfere with downloads.
+                         */
+
+                        if (
+                            link.hasAttribute(
+                                "download"
+                            )
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        const current =
+                            window.location.pathname
+                                .split("/")
+                                .pop() ||
+                            "index.html";
+
+
+                        const target =
+                            href
+                                .split("#")[0]
+                                .split("?")[0]
+                                .split("/")
+                                .pop() ||
+                            "index.html";
+
+
+                        if (
+                            current ===
+                            target
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        if (
+                            document.body.dataset
+                                .newittNavigating ===
+                            "true"
+                        ) {
+
+                            event.preventDefault();
+
+                            return;
+
+                        }
+
+
+                        event.preventDefault();
+
+
+                        document.body.dataset
+                            .newittNavigating =
+                            "true";
+
+
+                        try {
+
+                            sessionStorage.setItem(
+                                "newittPageTransition",
+                                "1"
+                            );
+
+                        } catch (error) {}
+
+
+                        const overlay =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        overlay.id =
+                            "newitt-transition-overlay";
+
+
+                        overlay.setAttribute(
+                            "aria-hidden",
+                            "true"
+                        );
+
+
+                        Object.assign(
+                            overlay.style,
+                            {
+                                position: "fixed",
+                                inset: "0",
+                                width: "100%",
+                                height: "100%",
+                                zIndex: "2147483647",
+                                background: "#020305",
+                                opacity: "0",
+                                pointerEvents: "all",
+                                transform: "translateZ(0)",
+                                webkitTransform:
+                                    "translateZ(0)",
+                                willChange: "opacity",
+                                transition:
+                                    "opacity 180ms ease"
+                            }
+                        );
+
+
+                        document.body.appendChild(
+                            overlay
+                        );
+
+
+                        document.documentElement
+                            .style
+                            .overflow =
+                            "hidden";
+
+
+                        document.body
+                            .style
+                            .overflow =
+                            "hidden";
+
+
+                        /*
+                         * Force the browser to register the
+                         * initial opacity before starting fade.
+                         */
+
+                        void overlay.offsetWidth;
+
+
+                        window.requestAnimationFrame(
+                            function () {
+
+                                overlay.style.opacity =
+                                    "1";
+
+
+                                window.setTimeout(
+                                    function () {
+
+                                        window.location.href =
+                                            href;
+
+                                    },
+                                    180
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+            }
+        );
 
     }
 
 
     /* =====================================================
        BACK TO TOP
-    ====================================================== */
+    ===================================================== */
 
     function initBackToTop() {
 
@@ -590,9 +898,7 @@
 
 
         if (!button) {
-
             return;
-
         }
 
 
@@ -634,20 +940,11 @@
 
         button.addEventListener(
             "click",
-            function (event) {
-
-                event.preventDefault();
-
+            function () {
 
                 window.scrollTo({
-
                     top: 0,
-
-                    behavior:
-                        prefersReducedMotion()
-                            ? "auto"
-                            : "smooth"
-
+                    behavior: "smooth"
                 });
 
             }
@@ -661,7 +958,7 @@
 
     /* =====================================================
        SMOOTH ANCHOR SCROLLING
-    ====================================================== */
+    ===================================================== */
 
     function initSmoothScrolling() {
 
@@ -676,15 +973,15 @@
                         "click",
                         function (event) {
 
-                            const href =
+                            const targetId =
                                 anchor.getAttribute(
                                     "href"
                                 );
 
 
                             if (
-                                !href ||
-                                href === "#"
+                                !targetId ||
+                                targetId === "#"
                             ) {
 
                                 return;
@@ -692,56 +989,46 @@
                             }
 
 
-                            const target =
-                                document.querySelector(
-                                    href
-                                );
+                            let target = null;
 
 
-                            if (!target) {
+                            try {
+
+                                target =
+                                    document.querySelector(
+                                        targetId
+                                    );
+
+                            } catch (error) {
 
                                 return;
 
                             }
 
 
+                            if (!target) {
+                                return;
+                            }
+
+
                             event.preventDefault();
 
 
-                            const header =
-                                document.querySelector(
-                                    ".site-header"
+                            target.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start"
+                            });
+
+
+                            try {
+
+                                history.replaceState(
+                                    null,
+                                    "",
+                                    targetId
                                 );
 
-
-                            const headerHeight =
-                                header
-                                    ? header.offsetHeight
-                                    : 0;
-
-
-                            const position =
-                                target.getBoundingClientRect()
-                                    .top +
-                                window.scrollY -
-                                headerHeight -
-                                12;
-
-
-                            window.scrollTo({
-
-                                top:
-                                    Math.max(
-                                        0,
-                                        position
-                                    ),
-
-                                behavior:
-                                    prefersReducedMotion()
-                                        ? "auto"
-                                        : "smooth"
-
-                            });
+                            } catch (error) {}
 
                         }
                     );
@@ -753,64 +1040,102 @@
 
 
     /* =====================================================
-       GENERAL LIGHTBOX
-    ====================================================== */
+       LIGHTBOX
+       -----------------------------------------------------
+       Supports both:
+       .gallery-item
+       [data-lightbox]
+    ===================================================== */
 
     function initLightbox() {
 
-        const items =
-            document.querySelectorAll(
-                "[data-lightbox]"
-            );
-
-
         const lightbox =
-            document.querySelector(
-                ".lightbox"
+            document.getElementById(
+                "lightbox"
             );
 
 
-        if (
-            !items.length ||
-            !lightbox
-        ) {
-
+        if (!lightbox) {
             return;
-
         }
 
 
         const image =
+            document.getElementById(
+                "lightbox-image"
+            ) ||
             lightbox.querySelector(
                 "img"
             );
 
 
         const close =
+            document.getElementById(
+                "lightbox-close"
+            ) ||
             lightbox.querySelector(
                 ".lightbox-close"
             );
 
 
-        if (
-            !image ||
-            !close
-        ) {
+        const items =
+            document.querySelectorAll(
+                ".gallery-item, [data-lightbox]"
+            );
 
-            return;
+
+        function closeLightbox() {
+
+            lightbox.classList.remove(
+                "active"
+            );
+
+
+            lightbox.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            document.body.style.overflow =
+                "";
+
+
+            if (image) {
+
+                window.setTimeout(
+                    function () {
+
+                        if (
+                            !lightbox.classList.contains(
+                                "active"
+                            )
+                        ) {
+
+                            image.removeAttribute(
+                                "src"
+                            );
+
+                        }
+
+                    },
+                    250
+                );
+
+            }
 
         }
 
 
-        function open(item) {
+        function openLightbox(
+            source,
+            altText
+        ) {
 
-            const source =
-                item.getAttribute(
-                    "data-lightbox"
-                );
-
-
-            if (!source) {
+            if (
+                !source ||
+                !image
+            ) {
 
                 return;
 
@@ -822,10 +1147,7 @@
 
 
             image.alt =
-                item.getAttribute(
-                    "data-alt"
-                ) ||
-                "NEWITT Media image";
+                altText || "";
 
 
             lightbox.classList.add(
@@ -841,29 +1163,6 @@
 
             document.body.style.overflow =
                 "hidden";
-
-        }
-
-
-        function closeLightbox() {
-
-            lightbox.classList.remove(
-                "active"
-            );
-
-
-            lightbox.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
-
-            image.src =
-                "";
-
-
-            document.body.style.overflow =
-                "";
 
         }
 
@@ -873,9 +1172,65 @@
 
                 item.addEventListener(
                     "click",
-                    function () {
+                    function (event) {
 
-                        open(item);
+                        event.preventDefault();
+
+
+                        let source =
+                            item.getAttribute(
+                                "data-lightbox"
+                            );
+
+
+                        let altText = "";
+
+
+                        if (!source) {
+
+                            const thumbnail =
+                                item.querySelector(
+                                    "img"
+                                );
+
+
+                            if (thumbnail) {
+
+                                source =
+                                    thumbnail.getAttribute(
+                                        "src"
+                                    );
+
+
+                                altText =
+                                    thumbnail.alt ||
+                                    "";
+
+                            }
+
+                        } else {
+
+                            const thumbnail =
+                                item.querySelector(
+                                    "img"
+                                );
+
+
+                            if (thumbnail) {
+
+                                altText =
+                                    thumbnail.alt ||
+                                    "";
+
+                            }
+
+                        }
+
+
+                        openLightbox(
+                            source,
+                            altText
+                        );
 
                     }
                 );
@@ -884,183 +1239,20 @@
         );
 
 
-        close.addEventListener(
-            "click",
-            closeLightbox
-        );
+        if (close) {
 
+            close.addEventListener(
+                "click",
+                function (event) {
 
-        lightbox.addEventListener(
-            "click",
-            function (event) {
-
-                if (
-                    event.target ===
-                    lightbox
-                ) {
+                    event.preventDefault();
 
                     closeLightbox();
 
                 }
-
-            }
-        );
-
-
-        document.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (
-                    event.key === "Escape" &&
-                    lightbox.classList.contains(
-                        "active"
-                    )
-                ) {
-
-                    closeLightbox();
-
-                }
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       PHOTOGRAPHY LIGHTBOX
-    ====================================================== */
-
-    function initPhotographyLightbox() {
-
-        const galleryItems =
-            document.querySelectorAll(
-                ".photography-gallery-item"
             );
-
-
-        const lightbox =
-            document.getElementById(
-                "photography-lightbox"
-            );
-
-
-        const image =
-            document.getElementById(
-                "photography-lightbox-image"
-            );
-
-
-        const close =
-            document.getElementById(
-                "photography-lightbox-close"
-            );
-
-
-        if (
-            !galleryItems.length ||
-            !lightbox ||
-            !image ||
-            !close
-        ) {
-
-            return;
 
         }
-
-
-        function open(item) {
-
-            const fullImage =
-                item.getAttribute(
-                    "data-full-image"
-                );
-
-
-            const thumbnail =
-                item.querySelector(
-                    "img"
-                );
-
-
-            if (!fullImage) {
-
-                return;
-
-            }
-
-
-            image.src =
-                fullImage;
-
-
-            image.alt =
-                thumbnail
-                    ? thumbnail.alt
-                    : "NEWITT Media Photography image";
-
-
-            lightbox.classList.add(
-                "active"
-            );
-
-
-            lightbox.setAttribute(
-                "aria-hidden",
-                "false"
-            );
-
-
-            document.body.style.overflow =
-                "hidden";
-
-        }
-
-
-        function closeLightbox() {
-
-            lightbox.classList.remove(
-                "active"
-            );
-
-
-            lightbox.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
-
-            image.src =
-                "";
-
-
-            document.body.style.overflow =
-                "";
-
-        }
-
-
-        galleryItems.forEach(
-            function (item) {
-
-                item.addEventListener(
-                    "click",
-                    function () {
-
-                        open(item);
-
-                    }
-                );
-
-            }
-        );
-
-
-        close.addEventListener(
-            "click",
-            closeLightbox
-        );
 
 
         lightbox.addEventListener(
@@ -1103,234 +1295,58 @@
 
     /* =====================================================
        EXTERNAL LINKS
-    ====================================================== */
+       -----------------------------------------------------
+       External social links open safely in a new tab.
+       Internal NEWITT pages remain in the same tab.
+    ===================================================== */
 
     function initExternalLinks() {
 
         document
             .querySelectorAll(
-                'a[target="_blank"]'
+                'a[href^="http://"], a[href^="https://"]'
             )
             .forEach(
                 function (link) {
 
-                    const rel =
+                    const href =
                         link.getAttribute(
-                            "rel"
-                        ) || "";
-
-
-                    const values =
-                        new Set(
-                            rel
-                                .split(
-                                    /\s+/
-                                )
-                                .filter(Boolean)
+                            "href"
                         );
 
 
-                    values.add(
-                        "noopener"
-                    );
+                    if (!href) {
+                        return;
+                    }
 
 
-                    values.add(
-                        "noreferrer"
-                    );
+                    try {
 
-
-                    link.setAttribute(
-                        "rel",
-                        Array.from(
-                            values
-                        ).join(" ")
-                    );
-
-                }
-            );
-
-    }
-
-
-    /* =====================================================
-       SAFARI / IOS VIEWPORT
-    ====================================================== */
-
-    function initViewportSupport() {
-
-        const root =
-            document.documentElement;
-
-
-        function updateViewportHeight() {
-
-            if (
-                window.visualViewport
-            ) {
-
-                root.style.setProperty(
-                    "--newitt-vh",
-                    (
-                        window.visualViewport
-                            .height *
-                        0.01
-                    ) + "px"
-                );
-
-            } else {
-
-                root.style.setProperty(
-                    "--newitt-vh",
-                    (
-                        window.innerHeight *
-                        0.01
-                    ) + "px"
-                );
-
-            }
-
-        }
-
-
-        updateViewportHeight();
-
-
-        window.addEventListener(
-            "resize",
-            updateViewportHeight,
-            {
-                passive: true
-            }
-        );
-
-
-        if (
-            window.visualViewport
-        ) {
-
-            window.visualViewport.addEventListener(
-                "resize",
-                updateViewportHeight,
-                {
-                    passive: true
-                }
-            );
-
-        }
-
-    }
-
-
-    /* =====================================================
-       PAGE VISIBILITY
-    ====================================================== */
-
-    function initPageVisibility() {
-
-        document.addEventListener(
-            "visibilitychange",
-            function () {
-
-                if (
-                    document.hidden
-                ) {
-
-                    document.body.classList.add(
-                        "page-hidden"
-                    );
-
-                } else {
-
-                    document.body.classList.remove(
-                        "page-hidden"
-                    );
-
-                }
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       IMAGE SAFETY
-    ====================================================== */
-
-    function initImageSafety() {
-
-        document
-            .querySelectorAll(
-                "img"
-            )
-            .forEach(
-                function (image) {
-
-                    image.addEventListener(
-                        "error",
-                        function () {
-
-                            image.classList.add(
-                                "image-load-error"
+                        const url =
+                            new URL(
+                                href,
+                                window.location.href
                             );
 
+
+                        if (
+                            url.hostname !==
+                            window.location.hostname
+                        ) {
+
+                            link.target =
+                                "_blank";
+
+
+                            link.rel =
+                                "noopener noreferrer";
+
                         }
-                    );
+
+                    } catch (error) {}
 
                 }
             );
-
-    }
-
-
-    /* =====================================================
-       DOM READY
-    ====================================================== */
-
-    function init() {
-
-        initFirstVisitIntro();
-
-        initMobileNavigation();
-
-        initPageNavigation();
-
-        initBackToTop();
-
-        initSmoothScrolling();
-
-        initLightbox();
-
-        initPhotographyLightbox();
-
-        initExternalLinks();
-
-        initViewportSupport();
-
-        initPageVisibility();
-
-        initImageSafety();
-
-    }
-
-
-    if (
-        document.readyState ===
-        "loading"
-    ) {
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            init,
-            {
-                once: true
-            }
-        );
-
-    } else {
-
-        init();
 
     }
 
