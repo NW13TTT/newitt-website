@@ -20,7 +20,7 @@ for (const route of routes) {
 test('homepage uses existing aerial work and preserves its social media embed', () => {
     const home = read('index.html');
     const skyline = read('skyline.html');
-    assert.match(home, /class="studio-hero-image" src="media\/skyline\/Gloucester-prison-aerial-04.webp"/);
+    assert.match(home, /class="signature-aerial" src="media\/skyline\/Gloucester-prison-aerial-04.webp"/);
     assert.match(home, /href="skyline.html#gloucester-prison"/);
     assert.match(skyline, /class="skyline-gallery" id="gloucester-prison"/);
     assert.equal((skyline.match(/class="skyline-gallery-item"/g) ?? []).length, 4);
@@ -54,7 +54,7 @@ test('division heroes have neutral backgrounds and no former colour overlays', (
 test('all public pages expose the studio index and have the editorial assets', () => {
     for (const route of routes) {
         const html = read(route + '.html');
-        assert.match(html, /href="editorial.css"/);
+        assert.match(html, /href="editorial\.css\?v=3"/);
         assert.match(html, /src="editorial.js" defer/);
         assert.match(html, /<dialog id="editorial-menu"/);
         assert.match(html, /<form method="dialog">/);
@@ -64,6 +64,19 @@ test('all public pages expose the studio index and have the editorial assets', (
 test('division imagery stays unfiltered and Lens motion respects preference', () => {
     const css = read('editorial.css');
     assert.match(css, /prefers-reduced-motion: no-preference/);
-    assert.match(css, /\.arrival-frame \.studio-hero-image[^}]*filter: none/);
+    assert.match(css, /\.signature-aerial\s*\{[^}]*filter: none/);
     assert.match(css, /\.photography-page \.frame-exhibit button img \{ filter: none; \}/);
+});
+
+test('official logo is present in every header, the open menu and the protected homepage hero', () => {
+    for (const route of routes) {
+        const html = read(route + '.html');
+        assert.match(html, /<header class="site-header editorial-header">[\s\S]*?class="brand-mark"><img src="newitt-media-logo\.png"/);
+        assert.match(html, /class="menu-identity">[\s\S]*?newitt-media-logo\.png/);
+    }
+    assert.match(read('index.html'), /class="signature-identity">[\s\S]*?newitt-media-logo\.png[\s\S]*?<h1 id="arrival-title">NEWITT MEDIA/);
+    const css = read('editorial.css');
+    assert.match(css, /\.editorial-header\s*\{[^}]*position: sticky/);
+    assert.match(css, /\.brand-mark\s*\{[^}]*background: #080e13/);
+    assert.doesNotMatch(css, /#d7ff3f|#171326/i);
 });
