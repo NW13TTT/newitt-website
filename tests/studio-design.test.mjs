@@ -20,7 +20,7 @@ for (const route of routes) {
 test('homepage uses existing aerial work and preserves its social media embed', () => {
     const home = read('index.html');
     const skyline = read('skyline.html');
-    assert.match(home, /class="signature-aerial" src="media\/skyline\/Gloucester-prison-aerial-04.webp"/);
+    assert.match(home, /src="media\/moonlit\/valley-wide.webp"/);
     assert.match(home, /href="skyline.html#gloucester-prison"/);
     assert.match(skyline, /class="skyline-gallery" id="gloucester-prison"/);
     assert.equal((skyline.match(/class="skyline-gallery-item"/g) ?? []).length, 4);
@@ -74,9 +74,21 @@ test('official logo is present in every header, the open menu and the protected 
         assert.match(html, /<header class="site-header editorial-header">[\s\S]*?class="brand-mark"><img src="newitt-media-logo\.png"/);
         assert.match(html, /class="menu-identity">[\s\S]*?newitt-media-logo\.png/);
     }
-    assert.match(read('index.html'), /class="signature-identity">[\s\S]*?newitt-media-logo\.png[\s\S]*?<h1 id="arrival-title">NEWITT MEDIA/);
+    assert.match(read('index.html'), /class="moon-opening"/);
     const css = read('editorial.css');
     assert.match(css, /\.editorial-header\s*\{[^}]*position: sticky/);
     assert.match(css, /\.brand-mark\s*\{[^}]*background: #080e13/);
     assert.doesNotMatch(css, /#d7ff3f|#171326/i);
+});
+
+test('homepage switches to portrait artwork on phones and places Ian’s biography after featured work', () => {
+    const home = read('index.html');
+    assert.match(home, /<source media="\(max-width: 600px\)" srcset="media\/moonlit\/valley-portrait.webp">/);
+    assert.match(home, /id="production-title"[\s\S]*?id="meet-ian"[\s\S]*?id="screening-title"/);
+    assert.match(home, /I’m Ian Newitt, the person behind NEWITT MEDIA/);
+});
+
+test('Skyline and Paranormal use their selected visual assets', () => {
+    assert.match(read('skyline.html'), /class="skyline-strip container"/);
+    assert.match(read('paranormal.html'), /class="after-dark-mark"><img src="media\/moonlit\/after-dark.webp"/);
 });

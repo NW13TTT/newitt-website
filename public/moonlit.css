@@ -1,0 +1,44 @@
+:root{--moon-navy:#081320;--moon-surface:#101f30;--moon-blue:#a7d6ff;--moon-paper:#f6f3ee;--studio-ink:var(--moon-navy);--studio-panel:var(--moon-surface)}
+.editorial-header{background:var(--moon-navy);border-color:#89bce35c}
+.editorial-menu,.editorial-menu::backdrop,.editorial-header .nav-links{background:var(--moon-navy)}
+.editorial-header .brand-mark{border-color:#89bce35c}
+.editorial-header .nav-links a:is(:hover,[aria-current="page"]){box-shadow:inset 0 -2px var(--moon-blue)}
+.has-editorial-menu .editorial-menu-open,.editorial-menu-head button,.editorial-action{background:var(--moon-blue);color:#07131e}
+.moon-opening{background:#040a12;color:#fff}
+.moon-opening picture{display:block}
+.moon-opening picture img{display:block;width:100%;height:clamp(380px,65vw,750px);object-fit:contain;background:#040a12}
+.moon-opening-copy{text-align:center;padding:clamp(22px,4vw,52px) 0}
+.moon-opening-copy h1{margin:0 0 8px;font-size:clamp(1.6rem,4.5vw,4rem);letter-spacing:.14em;line-height:1.05}
+.moon-opening-copy p{margin:0 0 17px;color:#d4e4f3;font-size:clamp(.95rem,1.85vw,1.35rem)}
+.worlds,.production-wall,.editorial-screening{padding-block:clamp(42px,7vw,95px)}
+.worlds{background:var(--moon-navy);color:#fff}
+.worlds h2 span{color:var(--moon-blue)}
+.world-paranormal{background:#05191c}
+.world-paranormal .world-logo{width:148px;height:148px;max-width:55%;border-color:#7fd1cc80}
+.world-panel::after{border-color:var(--moon-blue)}
+.ian-bio{background:#101f30;color:#fff;padding:clamp(48px,9vw,113px) 0;border-block:1px solid #a7d6ff46}
+.ian-layout{display:grid;grid-template-columns:1fr 1.35fr;gap:clamp(20px,7vw,100px);align-items:center}
+.ian-layout h2{font-size:clamp(2.6rem,7vw,6rem);line-height:.9;letter-spacing:-.07em}
+.ian-layout h2 span{display:block;color:var(--moon-blue)}
+.ian-layout p{font-size:clamp(1rem,1.7vw,1.25rem);line-height:1.65;max-width:52ch}
+.skyline-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-block:12px 32px}
+.skyline-strip img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.skyline-strip a:hover{outline:2px solid var(--moon-blue)}
+.photography-page,.photography-page .division-opening,.photography-page .about,.photography-page .home-cta{background:var(--moon-paper)}
+.photography-page .division-opening h1{font-family:Georgia,serif;font-weight:500;letter-spacing:-.065em;font-size:clamp(3rem,7vw,8rem)}
+.photography-page .division-plate figcaption{background:#ebe6df}
+.paranormal-page .division-opening{position:relative;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:clamp(18px,5vw,80px);padding:clamp(36px,8vw,110px) var(--gutter);background:#06161b}
+.after-dark-mark{grid-column:2;grid-row:1;justify-self:center;max-width:580px;width:100%}
+.after-dark-mark img{display:block;width:100%;height:auto}
+.paranormal-page .division-opening>.container{grid-column:1;grid-row:1;width:100%}
+.paranormal-page .division-opening h1 span,.paranormal-page .eyebrow{color:#a5e5df}
+.paranormal-page .investigation-card{background:#102a30;border-color:#80c3bf65}
+@media(max-width:760px){
+.ian-layout,.paranormal-page .division-opening{grid-template-columns:1fr}
+.after-dark-mark{grid-column:1;grid-row:2;width:min(100%,430px)}
+.skyline-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ian-layout h2 span{display:inline}
+}
+@media(max-width:600px){
+.moon-opening picture img{width:100%;height:auto;max-height:76svh;object-fit:contain}
+}

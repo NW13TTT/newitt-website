@@ -157,6 +157,7 @@
     <link rel="stylesheet" href="studio.css?v=2">
     <link rel="stylesheet" href="editorial.css?v=3">
     <script src="editorial.js" defer></script>
+    <link rel="stylesheet" href="moonlit.css">
 </head>
 
 
@@ -196,20 +197,15 @@
 ===================================================== -->
 
 <main id="main-content" tabindex="-1">
-    <section class="signature-arrival" aria-labelledby="arrival-title">
-        <figure class="signature-frame">
-            <img class="signature-aerial" src="media/skyline/Gloucester-prison-aerial-04.webp" alt="Gloucester Prison and the surrounding city from above" fetchpriority="high">
-            <figcaption><span>Gloucester Prison</span><span>NEWITT Skyline Media</span></figcaption>
-        </figure>
-        <div class="signature-opening">
-            <div class="signature-identity">
-                <img src="newitt-media-logo.png" alt="" width="220" height="220" fetchpriority="high">
-                <h1 id="arrival-title">NEWITT MEDIA</h1>
-            </div>
-            <div class="signature-opening-copy">
-                <p>FROM ABOVE.<br>AFTER DARK.<br><em>AND EVERYTHING IN BETWEEN.</em></p>
-                <a class="editorial-action" href="#worlds">Explore our three worlds <span aria-hidden="true">↓</span></a>
-            </div>
+    <section class="moon-opening" aria-labelledby="arrival-title">
+        <picture>
+            <source media="(max-width: 600px)" srcset="media/moonlit/valley-portrait.webp">
+            <img src="media/moonlit/valley-wide.webp" width="1448" height="1086" fetchpriority="high" alt="Silver and blue NEWITT MEDIA emblem over a moonlit valley">
+        </picture>
+        <div class="container moon-opening-copy">
+            <h1 id="arrival-title">NEWITT MEDIA</h1>
+            <p>From above. After dark. And everything in between.</p>
+            <a class="editorial-action" href="#worlds">Explore the work <span aria-hidden="true">↓</span></a>
         </div>
     </section>
     <section class="worlds" id="worlds" aria-labelledby="newitt-media-intro-title">
@@ -230,7 +226,7 @@
                 </a>
                 <a class="world-panel world-paranormal" href="paranormal.html" data-lens="paranormal">
                     
-                    <span class="world-panel-top"><span class="world-index" aria-hidden="true">03</span><img class="world-logo" src="paranormal-logo.png" alt="" loading="lazy" decoding="async"></span>
+                    <span class="world-panel-top"><span class="world-index" aria-hidden="true">03</span><img class="world-logo" src="media/moonlit/after-dark.webp" alt="" loading="lazy" decoding="async"></span>
                     <div class="world-copy"><h3>After Dark</h3><p>NEWITT’s Paranormal Adventures</p><p class="world-description">Investigations, locations and the unexplained</p></div>
                     <span class="world-arrow" aria-hidden="true">↗</span>
                 </a>
@@ -247,8 +243,11 @@
             <figure class="production-tall"><img src="media/skyline/Gloucester-prison-aerial-03.webp" alt="The prison grounds and neighbouring streets" loading="lazy" decoding="async"><figcaption>02 / The grounds</figcaption></figure>
         </div>
     </section>
-    <section class="editorial-statement" aria-label="The NEWITT MEDIA ethos">
-        <div class="container"><p>NEWITT MEDIA</p><h2>FROM ABOVE.<br><span>AFTER DARK.</span><br><em>AND EVERYTHING<br>IN BETWEEN.</em></h2></div>
+    <section class="ian-bio" id="meet-ian" aria-labelledby="ian-title">
+        <div class="container ian-layout">
+            <h2 id="ian-title">Meet Ian <span>Newitt</span></h2>
+            <p>I’m Ian Newitt, the person behind NEWITT MEDIA. I use drones and photography to show places from angles you don’t normally get to see. With Newitt’s Paranormal Adventures, I explore historic locations after dark and share what it’s like to be there. I also make original music, including <em>Beyond The Skyline</em>, to bring some of that atmosphere into my films.</p>
+        </div>
     </section>
     <section class="editorial-screening" aria-labelledby="screening-title">
         <div class="container screening-grid">
