@@ -483,26 +483,82 @@
 
         }
 
-    .skyline-album-embed{margin-top:28px}.skyline-album-embed iframe{display:block;max-width:100%;border:0;border-radius:12px;margin-top:18px;background:#101829}.skyline-album-embed iframe[hidden]{display:none}
-/* Skyline SoundCloud music showcase */
-.skyline-music{padding:clamp(60px,9vw,120px) 0;background:radial-gradient(ellipse at 80% 20%,rgba(42,95,205,.17),transparent 55%),#03060d}
-.skyline-music-panel{padding:clamp(24px,5vw,68px);border:1px solid rgba(87,180,255,.26);border-radius:24px;background:linear-gradient(140deg,rgba(18,29,55,.86),rgba(2,5,12,.92));box-shadow:0 25px 75px rgba(0,0,0,.4)}
-.skyline-music h2{font-size:clamp(2rem,5vw,4.5rem);letter-spacing:.035em;line-height:1.05;margin:14px 0 18px;color:#fff}
-.skyline-music h2 span{color:#75cfff}.skyline-music-lead{max-width:700px;color:#c3d0e5;line-height:1.8}
-.skyline-music-feature{display:grid;grid-template-columns:minmax(180px,310px) 1fr;align-items:center;gap:clamp(24px,5vw,65px);margin-top:38px}
-.skyline-music-art{position:relative;aspect-ratio:1;display:grid;place-items:center;overflow:hidden;border:1px solid rgba(112,196,255,.5);border-radius:18px;background:radial-gradient(circle at 50% 40%,rgba(86,170,255,.55),transparent 36%),conic-gradient(from 10deg,#040b20,#142d60,#100b2d,#04152d,#040b20);box-shadow:0 0 48px rgba(0,122,255,.15)}
-.skyline-music-art:before{content:"";position:absolute;inset:11%;border:1px solid rgba(177,222,255,.32);border-radius:50%;box-shadow:0 0 32px rgba(73,160,255,.35)}
-.skyline-music-art span{position:relative;z-index:1;font-size:clamp(1.4rem,4vw,2.8rem);font-weight:900;font-style:italic;letter-spacing:.12em;text-align:center;line-height:1.1;color:white;text-shadow:0 0 20px #65b9ff}
-.skyline-music-art i{position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.08) 50%,transparent 65%);transform:translateX(-100%);animation:skylineMusicShine 8s ease-in-out infinite}
-@keyframes skylineMusicShine{0%,55%,100%{transform:translateX(-100%)}75%{transform:translateX(100%)}}
-.skyline-music-kicker{color:#7ed5ff;font-size:.76rem;letter-spacing:.22em;font-weight:800}
-.skyline-music-copy h3{font-size:clamp(1.6rem,3.5vw,3rem);color:#fff;margin:14px 0}
-.skyline-music-copy p,.skyline-music-note{color:#bac9dc;line-height:1.75}
-.skyline-music-note{font-size:.83rem;margin:32px 0 0}
-@media(max-width:650px){.skyline-music-feature{grid-template-columns:1fr}.skyline-music-art{width:min(100%,290px);margin:auto}.skyline-music-panel{padding:24px 18px}}
-@media(prefers-reduced-motion:reduce){.skyline-music-art i{animation:none}}
+        .skyline-music {
+            padding: clamp(56px, 9vw, 112px) 0;
+            background: radial-gradient(ellipse at 75% 15%, #10264a, transparent 68%), #03060d;
+        }
 
-</style>
+        .skyline-music-panel {
+            position: relative;
+            overflow: hidden;
+            padding: clamp(16px, 5vw, 60px);
+            border: 1px solid #406187;
+            border-radius: 24px;
+            background: linear-gradient(145deg, #142640, #080f1c 65%);
+            box-shadow: 0 24px 70px #0009, inset 0 1px #c1e8ff55;
+        }
+
+        .skyline-music-panel::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto;
+            height: 2px;
+            pointer-events: none;
+            background: linear-gradient(90deg, transparent 20%, #68baff, #e8f6ff, transparent 80%);
+            background-size: 200% 100%;
+        }
+
+        .skyline-music h2 {
+            margin: 12px 0;
+            color: #f0f7ff;
+            font-size: clamp(1.65rem, 5.5vw, 4.5rem);
+            line-height: 1.05;
+            letter-spacing: .035em;
+        }
+
+        .skyline-music h2 span { color: #87cfff; }
+
+        .skyline-music-artist {
+            margin: 0;
+            color: #99d6ff;
+            font-weight: 800;
+            letter-spacing: .18em;
+        }
+
+        .skyline-music-subtitle { color: #d0dcee; }
+
+        .skyline-music-player {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: clamp(390px, 60vw, 520px);
+            margin: 24px 0 18px;
+            border: 0;
+            border-radius: 14px;
+            background: #0d1625;
+        }
+
+        .skyline-music-link {
+            display: inline-block;
+            color: #c2e5ff;
+            text-decoration: underline;
+            text-underline-offset: .24em;
+        }
+
+        .skyline-music-link:hover { color: #fff; }
+        .skyline-music-link:focus-visible { outline: 2px solid #99d6ff; outline-offset: 5px; }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .skyline-music-panel::before { animation: skyline-music-highlight 8s ease-in-out infinite alternate; }
+            .skyline-music-link { transition: color 180ms ease; }
+        }
+
+        @keyframes skyline-music-highlight {
+            from { background-position: 0 0; }
+            to { background-position: 100% 0; }
+        }
+
+    </style>
 
 </head>
 
@@ -826,31 +882,27 @@
 </section>
 
 
-<!-- NEWITT MEDIA MUSIC SHOWCASE: SoundCloud links supplied by the artist. -->
 <section class="skyline-music" id="skyline-soundtracks" aria-labelledby="skyline-music-title">
-  <div class="container">
-    <div class="skyline-music-panel">
-      <div class="eyebrow">NEWITT MEDIA ORIGINAL MUSIC</div>
-      <h2 id="skyline-music-title">THE SOUND OF <span>SKYLINE.</span></h2>
-      <p class="skyline-music-lead">Cinematic soundtracks, electronic energy and original music for the world above. Discover NEWITT MEDIA on SoundCloud.</p>
-      <div class="skyline-music-feature">
-        <div class="skyline-music-art" aria-hidden="true"><span>NEWITT<br>MEDIA</span><i></i></div>
-        <div class="skyline-music-copy">
-          <div class="skyline-music-kicker">FEATURED ARTIST</div>
-          <h3>NEWITT MEDIA</h3>
-          <p>Explore original releases including Voltraze. Open the shared album link to listen to the complete collection on SoundCloud.</p>
-          <div class="hero-actions">
-            <a class="button primary" href="https://on.soundcloud.com/XFTikZjkzyTCidSdjF" target="_blank" rel="noopener noreferrer" aria-label="Open the NEWITT MEDIA album on SoundCloud in a new tab">Listen to the full album ↗</a>
-          </div>
+    <div class="container">
+        <div class="skyline-music-panel">
+            <p class="skyline-music-artist">NEWITT MEDIA</p>
+            <h2 id="skyline-music-title">BEYOND THE <span>SKYLINE</span></h2>
+            <p class="skyline-music-subtitle">The Original Soundtrack of NEWITT Skyline Media</p>
+            <iframe
+                class="skyline-music-player"
+                title="Beyond The Skyline — NEWITT MEDIA playlist on SoundCloud"
+                width="100%"
+                height="520"
+                loading="lazy"
+                allow="autoplay; encrypted-media"
+                referrerpolicy="strict-origin-when-cross-origin"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A2331058893&amp;color=%233eaaff&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=false&amp;show_artwork=true&amp;visual=true"
+            ></iframe>
+            <a class="skyline-music-link" href="https://soundcloud.com/ian-newitt/sets/beyond-the-skyline">
+                Open Beyond The Skyline on SoundCloud
+            </a>
         </div>
-      </div>
-      <div class="skyline-album-embed" id="skyline-album-embed" data-album-url="https://on.soundcloud.com/XFTikZjkzyTCidSdjF">
-        <button class="button secondary" type="button" id="skyline-load-album" aria-controls="skyline-album-frame" aria-expanded="false">Load album player</button>
-        <p id="skyline-album-status" class="skyline-music-note" role="status">Load the SoundCloud album player here, or use the link above to listen on SoundCloud.</p>
-        <iframe id="skyline-album-frame" title="NEWITT MEDIA full album on SoundCloud" width="100%" height="450" loading="lazy" allow="autoplay" referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
-      </div>
     </div>
-  </div>
 </section>
 
 <!-- =====================================================
@@ -1211,49 +1263,6 @@
 
 </div>
 
-
-<script>
-/* Progressive SoundCloud album embed: only embed an officially resolved playlist. */
-(function () {
-  "use strict";
-  const host = document.getElementById("skyline-album-embed");
-  const button = document.getElementById("skyline-load-album");
-  const status = document.getElementById("skyline-album-status");
-  const frame = document.getElementById("skyline-album-frame");
-  if (!host || !button || !status || !frame) return;
-  button.addEventListener("click", async function () {
-    button.disabled = true;
-    status.textContent = "Checking the album with SoundCloud…";
-    try {
-      const source = host.dataset.albumUrl;
-      const response = await fetch("https://soundcloud.com/oembed?format=json&url=" + encodeURIComponent(source), { mode: "cors" });
-      if (!response.ok) throw new Error("SoundCloud did not return an embed");
-      const data = await response.json();
-      // Do not inject third-party HTML; use only the official SoundCloud widget URL.
-      const doc = new DOMParser().parseFromString(data.html || "", "text/html");
-      const embed = doc.querySelector("iframe[src]");
-      if (!embed) throw new Error("No SoundCloud player returned");
-      const widget = new URL(embed.getAttribute("src"), "https://w.soundcloud.com");
-      if (widget.protocol !== "https:" || widget.hostname !== "w.soundcloud.com" || widget.pathname !== "/player/") throw new Error("Unexpected player URL");
-      const target = widget.searchParams.get("url") || "";
-      // Only accept album/playlist widgets, never a single track or a profile widget.
-      if (!/\/(playlists|sets)\//i.test(target)) throw new Error("The shared link did not resolve to a playlist");
-      widget.searchParams.set("auto_play", "false");
-      widget.searchParams.set("show_artwork", "true");
-      widget.searchParams.set("color", "56bfff");
-      frame.src = widget.href;
-      frame.hidden = false;
-      button.hidden = true;
-      button.setAttribute("aria-expanded", "true");
-      status.textContent = "Album player loaded. Press Play in the player to listen.";
-    } catch (error) {
-      status.textContent = "The short link could not be verified as an embeddable album. Use ‘Listen to the full album’ above, or supply SoundCloud’s official album embed code.";
-      button.disabled = false;
-      button.textContent = "Try loading again";
-    }
-  });
-})();
-</script>
 
 <!-- =====================================================
      TIKTOK EMBED ENGINE
