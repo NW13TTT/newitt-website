@@ -155,7 +155,7 @@
     >
 
     <link rel="stylesheet" href="studio.css?v=2">
-    <link rel="stylesheet" href="editorial.css">
+    <link rel="stylesheet" href="editorial.css?v=3">
     <script src="editorial.js" defer></script>
 </head>
 
@@ -174,7 +174,7 @@
 <header class="site-header editorial-header">
     <div class="container nav">
         <a class="editorial-brand" href="index.html" aria-label="NEWITT MEDIA home">
-            <img src="newitt-media-logo.png" alt="" width="52" height="52">
+            <span class="brand-mark"><img src="newitt-media-logo.png" alt="" width="64" height="64" fetchpriority="high"></span>
             <span>NEWITT <strong>MEDIA</strong></span>
         </a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="Open navigation menu"><span></span><span></span><span></span></button>
@@ -184,7 +184,7 @@
 </header>
 <dialog id="editorial-menu" class="editorial-menu" aria-labelledby="editorial-menu-title">
     <div class="editorial-menu-head">
-        <p id="editorial-menu-title">NEWITT MEDIA</p>
+        <div class="menu-identity"><span class="brand-mark"><img src="newitt-media-logo.png" alt="" width="64" height="64"></span><p id="editorial-menu-title">NEWITT MEDIA</p></div>
         <form method="dialog"><button type="submit" autofocus>Close <span aria-hidden="true">×</span></button></form>
     </div>
     <nav aria-label="Site index"><a href="index.html" aria-current="page"><span aria-hidden="true">01</span> Home</a><a href="skyline.html"><span aria-hidden="true">02</span> Skyline</a><a href="photography.html"><span aria-hidden="true">03</span> Photography</a><a href="paranormal.html"><span aria-hidden="true">04</span> Paranormal</a><a href="contact.html"><span aria-hidden="true">05</span> Contact</a><a href="privacy.html"><span aria-hidden="true">06</span> Privacy</a></nav>
@@ -196,39 +196,50 @@
 ===================================================== -->
 
 <main id="main-content" tabindex="-1">
-    <section class="arrival" aria-labelledby="arrival-title">
-        <div class="arrival-copy">
-            <h1 id="arrival-title">NEWITT<span>MEDIA</span></h1>
-            <p class="arrival-slogan">FROM ABOVE.<br>AFTER DARK.<br><em>AND EVERYTHING IN BETWEEN.</em></p>
-            <a class="editorial-action" href="#worlds">Explore the studio <span aria-hidden="true">↓</span></a>
-        </div>
-        <figure class="arrival-frame">
-            <img class="studio-hero-image" src="media/skyline/Gloucester-prison-aerial-04.webp" alt="Gloucester Prison and the surrounding city from above" fetchpriority="high">
+    <section class="signature-arrival" aria-labelledby="arrival-title">
+        <figure class="signature-frame">
+            <img class="signature-aerial" src="media/skyline/Gloucester-prison-aerial-04.webp" alt="Gloucester Prison and the surrounding city from above" fetchpriority="high">
             <figcaption><span>Gloucester Prison</span><span>NEWITT Skyline Media</span></figcaption>
         </figure>
+        <div class="signature-opening">
+            <div class="signature-identity">
+                <img src="newitt-media-logo.png" alt="" width="220" height="220" fetchpriority="high">
+                <h1 id="arrival-title">NEWITT MEDIA</h1>
+            </div>
+            <div class="signature-opening-copy">
+                <p>FROM ABOVE.<br>AFTER DARK.<br><em>AND EVERYTHING IN BETWEEN.</em></p>
+                <a class="editorial-action" href="#worlds">Explore our three worlds <span aria-hidden="true">↓</span></a>
+            </div>
+        </div>
     </section>
     <section class="worlds" id="worlds" aria-labelledby="newitt-media-intro-title">
         <div class="container">
             <h2 id="newitt-media-intro-title">Three worlds. <span>One company.</span></h2>
             <div class="worlds-panels">
                 <a class="world-panel world-skyline" href="skyline.html" data-lens="skyline">
-                    <span class="world-panel-top"><span class="world-index" aria-hidden="true">01</span><img src="sky-logo.png" width="88" height="58" alt="" loading="lazy"></span>
-                    <div><h3>Skyline</h3><p>NEWITT Skyline Media</p></div><span class="world-arrow" aria-hidden="true">↗</span>
+                    <img class="world-image" src="media/skyline/Gloucester-prison-aerial-03.webp" alt="" loading="lazy" decoding="async">
+                    <span class="world-panel-top"><span class="world-index" aria-hidden="true">01</span><img class="world-logo" src="sky-logo.png" alt="" loading="lazy" decoding="async"></span>
+                    <div class="world-copy"><h3>Above</h3><p>NEWITT Skyline Media</p><p class="world-description">Aerial film and photography</p></div>
+                    <span class="world-arrow" aria-hidden="true">↗</span>
                 </a>
                 <a class="world-panel world-photography" href="photography.html" data-lens="photography">
-                    <span class="world-index" aria-hidden="true">02</span>
-                    <div><h3>Photography</h3><p>NEWITT Media Photography</p></div><span class="world-arrow" aria-hidden="true">↗</span>
+                    <img class="world-image" src="media/skyline/Gloucester-prison-aerial-02.webp" alt="" loading="lazy" decoding="async">
+                    <span class="world-panel-top"><span class="world-index" aria-hidden="true">02</span></span>
+                    <div class="world-copy"><h3>In Focus</h3><p>NEWITT Media Photography</p><p class="world-description">A closer look at places and details</p></div>
+                    <span class="world-arrow" aria-hidden="true">↗</span>
                 </a>
                 <a class="world-panel world-paranormal" href="paranormal.html" data-lens="paranormal">
-                    <span class="world-panel-top"><span class="world-index" aria-hidden="true">03</span><img src="paranormal-logo.png" width="88" height="58" alt="" loading="lazy"></span>
-                    <div><h3>Paranormal</h3><p>NEWITT’s Paranormal Adventures</p></div><span class="world-arrow" aria-hidden="true">↗</span>
+                    
+                    <span class="world-panel-top"><span class="world-index" aria-hidden="true">03</span><img class="world-logo" src="paranormal-logo.png" alt="" loading="lazy" decoding="async"></span>
+                    <div class="world-copy"><h3>After Dark</h3><p>NEWITT’s Paranormal Adventures</p><p class="world-description">Investigations, locations and the unexplained</p></div>
+                    <span class="world-arrow" aria-hidden="true">↗</span>
                 </a>
             </div>
         </div>
     </section>
     <section class="production-wall" aria-labelledby="production-title">
         <div class="container production-layout">
-            <header><p class="eyebrow">Featured production</p><h2 id="production-title">Gloucester<br>Prison</h2>
+            <header><p class="eyebrow">Featured production</p><p class="production-index" aria-hidden="true">01</p><h2 id="production-title">Gloucester<br>Prison</h2>
                 <p>Four aerial perspectives on the prison and the streets around it.</p>
                 <a class="editorial-action" href="skyline.html#gloucester-prison">See the aerial project <span aria-hidden="true">↗</span></a>
             </header>
