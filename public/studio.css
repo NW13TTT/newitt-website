@@ -19,9 +19,6 @@ body {
 
 body::before { content: none; }
 
-.paranormal-page { --studio-blue: #d2b7fa; }
-.photography-page { --studio-blue: #9cd9e0; }
-
 .container { width: min(100% - 48px, 1280px); }
 main [id] { scroll-margin-top: 94px; }
 
@@ -103,18 +100,11 @@ a:focus-visible, button:focus-visible, iframe:focus-visible {
     height: 100%;
     object-fit: cover;
     object-position: center 48%;
-    filter: saturate(.83) contrast(1.12);
 }
 
-.paranormal-hero {
-    background: radial-gradient(ellipse at 72% 28%, #452746b0, transparent 59%),
-        linear-gradient(110deg, #090c15 12%, #100c1a80), url("background.png") center / cover;
-}
+.paranormal-hero { background: #151515; }
 
-.photography-page .photography-hero {
-    background: radial-gradient(ellipse at 76% 20%, #22617185, transparent 53%),
-        linear-gradient(130deg, #090f1b 30%, #101f2e 72%, #070b12);
-}
+.photography-page .photography-hero { background: #171717; }
 
 .contact-hero, .privacy-page .hero {
     min-height: 0;
@@ -323,4 +313,203 @@ main section[class*="hero"] .hero-actions { justify-content: flex-start; }
 
 @media (prefers-reduced-motion: reduce) {
     .social-master-frame { display: none; }
+}
+
+/* A neutral exhibition palette keeps the media itself in its original colour. */
+:root {
+    --studio-ink: #101112;
+    --studio-panel: #191b1d;
+    --studio-text: #f2f1ee;
+    --studio-muted: #bbbdbf;
+    --studio-blue: #a3e9ef;
+    --studio-edge: #35383a;
+    --studio-chrome: linear-gradient(112deg, #fff, #aeb8bd);
+}
+
+.site-header { background: #101112f5; }
+.nav-brand strong { color: #cdd0d1; }
+.nav-links a { color: #cccecf; }
+.nav-links a:hover, .nav-links a[aria-current="page"] {
+    background: #25282b;
+    border-color: #51585c;
+}
+.nav-links a[href="contact.html"] { border-color: #60696d; }
+
+.home-hero {
+    min-height: calc(100svh - 76px);
+    padding: clamp(92px, 13vh, 180px) 0 clamp(46px, 7vw, 98px);
+    background: #151719;
+}
+
+.home-hero::after, .skyline-hero::after {
+    background: linear-gradient(90deg, #111214da, transparent 88%),
+        linear-gradient(0deg, #101112f5 0%, #10111250 53%, transparent);
+}
+
+.home-hero .hero-atmosphere { display: none; }
+.home-hero .hero-logo { width: clamp(72px, 11vw, 138px); }
+.home-hero h1 { font-size: clamp(3rem, 11vw, 11rem); }
+.home-hero .hero-tagline {
+    font-size: clamp(.8rem, 1.8vw, 1.35rem);
+    letter-spacing: .13em;
+}
+.home-hero .hero-rule {
+    width: min(320px, 82%);
+    height: 1px;
+    background: linear-gradient(90deg, #e8eded, #a3e9ef, transparent);
+}
+
+.paranormal-page .paranormal-hero,
+.photography-page .photography-hero { background: #161718; }
+.paranormal-hero h1 span, .photography-hero h1 span { color: #d1d4d6; }
+.paranormal-page .investigation-card, .photography-page .photography-focus-card,
+.photography-page .photography-portfolio {
+    background: #191b1d;
+    border-color: #3d4043;
+    box-shadow: none;
+}
+
+.about, .newitt-media-intro, .social-hub, .home-cta, .studio-work,
+.contact-hero, .privacy-page .hero, .site-footer { background: var(--studio-ink); }
+
+.button, .hero-actions a, .buttons a, .social-button {
+    background: #222629;
+    border-color: #616a6d;
+}
+.button.primary, .button.primary:hover {
+    background: #d9f3f2;
+    border-color: #d9f3f2;
+    color: #151818;
+    box-shadow: none;
+}
+
+.newitt-media-intro .newitt-media-intro-glow { display: none; }
+.newitt-media-intro-heading { text-align: left; margin-inline: 0; }
+.newitt-media-intro-heading .hero-rule { margin-inline: 0; }
+.newitt-media-intro-worlds { gap: clamp(10px, 2vw, 22px); }
+.newitt-intro-world {
+    position: relative;
+    isolation: isolate;
+    min-height: clamp(275px, 35vw, 430px);
+    justify-content: flex-end;
+    align-items: flex-start;
+    text-align: left;
+    background: #191b1d;
+    border: 1px solid #434749;
+    box-shadow: none;
+    overflow: hidden;
+}
+.newitt-intro-world::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(0deg, #101112 5%, transparent 90%);
+}
+.newitt-intro-skyline, .newitt-intro-skyline:hover {
+    background: url("media/skyline/Gloucester-prison-aerial-03.webp") center / cover;
+}
+.newitt-intro-paranormal:hover, .newitt-intro-photography:hover { background: #27292b; }
+.newitt-intro-world .newitt-intro-text { text-align: left; }
+.newitt-intro-world .newitt-intro-text h3 { color: #f4f4f1; }
+.newitt-intro-world .world-medium { color: #bfe8e8; font-weight: 650; font-size: .83rem; }
+.newitt-intro-world .newitt-intro-logo-wrap { margin-inline: 0; }
+.newitt-intro-world:hover, .newitt-intro-world:focus-visible {
+    border-color: #a3e9ef;
+    box-shadow: 0 12px 30px #0006;
+}
+
+.frame-screening {
+    padding: clamp(52px, 8vw, 100px) 0;
+    background: #181a1b;
+    border-block: 1px solid var(--studio-edge);
+}
+.frame-screening h2 {
+    margin: 12px 0 28px;
+    font-size: clamp(2.25rem, 7vw, 6rem);
+    letter-spacing: -.065em;
+    line-height: 1;
+}
+.frame-screening-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(12px, 2vw, 26px);
+}
+.frame-screening-grid article {
+    display: grid;
+    gap: 12px;
+    align-content: start;
+    padding: clamp(20px, 4vw, 46px);
+    border: 1px solid var(--studio-edge);
+    border-radius: 12px;
+    background: #101112;
+}
+.frame-screening-grid h3 { font-size: clamp(1.35rem, 3vw, 2.25rem); }
+.frame-screening-grid p { color: var(--studio-muted); }
+.frame-screening-grid a { min-height: 44px; align-content: center; color: var(--studio-blue); }
+.frame-screening-grid a:hover { text-decoration: underline; }
+
+.frame-exhibit-title { margin-top: 30px; font-size: clamp(1.5rem, 4vw, 3rem); }
+.photography-gallery.frame-exhibit {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(12px, 2vw, 24px);
+    margin-top: 24px;
+}
+.frame-exhibit .photography-gallery-item {
+    display: grid;
+    width: 100%;
+    color: var(--studio-text);
+    font: inherit;
+    text-align: left;
+    filter: none;
+    background: #141516;
+    border: 1px solid #424546;
+    border-radius: 8px;
+}
+.frame-exhibit .photography-gallery-item img,
+.frame-exhibit .photography-gallery-item:hover img,
+.skyline-gallery-item img, .skyline-gallery-item:hover img {
+    filter: none;
+}
+.frame-exhibit .photography-gallery-item img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+}
+.frame-caption { padding: 12px 16px; }
+
+.skyline-music { background: #151819; }
+.skyline-music-panel { background: #1b1e20; border-color: #515b61; }
+.skyline-music h2 span { color: var(--studio-blue); }
+.skyline-music-player { background: #121315; }
+
+@media (prefers-reduced-motion: no-preference) {
+    .home-hero h1 span { animation: frame-title-arrival .65s ease-out both; }
+    .home-hero .hero-rule { transform-origin: left; animation: frame-line-arrival .95s ease-out both; }
+}
+@keyframes frame-title-arrival {
+    from { transform: translateY(.13em); opacity: .65; }
+    to { transform: translateY(0); opacity: 1; }
+}
+@keyframes frame-line-arrival {
+    from { transform: scaleX(.12); }
+    to { transform: scaleX(1); }
+}
+
+@media (max-width: 700px) {
+    .home-hero { min-height: calc(100svh - 68px); }
+    .home-hero::after, .skyline-hero::after {
+        background: linear-gradient(0deg, #101112 1%, #101112b5 63%, #10111222);
+    }
+    .home-hero h1 { font-size: clamp(2.45rem, 10.5vw, 4.9rem); }
+    .frame-screening-grid, .photography-gallery.frame-exhibit { grid-template-columns: 1fr; }
+    .nav-links { background: #171819; }
+    .newitt-intro-world { min-height: 260px; }
+}
+
+.site-header .nav {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 }
