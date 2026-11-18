@@ -513,3 +513,17 @@ main section[class*="hero"] .hero-actions { justify-content: flex-start; }
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
 }
+
+main .tiktok-preview {
+    box-sizing: border-box;
+    min-width: 0;
+    max-width: 100%;
+    border-color: #424749;
+    background: #171819;
+    box-shadow: none;
+}
+
+@media (max-width: 360px) {
+    /* Use the adjacent direct channel link when the third-party frame cannot fit. */
+    main .tiktok-preview { display: none; }
+}
