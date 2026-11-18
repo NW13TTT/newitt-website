@@ -33,8 +33,8 @@ test('home puts visitors directly into the opening and links all three worlds an
     const home = read('index.html');
     assert.doesNotMatch(home, /class="site-intro"/);
     assert.match(home, /Three worlds\. <span>One company\./);
-    assert.equal((home.match(/class="newitt-intro-world newitt-intro-/g) ?? []).length, 3);
-    assert.match(home, /href="skyline\.html#skyline-soundtracks"/);
+    assert.equal((home.match(/class="world-panel world-/g) ?? []).length, 3);
+    assert.match(home, /class="editorial-player"[\s\S]*?2331058893[\s\S]*?auto_play=false/);
 });
 
 test('exhibition uses actual NEWITT aerial assets with a keyboard-operable viewing dialog', () => {
@@ -49,4 +49,21 @@ test('division heroes have neutral backgrounds and no former colour overlays', (
     assert.doesNotMatch(read('paranormal.html'), /class="paranormal-(?:fog|atmosphere)"/);
     assert.doesNotMatch(read('photography.html'), /\.photography-hero::before/);
     assert.match(read('studio.css'), /\.photography-page \.photography-hero \{ background: #161718; \}/);
+});
+
+test('all public pages expose the studio index and have the editorial assets', () => {
+    for (const route of routes) {
+        const html = read(route + '.html');
+        assert.match(html, /href="editorial.css"/);
+        assert.match(html, /src="editorial.js" defer/);
+        assert.match(html, /<dialog id="editorial-menu"/);
+        assert.match(html, /<form method="dialog">/);
+    }
+});
+
+test('division imagery stays unfiltered and Lens motion respects preference', () => {
+    const css = read('editorial.css');
+    assert.match(css, /prefers-reduced-motion: no-preference/);
+    assert.match(css, /\.arrival-frame \.studio-hero-image[^}]*filter: none/);
+    assert.match(css, /\.photography-page \.frame-exhibit button img \{ filter: none; \}/);
 });
