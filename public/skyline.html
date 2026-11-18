@@ -483,7 +483,8 @@
 
         }
 
-    /* Skyline SoundCloud music showcase */
+    .skyline-album-embed{margin-top:28px}.skyline-album-embed iframe{display:block;max-width:100%;border:0;border-radius:12px;margin-top:18px;background:#101829}.skyline-album-embed iframe[hidden]{display:none}
+/* Skyline SoundCloud music showcase */
 .skyline-music{padding:clamp(60px,9vw,120px) 0;background:radial-gradient(ellipse at 80% 20%,rgba(42,95,205,.17),transparent 55%),#03060d}
 .skyline-music-panel{padding:clamp(24px,5vw,68px);border:1px solid rgba(87,180,255,.26);border-radius:24px;background:linear-gradient(140deg,rgba(18,29,55,.86),rgba(2,5,12,.92));box-shadow:0 25px 75px rgba(0,0,0,.4)}
 .skyline-music h2{font-size:clamp(2rem,5vw,4.5rem);letter-spacing:.035em;line-height:1.05;margin:14px 0 18px;color:#fff}
@@ -843,7 +844,11 @@
           </div>
         </div>
       </div>
-      <p class="skyline-music-note">Use the album link above to listen on SoundCloud. An in-page album player requires SoundCloud's canonical album URL or official embed code. Audio never autoplays.</p>
+      <div class="skyline-album-embed" id="skyline-album-embed" data-album-url="https://on.soundcloud.com/XFTikZjkzyTCidSdjF">
+        <button class="button secondary" type="button" id="skyline-load-album" aria-controls="skyline-album-frame" aria-expanded="false">Load album player</button>
+        <p id="skyline-album-status" class="skyline-music-note" role="status">Load the SoundCloud album player here, or use the link above to listen on SoundCloud.</p>
+        <iframe id="skyline-album-frame" title="NEWITT MEDIA full album on SoundCloud" width="100%" height="450" loading="lazy" allow="autoplay" referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
+      </div>
     </div>
   </div>
 </section>
@@ -1206,6 +1211,49 @@
 
 </div>
 
+
+<script>
+/* Progressive SoundCloud album embed: only embed an officially resolved playlist. */
+(function () {
+  "use strict";
+  const host = document.getElementById("skyline-album-embed");
+  const button = document.getElementById("skyline-load-album");
+  const status = document.getElementById("skyline-album-status");
+  const frame = document.getElementById("skyline-album-frame");
+  if (!host || !button || !status || !frame) return;
+  button.addEventListener("click", async function () {
+    button.disabled = true;
+    status.textContent = "Checking the album with SoundCloud…";
+    try {
+      const source = host.dataset.albumUrl;
+      const response = await fetch("https://soundcloud.com/oembed?format=json&url=" + encodeURIComponent(source), { mode: "cors" });
+      if (!response.ok) throw new Error("SoundCloud did not return an embed");
+      const data = await response.json();
+      // Do not inject third-party HTML; use only the official SoundCloud widget URL.
+      const doc = new DOMParser().parseFromString(data.html || "", "text/html");
+      const embed = doc.querySelector("iframe[src]");
+      if (!embed) throw new Error("No SoundCloud player returned");
+      const widget = new URL(embed.getAttribute("src"), "https://w.soundcloud.com");
+      if (widget.protocol !== "https:" || widget.hostname !== "w.soundcloud.com" || widget.pathname !== "/player/") throw new Error("Unexpected player URL");
+      const target = widget.searchParams.get("url") || "";
+      // Only accept album/playlist widgets, never a single track or a profile widget.
+      if (!/\/(playlists|sets)\//i.test(target)) throw new Error("The shared link did not resolve to a playlist");
+      widget.searchParams.set("auto_play", "false");
+      widget.searchParams.set("show_artwork", "true");
+      widget.searchParams.set("color", "56bfff");
+      frame.src = widget.href;
+      frame.hidden = false;
+      button.hidden = true;
+      button.setAttribute("aria-expanded", "true");
+      status.textContent = "Album player loaded. Press Play in the player to listen.";
+    } catch (error) {
+      status.textContent = "The short link could not be verified as an embeddable album. Use ‘Listen to the full album’ above, or supply SoundCloud’s official album embed code.";
+      button.disabled = false;
+      button.textContent = "Try loading again";
+    }
+  });
+})();
+</script>
 
 <!-- =====================================================
      TIKTOK EMBED ENGINE
