@@ -42,3 +42,10 @@
 @media(max-width:600px){
 .moon-opening picture img{width:100%;height:auto;max-height:76svh;object-fit:contain}
 }
+
+@media(min-width:601px){
+.moon-opening picture img{height:clamp(380px,68svh,660px)}
+}
+.photography-page .photography-hero.division-opening h1,
+.photography-page .photography-hero.division-opening h1 span{color:#101820}
+.photography-page .photography-hero.division-opening .eyebrow{color:#4e5e6a}
