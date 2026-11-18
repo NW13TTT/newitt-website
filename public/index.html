@@ -154,6 +154,7 @@
         href="style.css"
     >
 
+    <link rel="stylesheet" href="studio.css">
 </head>
 
 
@@ -212,6 +213,7 @@
      SITE HEADER
 ===================================================== -->
 
+<a class="studio-skip-link" href="#main-content">Skip to content</a>
 <header class="site-header">
 
     <div class="container nav">
@@ -290,7 +292,7 @@
      MAIN CONTENT
 ===================================================== -->
 
-<main>
+<main id="main-content" tabindex="-1">
 
 
 <!-- =====================================================
@@ -298,6 +300,7 @@
 ===================================================== -->
 
 <section class="hero home-hero">
+    <img class="studio-hero-image" src="media/skyline/Gloucester-prison-aerial-04.webp" alt="" fetchpriority="high">
 
     <div
         class="hero-atmosphere"
@@ -347,10 +350,10 @@
         <div class="hero-actions">
 
             <a
-                href="#social"
+                href="#newitt-media-intro-title"
                 class="button primary"
             >
-                Explore NEWITT Media
+                Explore our divisions
             </a>
 
             <a
@@ -557,12 +560,43 @@
      NOTHING VISUAL IS ADDED TO THE ANIMATION.
 ===================================================== -->
 
+<section class="studio-work" aria-labelledby="studio-work-title">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">Featured work</p>
+            <h2 id="studio-work-title">Gloucester Prison from above</h2>
+        </div>
+        <a class="studio-work-feature" href="skyline.html#gloucester-prison">
+            <img src="media/skyline/Gloucester-prison-aerial-02.webp"
+                alt="An aerial view of Gloucester Prison and the surrounding city" loading="lazy" decoding="async">
+            <span>Explore the aerial gallery <span aria-hidden="true">↗</span></span>
+        </a>
+    </div>
+</section>
+
 <section
     class="social-hub"
     id="social"
     aria-label="NEWITT Media cinematic social media animation"
 >
 
+    <div class="container studio-social-links">
+        <h2>Follow NEWITT Media</h2>
+        <div class="studio-social-grid">
+            <div>
+                <h3>Skyline Media</h3>
+                <a href="https://www.tiktok.com/@newittskylinemedia">TikTok</a>
+                <a href="https://www.youtube.com/@Newitt-skyline-media">YouTube</a>
+            </div>
+            <div>
+                <h3>Paranormal Adventures</h3>
+                <a href="https://www.tiktok.com/@nw13ttt">TikTok</a>
+                <a href="https://www.youtube.com/@NewittsParanormalAdventures">YouTube</a>
+                <a href="https://www.instagram.com/nw13ttt/">Instagram</a>
+                <a href="https://www.facebook.com/share/1AiSkdbyM4/">Facebook</a>
+            </div>
+        </div>
+    </div>
     <div
         class="social-master-frame"
         style="position:relative;"
@@ -572,7 +606,7 @@
             class="social-master-animation"
             src="NEWITT_ANIMATED_SOCIAL_SECTION_BANNER_BUTTONS.html"
             title="NEWITT Media cinematic social media animation"
-            loading="eager"
+            loading="lazy"
             scrolling="no"
             frameborder="0"
             allowtransparency="true"
@@ -845,6 +879,14 @@
 
         </p>
 
+        <nav class="studio-footer-links" aria-label="Footer navigation">
+            <a href="index.html">Home</a>
+            <a href="skyline.html">Skyline</a>
+            <a href="paranormal.html">Paranormal</a>
+            <a href="photography.html">Photography</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy</a>
+        </nav>
     </div>
 
 </footer>

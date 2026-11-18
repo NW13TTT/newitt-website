@@ -1,0 +1,326 @@
+/* Studio styling shared by the six NEWITT Media pages. */
+:root {
+    color-scheme: dark;
+    --studio-ink: #070b12;
+    --studio-panel: #0e1827;
+    --studio-text: #edf5ff;
+    --studio-muted: #b7c6da;
+    --studio-blue: #79bfff;
+    --studio-edge: #283b52;
+    --studio-chrome: linear-gradient(115deg, #fff 12%, #b1c8e1 56%, #78bdff 96%);
+}
+
+body {
+    min-width: 0;
+    background: var(--studio-ink);
+    color: var(--studio-text);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body::before { content: none; }
+
+.paranormal-page { --studio-blue: #d2b7fa; }
+.photography-page { --studio-blue: #9cd9e0; }
+
+.container { width: min(100% - 48px, 1280px); }
+main [id] { scroll-margin-top: 94px; }
+
+.studio-skip-link {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 6000;
+    padding: 12px 18px;
+    border-radius: 6px;
+    background: var(--studio-text);
+    color: var(--studio-ink);
+    transform: translateY(-150%);
+}
+
+.studio-skip-link:focus { transform: translateY(0); }
+
+a:focus-visible, button:focus-visible, iframe:focus-visible {
+    outline: 2px solid #aaddff;
+    outline-offset: 4px;
+}
+
+.site-header {
+    background: rgba(7, 11, 18, .94);
+    border-color: var(--studio-edge);
+}
+
+.nav { min-height: 76px; }
+.nav-brand img { width: 46px; height: 46px; flex-basis: 46px; }
+.nav-brand span { color: var(--studio-text); letter-spacing: .16em; }
+.nav-brand strong { color: #a9ceef; }
+.nav-links { gap: 5px; }
+
+.nav-links a {
+    color: #c6d4e6;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 10px 13px;
+}
+
+.nav-links a:hover, .nav-links a[aria-current="page"] {
+    color: #fff;
+    background: #13243a;
+    border-color: #2b4663;
+}
+
+.nav-links a[href="contact.html"] { border-color: #47627d; }
+.menu-toggle { min-width: 44px; min-height: 44px; }
+
+.home-hero, .skyline-hero, .paranormal-hero,
+.photography-page .photography-hero, .contact-hero, .privacy-page .hero {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    align-items: end;
+    min-height: clamp(480px, 73vh, 800px);
+    padding: clamp(80px, 12vw, 165px) 0 clamp(56px, 8vw, 100px);
+    overflow: hidden;
+    border-bottom: 1px solid var(--studio-edge);
+    background: radial-gradient(ellipse at 80% 12%, #254c70, transparent 58%), #09121e;
+}
+
+.home-hero { min-height: clamp(630px, 87vh, 960px); }
+
+.home-hero::after, .skyline-hero::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: linear-gradient(90deg, #070d17f0, #070d1799 48%, #070d1730 100%),
+        linear-gradient(0deg, #070b12 1%, transparent 65%);
+}
+
+.studio-hero-image {
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 48%;
+    filter: saturate(.83) contrast(1.12);
+}
+
+.paranormal-hero {
+    background: radial-gradient(ellipse at 72% 28%, #452746b0, transparent 59%),
+        linear-gradient(110deg, #090c15 12%, #100c1a80), url("background.png") center / cover;
+}
+
+.photography-page .photography-hero {
+    background: radial-gradient(ellipse at 76% 20%, #22617185, transparent 53%),
+        linear-gradient(130deg, #090f1b 30%, #101f2e 72%, #070b12);
+}
+
+.contact-hero, .privacy-page .hero {
+    min-height: 0;
+    background: radial-gradient(ellipse at 83% 11%, #21446c, transparent 62%), #09111f;
+}
+
+.home-hero .hero-content, .skyline-hero-content, .paranormal-hero-content,
+.photography-page .photography-hero-content, .contact-hero-content, .privacy-page .hero-content {
+    position: relative;
+    text-align: left;
+}
+
+.home-hero .hero-logo-wrap { width: fit-content; margin: 0 0 16px; }
+.home-hero .hero-logo, .page-logo, .privacy-page .contact-logo {
+    display: block;
+    width: clamp(76px, 12vw, 156px);
+    max-height: 135px;
+    object-fit: contain;
+    margin: 0 0 16px;
+}
+
+.eyebrow, .section-heading span { color: var(--studio-blue); }
+
+.home-hero h1, .skyline-hero h1, .paranormal-hero h1, .photography-page .photography-hero h1,
+.contact-hero h1, .privacy-page .hero h1 {
+    margin: 10px 0 18px;
+    font-size: clamp(2.65rem, 8.8vw, 8rem);
+    line-height: .94;
+    letter-spacing: -.065em;
+    color: var(--studio-text);
+    text-shadow: none;
+    overflow-wrap: break-word;
+}
+
+.home-hero h1 span, .skyline-hero h1 span, .paranormal-hero h1 span, .photography-hero h1 span,
+.contact-hero h1 span, .privacy-page .hero h1 span {
+    color: var(--studio-blue);
+}
+
+@supports (background-clip: text) {
+    .home-hero h1 span, .skyline-hero h1 span, .contact-hero h1 span, .privacy-page .hero h1 span {
+        background: var(--studio-chrome);
+        background-clip: text;
+        color: transparent;
+    }
+}
+
+.home-hero h1 span { display: block; }
+.home-hero .hero-rule, .photography-hero .hero-rule, .contact-hero .hero-rule { margin-inline: 0; }
+
+.home-hero p, .skyline-hero-content > p, .paranormal-hero-content > p, .photography-hero p,
+.contact-hero p, .privacy-page .hero p {
+    max-width: 60ch;
+    margin-inline: 0;
+    color: var(--studio-text);
+}
+
+.photography-page .photography-statement, .contact-introduction { margin-inline: 0; }
+main section[class*="hero"] .hero-actions { justify-content: flex-start; }
+
+.button, .hero-actions a, .buttons a, .social-button {
+    min-height: 44px;
+    border: 1px solid #5b7795;
+    border-radius: 7px;
+    color: var(--studio-text);
+    background: #101d2e;
+}
+
+.button.primary, .button.primary:hover {
+    color: #06101c;
+    border-color: #b7dcff;
+    background: linear-gradient(110deg, #d6ebff, #85bfff);
+    box-shadow: 0 7px 26px #25598752;
+}
+
+.about, .newitt-media-intro, .studio-work, .social-hub, .home-cta {
+    padding-block: clamp(54px, 8vw, 116px);
+}
+
+.about, .newitt-media-intro, .social-hub {
+    background: radial-gradient(ellipse at 88% 0%, #132740 0%, transparent 58%), var(--studio-ink);
+}
+
+.section-heading h2, .newitt-media-intro-heading h2, .cta-panel h2, .studio-social-links h2 {
+    font-size: clamp(2rem, 5.4vw, 4.9rem);
+    line-height: 1;
+    letter-spacing: -.045em;
+    color: var(--studio-text);
+}
+
+.section-heading p, .newitt-media-intro-main, .gallery-note { color: var(--studio-muted); }
+.section-heading .eyebrow { color: var(--studio-blue); }
+
+.newitt-intro-world, .cta-panel, .photography-focus-card, .investigation-card,
+.contact-option, .photography-portfolio, .privacy-summary, .skyline-gallery {
+    border-radius: 14px;
+    border: 1px solid var(--studio-edge);
+    background-color: var(--studio-panel);
+}
+
+.newitt-intro-skyline { --division-line: #79bfff; }
+.newitt-intro-paranormal { --division-line: #d2b7fa; }
+.newitt-intro-photography { --division-line: #9cd9e0; }
+.newitt-intro-world { border-top: 2px solid var(--division-line); }
+
+.studio-work { background: #09121e; }
+.studio-work-feature {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    align-items: end;
+    min-height: clamp(250px, 46vw, 590px);
+    overflow: hidden;
+    border: 1px solid var(--studio-edge);
+    border-radius: 14px;
+    background: #142439;
+}
+
+.studio-work-feature img {
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.studio-work-feature::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: linear-gradient(0deg, #050b14ed, transparent 64%);
+}
+
+.studio-work-feature > span {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: clamp(18px, 4vw, 46px);
+    color: #fff;
+    font-size: clamp(1.15rem, 3vw, 2.2rem);
+    font-weight: 700;
+}
+
+.skyline-gallery-item { border-color: #436384; border-radius: 10px; }
+.skyline-gallery-caption { background: #07101ce8; }
+.skyline-music { border-block: 1px solid var(--studio-edge); }
+.skyline-music-panel { border-radius: 14px; }
+.skyline-lightbox { z-index: 1900; }
+
+.studio-social-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin: 24px 0;
+}
+
+.studio-social-grid > div {
+    padding: clamp(16px, 3vw, 28px);
+    border: 1px solid var(--studio-edge);
+    border-radius: 12px;
+    background: var(--studio-panel);
+}
+
+.studio-social-grid h3 { margin-bottom: 8px; }
+.studio-social-grid a, .studio-footer-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin-right: 12px;
+    color: #b9d9fa;
+}
+
+.studio-social-grid a:hover, .studio-footer-links a:hover { text-decoration: underline; }
+
+.contact-page main > section:last-child, .privacy-page .about { padding: clamp(40px, 7vw, 90px) 0; }
+.privacy-summary { max-width: 82ch; margin-inline: auto; padding: clamp(18px, 4vw, 46px); }
+.privacy-summary h3 { margin-top: 1.35em; }
+.privacy-summary p, .privacy-summary li { color: var(--studio-muted); }
+.privacy-summary a { overflow-wrap: anywhere; }
+
+.site-footer { border-top: 1px solid var(--studio-edge); background: #060a10; }
+.studio-footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 12px; margin-top: 12px; }
+.studio-footer-links a { margin-right: 0; }
+.studio-footer-links [aria-current="page"] { text-decoration: underline; }
+
+@media (prefers-reduced-motion: no-preference) {
+    .studio-work-feature img { transition: transform .5s ease; }
+    .studio-work-feature:is(:hover, :focus-visible) img { transform: scale(1.045); }
+}
+
+@media (max-width: 700px) {
+    .container { width: calc(100% - 32px); }
+    .nav { min-height: 68px; }
+    .nav-links { background: #0b1420; }
+    .home-hero { min-height: clamp(520px, 82svh, 740px); }
+    .skyline-hero, .paranormal-hero, .photography-page .photography-hero { min-height: 440px; }
+    .home-hero::after, .skyline-hero::after {
+        background: linear-gradient(0deg, #070b12 3%, #070d17a8 64%, #070d1738);
+    }
+    .home-hero h1, .skyline-hero h1, .paranormal-hero h1, .photography-page .photography-hero h1,
+    .contact-hero h1, .privacy-page .hero h1 { font-size: clamp(2.4rem, 10vw, 4.7rem); }
+    .studio-social-grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .social-master-frame { display: none; }
+}

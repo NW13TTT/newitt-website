@@ -560,6 +560,7 @@
 
     </style>
 
+    <link rel="stylesheet" href="studio.css">
 </head>
 
 
@@ -573,6 +574,7 @@
      SITE HEADER
 ===================================================== -->
 
+<a class="studio-skip-link" href="#main-content">Skip to content</a>
 <header class="site-header">
 
     <div class="container nav">
@@ -651,7 +653,7 @@
      MAIN CONTENT
 ===================================================== -->
 
-<main>
+<main id="main-content" tabindex="-1">
 
 
 <!-- =====================================================
@@ -659,6 +661,7 @@
 ===================================================== -->
 
 <section class="skyline-hero">
+    <img class="studio-hero-image" src="media/skyline/Gloucester-prison-aerial-01.webp" alt="" fetchpriority="high">
 
     <div class="container skyline-hero-content">
 
@@ -701,6 +704,7 @@
                 YouTube
             </a>
 
+            <a class="button secondary" href="#skyline-soundtracks">Listen to Beyond The Skyline</a>
         </div>
 
     </div>
@@ -749,7 +753,7 @@
 
     <div class="container">
 
-        <div class="skyline-gallery">
+        <div class="skyline-gallery" id="gloucester-prison">
 
             <div class="skyline-gallery-heading">
 
@@ -1230,6 +1234,14 @@
 
         </p>
 
+        <nav class="studio-footer-links" aria-label="Footer navigation">
+            <a href="index.html">Home</a>
+            <a href="skyline.html">Skyline</a>
+            <a href="paranormal.html">Paranormal</a>
+            <a href="photography.html">Photography</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy</a>
+        </nav>
     </div>
 
 </footer>
