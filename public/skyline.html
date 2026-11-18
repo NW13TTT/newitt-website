@@ -483,6 +483,81 @@
 
         }
 
+        .skyline-music {
+            padding: clamp(56px, 9vw, 112px) 0;
+            background: radial-gradient(ellipse at 75% 15%, #10264a, transparent 68%), #03060d;
+        }
+
+        .skyline-music-panel {
+            position: relative;
+            overflow: hidden;
+            padding: clamp(16px, 5vw, 60px);
+            border: 1px solid #406187;
+            border-radius: 24px;
+            background: linear-gradient(145deg, #142640, #080f1c 65%);
+            box-shadow: 0 24px 70px #0009, inset 0 1px #c1e8ff55;
+        }
+
+        .skyline-music-panel::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto;
+            height: 2px;
+            pointer-events: none;
+            background: linear-gradient(90deg, transparent 20%, #68baff, #e8f6ff, transparent 80%);
+            background-size: 200% 100%;
+        }
+
+        .skyline-music h2 {
+            margin: 12px 0;
+            color: #f0f7ff;
+            font-size: clamp(1.65rem, 5.5vw, 4.5rem);
+            line-height: 1.05;
+            letter-spacing: .035em;
+        }
+
+        .skyline-music h2 span { color: #87cfff; }
+
+        .skyline-music-artist {
+            margin: 0;
+            color: #99d6ff;
+            font-weight: 800;
+            letter-spacing: .18em;
+        }
+
+        .skyline-music-subtitle { color: #d0dcee; }
+
+        .skyline-music-player {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: clamp(390px, 60vw, 520px);
+            margin: 24px 0 18px;
+            border: 0;
+            border-radius: 14px;
+            background: #0d1625;
+        }
+
+        .skyline-music-link {
+            display: inline-block;
+            color: #c2e5ff;
+            text-decoration: underline;
+            text-underline-offset: .24em;
+        }
+
+        .skyline-music-link:hover { color: #fff; }
+        .skyline-music-link:focus-visible { outline: 2px solid #99d6ff; outline-offset: 5px; }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .skyline-music-panel::before { animation: skyline-music-highlight 8s ease-in-out infinite alternate; }
+            .skyline-music-link { transition: color 180ms ease; }
+        }
+
+        @keyframes skyline-music-highlight {
+            from { background-position: 0 0; }
+            to { background-position: 100% 0; }
+        }
+
     </style>
 
 </head>
@@ -806,6 +881,29 @@
 
 </section>
 
+
+<section class="skyline-music" id="skyline-soundtracks" aria-labelledby="skyline-music-title">
+    <div class="container">
+        <div class="skyline-music-panel">
+            <p class="skyline-music-artist">NEWITT MEDIA</p>
+            <h2 id="skyline-music-title">BEYOND THE <span>SKYLINE</span></h2>
+            <p class="skyline-music-subtitle">The Original Soundtrack of NEWITT Skyline Media</p>
+            <iframe
+                class="skyline-music-player"
+                title="Beyond The Skyline — NEWITT MEDIA playlist on SoundCloud"
+                width="100%"
+                height="520"
+                loading="lazy"
+                allow="autoplay; encrypted-media"
+                referrerpolicy="strict-origin-when-cross-origin"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A2331058893&amp;color=%233eaaff&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=false&amp;show_artwork=true&amp;visual=true"
+            ></iframe>
+            <a class="skyline-music-link" href="https://soundcloud.com/ian-newitt/sets/beyond-the-skyline">
+                Open Beyond The Skyline on SoundCloud
+            </a>
+        </div>
+    </div>
+</section>
 
 <!-- =====================================================
      TIKTOK PREVIEW
