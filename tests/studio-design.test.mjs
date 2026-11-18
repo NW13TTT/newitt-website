@@ -8,7 +8,7 @@ const routes = ['index', 'skyline', 'paranormal', 'photography', 'contact', 'pri
 for (const route of routes) {
     test(route + ' uses the shared studio design and accessible navigation', () => {
         const html = read(route + '.html');
-        assert.match(html, /href="studio.css"/);
+        assert.match(html, /href="studio\.css(?:\?v=2)?"/);
         assert.match(html, /href="#main-content">Skip to content/);
         assert.match(html, /<main id="main-content" tabindex="-1">/);
         assert.match(html, new RegExp('href="' + route + '\\.html"[^>]*aria-current="page"'));
@@ -27,4 +27,26 @@ test('homepage uses existing aerial work and preserves its social media embed', 
     assert.match(home, /src="NEWITT_ANIMATED_SOCIAL_SECTION_BANNER_BUTTONS.html"/);
     assert.match(home, /class="container studio-social-links"/);
     assert.match(read('studio.css'), /@media \(prefers-reduced-motion: reduce\)/);
+});
+
+test('home puts visitors directly into the opening and links all three worlds and soundtrack', () => {
+    const home = read('index.html');
+    assert.doesNotMatch(home, /class="site-intro"/);
+    assert.match(home, /Three worlds\. <span>One company\./);
+    assert.equal((home.match(/class="newitt-intro-world newitt-intro-/g) ?? []).length, 3);
+    assert.match(home, /href="skyline\.html#skyline-soundtracks"/);
+});
+
+test('exhibition uses actual NEWITT aerial assets with a keyboard-operable viewing dialog', () => {
+    const photo = read('photography.html');
+    assert.equal((photo.match(/data-full-image="media\/skyline\/Gloucester-prison-aerial-0[1-4]\.JPG"/g) ?? []).length, 4);
+    assert.match(photo, /id="photography-lightbox"\s+role="dialog"\s+aria-modal="true"/);
+    assert.match(photo, /event\.key === "Escape"/);
+    assert.match(photo, /previousFocus\?\.focus\(\)/);
+});
+
+test('division heroes have neutral backgrounds and no former colour overlays', () => {
+    assert.doesNotMatch(read('paranormal.html'), /class="paranormal-(?:fog|atmosphere)"/);
+    assert.doesNotMatch(read('photography.html'), /\.photography-hero::before/);
+    assert.match(read('studio.css'), /\.photography-page \.photography-hero \{ background: #161718; \}/);
 });

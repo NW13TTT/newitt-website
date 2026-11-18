@@ -167,23 +167,6 @@
             overflow: hidden;
         }
 
-        .photography-page .photography-hero::before {
-            content: "";
-
-            position: absolute;
-
-            inset: 0;
-
-            pointer-events: none;
-
-            background:
-                radial-gradient(
-                    circle at 50% 35%,
-                    rgba(120, 213, 138, 0.055),
-                    transparent 42%
-                );
-        }
-
         .photography-page .photography-hero-content {
             position: relative;
             z-index: 2;
@@ -245,69 +228,6 @@
            GALLERY PLACEHOLDER
         ================================================= */
 
-        .photography-gallery-placeholder {
-            position: relative;
-
-            width: 100%;
-
-            min-height: 260px;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            padding: 40px 24px;
-
-            border:
-                1px solid
-                rgba(120, 213, 138, 0.18);
-
-            border-radius: 12px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(4, 8, 12, 0.76),
-                    rgba(3, 5, 8, 0.58)
-                );
-
-            box-shadow:
-                0 20px 60px
-                rgba(0, 0, 0, 0.24);
-
-            overflow: hidden;
-
-            text-align: center;
-        }
-
-        .photography-gallery-placeholder::before {
-            content: "";
-
-            position: absolute;
-
-            inset: 0;
-
-            pointer-events: none;
-
-            background:
-                radial-gradient(
-                    circle at center,
-                    rgba(120, 213, 138, 0.055),
-                    transparent 58%
-                );
-        }
-
-        .photography-gallery-placeholder-content {
-            position: relative;
-
-            z-index: 2;
-
-            width: min(620px, 100%);
-
-            margin-inline: auto;
-        }
-
         .photography-gallery-icon {
             margin-bottom: 16px;
 
@@ -316,23 +236,6 @@
             font-size: 2.6rem;
 
             line-height: 1;
-        }
-
-        .photography-gallery-placeholder h3 {
-            margin-bottom: 10px;
-
-            font-size: 1.35rem;
-        }
-
-        .photography-gallery-placeholder p {
-            margin-bottom: 0;
-
-            color:
-                rgba(244, 247, 250, 0.62);
-
-            font-size: 0.88rem;
-
-            line-height: 1.7;
         }
 
 
@@ -502,19 +405,6 @@
                 gap: 14px;
             }
 
-            .photography-gallery-placeholder {
-                min-height: 230px;
-
-                padding:
-                    32px 18px;
-
-                border-radius: 10px;
-            }
-
-            .photography-gallery-placeholder h3 {
-                font-size: 1.2rem;
-            }
-
             .photography-statement p {
                 font-size: 0.92rem;
             }
@@ -524,18 +414,11 @@
 
         @media (max-width: 380px) {
 
-            .photography-gallery-placeholder {
-                min-height: 215px;
-
-                padding:
-                    28px 15px;
-            }
-
         }
 
     </style>
 
-    <link rel="stylesheet" href="studio.css">
+    <link rel="stylesheet" href="studio.css?v=2">
 </head>
 
 
@@ -837,40 +720,27 @@
             </div>
 
 
-            <!-- =================================================
-                 SAFE EMPTY GALLERY STATE
-
-                 This keeps the page professional until
-                 photographs are added.
-
-                 Future images can be added here without
-                 changing the rest of the page.
-            ================================================== -->
-
-            <div class="photography-gallery-placeholder">
-
-                <div class="photography-gallery-placeholder-content">
-
-                    <div
-                        class="photography-gallery-icon"
-                        aria-hidden="true"
-                    >
-                        ◉
-                    </div>
-
-                    <h3>
-                        NEWITT Media Photography
-                    </h3>
-
-                    <p>
-                        The portfolio is currently being
-                        built. New photographs will appear
-                        here as the collection develops.
-                    </p>
-
-                </div>
-
+            <h3 class="frame-exhibit-title">Gloucester Prison</h3>
+            <p>A study of architecture and place, photographed by NEWITT Skyline Media.</p>
+            <div class="photography-gallery frame-exhibit">
+                <button class="photography-gallery-item" type="button" data-full-image="media/skyline/Gloucester-prison-aerial-01.JPG">
+                    <img src="media/skyline/Gloucester-prison-aerial-01.webp" alt="" loading="lazy" decoding="async">
+                    <span class="frame-caption">Gloucester Prison and the surrounding city</span>
+                </button>
+                <button class="photography-gallery-item" type="button" data-full-image="media/skyline/Gloucester-prison-aerial-02.JPG">
+                    <img src="media/skyline/Gloucester-prison-aerial-02.webp" alt="" loading="lazy" decoding="async">
+                    <span class="frame-caption">Gloucester Prison from a second aerial perspective</span>
+                </button>
+                <button class="photography-gallery-item" type="button" data-full-image="media/skyline/Gloucester-prison-aerial-03.JPG">
+                    <img src="media/skyline/Gloucester-prison-aerial-03.webp" alt="" loading="lazy" decoding="async">
+                    <span class="frame-caption">The prison grounds and neighbouring streets</span>
+                </button>
+                <button class="photography-gallery-item" type="button" data-full-image="media/skyline/Gloucester-prison-aerial-04.JPG">
+                    <img src="media/skyline/Gloucester-prison-aerial-04.webp" alt="" loading="lazy" decoding="async">
+                    <span class="frame-caption">An aerial view across Gloucester</span>
+                </button>
             </div>
+            <p class="gallery-note">The wider photography portfolio is being developed.</p>
 
         </div>
 
@@ -1020,13 +890,14 @@
 
 <!-- =====================================================
      PHOTOGRAPHY LIGHTBOX
-
-     Ready for future portfolio photographs.
 ===================================================== -->
 
 <div
     class="photography-lightbox"
     id="photography-lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Full-size exhibition photograph"
     aria-hidden="true"
 >
 
@@ -1042,7 +913,6 @@
 
     <img
         id="photography-lightbox-image"
-        src=""
         alt=""
     >
 
@@ -1087,14 +957,6 @@
             "photography-lightbox-close"
         );
 
-
-    /*
-     * The gallery is intentionally empty at present.
-     *
-     * This script safely does nothing until photographs
-     * are added to the gallery.
-     */
-
     if (
         !galleryItems.length ||
         !lightbox ||
@@ -1105,6 +967,8 @@
     }
 
 
+    let previousFocus;
+
     function openLightbox(item) {
 
         const image =
@@ -1113,7 +977,7 @@
             );
 
         const thumbnail =
-            item.querySelector("img");
+            item.querySelector(".frame-caption");
 
         if (!image) {
             return;
@@ -1123,7 +987,7 @@
 
         lightboxImage.alt =
             thumbnail
-                ? thumbnail.alt
+                ? thumbnail.textContent.trim()
                 : "NEWITT Media Photography image";
 
         lightbox.classList.add(
@@ -1135,8 +999,9 @@
             "false"
         );
 
-        document.body.style.overflow =
-            "hidden";
+        previousFocus = item;
+        document.body.style.overflow = "hidden";
+        closeButton.focus();
 
     }
 
@@ -1152,10 +1017,10 @@
             "true"
         );
 
-        lightboxImage.src = "";
+        lightboxImage.removeAttribute("src");
 
-        document.body.style.overflow =
-            "";
+        document.body.style.overflow = "";
+        previousFocus?.focus();
 
     }
 
@@ -1198,11 +1063,12 @@
         "keydown",
         function (event) {
 
-            if (
-                event.key === "Escape" &&
-                lightbox.classList.contains("active")
-            ) {
-                closeLightbox();
+            if (!lightbox.classList.contains("active")) return;
+
+            if (event.key === "Escape") closeLightbox();
+            if (event.key === "Tab") {
+                event.preventDefault();
+                closeButton.focus();
             }
 
         }
