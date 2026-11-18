@@ -232,6 +232,8 @@
     </style>
 
     <link rel="stylesheet" href="studio.css?v=2">
+    <link rel="stylesheet" href="editorial.css">
+    <script src="editorial.js" defer></script>
 </head>
 
 
@@ -246,78 +248,24 @@
 ===================================================== -->
 
 <a class="studio-skip-link" href="#main-content">Skip to content</a>
-<header class="site-header">
-
+<header class="site-header editorial-header">
     <div class="container nav">
-
-        <a
-            href="index.html"
-            class="nav-brand"
-            aria-label="NEWITT Media Home"
-        >
-
-            <img
-                src="newitt-media-logo.png"
-                alt="NEWITT Media logo"
-            >
-
-            <span>
-                NEWITT <strong>MEDIA</strong>
-            </span>
-
+        <a class="editorial-brand" href="index.html" aria-label="NEWITT MEDIA home">
+            <img src="newitt-media-logo.png" alt="" width="52" height="52">
+            <span>NEWITT <strong>MEDIA</strong></span>
         </a>
-
-
-        <button
-            class="menu-toggle"
-            type="button"
-            aria-expanded="false"
-            aria-controls="main-menu"
-            aria-label="Open navigation menu"
-        >
-
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </button>
-
-
-        <nav
-            class="nav-links"
-            id="main-menu"
-            aria-label="Main navigation"
-        >
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="skyline.html">
-                Skyline
-            </a>
-
-            <a
-                href="paranormal.html"
-                class="active"
-                aria-current="page"
-            >
-                Paranormal
-            </a>
-
-            <a href="photography.html">
-                Photography
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
-
-        </nav>
-
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="Open navigation menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="main-menu" aria-label="Main navigation"><a href="index.html">Home</a><a href="skyline.html">Skyline</a><a href="photography.html">Photography</a><a href="paranormal.html" aria-current="page">Paranormal</a><a href="contact.html">Contact</a></nav>
+        <button class="editorial-menu-open" type="button" aria-haspopup="dialog" aria-controls="editorial-menu">Index <span aria-hidden="true">+</span></button>
     </div>
-
 </header>
+<dialog id="editorial-menu" class="editorial-menu" aria-labelledby="editorial-menu-title">
+    <div class="editorial-menu-head">
+        <p id="editorial-menu-title">NEWITT MEDIA</p>
+        <form method="dialog"><button type="submit" autofocus>Close <span aria-hidden="true">×</span></button></form>
+    </div>
+    <nav aria-label="Site index"><a href="index.html"><span aria-hidden="true">01</span> Home</a><a href="skyline.html"><span aria-hidden="true">02</span> Skyline</a><a href="photography.html"><span aria-hidden="true">03</span> Photography</a><a href="paranormal.html" aria-current="page"><span aria-hidden="true">04</span> Paranormal</a><a href="contact.html"><span aria-hidden="true">05</span> Contact</a><a href="privacy.html"><span aria-hidden="true">06</span> Privacy</a></nav>
+</dialog>
 
 
 <!-- =====================================================
@@ -331,7 +279,7 @@
      PARANORMAL HERO
 ===================================================== -->
 
-<section class="paranormal-hero">
+<section class="paranormal-hero division-opening" data-lens="paranormal">
 
 
     <div class="container paranormal-hero-content">
@@ -699,55 +647,22 @@
      FOOTER
 ===================================================== -->
 
-<footer class="site-footer">
-
+<footer class="site-footer editorial-footer">
     <div class="container">
-
-        <img
-            src="newitt-media-logo.png"
-            alt="NEWITT Media"
-            class="footer-logo"
-        >
-
-        <p class="footer-brand">
-            NEWITT MEDIA
-        </p>
-
-        <p class="footer-tagline">
-            FROM ABOVE. AFTER DARK. AND EVERYTHING IN BETWEEN.
-        </p>
-
-        <p class="copyright">
-
-            © 2026 NEWITT Media. All Rights Reserved.
-
-            <br>
-
-            NEWITT Media •
-            NEWITT Skyline Media •
-            NEWITT's Paranormal Adventures •
-            NEWITT Media Photography
-
-        </p>
-
-        <p class="website-address">
-
-            <a href="https://newittmedia.co.uk/">
-                newittmedia.co.uk
-            </a>
-
-        </p>
-
-        <nav class="studio-footer-links" aria-label="Footer navigation">
-            <a href="index.html">Home</a>
-            <a href="skyline.html">Skyline</a>
-            <a href="paranormal.html">Paranormal</a>
-            <a href="photography.html">Photography</a>
-            <a href="contact.html">Contact</a>
-            <a href="privacy.html">Privacy</a>
-        </nav>
+        <div class="editorial-footer-grid">
+            <div>
+                <a class="editorial-brand" href="index.html"><img src="newitt-media-logo.png" alt="" width="52" height="52"><span>NEWITT <strong>MEDIA</strong></span></a>
+                <p>From above. After dark. And everything in between.</p>
+            </div>
+            <nav class="studio-footer-links" aria-label="Footer navigation"><a href="index.html">Home</a><a href="skyline.html">Skyline</a><a href="photography.html">Photography</a><a href="paranormal.html" aria-current="page">Paranormal</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>
+            <div class="editorial-footer-contact">
+                <a href="mailto:newittmedia@gmail.com">newittmedia@gmail.com</a>
+                <a href="index.html#social">Social channels</a>
+                <a href="https://newittmedia.co.uk/">newittmedia.co.uk</a>
+            </div>
+        </div>
+        <p class="copyright">© 2026 NEWITT Media. All rights reserved.</p>
     </div>
-
 </footer>
 
 
