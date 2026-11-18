@@ -483,7 +483,25 @@
 
         }
 
-    </style>
+    /* Skyline SoundCloud music showcase */
+.skyline-music{padding:clamp(60px,9vw,120px) 0;background:radial-gradient(ellipse at 80% 20%,rgba(42,95,205,.17),transparent 55%),#03060d}
+.skyline-music-panel{padding:clamp(24px,5vw,68px);border:1px solid rgba(87,180,255,.26);border-radius:24px;background:linear-gradient(140deg,rgba(18,29,55,.86),rgba(2,5,12,.92));box-shadow:0 25px 75px rgba(0,0,0,.4)}
+.skyline-music h2{font-size:clamp(2rem,5vw,4.5rem);letter-spacing:.035em;line-height:1.05;margin:14px 0 18px;color:#fff}
+.skyline-music h2 span{color:#75cfff}.skyline-music-lead{max-width:700px;color:#c3d0e5;line-height:1.8}
+.skyline-music-feature{display:grid;grid-template-columns:minmax(180px,310px) 1fr;align-items:center;gap:clamp(24px,5vw,65px);margin-top:38px}
+.skyline-music-art{position:relative;aspect-ratio:1;display:grid;place-items:center;overflow:hidden;border:1px solid rgba(112,196,255,.5);border-radius:18px;background:radial-gradient(circle at 50% 40%,rgba(86,170,255,.55),transparent 36%),conic-gradient(from 10deg,#040b20,#142d60,#100b2d,#04152d,#040b20);box-shadow:0 0 48px rgba(0,122,255,.15)}
+.skyline-music-art:before{content:"";position:absolute;inset:11%;border:1px solid rgba(177,222,255,.32);border-radius:50%;box-shadow:0 0 32px rgba(73,160,255,.35)}
+.skyline-music-art span{position:relative;z-index:1;font-size:clamp(1.4rem,4vw,2.8rem);font-weight:900;font-style:italic;letter-spacing:.12em;text-align:center;line-height:1.1;color:white;text-shadow:0 0 20px #65b9ff}
+.skyline-music-art i{position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.08) 50%,transparent 65%);transform:translateX(-100%);animation:skylineMusicShine 8s ease-in-out infinite}
+@keyframes skylineMusicShine{0%,55%,100%{transform:translateX(-100%)}75%{transform:translateX(100%)}}
+.skyline-music-kicker{color:#7ed5ff;font-size:.76rem;letter-spacing:.22em;font-weight:800}
+.skyline-music-copy h3{font-size:clamp(1.6rem,3.5vw,3rem);color:#fff;margin:14px 0}
+.skyline-music-copy p,.skyline-music-note{color:#bac9dc;line-height:1.75}
+.skyline-music-note{font-size:.83rem;margin:32px 0 0}
+@media(max-width:650px){.skyline-music-feature{grid-template-columns:1fr}.skyline-music-art{width:min(100%,290px);margin:auto}.skyline-music-panel{padding:24px 18px}}
+@media(prefers-reduced-motion:reduce){.skyline-music-art i{animation:none}}
+
+</style>
 
 </head>
 
@@ -806,6 +824,29 @@
 
 </section>
 
+
+<!-- NEWITT MEDIA MUSIC SHOWCASE: SoundCloud links supplied by the artist. -->
+<section class="skyline-music" id="skyline-soundtracks" aria-labelledby="skyline-music-title">
+  <div class="container">
+    <div class="skyline-music-panel">
+      <div class="eyebrow">NEWITT MEDIA ORIGINAL MUSIC</div>
+      <h2 id="skyline-music-title">THE SOUND OF <span>SKYLINE.</span></h2>
+      <p class="skyline-music-lead">Cinematic soundtracks, electronic energy and original music for the world above. Discover NEWITT MEDIA on SoundCloud.</p>
+      <div class="skyline-music-feature">
+        <div class="skyline-music-art" aria-hidden="true"><span>NEWITT<br>MEDIA</span><i></i></div>
+        <div class="skyline-music-copy">
+          <div class="skyline-music-kicker">FEATURED ARTIST</div>
+          <h3>NEWITT MEDIA</h3>
+          <p>Explore original releases including Voltraze. Open the artist's shared SoundCloud link to listen.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://on.soundcloud.com/EInpXjCjcTDuNqtQeJ" target="_blank" rel="noopener noreferrer" aria-label="Open NEWITT MEDIA shared SoundCloud link in a new tab">Listen on SoundCloud ↗</a>
+          </div>
+        </div>
+      </div>
+      <p class="skyline-music-note">SoundCloud playback opens on SoundCloud. An embedded player can be enabled once the public artist and track URLs are verified. Audio never autoplays.</p>
+    </div>
+  </div>
+</section>
 
 <!-- =====================================================
      TIKTOK PREVIEW
