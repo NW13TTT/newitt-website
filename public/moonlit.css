@@ -23,9 +23,6 @@
 .ian-layout h2{font-size:clamp(2.6rem,7vw,6rem);line-height:.9;letter-spacing:-.07em}
 .ian-layout h2 span{display:block;color:var(--moon-blue)}
 .ian-layout p{font-size:clamp(1rem,1.7vw,1.25rem);line-height:1.65;max-width:52ch}
-.skyline-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-block:12px 32px}
-.skyline-strip img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
-.skyline-strip a:hover{outline:2px solid var(--moon-blue)}
 .photography-page,.photography-page .division-opening,.photography-page .about,.photography-page .home-cta{background:var(--moon-paper)}
 .photography-page .division-opening h1{font-family:Georgia,serif;font-weight:500;letter-spacing:-.065em;font-size:clamp(3rem,7vw,8rem)}
 .photography-page .division-plate figcaption{background:#ebe6df}
@@ -38,7 +35,6 @@
 @media(max-width:760px){
 .ian-layout,.paranormal-page .division-opening{grid-template-columns:1fr}
 .after-dark-mark{grid-column:1;grid-row:2;width:min(100%,430px)}
-.skyline-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
 .ian-layout h2 span{display:inline}
 }
 @media(max-width:600px){
@@ -171,4 +167,121 @@
 }
 @media (max-width: 490px) {
     .original-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Brand and exhibition */
+.editorial-header .brand-mark, .menu-identity .brand-mark {
+    width: clamp(54px, 8vw, 69px);
+    height: clamp(54px, 8vw, 69px);
+    background: #02060d;
+    border: 1px solid #8eb3d9;
+    border-radius: 8px;
+    padding: 0;
+    box-shadow: inset 0 0 0 2px #16283b;
+}
+.editorial-header .brand-mark img, .menu-identity .brand-mark img { transform: scale(1.08); }
+.photography-page .photography-hero.division-opening {
+    display: block;
+    border-bottom: 1px solid #cec4b6;
+}
+.photography-page .division-opening > .container {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    column-gap: clamp(16px, 5vw, 72px);
+    padding-block: clamp(24px, 4vw, 58px);
+}
+.photography-page .photography-hero .photography-logo {
+    display: block;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    justify-self: end;
+    width: clamp(72px, 10vw, 126px);
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: contain;
+    background: #06111d;
+    border: 2px solid #8eb3d9;
+    border-radius: 10px;
+}
+.photography-page .photography-hero h1 {
+    font-size: clamp(2.35rem, 6vw, 6rem);
+    margin-block: 8px;
+}
+.photography-page .photography-hero .hero-rule { display: none; }
+.photography-page .photography-hero .hero-tagline { grid-column: 1 / -1; }
+.photo-reel { color: #f3f6fa; background: #07131f; }
+.skyline-reel { margin-inline: auto; max-width: 1440px; }
+.reel-track {
+    position: relative;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-color: #83a8ca #152639;
+    overscroll-behavior-x: contain;
+}
+.reel-track:focus-visible { outline: 3px solid #a7d6ff; outline-offset: -3px; }
+.reel-track figure {
+    flex: 0 0 100%;
+    min-width: 0;
+    margin: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+.reel-track img {
+    display: block;
+    width: 100%;
+    height: min(62svh, 760px);
+    object-fit: contain;
+    background: #040b14;
+}
+.reel-track figcaption {
+    min-height: 44px;
+    padding: 10px clamp(14px, 4vw, 52px);
+    background: #122236;
+    color: #e2edf6;
+}
+.reel-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 16px;
+    padding: 10px clamp(14px, 4vw, 52px);
+}
+.reel-bar a { color: #c4e5ff; text-decoration: underline; text-underline-offset: .25em; }
+.reel-controls:not([hidden]) { display: flex; align-items: center; gap: 9px; }
+.reel-controls button {
+    min-width: 44px;
+    min-height: 44px;
+    color: #f3f6fa;
+    background: #162c42;
+    border: 1px solid #92b4d5;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.25rem;
+}
+.reel-controls button:is(:hover, :focus-visible) { background: #bedfff; color: #07131f; }
+.reel-count { color: #cfdfef; font-variant-numeric: tabular-nums; font-size: .85rem; }
+
+@media (max-width: 620px) {
+    .photography-page .division-opening > .container { grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+    .photography-page .photography-statement, .photography-page .hero-actions { grid-column: 1 / -1; }
+    .reel-track img { height: auto; aspect-ratio: 16 / 9; }
+}
+@media (prefers-reduced-motion: no-preference) {
+    .moonlit-arrived:is(.moon-opening picture, .photo-reel, .frame-exhibit button, .production-wall figure, .after-dark-mark) {
+        animation: moonlit-reveal .8s ease-out both;
+    }
+    .after-dark-mark { filter: drop-shadow(0 0 24px #35bab12b); }
+    .after-dark-knocks.moonlit-arrived i { animation: strike .65s ease-out both; }
+    .after-dark-knocks.moonlit-arrived i:nth-child(2) { animation-delay: .18s; }
+    .after-dark-knocks.moonlit-arrived i:nth-child(3) { animation-delay: .58s; }
+    @keyframes moonlit-reveal {
+        from { opacity: .74; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes strike {
+        from { opacity: .35; }
+        to { opacity: 1; }
+    }
 }

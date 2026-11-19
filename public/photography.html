@@ -421,7 +421,8 @@
     <link rel="stylesheet" href="studio.css?v=2">
     <link rel="stylesheet" href="editorial.css?v=3">
     <script src="editorial.js" defer></script>
-    <link rel="stylesheet" href="moonlit.css">
+    <link rel="stylesheet" href="moonlit.css?v=2">
+    <script src="moonlit.js" defer></script>
 </head>
 
 
@@ -469,7 +470,6 @@
 
 <section class="photography-hero division-opening" data-lens="photography">
 
-    <figure class="division-plate"><img src="media/skyline/Gloucester-prison-aerial-02.webp" alt="Gloucester Prison from above, photographed by NEWITT Skyline Media" fetchpriority="high"><figcaption>Gloucester Prison / NEWITT Skyline Media</figcaption></figure>
     <div class="container photography-hero-content">
 
         <img
@@ -531,6 +531,23 @@
 
     </div>
 
+</section>
+
+<section class="photo-reel photography-reel" aria-label="Gloucester Prison photographs" data-photo-reel>
+    <div class="reel-track" tabindex="0" aria-label="Photographs. Swipe or use the arrow keys.">
+        <figure><img src="media/skyline/Gloucester-prison-aerial-02.webp" alt="Gloucester Prison from a second aerial perspective" width="2400" height="1350" fetchpriority="high" decoding="async"><figcaption>Gloucester Prison from a second aerial perspective</figcaption></figure>
+        <figure><img src="media/skyline/Gloucester-prison-aerial-01.webp" alt="Gloucester Prison and the surrounding city" width="2400" height="1350" loading="lazy" decoding="async"><figcaption>Gloucester Prison and the surrounding city</figcaption></figure>
+        <figure><img src="media/skyline/Gloucester-prison-aerial-03.webp" alt="The prison grounds and neighbouring streets" width="2400" height="1350" loading="lazy" decoding="async"><figcaption>The prison grounds and neighbouring streets</figcaption></figure>
+        <figure><img src="media/skyline/Gloucester-prison-aerial-04.webp" alt="An aerial view across Gloucester" width="2400" height="1350" loading="lazy" decoding="async"><figcaption>An aerial view across Gloucester</figcaption></figure>
+    </div>
+    <div class="reel-bar">
+        <a href="#portfolio">View full-size gallery ↘</a>
+        <div class="reel-controls" hidden>
+            <button type="button" data-step="-1" aria-label="Previous photograph">←</button>
+            <span class="reel-count" role="status">01 / 04</span>
+            <button type="button" data-step="1" aria-label="Next photograph">→</button>
+        </div>
+    </div>
 </section>
 
 

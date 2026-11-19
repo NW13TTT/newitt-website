@@ -93,7 +93,7 @@ test('homepage switches to portrait artwork on phones and places Ian’s biograp
 });
 
 test('Skyline and Paranormal use their selected visual assets', () => {
-    assert.match(read('skyline.html'), /class="skyline-strip container"/);
+    assert.match(read('skyline.html'), /class="photo-reel skyline-reel"/);
     assert.match(read('paranormal.html'), /class="after-dark-mark"><img src="media\/moonlit\/after-dark.webp"/);
 });
 
