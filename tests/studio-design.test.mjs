@@ -20,7 +20,7 @@ for (const route of routes) {
 test('homepage uses existing aerial work and preserves its social media embed', () => {
     const home = read('index.html');
     const skyline = read('skyline.html');
-    assert.match(home, /class="signature-aerial" src="media\/skyline\/Gloucester-prison-aerial-04.webp"/);
+    assert.match(home, /src="media\/moonlit\/valley-wide.webp"/);
     assert.match(home, /href="skyline.html#gloucester-prison"/);
     assert.match(skyline, /class="skyline-gallery" id="gloucester-prison"/);
     assert.equal((skyline.match(/class="skyline-gallery-item"/g) ?? []).length, 4);
@@ -34,7 +34,11 @@ test('home puts visitors directly into the opening and links all three worlds an
     assert.doesNotMatch(home, /class="site-intro"/);
     assert.match(home, /Three worlds\. <span>One company\./);
     assert.equal((home.match(/class="world-panel world-/g) ?? []).length, 3);
-    assert.match(home, /class="editorial-player"[\s\S]*?2331058893[\s\S]*?auto_play=false/);
+    assert.match(home, /class="moon-opening-player" href="skyline.html#skyline-soundtracks"/);
+    assert.match(home, /Films &amp; Original Soundtracks/);
+    assert.match(home, /href="paranormal.html#original-soundtracks"/);
+    assert.match(home, /src="media\/soundtracks\/beyond-the-skyline.jpg"/);
+    assert.doesNotMatch(home, /w\.soundcloud\.com\/player/);
 });
 
 test('exhibition uses actual NEWITT aerial assets with a keyboard-operable viewing dialog', () => {
@@ -74,9 +78,32 @@ test('official logo is present in every header, the open menu and the protected 
         assert.match(html, /<header class="site-header editorial-header">[\s\S]*?class="brand-mark"><img src="newitt-media-logo\.png"/);
         assert.match(html, /class="menu-identity">[\s\S]*?newitt-media-logo\.png/);
     }
-    assert.match(read('index.html'), /class="signature-identity">[\s\S]*?newitt-media-logo\.png[\s\S]*?<h1 id="arrival-title">NEWITT MEDIA/);
+    assert.match(read('index.html'), /class="moon-opening"/);
     const css = read('editorial.css');
     assert.match(css, /\.editorial-header\s*\{[^}]*position: sticky/);
     assert.match(css, /\.brand-mark\s*\{[^}]*background: #080e13/);
     assert.doesNotMatch(css, /#d7ff3f|#171326/i);
+});
+
+test('homepage switches to portrait artwork on phones and places Ian’s biography after featured work', () => {
+    const home = read('index.html');
+    assert.match(home, /<source media="\(max-width: 600px\)" srcset="media\/moonlit\/valley-portrait.webp">/);
+    assert.match(home, /id="production-title"[\s\S]*?id="meet-ian"[\s\S]*?id="screening-title"/);
+    assert.match(home, /I’m Ian Newitt, the person behind NEWITT MEDIA/);
+});
+
+test('Skyline and Paranormal use their selected visual assets', () => {
+    assert.match(read('skyline.html'), /class="photo-reel skyline-reel"/);
+    assert.match(read('paranormal.html'), /class="after-dark-mark"><img src="media\/moonlit\/after-dark.webp"/);
+});
+
+test('forthcoming paranormal soundtrack uses the original artwork and exposes no playback control', () => {
+    const paranormal = read('paranormal.html');
+    const feature = paranormal.match(/<section[^>]*id="original-soundtracks"[\s\S]*?<\/section>/)?.[0] ?? '';
+    assert.match(feature, /The Third Knock Was Inside/);
+    assert.match(feature, /Forthcoming soundtrack by NEWITT MEDIA/);
+    assert.match(feature, /media\/moonlit\/after-dark.webp/);
+    assert.match(feature, /65 BPM/);
+    assert.doesNotMatch(feature, /<(?:audio|iframe|button)\b/);
+    assert.match(paranormal, /href="#original-soundtracks"/);
 });
