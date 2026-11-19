@@ -1173,6 +1173,9 @@
 <div
     class="skyline-lightbox"
     id="skyline-lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Gloucester Prison aerial photograph"
     aria-hidden="true"
 >
 
@@ -1188,7 +1191,6 @@
 
     <img
         id="skyline-lightbox-image"
-        src=""
         alt=""
     >
 
@@ -1254,6 +1256,8 @@
     }
 
 
+    let previousFocus;
+
     function openLightbox(item) {
 
         const image =
@@ -1282,8 +1286,9 @@
             "false"
         );
 
-        document.body.style.overflow =
-            "hidden";
+        previousFocus = item;
+        document.body.style.overflow = "hidden";
+        closeButton.focus();
 
     }
 
@@ -1299,10 +1304,9 @@
             "true"
         );
 
-        lightboxImage.src = "";
-
-        document.body.style.overflow =
-            "";
+        lightboxImage.removeAttribute("src");
+        document.body.style.overflow = "";
+        previousFocus?.focus();
 
     }
 
@@ -1343,11 +1347,12 @@
         "keydown",
         function (event) {
 
-            if (
-                event.key === "Escape" &&
-                lightbox.classList.contains("active")
-            ) {
-                closeLightbox();
+            if (!lightbox.classList.contains("active")) return;
+
+            if (event.key === "Escape") closeLightbox();
+            if (event.key === "Tab") {
+                event.preventDefault();
+                closeButton.focus();
             }
 
         }
