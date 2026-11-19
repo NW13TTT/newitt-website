@@ -34,7 +34,11 @@ test('home puts visitors directly into the opening and links all three worlds an
     assert.doesNotMatch(home, /class="site-intro"/);
     assert.match(home, /Three worlds\. <span>One company\./);
     assert.equal((home.match(/class="world-panel world-/g) ?? []).length, 3);
-    assert.match(home, /class="editorial-player"[\s\S]*?2331058893[\s\S]*?auto_play=false/);
+    assert.match(home, /class="moon-opening-player" href="skyline.html#skyline-soundtracks"/);
+    assert.match(home, /Films &amp; Original Soundtracks/);
+    assert.match(home, /href="paranormal.html#original-soundtracks"/);
+    assert.match(home, /src="media\/soundtracks\/beyond-the-skyline.jpg"/);
+    assert.doesNotMatch(home, /w\.soundcloud\.com\/player/);
 });
 
 test('exhibition uses actual NEWITT aerial assets with a keyboard-operable viewing dialog', () => {
@@ -91,4 +95,15 @@ test('homepage switches to portrait artwork on phones and places Ian’s biograp
 test('Skyline and Paranormal use their selected visual assets', () => {
     assert.match(read('skyline.html'), /class="skyline-strip container"/);
     assert.match(read('paranormal.html'), /class="after-dark-mark"><img src="media\/moonlit\/after-dark.webp"/);
+});
+
+test('forthcoming paranormal soundtrack uses the original artwork and exposes no playback control', () => {
+    const paranormal = read('paranormal.html');
+    const feature = paranormal.match(/<section[^>]*id="original-soundtracks"[\s\S]*?<\/section>/)?.[0] ?? '';
+    assert.match(feature, /The Third Knock Was Inside/);
+    assert.match(feature, /Forthcoming soundtrack by NEWITT MEDIA/);
+    assert.match(feature, /media\/moonlit\/after-dark.webp/);
+    assert.match(feature, /65 BPM/);
+    assert.doesNotMatch(feature, /<(?:audio|iframe|button)\b/);
+    assert.match(paranormal, /href="#original-soundtracks"/);
 });
