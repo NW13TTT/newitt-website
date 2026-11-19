@@ -13,8 +13,8 @@
 .worlds,.production-wall,.editorial-screening{padding-block:clamp(42px,7vw,95px)}
 .worlds{background:var(--moon-navy);color:#fff}
 .worlds h2 span{color:var(--moon-blue)}
-.world-paranormal{background:#05191c}
-.world-paranormal .world-logo{width:148px;height:148px;max-width:55%;border-color:#7fd1cc80}
+.world-paranormal{background:var(--moon-navy)}
+.world-paranormal .world-logo{width:148px;height:148px;max-width:55%;border-color:#a7d6ff66}
 .world-panel::after{border-color:var(--moon-blue)}
 .ian-bio{background:#101f30;color:#fff;padding:clamp(48px,9vw,113px) 0;border-block:1px solid #a7d6ff46}
 .ian-layout{display:grid;grid-template-columns:1fr 1.35fr;gap:clamp(20px,7vw,100px);align-items:center}
@@ -40,11 +40,11 @@
 .ian-layout h2 span{display:inline}
 }
 @media(max-width:600px){
-.moon-opening picture img{width:100%;height:auto;max-height:76svh;object-fit:contain}
+.moon-opening picture img{width:100%;height:auto;max-height:58svh;object-fit:contain}
 }
 
 @media(min-width:601px){
-.moon-opening picture img{height:clamp(380px,68svh,660px)}
+.moon-opening picture img{height:clamp(320px,61svh,660px)}
 }
 .photography-page .photography-hero.division-opening h1,
 .photography-page .photography-hero.division-opening h1 span{color:#101820}
