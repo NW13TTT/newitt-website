@@ -1,0 +1,201 @@
+.paranormal-page {
+    --night: #070d10;
+    --ink: #e4e9e5;
+    --muted: #b5c4c3;
+    --signal: #9ce3d8;
+    --rule: #42605e;
+    background: var(--night);
+    color: var(--ink);
+}
+.paranormal-page .paranormal-hero.division-opening {
+    display: grid;
+    isolation: isolate;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+    min-height: clamp(570px, 50vw, 760px);
+    gap: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #050b0c;
+    border-bottom: 1px solid var(--rule);
+}
+.paranormal-page .paranormal-hero::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: radial-gradient(ellipse at 73% 42%, #17534d 0%, #0d2325 35%, transparent 69%);
+    opacity: .7;
+}
+.paranormal-page .paranormal-hero .after-dark-mark {
+    position: absolute;
+    z-index: -1;
+    grid-area: auto;
+    top: 50%;
+    right: max(0px, calc((100vw - 1510px) / 2));
+    width: min(63vw, 830px);
+    max-width: none;
+    transform: translateY(-50%);
+    mask-image: radial-gradient(ellipse at 51% 49%, #000 34%, #000b 53%, transparent 74%);
+    animation: none;
+}
+.paranormal-page .paranormal-hero .paranormal-hero-content {
+    width: min(100% - 2 * var(--gutter), 1290px);
+    padding-block: 42px;
+    text-align: left;
+}
+.paranormal-page .paranormal-hero .eyebrow,
+.paranormal-page .paranormal-investigations .eyebrow,
+.paranormal-page .paranormal-channels .eyebrow {
+    color: var(--signal);
+    font-weight: 750;
+    font-size: .73rem;
+    letter-spacing: .16em;
+}
+.paranormal-page .paranormal-hero h1 {
+    margin: 12px 0 24px;
+    font: 400 clamp(4.7rem, 10vw, 10rem)/.76 Georgia, serif;
+    letter-spacing: -.072em;
+    text-shadow: 0 5px 26px #010404;
+}
+.paranormal-page .paranormal-hero h1 span { color: #f3f4eb; }
+.paranormal-hero h1 em { display: block; margin-left: .37em; color: var(--signal); }
+.paranormal-page .paranormal-hero p { max-width: 38ch; margin: 0; color: var(--ink); line-height: 1.55; }
+.paranormal-page .paranormal-hero .hero-actions { gap: 8px 12px; margin-top: 24px; }
+.paranormal-page .paranormal-hero .hero-actions a {
+    flex: 0 1 auto;
+    min-height: 44px;
+    padding: 8px 12px;
+    border-radius: 0;
+    font-size: .85rem;
+}
+.paranormal-page .paranormal-hero .hero-actions .primary {
+    gap: 10px;
+    color: #082421;
+    background: var(--signal);
+    border-color: var(--signal);
+}
+.paranormal-page .paranormal-hero .hero-actions .secondary { background: #101e20; color: var(--ink); }
+.paranormal-page main :focus-visible { outline: 2px solid var(--signal); outline-offset: 4px; }
+
+.paranormal-page .paranormal-investigations,
+.paranormal-page .paranormal-channels { padding-block: clamp(32px, 6vw, 90px); }
+.paranormal-page .paranormal-investigations { background: #101a1c; scroll-margin-top: 90px; }
+.paranormal-page :is(.paranormal-investigations, .paranormal-channels) .section-heading {
+    width: 100%;
+    max-width: 64ch;
+    margin: 0 0 clamp(16px, 3vw, 34px);
+    text-align: left;
+}
+.paranormal-page :is(.paranormal-investigations, .paranormal-channels) h2 {
+    margin: 6px 0 14px;
+    font: 400 clamp(2.65rem, 6vw, 6rem)/.92 Georgia, serif;
+    letter-spacing: -.055em;
+    color: var(--ink);
+}
+.paranormal-page :is(.paranormal-investigations, .paranormal-channels) h2 span { color: var(--signal); }
+.paranormal-page :is(.paranormal-investigations, .paranormal-channels) p { color: var(--muted); }
+.investigation-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: clamp(18px, 4vw, 56px);
+    align-items: start;
+}
+.paranormal-location { margin: 0; border: 1px solid var(--rule); }
+.paranormal-location img { display: block; width: 100%; height: auto; }
+.paranormal-location figcaption {
+    padding: 10px 12px;
+    color: var(--muted);
+    background: #0a1416;
+    font-size: .84rem;
+}
+.paranormal-page .investigation-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
+.paranormal-page .investigation-card {
+    padding: 13px 0 17px;
+    background: transparent;
+    border: 0;
+    border-top: 1px solid var(--rule);
+    border-radius: 0;
+    box-shadow: none;
+    text-align: left;
+}
+.paranormal-page .investigation-card h3 { margin: 0 0 5px; font: 400 clamp(1.45rem, 2.6vw, 2.5rem)/1.05 Georgia, serif; color: var(--ink); }
+.paranormal-page .investigation-card p { margin: 0; line-height: 1.5; }
+.paranormal-page .after-dark-soundtrack {
+    padding-block: clamp(36px, 7vw, 96px);
+    background: radial-gradient(ellipse at 16% 40%, #142c2b, #070d10 61%);
+    border-color: var(--rule);
+    scroll-margin-top: 90px;
+}
+.paranormal-page .after-dark-record { gap: clamp(20px, 6vw, 100px); }
+.paranormal-page .after-dark-record h2 { font-size: clamp(2.5rem, 6vw, 6.5rem); }
+.paranormal-page .after-dark-record-art { border-color: var(--rule); }
+.paranormal-page .after-dark-knocks {
+    padding-inline: 14px;
+    width: min(100%, 310px);
+    height: 42px;
+    background: #102023;
+    border: 1px solid var(--rule);
+    gap: 12px;
+}
+.paranormal-page .after-dark-knocks i { width: 3px; height: 53%; }
+.paranormal-page .after-dark-knocks i:last-child { margin-left: 23px; width: 64px; height: 3px; }
+.paranormal-page .paranormal-channels { background: #101a1c; }
+.paranormal-page .paranormal-social { padding-top: 0; }
+.paranormal-page .paranormal-channels .hero-actions { justify-content: flex-start; }
+.paranormal-page .tiktok-preview {
+    width: min(100%, 430px);
+    background: #0a1416;
+    border: 1px solid var(--rule);
+}
+.paranormal-page .tiktok-preview summary { min-height: 44px; padding: 10px 14px; color: var(--signal); cursor: pointer; }
+.paranormal-page .tiktok-preview .tiktok-embed,
+.paranormal-page .tiktok-preview iframe { width: 100% !important; max-width: 100% !important; min-width: 0 !important; margin: 0 !important; }
+.paranormal-page .tiktok-preview blockquote > section { padding: 12px 14px; }
+.paranormal-page .home-cta { padding-block: clamp(28px, 5vw, 65px); }
+
+@media (max-width: 800px) {
+    .paranormal-page .paranormal-hero.division-opening { align-items: end; min-height: 0; }
+    .paranormal-page .paranormal-hero .after-dark-mark {
+        top: 0;
+        right: 50%;
+        width: min(116vw, 630px);
+        transform: translate(50%, -17%);
+    }
+    .paranormal-page .paranormal-hero::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        background: linear-gradient(transparent 25%, #050b0c28 37%, #050b0ce6 58%, #050b0c 68%);
+        pointer-events: none;
+    }
+    .paranormal-page .paranormal-hero::before {
+        background: radial-gradient(ellipse at 50% 19%, #17534d, #0c2123 32%, transparent 67%);
+    }
+    .paranormal-page .paranormal-hero .paranormal-hero-content {
+        padding-block: clamp(210px, 61vw, 350px) 28px;
+    }
+    .paranormal-page .paranormal-hero h1 { font-size: clamp(4.2rem, 17vw, 7.3rem); }
+    .paranormal-page .paranormal-hero .hero-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .paranormal-page .paranormal-hero .hero-actions a {
+        width: 100%;
+        padding-inline: 8px;
+        justify-content: center;
+        text-align: center;
+        white-space: normal;
+        font-size: .8rem;
+    }
+    .paranormal-page .paranormal-hero .hero-actions .primary { gap: 5px; }
+    .investigation-layout { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: no-preference) {
+    .paranormal-page .paranormal-hero::before { animation: after-dark-light 4s ease-out both; }
+    @keyframes after-dark-light {
+        from { opacity: .43; }
+        to { opacity: .7; }
+    }
+}
