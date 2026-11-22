@@ -135,193 +135,18 @@
          CONTACT PAGE STYLES
     ====================================================== -->
 
-    <style>
 
-        .contact-introduction {
-            width: min(720px, 100%);
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-options {
-            width: min(1100px, 100%);
-            margin: 0 auto;
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, minmax(0, 1fr));
-
-            gap: 18px;
-        }
-
-        .contact-option {
-            min-width: 0;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            padding: 32px 22px;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.10);
-
-            border-radius: 10px;
-
-            background:
-                rgba(4,7,12,0.55);
-
-            text-align: center;
-
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-
-            transition:
-                transform 250ms ease,
-                border-color 250ms ease,
-                background 250ms ease,
-                box-shadow 250ms ease;
-        }
-
-        .contact-option:hover {
-            transform: translateY(-5px);
-
-            background:
-                rgba(7,10,16,0.72);
-        }
-
-
-        /* SKYLINE */
-
-        .contact-option.skyline-contact {
-            border-color:
-                rgba(0,174,255,0.24);
-        }
-
-        .contact-option.skyline-contact:hover {
-            border-color:
-                rgba(0,174,255,0.55);
-
-            box-shadow:
-                0 20px 55px
-                rgba(0,140,255,0.10);
-        }
-
-
-        /* PARANORMAL */
-
-        .contact-option.paranormal-contact {
-            border-color:
-                rgba(190,30,40,0.22);
-        }
-
-        .contact-option.paranormal-contact:hover {
-            border-color:
-                rgba(220,45,55,0.55);
-
-            box-shadow:
-                0 20px 55px
-                rgba(180,25,35,0.10);
-        }
-
-
-        /* GENERAL MEDIA */
-
-        .contact-option.media-contact {
-            border-color:
-                rgba(201,164,91,0.24);
-        }
-
-        .contact-option.media-contact:hover {
-            border-color:
-                rgba(201,164,91,0.55);
-
-            box-shadow:
-                0 20px 55px
-                rgba(201,164,91,0.10);
-        }
-
-
-        .contact-option-icon {
-            margin-bottom: 14px;
-
-            font-size: 2rem;
-
-            line-height: 1;
-        }
-
-        .skyline-contact
-        .contact-option-icon {
-            color: #4ecfff;
-        }
-
-        .paranormal-contact
-        .contact-option-icon {
-            color: #ff5d67;
-        }
-
-        .media-contact
-        .contact-option-icon {
-            color: #c9a45b;
-        }
-
-
-        .contact-option h2 {
-            margin-bottom: 12px;
-
-            font-size:
-                clamp(1.15rem, 2.5vw, 1.55rem);
-        }
-
-        .contact-option h2 span {
-            display: block;
-
-            margin-top: 4px;
-        }
-
-        .contact-option p {
-            width: 100%;
-
-            margin:
-                0 auto 24px;
-
-            color:
-                rgba(244,247,250,0.68);
-
-            font-size: 0.86rem;
-
-            line-height: 1.7;
-        }
-
-        .contact-option .button {
-            margin-top: auto;
-        }
-
-
-        /* MOBILE */
-
-        @media (max-width: 900px) {
-
-            .contact-options {
-                grid-template-columns:
-                    1fr;
-            }
-
-        }
-
-    </style>
 
     <link rel="stylesheet" href="studio.css?v=2">
     <link rel="stylesheet" href="editorial.css?v=4">
     <script src="editorial.js" defer></script>
+    <link rel="stylesheet" href="studio-pages.css">
 </head>
 
 
 <body
     id="top"
-    class="contact-page"
+    class="contact-page studio-page"
 >
 
 
@@ -361,7 +186,13 @@
      CONTACT HERO
 ===================================================== -->
 
-<section class="contact-hero division-opening" data-lens="contact">
+<section class="contact-hero division-opening studio-opening" data-lens="contact" aria-labelledby="contact-title">
+    <figure class="studio-opening-image">
+        <img src="media/photography/gloucester-04-960.webp"
+             srcset="media/photography/gloucester-04-480.webp 480w, media/photography/gloucester-04-960.webp 960w, media/photography/gloucester-04-1440.webp 1440w"
+             sizes="(max-width: 760px) 94vw, 55vw" width="960" height="540" alt="An aerial view across Gloucester" fetchpriority="high">
+        <figcaption>An aerial view across Gloucester · NEWITT Skyline Media</figcaption>
+    </figure>
 
     <div class="container contact-hero-content">
 
@@ -376,12 +207,11 @@
             DIRECT CONTACT
         </div>
 
-        <h1>
+        <h1 id="contact-title">
             Get in
-            <span>Touch.</span>
+            <em>Touch.</em>
         </h1>
 
-        <div class="hero-rule"></div>
 
         <div class="contact-introduction">
 
@@ -390,6 +220,11 @@
                 you want to contact.
             </p>
 
+        </div>
+
+        <div class="hero-actions studio-actions">
+            <a class="button primary" href="mailto:Ian.newitt@gmail.com">Email NEWITT Media <span aria-hidden="true">↗</span></a>
+            <a class="button secondary" href="#contact-options">Explore contact options <span aria-hidden="true">↓</span></a>
         </div>
 
     </div>
@@ -401,9 +236,10 @@
      THREE CONTACT OPTIONS
 ===================================================== -->
 
-<section>
+<section class="contact-directory" id="contact-options" tabindex="-1" aria-labelledby="directory-title">
 
     <div class="container">
+        <h2 id="directory-title">Contact the right team.</h2>
 
         <div class="contact-options">
 
@@ -416,21 +252,14 @@
                 class="contact-option skyline-contact"
             >
 
-                <div
-                    class="contact-option-icon"
-                    aria-hidden="true"
-                >
-                    ◈
-                </div>
-
                 <div class="eyebrow">
                     AERIAL MEDIA
                 </div>
 
-                <h2>
+                <h3>
                     NEWITT
                     <span>Skyline Media</span>
-                </h2>
+                </h3>
 
                 <p>
                     Aerial photography, drone cinematography,
@@ -456,21 +285,14 @@
                 class="contact-option paranormal-contact"
             >
 
-                <div
-                    class="contact-option-icon"
-                    aria-hidden="true"
-                >
-                    ◉
-                </div>
-
                 <div class="eyebrow">
                     PARANORMAL
                 </div>
 
-                <h2>
+                <h3>
                     NEWITT's
                     <span>Paranormal Adventures</span>
-                </h2>
+                </h3>
 
                 <p>
                     Paranormal investigations, haunted locations,
@@ -496,21 +318,14 @@
                 class="contact-option media-contact"
             >
 
-                <div
-                    class="contact-option-icon"
-                    aria-hidden="true"
-                >
-                    ◆
-                </div>
-
                 <div class="eyebrow">
                     NEWITT MEDIA
                 </div>
 
-                <h2>
+                <h3>
                     NEWITT
                     <span>Media</span>
-                </h2>
+                </h3>
 
                 <p>
                     General enquiries, collaborations,

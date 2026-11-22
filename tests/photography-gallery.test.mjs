@@ -128,6 +128,11 @@ test('only deliberate single-finger horizontal swipes move the photo in either v
     stage.fire('touchmove', { cancelable: true, touches: [point(100, 102), point(195, 110, 2)] });
     end(stage, point(50, 102));
     assert.equal(galleryCount.textContent, '02 / 04');
+    start(stage);
+    assert.equal(stage.fire('touchmove', { cancelable: true, touches: [point(179, 128)] }).defaultPrevented, false);
+    assert.equal(stage.fire('touchmove', { cancelable: true, touches: [point(64, 133)] }).defaultPrevented, false);
+    end(stage, point(48, 133));
+    assert.equal(galleryCount.textContent, '02 / 04');
     opener.fire('click');
     start(viewerStage);
     end(viewerStage, point(260, 103));

@@ -55,23 +55,28 @@
 
     function bindSwipe(surface) {
         let start;
+        let direction;
         const delta = touch => ({ x: touch.clientX - start.clientX, y: touch.clientY - start.clientY });
         const horizontal = ({ x, y }) => Math.abs(x) > Math.abs(y) * 1.35;
 
         surface.addEventListener('touchstart', event => {
             start = event.touches.length === 1 ? event.touches[0] : undefined;
+            direction = undefined;
         }, { passive: true });
         surface.addEventListener('touchmove', event => {
             if (event.touches.length !== 1) start = undefined;
-            if (!start || !event.cancelable) return;
+            if (!start) return;
             const movement = delta(event.touches[0]);
-            if (Math.abs(movement.x) > 12 && horizontal(movement)) event.preventDefault();
+            if (!direction && Math.max(Math.abs(movement.x), Math.abs(movement.y)) >= 12) {
+                direction = horizontal(movement) ? 'horizontal' : 'vertical';
+            }
+            if (direction === 'horizontal' && event.cancelable) event.preventDefault();
         }, { passive: false });
         surface.addEventListener('touchend', event => {
             const touch = Array.from(event.changedTouches).find(point => point.identifier === start?.identifier);
             const movement = touch && delta(touch);
             start = undefined;
-            if (movement && !event.touches.length && Math.abs(movement.x) >= 36 && horizontal(movement)) {
+            if (direction !== 'vertical' && movement && !event.touches.length && Math.abs(movement.x) >= 36 && horizontal(movement)) {
                 showPhoto(current + (movement.x < 0 ? 1 : -1));
             }
         }, { passive: true });
