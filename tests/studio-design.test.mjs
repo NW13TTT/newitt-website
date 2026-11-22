@@ -106,3 +106,17 @@ test('forthcoming paranormal soundtrack uses the original artwork and exposes no
     assert.doesNotMatch(feature, /<(?:audio|iframe|button)\b/);
     assert.match(paranormal, /href="#original-soundtracks"/);
 });
+
+test('cinematic openings retain direct chapter navigation and responsive aerial images', () => {
+    const home = read('index.html');
+    const skyline = read('skyline.html');
+    for (const [page, ids] of [[home, ['worlds', 'home-soundtrack']], [skyline, ['skyline-films', 'skyline-soundtracks']]]) {
+        assert.match(page, /href="cinematic\.css"/);
+        for (const id of ids) {
+            assert.match(page, new RegExp(`href="#${id}"`));
+            assert.match(page, new RegExp(`id="${id}" tabindex="-1"`));
+        }
+    }
+    assert.match(skyline, /class="studio-hero-image"[\s\S]*?gloucester-01-480\.webp 480w[\s\S]*?fetchpriority="high"/);
+    assert.match(skyline, /href="https:\/\/www\.youtube\.com\/@Newitt-skyline-media"/);
+});

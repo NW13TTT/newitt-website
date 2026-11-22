@@ -565,6 +565,7 @@
     <script src="editorial.js" defer></script>
     <link rel="stylesheet" href="moonlit.css?v=3">
     <script src="moonlit.js?v=2" defer></script>
+    <link rel="stylesheet" href="cinematic.css">
 </head>
 
 
@@ -610,8 +611,10 @@
      SKYLINE HERO
 ===================================================== -->
 
-<section class="skyline-hero division-opening" data-lens="skyline">
-    <img class="studio-hero-image" src="media/skyline/Gloucester-prison-aerial-01.webp" alt="" fetchpriority="high">
+<section class="skyline-hero division-opening" data-lens="skyline" aria-labelledby="skyline-opening-title">
+    <img class="studio-hero-image" src="media/photography/gloucester-01-960.webp"
+         srcset="media/photography/gloucester-01-480.webp 480w, media/photography/gloucester-01-960.webp 960w, media/photography/gloucester-01-1440.webp 1440w"
+         sizes="(max-width: 600px) 850px, 100vw" width="960" height="540" alt="" fetchpriority="high">
 
     <div class="container skyline-hero-content">
 
@@ -625,7 +628,7 @@
             NEWITT Skyline Media
         </div>
 
-        <h1>
+        <h1 id="skyline-opening-title">
             From <span>Above.</span>
         </h1>
 
@@ -635,12 +638,13 @@
         </p>
 
         <div class="hero-actions">
+            <a class="button primary" href="#skyline-films">Explore Skyline films <span aria-hidden="true">↓</span></a>
 
             <a
                 href="https://www.tiktok.com/@newittskylinemedia"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="button primary"
+                class="button secondary"
             >
                 Follow on TikTok
             </a>
@@ -660,12 +664,31 @@
     </div>
 
 </section>
+<section class="skyline-screening" id="skyline-films" tabindex="-1" aria-labelledby="skyline-films-title">
+    <div class="container skyline-screening-layout">
+        <figure>
+            <img src="media/photography/gloucester-04-960.webp"
+                 srcset="media/photography/gloucester-04-480.webp 480w, media/photography/gloucester-04-960.webp 960w, media/photography/gloucester-04-1440.webp 1440w"
+                 sizes="(max-width: 760px) 94vw, 55vw" width="960" height="540" loading="lazy" decoding="async" alt="An aerial view across Gloucester">
+            <figcaption>An aerial view across Gloucester · NEWITT Skyline Media</figcaption>
+        </figure>
+        <div>
+            <p class="eyebrow">NEWITT Skyline Media</p>
+            <h2 id="skyline-films-title">Aerial films.</h2>
+            <p>Explore Skyline’s drone films, aerial photography and original soundtrack.</p>
+            <div class="premiere-actions">
+                <a class="editorial-action" href="https://www.youtube.com/@Newitt-skyline-media">Watch Skyline on YouTube <span aria-hidden="true">↗</span></a>
+                <a class="premiere-link" href="#gloucester-prison">Explore the Gloucester Prison gallery</a>
+            </div>
+        </div>
+    </div>
+</section>
 <section class="photo-reel skyline-reel" aria-label="Gloucester Prison photographs" data-photo-reel>
     <div class="reel-track" tabindex="0" aria-label="Photographs. Swipe or use the arrow keys.">
-        <figure><img src="media/skyline/Gloucester-prison-aerial-01.webp" alt="Gloucester Prison and the surrounding city" width="2400" height="1350" loading="lazy" decoding="async"><figcaption>Gloucester Prison and the surrounding city</figcaption></figure>
-        <figure><img src="media/skyline/Gloucester-prison-aerial-02.webp" alt="Gloucester Prison from a second aerial perspective" width="2400" height="1350" loading="lazy" decoding="async"><figcaption>Gloucester Prison from a second aerial perspective</figcaption></figure>
-        <figure><img src="media/skyline/Gloucester-prison-aerial-03.webp" alt="The prison grounds and neighbouring streets" width="2400" height="1350" loading="lazy" decoding="async"><figcaption>The prison grounds and neighbouring streets</figcaption></figure>
-        <figure><img src="media/skyline/Gloucester-prison-aerial-04.webp" alt="An aerial view across Gloucester" width="2400" height="1350" loading="lazy" decoding="async"><figcaption>An aerial view across Gloucester</figcaption></figure>
+        <figure><img src="media/skyline/Gloucester-prison-aerial-01.webp" alt="Gloucester Prison and the surrounding city" width="2400" height="1350" loading="lazy" decoding="async" srcset="media/photography/gloucester-01-480.webp 480w, media/photography/gloucester-01-960.webp 960w, media/photography/gloucester-01-1440.webp 1440w" sizes="(max-width: 760px) 94vw, min(94vw, 1260px)"><figcaption>Gloucester Prison and the surrounding city</figcaption></figure>
+        <figure><img src="media/skyline/Gloucester-prison-aerial-02.webp" alt="Gloucester Prison from a second aerial perspective" width="2400" height="1350" loading="lazy" decoding="async" srcset="media/photography/gloucester-02-480.webp 480w, media/photography/gloucester-02-960.webp 960w, media/photography/gloucester-02-1440.webp 1440w" sizes="(max-width: 760px) 94vw, min(94vw, 1260px)"><figcaption>Gloucester Prison from a second aerial perspective</figcaption></figure>
+        <figure><img src="media/skyline/Gloucester-prison-aerial-03.webp" alt="The prison grounds and neighbouring streets" width="2400" height="1350" loading="lazy" decoding="async" srcset="media/photography/gloucester-03-480.webp 480w, media/photography/gloucester-03-960.webp 960w, media/photography/gloucester-03-1440.webp 1440w" sizes="(max-width: 760px) 94vw, min(94vw, 1260px)"><figcaption>The prison grounds and neighbouring streets</figcaption></figure>
+        <figure><img src="media/skyline/Gloucester-prison-aerial-04.webp" alt="An aerial view across Gloucester" width="2400" height="1350" loading="lazy" decoding="async" srcset="media/photography/gloucester-04-480.webp 480w, media/photography/gloucester-04-960.webp 960w, media/photography/gloucester-04-1440.webp 1440w" sizes="(max-width: 760px) 94vw, min(94vw, 1260px)"><figcaption>An aerial view across Gloucester</figcaption></figure>
     </div>
     <div class="reel-bar">
         <a href="#gloucester-prison">View full-size gallery ↘</a>
@@ -757,7 +780,7 @@
                         src="media/skyline/Gloucester-prison-aerial-01.webp"
                         alt="Gloucester Prison aerial view 1"
                         loading="lazy"
-                    >
+                     srcset="media/photography/gloucester-01-480.webp 480w, media/photography/gloucester-01-960.webp 960w, media/photography/gloucester-01-1440.webp 1440w" sizes="(max-width: 760px) 94vw, min(94vw, 1260px)">
 
                     <span class="skyline-gallery-caption">
                         Gloucester Prison • Aerial View 01
@@ -781,7 +804,7 @@
                         src="media/skyline/Gloucester-prison-aerial-02.webp"
                         alt="Gloucester Prison aerial view 2"
                         loading="lazy"
-                    >
+                     srcset="media/photography/gloucester-02-480.webp 480w, media/photography/gloucester-02-960.webp 960w, media/photography/gloucester-02-1440.webp 1440w" sizes="(max-width: 760px) 94vw, min(94vw, 1260px)">
 
                     <span class="skyline-gallery-caption">
                         Gloucester Prison • Aerial View 02
@@ -805,7 +828,7 @@
                         src="media/skyline/Gloucester-prison-aerial-03.webp"
                         alt="Gloucester Prison aerial view 3"
                         loading="lazy"
-                    >
+                     srcset="media/photography/gloucester-03-480.webp 480w, media/photography/gloucester-03-960.webp 960w, media/photography/gloucester-03-1440.webp 1440w" sizes="(max-width: 760px) 94vw, min(94vw, 1260px)">
 
                     <span class="skyline-gallery-caption">
                         Gloucester Prison • Aerial View 03
@@ -829,7 +852,7 @@
                         src="media/skyline/Gloucester-prison-aerial-04.webp"
                         alt="Gloucester Prison aerial view 4"
                         loading="lazy"
-                    >
+                     srcset="media/photography/gloucester-04-480.webp 480w, media/photography/gloucester-04-960.webp 960w, media/photography/gloucester-04-1440.webp 1440w" sizes="(max-width: 760px) 94vw, min(94vw, 1260px)">
 
                     <span class="skyline-gallery-caption">
                         Gloucester Prison • Aerial View 04
@@ -852,9 +875,11 @@
 </section>
 
 
-<section class="skyline-music" id="skyline-soundtracks" aria-labelledby="skyline-music-title">
+<section class="skyline-music" id="skyline-soundtracks" tabindex="-1" aria-labelledby="skyline-music-title">
     <div class="container">
         <div class="skyline-music-panel"><div class="soundtrack-title"><p class="signature-section-label">Original soundtrack / 14 tracks</p>
+            <img class="skyline-soundtrack-cover" src="media/soundtracks/beyond-the-skyline.jpg" width="820" height="820"
+                 alt="Beyond The Skyline cover artwork" loading="lazy" decoding="async">
             <p class="skyline-music-artist">NEWITT MEDIA</p>
             <h2 id="skyline-music-title">BEYOND THE <span>SKYLINE</span></h2>
             <p class="skyline-music-subtitle">The Original Soundtrack of NEWITT Skyline Media</p>
