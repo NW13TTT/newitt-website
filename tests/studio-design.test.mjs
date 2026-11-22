@@ -58,7 +58,7 @@ test('division heroes have neutral backgrounds and no former colour overlays', (
 test('all public pages expose the studio index and have the editorial assets', () => {
     for (const route of routes) {
         const html = read(route + '.html');
-        assert.match(html, /href="editorial\.css\?v=3"/);
+        assert.match(html, /href="editorial\.css\?v=4"/);
         assert.match(html, /src="editorial.js" defer/);
         assert.match(html, /<dialog id="editorial-menu"/);
         assert.match(html, /<form method="dialog">/);

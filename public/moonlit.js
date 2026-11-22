@@ -5,11 +5,18 @@ for (const reel of document.querySelectorAll('[data-photo-reel]')) {
     const slides = [...track.children];
     const controls = reel.querySelector('.reel-controls');
     const counter = reel.querySelector('.reel-count');
-    const current = () => Math.round(track.scrollLeft / (track.clientWidth || 1));
+    const current = () => {
+        const index = Math.round(track.scrollLeft / (track.clientWidth || 1));
+        return Math.min(slides.length - 1, Math.max(0, index));
+    };
 
     const show = index => {
         const next = (index + slides.length) % slides.length;
-        track.scrollTo({ left: slides[next].offsetLeft, behavior: reduceMotion.matches ? 'instant' : 'smooth' });
+        const wraps = next !== index;
+        track.scrollTo({
+            left: slides[next].offsetLeft,
+            behavior: wraps || reduceMotion.matches ? 'instant' : 'smooth'
+        });
     };
 
     track.addEventListener('scroll', () => {
