@@ -2,6 +2,7 @@ import { createHandler } from './worker.mjs';
 import page from './public/index.html';
 import admin from './public/admin.html';
 import styles from './public/explorer.css';
+import showcaseStyles from './public/flight-showcase.css';
 import explorer from './public/explorer.js';
 import moderation from './public/admin.js';
 import skylineLinks from './public/skyline-links.html';
@@ -13,6 +14,7 @@ const files = new Map([
   ['index.html', [page, 'text/html; charset=utf-8']],
   ['admin.html', [admin, 'text/html; charset=utf-8']],
   ['explorer.css', [styles, 'text/css; charset=utf-8']],
+  ['flight-showcase.css', [showcaseStyles, 'text/css; charset=utf-8']],
   ['explorer.js', [explorer, 'text/javascript; charset=utf-8']],
   ['admin.js', [moderation, 'text/javascript; charset=utf-8']],
   ['media/green-acres.webp', [greenAcres, 'image/webp']],
@@ -48,9 +50,14 @@ async function approvedSite(request) {
   if (!/^\/skyline(?:\.html|\/)?$/.test(url.pathname) || !live.ok || request.method !== 'GET') return result;
   result.headers.delete('content-length');
   result.headers.delete('etag');
-  return new HTMLRewriter().on('#skyline-films', {
-    element(section) { section.before(skylineLinks, { html: true }); }
-  }).transform(result);
+  return new HTMLRewriter()
+    .on('head', {
+      element(head) { head.append('<link rel="stylesheet" href="/skyline-explorer/flight-showcase.css">', { html: true }); }
+    })
+    .on('section[aria-label="Skyline Explorer"]', {
+      element(section) { section.replace(skylineLinks.trimEnd(), { html: true }); }
+    })
+    .transform(result);
 }
 
 export default { fetch: createHandler(serve, approvedSite) };

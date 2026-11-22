@@ -50,7 +50,7 @@ function setupMap(name, items, select) {
   };
 }
 
-function setupArchive(name, items, details) {
+function setupArchive(name, items, details, initialId) {
   const list = get(name + '-list');
   const card = get(name + '-card');
   const buttons = new Map();
@@ -92,6 +92,8 @@ function setupArchive(name, items, details) {
   });
   get(name + '-status').textContent = items.length ? '' :
     name === 'flight' ? 'No flights are available.' : 'There are no approved destinations yet. Suggest the first one below.';
+  const initialItem = items.find(item => item.id === initialId);
+  if (initialItem) select(initialItem);
 }
 
 function flightDetails(flights) {
@@ -198,7 +200,8 @@ form.addEventListener('submit', async event => {
 async function start() {
   try {
     const { flights, destinations } = await api('explore');
-    setupArchive('flight', flights, flightDetails(flights));
+    const flight = new URLSearchParams(location.search).get('flight');
+    setupArchive('flight', flights, flightDetails(flights), flight);
     setupArchive('next', destinations, destinationDetails);
   } catch (error) {
     for (const name of ['flight', 'next']) {
@@ -208,6 +211,6 @@ async function start() {
   }
   const anchors = { flights: 'flights', next: 'next' };
   const section = anchors[location.pathname.split('/').filter(Boolean).at(-1)];
-  if (section && !location.hash) get(section).scrollIntoView();
+  if (section && !location.hash && get('flight-card').hidden) get(section).scrollIntoView();
 }
 start();

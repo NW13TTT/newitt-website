@@ -563,6 +563,7 @@
     <link rel="stylesheet" href="studio.css?v=2">
     <link rel="stylesheet" href="editorial.css?v=3">
     <script src="editorial.js" defer></script>
+    <link rel="stylesheet" href="/skyline-explorer/flight-showcase.css">
 </head>
 
 
@@ -664,11 +665,61 @@
      ABOUT SKYLINE
 ===================================================== -->
 
-<section aria-label="Skyline Explorer" class="container" style="padding:2rem 0">
-    <p class="eyebrow">NEWITT Skyline Explorer</p>
-    <div class="hero-actions">
-        <a class="button primary" href="/skyline-explorer/flights">Explore our flights</a>
-        <a class="button secondary" href="/skyline-explorer/next">You choose. We fly.</a>
+<section class="flight-showcase" id="explore-flights" aria-labelledby="flight-showcase-title">
+    <div class="flight-showcase-inner">
+        <header class="flight-showcase-header">
+            <div>
+                <p class="flight-showcase-eyebrow">NEWITT Skyline Explorer</p>
+                <h2 id="flight-showcase-title">Explore our <em>flights.</em></h2>
+            </div>
+            <p>From the fields of Herefordshire to the rooftops of Gloucester. Pick a location to open its film, aerial imagery and place on the map.</p>
+        </header>
+        <ul class="flight-showcase-grid">
+            <li>
+                <a class="flight-showcase-card" href="/skyline-explorer/flights?flight=green-acres#flights" aria-labelledby="showcase-green-acres">
+                    <img src="/skyline-explorer/media/green-acres.webp" width="560" height="316" alt="" loading="lazy" decoding="async">
+                    <span class="flight-showcase-caption">
+                        <span class="flight-showcase-location">Lea, Herefordshire</span>
+                        <span class="flight-showcase-name" id="showcase-green-acres">Green Acres Glamping</span>
+                    </span>
+                    <span class="flight-showcase-arrow" aria-hidden="true">↗</span>
+                </a>
+            </li>
+            <li>
+                <a class="flight-showcase-card" href="/skyline-explorer/flights?flight=brockworth#flights" aria-labelledby="showcase-brockworth">
+                    <img src="/skyline-explorer/media/brockworth.webp" width="560" height="316" alt="" loading="lazy" decoding="async">
+                    <span class="flight-showcase-caption">
+                        <span class="flight-showcase-location">Brockworth, Gloucestershire</span>
+                        <span class="flight-showcase-name" id="showcase-brockworth">Brockworth &amp; Coopers Edge</span>
+                    </span>
+                    <span class="flight-showcase-arrow" aria-hidden="true">↗</span>
+                </a>
+            </li>
+            <li>
+                <a class="flight-showcase-card" href="/skyline-explorer/flights?flight=gloucester-prison#flights" aria-labelledby="showcase-gloucester">
+                    <img src="/media/photography/gloucester-01-960.webp" width="960" height="540" alt="" loading="lazy" decoding="async">
+                    <span class="flight-showcase-caption">
+                        <span class="flight-showcase-location">Gloucester, Gloucestershire</span>
+                        <span class="flight-showcase-name" id="showcase-gloucester">Gloucester Prison</span>
+                    </span>
+                    <span class="flight-showcase-arrow" aria-hidden="true">↗</span>
+                </a>
+            </li>
+            <li>
+                <a class="flight-showcase-card" href="/skyline-explorer/flights?flight=ancient-ram-inn#flights" aria-labelledby="showcase-ram-inn">
+                    <img src="/skyline-explorer/media/ancient-ram-inn.webp" width="560" height="316" alt="" loading="lazy" decoding="async">
+                    <span class="flight-showcase-caption">
+                        <span class="flight-showcase-location">Wotton-under-Edge, Gloucestershire</span>
+                        <span class="flight-showcase-name" id="showcase-ram-inn">Ancient Ram Inn</span>
+                    </span>
+                    <span class="flight-showcase-arrow" aria-hidden="true">↗</span>
+                </a>
+            </li>
+        </ul>
+        <div class="flight-showcase-actions">
+            <a class="flight-showcase-map" href="/skyline-explorer/flights">Explore the Full Flight Map <span aria-hidden="true">↗</span></a>
+            <a class="flight-showcase-next" href="/skyline-explorer/next">Where Shall We Fly Next? <span aria-hidden="true">↗</span></a>
+        </div>
     </div>
 </section>
 <section class="about">

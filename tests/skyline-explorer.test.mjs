@@ -123,3 +123,16 @@ test('limits repeat submissions and supports adding and editing verified flights
   assert.equal(flights.length, 5);
   assert.equal(flights.find(item => item.id === flight.id).name, 'Test flight edit');
 });
+
+test('Skyline showcases each verified flight and keeps both Explorer destinations available', async () => {
+  const { request } = setup();
+  const { flights } = await (await request('/api/explore')).json();
+  const markup = readFileSync(new URL('../explorer/public/skyline-links.html', import.meta.url), 'utf8');
+  const skyline = readFileSync(new URL('../public/skyline.html', import.meta.url), 'utf8');
+  const locations = [...markup.matchAll(/href="\/skyline-explorer\/flights\?flight=([a-z-]+)#flights"/g)];
+  assert.deepEqual(locations.map(match => match[1]).sort(), flights.map(flight => flight.id).sort());
+  assert.ok(flights.every(flight => markup.includes(new URL(flight.photo, base).pathname)));
+  assert.ok(markup.includes('href="/skyline-explorer/flights">Explore the Full Flight Map'));
+  assert.ok(markup.includes('href="/skyline-explorer/next">Where Shall We Fly Next?'));
+  assert.ok(skyline.includes(markup.trim()));
+});
