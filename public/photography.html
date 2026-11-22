@@ -331,7 +331,7 @@
                 blur(8px);
         }
 
-        .photography-lightbox.active {
+        .photography-lightbox[open] {
             display: flex;
         }
 
@@ -421,8 +421,8 @@
     <link rel="stylesheet" href="studio.css?v=2">
     <link rel="stylesheet" href="editorial.css?v=4">
     <script src="editorial.js" defer></script>
-    <link rel="stylesheet" href="moonlit.css?v=3">
-    <script src="moonlit.js?v=2" defer></script>
+    <link rel="stylesheet" href="moonlit.css?v=4">
+    <script src="moonlit.js?v=3" defer></script>
 </head>
 
 
@@ -479,8 +479,8 @@
 
 
         <h1>
-            Through the
-            <span>Lens.</span>
+            <span>Through</span>
+            <span>the Lens.</span>
         </h1>
 
 
@@ -527,7 +527,8 @@
 
 </section>
 
-<section class="photo-reel photography-reel" aria-label="Gloucester Prison photographs" data-photo-reel>
+<section class="photo-reel photography-reel" aria-labelledby="photography-reel-title" data-photo-reel>
+    <h2 id="photography-reel-title">Gloucester Prison</h2>
     <div class="reel-track" tabindex="0" role="group" aria-label="Photographs. Swipe or use the arrow keys.">
         <figure><img src="media/photography/gloucester-02-960.webp" srcset="media/photography/gloucester-02-480.webp 480w, media/photography/gloucester-02-960.webp 960w, media/photography/gloucester-02-1440.webp 1440w" sizes="(max-width: 860px) calc(100vw - 32px), (max-width: 1540px) 55vw, 800px" alt="Gloucester Prison from a second aerial perspective" width="2400" height="1350" fetchpriority="high" decoding="async"><figcaption>Gloucester Prison from a second aerial perspective</figcaption></figure>
         <figure><img src="media/photography/gloucester-01-960.webp" srcset="media/photography/gloucester-01-480.webp 480w, media/photography/gloucester-01-960.webp 960w, media/photography/gloucester-01-1440.webp 1440w" sizes="(max-width: 860px) calc(100vw - 32px), (max-width: 1540px) 55vw, 800px" alt="Gloucester Prison and the surrounding city" width="2400" height="1350" loading="lazy" decoding="async"><figcaption>Gloucester Prison and the surrounding city</figcaption></figure>
@@ -535,12 +536,12 @@
         <figure><img src="media/photography/gloucester-04-960.webp" srcset="media/photography/gloucester-04-480.webp 480w, media/photography/gloucester-04-960.webp 960w, media/photography/gloucester-04-1440.webp 1440w" sizes="(max-width: 860px) calc(100vw - 32px), (max-width: 1540px) 55vw, 800px" alt="An aerial view across Gloucester" width="2400" height="1350" loading="lazy" decoding="async"><figcaption>An aerial view across Gloucester</figcaption></figure>
     </div>
     <div class="reel-bar">
-        <a href="#portfolio">View full-size gallery ↘</a>
         <div class="reel-controls" hidden>
             <button type="button" data-step="-1" aria-label="Previous photograph">←</button>
             <span class="reel-count" role="status">01 / 04</span>
             <button type="button" data-step="1" aria-label="Next photograph">→</button>
         </div>
+        <a href="#portfolio">View full-size gallery ↘</a>
     </div>
 </section>
 </div>
@@ -686,19 +687,19 @@
             <p>A study of architecture and place, photographed by NEWITT Skyline Media.</p>
             <div class="photography-gallery frame-exhibit">
                 <button class="photography-gallery-item" type="button" data-full-image="media/skyline/Gloucester-prison-aerial-01.JPG">
-                    <img src="media/photography/gloucester-01-480.webp" width="480" height="270" alt="" loading="lazy" decoding="async">
+                    <img src="media/photography/gloucester-01-480.webp" srcset="media/photography/gloucester-01-480.webp 480w, media/photography/gloucester-01-960.webp 960w, media/photography/gloucester-01-1440.webp 1440w" sizes="(max-width: 760px) calc(100vw - 32px), 52vw" width="480" height="270" alt="" loading="lazy" decoding="async">
                     <span class="frame-caption">Gloucester Prison and the surrounding city</span>
                 </button>
                 <button class="photography-gallery-item" type="button" data-full-image="media/skyline/Gloucester-prison-aerial-02.JPG">
-                    <img src="media/photography/gloucester-02-480.webp" width="480" height="270" alt="" loading="lazy" decoding="async">
+                    <img src="media/photography/gloucester-02-480.webp" srcset="media/photography/gloucester-02-480.webp 480w, media/photography/gloucester-02-960.webp 960w, media/photography/gloucester-02-1440.webp 1440w" sizes="(max-width: 760px) calc(100vw - 32px), 52vw" width="480" height="270" alt="" loading="lazy" decoding="async">
                     <span class="frame-caption">Gloucester Prison from a second aerial perspective</span>
                 </button>
                 <button class="photography-gallery-item" type="button" data-full-image="media/skyline/Gloucester-prison-aerial-03.JPG">
-                    <img src="media/photography/gloucester-03-480.webp" width="480" height="270" alt="" loading="lazy" decoding="async">
+                    <img src="media/photography/gloucester-03-480.webp" srcset="media/photography/gloucester-03-480.webp 480w, media/photography/gloucester-03-960.webp 960w, media/photography/gloucester-03-1440.webp 1440w" sizes="(max-width: 760px) calc(100vw - 32px), 52vw" width="480" height="270" alt="" loading="lazy" decoding="async">
                     <span class="frame-caption">The prison grounds and neighbouring streets</span>
                 </button>
                 <button class="photography-gallery-item" type="button" data-full-image="media/skyline/Gloucester-prison-aerial-04.JPG">
-                    <img src="media/photography/gloucester-04-480.webp" width="480" height="270" alt="" loading="lazy" decoding="async">
+                    <img src="media/photography/gloucester-04-480.webp" srcset="media/photography/gloucester-04-480.webp 480w, media/photography/gloucester-04-960.webp 960w, media/photography/gloucester-04-1440.webp 1440w" sizes="(max-width: 760px) calc(100vw - 32px), 52vw" width="480" height="270" alt="" loading="lazy" decoding="async">
                     <span class="frame-caption">An aerial view across Gloucester</span>
                 </button>
             </div>
@@ -817,13 +818,12 @@
      PHOTOGRAPHY LIGHTBOX
 ===================================================== -->
 
-<div
+<dialog
     class="photography-lightbox"
     id="photography-lightbox"
     role="dialog"
     aria-modal="true"
     aria-label="Full-size exhibition photograph"
-    aria-hidden="true"
 >
 
     <button
@@ -836,12 +836,18 @@
     </button>
 
 
-    <img
-        id="photography-lightbox-image"
-        alt=""
-    >
-
-</div>
+    <figure class="photography-viewer-frame">
+        <img id="photography-lightbox-image" alt="">
+        <figcaption>
+            <span id="photography-lightbox-caption" role="status"></span>
+        </figcaption>
+        <div class="reel-controls photography-viewer-controls">
+            <button type="button" data-viewer-step="-1" aria-label="Previous photograph">←</button>
+            <span class="reel-count" id="photography-lightbox-count" aria-hidden="true"></span>
+            <button type="button" data-viewer-step="1" aria-label="Next photograph">→</button>
+        </div>
+    </figure>
+</dialog>
 
 
 <!-- =====================================================
@@ -860,145 +866,73 @@
 
 <script>
 
-(function () {
+(() => {
+    const items = [...document.querySelectorAll('.photography-gallery-item')];
+    const viewer = document.getElementById('photography-lightbox');
+    const image = document.getElementById('photography-lightbox-image');
+    const caption = document.getElementById('photography-lightbox-caption');
+    const count = document.getElementById('photography-lightbox-count');
+    const close = document.getElementById('photography-lightbox-close');
 
-    const galleryItems =
-        document.querySelectorAll(
-            ".photography-gallery-item"
-        );
+    let activeIndex = 0;
+    let openingButton;
+    let touchStart;
 
-    const lightbox =
-        document.getElementById(
-            "photography-lightbox"
-        );
-
-    const lightboxImage =
-        document.getElementById(
-            "photography-lightbox-image"
-        );
-
-    const closeButton =
-        document.getElementById(
-            "photography-lightbox-close"
-        );
-
-    if (
-        !galleryItems.length ||
-        !lightbox ||
-        !lightboxImage ||
-        !closeButton
-    ) {
-        return;
+    function show(index) {
+        activeIndex = (index + items.length) % items.length;
+        const item = items[activeIndex];
+        const description = item.querySelector('.frame-caption').textContent.trim();
+        image.src = item.dataset.fullImage;
+        image.alt = description;
+        caption.textContent = `${activeIndex + 1} of ${items.length}. ${description}`;
+        count.textContent = `${activeIndex + 1} / ${items.length}`;
     }
 
-
-    let previousFocus;
-
-    function openLightbox(item) {
-
-        const image =
-            item.getAttribute(
-                "data-full-image"
-            );
-
-        const thumbnail =
-            item.querySelector(".frame-caption");
-
-        if (!image) {
-            return;
-        }
-
-        lightboxImage.src = image;
-
-        lightboxImage.alt =
-            thumbnail
-                ? thumbnail.textContent.trim()
-                : "NEWITT Media Photography image";
-
-        lightbox.classList.add(
-            "active"
-        );
-
-        lightbox.setAttribute(
-            "aria-hidden",
-            "false"
-        );
-
-        previousFocus = item;
-        document.body.style.overflow = "hidden";
-        closeButton.focus();
-
-    }
-
-
-    function closeLightbox() {
-
-        lightbox.classList.remove(
-            "active"
-        );
-
-        lightbox.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-
-        lightboxImage.removeAttribute("src");
-
-        document.body.style.overflow = "";
-        previousFocus?.focus();
-
-    }
-
-
-    galleryItems.forEach(function (item) {
-
-        item.addEventListener(
-            "click",
-            function () {
-
-                openLightbox(item);
-
-            }
-        );
-
+    items.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            openingButton = item;
+            show(index);
+            viewer.showModal();
+            close.focus();
+        });
     });
 
+    close.addEventListener('click', () => viewer.close());
+    viewer.addEventListener('close', () => {
+        image.removeAttribute('src');
+        touchStart = undefined;
+        openingButton?.focus();
+    });
 
-    closeButton.addEventListener(
-        "click",
-        closeLightbox
-    );
+    viewer.addEventListener('click', event => {
+        if (event.target === viewer) viewer.close();
+        const button = event.target.closest('[data-viewer-step]');
+        if (button) show(activeIndex + Number(button.dataset.viewerStep));
+    });
 
+    viewer.addEventListener('keydown', event => {
+        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+        event.preventDefault();
+        show(activeIndex + (event.key === 'ArrowLeft' ? -1 : 1));
+    });
 
-    lightbox.addEventListener(
-        "click",
-        function (event) {
-
-            if (
-                event.target === lightbox
-            ) {
-                closeLightbox();
-            }
-
+    image.addEventListener('touchstart', event => {
+        touchStart = event.touches.length === 1 ? event.touches[0] : undefined;
+    }, { passive: true });
+    image.addEventListener('touchcancel', () => {
+        touchStart = undefined;
+    });
+    image.addEventListener('touchend', event => {
+        const start = touchStart;
+        touchStart = undefined;
+        if (!start || event.touches.length) return;
+        const end = event.changedTouches[0];
+        const horizontal = end.clientX - start.clientX;
+        const vertical = end.clientY - start.clientY;
+        if (Math.abs(horizontal) > 45 && Math.abs(horizontal) > 1.5 * Math.abs(vertical)) {
+            show(activeIndex + (horizontal < 0 ? 1 : -1));
         }
-    );
-
-
-    document.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (!lightbox.classList.contains("active")) return;
-
-            if (event.key === "Escape") closeLightbox();
-            if (event.key === "Tab") {
-                event.preventDefault();
-                closeButton.focus();
-            }
-
-        }
-    );
-
+    }, { passive: true });
 })();
 
 </script>
