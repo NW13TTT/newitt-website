@@ -1,0 +1,20 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cloudflare/workers-sdk/main/packages/wrangler/config-schema.json",
+  "name": "newitt-skyline-explorer-preview",
+  "main": "preview.mjs",
+  "compatibility_date": "2026-11-22",
+  "workers_dev": true,
+  "preview_urls": false,
+  "rules": [
+    { "type": "Text", "globs": ["**/*.html", "**/*.css", "public/*.js"], "fallthrough": true },
+    { "type": "Data", "globs": ["**/*.webp"], "fallthrough": true }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "newitt-skyline-explorer-preview",
+      "database_id": "b9c57956-62e6-4ae0-85b5-f934187422f8",
+      "migrations_dir": "migrations"
+    }
+  ]
+}

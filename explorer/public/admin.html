@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Skyline Explorer administration</title>
+<link rel="stylesheet" href="/skyline-explorer/explorer.css">
+<script defer src="/skyline-explorer/admin.js"></script>
+</head>
+<body>
+<header class="mast"><a class="brand" href="/skyline-explorer">NEWITT <strong>MEDIA</strong></a></header>
+<main class="section wrap admin-layout">
+<p class="eyebrow">Skyline Explorer</p><h1>Administration</h1>
+<p id="status" role="status">Loading…</p>
+<section aria-labelledby="destinations-title">
+<h2 id="destinations-title">Destinations</h2>
+<p>Review the suggestion and its reference. Add approximate public coordinates before putting it on the map.</p>
+<div class="admin-layout" id="destinations"></div>
+</section>
+<section aria-labelledby="flight-admin-title">
+<h2 id="flight-admin-title">Completed flights</h2>
+<p>Only add verified flights. Keep launch sites private and use links for media you have permission to publish.</p>
+<label>Load a flight to edit <select id="flights"><option value="">Add a new flight</option></select></label>
+<form id="flight-form">
+<input name="id" type="hidden">
+<label>Name <input name="name" required maxlength="100"></label>
+<label>Region <input name="region" required maxlength="100"></label>
+<label>Description <textarea name="description" required maxlength="800"></textarea></label>
+<label>Approximate public latitude <input name="latitude" type="number" min="-90" max="90" step="any" required></label>
+<label>Approximate public longitude <input name="longitude" type="number" min="-180" max="180" step="any" required></label>
+<label>Verification source <input name="source" type="url" required></label>
+<label>Photograph URL <input name="photo"></label>
+<label>Playable film URL <input name="film"></label>
+<label>Published YouTube URL <input name="youtube" type="url"></label>
+<label>Soundtrack URL <input name="soundtrack" type="url"></label>
+<button type="submit" class="button primary">Save flight</button>
+</form>
+</section>
+</main>
+</body>
+</html>

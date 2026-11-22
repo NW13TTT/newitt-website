@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Explore verified NEWITT Skyline Media flights and help choose the next aerial film.">
+<meta name="robots" content="noindex,nofollow">
+<title>Skyline Explorer | NEWITT MEDIA</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/skyline-explorer/explorer.css">
+<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+<script defer src="/skyline-explorer/explorer.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast"><a class="brand" href="/"><img src="https://www.newittmedia.co.uk/media/header-emblem.webp" width="60" height="60" alt=""><span>NEWITT <strong>MEDIA</strong></span></a><nav aria-label="Website"><a href="/skyline">Skyline Media</a><a href="#next">Suggest a flight</a></nav></header>
+<main id="main">
+<section class="hero">
+  <img class="hero-photo" src="https://www.newittmedia.co.uk/media/photography/gloucester-04-1440.webp" alt="" width="1440" height="810" fetchpriority="high">
+  <div class="hero-copy wrap">
+    <p class="eyebrow">NEWITT Skyline Media</p>
+    <h1>Skyline <em>Explorer.</em></h1>
+    <p class="tagline">From above. After dark. And everything in between.</p>
+    <p class="intro">Explore the places we’ve flown. Help choose where we go next.</p>
+    <div class="actions"><a class="button primary" href="#flights">Explore our flights <span aria-hidden="true">↓</span></a><a class="button" href="#next">Where shall we fly next?</a></div>
+  </div>
+</section>
+<section class="section wrap" id="flights" aria-labelledby="flights-title">
+  <p class="eyebrow">The flight archive</p>
+  <h2 id="flights-title">Where we’ve <em>flown.</em></h2>
+  <p class="lead">Explore the map or choose a location from the flight list. Markers show the general area where we filmed.</p>
+  <div class="explore-grid">
+    <div class="map-shell">
+      <div id="flight-map" class="map" role="region" aria-label="Map of completed flights"></div>
+      <div class="map-tools"><button type="button" id="flight-reset">Show all flights</button><a href="https://www.openstreetmap.org/fixthemap">Report a map issue</a></div>
+    </div>
+    <div class="archive">
+      <h3>Flight locations</h3>
+      <p id="flight-status" role="status">Loading flights…</p>
+      <div id="flight-list" class="select-list"></div>
+      <article id="flight-card" class="documentary" hidden aria-labelledby="flight-title" tabindex="-1"></article>
+    </div>
+  </div>
+</section>
+<section class="community" id="next" aria-labelledby="next-title">
+<div class="section wrap">
+  <p class="eyebrow">You choose. We fly.</p>
+  <h2 id="next-title">Where shall we <em>fly next?</em></h2>
+  <p class="lead">The next adventure could be your idea. Pick a destination to vote or tell us what you’d love to see from above.</p>
+  <div class="explore-grid">
+    <div class="map-shell">
+      <div id="next-map" class="map future-map" role="region" aria-label="Map of proposed filming destinations"></div>
+      <div class="map-tools"><button type="button" id="next-reset">Show all destinations</button><a href="https://www.openstreetmap.org/fixthemap">Report a map issue</a></div>
+    </div>
+    <div class="archive">
+      <h3>Community destinations</h3>
+      <p id="next-status" role="status">Loading destinations…</p>
+      <div id="next-list" class="select-list"></div>
+      <article id="next-card" class="documentary" hidden aria-labelledby="destination-title" tabindex="-1"></article>
+    </div>
+  </div>
+  <div class="proposal">
+    <div><p class="eyebrow">Suggest a location</p><h3>Show us what we should see next.</h3>
+      <p>Suggestions are reviewed before they appear. Please use public locations and leave out contact details or precise launch points.</p>
+      <p>Filming depends on <a href="https://www.caa.co.uk/drones/">UK CAA rules</a>, airspace and operational permissions, landowner permission where needed, weather, privacy and safety. A suggestion or vote does not guarantee a flight.</p></div>
+    <form id="suggestion">
+      <label>Destination <input name="name" required minlength="2" maxlength="100" autocomplete="off"></label>
+      <label>Town, county or region <input name="region" required minlength="2" maxlength="100" autocomplete="off"></label>
+      <label>Why would it make a great aerial film? <textarea name="description" rows="4" minlength="10" maxlength="800" required></textarea></label>
+      <label>Public reference link <span class="muted">(optional)</span><input name="reference" type="url" maxlength="500"></label>
+      <div hidden><label>Leave blank <input name="website" tabindex="-1" autocomplete="off"></label></div>
+      <button class="button primary" type="submit">Send suggestion</button>
+      <p class="feedback" id="suggestion-status" role="status"></p>
+    </form>
+  </div>
+</div>
+</section>
+</main>
+<footer class="wrap footer"><a class="brand" href="/"><img src="https://www.newittmedia.co.uk/media/header-emblem.webp" width="48" height="48" alt="">NEWITT MEDIA</a><nav aria-label="Footer"><a href="/skyline">Skyline Media</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a></nav></footer>
+</body>
+</html>
