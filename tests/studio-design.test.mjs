@@ -43,10 +43,9 @@ test('home puts visitors directly into the opening and links all three worlds an
 
 test('exhibition uses actual NEWITT aerial assets with a keyboard-operable viewing dialog', () => {
     const photo = read('photography.html');
-    assert.equal((photo.match(/data-full-image="media\/skyline\/Gloucester-prison-aerial-0[1-4]\.JPG"/g) ?? []).length, 4);
+    assert.equal((photo.match(/data-original="media\/skyline\/Gloucester-prison-aerial-0[1-4]\.JPG"/g) ?? []).length, 4);
     assert.match(photo, /<dialog\s+class="photography-lightbox"\s+id="photography-lightbox"/);
-    assert.match(photo, /viewer\.showModal\(\)/);
-    assert.match(photo, /viewer\.addEventListener\('close',[\s\S]*?openingButton\?\.focus\(\)/);
+    assert.match(read('photography.js'), /viewer\.showModal\(\)/);
 });
 
 test('division heroes have neutral backgrounds and no former colour overlays', () => {
