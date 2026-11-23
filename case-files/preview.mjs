@@ -43,7 +43,7 @@ export default {
     if (head || !upstream.ok || !['/paranormal', '/paranormal.html'].includes(path)) return result;
     result.headers.delete('etag');
     result.headers.delete('content-length');
-    return new HTMLRewriter().on('#after-dark-title ~ .hero-actions', {
+    return new HTMLRewriter().on('.paranormal-hero .hero-actions', {
       element(el) { el.append(cta, { html: true }); }
     }).transform(result);
   }
