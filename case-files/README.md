@@ -1,0 +1,7 @@
+# Paranormal Case Files
+
+Preview-only extension of the live Paranormal page. The isolated Worker delegates approved site content to the live public site, adds the archive link in preview, and serves Case Files itself. Skyline Explorer actions use the existing canonical site. The preview has no database binding. The main site baseline is Worker 528, with a separate Skyline Explorer Worker 3. Production was assembled from multiple approved releases, so a single repository SHA does not represent every live page.
+
+The repository's separate case archive contains only public-ready metadata. The Gloucester Prison visit date is supported by the investigation media collection. The photos are already published location context. The related YouTube clip is published by Newitt’s Paranormal Adventures and its filming date is unverified. The audio, footage and investigation photographs associated with January are excluded until clearance and export. The Ancient Ram Inn and 30 East Drive need verified visit records and explicitly cleared documentary media before a case can be added.
+
+Add new material to `cases.mjs`. Published records are validated before rendering and draft records are excluded from public routes. Keep unpublished material and local paths outside deployed modules. Public audio and video can use approved web exports with captions or transcripts. All media playback starts on user action.
