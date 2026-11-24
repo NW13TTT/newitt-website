@@ -155,11 +155,55 @@
     >
 
     <link rel="stylesheet" href="studio.css?v=2">
-    <link rel="stylesheet" href="editorial.css?v=4">
+    <link rel="stylesheet" href="studio-v523-editorial.css?v=4">
     <script src="editorial.js" defer></script>
     <link rel="stylesheet" href="moonlit.css?v=3">
     <script src="moonlit.js?v=2" defer></script>
     <link rel="stylesheet" href="cinematic.css">
+    <style>
+        /* The editorial sheet reintroduces the desktop columns after its phone rule. */
+        #worlds .world-copy h3 { overflow-wrap: normal; word-break: normal; }
+        #worlds .world-arrow { justify-self: end; align-self: end; }
+        #worlds .world-panel-top img { display: block; object-fit: contain; object-position: right top; }
+        #worlds .world-paranormal .world-image { object-position: center 53%; }
+        #worlds .world-paranormal .world-copy { background: #081320; }
+        #worlds { scroll-margin-top: max(90px, calc(76px + env(safe-area-inset-top))); }
+
+        @media (max-width: 1000px) {
+            #worlds .worlds-panels {
+                grid-template-columns: minmax(0, 1fr);
+                min-height: 0;
+                gap: clamp(8px, 1.35vw, 14px);
+                background: transparent;
+                transition: none;
+            }
+
+            #worlds .world-panel {
+                grid-template: "mark mark" auto "copy arrow" 1fr / minmax(0, 1fr) auto;
+                min-height: clamp(268px, 46vw, 414px);
+                padding: clamp(13px, 2.7vw, 24px);
+                gap: 10px;
+                align-content: stretch;
+            }
+            #worlds .world-panel-top { grid-area: mark; }
+            #worlds .world-panel .world-logo {
+                width: clamp(76px, 18vw, 118px);
+                max-width: 100%;
+                height: clamp(66px, 15vw, 104px);
+                object-position: center;
+                transition: none;
+                transform: none;
+                padding: 3px;
+            }
+            #worlds .world-copy { grid-area: copy; }
+            #worlds .world-copy h3 { font-size: clamp(1.9rem, 6.8vw, 3.65rem); }
+            #worlds .world-arrow { grid-area: arrow; }
+        }
+
+        @media (min-width: 1001px) and (max-width: 1200px) {
+            #worlds .world-copy h3 { font-size: clamp(2.3rem, 4.1vw, 3.1rem); }
+        }
+    </style>
 </head>
 
 
@@ -224,18 +268,20 @@
             <h2 id="newitt-media-intro-title">Three worlds. <span>One company.</span></h2>
             <div class="worlds-panels">
                 <a class="world-panel world-skyline" href="skyline.html" data-lens="skyline">
-                    <img class="world-image" src="media/skyline/Gloucester-prison-aerial-03.webp" alt="" loading="lazy" decoding="async" srcset="media/photography/gloucester-03-480.webp 480w, media/photography/gloucester-03-960.webp 960w, media/photography/gloucester-03-1440.webp 1440w" sizes="(max-width: 760px) 94vw, 44vw">
+                    <img class="world-image" src="media/skyline/Gloucester-prison-aerial-03.webp" alt="" loading="lazy" decoding="async" srcset="media/photography/gloucester-03-480.webp 480w, media/photography/gloucester-03-960.webp 960w, media/photography/gloucester-03-1440.webp 1440w" sizes="(max-width: 1000px) 94vw, 44vw">
                     <span class="world-panel-top"><img class="world-logo" src="sky-logo.png" alt="" loading="lazy" decoding="async"></span>
                     <div class="world-copy"><h3>Above</h3><p>NEWITT Skyline Media</p><p class="world-description">Aerial cinematography, film and original music</p></div>
                     <span class="world-arrow" aria-hidden="true">↗</span>
                 </a>
                 <a class="world-panel world-photography" href="photography.html" data-lens="photography">
-                    <img class="world-image" src="media/skyline/Gloucester-prison-aerial-02.webp" alt="" loading="lazy" decoding="async" srcset="media/photography/gloucester-02-480.webp 480w, media/photography/gloucester-02-960.webp 960w, media/photography/gloucester-02-1440.webp 1440w" sizes="(max-width: 760px) 94vw, 44vw">
+                    <img class="world-image" src="media/skyline/Gloucester-prison-aerial-02.webp" alt="" loading="lazy" decoding="async" srcset="media/photography/gloucester-02-480.webp 480w, media/photography/gloucester-02-960.webp 960w, media/photography/gloucester-02-1440.webp 1440w" sizes="(max-width: 1000px) 94vw, 44vw">
 
+                    <span class="world-panel-top"><img class="world-logo" src="media/header-emblem.webp" alt="" loading="lazy" decoding="async"></span>
                     <div class="world-copy"><h3>In Focus</h3><p>NEWITT Media Photography</p><p class="world-description">Photography and editorial work</p></div>
                     <span class="world-arrow" aria-hidden="true">↗</span>
                 </a>
                 <a class="world-panel world-paranormal" href="paranormal.html" data-lens="paranormal">
+                    <img class="world-image" src="media/photography/gloucester-04-960.webp" alt="" loading="lazy" decoding="async" srcset="media/photography/gloucester-04-480.webp 480w, media/photography/gloucester-04-960.webp 960w, media/photography/gloucester-04-1440.webp 1440w" sizes="(max-width: 1000px) 94vw, 33vw">
                     
                     <span class="world-panel-top"><img class="world-logo" src="media/moonlit/after-dark.webp" alt="" loading="lazy" decoding="async"></span>
                     <div class="world-copy"><h3>After Dark</h3><p>NEWITT’s Paranormal Adventures</p><p class="world-description">Investigations, locations and the unexplained</p></div>
