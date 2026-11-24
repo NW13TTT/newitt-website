@@ -1,0 +1,207 @@
+.flight-showcase {
+    color: #f3f7ff;
+    background: radial-gradient(ellipse at 30% 0%, #172c43 0%, #0a1526 58%, #08111d 100%);
+    border-block: 1px solid #30475f;
+    padding-block: clamp(2.75rem, 7vw, 6.5rem);
+}
+
+.flight-showcase-inner {
+    width: min(1260px, calc(100% - 2 * clamp(1rem, 4vw, 3rem)));
+    margin-inline: auto;
+}
+
+.flight-showcase-header {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 1.25rem 3rem;
+    align-items: end;
+    margin-bottom: clamp(1.5rem, 3vw, 2.75rem);
+}
+
+.flight-showcase-header p {
+    max-width: 38ch;
+    margin: 0;
+    color: #c5d2e4;
+}
+
+.flight-showcase-header .flight-showcase-eyebrow,
+.flight-showcase-location {
+    color: #c9e1f9;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.flight-showcase-header h2 {
+    color: #f3f7ff;
+    margin: .45rem 0 0;
+    font: 400 clamp(2.55rem, 6.4vw, 6rem)/1 Georgia, serif;
+    letter-spacing: -.055em;
+}
+
+.flight-showcase-header em {
+    color: #b6d8f8;
+    font-weight: 400;
+}
+
+.flight-showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(.7rem, 2vw, 1.35rem);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.flight-showcase-card {
+    display: grid;
+    position: relative;
+    isolation: isolate;
+    align-items: end;
+    aspect-ratio: 16 / 10;
+    min-height: 12.75rem;
+    overflow: hidden;
+    border: 1px solid #68839f;
+    border-radius: .65rem;
+    background: #142438;
+    color: #fff;
+    text-decoration: none;
+}
+
+.flight-showcase-card img,
+.flight-showcase-card::after {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.flight-showcase-card img {
+    object-fit: cover;
+    z-index: -2;
+}
+
+.flight-showcase-card::after {
+    content: "";
+    z-index: -1;
+    background: linear-gradient(0deg, #050c17 0%, #050c17eb 16%, #050c1780 50%, transparent 75%);
+}
+
+.flight-showcase-caption {
+    display: grid;
+    gap: .35rem;
+    padding: clamp(.8rem, 2.1vw, 1.75rem);
+    padding-right: 3.25rem;
+}
+
+.flight-showcase-name {
+    color: #f4f8ff;
+    font: 400 clamp(1.35rem, 3.1vw, 2.9rem)/1.05 Georgia, serif;
+    text-wrap: balance;
+}
+
+.flight-showcase-arrow {
+    position: absolute;
+    right: clamp(.65rem, 2vw, 1.4rem);
+    bottom: clamp(.7rem, 2vw, 1.4rem);
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 1px solid #b4cbe5;
+    border-radius: 50%;
+    background: #0d1c30;
+    color: #eef6ff;
+}
+
+.flight-showcase-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .65rem 1.3rem;
+    margin-top: clamp(1.25rem, 3vw, 2rem);
+}
+
+.flight-showcase-map,
+.flight-showcase-next {
+    display: inline-flex;
+    align-items: center;
+    gap: .65rem;
+    min-height: 46px;
+    padding: .65rem .9rem;
+    font-weight: 700;
+    border-radius: .35rem;
+}
+
+.flight-showcase-map {
+    background: #dcecff;
+    color: #081425;
+    text-decoration: none;
+}
+
+.flight-showcase-next {
+    border: 1px solid #708ba7;
+    color: #eef6ff;
+    text-decoration: none;
+}
+
+.flight-showcase a:focus-visible {
+    outline: 3px solid #d9edff;
+    outline-offset: 4px;
+}
+
+.flight-showcase-card:hover,
+.flight-showcase-card:focus-visible {
+    border-color: #d9edff;
+}
+
+@media (max-width: 650px) {
+    .flight-showcase-header {
+        grid-template-columns: 1fr;
+        gap: .75rem;
+    }
+
+    .flight-showcase-card {
+        aspect-ratio: 4 / 5;
+        min-height: 11rem;
+    }
+
+    .flight-showcase-caption {
+        padding: .75rem;
+    }
+
+    .flight-showcase-location {
+        font-size: .63rem;
+        letter-spacing: .065em;
+    }
+
+    .flight-showcase-arrow {
+        top: .55rem;
+        right: .55rem;
+        bottom: auto;
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+}
+
+@media (max-width: 365px) {
+    .flight-showcase-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .flight-showcase-card {
+        aspect-ratio: 16 / 9;
+    }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .flight-showcase-card img {
+        transition: transform .55s ease;
+    }
+
+    .flight-showcase-card:hover img,
+    .flight-showcase-card:focus-visible img {
+        transform: scale(1.045);
+    }
+}
