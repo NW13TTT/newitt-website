@@ -152,281 +152,19 @@
     >
 
 
-    <!-- =====================================================
-         PHOTOGRAPHY PAGE STYLES
-    ====================================================== -->
-
-    <style>
-
-        /* =================================================
-           PHOTOGRAPHY INTRO
-        ================================================= */
-
-        .photography-page .photography-hero {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .photography-page .photography-hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-
-        /* =================================================
-           PHOTOGRAPHY STATEMENT
-        ================================================= */
-
-        .photography-statement {
-            width: min(780px, 100%);
-
-            margin:
-                0 auto;
-
-            text-align: center;
-        }
-
-        .photography-statement p {
-            width: min(720px, 100%);
-
-            margin:
-                0 auto;
-
-            color:
-                rgba(244, 247, 250, 0.76);
-
-            font-size:
-                1rem;
-
-            line-height: 1.8;
-        }
-
-
-        /* =================================================
-           PORTFOLIO AREA
-        ================================================= */
-
-        .photography-portfolio {
-            width: 100%;
-        }
-
-        .photography-portfolio-heading {
-            width: min(760px, 100%);
-
-            margin:
-                0 auto 30px;
-
-            text-align: center;
-        }
-
-        .photography-portfolio-heading p {
-            margin-bottom: 0;
-        }
-
-
-        /* =================================================
-           GALLERY PLACEHOLDER
-        ================================================= */
-
-        .photography-gallery-icon {
-            margin-bottom: 16px;
-
-            color: #78d58a;
-
-            font-size: 2.6rem;
-
-            line-height: 1;
-        }
-
-
-        /* =================================================
-           FUTURE GALLERY
-        ================================================= */
-
-        .photography-gallery {
-            width: 100%;
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(
-                    2,
-                    minmax(0, 1fr)
-                );
-
-            gap: 14px;
-
-            margin-inline: auto;
-        }
-
-        .photography-gallery-item {
-            position: relative;
-
-            display: block;
-
-            width: 100%;
-
-            aspect-ratio: 16 / 10;
-
-            padding: 0;
-
-            overflow: hidden;
-
-            border:
-                1px solid
-                rgba(120, 213, 138, 0.16);
-
-            border-radius: 10px;
-
-            background:
-                rgba(2, 3, 5, 0.72);
-
-            cursor: pointer;
-        }
-
-        .photography-gallery-item img {
-            width: 100%;
-            height: 100%;
-
-            object-fit: cover;
-
-            transition:
-                transform 450ms ease,
-                filter 450ms ease;
-        }
-
-        .photography-gallery-item:hover img {
-            transform: scale(1.035);
-
-            filter:
-                brightness(1.06);
-        }
-
-
-        /* =================================================
-           PHOTOGRAPHY LIGHTBOX
-        ================================================= */
-
-        .photography-lightbox {
-            position: fixed;
-
-            inset: 0;
-
-            z-index: 6000;
-
-            display: none;
-
-            align-items: center;
-            justify-content: center;
-
-            padding: 24px;
-
-            background:
-                rgba(0, 0, 0, 0.94);
-
-            backdrop-filter:
-                blur(8px);
-
-            -webkit-backdrop-filter:
-                blur(8px);
-        }
-
-        .photography-lightbox.active {
-            display: flex;
-        }
-
-        .photography-lightbox img {
-            display: block;
-
-            max-width: 94vw;
-            max-height: 88vh;
-
-            width: auto;
-            height: auto;
-
-            object-fit: contain;
-
-            border-radius: 6px;
-
-            box-shadow:
-                0 25px 90px
-                rgba(0, 0, 0, 0.65);
-        }
-
-        .photography-lightbox-close {
-            position: absolute;
-
-            top: 18px;
-            right: 20px;
-
-            z-index: 2;
-
-            width: 46px;
-            height: 46px;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            border:
-                1px solid
-                rgba(255, 255, 255, 0.22);
-
-            border-radius: 50%;
-
-            background:
-                rgba(2, 3, 5, 0.78);
-
-            color: #ffffff;
-
-            font-size: 1.5rem;
-
-            line-height: 1;
-
-            cursor: pointer;
-        }
-
-        .photography-lightbox-close:hover {
-            background:
-                rgba(255, 255, 255, 0.10);
-        }
-
-
-        /* =================================================
-           MOBILE
-        ================================================= */
-
-        @media (max-width: 600px) {
-
-            .photography-gallery {
-                grid-template-columns: 1fr;
-
-                gap: 14px;
-            }
-
-            .photography-statement p {
-                font-size: 0.92rem;
-            }
-
-        }
-
-
-        @media (max-width: 380px) {
-
-        }
-
-    </style>
-
     <link rel="stylesheet" href="studio.css?v=2">
-    <link rel="stylesheet" href="editorial.css?v=3">
+    <link rel="stylesheet" href="editorial.css?v=4">
     <script src="editorial.js" defer></script>
+    <link rel="stylesheet" href="moonlit.css?v=5">
+    <link rel="stylesheet" href="photography.css">
+    <script src="photography.js" defer></script>
+    <link rel="stylesheet" href="studio-pages.css">
 </head>
 
 
 <body
     id="top"
-    class="photography-page"
+    class="photography-page studio-page"
 >
 
 
@@ -438,7 +176,7 @@
 <header class="site-header editorial-header">
     <div class="container nav">
         <a class="editorial-brand" href="index.html" aria-label="NEWITT MEDIA home">
-            <span class="brand-mark"><img src="newitt-media-logo.png" alt="" width="64" height="64" fetchpriority="high"></span>
+            <span class="brand-mark"><img src="newitt-media-logo.png" srcset="media/header-emblem.webp" alt="" width="64" height="64" fetchpriority="high"></span>
             <span>NEWITT <strong>MEDIA</strong></span>
         </a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="Open navigation menu"><span></span><span></span><span></span></button>
@@ -448,7 +186,7 @@
 </header>
 <dialog id="editorial-menu" class="editorial-menu" aria-labelledby="editorial-menu-title">
     <div class="editorial-menu-head">
-        <div class="menu-identity"><span class="brand-mark"><img src="newitt-media-logo.png" alt="" width="64" height="64"></span><p id="editorial-menu-title">NEWITT MEDIA</p></div>
+        <div class="menu-identity"><span class="brand-mark"><img src="newitt-media-logo.png" srcset="media/header-emblem.webp" alt="" width="64" height="64"></span><p id="editorial-menu-title">NEWITT MEDIA</p></div>
         <form method="dialog"><button type="submit" autofocus>Close <span aria-hidden="true">×</span></button></form>
     </div>
     <nav aria-label="Site index"><a href="index.html"><span aria-hidden="true">01</span> Home</a><a href="skyline.html"><span aria-hidden="true">02</span> Skyline</a><a href="photography.html" aria-current="page"><span aria-hidden="true">03</span> Photography</a><a href="paranormal.html"><span aria-hidden="true">04</span> Paranormal</a><a href="contact.html"><span aria-hidden="true">05</span> Contact</a><a href="privacy.html"><span aria-hidden="true">06</span> Privacy</a></nav>
@@ -466,30 +204,26 @@
      PHOTOGRAPHY HERO
 ===================================================== -->
 
-<section class="photography-hero division-opening" data-lens="photography">
+<section class="photography-hero studio-opening" aria-labelledby="photography-title" data-lens="photography">
 
-    <figure class="division-plate"><img src="media/skyline/Gloucester-prison-aerial-02.webp" alt="Gloucester Prison from above, photographed by NEWITT Skyline Media" fetchpriority="high"><figcaption>Gloucester Prison / NEWITT Skyline Media</figcaption></figure>
+    <figure class="photography-hero-image studio-opening-image">
+        <img src="media/photography/gloucester-03-960.webp"
+             srcset="media/photography/gloucester-03-480.webp 480w, media/photography/gloucester-03-960.webp 960w, media/photography/gloucester-03-1440.webp 1440w"
+             sizes="(max-width: 760px) 94vw, 58vw" width="960" height="540" alt="Aerial photograph of Gloucester Prison and neighbouring streets" fetchpriority="high" decoding="async">
+        <figcaption>Gloucester Prison · NEWITT Skyline Media</figcaption>
+    </figure>
+
     <div class="container photography-hero-content">
-
-        <img
-            src="newitt-media-logo.png"
-            alt="NEWITT Media"
-            class="page-logo photography-logo"
-        >
-
 
         <div class="eyebrow">
             NEWITT Media Photography
         </div>
 
 
-        <h1>
-            Through the
-            <span>Lens.</span>
+        <h1 id="photography-title">
+            <span>Through</span>
+            <em>the Lens.</em>
         </h1>
-
-
-        <div class="hero-rule"></div>
 
 
         <p class="hero-tagline">
@@ -513,15 +247,15 @@
 
             <a
                 href="#portfolio"
-                class="button primary"
+                class="photography-action"
             >
-                Explore Photography
+                Explore the gallery <span aria-hidden="true">↓</span>
             </a>
 
 
             <a
                 href="contact.html"
-                class="button secondary"
+                class="photography-contact"
             >
                 Get in Touch
             </a>
@@ -532,12 +266,72 @@
 
 </section>
 
+<section class="photography-exhibition" id="portfolio" tabindex="-1" aria-labelledby="exhibition-title">
+    <div class="container exhibition-inner">
+        <header class="exhibition-intro">
+            <div class="eyebrow">Portfolio</div>
+            <h2 id="exhibition-title">Gloucester Prison</h2>
+            <p>A study of architecture and place, photographed by NEWITT Skyline Media.</p>
+        </header>
 
-<!-- =====================================================
-     PHOTOGRAPHY FOCUS
-===================================================== -->
+        <div class="photography-stage" role="group" aria-label="Gloucester Prison photographs">
+            <figure class="photography-plate" data-original="media/skyline/Gloucester-prison-aerial-02.JPG">
+                <img src="media/photography/gloucester-02-960.webp" srcset="media/photography/gloucester-02-480.webp 480w, media/photography/gloucester-02-960.webp 960w, media/photography/gloucester-02-1440.webp 1440w" sizes="(max-width: 760px) calc(100vw - 32px), (max-width: 1180px) 90vw, 1080px" alt="Gloucester Prison from a second aerial perspective" width="2400" height="1350" loading="eager" decoding="async" draggable="false">
+                <noscript><a href="media/skyline/Gloucester-prison-aerial-02.JPG">Open original photograph</a></noscript>
+                <figcaption>Gloucester Prison from a second aerial perspective</figcaption>
+            </figure>
+            <figure class="photography-plate" data-original="media/skyline/Gloucester-prison-aerial-01.JPG">
+                <img src="media/photography/gloucester-01-960.webp" srcset="media/photography/gloucester-01-480.webp 480w, media/photography/gloucester-01-960.webp 960w, media/photography/gloucester-01-1440.webp 1440w" sizes="(max-width: 760px) calc(100vw - 32px), (max-width: 1180px) 90vw, 1080px" alt="Gloucester Prison and the surrounding city" width="2400" height="1350" loading="lazy" decoding="async" draggable="false">
+                <noscript><a href="media/skyline/Gloucester-prison-aerial-01.JPG">Open original photograph</a></noscript>
+                <figcaption>Gloucester Prison and the surrounding city</figcaption>
+            </figure>
+            <figure class="photography-plate" data-original="media/skyline/Gloucester-prison-aerial-03.JPG">
+                <img src="media/photography/gloucester-03-960.webp" srcset="media/photography/gloucester-03-480.webp 480w, media/photography/gloucester-03-960.webp 960w, media/photography/gloucester-03-1440.webp 1440w" sizes="(max-width: 760px) calc(100vw - 32px), (max-width: 1180px) 90vw, 1080px" alt="The prison grounds and neighbouring streets" width="2400" height="1350" loading="lazy" decoding="async" draggable="false">
+                <noscript><a href="media/skyline/Gloucester-prison-aerial-03.JPG">Open original photograph</a></noscript>
+                <figcaption>The prison grounds and neighbouring streets</figcaption>
+            </figure>
+            <figure class="photography-plate" data-original="media/skyline/Gloucester-prison-aerial-04.JPG">
+                <img src="media/photography/gloucester-04-960.webp" srcset="media/photography/gloucester-04-480.webp 480w, media/photography/gloucester-04-960.webp 960w, media/photography/gloucester-04-1440.webp 1440w" sizes="(max-width: 760px) calc(100vw - 32px), (max-width: 1180px) 90vw, 1080px" alt="An aerial view across Gloucester" width="2400" height="1350" loading="lazy" decoding="async" draggable="false">
+                <noscript><a href="media/skyline/Gloucester-prison-aerial-04.JPG">Open original photograph</a></noscript>
+                <figcaption>An aerial view across Gloucester</figcaption>
+            </figure>
+        </div>
 
-<section class="about">
+        <div class="photography-navigation" hidden>
+            <div class="photography-controls" role="group" aria-label="Gallery controls">
+                <button type="button" data-photo-step="-1"><span aria-hidden="true">←</span> Previous</button>
+                <span class="photography-count" data-photo-count aria-hidden="true">01 / 04</span>
+                <button type="button" data-photo-step="1">Next <span aria-hidden="true">→</span></button>
+            </div>
+            <button type="button" class="photography-open">Full screen <span aria-hidden="true">↗</span></button>
+            <p class="photography-swipe-help">Swipe the photograph or choose a frame.</p>
+            <div class="photography-thumbnails" role="group" aria-label="Choose a photograph">
+                <button type="button" data-photo="0" aria-label="Gloucester Prison from a second aerial perspective">
+                    <img src="media/photography/gloucester-02-480.webp" alt="" width="480" height="270" loading="lazy">
+                </button>
+                <button type="button" data-photo="1" aria-label="Gloucester Prison and the surrounding city">
+                    <img src="media/photography/gloucester-01-480.webp" alt="" width="480" height="270" loading="lazy">
+                </button>
+                <button type="button" data-photo="2" aria-label="The prison grounds and neighbouring streets">
+                    <img src="media/photography/gloucester-03-480.webp" alt="" width="480" height="270" loading="lazy">
+                </button>
+                <button type="button" data-photo="3" aria-label="An aerial view across Gloucester">
+                    <img src="media/photography/gloucester-04-480.webp" alt="" width="480" height="270" loading="lazy">
+                </button>
+            </div>
+        </div>
+        <p class="photography-live" role="status"></p>
+
+        <div class="photography-portfolio-heading">
+            <h2>The gallery is growing.</h2>
+            <p>Photography is being developed into a dedicated collection of images from the
+                people, places and adventures behind NEWITT Media.</p>
+        </div>
+        <p class="gallery-note">The wider photography portfolio is being developed.</p>
+    </div>
+</section>
+
+<section class="about photography-focus">
 
     <div class="container">
 
@@ -567,13 +361,6 @@
 
             <article class="photography-focus-card">
 
-                <div
-                    class="photography-focus-icon"
-                    aria-hidden="true"
-                >
-                    ◎
-                </div>
-
                 <h3>
                     People
                 </h3>
@@ -588,13 +375,6 @@
 
             <article class="photography-focus-card">
 
-                <div
-                    class="photography-focus-icon"
-                    aria-hidden="true"
-                >
-                    ◇
-                </div>
-
                 <h3>
                     Places
                 </h3>
@@ -608,13 +388,6 @@
 
 
             <article class="photography-focus-card">
-
-                <div
-                    class="photography-focus-icon"
-                    aria-hidden="true"
-                >
-                    ◈
-                </div>
 
                 <h3>
                     Landscapes &amp; Adventures
@@ -633,70 +406,6 @@
     </div>
 
 </section>
-
-
-<!-- =====================================================
-     PORTFOLIO
-===================================================== -->
-
-<section
-    class="about"
-    id="portfolio"
->
-
-    <div class="container">
-
-        <div class="photography-portfolio">
-
-            <div class="photography-portfolio-heading">
-
-                <div class="eyebrow">
-                    Portfolio
-                </div>
-
-                <h2>
-                    The gallery is
-                    <span>growing.</span>
-                </h2>
-
-                <p>
-                    Photography is being developed into a
-                    dedicated collection of images from the
-                    people, places and adventures behind
-                    NEWITT Media.
-                </p>
-
-            </div>
-
-
-            <h3 class="frame-exhibit-title">Gloucester Prison</h3>
-            <p>A study of architecture and place, photographed by NEWITT Skyline Media.</p>
-            <div class="photography-gallery frame-exhibit">
-                <button class="photography-gallery-item" type="button" data-full-image="media/skyline/Gloucester-prison-aerial-01.JPG">
-                    <img src="media/skyline/Gloucester-prison-aerial-01.webp" alt="" loading="lazy" decoding="async">
-                    <span class="frame-caption">Gloucester Prison and the surrounding city</span>
-                </button>
-                <button class="photography-gallery-item" type="button" data-full-image="media/skyline/Gloucester-prison-aerial-02.JPG">
-                    <img src="media/skyline/Gloucester-prison-aerial-02.webp" alt="" loading="lazy" decoding="async">
-                    <span class="frame-caption">Gloucester Prison from a second aerial perspective</span>
-                </button>
-                <button class="photography-gallery-item" type="button" data-full-image="media/skyline/Gloucester-prison-aerial-03.JPG">
-                    <img src="media/skyline/Gloucester-prison-aerial-03.webp" alt="" loading="lazy" decoding="async">
-                    <span class="frame-caption">The prison grounds and neighbouring streets</span>
-                </button>
-                <button class="photography-gallery-item" type="button" data-full-image="media/skyline/Gloucester-prison-aerial-04.JPG">
-                    <img src="media/skyline/Gloucester-prison-aerial-04.webp" alt="" loading="lazy" decoding="async">
-                    <span class="frame-caption">An aerial view across Gloucester</span>
-                </button>
-            </div>
-            <p class="gallery-note">The wider photography portfolio is being developed.</p>
-
-        </div>
-
-    </div>
-
-</section>
-
 
 <!-- =====================================================
      CROSS-LINK
@@ -785,7 +494,7 @@
     <div class="container">
         <div class="editorial-footer-grid">
             <div>
-                <a class="editorial-brand" href="index.html"><img src="newitt-media-logo.png" alt="" width="52" height="52"><span>NEWITT <strong>MEDIA</strong></span></a>
+                <a class="editorial-brand" href="index.html"><img src="newitt-media-logo.png" srcset="media/header-emblem.webp" loading="lazy" decoding="async" alt="" width="52" height="52"><span>NEWITT <strong>MEDIA</strong></span></a>
                 <p>From above. After dark. And everything in between.</p>
             </div>
             <nav class="studio-footer-links" aria-label="Footer navigation"><a href="index.html">Home</a><a href="skyline.html">Skyline</a><a href="photography.html" aria-current="page">Photography</a><a href="paranormal.html">Paranormal</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>
@@ -804,31 +513,26 @@
      PHOTOGRAPHY LIGHTBOX
 ===================================================== -->
 
-<div
-    class="photography-lightbox"
-    id="photography-lightbox"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Full-size exhibition photograph"
-    aria-hidden="true"
->
-
-    <button
-        type="button"
-        class="photography-lightbox-close"
-        id="photography-lightbox-close"
-        aria-label="Close image"
-    >
-        ×
-    </button>
-
-
-    <img
-        id="photography-lightbox-image"
-        alt=""
-    >
-
-</div>
+<dialog class="photography-lightbox" id="photography-lightbox" aria-label="Full-size exhibition photograph">
+    <div class="photography-viewer">
+        <header class="photography-viewer-header">
+            <span>Gloucester Prison</span>
+            <button type="button" class="photography-close" autofocus>Close <span aria-hidden="true">×</span></button>
+        </header>
+        <figure class="photography-viewer-frame">
+            <div class="photography-viewer-image">
+                <img id="photography-lightbox-image" alt="" draggable="false">
+            </div>
+            <figcaption class="photography-viewer-caption" role="status"></figcaption>
+        </figure>
+        <div class="photography-controls" role="group" aria-label="Full-screen photo controls">
+            <button type="button" data-photo-step="-1"><span aria-hidden="true">←</span> Previous</button>
+            <span class="photography-count" data-photo-count aria-hidden="true"></span>
+            <button type="button" data-photo-step="1">Next <span aria-hidden="true">→</span></button>
+        </div>
+        <a class="photography-original" target="_blank" rel="noopener">Open full-resolution original <span aria-hidden="true">↗</span></a>
+    </div>
+</dialog>
 
 
 <!-- =====================================================
@@ -839,156 +543,6 @@
     src="script.js"
     defer
 ></script>
-
-
-<!-- =====================================================
-     PHOTOGRAPHY LIGHTBOX JAVASCRIPT
-===================================================== -->
-
-<script>
-
-(function () {
-
-    const galleryItems =
-        document.querySelectorAll(
-            ".photography-gallery-item"
-        );
-
-    const lightbox =
-        document.getElementById(
-            "photography-lightbox"
-        );
-
-    const lightboxImage =
-        document.getElementById(
-            "photography-lightbox-image"
-        );
-
-    const closeButton =
-        document.getElementById(
-            "photography-lightbox-close"
-        );
-
-    if (
-        !galleryItems.length ||
-        !lightbox ||
-        !lightboxImage ||
-        !closeButton
-    ) {
-        return;
-    }
-
-
-    let previousFocus;
-
-    function openLightbox(item) {
-
-        const image =
-            item.getAttribute(
-                "data-full-image"
-            );
-
-        const thumbnail =
-            item.querySelector(".frame-caption");
-
-        if (!image) {
-            return;
-        }
-
-        lightboxImage.src = image;
-
-        lightboxImage.alt =
-            thumbnail
-                ? thumbnail.textContent.trim()
-                : "NEWITT Media Photography image";
-
-        lightbox.classList.add(
-            "active"
-        );
-
-        lightbox.setAttribute(
-            "aria-hidden",
-            "false"
-        );
-
-        previousFocus = item;
-        document.body.style.overflow = "hidden";
-        closeButton.focus();
-
-    }
-
-
-    function closeLightbox() {
-
-        lightbox.classList.remove(
-            "active"
-        );
-
-        lightbox.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-
-        lightboxImage.removeAttribute("src");
-
-        document.body.style.overflow = "";
-        previousFocus?.focus();
-
-    }
-
-
-    galleryItems.forEach(function (item) {
-
-        item.addEventListener(
-            "click",
-            function () {
-
-                openLightbox(item);
-
-            }
-        );
-
-    });
-
-
-    closeButton.addEventListener(
-        "click",
-        closeLightbox
-    );
-
-
-    lightbox.addEventListener(
-        "click",
-        function (event) {
-
-            if (
-                event.target === lightbox
-            ) {
-                closeLightbox();
-            }
-
-        }
-    );
-
-
-    document.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (!lightbox.classList.contains("active")) return;
-
-            if (event.key === "Escape") closeLightbox();
-            if (event.key === "Tab") {
-                event.preventDefault();
-                closeButton.focus();
-            }
-
-        }
-    );
-
-})();
-
-</script>
 
 
 </body>

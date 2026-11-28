@@ -360,3 +360,45 @@ a:focus-visible, button:focus-visible { outline: 3px solid currentColor; outline
     .signature-frame { min-height: clamp(270px, 75vw, 530px); }
     .world-panel { min-height: 255px; }
 }
+
+/* Shared navigation */
+.editorial-header {
+    background: #081320;
+    border-bottom-color: #496079;
+}
+.editorial-header .nav {
+    flex-wrap: nowrap;
+    min-height: 76px;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+}
+.editorial-header .brand-mark, .menu-identity .brand-mark {
+    width: clamp(52px, 6vw, 62px);
+    height: auto;
+    aspect-ratio: 1;
+    padding: 0;
+    border: 1px solid #617a95;
+    border-radius: 8px;
+    background: #02060d;
+}
+.editorial-header .editorial-brand {
+    font-size: clamp(.875rem, 1.6vw, 1.0625rem);
+    letter-spacing: .045em;
+}
+.has-editorial-menu .editorial-menu-open, .editorial-menu-head button {
+    flex-shrink: 0;
+    gap: 10px;
+    border: 1px solid #a9c4df;
+    border-radius: 6px;
+    background: #d9e6f3;
+    color: #101820;
+}
+.editorial-menu-open:hover, .editorial-menu-head button:hover { background: #fff; }
+.editorial-header :is(a, button):focus-visible, .editorial-menu :is(a, button):focus-visible {
+    outline: 3px solid #d9e6f3;
+    outline-offset: 3px;
+}
+.editorial-menu nav a { min-height: 44px; }
+@media (max-width: 760px) {
+    .editorial-header .nav { min-height: 66px; }
+}

@@ -561,8 +561,12 @@
     </style>
 
     <link rel="stylesheet" href="studio.css?v=2">
-    <link rel="stylesheet" href="editorial.css?v=3">
+    <link rel="stylesheet" href="editorial.css?v=4">
     <script src="editorial.js" defer></script>
+    <link rel="stylesheet" href="moonlit.css?v=3">
+    <script src="moonlit.js?v=2" defer></script>
+    <link rel="stylesheet" href="cinematic.css">
+<link rel="stylesheet" href="/skyline-showcase.css">
 </head>
 
 
@@ -580,7 +584,7 @@
 <header class="site-header editorial-header">
     <div class="container nav">
         <a class="editorial-brand" href="index.html" aria-label="NEWITT MEDIA home">
-            <span class="brand-mark"><img src="newitt-media-logo.png" alt="" width="64" height="64" fetchpriority="high"></span>
+            <span class="brand-mark"><img src="newitt-media-logo.png" srcset="media/header-emblem.webp" alt="" width="64" height="64" fetchpriority="high"></span>
             <span>NEWITT <strong>MEDIA</strong></span>
         </a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="Open navigation menu"><span></span><span></span><span></span></button>
@@ -590,7 +594,7 @@
 </header>
 <dialog id="editorial-menu" class="editorial-menu" aria-labelledby="editorial-menu-title">
     <div class="editorial-menu-head">
-        <div class="menu-identity"><span class="brand-mark"><img src="newitt-media-logo.png" alt="" width="64" height="64"></span><p id="editorial-menu-title">NEWITT MEDIA</p></div>
+        <div class="menu-identity"><span class="brand-mark"><img src="newitt-media-logo.png" srcset="media/header-emblem.webp" alt="" width="64" height="64"></span><p id="editorial-menu-title">NEWITT MEDIA</p></div>
         <form method="dialog"><button type="submit" autofocus>Close <span aria-hidden="true">×</span></button></form>
     </div>
     <nav aria-label="Site index"><a href="index.html"><span aria-hidden="true">01</span> Home</a><a href="skyline.html" aria-current="page"><span aria-hidden="true">02</span> Skyline</a><a href="photography.html"><span aria-hidden="true">03</span> Photography</a><a href="paranormal.html"><span aria-hidden="true">04</span> Paranormal</a><a href="contact.html"><span aria-hidden="true">05</span> Contact</a><a href="privacy.html"><span aria-hidden="true">06</span> Privacy</a></nav>
@@ -608,8 +612,10 @@
      SKYLINE HERO
 ===================================================== -->
 
-<section class="skyline-hero division-opening" data-lens="skyline">
-    <img class="studio-hero-image" src="media/skyline/Gloucester-prison-aerial-01.webp" alt="" fetchpriority="high">
+<section class="skyline-hero division-opening" data-lens="skyline" aria-labelledby="skyline-opening-title">
+    <img class="studio-hero-image" src="media/photography/gloucester-01-960.webp"
+         srcset="media/photography/gloucester-01-480.webp 480w, media/photography/gloucester-01-960.webp 960w, media/photography/gloucester-01-1440.webp 1440w"
+         sizes="(max-width: 600px) 850px, 100vw" width="960" height="540" alt="" fetchpriority="high">
 
     <div class="container skyline-hero-content">
 
@@ -623,7 +629,7 @@
             NEWITT Skyline Media
         </div>
 
-        <h1>
+        <h1 id="skyline-opening-title">
             From <span>Above.</span>
         </h1>
 
@@ -633,12 +639,13 @@
         </p>
 
         <div class="hero-actions">
+            <a class="button primary" href="#skyline-films">Explore Skyline films <span aria-hidden="true">↓</span></a>
 
             <a
                 href="https://www.tiktok.com/@newittskylinemedia"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="button primary"
+                class="button secondary"
             >
                 Follow on TikTok
             </a>
@@ -657,6 +664,98 @@
 
     </div>
 
+</section>
+<section class="flight-showcase" id="explore-flights" aria-labelledby="flight-showcase-title">
+    <div class="flight-showcase-inner">
+        <header class="flight-showcase-header">
+            <div>
+                <p class="flight-showcase-eyebrow">NEWITT Skyline Explorer</p>
+                <h2 id="flight-showcase-title">Explore our <em>flights.</em></h2>
+            </div>
+            <p>From the fields of Herefordshire to the rooftops of Gloucester. Pick a location to open its film, aerial imagery and place on the map.</p>
+        </header>
+        <ul class="flight-showcase-grid">
+            <li>
+                <a class="flight-showcase-card" href="https://www.newittmedia.co.uk/skyline-explorer/flights?flight=green-acres#flights" aria-labelledby="showcase-green-acres">
+                    <img src="/media/skyline-showcase/green-acres.webp" width="560" height="316" alt="" loading="lazy" decoding="async">
+                    <span class="flight-showcase-caption">
+                        <span class="flight-showcase-location">Lea, Herefordshire</span>
+                        <span class="flight-showcase-name" id="showcase-green-acres">Green Acres Glamping</span>
+                    </span>
+                    <span class="flight-showcase-arrow" aria-hidden="true">↗</span>
+                </a>
+            </li>
+            <li>
+                <a class="flight-showcase-card" href="https://www.newittmedia.co.uk/skyline-explorer/flights?flight=brockworth#flights" aria-labelledby="showcase-brockworth">
+                    <img src="/media/skyline-showcase/brockworth.webp" width="560" height="316" alt="" loading="lazy" decoding="async">
+                    <span class="flight-showcase-caption">
+                        <span class="flight-showcase-location">Brockworth, Gloucestershire</span>
+                        <span class="flight-showcase-name" id="showcase-brockworth">Brockworth &amp; Coopers Edge</span>
+                    </span>
+                    <span class="flight-showcase-arrow" aria-hidden="true">↗</span>
+                </a>
+            </li>
+            <li>
+                <a class="flight-showcase-card" href="https://www.newittmedia.co.uk/skyline-explorer/flights?flight=gloucester-prison#flights" aria-labelledby="showcase-gloucester">
+                    <img src="/media/photography/gloucester-01-960.webp" width="960" height="540" alt="" loading="lazy" decoding="async">
+                    <span class="flight-showcase-caption">
+                        <span class="flight-showcase-location">Gloucester, Gloucestershire</span>
+                        <span class="flight-showcase-name" id="showcase-gloucester">Gloucester Prison</span>
+                    </span>
+                    <span class="flight-showcase-arrow" aria-hidden="true">↗</span>
+                </a>
+            </li>
+            <li>
+                <a class="flight-showcase-card" href="https://www.newittmedia.co.uk/skyline-explorer/flights?flight=ancient-ram-inn#flights" aria-labelledby="showcase-ram-inn">
+                    <img src="/media/skyline-showcase/ancient-ram-inn.webp" width="560" height="316" alt="" loading="lazy" decoding="async">
+                    <span class="flight-showcase-caption">
+                        <span class="flight-showcase-location">Wotton-under-Edge, Gloucestershire</span>
+                        <span class="flight-showcase-name" id="showcase-ram-inn">Ancient Ram Inn</span>
+                    </span>
+                    <span class="flight-showcase-arrow" aria-hidden="true">↗</span>
+                </a>
+            </li>
+        </ul>
+        <div class="flight-showcase-actions">
+            <a class="flight-showcase-map" href="https://www.newittmedia.co.uk/skyline-explorer/flights">Explore the Full Flight Map <span aria-hidden="true">↗</span></a>
+            <a class="flight-showcase-next" href="https://www.newittmedia.co.uk/skyline-explorer/next">Where Shall We Fly Next? <span aria-hidden="true">↗</span></a>
+        </div>
+    </div>
+</section>
+<section class="skyline-screening" id="skyline-films" tabindex="-1" aria-labelledby="skyline-films-title">
+    <div class="container skyline-screening-layout">
+        <figure>
+            <img src="media/photography/gloucester-04-960.webp"
+                 srcset="media/photography/gloucester-04-480.webp 480w, media/photography/gloucester-04-960.webp 960w, media/photography/gloucester-04-1440.webp 1440w"
+                 sizes="(max-width: 760px) 94vw, 55vw" width="960" height="540" loading="lazy" decoding="async" alt="An aerial view across Gloucester">
+            <figcaption>An aerial view across Gloucester · NEWITT Skyline Media</figcaption>
+        </figure>
+        <div>
+            <p class="eyebrow">NEWITT Skyline Media</p>
+            <h2 id="skyline-films-title">Aerial films.</h2>
+            <p>Explore Skyline’s drone films, aerial photography and original soundtrack.</p>
+            <div class="premiere-actions">
+                <a class="editorial-action" href="https://www.youtube.com/@Newitt-skyline-media">Watch Skyline on YouTube <span aria-hidden="true">↗</span></a>
+                <a class="premiere-link" href="#gloucester-prison">Explore the Gloucester Prison gallery</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="photo-reel skyline-reel" aria-label="Gloucester Prison photographs" data-photo-reel>
+    <div class="reel-track" tabindex="0" aria-label="Photographs. Swipe or use the arrow keys.">
+        <figure><img src="media/skyline/Gloucester-prison-aerial-01.webp" alt="Gloucester Prison and the surrounding city" width="2400" height="1350" loading="lazy" decoding="async" srcset="media/photography/gloucester-01-480.webp 480w, media/photography/gloucester-01-960.webp 960w, media/photography/gloucester-01-1440.webp 1440w" sizes="(max-width: 760px) 94vw, min(94vw, 1260px)"><figcaption>Gloucester Prison and the surrounding city</figcaption></figure>
+        <figure><img src="media/skyline/Gloucester-prison-aerial-02.webp" alt="Gloucester Prison from a second aerial perspective" width="2400" height="1350" loading="lazy" decoding="async" srcset="media/photography/gloucester-02-480.webp 480w, media/photography/gloucester-02-960.webp 960w, media/photography/gloucester-02-1440.webp 1440w" sizes="(max-width: 760px) 94vw, min(94vw, 1260px)"><figcaption>Gloucester Prison from a second aerial perspective</figcaption></figure>
+        <figure><img src="media/skyline/Gloucester-prison-aerial-03.webp" alt="The prison grounds and neighbouring streets" width="2400" height="1350" loading="lazy" decoding="async" srcset="media/photography/gloucester-03-480.webp 480w, media/photography/gloucester-03-960.webp 960w, media/photography/gloucester-03-1440.webp 1440w" sizes="(max-width: 760px) 94vw, min(94vw, 1260px)"><figcaption>The prison grounds and neighbouring streets</figcaption></figure>
+        <figure><img src="media/skyline/Gloucester-prison-aerial-04.webp" alt="An aerial view across Gloucester" width="2400" height="1350" loading="lazy" decoding="async" srcset="media/photography/gloucester-04-480.webp 480w, media/photography/gloucester-04-960.webp 960w, media/photography/gloucester-04-1440.webp 1440w" sizes="(max-width: 760px) 94vw, min(94vw, 1260px)"><figcaption>An aerial view across Gloucester</figcaption></figure>
+    </div>
+    <div class="reel-bar">
+        <a href="#gloucester-prison">View full-size gallery ↘</a>
+        <div class="reel-controls" hidden>
+            <button type="button" data-step="-1" aria-label="Previous photograph">←</button>
+            <span class="reel-count" role="status">01 / 04</span>
+            <button type="button" data-step="1" aria-label="Next photograph">→</button>
+        </div>
+    </div>
 </section>
 
 
@@ -739,7 +838,7 @@
                         src="media/skyline/Gloucester-prison-aerial-01.webp"
                         alt="Gloucester Prison aerial view 1"
                         loading="lazy"
-                    >
+                     srcset="media/photography/gloucester-01-480.webp 480w, media/photography/gloucester-01-960.webp 960w, media/photography/gloucester-01-1440.webp 1440w" sizes="(max-width: 760px) 94vw, min(94vw, 1260px)">
 
                     <span class="skyline-gallery-caption">
                         Gloucester Prison • Aerial View 01
@@ -763,7 +862,7 @@
                         src="media/skyline/Gloucester-prison-aerial-02.webp"
                         alt="Gloucester Prison aerial view 2"
                         loading="lazy"
-                    >
+                     srcset="media/photography/gloucester-02-480.webp 480w, media/photography/gloucester-02-960.webp 960w, media/photography/gloucester-02-1440.webp 1440w" sizes="(max-width: 760px) 94vw, min(94vw, 1260px)">
 
                     <span class="skyline-gallery-caption">
                         Gloucester Prison • Aerial View 02
@@ -787,7 +886,7 @@
                         src="media/skyline/Gloucester-prison-aerial-03.webp"
                         alt="Gloucester Prison aerial view 3"
                         loading="lazy"
-                    >
+                     srcset="media/photography/gloucester-03-480.webp 480w, media/photography/gloucester-03-960.webp 960w, media/photography/gloucester-03-1440.webp 1440w" sizes="(max-width: 760px) 94vw, min(94vw, 1260px)">
 
                     <span class="skyline-gallery-caption">
                         Gloucester Prison • Aerial View 03
@@ -811,7 +910,7 @@
                         src="media/skyline/Gloucester-prison-aerial-04.webp"
                         alt="Gloucester Prison aerial view 4"
                         loading="lazy"
-                    >
+                     srcset="media/photography/gloucester-04-480.webp 480w, media/photography/gloucester-04-960.webp 960w, media/photography/gloucester-04-1440.webp 1440w" sizes="(max-width: 760px) 94vw, min(94vw, 1260px)">
 
                     <span class="skyline-gallery-caption">
                         Gloucester Prison • Aerial View 04
@@ -834,9 +933,11 @@
 </section>
 
 
-<section class="skyline-music" id="skyline-soundtracks" aria-labelledby="skyline-music-title">
+<section class="skyline-music" id="skyline-soundtracks" tabindex="-1" aria-labelledby="skyline-music-title">
     <div class="container">
         <div class="skyline-music-panel"><div class="soundtrack-title"><p class="signature-section-label">Original soundtrack / 14 tracks</p>
+            <img class="skyline-soundtrack-cover" src="media/soundtracks/beyond-the-skyline.jpg" width="820" height="820"
+                 alt="Beyond The Skyline cover artwork" loading="lazy" decoding="async">
             <p class="skyline-music-artist">NEWITT MEDIA</p>
             <h2 id="skyline-music-title">BEYOND THE <span>SKYLINE</span></h2>
             <p class="skyline-music-subtitle">The Original Soundtrack of NEWITT Skyline Media</p>
@@ -1149,7 +1250,7 @@
     <div class="container">
         <div class="editorial-footer-grid">
             <div>
-                <a class="editorial-brand" href="index.html"><img src="newitt-media-logo.png" alt="" width="52" height="52"><span>NEWITT <strong>MEDIA</strong></span></a>
+                <a class="editorial-brand" href="index.html"><img src="newitt-media-logo.png" srcset="media/header-emblem.webp" loading="lazy" decoding="async" alt="" width="52" height="52"><span>NEWITT <strong>MEDIA</strong></span></a>
                 <p>From above. After dark. And everything in between.</p>
             </div>
             <nav class="studio-footer-links" aria-label="Footer navigation"><a href="index.html">Home</a><a href="skyline.html" aria-current="page">Skyline</a><a href="photography.html">Photography</a><a href="paranormal.html">Paranormal</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>
@@ -1171,6 +1272,9 @@
 <div
     class="skyline-lightbox"
     id="skyline-lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Gloucester Prison aerial photograph"
     aria-hidden="true"
 >
 
@@ -1186,7 +1290,6 @@
 
     <img
         id="skyline-lightbox-image"
-        src=""
         alt=""
     >
 
@@ -1252,6 +1355,8 @@
     }
 
 
+    let previousFocus;
+
     function openLightbox(item) {
 
         const image =
@@ -1280,8 +1385,9 @@
             "false"
         );
 
-        document.body.style.overflow =
-            "hidden";
+        previousFocus = item;
+        document.body.style.overflow = "hidden";
+        closeButton.focus();
 
     }
 
@@ -1297,10 +1403,9 @@
             "true"
         );
 
-        lightboxImage.src = "";
-
-        document.body.style.overflow =
-            "";
+        lightboxImage.removeAttribute("src");
+        document.body.style.overflow = "";
+        previousFocus?.focus();
 
     }
 
@@ -1341,11 +1446,12 @@
         "keydown",
         function (event) {
 
-            if (
-                event.key === "Escape" &&
-                lightbox.classList.contains("active")
-            ) {
-                closeLightbox();
+            if (!lightbox.classList.contains("active")) return;
+
+            if (event.key === "Escape") closeLightbox();
+            if (event.key === "Tab") {
+                event.preventDefault();
+                closeButton.focus();
             }
 
         }

@@ -155,8 +155,55 @@
     >
 
     <link rel="stylesheet" href="studio.css?v=2">
-    <link rel="stylesheet" href="editorial.css?v=3">
+    <link rel="stylesheet" href="editorial.css?v=4">
     <script src="editorial.js" defer></script>
+    <link rel="stylesheet" href="moonlit.css?v=3">
+    <script src="moonlit.js?v=2" defer></script>
+    <link rel="stylesheet" href="cinematic.css">
+    <style>
+        /* The editorial sheet reintroduces the desktop columns after its phone rule. */
+        #worlds .world-copy h3 { overflow-wrap: normal; word-break: normal; }
+        #worlds .world-arrow { justify-self: end; align-self: end; }
+        #worlds .world-panel-top img { display: block; object-fit: contain; object-position: right top; }
+        #worlds .world-paranormal .world-image { object-position: center 53%; }
+        #worlds .world-paranormal .world-copy { background: #081320; }
+        #worlds { scroll-margin-top: max(90px, calc(76px + env(safe-area-inset-top))); }
+
+        @media (max-width: 1000px) {
+            #worlds .worlds-panels {
+                grid-template-columns: minmax(0, 1fr);
+                min-height: 0;
+                gap: clamp(8px, 1.35vw, 14px);
+                background: transparent;
+                transition: none;
+            }
+
+            #worlds .world-panel {
+                grid-template: "mark mark" auto "copy arrow" 1fr / minmax(0, 1fr) auto;
+                min-height: clamp(268px, 46vw, 414px);
+                padding: clamp(13px, 2.7vw, 24px);
+                gap: 10px;
+                align-content: stretch;
+            }
+            #worlds .world-panel-top { grid-area: mark; }
+            #worlds .world-panel .world-logo {
+                width: clamp(76px, 18vw, 118px);
+                max-width: 100%;
+                height: clamp(66px, 15vw, 104px);
+                object-position: center;
+                transition: none;
+                transform: none;
+                padding: 3px;
+            }
+            #worlds .world-copy { grid-area: copy; }
+            #worlds .world-copy h3 { font-size: clamp(1.9rem, 6.8vw, 3.65rem); }
+            #worlds .world-arrow { grid-area: arrow; }
+        }
+
+        @media (min-width: 1001px) and (max-width: 1200px) {
+            #worlds .world-copy h3 { font-size: clamp(2.3rem, 4.1vw, 3.1rem); }
+        }
+    </style>
 </head>
 
 
@@ -174,7 +221,7 @@
 <header class="site-header editorial-header">
     <div class="container nav">
         <a class="editorial-brand" href="index.html" aria-label="NEWITT MEDIA home">
-            <span class="brand-mark"><img src="newitt-media-logo.png" alt="" width="64" height="64" fetchpriority="high"></span>
+            <span class="brand-mark"><img src="newitt-media-logo.png" srcset="media/header-emblem.webp" alt="" width="64" height="64" fetchpriority="high"></span>
             <span>NEWITT <strong>MEDIA</strong></span>
         </a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="Open navigation menu"><span></span><span></span><span></span></button>
@@ -184,7 +231,7 @@
 </header>
 <dialog id="editorial-menu" class="editorial-menu" aria-labelledby="editorial-menu-title">
     <div class="editorial-menu-head">
-        <div class="menu-identity"><span class="brand-mark"><img src="newitt-media-logo.png" alt="" width="64" height="64"></span><p id="editorial-menu-title">NEWITT MEDIA</p></div>
+        <div class="menu-identity"><span class="brand-mark"><img src="newitt-media-logo.png" srcset="media/header-emblem.webp" alt="" width="64" height="64"></span><p id="editorial-menu-title">NEWITT MEDIA</p></div>
         <form method="dialog"><button type="submit" autofocus>Close <span aria-hidden="true">×</span></button></form>
     </div>
     <nav aria-label="Site index"><a href="index.html" aria-current="page"><span aria-hidden="true">01</span> Home</a><a href="skyline.html"><span aria-hidden="true">02</span> Skyline</a><a href="photography.html"><span aria-hidden="true">03</span> Photography</a><a href="paranormal.html"><span aria-hidden="true">04</span> Paranormal</a><a href="contact.html"><span aria-hidden="true">05</span> Contact</a><a href="privacy.html"><span aria-hidden="true">06</span> Privacy</a></nav>
@@ -196,41 +243,47 @@
 ===================================================== -->
 
 <main id="main-content" tabindex="-1">
-    <section class="signature-arrival" aria-labelledby="arrival-title">
-        <figure class="signature-frame">
-            <img class="signature-aerial" src="media/skyline/Gloucester-prison-aerial-04.webp" alt="Gloucester Prison and the surrounding city from above" fetchpriority="high">
-            <figcaption><span>Gloucester Prison</span><span>NEWITT Skyline Media</span></figcaption>
-        </figure>
-        <div class="signature-opening">
-            <div class="signature-identity">
-                <img src="newitt-media-logo.png" alt="" width="220" height="220" fetchpriority="high">
-                <h1 id="arrival-title">NEWITT MEDIA</h1>
+    <section class="moon-opening" aria-labelledby="arrival-title">
+        <div class="container premiere-layout">
+            <div class="moon-opening-copy">
+                <p class="eyebrow">Film · Photography · Original Music</p>
+                <h1 id="arrival-title">NEWITT <em>MEDIA</em></h1>
+                <p class="premiere-slogan">From above. After dark. And everything in between.</p>
+                <div class="premiere-actions">
+                    <a class="editorial-action" href="#worlds">Explore the work <span aria-hidden="true">↓</span></a>
+                    <a class="premiere-link" href="#home-soundtrack">Films &amp; soundtracks <span aria-hidden="true">↘</span></a>
+                </div>
             </div>
-            <div class="signature-opening-copy">
-                <p>FROM ABOVE.<br>AFTER DARK.<br><em>AND EVERYTHING IN BETWEEN.</em></p>
-                <a class="editorial-action" href="#worlds">Explore our three worlds <span aria-hidden="true">↓</span></a>
-            </div>
+            <a class="moon-opening-player" href="skyline.html#skyline-soundtracks" aria-label="Open the Beyond The Skyline soundtrack player">
+                <picture>
+                    <source media="(max-width: 600px)" srcset="media/moonlit/valley-portrait.webp">
+                    <img src="media/moonlit/valley-wide.webp" width="1448" height="1086" fetchpriority="high" alt="Silver and blue NEWITT MEDIA emblem over a moonlit valley">
+                </picture>
+                <span class="premiere-art-link">Beyond The Skyline <span aria-hidden="true">↗</span></span>
+            </a>
         </div>
     </section>
-    <section class="worlds" id="worlds" aria-labelledby="newitt-media-intro-title">
+    <section class="worlds" id="worlds" tabindex="-1" aria-labelledby="newitt-media-intro-title">
         <div class="container">
-            <h2 id="newitt-media-intro-title">Three worlds. <span>One company.</span></h2>
+            <h2 id="newitt-media-intro-title">Three worlds. <span>One passion.</span></h2>
             <div class="worlds-panels">
                 <a class="world-panel world-skyline" href="skyline.html" data-lens="skyline">
-                    <img class="world-image" src="media/skyline/Gloucester-prison-aerial-03.webp" alt="" loading="lazy" decoding="async">
-                    <span class="world-panel-top"><span class="world-index" aria-hidden="true">01</span><img class="world-logo" src="sky-logo.png" alt="" loading="lazy" decoding="async"></span>
-                    <div class="world-copy"><h3>Above</h3><p>NEWITT Skyline Media</p><p class="world-description">Aerial film and photography</p></div>
+                    <img class="world-image" src="media/skyline/Gloucester-prison-aerial-03.webp" alt="" loading="lazy" decoding="async" srcset="media/photography/gloucester-03-480.webp 480w, media/photography/gloucester-03-960.webp 960w, media/photography/gloucester-03-1440.webp 1440w" sizes="(max-width: 1000px) 94vw, 44vw">
+                    <span class="world-panel-top"><img class="world-logo" src="sky-logo.png" alt="" loading="lazy" decoding="async"></span>
+                    <div class="world-copy"><h3>Above</h3><p>NEWITT Skyline Media</p><p class="world-description">Aerial cinematography, film and original music</p></div>
                     <span class="world-arrow" aria-hidden="true">↗</span>
                 </a>
                 <a class="world-panel world-photography" href="photography.html" data-lens="photography">
-                    <img class="world-image" src="media/skyline/Gloucester-prison-aerial-02.webp" alt="" loading="lazy" decoding="async">
-                    <span class="world-panel-top"><span class="world-index" aria-hidden="true">02</span></span>
-                    <div class="world-copy"><h3>In Focus</h3><p>NEWITT Media Photography</p><p class="world-description">A closer look at places and details</p></div>
+                    <img class="world-image" src="media/skyline/Gloucester-prison-aerial-02.webp" alt="" loading="lazy" decoding="async" srcset="media/photography/gloucester-02-480.webp 480w, media/photography/gloucester-02-960.webp 960w, media/photography/gloucester-02-1440.webp 1440w" sizes="(max-width: 1000px) 94vw, 44vw">
+
+                    <span class="world-panel-top"><img class="world-logo" src="media/header-emblem.webp" alt="" loading="lazy" decoding="async"></span>
+                    <div class="world-copy"><h3>In Focus</h3><p>NEWITT Media Photography</p><p class="world-description">Photography and editorial work</p></div>
                     <span class="world-arrow" aria-hidden="true">↗</span>
                 </a>
                 <a class="world-panel world-paranormal" href="paranormal.html" data-lens="paranormal">
+                    <img class="world-image" src="media/photography/gloucester-04-960.webp" alt="" loading="lazy" decoding="async" srcset="media/photography/gloucester-04-480.webp 480w, media/photography/gloucester-04-960.webp 960w, media/photography/gloucester-04-1440.webp 1440w" sizes="(max-width: 1000px) 94vw, 33vw">
                     
-                    <span class="world-panel-top"><span class="world-index" aria-hidden="true">03</span><img class="world-logo" src="paranormal-logo.png" alt="" loading="lazy" decoding="async"></span>
+                    <span class="world-panel-top"><img class="world-logo" src="media/moonlit/after-dark.webp" alt="" loading="lazy" decoding="async"></span>
                     <div class="world-copy"><h3>After Dark</h3><p>NEWITT’s Paranormal Adventures</p><p class="world-description">Investigations, locations and the unexplained</p></div>
                     <span class="world-arrow" aria-hidden="true">↗</span>
                 </a>
@@ -243,35 +296,76 @@
                 <p>Four aerial perspectives on the prison and the streets around it.</p>
                 <a class="editorial-action" href="skyline.html#gloucester-prison">See the aerial project <span aria-hidden="true">↗</span></a>
             </header>
-            <figure class="production-wide"><img src="media/skyline/Gloucester-prison-aerial-02.webp" alt="Aerial view of Gloucester Prison and nearby buildings" loading="lazy" decoding="async"><figcaption>01 / The prison and city</figcaption></figure>
-            <figure class="production-tall"><img src="media/skyline/Gloucester-prison-aerial-03.webp" alt="The prison grounds and neighbouring streets" loading="lazy" decoding="async"><figcaption>02 / The grounds</figcaption></figure>
+            <figure class="production-wide"><img src="media/skyline/Gloucester-prison-aerial-02.webp" alt="Aerial view of Gloucester Prison and nearby buildings" loading="lazy" decoding="async" srcset="media/photography/gloucester-02-480.webp 480w, media/photography/gloucester-02-960.webp 960w, media/photography/gloucester-02-1440.webp 1440w" sizes="(max-width: 760px) 94vw, 44vw"><figcaption>01 / The prison and city</figcaption></figure>
+            <figure class="production-tall"><img src="media/skyline/Gloucester-prison-aerial-03.webp" alt="The prison grounds and neighbouring streets" loading="lazy" decoding="async" srcset="media/photography/gloucester-03-480.webp 480w, media/photography/gloucester-03-960.webp 960w, media/photography/gloucester-03-1440.webp 1440w" sizes="(max-width: 760px) 94vw, 44vw"><figcaption>02 / The grounds</figcaption></figure>
         </div>
     </section>
-    <section class="editorial-statement" aria-label="The NEWITT MEDIA ethos">
-        <div class="container"><p>NEWITT MEDIA</p><h2>FROM ABOVE.<br><span>AFTER DARK.</span><br><em>AND EVERYTHING<br>IN BETWEEN.</em></h2></div>
+    <section class="ian-bio" id="meet-ian" aria-labelledby="ian-title">
+        <div class="container ian-layout">
+            <h2 id="ian-title">Meet Ian <span>Newitt</span></h2>
+            <p>I’m Ian Newitt, the person behind NEWITT MEDIA. I use drones and photography to show places from angles you don’t normally get to see. With Newitt’s Paranormal Adventures, I explore historic locations after dark and share what it’s like to be there. I also make original music, including <em>Beyond The Skyline</em>, to bring some of that atmosphere into my films.</p>
+        </div>
     </section>
-    <section class="editorial-screening" aria-labelledby="screening-title">
-        <div class="container screening-grid">
-            <div class="screening-films"><p class="eyebrow">Films &amp; original music</p><h2 id="screening-title">Motion<br>&amp; Sound</h2>
-                <img src="media/skyline/Gloucester-prison-aerial-01.webp" alt="Gloucester Prison photographed from above by NEWITT Skyline Media" loading="lazy" decoding="async">
-                <a class="editorial-action" href="https://www.youtube.com/@Newitt-skyline-media">Watch Skyline films <span aria-hidden="true">↗</span></a>
-            </div>
-            <div class="screening-sound"><p class="eyebrow">Original soundtrack</p><h3>Beyond The Skyline</h3>
-                <iframe
-                class="editorial-player"
-                title="Beyond The Skyline — NEWITT MEDIA playlist on SoundCloud"
-                width="100%"
-                height="520"
-                loading="lazy"
-                allow="autoplay; encrypted-media"
-                referrerpolicy="strict-origin-when-cross-origin"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A2331058893&amp;color=%233eaaff&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=false&amp;show_artwork=true&amp;visual=true"
-            ></iframe>
-                <a href="https://soundcloud.com/ian-newitt/sets/beyond-the-skyline">Open the playlist on SoundCloud</a>
-                <a class="screening-skyline" href="skyline.html#skyline-soundtracks">Explore the Skyline soundtrack page</a>
+    <section class="editorial-screening original-showcase" id="home-soundtrack" tabindex="-1" aria-labelledby="screening-title">
+        <div class="container">
+            <header class="original-heading">
+                <h2 id="screening-title">Films &amp; Original Soundtracks</h2>
+                <p>Aerial films, paranormal investigations and the music I make to accompany them.</p>
+            </header>
+            <div class="original-grid">
+                <article class="original-film">
+                    <img src="media/skyline/Gloucester-prison-aerial-01.webp" alt="Gloucester Prison from above" width="2400" height="1350" loading="lazy" decoding="async" srcset="media/photography/gloucester-01-480.webp 480w, media/photography/gloucester-01-960.webp 960w, media/photography/gloucester-01-1440.webp 1440w" sizes="(max-width: 760px) 94vw, 44vw">
+                    <div class="original-copy">
+                        <h3>NEWITT MEDIA films</h3>
+                        <a href="https://www.youtube.com/@Newitt-skyline-media">Watch Skyline films on YouTube</a>
+                        <a href="paranormal.html">Explore paranormal investigations</a>
+                    </div>
+                </article>
+                <article class="original-album">
+                    <img src="media/soundtracks/beyond-the-skyline.jpg" alt="Beyond The Skyline cover artwork" width="820" height="820" loading="lazy" decoding="async">
+                    <div class="original-copy">
+                        <h3>Beyond The Skyline</h3>
+                        <p>Original aerial and cinematic music by NEWITT MEDIA.</p>
+                        <a href="skyline.html#skyline-soundtracks">Listen on Skyline</a>
+                    </div>
+                </article>
+                <article class="original-album">
+                    <img src="media/moonlit/after-dark.webp" alt="Newitt’s Paranormal Adventures skull emblem" width="700" height="700" loading="lazy" decoding="async">
+                    <div class="original-copy">
+                        <p class="original-label">Forthcoming soundtrack</p>
+                        <h3>The Third Knock Was Inside</h3>
+                        <a href="paranormal.html#original-soundtracks">Explore the soundtrack feature</a>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
+
+    <section class="editorial-invitation" aria-labelledby="invitation-title">
+        <div class="container"><h2 id="invitation-title">Let’s make<br>something.</h2><a class="editorial-action" href="contact.html">Talk to NEWITT MEDIA <span aria-hidden="true">↗</span></a></div>
+    </section>
+</main>
+
+
+<!-- =====================================================
+     BACK TO TOP
+===================================================== -->
+
+<a
+    href="#top"
+    class="back-to-top"
+    id="back-to-top"
+    aria-label="Back to top"
+>
+    ↑
+</a>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="site-footer editorial-footer">
     <section
     class="social-hub"
     id="social"
@@ -458,35 +552,10 @@
     </div>
 
 </section>
-    <section class="editorial-invitation" aria-labelledby="invitation-title">
-        <div class="container"><h2 id="invitation-title">Let’s make<br>something.</h2><a class="editorial-action" href="contact.html">Talk to NEWITT MEDIA <span aria-hidden="true">↗</span></a></div>
-    </section>
-</main>
-
-
-<!-- =====================================================
-     BACK TO TOP
-===================================================== -->
-
-<a
-    href="#top"
-    class="back-to-top"
-    id="back-to-top"
-    aria-label="Back to top"
->
-    ↑
-</a>
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer class="site-footer editorial-footer">
     <div class="container">
         <div class="editorial-footer-grid">
             <div>
-                <a class="editorial-brand" href="index.html"><img src="newitt-media-logo.png" alt="" width="52" height="52"><span>NEWITT <strong>MEDIA</strong></span></a>
+                <a class="editorial-brand" href="index.html"><img src="newitt-media-logo.png" srcset="media/header-emblem.webp" loading="lazy" decoding="async" alt="" width="52" height="52"><span>NEWITT <strong>MEDIA</strong></span></a>
                 <p>From above. After dark. And everything in between.</p>
             </div>
             <nav class="studio-footer-links" aria-label="Footer navigation"><a href="index.html" aria-current="page">Home</a><a href="skyline.html">Skyline</a><a href="photography.html">Photography</a><a href="paranormal.html">Paranormal</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>

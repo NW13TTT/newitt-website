@@ -1,0 +1,379 @@
+.photography-page {
+    --photo-ink: #101619;
+    --photo-paper: #f1ece1;
+    --photo-gold: #e5c99f;
+    --photo-muted: #bfc5c6;
+    background: var(--photo-ink);
+}
+
+.photography-page .photography-hero {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    align-items: end;
+    min-height: clamp(520px, 65vw, 720px);
+    padding: 0;
+    overflow: hidden;
+    color: #fbf4e9;
+    background: #15191b;
+    text-align: left;
+}
+
+.photography-hero-image,
+.photography-hero-image img,
+.photography-hero-image::after {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+.photography-hero-image { z-index: -1; }
+.photography-hero-image img { object-fit: cover; object-position: 58% 46%; }
+.photography-hero-image::after {
+    content: "";
+    background:
+        linear-gradient(0deg, #111719 0%, #111719a8 25%, transparent 60%),
+        linear-gradient(90deg, #101619ef 0%, #101619c7 25%, #10161928 62%, transparent 85%);
+}
+
+.photography-page .photography-hero-content {
+    display: block;
+    width: min(100% - 2 * var(--gutter), 1280px);
+    padding-block: 54px clamp(46px, 7vw, 88px);
+    margin-inline: auto;
+}
+.photography-page .photography-hero .eyebrow,
+.photography-exhibition .eyebrow {
+    color: var(--photo-gold);
+    font-size: .73rem;
+    font-weight: 750;
+    letter-spacing: .17em;
+}
+.photography-page .photography-hero h1 {
+    margin: 12px 0 18px;
+    color: #fbf4e9;
+    font: 400 clamp(4.4rem, 11vw, 10.5rem)/.77 Georgia, serif;
+    letter-spacing: -.075em;
+    text-shadow: 0 4px 32px #080b0c80;
+}
+.photography-page .photography-hero h1 span,
+.photography-page .photography-hero h1 em { display: block; color: inherit; }
+.photography-page .photography-hero h1 em { margin: .06em 0 0 .48em; color: #f0d5ad; }
+.photography-page .photography-hero .hero-tagline {
+    margin: 0 0 8px;
+    color: var(--photo-gold);
+    font-size: .71rem;
+    line-height: 1.45;
+    letter-spacing: .12em;
+    text-align: left;
+}
+.photography-hero .photography-statement p {
+    max-width: 43ch;
+    margin: 0;
+    color: #e5e4dc;
+    font-size: clamp(.95rem, 1.4vw, 1.1rem);
+    line-height: 1.5;
+}
+.photography-page .photography-hero .hero-actions {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-top: 19px;
+}
+.photography-hero .photography-action,
+.photography-hero .photography-contact,
+.photography-original {
+    display: inline-flex;
+    gap: .65em;
+    align-items: center;
+    min-height: 44px;
+    font-weight: 700;
+    font-size: .88rem;
+}
+.photography-hero .photography-action {
+    padding-inline: 14px;
+    border: 1px solid var(--photo-gold);
+    border-radius: 0;
+    background: var(--photo-gold);
+    color: #131718;
+}
+.photography-hero .photography-contact, .photography-original {
+    color: #f8ecdb;
+    text-decoration: underline;
+    text-underline-offset: .23em;
+}
+.photography-hero .photography-contact {
+    padding-inline: 0;
+    background: transparent;
+    border: 0;
+}
+.photography-hero .photography-action:hover { background: #fae7c6; }
+.photography-hero .hero-actions a:hover { transform: none; }
+.photography-page :is(.photography-hero, .photography-exhibition, .photography-lightbox) :focus-visible {
+    outline: 2px solid #aad6f9;
+    outline-offset: 3px;
+}
+
+.photography-exhibition {
+    padding-block: clamp(29px, 5vw, 68px);
+    color: #f8f3eb;
+    background: #151b1e;
+    scroll-margin-top: 85px;
+}
+.exhibition-inner { width: min(100% - 2 * var(--gutter), 1080px); }
+.exhibition-intro {
+    margin-bottom: clamp(14px, 3vw, 28px);
+    border-top: 1px solid #bba17b73;
+    padding-top: 16px;
+}
+.exhibition-intro h2,
+.photography-portfolio-heading h2,
+.photography-focus h2,
+.photography-page .home-cta h2 {
+    margin: 5px 0 8px;
+    font: 400 clamp(2.35rem, 6vw, 5.25rem)/.96 Georgia, serif;
+    letter-spacing: -.058em;
+}
+.exhibition-intro p,
+.photography-portfolio-heading p,
+.photography-exhibition .gallery-note {
+    max-width: 57ch;
+    margin: 0;
+    color: var(--photo-muted);
+    line-height: 1.55;
+}
+.photography-stage {
+    background: #0d1113;
+    border: 1px solid #b9a48470;
+}
+.photography-stage:focus-visible { outline-offset: 3px; }
+.photography-stage[data-interactive], .photography-viewer-image { touch-action: pan-y pinch-zoom; }
+.photography-plate { margin: 0; }
+.photography-plate img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+}
+.photography-plate figcaption {
+    display: flex;
+    align-items: center;
+    min-height: 3.4rem;
+    padding: 7px 12px;
+    color: #e9e2d8;
+    background: #23292b;
+    font-size: .94rem;
+    line-height: 1.35;
+}
+.photography-stage[data-interactive] .photography-plate[hidden],
+.photography-navigation[hidden] { display: none; }
+
+.photography-navigation {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px 16px;
+    margin-top: 12px;
+}
+.photography-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+}
+.photography-controls button,
+.photography-open,
+.photography-close {
+    min-height: 44px;
+    padding: 6px 11px;
+    color: #f3ede3;
+    background: #222a2d;
+    border: 1px solid #5f6a6e;
+    font-size: .87rem;
+    line-height: 1.2;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+.photography-controls button:hover,
+.photography-close:hover { background: #384448; }
+.photography-open {
+    background: var(--photo-gold);
+    border-color: var(--photo-gold);
+    color: #14191c;
+}
+.photography-open:hover { background: #fae7c6; }
+.photography-count {
+    color: var(--photo-gold);
+    font-size: .84rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+.photography-swipe-help {
+    display: none;
+    grid-column: 1 / -1;
+    margin: 0;
+    color: var(--photo-muted);
+    font-size: .8rem;
+}
+.photography-thumbnails {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(6px, 2vw, 14px);
+}
+.photography-thumbnails button {
+    min-width: 0;
+    min-height: 44px;
+    padding: 3px;
+    border: 1px solid #5f6a6e;
+    background: #101619;
+    cursor: pointer;
+}
+.photography-thumbnails button[aria-current="true"] {
+    border: 2px solid var(--photo-gold);
+    padding: 2px;
+}
+.photography-thumbnails img { display: block; width: 100%; height: auto; }
+.photography-live {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+.photography-portfolio-heading {
+    margin: clamp(28px, 5vw, 56px) 0 8px;
+    padding-top: clamp(18px, 3vw, 30px);
+    border-top: 1px solid #bba17b73;
+}
+.photography-portfolio-heading h2 { font-size: clamp(1.65rem, 3.5vw, 2.75rem); }
+.photography-exhibition .gallery-note { font-size: .88rem; }
+
+.photography-page .photography-focus,
+.photography-page .home-cta {
+    padding: clamp(34px, 6vw, 80px) 0;
+    background: var(--photo-paper);
+}
+.photography-page .photography-focus :is(.section-heading, h2, p, h3) { text-align: left; }
+.photography-page .photography-focus .section-heading { width: 100%; max-width: none; margin: 0 0 23px; }
+.photography-page .photography-focus :is(.eyebrow, span),
+.photography-page .home-cta .eyebrow { color: #63503c; }
+.photography-focus-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(16px, 3vw, 36px);
+}
+.photography-page .photography-focus .photography-focus-card {
+    padding: 13px 0 0;
+    background: transparent;
+    border: 0;
+    border-top: 1px solid #ad9980;
+    border-radius: 0;
+    box-shadow: none;
+}
+.photography-focus-card h3 { margin: 0 0 6px; font: 400 1.55rem/1.1 Georgia, serif; }
+.photography-focus-card p { margin: 0; }
+.photography-page .home-cta { padding-top: 0; }
+.photography-page .home-cta .cta-panel { padding: clamp(20px, 4vw, 48px); }
+
+.photography-lightbox[open] {
+    position: fixed;
+    inset: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    border: 0;
+    padding: max(8px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right))
+        max(10px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+    overflow: auto;
+    overscroll-behavior: contain;
+    background: #0b1012;
+    color: #f7efe4;
+}
+.photography-lightbox::backdrop { background: #0b1012; }
+body:has(.photography-lightbox[open]) { overflow: hidden; }
+.photography-viewer {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto auto;
+    gap: 8px;
+    min-height: 100%;
+    max-width: 1260px;
+    margin: auto;
+}
+.photography-viewer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+}
+.photography-viewer-frame { align-self: center; min-width: 0; margin: 0; }
+.photography-viewer-image { display: grid; place-items: center; }
+.photography-viewer-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    max-height: max(80px, calc(100dvh - 205px));
+    object-fit: contain;
+}
+.photography-viewer-caption { padding-top: 8px; color: #f0e8db; }
+.photography-original { justify-self: center; text-align: center; }
+
+@media (max-width: 700px) {
+    .photography-page .photography-hero { min-height: clamp(430px, 55svh, 510px); }
+    .photography-hero-image img { object-position: 60% 40%; }
+    .photography-hero-image::after {
+        background: linear-gradient(0deg, #111719 0%, #111719f5 21%, #101619bd 49%, #10161923 82%);
+    }
+    .photography-page .photography-hero-content { padding-block: 125px 26px; }
+    .photography-page .photography-hero h1 { font-size: clamp(3.75rem, 16.1vw, 6.8rem); }
+    .photography-page .photography-hero h1 em { margin-inline-start: .28em; }
+    .photography-navigation { grid-template-columns: minmax(0, 1fr); }
+    .photography-swipe-help { display: block; }
+    .photography-focus-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (orientation: landscape) and (max-height: 500px) {
+    .photography-page .photography-hero { min-height: 380px; }
+    .photography-page .photography-hero-content { padding-block: 52px 25px; }
+    .photography-page .photography-hero h1 { font-size: clamp(3.5rem, 9vw, 6rem); }
+    .photography-viewer {
+        grid-template-columns: minmax(0, 1fr) minmax(150px, 27%);
+        grid-template-rows: auto minmax(0, 1fr) auto;
+        align-items: center;
+    }
+    .photography-viewer-header { grid-column: 1 / -1; }
+    .photography-viewer-frame { grid-row: span 2; }
+    .photography-viewer-image img { max-height: max(80px, calc(100dvh - 118px)); }
+    .photography-viewer .photography-controls { justify-content: center; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .photography-hero-content,
+    .photography-stage[data-interactive] .photography-plate:not([hidden]) {
+        animation: photography-reveal .2s ease-out both;
+    }
+    @keyframes photography-reveal {
+        from { opacity: .8; }
+        to { opacity: 1; }
+    }
+}
+
+.photography-page .home-cta .cta-panel {
+    background: #20272a;
+    border-color: #615544;
+}
+.photography-page .home-cta .cta-panel h2 { color: #fbf4e9; }
+.photography-page .home-cta .cta-panel :is(h2 span, .eyebrow) { color: var(--photo-gold); }
+.photography-page .home-cta .cta-panel p { color: #e0e3df; }
+.photography-exhibition .gallery-note { padding-inline: 0; }
